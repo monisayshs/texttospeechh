@@ -32,7 +32,7 @@ function getSaaSFooterHtml() {
         <ul class="footer-links-list">
           <li><a href="/about">About Us</a></li>
           <li><a href="/contact">Contact Support</a></li>
-          <li><a href="/blog/ultimate-ai-voice-generator-guide">Blog & Guides</a></li>
+          <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Blog & Guides</a></li>
           <li><a href="/accessibility">Accessibility</a></li>
           <li><a href="/community-guidelines">Community</a></li>
         </ul>
@@ -44,7 +44,7 @@ function getSaaSFooterHtml() {
         <ul class="footer-links-list">
           <li><a href="/">Free AI Voice Generator</a></li>
           <li><a href="/keyword/text-to-speech-free">Text to Speech</a></li>
-          <li><a href="/keyword/free-ai-voice-generator">Text to MP3 Converter</a></li>
+          <li><a href="/keyword/free-ai-texttospeechh.com">Text to MP3 Converter</a></li>
           <li><a href="/blog/text-to-speech-audiobook-creation">Long Text to Speech</a></li>
           <li><a href="/language/hindi">Hindi Text to Speech</a></li>
           <li><a href="/language/english">English Text to Speech</a></li>
@@ -72,7 +72,7 @@ function getSaaSFooterHtml() {
         <ul class="footer-links-list">
           <li><a href="/about">FAQ & Overview</a></li>
           <li><a href="/contact">Help Center</a></li>
-          <li><a href="/blog/ultimate-ai-voice-generator-guide">Speech Guides</a></li>
+          <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Speech Guides</a></li>
           <li><a href="/about">Platform Details</a></li>
         </ul>
       </div>

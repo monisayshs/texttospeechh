@@ -78,7 +78,7 @@ const PROGRAMMATIC_ROUTER = {
   },
 
   // --- Master Keyword Clusters ---
-  "keyword/free-ai-voice-generator": {
+  "keyword/free-ai-texttospeechh.com": {
     title: `Free AI Voice Generator Online | ${BRAND_NAME}`,
     h1: `Free AI Voice Generator Online`,
     metaDesc: `Convert text to realistic speech online using ${BRAND_NAME}. 100% free AI voice generator with high-quality natural voices and MP3 exports.`,

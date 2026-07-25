@@ -8,7 +8,7 @@ const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const CONTENT_HUB_ARTICLES = {
-  "blog/ultimate-ai-voice-generator-guide": {
+  "blog/ultimate-ai-texttospeechh.com-guide": {
     title: `The Ultimate Guide to Free AI Voice Generation in 2026 | ${BRAND_NAME}`,
     h1: `The Ultimate Guide to Free AI Voice Generation in 2026`,
     category: "AI Voice",
@@ -28,7 +28,7 @@ const CONTENT_HUB_ARTICLES = {
       <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:15px; border-radius:8px; margin-top:20px;">
         <p><strong>Explore More on ${BRAND_NAME}:</strong></p>
         <ul>
-          <li><a href="${DOMAIN}/keyword/free-ai-voice-generator">Free AI Voice Generator Online</a></li>
+          <li><a href="${DOMAIN}/keyword/free-ai-texttospeechh.com">Free AI Voice Generator Online</a></li>
           <li><a href="${DOMAIN}/compare/texttospeechh-vs-elevenlabs">${BRAND_NAME} vs ElevenLabs Comparison</a></li>
           <li><a href="${DOMAIN}/language/hindi">Hindi Text to Speech Generator</a></li>
         </ul>

@@ -24,8 +24,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/webxpert-ai/texttospeechh-ai.git
-cd texttospeechh-ai
+git clone https://github.com/webxpert-ai/texttospeechh.com.git
+cd texttospeechh.com
 
 # Install dependencies
 npm install
@@ -43,13 +43,13 @@ npm run dev
    git init
    git add .
    git commit -m "Initial commit: TextToSpeechH AI Production Build"
-   git remote add origin https://github.com/webxpert-ai/texttospeechh-ai.git
+   git remote add origin https://github.com/webxpert-ai/texttospeechh.com.git
    git push -u origin main
    ```
 
 2. **Import into Vercel**:
    - Go to [Vercel Dashboard](https://vercel.com/new) -> **Import Git Repository**.
-   - Select **texttospeechh-ai**.
+   - Select **texttospeechh.com**.
    - **Framework Preset**: `Other`
    - **Root Directory**: `./`
    - **Build Command**: `npm run build`

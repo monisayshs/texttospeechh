@@ -45,7 +45,7 @@ rendering_matrix = [
     ("/disclaimer", "Static Generation (SSG)", "Disclaimer page pre-rendered statically"),
     ("/keyword/text-to-speech-free", "ISR (Incremental Static Regeneration)", "Programmatic keyword page with 24h revalidation"),
     ("/language/hindi", "ISR (Incremental Static Regeneration)", "Language landing page with 24h revalidation"),
-    ("/blog/ultimate-ai-voice-generator-guide", "ISR (Incremental Static Regeneration)", "Blog article with 24h revalidation"),
+    ("/blog/ultimate-ai-texttospeechh.com-guide", "ISR (Incremental Static Regeneration)", "Blog article with 24h revalidation"),
     ("/guide/understanding-ai-voice-cloning", "Static Generation (SSG)", "Educational guide pre-rendered statically"),
     ("/api/generate", "Dynamic Server Handler (SSR/Edge)", "POST endpoint creating transient audio jobs"),
     ("/api/status", "Dynamic Server Handler (SSR/Edge)", "GET endpoint returning job status & audio stream")

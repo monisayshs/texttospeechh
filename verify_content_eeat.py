@@ -31,7 +31,7 @@ print("   [OK] Educational Guides & EEAT Compliance Verified!")
 
 # 3. Test Intent Silo Pages
 intent_pages = [
-    "blog/ultimate-ai-voice-generator-guide",
+    "blog/ultimate-ai-texttospeechh.com-guide",
     "blog/ai-voiceover-for-youtube-shorts",
     "blog/text-to-speech-audiobook-creation"
 ]
