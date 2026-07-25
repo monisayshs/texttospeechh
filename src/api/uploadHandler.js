@@ -19,6 +19,9 @@ function getRawBody(req) {
     req.on('data', chunk => chunks.push(chunk));
     req.on('end', () => resolve(Buffer.concat(chunks)));
     req.on('error', reject);
+    if (typeof req.resume === 'function') {
+      req.resume();
+    }
   });
 }
 
