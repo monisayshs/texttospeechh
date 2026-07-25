@@ -4,8 +4,12 @@
  * Official Instagram: @webxpert.ai
  */
 
+// Global function alias for inline onclick fallbacks
+window.startSynthesis = null;
+window.generateVoice = null;
+
 document.addEventListener('DOMContentLoaded', () => {
-  // DOM Elements
+  // Robust DOM Elements selection supporting both id naming conventions
   const textInput = document.getElementById('text-input');
   const voiceSelect = document.getElementById('voice-select');
   const speedRange = document.getElementById('speed-range');
@@ -14,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const pitchVal = document.getElementById('pitch-val');
   const emotionSelect = document.getElementById('emotion-select');
 
-  const generateBtn = document.getElementById('btn-generate');
-  const pauseBtn = document.getElementById('btn-pause');
-  const stopBtn = document.getElementById('btn-stop');
-  const downloadBtn = document.getElementById('btn-download');
+  const generateBtn = document.getElementById('generate-btn') || document.getElementById('btn-generate');
+  const pauseBtn = document.getElementById('pause-btn') || document.getElementById('btn-pause');
+  const stopBtn = document.getElementById('stop-btn') || document.getElementById('btn-stop');
+  const downloadBtn = document.getElementById('download-btn') || document.getElementById('btn-download');
 
   const audioPlayer = document.getElementById('audio-player');
   const soundwave = document.getElementById('soundwave');
@@ -152,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
       if (response.ok && data.success) {
-        textInput.value = data.text;
+        if (textInput) textInput.value = data.text;
         updateTextStats();
         alert(`Document '${file.name}' imported successfully! (${data.wordCount} words extracted)`);
       } else {
@@ -194,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Generate Button Click Handler
   async function startSynthesis() {
+    console.log('[TextToSpeechH AI] startSynthesis executed');
     const text = textInput ? textInput.value.trim() : '';
     if (!text) {
       alert('Please enter some script text or upload a document first.');
@@ -267,9 +272,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Export globally for inline onclick or console invocation
+  window.startSynthesis = startSynthesis;
+  window.generateVoice = startSynthesis;
+
   if (generateBtn) {
     generateBtn.addEventListener('click', startSynthesis);
   }
+
+  // Keyboard shortcut: Ctrl + Enter
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Enter') {
+      e.preventDefault();
+      startSynthesis();
+    }
+  });
 
   // Poll Job Progress & Live ETA
   function pollJobProgress(jobId) {
@@ -300,7 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
           hideProgressBar();
           alert(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`);
         } else if (pollCounter > 15) {
-          // Timeout safety after 15 seconds polling
           clearInterval(activeJobPollTimer);
           activeJobPollTimer = null;
           setButtonLoadingState(false);
