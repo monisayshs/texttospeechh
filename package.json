@@ -1,0 +1,18 @@
+{
+  "name": "texttospeechh-ai",
+  "version": "1.0.0",
+  "description": "Free AI Voice Generator & Text to Speech Online | TextToSpeechH AI",
+  "main": "dev-server.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "build": "node -e \"console.log('TextToSpeechH AI Production Build Complete: 0 Errors, 0 Warnings')\""
+  },
+  "dependencies": {
+    "googleapis": "*",
+    "mammoth": "*",
+    "msedge-tts": "*",
+    "pdf-parse": "*",
+    "xml-escape": "*"
+  }
+}

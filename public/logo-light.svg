@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lightBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Light Background Container -->
+  <rect width="800" height="200" rx="16" fill="#FFFFFF" />
+
+  <!-- Icon Emblem -->
+  <g transform="translate(20, 20) scale(0.31)">
+    <rect x="32" y="32" width="448" height="448" rx="96" fill="url(#lightBrandGrad)" opacity="0.15" />
+    <g transform="translate(64, 64)">
+      <rect x="60" y="180" width="24" height="100" rx="12" fill="#06B6D4" />
+      <rect x="104" y="120" width="24" height="220" rx="12" fill="url(#lightBrandGrad)" />
+      <rect x="148" y="70" width="24" height="280" rx="12" fill="#3B82F6" />
+      <path d="M 40 110 H 344 C 357 110 368 121 368 134 V 134 C 368 147 357 158 344 158 H 40 C 27 158 16 147 16 134 V 134 C 16 121 27 110 40 110 Z" fill="url(#lightBrandGrad)" />
+      <rect x="212" y="100" width="24" height="240" rx="12" fill="url(#lightBrandGrad)" />
+      <rect x="256" y="140" width="24" height="180" rx="12" fill="#06B6D4" />
+      <rect x="300" y="200" width="24" height="80" rx="12" fill="#3B82F6" />
+    </g>
+  </g>
+
+  <!-- Typography -->
+  <text x="200" y="115" font-family="'Outfit', 'Inter', sans-serif" font-size="52" font-weight="700" fill="#0F172A">
+    TextToSpeechH
+  </text>
+  <text x="595" y="115" font-family="'Outfit', 'Inter', sans-serif" font-size="52" font-weight="800" fill="url(#lightBrandGrad)">
+    AI
+  </text>
+  <text x="202" y="150" font-family="'Outfit', 'Inter', sans-serif" font-size="18" font-weight="500" fill="#475569" letter-spacing="2">
+    FREE ULTRA-REALISTIC AI VOICE GENERATOR
+  </text>
+</svg>
