@@ -1,100 +1,109 @@
+/**
+ * TextToSpeechH AI — Production Frontend Controller
+ * Domain: https://texttospeechh.com
+ * Official Instagram: @webxpert.ai
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
-  const textInput = document.getElementById('textInput');
-  const voiceSelect = document.getElementById('voiceSelect');
-  const speedRange = document.getElementById('speedRange');
-  const speedVal = document.getElementById('speedVal');
-  const pitchRange = document.getElementById('pitchRange');
-  const pitchVal = document.getElementById('pitchVal');
-  const emotionSelect = document.getElementById('emotionSelect');
+  const textInput = document.getElementById('text-input');
+  const voiceSelect = document.getElementById('voice-select');
+  const speedRange = document.getElementById('speed-range');
+  const speedVal = document.getElementById('speed-val');
+  const pitchRange = document.getElementById('pitch-range');
+  const pitchVal = document.getElementById('pitch-val');
+  const emotionSelect = document.getElementById('emotion-select');
 
-  const charCountDisplay = document.getElementById('charCount');
-  const wordCountDisplay = document.getElementById('wordCount');
-  const estTimeDisplay = document.getElementById('estTime');
+  const generateBtn = document.getElementById('btn-generate');
+  const pauseBtn = document.getElementById('btn-pause');
+  const stopBtn = document.getElementById('btn-stop');
+  const downloadBtn = document.getElementById('btn-download');
 
-  const fileInput = document.getElementById('fileInput');
-  const fileDropzone = document.getElementById('fileDropzone');
-
-  const generateBtn = document.getElementById('generateBtn');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const pauseBtn = document.getElementById('pauseBtn');
-  const stopBtn = document.getElementById('stopBtn');
-  const audioPlayer = document.getElementById('audioPlayer');
+  const audioPlayer = document.getElementById('audio-player');
   const soundwave = document.getElementById('soundwave');
+  const fileDropzone = document.getElementById('file-dropzone');
+  const fileInput = document.getElementById('file-input');
 
-  const progressSection = document.getElementById('progressSection');
-  const progressStatusText = document.getElementById('progressStatusText');
-  const progressEta = document.getElementById('progressEta');
-  const progressPercentage = document.getElementById('progressPercentage');
-  const progressBarFill = document.getElementById('progressBarFill');
+  const wordCountSpan = document.getElementById('word-count');
+  const charCountSpan = document.getElementById('char-count');
+  const estTimeSpan = document.getElementById('est-time');
+
+  const progressSection = document.getElementById('progress-section');
+  const progressStatusText = document.getElementById('progress-status-text');
+  const progressEta = document.getElementById('progress-eta');
+  const progressPercentage = document.getElementById('progress-percentage');
+  const progressBarFill = document.getElementById('progress-bar-fill');
 
   let activeJobId = null;
   let activeJobPollTimer = null;
-  let currentAudioUrl = null;
   let currentAudioBlob = null;
+  let currentAudioUrl = null;
 
-  // Real-time Text Character / Word Counter & Reading Time Calculator
+  // Real-Time Character & Word Counter
   function updateTextStats() {
     const text = textInput.value || '';
     const charCount = text.length;
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    const estSeconds = Math.ceil(words / 3);
+    const estSeconds = Math.ceil(words / 2.5);
 
-    charCountDisplay.textContent = `${charCount.toLocaleString()} / 10,000`;
-    wordCountDisplay.textContent = words.toLocaleString();
+    wordCountSpan.textContent = `${words} / 10,000 words`;
+    charCountSpan.textContent = `${charCount} chars`;
 
     if (estSeconds < 60) {
-      estTimeDisplay.textContent = `${estSeconds}s`;
+      estTimeSpan.textContent = `~${estSeconds} sec audio`;
     } else {
       const mins = Math.floor(estSeconds / 60);
       const secs = estSeconds % 60;
-      estTimeDisplay.textContent = `${mins}m ${secs}s`;
+      estTimeSpan.textContent = `~${mins}m ${secs}s audio`;
     }
   }
 
   textInput.addEventListener('input', updateTextStats);
+  updateTextStats();
 
-  // Speed & Pitch Slider Listeners
+  // Range Slider Feedback Updates
   speedRange.addEventListener('input', (e) => {
     speedVal.textContent = `${parseFloat(e.target.value).toFixed(1)}x`;
   });
 
   pitchRange.addEventListener('input', (e) => {
-    const val = parseInt(e.target.value);
+    const val = parseInt(e.target.value, 10);
     pitchVal.textContent = val > 0 ? `+${val}Hz` : `${val}Hz`;
   });
 
   function getFormattedRate(speedMultiplier) {
-    const speed = parseFloat(speedMultiplier);
-    if (speed === 1.0) return '+0%';
-    const pct = Math.round((speed - 1.0) * 100);
-    return pct >= 0 ? `+${pct}%` : `${pct}%`;
+    const mult = parseFloat(speedMultiplier);
+    const percent = Math.round((mult - 1.0) * 100);
+    return percent >= 0 ? `+${percent}%` : `${percent}%`;
   }
 
-  function getFormattedPitch(pitchValue) {
-    const val = parseInt(pitchValue);
-    if (val === 0) return '+0Hz';
-    return val > 0 ? `+${val}Hz` : `${val}Hz`;
+  function getFormattedPitch(pitchHz) {
+    const hz = parseInt(pitchHz, 10);
+    return hz >= 0 ? `+${hz}Hz` : `${hz}Hz`;
   }
 
-  function setButtonLoadingState(isLoading, message = 'Generate Voice') {
-    generateBtn.disabled = isLoading;
-    if (isLoading) {
-      generateBtn.innerHTML = `<span class="spinner"></span> ${message}`;
-    } else {
-      generateBtn.innerHTML = `<span class="btn-icon">⚡</span> Generate Voice`;
+  function dataURItoBlob(dataURI) {
+    try {
+      const byteString = atob(dataURI.split(',')[1]);
+      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      return new Blob([ab], { type: mimeString });
+    } catch (e) {
+      console.error('DataURI conversion error:', e);
+      return null;
     }
   }
 
-  // File Upload Handling
+  // Document File Upload Handler (.txt, .docx, .pdf)
   async function handleFileUpload(file) {
     if (!file) return;
-
-    const allowedExts = ['.txt', '.docx', '.pdf'];
-    const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
-
-    if (!allowedExts.includes(ext)) {
-      alert(`Unsupported file type '${ext}'. Please upload a .txt, .docx, or .pdf document.`);
+    const ext = file.name.slice(file.name.lastIndexOf('.')).toLowerCase();
+    if (!['.txt', '.docx', '.pdf'].includes(ext)) {
+      alert('Unsupported file format. Please upload a .txt, .docx, or .pdf document.');
       return;
     }
 
@@ -207,11 +216,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // If serverless instant audio is returned
           if (data.audioDataUri) {
-            const bRes = await fetch(data.audioDataUri);
-            const blob = await bRes.blob();
-            playAudioBlob(blob);
-            setButtonLoadingState(false);
-            return;
+            const blob = dataURItoBlob(data.audioDataUri);
+            if (blob) {
+              playAudioBlob(blob);
+              setButtonLoadingState(false);
+              return;
+            }
           }
 
           showProgressBar();
@@ -292,12 +302,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     currentAudioUrl = URL.createObjectURL(blob);
     audioPlayer.src = currentAudioUrl;
-    audioPlayer.play();
+
+    const playPromise = audioPlayer.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        soundwave.classList.add('active');
+        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+      }).catch(err => {
+        console.warn('Autoplay gesture required:', err);
+        soundwave.classList.remove('active');
+        pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Play';
+      });
+    }
 
     pauseBtn.disabled = false;
     stopBtn.disabled = false;
     downloadBtn.disabled = false;
-    soundwave.classList.add('active');
   }
 
   // Audio Controls
@@ -318,29 +338,27 @@ document.addEventListener('DOMContentLoaded', () => {
     audioPlayer.currentTime = 0;
     soundwave.classList.remove('active');
     pauseBtn.disabled = true;
-    stopBtn.disabled = true;
+    pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
   });
 
+  // Single-Click High Bitrate MP3 Download
   downloadBtn.addEventListener('click', () => {
-    if (currentAudioBlob) {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(currentAudioBlob);
-      const d = new Date();
-      const pad = (n) => String(n).padStart(2, '0');
-      const filename = `texttospeechh-voice-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.mp3`;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    } else if (activeJobId) {
-      window.location.href = `/api/status?jobId=${activeJobId}&download=true`;
+    if (!currentAudioBlob) return;
+    const a = document.createElement('a');
+    a.href = currentAudioUrl;
+    a.download = `TextToSpeechH_AI_${activeJobId || 'voice'}.mp3`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+
+  function setButtonLoadingState(isLoading, text = 'Processing...') {
+    if (isLoading) {
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = `<span class="spinner"></span> ${text}`;
+    } else {
+      generateBtn.disabled = false;
+      generateBtn.innerHTML = `<span class="btn-icon">⚡</span> Generate Voice Audio`;
     }
-  });
-
-  audioPlayer.addEventListener('ended', () => {
-    soundwave.classList.remove('active');
-    pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
-  });
-
-  updateTextStats();
+  }
 });

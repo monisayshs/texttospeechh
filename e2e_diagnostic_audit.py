@@ -1,8 +1,7 @@
 import requests
 
 LOCAL_URL = "http://localhost:3000"
-PROD_URL = "https://texttospeechh.vercel.app"
-PROD_ALT_URL = "https://texttospeechhcom.vercel.app"
+PROD_URL = "https://texttospeechhcom.vercel.app"
 
 print("=========================================================")
 print("REAL END-TO-END DIAGNOSTIC AUDIT & PRODUCTION VERIFICATION")
@@ -84,4 +83,4 @@ def test_target(base_url, name):
     print("\n" + "="*50 + "\n")
 
 test_target(LOCAL_URL, "Localhost Dev Server")
-test_target(PROD_URL, "Vercel Production Deployment (texttospeechh.vercel.app)")
+test_target(PROD_URL, "Vercel Production Deployment (texttospeechhcom.vercel.app)")
