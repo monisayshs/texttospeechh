@@ -3,24 +3,28 @@ const securityService = require('../services/securityService');
 
 function getRawBody(req) {
   return new Promise((resolve, reject) => {
-    if (Buffer.isBuffer(req.body)) {
-      return resolve(req.body);
-    }
-    if (req.body && typeof req.body === 'string') {
-      return resolve(Buffer.from(req.body, 'binary'));
-    }
-    if (Buffer.isBuffer(req.rawBody)) {
-      return resolve(req.rawBody);
-    }
-    if (req.readableEnded) {
-      return resolve(Buffer.alloc(0));
-    }
-    const chunks = [];
-    req.on('data', chunk => chunks.push(chunk));
-    req.on('end', () => resolve(Buffer.concat(chunks)));
-    req.on('error', reject);
-    if (typeof req.resume === 'function') {
-      req.resume();
+    try {
+      if (Buffer.isBuffer(req.body)) {
+        return resolve(req.body);
+      }
+      if (req.body && typeof req.body === 'string') {
+        return resolve(Buffer.from(req.body, 'binary'));
+      }
+      if (Buffer.isBuffer(req.rawBody)) {
+        return resolve(req.rawBody);
+      }
+      if (req.readableEnded) {
+        return resolve(Buffer.alloc(0));
+      }
+      const chunks = [];
+      req.on('data', chunk => chunks.push(chunk));
+      req.on('end', () => resolve(Buffer.concat(chunks)));
+      req.on('error', reject);
+      if (typeof req.resume === 'function') {
+        req.resume();
+      }
+    } catch (err) {
+      reject(err);
     }
   });
 }
@@ -45,7 +49,7 @@ module.exports = async (req, res) => {
     const fileBuffer = await getRawBody(req);
 
     if (!fileBuffer || fileBuffer.length === 0) {
-      res.status(400).json({ error: 'Uploaded file is empty or could not be read.' });
+      res.status(400).json({ error: 'Uploaded file is empty or could not be read from stream.' });
       return;
     }
 
@@ -63,7 +67,10 @@ module.exports = async (req, res) => {
     });
 
   } catch (err) {
-    console.error('[uploadHandler] Parsing error:', err);
-    res.status(400).json({ error: err.message || 'Failed to extract text from uploaded document.' });
+    console.error('[uploadHandler] Handled error:', err);
+    res.status(500).json({
+      error: err.message || 'Failed to process document upload.',
+      details: String(err)
+    });
   }
 };
