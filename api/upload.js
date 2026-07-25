@@ -1,5 +1,29 @@
 const securityService = require('../src/services/securityService');
 
+function parseBody(req) {
+  return new Promise((resolve) => {
+    if (req.body && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
+      return resolve(req.body);
+    }
+    if (typeof req.body === 'string') {
+      try {
+        return resolve(JSON.parse(req.body));
+      } catch (e) {
+        return resolve({});
+      }
+    }
+    let body = '';
+    req.on('data', chunk => body += chunk.toString());
+    req.on('end', () => {
+      try {
+        resolve(body ? JSON.parse(body) : {});
+      } catch (e) {
+        resolve({});
+      }
+    });
+  });
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -16,6 +40,7 @@ module.exports = async (req, res) => {
   }
 
   try {
+    req.body = await parseBody(req);
     const { filename: bodyFilename, text: bodyText, fileData } = { ...(req.body || {}) };
     const filename = securityService.sanitizeFilename(bodyFilename || req.headers['x-file-name'] || 'document.txt');
 
