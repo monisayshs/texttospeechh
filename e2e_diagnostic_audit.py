@@ -29,23 +29,14 @@ def test_target(base_url, name):
     except Exception as e:
         print(f"   ERROR in POST /api/generate: {e}")
 
-    # 2. Test /api/status
-    print("\n2. Testing GET /api/status (Status Check) ...")
+    # 2. Test /api/upload
+    print("\n2. Testing POST /api/upload (JSON Document Extraction) ...")
     try:
-        if job_id:
-            res = requests.get(f"{base_url}/api/status?jobId={job_id}", timeout=15)
-            print(f"   Status: {res.status_code}")
-            print(f"   Body: {res.text}")
-        else:
-            print("   Skipping (No jobId from generate)")
-    except Exception as e:
-        print(f"   ERROR in GET /api/status: {e}")
-
-    # 3. Test /api/upload
-    print("\n3. Testing POST /api/upload ...")
-    try:
-        files = {'file': ('test.txt', b'This is a sample document for TTS voice generator.')}
-        res = requests.post(f"{base_url}/api/upload", files=files, timeout=15)
+        upload_payload = {
+            "filename": "sample_script.txt",
+            "text": "TextToSpeechH AI converts document scripts into natural neural voice audio."
+        }
+        res = requests.post(f"{base_url}/api/upload", json=upload_payload, headers={"Content-Type": "application/json"}, timeout=15)
         print(f"   Status: {res.status_code}")
         print(f"   Body: {res.text}")
     except Exception as e:

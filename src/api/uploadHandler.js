@@ -1,34 +1,6 @@
 const fileParser = require('../services/fileParser');
 const securityService = require('../services/securityService');
 
-function getRawBody(req) {
-  return new Promise((resolve, reject) => {
-    try {
-      if (Buffer.isBuffer(req.body)) {
-        return resolve(req.body);
-      }
-      if (req.body && typeof req.body === 'string') {
-        return resolve(Buffer.from(req.body, 'binary'));
-      }
-      if (Buffer.isBuffer(req.rawBody)) {
-        return resolve(req.rawBody);
-      }
-      if (req.readableEnded) {
-        return resolve(Buffer.alloc(0));
-      }
-      const chunks = [];
-      req.on('data', chunk => chunks.push(chunk));
-      req.on('end', () => resolve(Buffer.concat(chunks)));
-      req.on('error', reject);
-      if (typeof req.resume === 'function') {
-        req.resume();
-      }
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
-
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -45,17 +17,25 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const filename = securityService.sanitizeFilename(req.headers['x-file-name'] || 'document.txt');
-    const fileBuffer = await getRawBody(req);
+    const { filename: bodyFilename, text: bodyText, fileData } = { ...(req.body || {}) };
+    const filename = securityService.sanitizeFilename(bodyFilename || req.headers['x-file-name'] || 'document.txt');
 
-    if (!fileBuffer || fileBuffer.length === 0) {
-      res.status(400).json({ error: 'Uploaded file is empty or could not be read from stream.' });
+    let extractedText = '';
+
+    if (bodyText && typeof bodyText === 'string') {
+      extractedText = bodyText;
+    } else if (fileData && typeof fileData === 'string') {
+      const fileBuffer = Buffer.from(fileData, 'base64');
+      securityService.validateFileSize(fileBuffer.length);
+      extractedText = await fileParser.parseDocument(fileBuffer, filename);
+    } else if (Buffer.isBuffer(req.body)) {
+      securityService.validateFileSize(req.body.length);
+      extractedText = await fileParser.parseDocument(req.body, filename);
+    } else {
+      res.status(400).json({ error: 'No file text or valid fileData payload provided.' });
       return;
     }
 
-    securityService.validateFileSize(fileBuffer.length);
-
-    const extractedText = await fileParser.parseDocument(fileBuffer, filename);
     const sanitizedText = securityService.sanitizeText(extractedText);
 
     res.status(200).json({
@@ -67,10 +47,7 @@ module.exports = async (req, res) => {
     });
 
   } catch (err) {
-    console.error('[uploadHandler] Handled error:', err);
-    res.status(500).json({
-      error: err.message || 'Failed to process document upload.',
-      details: String(err)
-    });
+    console.error('[uploadHandler] Processing error:', err);
+    res.status(400).json({ error: err.message || 'Failed to extract text from uploaded document.' });
   }
 };

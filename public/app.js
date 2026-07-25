@@ -104,16 +104,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setButtonLoadingState(true, 'Extracting Document Text...');
-    const formData = new FormData();
-    formData.append('file', file);
 
     try {
+      let payload = { filename: file.name };
+      if (ext === '.txt') {
+        payload.text = await file.text();
+      } else {
+        const arrayBuffer = await file.arrayBuffer();
+        const bytes = new Uint8Array(arrayBuffer);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        payload.fileData = btoa(binary);
+      }
+
       const response = await fetch('/api/upload', {
         method: 'POST',
-        headers: {
-          'X-File-Name': file.name
-        },
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
       const data = await response.json();
