@@ -37,6 +37,8 @@ module.exports = async (req, res) => {
 
     // Synthesize audio job cleanly (Serverless & Localhost compatible)
     const jobInfo = await queueService.createJobAsync(sanitizedText, options, priority || 'NORMAL');
+    const audioBuffer = queueService.getJobAudio(jobInfo.jobId);
+    const audioBase64 = audioBuffer ? audioBuffer.toString('base64') : null;
     
     res.status(200).json({
       message: 'Voice synthesis job completed successfully.',
@@ -45,6 +47,8 @@ module.exports = async (req, res) => {
       totalChunks: jobInfo.totalChunks,
       wordCount: jobInfo.wordCount,
       etaSeconds: jobInfo.etaSeconds,
+      audioBase64: audioBase64,
+      audioDataUri: audioBase64 ? `data:audio/mpeg;base64,${audioBase64}` : null,
       statusUrl: `/api/status?jobId=${jobInfo.jobId}`,
       downloadUrl: `/api/status?jobId=${jobInfo.jobId}&download=true`
     });

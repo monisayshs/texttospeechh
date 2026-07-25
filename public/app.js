@@ -1,101 +1,128 @@
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
-  const textInput = document.getElementById('text-input');
-  const charCounter = document.getElementById('char-counter');
-  const clearBtn = document.getElementById('clear-btn');
+  const textInput = document.getElementById('textInput');
+  const voiceSelect = document.getElementById('voiceSelect');
+  const speedRange = document.getElementById('speedRange');
+  const speedVal = document.getElementById('speedVal');
+  const pitchRange = document.getElementById('pitchRange');
+  const pitchVal = document.getElementById('pitchVal');
+  const emotionSelect = document.getElementById('emotionSelect');
 
-  const fileDropzone = document.getElementById('file-dropzone');
-  const fileInput = document.getElementById('file-input');
+  const charCountDisplay = document.getElementById('charCount');
+  const wordCountDisplay = document.getElementById('wordCount');
+  const estTimeDisplay = document.getElementById('estTime');
 
-  const voiceSelect = document.getElementById('voice-select');
-  const emotionSelect = document.getElementById('emotion-select');
-  const speedRange = document.getElementById('speed-range');
-  const speedVal = document.getElementById('speed-val');
-  const pitchRange = document.getElementById('pitch-range');
-  const pitchVal = document.getElementById('pitch-val');
+  const fileInput = document.getElementById('fileInput');
+  const fileDropzone = document.getElementById('fileDropzone');
 
-  const generateBtn = document.getElementById('generate-btn');
-  const pauseBtn = document.getElementById('pause-btn');
-  const stopBtn = document.getElementById('stop-btn');
-  const downloadBtn = document.getElementById('download-btn');
-
-  const progressSection = document.getElementById('progress-section');
-  const progressStatusText = document.getElementById('progress-status-text');
-  const progressEta = document.getElementById('progress-eta');
-  const progressPercentage = document.getElementById('progress-percentage');
-  const progressBarFill = document.getElementById('progress-bar-fill');
-
+  const generateBtn = document.getElementById('generateBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const audioPlayer = document.getElementById('audioPlayer');
   const soundwave = document.getElementById('soundwave');
-  const audioPlayer = document.getElementById('audio-player');
 
-  const shortcutTrigger = document.getElementById('shortcut-trigger');
-  const shortcutModal = document.getElementById('shortcut-modal');
-  const closeModalBtn = document.getElementById('close-modal-btn');
+  const progressSection = document.getElementById('progressSection');
+  const progressStatusText = document.getElementById('progressStatusText');
+  const progressEta = document.getElementById('progressEta');
+  const progressPercentage = document.getElementById('progressPercentage');
+  const progressBarFill = document.getElementById('progressBarFill');
 
+  let activeJobId = null;
   let activeJobPollTimer = null;
   let currentAudioUrl = null;
-  let activeJobId = null;
+  let currentAudioBlob = null;
 
-  // Counter Listener
-  function updateCounters() {
-    const text = textInput.value;
+  // Real-time Text Character / Word Counter & Reading Time Calculator
+  function updateTextStats() {
+    const text = textInput.value || '';
     const charCount = text.length;
-    const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
-    charCounter.textContent = `${wordCount.toLocaleString()} words | ${charCount.toLocaleString()} chars`;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    const estSeconds = Math.ceil(words / 3);
+
+    charCountDisplay.textContent = `${charCount.toLocaleString()} / 10,000`;
+    wordCountDisplay.textContent = words.toLocaleString();
+
+    if (estSeconds < 60) {
+      estTimeDisplay.textContent = `${estSeconds}s`;
+    } else {
+      const mins = Math.floor(estSeconds / 60);
+      const secs = estSeconds % 60;
+      estTimeDisplay.textContent = `${mins}m ${secs}s`;
+    }
   }
 
-  textInput.addEventListener('input', updateCounters);
-  clearBtn.addEventListener('click', () => {
-    textInput.value = '';
-    updateCounters();
+  textInput.addEventListener('input', updateTextStats);
+
+  // Speed & Pitch Slider Listeners
+  speedRange.addEventListener('input', (e) => {
+    speedVal.textContent = `${parseFloat(e.target.value).toFixed(1)}x`;
   });
 
-  // Slider Updates
-  speedRange.addEventListener('input', () => speedVal.textContent = `${speedRange.value}x`);
-  pitchRange.addEventListener('input', () => pitchVal.textContent = `${pitchRange.value}x`);
+  pitchRange.addEventListener('input', (e) => {
+    const val = parseInt(e.target.value);
+    pitchVal.textContent = val > 0 ? `+${val}Hz` : `${val}Hz`;
+  });
 
-  function getFormattedRate(val) {
-    const num = parseFloat(val);
-    if (num === 1.0) return '+0%';
-    const pct = Math.round((num - 1.0) * 100);
+  function getFormattedRate(speedMultiplier) {
+    const speed = parseFloat(speedMultiplier);
+    if (speed === 1.0) return '+0%';
+    const pct = Math.round((speed - 1.0) * 100);
     return pct >= 0 ? `+${pct}%` : `${pct}%`;
   }
 
-  function getFormattedPitch(val) {
-    const num = parseFloat(val);
-    if (num === 1.0) return '+0Hz';
-    const hz = Math.round((num - 1.0) * 50);
-    return hz >= 0 ? `+${hz}Hz` : `${hz}Hz`;
+  function getFormattedPitch(pitchValue) {
+    const val = parseInt(pitchValue);
+    if (val === 0) return '+0Hz';
+    return val > 0 ? `+${val}Hz` : `${val}Hz`;
   }
 
-  // Document File Upload (PDF, DOCX, TXT)
+  function setButtonLoadingState(isLoading, message = 'Generate Voice') {
+    generateBtn.disabled = isLoading;
+    if (isLoading) {
+      generateBtn.innerHTML = `<span class="spinner"></span> ${message}`;
+    } else {
+      generateBtn.innerHTML = `<span class="btn-icon">⚡</span> Generate Voice`;
+    }
+  }
+
+  // File Upload Handling
   async function handleFileUpload(file) {
     if (!file) return;
-    const allowed = ['.txt', '.docx', '.pdf'];
-    const ext = '.' + file.name.split('.').pop().toLowerCase();
-    if (!allowed.includes(ext)) {
-      alert('Unsupported file type. Please upload a .txt, .docx, or .pdf document.');
+
+    const allowedExts = ['.txt', '.docx', '.pdf'];
+    const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+
+    if (!allowedExts.includes(ext)) {
+      alert(`Unsupported file type '${ext}'. Please upload a .txt, .docx, or .pdf document.`);
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert('File size exceeds maximum limit of 10MB.');
       return;
     }
 
     setButtonLoadingState(true, 'Extracting Document Text...');
+    const formData = new FormData();
+    formData.append('file', file);
+
     try {
-      const res = await fetch('/api/upload', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/octet-stream',
           'X-File-Name': file.name
         },
-        body: file
+        body: formData
       });
 
-      const data = await res.json();
-      if (res.ok && data.text) {
+      const data = await response.json();
+      if (response.ok && data.success) {
         textInput.value = data.text;
-        updateCounters();
-        alert(`Document '${file.name}' imported successfully into TextToSpeechH AI! (${data.wordCount.toLocaleString()} words extracted).`);
+        updateTextStats();
+        alert(`Document '${file.name}' imported successfully! (${data.wordCount} words extracted)`);
       } else {
-        throw new Error(data.error || 'Failed to extract text from document.');
+        throw new Error(data.error || 'Document extraction failed.');
       }
     } catch (err) {
       alert(`File Import Error: ${err.message}`);
@@ -110,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Drag & Drop Handlers
   fileDropzone.addEventListener('dragover', (e) => {
     e.preventDefault();
     fileDropzone.classList.add('drag-over');
@@ -169,10 +195,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         if (response.ok && data.jobId) {
           activeJobId = data.jobId;
+
+          // If serverless instant audio is returned
+          if (data.audioDataUri) {
+            const bRes = await fetch(data.audioDataUri);
+            const blob = await bRes.blob();
+            playAudioBlob(blob);
+            setButtonLoadingState(false);
+            return;
+          }
+
           showProgressBar();
           pollJobProgress(data.jobId);
         } else {
-          throw new Error(data.error || 'Failed to enqueue voice synthesis job.');
+          throw new Error(data.error || 'Failed to generate voice synthesis.');
         }
       } else if (contentType.includes('audio/')) {
         const audioBlob = await response.blob();
@@ -241,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function playAudioBlob(blob) {
+    currentAudioBlob = blob;
     if (currentAudioUrl) {
       URL.revokeObjectURL(currentAudioUrl);
     }
@@ -251,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseBtn.disabled = false;
     stopBtn.disabled = false;
     downloadBtn.disabled = false;
+    soundwave.classList.add('active');
   }
 
   // Audio Controls
@@ -258,9 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (audioPlayer.paused) {
       audioPlayer.play();
       pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+      soundwave.classList.add('active');
     } else {
       audioPlayer.pause();
       pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
+      soundwave.classList.remove('active');
     }
   });
 
@@ -273,64 +313,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   downloadBtn.addEventListener('click', () => {
-    if (activeJobId) {
-      window.location.href = `/api/status?jobId=${activeJobId}&download=true`;
-    } else if (currentAudioUrl) {
+    if (currentAudioBlob) {
       const a = document.createElement('a');
-      a.href = currentAudioUrl;
+      a.href = URL.createObjectURL(currentAudioBlob);
       const d = new Date();
-      const pad = n => String(n).padStart(2, '0');
+      const pad = (n) => String(n).padStart(2, '0');
       const filename = `texttospeechh-voice-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}.mp3`;
       a.download = filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    } else if (activeJobId) {
+      window.location.href = `/api/status?jobId=${activeJobId}&download=true`;
     }
   });
 
-  // Visualizer Events
-  audioPlayer.addEventListener('play', () => soundwave.classList.add('active'));
-  audioPlayer.addEventListener('pause', () => soundwave.classList.remove('active'));
   audioPlayer.addEventListener('ended', () => {
     soundwave.classList.remove('active');
-    pauseBtn.disabled = true;
-    stopBtn.disabled = true;
+    pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
   });
 
-  function setButtonLoadingState(isLoading, text = 'Synthesizing AI Voice...') {
-    if (isLoading) {
-      generateBtn.disabled = true;
-      generateBtn.querySelector('.btn-text').textContent = text;
-    } else {
-      generateBtn.disabled = false;
-      generateBtn.querySelector('.btn-text').textContent = 'Generate AI Voice';
-    }
-  }
-
-  // Keyboard Shortcuts (Ctrl+Enter, Space, Esc)
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key === 'Enter') {
-      e.preventDefault();
-      startSynthesis();
-    } else if (e.key === 'Escape') {
-      shortcutModal.classList.add('hidden');
-      audioPlayer.pause();
-    } else if (e.code === 'Space' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
-      e.preventDefault();
-      if (!audioPlayer.paused) {
-        audioPlayer.pause();
-      } else if (audioPlayer.src) {
-        audioPlayer.play();
-      }
-    }
-  });
-
-  // Modal Listeners
-  shortcutTrigger.addEventListener('click', () => shortcutModal.classList.remove('hidden'));
-  closeModalBtn.addEventListener('click', () => shortcutModal.classList.add('hidden'));
-  shortcutModal.addEventListener('click', (e) => {
-    if (e.target === shortcutModal) shortcutModal.classList.add('hidden');
-  });
-
-  updateCounters();
+  updateTextStats();
 });
