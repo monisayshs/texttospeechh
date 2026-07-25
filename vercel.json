@@ -2,9 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/generate", "destination": "/api/generate.js" },
-    { "source": "/api/status", "destination": "/api/status.js" },
-    { "source": "/api/upload", "destination": "/api/upload.js" },
     { "source": "/faq", "destination": "/api/index.js" },
     { "source": "/keyword/(.*)", "destination": "/api/index.js" },
     { "source": "/language/(.*)", "destination": "/api/index.js" },

@@ -1,7 +1,7 @@
 import requests
 
 LOCAL_URL = "http://localhost:3000"
-PROD_URL = "https://texttospeechhcom.vercel.app"
+PROD_URL = "https://texttospeechh-com.vercel.app"
 
 print("=========================================================")
 print("REAL END-TO-END DIAGNOSTIC AUDIT (LOCALHOST vs VERCEL)")
@@ -14,7 +14,7 @@ def test_target(base_url, name):
     print("1. Testing POST /api/generate ...")
     job_id = None
     try:
-        payload = {"text": "Hello world, this is an end to end test of AI voice synthesis.", "voice": "en-US-AriaNeural"}
+        payload = {"text": "Hello world, this is an end to end test of AI voice synthesis on production.", "voice": "en-US-AriaNeural"}
         res = requests.post(f"{base_url}/api/generate", json=payload, headers={"Content-Type": "application/json"}, timeout=15)
         print(f"   Status: {res.status_code}")
         print(f"   Headers: {res.headers.get('Content-Type')}")
@@ -63,4 +63,4 @@ def test_target(base_url, name):
     print("\n" + "="*50 + "\n")
 
 test_target(LOCAL_URL, "Localhost Dev Server")
-test_target(PROD_URL, "Vercel Production Deployment")
+test_target(PROD_URL, "Vercel Production Deployment (texttospeechh-com.vercel.app)")
