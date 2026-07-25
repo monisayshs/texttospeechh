@@ -1,10 +1,8 @@
-const mammoth = require('mammoth');
-const pdfParse = require('pdf-parse');
 const path = require('path');
 
 /**
  * File Parser Service for extracting raw text from TXT, DOCX, and PDF documents.
- * Handles both raw binary buffers and multipart/form-data payloads cleanly.
+ * Lazy loads heavy dependencies (mammoth, pdf-parse) to avoid Vercel Serverless init crashes.
  */
 class FileParser {
   /**
@@ -59,29 +57,41 @@ class FileParser {
     const targetFilename = filename || extractedName || 'document.txt';
     const ext = path.extname(targetFilename).toLowerCase();
 
-    if (ext === '.txt' || ext === '.md' || ext === '.json' || ext === '') {
-      return buffer.toString('utf8').trim();
-    }
-
     if (ext === '.docx') {
-      try {
-        const result = await mammoth.extractRawText({ buffer: buffer });
-        return (result.value || '').trim();
-      } catch (err) {
-        throw new Error(`Failed to parse DOCX document: ${err.message}`);
-      }
+      return this.parseDocx(buffer);
+    } else if (ext === '.pdf') {
+      return this.parsePdf(buffer);
+    } else {
+      // Default plain text / markdown
+      return buffer.toString('utf-8');
     }
+  }
 
-    if (ext === '.pdf') {
-      try {
-        const data = await pdfParse(buffer);
-        return (data.text || '').trim();
-      } catch (err) {
-        throw new Error(`Failed to parse PDF document: ${err.message}`);
-      }
+  async parseDocx(buffer) {
+    try {
+      const mammoth = require('mammoth');
+      const result = await mammoth.extractRawText({ buffer });
+      return result.value ? result.value.trim() : '';
+    } catch (err) {
+      console.error('[FileParser] DOCX Parsing error:', err);
+      throw new Error(`Failed to parse DOCX document: ${err.message}`);
     }
+  }
 
-    throw new Error(`Unsupported file type '${ext}'. Please upload .txt, .docx, or .pdf files.`);
+  async parsePdf(buffer) {
+    try {
+      let pdfParse;
+      try {
+        pdfParse = require('pdf-parse/lib/pdf-parse.js');
+      } catch (e) {
+        pdfParse = require('pdf-parse');
+      }
+      const data = await pdfParse(buffer);
+      return data.text ? data.text.trim() : '';
+    } catch (err) {
+      console.error('[FileParser] PDF Parsing error:', err);
+      throw new Error(`Failed to parse PDF document: ${err.message}`);
+    }
   }
 }
 
