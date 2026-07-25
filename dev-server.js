@@ -6,6 +6,9 @@ const zlib = require('zlib');
 const generateHandler = require('./src/api/generateHandler');
 const statusHandler = require('./src/api/statusHandler');
 const uploadHandler = require('./src/api/uploadHandler');
+const voicesHandler = require('./src/api/voicesHandler');
+const languagesHandler = require('./src/api/languagesHandler');
+const jobsHandler = require('./src/api/jobsHandler');
 const seoHandler = require('./src/api/seoHandler');
 const contentHandler = require('./src/api/contentHandler');
 const sitemapHandler = require('./src/api/sitemapHandler');
@@ -13,13 +16,11 @@ const sitemapHandler = require('./src/api/sitemapHandler');
 const PORT = 3000;
 
 function setSecurityAndCacheHeaders(res, filePath, contentType) {
-  // Security Headers
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-  // Cache-Control Strategy
   if (filePath) {
     const ext = path.extname(filePath).toLowerCase();
     if (['.css', '.js', '.png', '.jpg', '.svg', '.ico', '.woff2'].includes(ext)) {
@@ -56,13 +57,11 @@ function compressAndSend(req, res, content, contentType, statusCode = 200) {
 const server = http.createServer(async (req, res) => {
   const reqUrl = req.url;
 
-  // Handle Dynamic Sitemaps (/sitemap.xml, /sitemap-main.xml, etc.)
   if (reqUrl.startsWith('/sitemap')) {
     const handled = await sitemapHandler(req, res);
     if (handled) return;
   }
 
-  // Handle API Routes
   const handleApi = (handler) => {
     const parsedUrl = new URL(reqUrl, `http://${req.headers.host || 'localhost'}`);
     req.query = Object.fromEntries(parsedUrl.searchParams);
@@ -105,7 +104,16 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST') {
       const contentType = req.headers['content-type'] || '';
       if (contentType.includes('application/octet-stream') || reqUrl.startsWith('/api/upload')) {
-        runHandler();
+        let body = '';
+        req.on('data', chunk => body += chunk.toString());
+        req.on('end', () => {
+          try {
+            req.body = body ? JSON.parse(body) : {};
+          } catch (e) {
+            req.body = {};
+          }
+          runHandler();
+        });
       } else {
         let body = '';
         req.on('data', chunk => body += chunk.toString());
@@ -139,15 +147,27 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Handle Content Hub & FAQ Directory Routes
+  if (reqUrl.startsWith('/api/voices')) {
+    handleApi(voicesHandler);
+    return;
+  }
+
+  if (reqUrl.startsWith('/api/languages')) {
+    handleApi(languagesHandler);
+    return;
+  }
+
+  if (reqUrl.startsWith('/api/jobs')) {
+    handleApi(jobsHandler);
+    return;
+  }
+
   const isContentHandled = await contentHandler(req, res);
   if (isContentHandled) return;
 
-  // Handle SSR SEO Routes (Programmatic SEO & Legal Pages)
   const isSeoHandled = await seoHandler(req, res);
   if (isSeoHandled) return;
 
-  // Serve static assets from public/
   let requestedPath = reqUrl.split('?')[0];
   let filePath = path.join(__dirname, 'public', requestedPath === '/' ? 'index.html' : requestedPath);
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -158,12 +178,10 @@ const server = http.createServer(async (req, res) => {
     '.css': 'text/css; charset=utf-8',
     '.json': 'application/json',
     '.png': 'image/png',
-    '.jpg': 'image/jpg',
-    '.gif': 'image/gif',
+    '.jpg': 'image/jpeg',
     '.svg': 'image/svg+xml',
-    '.txt': 'text/plain; charset=utf-8',
-    '.xml': 'application/xml; charset=utf-8',
-    '.ico': 'image/x-icon'
+    '.ico': 'image/x-icon',
+    '.mp3': 'audio/mpeg'
   };
 
   const contentType = mimeTypes[extname] || 'application/octet-stream';
@@ -171,19 +189,16 @@ const server = http.createServer(async (req, res) => {
   fs.readFile(filePath, (error, content) => {
     if (error) {
       if (error.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>404 Not Found - TextToSpeechH AI</h1>', 'utf-8');
+        compressAndSend(req, res, '<h1>404 Not Found - TextToSpeechH AI</h1>', 'text/html; charset=utf-8', 404);
       } else {
-        res.writeHead(500);
-        res.end('Server Error: ' + error.code);
+        compressAndSend(req, res, `Server Error: ${error.code}`, 'text/plain', 500);
       }
     } else {
-      setSecurityAndCacheHeaders(res, filePath, contentType);
       compressAndSend(req, res, content, contentType, 200);
     }
   });
 });
 
 server.listen(PORT, () => {
-  console.log(`TextToSpeechH AI Server running at http://localhost:${PORT}`);
+  console.log(`[TextToSpeechH AI] Dev Server listening on http://localhost:${PORT}`);
 });

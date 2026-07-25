@@ -115,12 +115,18 @@ module.exports = async (req, res) => {
     return true;
   }
 
-  // Check legal pages
+  // Check legal & trust pages with alias resolution
   let legalKey = reqUrl;
-  if (reqUrl === 'privacy-policy') legalKey = 'privacy';
-  if (reqUrl === 'cookie-policy') legalKey = 'cookie';
-  if (reqUrl === 'refund-policy') legalKey = 'refund';
-  if (reqUrl === 'community-guidelines') legalKey = 'community';
+  if (reqUrl === 'privacy-policy' || reqUrl === 'privacy') legalKey = 'privacy';
+  if (reqUrl === 'terms-of-service' || reqUrl === 'terms') legalKey = 'terms';
+  if (reqUrl === 'contact-support' || reqUrl === 'contact' || reqUrl === 'support') legalKey = 'contact';
+  if (reqUrl === 'about-us' || reqUrl === 'about') legalKey = 'about';
+  if (reqUrl === 'cookie-policy' || reqUrl === 'cookie') legalKey = 'cookie';
+  if (reqUrl === 'refund-policy' || reqUrl === 'refund') legalKey = 'refund';
+  if (reqUrl === 'community-guidelines' || reqUrl === 'community') legalKey = 'community';
+  if (reqUrl === 'disclaimer') legalKey = 'disclaimer';
+  if (reqUrl === 'dmca') legalKey = 'dmca';
+  if (reqUrl === 'accessibility') legalKey = 'accessibility';
 
   if (LEGAL_PAGES[legalKey]) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');

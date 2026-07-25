@@ -24,8 +24,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/webxpert-ai/texttospeechh.com.git
-cd texttospeechh.com
+git clone https://github.com/monisayshs/texttospeechh.git
+cd texttospeechh
 
 # Install dependencies
 npm install
@@ -43,13 +43,13 @@ npm run dev
    git init
    git add .
    git commit -m "Initial commit: TextToSpeechH AI Production Build"
-   git remote add origin https://github.com/webxpert-ai/texttospeechh.com.git
+   git remote add origin https://github.com/monisayshs/texttospeechh.git
    git push -u origin main
    ```
 
 2. **Import into Vercel**:
    - Go to [Vercel Dashboard](https://vercel.com/new) -> **Import Git Repository**.
-   - Select **texttospeechh.com**.
+   - Select **texttospeechh**.
    - **Framework Preset**: `Other`
    - **Root Directory**: `./`
    - **Build Command**: `npm run build`
@@ -58,4 +58,3 @@ npm run dev
 
 3. **Custom Domain Setup**:
    - In Vercel Project Settings -> **Domains** -> Add `texttospeechh.com`.
-   - Point DNS A Record to `76.76.21.21` or CNAME to `cname.vercel-dns.com`.
