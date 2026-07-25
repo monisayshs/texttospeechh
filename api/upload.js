@@ -1,4 +1,3 @@
-const fileParser = require('../src/services/fileParser');
 const securityService = require('../src/services/securityService');
 
 module.exports = async (req, res) => {
@@ -27,10 +26,30 @@ module.exports = async (req, res) => {
     } else if (fileData && typeof fileData === 'string') {
       const fileBuffer = Buffer.from(fileData, 'base64');
       securityService.validateFileSize(fileBuffer.length);
-      extractedText = await fileParser.parseDocument(fileBuffer, filename);
+      
+      const ext = filename.toLowerCase().slice(filename.lastIndexOf('.'));
+      if (ext === '.docx') {
+        try {
+          const mammoth = require('mammoth');
+          const resDoc = await mammoth.extractRawText({ buffer: fileBuffer });
+          extractedText = resDoc.value || '';
+        } catch (e) {
+          extractedText = fileBuffer.toString('utf-8');
+        }
+      } else if (ext === '.pdf') {
+        try {
+          const pdfParse = require('pdf-parse/lib/pdf-parse.js');
+          const resPdf = await pdfParse(fileBuffer);
+          extractedText = resPdf.text || '';
+        } catch (e) {
+          extractedText = fileBuffer.toString('utf-8');
+        }
+      } else {
+        extractedText = fileBuffer.toString('utf-8');
+      }
     } else if (Buffer.isBuffer(req.body)) {
       securityService.validateFileSize(req.body.length);
-      extractedText = await fileParser.parseDocument(req.body, filename);
+      extractedText = req.body.toString('utf-8');
     } else {
       res.status(400).json({ error: 'No file text or valid fileData payload provided.' });
       return;
@@ -42,7 +61,7 @@ module.exports = async (req, res) => {
       success: true,
       filename: filename,
       text: sanitizedText,
-      wordCount: sanitizedText.trim().split(/\s+/).length,
+      wordCount: sanitizedText.trim() ? sanitizedText.trim().split(/\s+/).length : 0,
       charCount: sanitizedText.length
     });
 
