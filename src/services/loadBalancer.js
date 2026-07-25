@@ -3,7 +3,7 @@ const CosyVoiceProvider = require('../providers/cosyvoice/cosyvoiceProvider');
 const EdgeProvider = require('../providers/edge/edgeProvider');
 
 /**
- * Smart Multi-Provider Load Balancer with Automatic Failover
+ * High-Speed Multi-Provider Load Balancer for Vercel Serverless Functions
  */
 class LoadBalancer {
   constructor() {
@@ -12,16 +12,13 @@ class LoadBalancer {
       new CosyVoiceProvider(),
       new EdgeProvider()
     ];
-    this.backoffDelays = [2000, 5000, 10000];
+    this.backoffDelays = [200, 500]; // Ultra-fast backoff (< 1s total)
   }
 
   async sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  /**
-   * Execute synthesis with retry backoff and automatic provider failover
-   */
   async synthesizeWithFailover(text, options = {}, onLog = null) {
     let lastError = null;
 
@@ -45,7 +42,7 @@ class LoadBalancer {
     for (const provider of activeProviders) {
       log(`Attempting synthesis with provider: ${provider.name}`);
 
-      for (let attempt = 1; attempt <= 3; attempt++) {
+      for (let attempt = 1; attempt <= 2; attempt++) {
         try {
           const audioBuffer = await provider.synthesizeChunk(text, options);
           if (audioBuffer && audioBuffer.length > 0) {
@@ -54,11 +51,10 @@ class LoadBalancer {
           }
         } catch (err) {
           lastError = err;
-          log(`Warning: Provider ${provider.name} attempt ${attempt}/3 failed: ${err.message}`);
+          log(`Warning: Provider ${provider.name} attempt ${attempt}/2 failed: ${err.message}`);
 
-          if (attempt < 3) {
-            const delayMs = this.backoffDelays[attempt - 1] || 5000;
-            log(`Waiting ${delayMs / 1000}s exponential backoff...`);
+          if (attempt < 2) {
+            const delayMs = this.backoffDelays[attempt - 1] || 300;
             await this.sleep(delayMs);
           }
         }

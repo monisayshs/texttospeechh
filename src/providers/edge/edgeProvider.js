@@ -1,4 +1,5 @@
 const BaseProvider = require('../baseProvider');
+const { MsEdgeTTS, OUTPUT_FORMAT } = require('msedge-tts');
 const WebSocket = require('ws');
 const crypto = require('crypto');
 const xmlEscape = require('xml-escape');
@@ -12,7 +13,8 @@ function getSecMsGecToken() {
 }
 
 /**
- * Microsoft Edge Neural TTS Fallback Provider
+ * High-Speed Microsoft Edge Neural TTS Provider
+ * Optimized for Vercel Serverless Functions (< 5s execution limit)
  */
 class EdgeProvider extends BaseProvider {
   constructor() {
@@ -20,16 +22,49 @@ class EdgeProvider extends BaseProvider {
   }
 
   async isAvailable() {
-    return true; // Cloud Web API fallback
+    return true;
   }
 
   async synthesizeChunk(text, options = {}) {
-    return new Promise((resolve, reject) => {
-      const voiceName = options.voice || 'en-US-AriaNeural';
-      const rateStr = options.rate || '+0%';
-      const pitchStr = options.pitch || '+0Hz';
-      const escapedText = xmlEscape(text.trim());
+    const voiceName = options.voice || 'hi-IN-SwaraNeural';
+    const rateStr = options.rate || '+0%';
+    const pitchStr = options.pitch || '+0%';
 
+    // Attempt 1: Fast msedge-tts package
+    try {
+      const tts = new MsEdgeTTS();
+      await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+      
+      const readable = tts.toStream(text, {
+        rate: rateStr,
+        pitch: pitchStr
+      });
+
+      const audioChunks = [];
+      const streamPromise = new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('msedge-tts stream timeout')), 5000);
+
+        readable.on('data', (data) => audioChunks.push(data));
+        readable.on('end', () => {
+          clearTimeout(timeout);
+          if (audioChunks.length === 0) reject(new Error('Empty stream'));
+          else resolve(Buffer.concat(audioChunks));
+        });
+        readable.on('error', (err) => {
+          clearTimeout(timeout);
+          reject(err);
+        });
+      });
+
+      const result = await streamPromise;
+      if (result && result.length > 0) return result;
+    } catch (e) {
+      console.warn('[EdgeProvider] msedge-tts package warning, trying WebSocket fallback:', e.message);
+    }
+
+    // Attempt 2: Direct WebSocket Bing API (6s Timeout)
+    return new Promise((resolve, reject) => {
+      const escapedText = xmlEscape(text.trim());
       const langCode = voiceName.substring(0, 5);
       const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="${langCode}">
   <voice name="${voiceName}">
@@ -63,8 +98,8 @@ class EdgeProvider extends BaseProvider {
 
       timeoutTimer = setTimeout(() => {
         cleanup();
-        reject(new Error('MS Edge Neural TTS timeout (20s limit reached)'));
-      }, 20000);
+        reject(new Error('MS Edge Neural TTS timeout (6s serverless limit)'));
+      }, 6000);
 
       try {
         ws = new WebSocket(wssUrl, { headers });
@@ -125,7 +160,7 @@ class EdgeProvider extends BaseProvider {
 
       ws.on('error', (err) => {
         cleanup();
-        reject(new Error(`MS Edge Neural TTS WebSocket error: ${err.message}`));
+        reject(err);
       });
     });
   }

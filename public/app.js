@@ -36,12 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let activeJobId = null;
   let activeJobPollTimer = null;
+  let pollCounter = 0;
   let currentAudioBlob = null;
   let currentAudioUrl = null;
 
   // Real-Time Character & Word Counter
   function updateTextStats() {
-    const text = textInput.value || '';
+    const text = textInput ? textInput.value || '' : '';
     const charCount = text.length;
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
     const estSeconds = Math.ceil(words / 2.5);
@@ -64,19 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  textInput.addEventListener('input', updateTextStats);
-  updateTextStats();
+  if (textInput) {
+    textInput.addEventListener('input', updateTextStats);
+    updateTextStats();
+  }
 
   // Range Slider Feedback Updates
-  speedRange.addEventListener('input', (e) => {
-    speedVal.textContent = `${parseFloat(e.target.value).toFixed(1)}x`;
-  });
+  if (speedRange) {
+    speedRange.addEventListener('input', (e) => {
+      if (speedVal) speedVal.textContent = `${parseFloat(e.target.value).toFixed(1)}x`;
+    });
+  }
 
-  pitchRange.addEventListener('input', (e) => {
-    const val = parseFloat(e.target.value);
-    const percent = Math.round((val - 1.0) * 100);
-    pitchVal.textContent = percent >= 0 ? `+${percent}%` : `${percent}%`;
-  });
+  if (pitchRange) {
+    pitchRange.addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
+      const percent = Math.round((val - 1.0) * 100);
+      if (pitchVal) pitchVal.textContent = percent >= 0 ? `+${percent}%` : `${percent}%`;
+    });
+  }
 
   function getFormattedRate(speedMultiplier) {
     const mult = parseFloat(speedMultiplier);
@@ -187,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Generate Button Click Handler
   async function startSynthesis() {
-    const text = textInput.value.trim();
+    const text = textInput ? textInput.value.trim() : '';
     if (!text) {
       alert('Please enter some script text or upload a document first.');
       return;
@@ -231,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.audioDataUri) {
             const blob = dataURItoBlob(data.audioDataUri);
             if (blob) {
+              hideProgressBar();
               playAudioBlob(blob);
               setButtonLoadingState(false);
               return;
@@ -244,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (contentType.includes('audio/')) {
         const audioBlob = await response.blob();
+        hideProgressBar();
         playAudioBlob(audioBlob);
         setButtonLoadingState(false);
       } else {
@@ -264,7 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Poll Job Progress & Live ETA
   function pollJobProgress(jobId) {
+    pollCounter = 0;
     activeJobPollTimer = setInterval(async () => {
+      pollCounter++;
       try {
         const res = await fetch(`/api/status?jobId=${jobId}`);
         if (!res.ok) throw new Error('Status poll failed');
@@ -279,17 +290,32 @@ document.addEventListener('DOMContentLoaded', () => {
           const audioRes = await fetch(`/api/status?jobId=${jobId}&download=true`);
           const audioBlob = await audioRes.blob();
 
+          hideProgressBar();
           playAudioBlob(audioBlob);
           setButtonLoadingState(false);
-          setTimeout(hideProgressBar, 3000);
         } else if (status.state === 'FAILED') {
           clearInterval(activeJobPollTimer);
           activeJobPollTimer = null;
-          throw new Error(status.error || 'Synthesis worker failed after retries.');
+          setButtonLoadingState(false);
+          hideProgressBar();
+          alert(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`);
+        } else if (pollCounter > 15) {
+          // Timeout safety after 15 seconds polling
+          clearInterval(activeJobPollTimer);
+          activeJobPollTimer = null;
+          setButtonLoadingState(false);
+          hideProgressBar();
+          alert('Synthesis timeout. Please retry with a shorter text segment.');
         }
 
       } catch (err) {
         console.warn('Status poll warning:', err);
+        if (pollCounter > 15) {
+          clearInterval(activeJobPollTimer);
+          activeJobPollTimer = null;
+          setButtonLoadingState(false);
+          hideProgressBar();
+        }
       }
     }, 1000);
   }
