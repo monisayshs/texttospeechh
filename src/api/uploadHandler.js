@@ -9,6 +9,12 @@ function getRawBody(req) {
     if (req.body && typeof req.body === 'string') {
       return resolve(Buffer.from(req.body, 'binary'));
     }
+    if (Buffer.isBuffer(req.rawBody)) {
+      return resolve(req.rawBody);
+    }
+    if (req.readableEnded) {
+      return resolve(Buffer.alloc(0));
+    }
     const chunks = [];
     req.on('data', chunk => chunks.push(chunk));
     req.on('end', () => resolve(Buffer.concat(chunks)));
@@ -36,7 +42,7 @@ module.exports = async (req, res) => {
     const fileBuffer = await getRawBody(req);
 
     if (!fileBuffer || fileBuffer.length === 0) {
-      res.status(400).json({ error: 'Uploaded file is empty.' });
+      res.status(400).json({ error: 'Uploaded file is empty or could not be read.' });
       return;
     }
 
