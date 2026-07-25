@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileDropzone = document.getElementById('file-dropzone');
   const fileInput = document.getElementById('file-input');
 
-  const wordCountSpan = document.getElementById('word-count');
+  const wordCountSpan = document.getElementById('word-count') || document.getElementById('char-counter');
   const charCountSpan = document.getElementById('char-count');
   const estTimeSpan = document.getElementById('est-time');
 
@@ -46,15 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
     const estSeconds = Math.ceil(words / 2.5);
 
-    wordCountSpan.textContent = `${words} / 10,000 words`;
-    charCountSpan.textContent = `${charCount} chars`;
+    if (wordCountSpan) {
+      wordCountSpan.textContent = `${words} words | ${charCount} chars`;
+    }
+    if (charCountSpan) {
+      charCountSpan.textContent = `${charCount} chars`;
+    }
 
-    if (estSeconds < 60) {
-      estTimeSpan.textContent = `~${estSeconds} sec audio`;
-    } else {
-      const mins = Math.floor(estSeconds / 60);
-      const secs = estSeconds % 60;
-      estTimeSpan.textContent = `~${mins}m ${secs}s audio`;
+    if (estTimeSpan) {
+      if (estSeconds < 60) {
+        estTimeSpan.textContent = `~${estSeconds} sec audio`;
+      } else {
+        const mins = Math.floor(estSeconds / 60);
+        const secs = estSeconds % 60;
+        estTimeSpan.textContent = `~${mins}m ${secs}s audio`;
+      }
     }
   }
 
@@ -67,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   pitchRange.addEventListener('input', (e) => {
-    const val = parseInt(e.target.value, 10);
-    pitchVal.textContent = val > 0 ? `+${val}Hz` : `${val}Hz`;
+    const val = parseFloat(e.target.value);
+    const percent = Math.round((val - 1.0) * 100);
+    pitchVal.textContent = percent >= 0 ? `+${percent}%` : `${percent}%`;
   });
 
   function getFormattedRate(speedMultiplier) {
@@ -77,15 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
     return percent >= 0 ? `+${percent}%` : `${percent}%`;
   }
 
-  function getFormattedPitch(pitchHz) {
-    const hz = parseInt(pitchHz, 10);
-    return hz >= 0 ? `+${hz}Hz` : `${hz}Hz`;
+  function getFormattedPitch(pitchMultiplier) {
+    const mult = parseFloat(pitchMultiplier);
+    const percent = Math.round((mult - 1.0) * 100);
+    return percent >= 0 ? `+${percent}%` : `${percent}%`;
   }
 
   function dataURItoBlob(dataURI) {
     try {
-      const byteString = atob(dataURI.split(',')[1]);
-      const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+      const parts = dataURI.split(',');
+      const byteString = atob(parts[1]);
+      const mimeString = parts[0].split(':')[1].split(';')[0];
       const ab = new ArrayBuffer(byteString.length);
       const ia = new Uint8Array(ab);
       for (let i = 0; i < byteString.length; i++) {
@@ -149,28 +158,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  fileInput.addEventListener('change', (e) => {
-    if (e.target.files && e.target.files[0]) {
-      handleFileUpload(e.target.files[0]);
-    }
-  });
+  if (fileInput) {
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleFileUpload(e.target.files[0]);
+      }
+    });
+  }
 
-  fileDropzone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    fileDropzone.classList.add('drag-over');
-  });
+  if (fileDropzone) {
+    fileDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileDropzone.classList.add('drag-over');
+    });
 
-  fileDropzone.addEventListener('dragleave', () => {
-    fileDropzone.classList.remove('drag-over');
-  });
+    fileDropzone.addEventListener('dragleave', () => {
+      fileDropzone.classList.remove('drag-over');
+    });
 
-  fileDropzone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    fileDropzone.classList.remove('drag-over');
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFileUpload(e.dataTransfer.files[0]);
-    }
-  });
+    fileDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileDropzone.classList.remove('drag-over');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleFileUpload(e.dataTransfer.files[0]);
+      }
+    });
+  }
 
   // Generate Button Click Handler
   async function startSynthesis() {
@@ -181,11 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setButtonLoadingState(true, 'TextToSpeechH AI Synthesizing...');
-    downloadBtn.disabled = true;
-    pauseBtn.disabled = true;
-    stopBtn.disabled = true;
-    audioPlayer.pause();
-    soundwave.classList.remove('active');
+    if (downloadBtn) downloadBtn.disabled = true;
+    if (pauseBtn) pauseBtn.disabled = true;
+    if (stopBtn) stopBtn.disabled = true;
+    if (audioPlayer) audioPlayer.pause();
+    if (soundwave) soundwave.classList.remove('active');
 
     if (activeJobPollTimer) {
       clearInterval(activeJobPollTimer);
@@ -194,10 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const payload = {
       text: text,
-      voice: voiceSelect.value,
-      rate: getFormattedRate(speedRange.value),
-      pitch: getFormattedPitch(pitchRange.value),
-      style: emotionSelect.value
+      voice: voiceSelect ? voiceSelect.value : 'hi-IN-SwaraNeural',
+      rate: getFormattedRate(speedRange ? speedRange.value : 1.0),
+      pitch: getFormattedPitch(pitchRange ? pitchRange.value : 1.0),
+      style: emotionSelect ? emotionSelect.value : 'neutral'
     };
 
     try {
@@ -245,7 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  generateBtn.addEventListener('click', startSynthesis);
+  if (generateBtn) {
+    generateBtn.addEventListener('click', startSynthesis);
+  }
 
   // Poll Job Progress & Live ETA
   function pollJobProgress(jobId) {
@@ -280,19 +295,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateProgressUI(processed, total, percentage, etaSeconds) {
+    if (!progressStatusText) return;
     progressStatusText.textContent = `Processing Chunk ${processed || 0}/${total || 1} (${percentage}%)...`;
-    progressEta.textContent = etaSeconds ? `ETA: ~${etaSeconds}s remaining` : 'Finalizing merged audio...';
-    progressPercentage.textContent = `${percentage}%`;
-    progressBarFill.style.width = `${percentage}%`;
+    if (progressEta) progressEta.textContent = etaSeconds ? `ETA: ~${etaSeconds}s remaining` : 'Finalizing merged audio...';
+    if (progressPercentage) progressPercentage.textContent = `${percentage}%`;
+    if (progressBarFill) progressBarFill.style.width = `${percentage}%`;
   }
 
   function showProgressBar() {
-    progressSection.classList.remove('hidden');
+    if (progressSection) progressSection.classList.remove('hidden');
     updateProgressUI(0, 1, 0, 0);
   }
 
   function hideProgressBar() {
-    progressSection.classList.add('hidden');
+    if (progressSection) progressSection.classList.add('hidden');
   }
 
   function playAudioBlob(blob) {
@@ -301,58 +317,73 @@ document.addEventListener('DOMContentLoaded', () => {
       URL.revokeObjectURL(currentAudioUrl);
     }
     currentAudioUrl = URL.createObjectURL(blob);
-    audioPlayer.src = currentAudioUrl;
 
-    const playPromise = audioPlayer.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        soundwave.classList.add('active');
-        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
-      }).catch(err => {
-        console.warn('Autoplay gesture required:', err);
-        soundwave.classList.remove('active');
-        pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Play';
-      });
+    if (audioPlayer) {
+      audioPlayer.src = currentAudioUrl;
+      audioPlayer.load();
+
+      const playPromise = audioPlayer.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (soundwave) soundwave.classList.add('active');
+          if (pauseBtn) pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+        }).catch(err => {
+          console.warn('Autoplay prevented by browser:', err);
+          if (soundwave) soundwave.classList.remove('active');
+          if (pauseBtn) pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Play Audio';
+        });
+      }
     }
 
-    pauseBtn.disabled = false;
-    stopBtn.disabled = false;
-    downloadBtn.disabled = false;
+    if (pauseBtn) pauseBtn.disabled = false;
+    if (stopBtn) stopBtn.disabled = false;
+    if (downloadBtn) downloadBtn.disabled = false;
   }
 
   // Audio Controls
-  pauseBtn.addEventListener('click', () => {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-      pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
-      soundwave.classList.add('active');
-    } else {
-      audioPlayer.pause();
-      pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
-      soundwave.classList.remove('active');
-    }
-  });
+  if (pauseBtn) {
+    pauseBtn.addEventListener('click', () => {
+      if (!audioPlayer) return;
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+        if (soundwave) soundwave.classList.add('active');
+      } else {
+        audioPlayer.pause();
+        pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
+        if (soundwave) soundwave.classList.remove('active');
+      }
+    });
+  }
 
-  stopBtn.addEventListener('click', () => {
-    audioPlayer.pause();
-    audioPlayer.currentTime = 0;
-    soundwave.classList.remove('active');
-    pauseBtn.disabled = true;
-    pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
-  });
+  if (stopBtn) {
+    stopBtn.addEventListener('click', () => {
+      if (!audioPlayer) return;
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+      if (soundwave) soundwave.classList.remove('active');
+      if (pauseBtn) {
+        pauseBtn.disabled = true;
+        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+      }
+    });
+  }
 
   // Single-Click High Bitrate MP3 Download
-  downloadBtn.addEventListener('click', () => {
-    if (!currentAudioBlob) return;
-    const a = document.createElement('a');
-    a.href = currentAudioUrl;
-    a.download = `TextToSpeechH_AI_${activeJobId || 'voice'}.mp3`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      if (!currentAudioBlob) return;
+      const a = document.createElement('a');
+      a.href = currentAudioUrl;
+      a.download = `TextToSpeechH_AI_${activeJobId || 'voice'}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
 
   function setButtonLoadingState(isLoading, text = 'Processing...') {
+    if (!generateBtn) return;
     if (isLoading) {
       generateBtn.disabled = true;
       generateBtn.innerHTML = `<span class="spinner"></span> ${text}`;
