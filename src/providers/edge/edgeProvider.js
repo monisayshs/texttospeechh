@@ -35,23 +35,28 @@ class EdgeProvider extends BaseProvider {
       const tts = new MsEdgeTTS();
       await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
       
-      const readable = tts.toStream(text, {
+      const { audioStream } = await tts.toStream(text, {
         rate: rateStr,
         pitch: pitchStr
       });
 
       const audioChunks = [];
       const streamPromise = new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => reject(new Error('msedge-tts stream timeout')), 5000);
+        const timeout = setTimeout(() => {
+          try { tts.close(); } catch (e) {}
+          reject(new Error('msedge-tts stream timeout'));
+        }, 5000);
 
-        readable.on('data', (data) => audioChunks.push(data));
-        readable.on('end', () => {
+        audioStream.on('data', (data) => audioChunks.push(data));
+        audioStream.on('end', () => {
           clearTimeout(timeout);
+          try { tts.close(); } catch (e) {}
           if (audioChunks.length === 0) reject(new Error('Empty stream'));
           else resolve(Buffer.concat(audioChunks));
         });
-        readable.on('error', (err) => {
+        audioStream.on('error', (err) => {
           clearTimeout(timeout);
+          try { tts.close(); } catch (e) {}
           reject(err);
         });
       });
