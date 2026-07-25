@@ -1,9 +1,9 @@
 import requests
 
-LIVE_VERCEL_URL = "https://texttospeechh.com-flax.vercel.app"
+LIVE_VERCEL_URL = "https://texttospeechhcom.vercel.app"
 
 print("=========================================================")
-print("TEXTTOSPEECHH AI - LIVE VERCEL PRODUCTION DEPLOYMENT AUDIT")
+print("TEXTTOSPEECHH.COM - LIVE VERCEL PRODUCTION AUDIT")
 print("=========================================================\n")
 
 # 1. Audit Live Production Homepage

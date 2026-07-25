@@ -35,12 +35,13 @@ module.exports = async (req, res) => {
       style: style || 'neutral'
     };
 
-    // Queue-based synthesis pipeline for maximum reliability & zero request timeouts
-    const jobInfo = queueService.createJob(sanitizedText, options, priority || 'NORMAL');
+    // Synthesize audio job cleanly (Serverless & Localhost compatible)
+    const jobInfo = await queueService.createJobAsync(sanitizedText, options, priority || 'NORMAL');
     
     res.status(200).json({
-      message: 'Voice synthesis job enqueued successfully.',
+      message: 'Voice synthesis job completed successfully.',
       jobId: jobInfo.jobId,
+      state: jobInfo.state,
       totalChunks: jobInfo.totalChunks,
       wordCount: jobInfo.wordCount,
       etaSeconds: jobInfo.etaSeconds,
