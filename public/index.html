@@ -125,8 +125,8 @@
     <!-- Header with Official Logo Emblem -->
     <header class="app-header">
       <div class="header-top-bar">
-        <div class="logo-badge" style="display:flex; align-items:center; gap:12px;">
-          <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" style="width:40px; height:40px;">
+        <div class="logo-badge">
+          <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
           <h1>Free AI Voice Generator</h1>
         </div>
         <div class="status-pill-group">
@@ -314,8 +314,8 @@
       <div class="footer-top-grid">
         <!-- Brand Column -->
         <div class="footer-brand-col">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-            <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" style="width:32px; height:32px;">
+          <div class="footer-brand-row">
+            <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" class="footer-brand-icon">
             <h2>TextToSpeechH <span class="accent-text">AI</span></h2>
           </div>
           <p class="footer-brand-desc">Convert text into ultra-realistic human voices instantly using TextToSpeechH AI. Engineered for content creators, long script narrations, and global businesses.</p>
@@ -398,8 +398,8 @@
       <!-- Bottom Copyright Bar -->
       <div class="footer-bottom-bar">
         <p>© 2026 TextToSpeechH AI. All Rights Reserved.</p>
-        <div class="social-links" style="display:flex; align-items:center; gap:10px;">
-          <a href="https://www.instagram.com/webxpert.ai/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); text-decoration:none; font-weight:500;" aria-label="Official Instagram">
+        <div class="social-links">
+          <a href="https://www.instagram.com/webxpert.ai/" target="_blank" rel="noopener noreferrer" class="social-links-anchor" aria-label="Official Instagram">
             📸 Instagram: @webxpert.ai
           </a>
         </div>
@@ -415,11 +415,11 @@
     </div>
 
     <!-- Cookie Consent Banner for GDPR & AdSense Compliance -->
-    <div class="cookie-banner hidden" id="cookie-banner" style="position:fixed; bottom:20px; left:20px; right:20px; max-width:540px; margin:0 auto; background:rgba(15, 23, 42, 0.95); border:1px solid rgba(59, 130, 246, 0.4); border-radius:14px; padding:16px 20px; color:#f8fafc; box-shadow:0 12px 35px rgba(0,0,0,0.5); backdrop-filter:blur(12px); z-index:99999; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
-      <p style="font-size:0.88rem; line-height:1.5; margin:0; flex:1; min-width:240px;">
-        🍪 We use cookies to enhance your experience, analyze traffic, and personalize ads per Google AdSense policies. Read our <a href="/privacy-policy" style="color:#38bdf8; text-decoration:underline;">Privacy Policy</a>.
+    <div class="cookie-banner hidden" id="cookie-banner">
+      <p class="cookie-banner-text">
+        🍪 We use cookies to enhance your experience, analyze traffic, and personalize ads per Google AdSense policies. Read our <a href="/privacy-policy" class="cookie-banner-link">Privacy Policy</a>.
       </p>
-      <button type="button" id="accept-cookies-btn" style="background:#3b82f6; color:#ffffff; border:none; padding:8px 18px; border-radius:8px; font-weight:600; font-size:0.88rem; cursor:pointer; transition:all 0.2s ease;">Accept All</button>
+      <button type="button" id="accept-cookies-btn" class="accept-cookies-btn">Accept All</button>
     </div>
 
   </div>

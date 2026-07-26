@@ -177,8 +177,8 @@ body {
 /* Glass Panel */
 .glass-panel {
   background: var(--panel-bg);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--panel-border);
   border-radius: 20px;
   box-shadow: var(--glass-shadow);
@@ -545,10 +545,10 @@ kbd {
 
 /* Production SaaS Multi-Column Footer */
 .saas-footer {
-  margin-top: 50px;
+  margin-top: 60px;
   background: var(--panel-bg);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--panel-border);
   border-radius: 24px;
   padding: 40px 30px 25px 30px;
@@ -660,4 +660,90 @@ kbd {
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
+/* Header & Footer Logo & Social Link Helpers */
+.logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-badge-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-brand-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-links-anchor {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Cookie Consent Banner Styling */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 540px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 14px;
+  padding: 16px 20px;
+  color: #f8fafc;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cookie-banner-text {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  min-width: 240px;
+}
+
+.cookie-banner-link {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+.accept-cookies-btn {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 
