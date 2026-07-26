@@ -21,6 +21,7 @@
     { "src": "/refund(.*)", "dest": "/api/index.js" },
     { "src": "/accessibility(.*)", "dest": "/api/index.js" },
     { "src": "/community(.*)", "dest": "/api/index.js" },
+    { "src": "/test/(.*)", "dest": "/api/index.js" },
     { "src": "/keyword/(.*)", "dest": "/api/index.js" },
     { "src": "/language/(.*)", "dest": "/api/index.js" },
     { "src": "/guide/(.*)", "dest": "/api/index.js" },
