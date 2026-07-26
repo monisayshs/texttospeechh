@@ -4,9 +4,10 @@
  * Official Instagram: @webxpert.ai
  */
 
-// Global function alias for inline onclick fallbacks
+// Global function aliases for inline onclick fallbacks
 window.startSynthesis = null;
 window.generateVoice = null;
+window.clearScriptText = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements selection supporting both id naming conventions
@@ -131,17 +132,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const clearBtn = document.getElementById('clear-btn');
 
+  function clearScriptText() {
+    if (textInput) {
+      textInput.value = '';
+      updateTextStats();
+      textInput.focus();
+    }
+  }
+  window.clearScriptText = clearScriptText;
+
   if (textInput) {
     textInput.addEventListener('input', updateTextStats);
     updateTextStats();
   }
 
-  if (clearBtn && textInput) {
-    clearBtn.addEventListener('click', () => {
-      textInput.value = '';
-      updateTextStats();
-      textInput.focus();
-    });
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearScriptText);
   }
 
   // Range Slider Feedback Updates

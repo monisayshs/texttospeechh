@@ -85,7 +85,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.1.2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -150,7 +150,7 @@
         </div>
         <div class="textarea-wrapper">
           <textarea id="text-input" placeholder="Type or paste your script here, or drop a PDF/DOCX file... Create realistic AI voiceovers in seconds using TextToSpeechH AI. Zero mid-sentence cuts guaranteed." rows="6"></textarea>
-          <button class="clear-btn" id="clear-btn" title="Clear Text">🗑️</button>
+          <button type="button" class="clear-btn" id="clear-btn" title="Clear Text" onclick="window.clearScriptText ? window.clearScriptText() : null">🗑️</button>
         </div>
       </div>
 
@@ -409,6 +409,6 @@
 
   </div>
 
-  <script src="app.js?v=2.0.3"></script>
+  <script src="app.js?v=2.1.2"></script>
 </body>
 </html>
