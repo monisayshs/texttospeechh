@@ -17,23 +17,23 @@ module.exports = async (req, res) => {
   try {
     const reqUrl = req.url || '/';
 
-    // Diagnostic Error Test Endpoints
-    if (reqUrl.startsWith('/test/500')) {
+    // Diagnostic Error Test Routes
+    if (reqUrl.includes('500')) {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       return res.end(get500Page());
     }
-    if (reqUrl.startsWith('/test/403')) {
+    if (reqUrl.includes('403')) {
       res.statusCode = 403;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       return res.end(get403Page());
     }
-    if (reqUrl.startsWith('/test/429')) {
+    if (reqUrl.includes('429')) {
       res.statusCode = 429;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       return res.end(get429Page());
     }
-    if (reqUrl.startsWith('/test/503')) {
+    if (reqUrl.includes('503')) {
       res.statusCode = 503;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       return res.end(get503Page());
