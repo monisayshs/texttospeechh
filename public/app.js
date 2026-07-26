@@ -9,7 +9,7 @@ window.startSynthesis = null;
 window.generateVoice = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Robust DOM Elements selection supporting both id naming conventions
+  // DOM Elements selection supporting both id naming conventions
   const textInput = document.getElementById('text-input');
   const voiceSelect = document.getElementById('voice-select');
   const speedRange = document.getElementById('speed-range');
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let pollCounter = 0;
   let currentAudioBlob = null;
   let currentAudioUrl = null;
+  let animationTimer = null;
 
   // Real-Time Character & Word Counter
   function updateTextStats() {
@@ -116,6 +117,59 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('DataURI conversion error:', e);
       return null;
     }
+  }
+
+  // Progress Bar UI Controller
+  function updateProgressUI(processed, total, percentage, etaSeconds, statusMsg = '') {
+    if (progressSection) progressSection.classList.remove('hidden');
+    
+    if (progressStatusText) {
+      progressStatusText.textContent = statusMsg || `Processing Chunk ${processed || 0}/${total || 1} (${percentage}%)...`;
+    }
+    if (progressEta) {
+      progressEta.textContent = etaSeconds > 0 ? `ETA: ~${etaSeconds}s remaining` : 'Finalizing merged audio...';
+    }
+    if (progressPercentage) {
+      progressPercentage.textContent = `${percentage}%`;
+    }
+    if (progressBarFill) {
+      progressBarFill.style.width = `${percentage}%`;
+    }
+  }
+
+  function showProgressBar() {
+    if (progressSection) progressSection.classList.remove('hidden');
+    updateProgressUI(0, 1, 0, 3, 'Initializing AI Neural Model...');
+  }
+
+  function hideProgressBar() {
+    if (progressSection) {
+      progressSection.classList.add('hidden');
+    }
+  }
+
+  function animateProgressStep(targetPercent, statusText, etaSec, durationMs = 400) {
+    return new Promise((resolve) => {
+      let currentPercent = parseInt(progressPercentage ? progressPercentage.textContent : '0') || 0;
+      const stepTime = 20;
+      const totalSteps = Math.max(1, Math.floor(durationMs / stepTime));
+      const stepIncrement = (targetPercent - currentPercent) / totalSteps;
+      let stepCount = 0;
+
+      if (animationTimer) clearInterval(animationTimer);
+
+      animationTimer = setInterval(() => {
+        stepCount++;
+        currentPercent = Math.min(100, Math.round(currentPercent + stepIncrement));
+        updateProgressUI(1, 1, currentPercent, etaSec, statusText);
+
+        if (stepCount >= totalSteps || currentPercent >= targetPercent) {
+          clearInterval(animationTimer);
+          animationTimer = null;
+          resolve();
+        }
+      }, stepTime);
+    });
   }
 
   // Document File Upload Handler (.txt, .docx, .pdf)
@@ -205,6 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // 1. Show Progress Panel Immediately & Disable Controls
+    showProgressBar();
     setButtonLoadingState(true, 'TextToSpeechH AI Synthesizing...');
     if (downloadBtn) downloadBtn.disabled = true;
     if (pauseBtn) pauseBtn.disabled = true;
@@ -217,6 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
       activeJobPollTimer = null;
     }
 
+    // Phase 1 Progress Animation (0% -> 25%)
+    await animateProgressStep(25, 'Initializing TextToSpeechH AI Engine...', 3, 300);
+
     const payload = {
       text: text,
       voice: voiceSelect ? voiceSelect.value : 'hi-IN-SwaraNeural',
@@ -226,6 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
+      // Phase 2 Progress Animation (25% -> 55%)
+      animateProgressStep(55, 'Processing Script Chunk 1/1...', 2, 600);
+
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -243,23 +305,27 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.audioDataUri) {
             const blob = dataURItoBlob(data.audioDataUri);
             if (blob) {
-              hideProgressBar();
+              // Phase 3 & 4 Progress Animation (55% -> 85% -> 100%)
+              await animateProgressStep(85, 'Generating High-Bitrate Voice Audio...', 1, 300);
+              await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
+              
               playAudioBlob(blob);
               setButtonLoadingState(false);
+              setTimeout(hideProgressBar, 1800);
               return;
             }
           }
 
-          showProgressBar();
           pollJobProgress(data.jobId);
         } else {
           throw new Error(data.error || 'Failed to generate voice synthesis.');
         }
       } else if (contentType.includes('audio/')) {
         const audioBlob = await response.blob();
-        hideProgressBar();
+        await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
         playAudioBlob(audioBlob);
         setButtonLoadingState(false);
+        setTimeout(hideProgressBar, 1800);
       } else {
         throw new Error('Unexpected server response.');
       }
@@ -288,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Poll Job Progress & Live ETA
+  // Poll Job Progress & Live ETA for Async Multi-Chunk Jobs
   function pollJobProgress(jobId) {
     pollCounter = 0;
     activeJobPollTimer = setInterval(async () => {
@@ -298,18 +364,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!res.ok) throw new Error('Status poll failed');
         const status = await res.json();
 
-        updateProgressUI(status.processedChunks, status.totalChunks, status.progress, status.etaSeconds);
+        updateProgressUI(
+          status.processedChunks,
+          status.totalChunks,
+          status.progress,
+          status.etaSeconds,
+          `Processing Chunk ${status.processedChunks || 1}/${status.totalChunks || 1} (${status.progress}%)...`
+        );
 
         if (status.state === 'COMPLETED') {
           clearInterval(activeJobPollTimer);
           activeJobPollTimer = null;
 
+          await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
+
           const audioRes = await fetch(`/api/status?jobId=${jobId}&download=true`);
           const audioBlob = await audioRes.blob();
 
-          hideProgressBar();
           playAudioBlob(audioBlob);
           setButtonLoadingState(false);
+          setTimeout(hideProgressBar, 1800);
         } else if (status.state === 'FAILED') {
           clearInterval(activeJobPollTimer);
           activeJobPollTimer = null;
@@ -334,23 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }, 1000);
-  }
-
-  function updateProgressUI(processed, total, percentage, etaSeconds) {
-    if (!progressStatusText) return;
-    progressStatusText.textContent = `Processing Chunk ${processed || 0}/${total || 1} (${percentage}%)...`;
-    if (progressEta) progressEta.textContent = etaSeconds ? `ETA: ~${etaSeconds}s remaining` : 'Finalizing merged audio...';
-    if (progressPercentage) progressPercentage.textContent = `${percentage}%`;
-    if (progressBarFill) progressBarFill.style.width = `${percentage}%`;
-  }
-
-  function showProgressBar() {
-    if (progressSection) progressSection.classList.remove('hidden');
-    updateProgressUI(0, 1, 0, 0);
-  }
-
-  function hideProgressBar() {
-    if (progressSection) progressSection.classList.add('hidden');
   }
 
   function playAudioBlob(blob) {
