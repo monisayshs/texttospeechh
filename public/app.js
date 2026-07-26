@@ -589,4 +589,19 @@ document.addEventListener('DOMContentLoaded', () => {
       generateBtn.innerHTML = `<span class="btn-icon">⚡</span> Generate Voice Audio`;
     }
   }
+
+  // Cookie Consent Preferences Handler
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptCookiesBtn = document.getElementById('accept-cookies-btn');
+
+  if (cookieBanner && acceptCookiesBtn) {
+    if (!localStorage.getItem('tts_cookie_consent')) {
+      cookieBanner.classList.remove('hidden');
+    }
+    acceptCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('tts_cookie_consent', 'accepted');
+      cookieBanner.classList.add('hidden');
+    });
+  }
 });
+
