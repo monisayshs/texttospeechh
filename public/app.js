@@ -129,9 +129,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const clearBtn = document.getElementById('clear-btn');
+
   if (textInput) {
     textInput.addEventListener('input', updateTextStats);
     updateTextStats();
+  }
+
+  if (clearBtn && textInput) {
+    clearBtn.addEventListener('click', () => {
+      textInput.value = '';
+      updateTextStats();
+      textInput.focus();
+    });
   }
 
   // Range Slider Feedback Updates
@@ -502,7 +512,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadBtn) downloadBtn.disabled = false;
   }
 
-  // Audio Controls
+  // Audio Controls & Auto Stop Visualizer on Audio Ended
+  if (audioPlayer) {
+    audioPlayer.addEventListener('ended', () => {
+      console.log('[TextToSpeechH AI] Audio playback ended naturally.');
+      if (soundwave) soundwave.classList.remove('active');
+      if (animationTimer) {
+        clearInterval(animationTimer);
+        animationTimer = null;
+      }
+      if (pauseBtn) {
+        pauseBtn.disabled = true;
+        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+      }
+      if (downloadBtn) {
+        downloadBtn.disabled = false;
+      }
+      setButtonLoadingState(false);
+    });
+  }
+
   if (pauseBtn) {
     pauseBtn.addEventListener('click', () => {
       if (!audioPlayer) return;
