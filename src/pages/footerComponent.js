@@ -1,92 +1,36 @@
 /**
- * Production SaaS Multi-Column Footer Component for TextToSpeechH AI
+ * Production Footer Component for TextToSpeechH AI
  * Domain: https://texttospeechh.com
- * Official Social: Instagram @webxpert.ai (https://www.instagram.com/webxpert.ai/)
  * Single Official Contact: hello@texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
-const OFFICIAL_INSTAGRAM = "https://www.instagram.com/webxpert.ai/";
 const SINGLE_OFFICIAL_EMAIL = "hello@texttospeechh.com";
 
 function getSaaSFooterHtml() {
   return `
-  <footer class="saas-footer" aria-label="Site Footer">
-    <div class="footer-top-grid">
-      <!-- Brand Column -->
-      <div class="footer-brand-col">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-          <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" style="width:32px; height:32px;">
-          <h2>TextToSpeechH <span class="accent-text">AI</span></h2>
-        </div>
-        <p class="footer-brand-desc">Convert text into ultra-realistic human voices instantly using ${BRAND_NAME}. Engineered for content creators, long script narrations, and global businesses.</p>
-        <div class="footer-contact-info">
-          <p>Official Contact: <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a></p>
-        </div>
-      </div>
-
-      <!-- Company Section -->
-      <div class="footer-col">
-        <h3 class="footer-col-title">Company</h3>
-        <ul class="footer-links-list">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact Support</a></li>
-          <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Blog & Guides</a></li>
-          <li><a href="/accessibility">Accessibility</a></li>
-          <li><a href="/community-guidelines">Community</a></li>
-        </ul>
-      </div>
-
-      <!-- AI Tools Section (100% Implemented Routes Only) -->
-      <div class="footer-col">
-        <h3 class="footer-col-title">AI Tools</h3>
-        <ul class="footer-links-list">
-          <li><a href="/">Free AI Voice Generator</a></li>
-          <li><a href="/keyword/text-to-speech-free">Text to Speech</a></li>
-          <li><a href="/keyword/free-ai-texttospeechh.com">Text to MP3 Converter</a></li>
-          <li><a href="/blog/text-to-speech-audiobook-creation">Long Text to Speech</a></li>
-          <li><a href="/language/hindi">Hindi Text to Speech</a></li>
-          <li><a href="/language/english">English Text to Speech</a></li>
-        </ul>
-      </div>
-
-      <!-- Languages Section -->
-      <div class="footer-col">
-        <h3 class="footer-col-title">Languages</h3>
-        <ul class="footer-links-list">
-          <li><a href="/language/english">English TTS</a></li>
-          <li><a href="/language/hindi">Hindi TTS</a></li>
-          <li><a href="/language/urdu">Urdu TTS</a></li>
-          <li><a href="/language/spanish">Spanish TTS</a></li>
-          <li><a href="/language/french">French TTS</a></li>
-          <li><a href="/language/german">German TTS</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal & Governance Section -->
-      <div class="footer-col">
-        <h3 class="footer-col-title">Legal & Trust</h3>
-        <ul class="footer-links-list">
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/disclaimer">Disclaimer</a></li>
-          <li><a href="/cookie-policy">Cookie Policy</a></li>
-          <li><a href="/dmca">DMCA Policy</a></li>
-        </ul>
-      </div>
+  <footer class="saas-footer" aria-label="Site Footer" style="text-align: center; padding: 35px 20px;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px;">
+      <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" style="width:36px; height:36px;">
+      <h2 style="font-size:1.5rem; font-weight:700; color:var(--text-main);">${BRAND_NAME}</h2>
     </div>
-
-    <!-- Bottom Social & Copyright Bar -->
-    <div class="footer-bottom-bar">
-      <p>© 2026 ${BRAND_NAME}. All Rights Reserved. Single Official Contact: <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:var(--accent-cyan);">${SINGLE_OFFICIAL_EMAIL}</a></p>
-      <div class="social-links" style="display:flex; align-items:center; gap:12px;">
-        <a href="${OFFICIAL_INSTAGRAM}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); text-decoration:none; font-weight:500;" aria-label="Official Instagram">
-          📸 Instagram: @webxpert.ai
-        </a>
-      </div>
+    <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:18px;">Convert text into realistic AI voices in seconds.</p>
+    <div style="background:var(--card-sub-bg); border:1px solid var(--panel-border); border-radius:12px; padding:16px 20px; max-width:640px; margin:0 auto 24px auto;">
+      <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:6px;">
+        Support, business, partnerships, legal and general inquiries:
+      </p>
+      <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="font-size:1.05rem; font-weight:600; color:var(--accent-cyan); text-decoration:none;">${SINGLE_OFFICIAL_EMAIL}</a>
     </div>
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:20px; font-size:0.88rem;">
+      <a href="/about" style="color:var(--text-muted); text-decoration:none;">About Us</a>
+      <a href="/contact" style="color:var(--text-muted); text-decoration:none;">Contact</a>
+      <a href="/privacy-policy" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+      <a href="/terms" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+      <a href="/disclaimer" style="color:var(--text-muted); text-decoration:none;">Disclaimer</a>
+    </div>
+    <p style="font-size:0.82rem; color:var(--text-muted);">© 2026 ${BRAND_NAME}. All Rights Reserved.</p>
   </footer>`;
 }
 
 module.exports = { getSaaSFooterHtml };
+
