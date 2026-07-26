@@ -1,6 +1,7 @@
 {
   "version": 2,
   "routes": [
+    { "src": "/api/contact", "dest": "/api/contact.js" },
     { "src": "/api/generate", "dest": "/api/generate.js" },
     { "src": "/api/status", "dest": "/api/status.js" },
     { "src": "/api/upload", "dest": "/api/upload.js" },

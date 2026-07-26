@@ -2,12 +2,13 @@
  * Production SaaS Multi-Column Footer Component for TextToSpeechH AI
  * Domain: https://texttospeechh.com
  * Official Social: Instagram @webxpert.ai (https://www.instagram.com/webxpert.ai/)
- * Contact: hello@texttospeechh.com | Support: support@texttospeechh.com
+ * Single Official Contact: hello@texttospeechh.com
  */
 
 const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const OFFICIAL_INSTAGRAM = "https://www.instagram.com/webxpert.ai/";
+const SINGLE_OFFICIAL_EMAIL = "hello@texttospeechh.com";
 
 function getSaaSFooterHtml() {
   return `
@@ -21,8 +22,7 @@ function getSaaSFooterHtml() {
         </div>
         <p class="footer-brand-desc">Convert text into ultra-realistic human voices instantly using ${BRAND_NAME}. Engineered for content creators, long script narrations, and global businesses.</p>
         <div class="footer-contact-info">
-          <p>Contact: <a href="mailto:hello@texttospeechh.com">hello@texttospeechh.com</a></p>
-          <p>Support: <a href="mailto:support@texttospeechh.com">support@texttospeechh.com</a></p>
+          <p>Official Contact: <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a></p>
         </div>
       </div>
 
@@ -61,45 +61,26 @@ function getSaaSFooterHtml() {
           <li><a href="/language/spanish">Spanish TTS</a></li>
           <li><a href="/language/french">French TTS</a></li>
           <li><a href="/language/german">German TTS</a></li>
-          <li><a href="/language/arabic">Arabic TTS</a></li>
-          <li><a href="/language/japanese">Japanese TTS</a></li>
         </ul>
       </div>
 
-      <!-- Resources Section -->
+      <!-- Legal & Governance Section -->
       <div class="footer-col">
-        <h3 class="footer-col-title">Resources</h3>
-        <ul class="footer-links-list">
-          <li><a href="/about">FAQ & Overview</a></li>
-          <li><a href="/contact">Help Center</a></li>
-          <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Speech Guides</a></li>
-          <li><a href="/about">Platform Details</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal Section -->
-      <div class="footer-col">
-        <h3 class="footer-col-title">Legal</h3>
+        <h3 class="footer-col-title">Legal & Trust</h3>
         <ul class="footer-links-list">
           <li><a href="/privacy-policy">Privacy Policy</a></li>
           <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/cookie-policy">Cookie Policy</a></li>
           <li><a href="/disclaimer">Disclaimer</a></li>
-          <li><a href="/dmca">DMCA Notice</a></li>
-          <li><a href="/refund-policy">Refund Policy</a></li>
+          <li><a href="/cookie-policy">Cookie Policy</a></li>
+          <li><a href="/dmca">DMCA Policy</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- Independent Trademark Disclaimer Box -->
-    <div class="footer-disclaimer-box">
-      <p><strong>Trademark Disclaimer:</strong> Comparison pages published on ${BRAND_NAME} (such as ${BRAND_NAME} vs ElevenLabs, Speechify, Murf AI, PlayHT) represent independent software evaluations created for informational purposes. All product names, trademarks, logos, and registered brands are property of their respective owners. Mention of third-party product names does not imply affiliation, endorsement, or sponsorship by their respective holders.</p>
-    </div>
-
-    <!-- Bottom Copyright & Social Bar -->
+    <!-- Bottom Social & Copyright Bar -->
     <div class="footer-bottom-bar">
-      <p>© 2026 TextToSpeechH AI. All Rights Reserved.</p>
-      <div class="social-links" style="display:flex; align-items:center; gap:10px;">
+      <p>© 2026 ${BRAND_NAME}. All Rights Reserved. Single Official Contact: <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:var(--accent-cyan);">${SINGLE_OFFICIAL_EMAIL}</a></p>
+      <div class="social-links" style="display:flex; align-items:center; gap:12px;">
         <a href="${OFFICIAL_INSTAGRAM}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); text-decoration:none; font-weight:500;" aria-label="Official Instagram">
           📸 Instagram: @webxpert.ai
         </a>
@@ -108,6 +89,4 @@ function getSaaSFooterHtml() {
   </footer>`;
 }
 
-module.exports = {
-  getSaaSFooterHtml
-};
+module.exports = { getSaaSFooterHtml };

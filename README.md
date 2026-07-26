@@ -2,7 +2,7 @@
 
 > **Official Website:** [https://texttospeechh.com](https://texttospeechh.com)  
 > **Official Instagram:** [@webxpert.ai](https://www.instagram.com/webxpert.ai/)  
-> **Contact:** [hello@texttospeechh.com](mailto:hello@texttospeechh.com) | Support: [support@texttospeechh.com](mailto:support@texttospeechh.com)
+> **Contact:** [hello@texttospeechh.com](mailto:hello@texttospeechh.com)
 
 ---
 
