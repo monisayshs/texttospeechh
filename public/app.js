@@ -45,6 +45,65 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentAudioUrl = null;
   let animationTimer = null;
 
+  // Modern Glassmorphic Toast Notification Container
+  let toastContainer = document.getElementById('toast-container');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toast-container';
+    toastContainer.style.cssText = 'position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; gap:10px; max-width:420px; width:calc(100% - 48px); pointer-events:none;';
+    document.body.appendChild(toastContainer);
+  }
+
+  function showErrorToast(msg, allowRetry = true) {
+    const toast = document.createElement('div');
+    toast.style.cssText = 'pointer-events:auto; background:rgba(15, 23, 42, 0.95); border:1px solid #ef4444; color:#ffffff; padding:16px 20px; border-radius:12px; font-size:0.95rem; box-shadow:0 10px 30px rgba(0,0,0,0.5); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:space-between; gap:12px; animation: slideUp 0.3s ease;';
+    
+    const content = document.createElement('div');
+    content.style.cssText = 'display:flex; align-items:center; gap:10px;';
+    content.innerHTML = `<span style="font-size:1.4rem;">⚠️</span> <span>${msg}</span>`;
+    
+    const actions = document.createElement('div');
+    actions.style.cssText = 'display:flex; align-items:center; gap:8px;';
+    
+    if (allowRetry) {
+      const retryBtn = document.createElement('button');
+      retryBtn.textContent = 'Retry';
+      retryBtn.style.cssText = 'background:#ef4444; color:#fff; border:none; padding:6px 12px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;';
+      retryBtn.onclick = () => {
+        toast.remove();
+        startSynthesis();
+      };
+      actions.appendChild(retryBtn);
+    }
+
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '✖';
+    closeBtn.style.cssText = 'background:none; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:2px 6px;';
+    closeBtn.onclick = () => toast.remove();
+    actions.appendChild(closeBtn);
+
+    toast.appendChild(content);
+    toast.appendChild(actions);
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+      if (toast.parentNode) toast.remove();
+    }, 8000);
+  }
+
+  // Network Offline / Online Monitoring
+  window.addEventListener('offline', () => {
+    showErrorToast('Network connection lost. You are currently offline.', true);
+  });
+
+  window.addEventListener('online', () => {
+    const onlineToast = document.createElement('div');
+    onlineToast.style.cssText = 'pointer-events:auto; background:rgba(15, 23, 42, 0.95); border:1px solid #10b981; color:#34d399; padding:14px 18px; border-radius:12px; font-size:0.95rem; box-shadow:0 10px 30px rgba(0,0,0,0.5); backdrop-filter:blur(10px); display:flex; align-items:center; gap:10px;';
+    onlineToast.innerHTML = `<span>✓</span> <span>Network connection restored. Online!</span>`;
+    toastContainer.appendChild(onlineToast);
+    setTimeout(() => onlineToast.remove(), 4000);
+  });
+
   // Real-Time Character & Word Counter
   function updateTextStats() {
     const text = textInput ? textInput.value || '' : '';
@@ -177,12 +236,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!file) return;
     const ext = file.name.slice(file.name.lastIndexOf('.')).toLowerCase();
     if (!['.txt', '.docx', '.pdf'].includes(ext)) {
-      alert('Unsupported file format. Please upload a .txt, .docx, or .pdf document.');
+      showErrorToast('Unsupported file format. Please upload a .txt, .docx, or .pdf document.', false);
       return;
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      alert('File size exceeds maximum limit of 10MB.');
+      showErrorToast('File size exceeds maximum limit of 10MB.', false);
       return;
     }
 
@@ -212,12 +271,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (response.ok && data.success) {
         if (textInput) textInput.value = data.text;
         updateTextStats();
-        alert(`Document '${file.name}' imported successfully! (${data.wordCount} words extracted)`);
       } else {
         throw new Error(data.error || 'Document extraction failed.');
       }
     } catch (err) {
-      alert(`File Import Error: ${err.message}`);
+      showErrorToast(`File Import Error: ${err.message}`, false);
     } finally {
       setButtonLoadingState(false);
     }
@@ -255,7 +313,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('[TextToSpeechH AI] startSynthesis executed');
     const text = textInput ? textInput.value.trim() : '';
     if (!text) {
-      alert('Please enter some script text or upload a document first.');
+      showErrorToast('Please enter some script text or upload a document first.', false);
+      return;
+    }
+
+    if (!navigator.onLine) {
+      showErrorToast('No internet connection. Please check your network.', true);
       return;
     }
 
@@ -305,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.audioDataUri) {
             const blob = dataURItoBlob(data.audioDataUri);
             if (blob) {
-              // Phase 3 & 4 Progress Animation (55% -> 85% -> 100%)
               await animateProgressStep(85, 'Generating High-Bitrate Voice Audio...', 1, 300);
               await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
               
@@ -332,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (err) {
       console.error('Synthesis error:', err);
-      alert(`TextToSpeechH AI Synthesis Error: ${err.message}`);
+      showErrorToast(`Voice Generation Error: ${err.message}`, true);
       setButtonLoadingState(false);
       hideProgressBar();
     }
@@ -389,13 +451,13 @@ document.addEventListener('DOMContentLoaded', () => {
           activeJobPollTimer = null;
           setButtonLoadingState(false);
           hideProgressBar();
-          alert(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`);
+          showErrorToast(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`, true);
         } else if (pollCounter > 15) {
           clearInterval(activeJobPollTimer);
           activeJobPollTimer = null;
           setButtonLoadingState(false);
           hideProgressBar();
-          alert('Synthesis timeout. Please retry with a shorter text segment.');
+          showErrorToast('Synthesis timeout. Please retry with a shorter text segment.', true);
         }
 
       } catch (err) {
@@ -405,6 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
           activeJobPollTimer = null;
           setButtonLoadingState(false);
           hideProgressBar();
+          showErrorToast('Status polling failed. Please retry.', true);
         }
       }
     }, 1000);
