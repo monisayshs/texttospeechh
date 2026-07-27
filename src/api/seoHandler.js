@@ -4,6 +4,7 @@ const { CONTENT_HUB_ARTICLES } = require('../pages/blogHub');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
 const schemaGenerator = require('../seo/schemaGenerator');
 const hreflangMap = require('../seo/hreflangMap');
+const { getGoogleAnalyticsHtml } = require('../seo/gaSnippet');
 
 const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
@@ -21,12 +22,14 @@ function renderSeoPage(pageData, pathSlug) {
 
   const hreflangTags = hreflangMap.getHreflangHtmlTags();
   const footerHtml = getSaaSFooterHtml();
+  const gaHtml = getGoogleAnalyticsHtml();
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${gaHtml}
   <title>${pageData.title}</title>
   <meta name="description" content="${pageData.metaDesc}">
   <meta name="robots" content="index, follow">

@@ -4,16 +4,21 @@
  * Domain: https://texttospeechh.com
  */
 
+const { getGoogleAnalyticsHtml } = require('../seo/gaSnippet');
+
 const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const CONTACT_EMAIL = "hello@texttospeechh.com";
 
 function renderBaseErrorPage({ statusCode, title, message, actionText, actionUrl, retryButton }) {
+  const gaHtml = getGoogleAnalyticsHtml();
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${gaHtml}
   <title>${statusCode} ${title} | ${BRAND_NAME}</title>
   <meta name="description" content="${statusCode} - ${title} on ${BRAND_NAME}.">
   <meta name="robots" content="noindex, follow">
