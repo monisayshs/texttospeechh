@@ -2,7 +2,7 @@ const faqEngine = require('../content/faqEngine');
 const eeatGuidelines = require('../content/eeatGuidelines');
 const educationalGuides = require('../content/educationalGuides');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
-const { getGoogleAnalyticsHtml } = require('../seo/gaSnippet');
+const { getAllTrackingSnippetsHtml } = require('../seo/gaSnippet');
 
 const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
@@ -10,7 +10,7 @@ const BRAND_NAME = "TextToSpeechH AI";
 function renderFaqDirectoryPage() {
   const eeatHeader = eeatGuidelines.getEeatHeaderHtml("FAQ Directory");
   const footerHtml = getSaaSFooterHtml();
-  const gaHtml = getGoogleAnalyticsHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml();
 
   const faqList = faqEngine.FAQ_REPOSITORY.slice(0, 30); // Render top 30 featured FAQs
 
@@ -26,7 +26,7 @@ function renderFaqDirectoryPage() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-${gaHtml}
+${trackingHtml}
   <title>Frequently Asked Questions (FAQ) | ${BRAND_NAME}</title>
   <meta name="description" content="Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.">
   <link rel="canonical" href="${DOMAIN}/faq">
