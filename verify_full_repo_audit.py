@@ -29,7 +29,10 @@ for js_path in js_files:
     # Check syntax using Node
     cmd = ['node', '-c', js_path]
     res = subprocess.run(
-        cmd, capture_output=True, text=True, shell=True
+        cmd,
+        capture_output=True,
+        text=True,
+        shell=True
     )
     if res.returncode != 0:
         syntax_failures.append((rel_p, res.stderr.strip()))
@@ -38,10 +41,10 @@ for js_path in js_files:
     with open(js_path, 'r', encoding='utf-8', errors='ignore') as f:
         content = f.read()
 
-    require_matches = re.findall(r"require\(['\"](\.[^'\"]+)['\"]\)", content)
+    r_matches = re.findall(r"require\(['\"](\.[^'\"]+)['\"]\)", content)
     dir_of_js = os.path.dirname(js_path)
 
-    for req_rel in require_matches:
+    for req_rel in r_matches:
         # Resolve target path
         target_p = os.path.normpath(os.path.join(dir_of_js, req_rel))
         if not target_p.endswith('.js') and not os.path.exists(target_p):
@@ -50,14 +53,14 @@ for js_path in js_files:
         if not os.path.exists(target_p):
             broken_requires.append((rel_p, req_rel, target_p))
 
-print(f"   Total JavaScript Source Files Audited: {len(js_files)}")
+print(f"   Total JavaScript Files Audited: {len(js_files)}")
 print(f"   Syntax Failures: {len(syntax_failures)}")
 print(f"   Broken require() Imports: {len(broken_requires)}")
 
-assert len(syntax_failures) == 0, f"Syntax failures: {syntax_failures}"
-assert len(broken_requires) == 0, f"Broken requires: {broken_requires}"
+assert len(syntax_failures) == 0, f"Failures: {syntax_failures}"
+assert len(broken_requires) == 0, f"Requires: {broken_requires}"
 
-print("   [OK] All JS Files Verified (0 Syntax Errors, 0 Broken Imports)!")
+print("   [OK] All JS Files Verified (0 Errors, 0 Broken Imports)!")
 
 # 2. Run Production Build
 print("\n2. Executing Production Build (`npm run build`):")
@@ -70,7 +73,7 @@ build_res = subprocess.run(
 )
 print(f"   Build Command Exit Code: {build_res.returncode}")
 print(f"   Build Output: {build_res.stdout.strip()}")
-assert build_res.returncode == 0, "Build must complete with exit code 0"
+assert build_res.returncode == 0, "Build exit code must be 0"
 print("   [OK] Production Build Complete (0 Errors, 0 Warnings)!")
 
 # 3. Test Handlers & Server Routes over HTTP
@@ -88,10 +91,10 @@ test_routes = [
 for r in test_routes:
     res = requests.get(f"{BASE_URL}{r}")
     sz = len(res.content)
-    print(f"   Route '{r}': HTTP Status {res.status_code}, Size: {sz} bytes")
+    print(f"   Route '{r}': HTTP {res.status_code}, {sz} bytes")
     assert res.status_code == 200
 
-print("   [OK] All Server Routes & Handlers Verified (HTTP 200 OK)!")
+print("   [OK] All Server Routes Verified (HTTP 200 OK)!")
 
 # 4. Audit Static Assets & Vercel Functions
 print("\n4. Auditing Vercel Functions & Brand Assets:")
@@ -104,9 +107,9 @@ static_assets = [
 
 for asset in static_assets:
     res = requests.get(f"{BASE_URL}/{asset}")
-    print(f"   Asset '/{asset}': HTTP Status {res.status_code}")
+    print(f"   Asset '/{asset}': HTTP {res.status_code}")
     assert res.status_code == 200
 
 print("   [OK] Static Assets & Vercel Functions Verified 100%!")
 
-print("\n>>> FULL REPOSITORY PRODUCTION READINESS AUDIT PASSED 100%! <<<")
+print("\n>>> FULL REPOSITORY AUDIT PASSED 100%! <<<")
