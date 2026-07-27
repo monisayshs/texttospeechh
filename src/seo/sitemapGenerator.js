@@ -2,7 +2,7 @@
  * TextToSpeechH AI - Production XML Sitemap Generator Module
  */
 
-const BASE_URL = 'https://texttospeechh.com';
+const BASE_URL = 'https://www.texttospeechh.com';
 
 const PUBLIC_ROUTES = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
@@ -10,9 +10,7 @@ const PUBLIC_ROUTES = [
   { url: '/contact', priority: '0.8', changefreq: 'monthly' },
   { url: '/privacy-policy', priority: '0.4', changefreq: 'yearly' },
   { url: '/terms', priority: '0.4', changefreq: 'yearly' },
-  { url: '/disclaimer', priority: '0.4', changefreq: 'yearly' },
-  { url: '/404', priority: '0.1', changefreq: 'yearly' },
-  { url: '/500', priority: '0.1', changefreq: 'yearly' }
+  { url: '/disclaimer', priority: '0.4', changefreq: 'yearly' }
 ];
 
 function generateXmlSitemap() {

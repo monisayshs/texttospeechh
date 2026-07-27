@@ -11,7 +11,7 @@ const ADS_PATH = path.join(PUBLIC_DIR, 'ads.txt');
 const SITEMAP_PATH = path.join(PUBLIC_DIR, 'sitemap.xml');
 const ROBOTS_PATH = path.join(PUBLIC_DIR, 'robots.txt');
 
-const TARGET_DOMAIN = 'https://texttospeechh.com';
+const TARGET_DOMAIN = 'https://www.texttospeechh.com';
 
 function runAudit() {
   console.log('=================================================');
@@ -31,7 +31,7 @@ function runAudit() {
     { name: '5. Disclaimer link present', test: html.includes('/disclaimer') },
     { name: '6. XML Sitemap present & valid', test: sitemap.includes(TARGET_DOMAIN) },
     { name: '7. Robots.txt present & valid', test: robots.includes(TARGET_DOMAIN) },
-    { name: '8. ads.txt file present at root', test: ads.includes('Website: https://texttospeechh.com') },
+    { name: '8. ads.txt file present at root', test: ads.includes('Website: https://www.texttospeechh.com') },
     { name: '9. Cookie Notice / GDPR Consent Banner present', test: html.includes('id="cookie-banner"') },
     { name: '10. Top Utility Navigation Bar present', test: html.includes('class="top-utility-bar"') },
     { name: '11. Multi-column SaaS Footer present', test: html.includes('class="saas-footer"') },

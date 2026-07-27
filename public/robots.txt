@@ -1,6 +1,6 @@
 # ==============================================================================
 # TextToSpeechH AI — Production Robots Exclusion Protocol
-# Website: https://texttospeechh.com
+# Website: https://www.texttospeechh.com
 # ==============================================================================
 
 User-agent: Googlebot
@@ -37,4 +37,4 @@ Disallow: /scratch/
 Disallow: /tmp/
 
 # Production XML Sitemap Reference
-Sitemap: https://texttospeechh.com/sitemap.xml
+Sitemap: https://www.texttospeechh.com/sitemap.xml
