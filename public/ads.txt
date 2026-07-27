@@ -1,6 +1,6 @@
 # ==============================================================================
 # TextToSpeechH AI — Production Google AdSense Authorized Digital Sellers (ads.txt)
-# Website: https://texttospeechh-ai.vercel.app
+# Website: https://texttospeechh.com
 # ==============================================================================
 # INSTRUCTIONS FOR PUBLISHER:
 # Once your Google AdSense application is approved, add your official Publisher ID below.

@@ -1,64 +1,37 @@
-const DOMAIN = "https://texttospeechh-ai.vercel.app";
+/**
+ * TextToSpeechH AI - Production XML Sitemap Generator Module
+ */
 
-function getSitemapXml() {
+const BASE_URL = 'https://texttospeechh.com';
+
+const PUBLIC_ROUTES = [
+  { url: '/', priority: '1.0', changefreq: 'daily' },
+  { url: '/about', priority: '0.8', changefreq: 'monthly' },
+  { url: '/contact', priority: '0.8', changefreq: 'monthly' },
+  { url: '/privacy-policy', priority: '0.4', changefreq: 'yearly' },
+  { url: '/terms', priority: '0.4', changefreq: 'yearly' },
+  { url: '/disclaimer', priority: '0.4', changefreq: 'yearly' },
+  { url: '/404', priority: '0.1', changefreq: 'yearly' },
+  { url: '/500', priority: '0.1', changefreq: 'yearly' }
+];
+
+function generateXmlSitemap() {
+  const dateStr = new Date().toISOString().split('T')[0];
+  const urlBlocks = PUBLIC_ROUTES.map(r => `  <url>
+    <loc>${BASE_URL}${r.url}</loc>
+    <lastmod>${dateStr}</lastmod>
+    <changefreq>${r.changefreq}</changefreq>
+    <priority>${r.priority}</priority>
+  </url>`).join('\n');
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${DOMAIN}/</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/about</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/contact</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/privacy-policy</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/terms</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/disclaimer</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/404</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
-  <url>
-    <loc>${DOMAIN}/500</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
+${urlBlocks}
 </urlset>`;
 }
 
 module.exports = {
-  DOMAIN,
-  getSitemapXml,
-  getSitemapIndexXml: getSitemapXml,
-  getSitemapMainXml: getSitemapXml,
-  getSitemapProgrammaticXml: getSitemapXml,
-  getSitemapLegalXml: getSitemapXml
+  generateXmlSitemap,
+  BASE_URL,
+  PUBLIC_ROUTES
 };

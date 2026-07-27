@@ -1,10 +1,8 @@
 # ==============================================================================
-# TextToSpeechH AI — Production SEO robots.txt
-# Website: https://texttospeechh-ai.vercel.app
-# Official Sitemap: https://texttospeechh-ai.vercel.app/sitemap.xml
+# TextToSpeechH AI — Production Robots Exclusion Protocol
+# Website: https://texttospeechh.com
 # ==============================================================================
 
-# Allow Googlebot
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
@@ -16,7 +14,6 @@ Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
 
-# Allow Bingbot
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
@@ -28,7 +25,6 @@ Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
 
-# Default Policy for All Search Engines & Web Crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -40,5 +36,5 @@ Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
 
-# Official XML Sitemap Location
-Sitemap: https://texttospeechh-ai.vercel.app/sitemap.xml
+# Production XML Sitemap Reference
+Sitemap: https://texttospeechh.com/sitemap.xml

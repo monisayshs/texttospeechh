@@ -1,5 +1,18 @@
 {
   "version": 2,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.texttospeechh.com"
+        }
+      ],
+      "destination": "https://texttospeechh.com/:path*",
+      "permanent": true
+    }
+  ],
   "routes": [
     { "src": "/api/contact", "dest": "/api/contact.js" },
     { "src": "/api/generate", "dest": "/api/generate.js" },
