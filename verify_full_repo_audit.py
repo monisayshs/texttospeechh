@@ -25,25 +25,28 @@ syntax_failures = []
 
 for js_path in js_files:
     rel_p = os.path.relpath(js_path, PROJECT_DIR)
-    
+
     # Check syntax using Node
-    res = subprocess.run(['node', '-c', js_path], capture_output=True, text=True, shell=True)
+    cmd = ['node', '-c', js_path]
+    res = subprocess.run(
+        cmd, capture_output=True, text=True, shell=True
+    )
     if res.returncode != 0:
         syntax_failures.append((rel_p, res.stderr.strip()))
-    
+
     # Check require() paths
     with open(js_path, 'r', encoding='utf-8', errors='ignore') as f:
         content = f.read()
-        
+
     require_matches = re.findall(r"require\(['\"](\.[^'\"]+)['\"]\)", content)
     dir_of_js = os.path.dirname(js_path)
-    
+
     for req_rel in require_matches:
         # Resolve target path
         target_p = os.path.normpath(os.path.join(dir_of_js, req_rel))
         if not target_p.endswith('.js') and not os.path.exists(target_p):
             target_p += '.js'
-        
+
         if not os.path.exists(target_p):
             broken_requires.append((rel_p, req_rel, target_p))
 
@@ -51,14 +54,20 @@ print(f"   Total JavaScript Source Files Audited: {len(js_files)}")
 print(f"   Syntax Failures: {len(syntax_failures)}")
 print(f"   Broken require() Imports: {len(broken_requires)}")
 
-assert len(syntax_failures) == 0, f"Syntax failures found: {syntax_failures}"
-assert len(broken_requires) == 0, f"Broken requires found: {broken_requires}"
+assert len(syntax_failures) == 0, f"Syntax failures: {syntax_failures}"
+assert len(broken_requires) == 0, f"Broken requires: {broken_requires}"
 
-print("   [OK] All JavaScript Source Files Verified (0 Syntax Errors, 0 Broken Imports)!")
+print("   [OK] All JS Files Verified (0 Syntax Errors, 0 Broken Imports)!")
 
 # 2. Run Production Build
 print("\n2. Executing Production Build (`npm run build`):")
-build_res = subprocess.run(['npm', 'run', 'build'], capture_output=True, text=True, cwd=PROJECT_DIR, shell=True)
+build_res = subprocess.run(
+    ['npm', 'run', 'build'],
+    capture_output=True,
+    text=True,
+    cwd=PROJECT_DIR,
+    shell=True
+)
 print(f"   Build Command Exit Code: {build_res.returncode}")
 print(f"   Build Output: {build_res.stdout.strip()}")
 assert build_res.returncode == 0, "Build must complete with exit code 0"
@@ -78,7 +87,8 @@ test_routes = [
 
 for r in test_routes:
     res = requests.get(f"{BASE_URL}{r}")
-    print(f"   Route '{r}': HTTP Status {res.status_code}, Size: {len(res.content)} bytes")
+    sz = len(res.content)
+    print(f"   Route '{r}': HTTP Status {res.status_code}, Size: {sz} bytes")
     assert res.status_code == 200
 
 print("   [OK] All Server Routes & Handlers Verified (HTTP 200 OK)!")
