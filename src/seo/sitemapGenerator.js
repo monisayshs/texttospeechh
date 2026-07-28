@@ -20,9 +20,17 @@ const BLOG_ROUTES = [
   { url: '/blog/text-to-speech-audiobook-creation', priority: '0.8', changefreq: 'monthly' }
 ];
 
+const KEYWORD_ROUTES = [
+  { url: '/keyword/ai-text-to-speech', priority: '0.7', changefreq: 'monthly' },
+  { url: '/keyword/free-text-to-speech', priority: '0.7', changefreq: 'monthly' },
+  { url: '/keyword/online-text-to-speech', priority: '0.7', changefreq: 'monthly' },
+  { url: '/keyword/text-to-voice', priority: '0.7', changefreq: 'monthly' },
+  { url: '/keyword/voice-generator', priority: '0.7', changefreq: 'monthly' }
+];
+
 function generateXmlSitemap() {
   const dateStr = new Date().toISOString().split('T')[0];
-  const allRoutes = [...PUBLIC_ROUTES, ...BLOG_ROUTES];
+  const allRoutes = [...PUBLIC_ROUTES, ...BLOG_ROUTES, ...KEYWORD_ROUTES];
   const urlBlocks = allRoutes.map(r => `  <url>
     <loc>${BASE_URL}${r.url}</loc>
     <lastmod>${dateStr}</lastmod>

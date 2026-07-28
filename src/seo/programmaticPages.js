@@ -114,6 +114,56 @@ const PROGRAMMATIC_ROUTER = {
       <p>${BRAND_NAME} uses modern neural TTS engines to craft clear, expressive voices for any project.</p>
     `
   },
+  "keyword/ai-text-to-speech": {
+    title: `AI Text to Speech Generator | ${BRAND_NAME}`,
+    h1: `AI Text to Speech Generator`,
+    metaDesc: `Convert written text into realistic AI speech with ${BRAND_NAME}. Free neural text-to-speech with natural voices and MP3 downloads.`,
+    content: `
+      <h2>AI-Powered Text to Speech Conversion</h2>
+      <p><a href="${DOMAIN}">${BRAND_NAME}</a> uses advanced neural AI to transform your written content into natural-sounding speech. Whether you need a voiceover for a video, narration for a presentation, or audio for accessibility, our AI text-to-speech engine delivers studio-quality results in seconds.</p>
+      <p>Unlike traditional TTS systems that sound robotic, our AI models understand context, punctuation, and natural speech patterns. The result is audio that listeners cannot distinguish from a human recording.</p>
+    `
+  },
+  "keyword/free-text-to-speech": {
+    title: `Free Text to Speech Converter | ${BRAND_NAME}`,
+    h1: `Free Text to Speech Converter`,
+    metaDesc: `Convert text to speech for free using ${BRAND_NAME}. No credit card required. Natural AI voices, MP3 downloads, and support for long scripts.`,
+    content: `
+      <h2>Free Text to Speech for Everyone</h2>
+      <p><a href="${DOMAIN}">${BRAND_NAME}</a> offers completely free text-to-speech conversion with no hidden costs or subscription fees. Paste your text, choose a voice, and download your audio instantly.</p>
+      <p>Free TTS should not mean low quality. Our neural voices produce natural intonation, rhythm, and clarity - making them suitable for professional content creation, education, and accessibility.</p>
+    `
+  },
+  "keyword/online-text-to-speech": {
+    title: `Online Text to Speech Converter | ${BRAND_NAME}`,
+    h1: `Online Text to Speech Converter`,
+    metaDesc: `Use ${BRAND_NAME} online to convert text to speech instantly from any browser. No downloads or installations required. Free and fast.`,
+    content: `
+      <h2>Online Text to Speech, Instant Results</h2>
+      <p>No software to install. No plugins to configure. <a href="${DOMAIN}">${BRAND_NAME}</a> runs entirely in your browser, letting you convert text to natural speech from any device with an internet connection.</p>
+      <p>Our online TTS engine processes scripts quickly and delivers high-bitrate MP3 downloads that work with any video editor or media player.</p>
+    `
+  },
+  "keyword/text-to-voice": {
+    title: `Text to Voice Converter | ${BRAND_NAME}`,
+    h1: `Text to Voice Converter`,
+    metaDesc: `Convert text to realistic voice audio online using ${BRAND_NAME}. Free neural voice generator with natural male and female voices.`,
+    content: `
+      <h2>Turn Your Text into Natural Voice Audio</h2>
+      <p>With <a href="${DOMAIN}">${BRAND_NAME}</a>, converting text to voice is simple. Type or paste your script, select from multiple neural voices, and generate lifelike audio instantly.</p>
+      <p>Our text-to-voice technology supports multiple languages, emotional intonation, and natural pacing — making it ideal for content creators, educators, and businesses.</p>
+    `
+  },
+  "keyword/voice-generator": {
+    title: `AI Voice Generator Online Free | ${BRAND_NAME}`,
+    h1: `AI Voice Generator Online Free`,
+    metaDesc: `Generate realistic AI voices for free with ${BRAND_NAME}. Natural neural TTS with male and female voices. MP3 download. No signup required.`,
+    content: `
+      <h2>Free AI Voice Generator for Any Project</h2>
+      <p><a href="${DOMAIN}">${BRAND_NAME}</a> is a powerful AI voice generator that produces natural-sounding speech from text. Choose from a library of neural voices, adjust pacing, and download professional-quality MP3 audio.</p>
+      <p>Perfect for YouTube voiceovers, podcast narration, e-learning content, commercial ads, and accessibility tools. All free, no credit card needed.</p>
+    `
+  },
 
   // --- 12 Global Language Pages ---
   "language/english": {
