@@ -25,31 +25,11 @@ function renderSeoPage(pageData, pathSlug) {
   const trackingHtml = getAllTrackingSnippetsHtml();
 
   return `<!DOCTYPE html>
-<html lang="en" data-theme="system">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Prevent FOUC Theme Script -->
-  <script>
-    (function() {
-      var saved = localStorage.getItem('theme_preference') || 'system';
-      var theme = saved;
-      if (saved === 'system') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
-
 ${trackingHtml}
-
-  <!-- Supabase JS Client SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
-  </script>
-
   <title>${pageData.title}</title>
   <meta name="description" content="${pageData.metaDesc}">
   <meta name="robots" content="index, follow">
@@ -77,52 +57,37 @@ ${trackingHtml}
   <script type="application/ld+json">${faqSchema}</script>
   <script type="application/ld+json">${breadcrumbSchema}</script>
 
-  <link rel="stylesheet" href="/style.css?v=5.0.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Ambient Particle Background -->
-  <div class="particle-background" id="particle-bg"></div>
-
   <!-- Top Utility Navigation Bar -->
   <div class="top-utility-bar">
     <nav class="top-utility-nav" aria-label="Top Utility Navigation">
       <ul>
-        <div class="top-nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/disclaimer">Disclaimer</a></li>
-        </div>
-        <!-- Light / Dark / System Theme Switcher -->
-        <div class="theme-selector-group">
-          <select id="theme-select" class="theme-select" aria-label="Select Theme Mode">
-            <option value="system">💻 System</option>
-            <option value="light">☀️ Light</option>
-            <option value="dark">🌙 Dark</option>
-          </select>
-        </div>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
       </ul>
     </nav>
   </div>
 
-  <div class="legal-container">
-    <header class="page-header">
+  <div class="app-container">
+    <header class="app-header">
       <div class="logo-badge">
-        <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
-          <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
-          <h1>${pageData.h1}</h1>
+        <a href="/" style="text-decoration:none; color:inherit;">
+          <h1>TextToSpeechH <span class="accent-text">AI</span></h1>
         </a>
       </div>
-      <p class="subtitle">${pageData.metaDesc}</p>
+      <p class="subtitle">Convert text into realistic AI voices instantly using ${BRAND_NAME}</p>
     </header>
 
-    <main class="main-card glass-panel">
-      <div class="page-body-content">
+    <main class="main-card glass-panel" style="margin-bottom:30px;">
+      <h1 style="font-size:2rem; margin-bottom:15px;" class="accent-text">${pageData.h1}</h1>
+      <div class="page-body-content" style="line-height:1.7; font-size:1rem; color:#d0d7de;">
         ${pageData.content}
       </div>
       <div style="margin-top:30px;">
@@ -132,36 +97,45 @@ ${trackingHtml}
 
     ${footerHtml}
   </div>
-
-  <!-- Floating Chat & Support Trigger Button -->
-  <button type="button" class="floating-chat-trigger" id="floating-chat-trigger" aria-label="Support & Feedback Chat">
-    <span>💬</span> Support & Feedback
-  </button>
-
-  <!-- Floating Chat & Support Widget Flyout Modal -->
-  <div class="chat-widget-modal hidden" id="chat-widget-modal">
-    <div class="chat-widget-header">
-      <h3>💬 Support & Feedback</h3>
-      <button type="button" class="close-modal-btn" id="close-chat-btn">✖</button>
-    </div>
-
-    <div class="chat-category-tabs" id="chat-category-tabs">
-      <button type="button" class="chat-tab active" data-category="feedback">💬 Feedback</button>
-      <button type="button" class="chat-tab" data-category="bug">🐛 Bug</button>
-      <button type="button" class="chat-tab" data-category="feature">💡 Feature</button>
-      <button type="button" class="chat-tab" data-category="support">🎧 Support</button>
-    </div>
-
-    <input type="text" id="chat-name-input" class="chat-input-field" placeholder="Your Name (Optional)">
-    <input type="email" id="chat-email-input" class="chat-input-field" placeholder="Your Email (Optional)">
-    <textarea id="chat-message-input" class="chat-input-field" rows="4" placeholder="How can we help you or improve TextToSpeechH AI?"></textarea>
-
-    <button type="button" class="chat-submit-btn" id="chat-submit-btn">Send Message</button>
-  </div>
-
-  <script src="/app.js?v=5.0.0"></script>
 </body>
 </html>`;
 }
 
-module.exports = { renderSeoPage };
+module.exports = async (req, res) => {
+  const reqUrl = req.url.split('?')[0].replace(/^\/+|\/+$/g, '');
+
+  // Check programmatic pages
+  if (PROGRAMMATIC_ROUTER[reqUrl]) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.end(renderSeoPage(PROGRAMMATIC_ROUTER[reqUrl], reqUrl));
+    return true;
+  }
+
+  // Check content hub articles
+  if (CONTENT_HUB_ARTICLES[reqUrl]) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.end(renderSeoPage(CONTENT_HUB_ARTICLES[reqUrl], reqUrl));
+    return true;
+  }
+
+  // Check legal & trust pages with alias resolution
+  let legalKey = reqUrl;
+  if (reqUrl === 'privacy-policy' || reqUrl === 'privacy') legalKey = 'privacy';
+  if (reqUrl === 'terms-of-service' || reqUrl === 'terms') legalKey = 'terms';
+  if (reqUrl === 'contact-support' || reqUrl === 'contact' || reqUrl === 'support') legalKey = 'contact';
+  if (reqUrl === 'about-us' || reqUrl === 'about') legalKey = 'about';
+  if (reqUrl === 'cookie-policy' || reqUrl === 'cookie') legalKey = 'cookie';
+  if (reqUrl === 'refund-policy' || reqUrl === 'refund') legalKey = 'refund';
+  if (reqUrl === 'community-guidelines' || reqUrl === 'community') legalKey = 'community';
+  if (reqUrl === 'disclaimer') legalKey = 'disclaimer';
+  if (reqUrl === 'dmca') legalKey = 'dmca';
+  if (reqUrl === 'accessibility') legalKey = 'accessibility';
+
+  if (LEGAL_PAGES[legalKey]) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.end(renderSeoPage(LEGAL_PAGES[legalKey], reqUrl));
+    return true;
+  }
+
+  return false;
+};

@@ -621,38 +621,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Light / Dark / System Theme Manager ---
-  const themeSelect = document.getElementById('theme-select');
-  
-  function applyTheme(preference) {
-    let effectiveTheme = preference;
-    if (preference === 'system') {
-      effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.setAttribute('data-theme', effectiveTheme);
-    localStorage.setItem('theme_preference', preference);
-    if (themeSelect && themeSelect.value !== preference) {
-      themeSelect.value = preference;
-    }
-  }
+  // --- Floating Feedback Modal & Supabase Integration ---
+  const feedbackTrigger = document.getElementById('floating-feedback-trigger');
+  const feedbackModal = document.getElementById('feedback-modal');
+  const closeFeedbackBtn = document.getElementById('close-feedback-btn');
+  const submitFeedbackBtn = document.getElementById('submit-feedback-btn');
+  const googleAuthBtn = document.getElementById('google-auth-btn');
+  const starRating = document.getElementById('star-rating');
+  const feedbackText = document.getElementById('feedback-text');
+  const authStepContainer = document.getElementById('auth-step-container');
+  const feedbackFormContainer = document.getElementById('feedback-form-container');
+  const userInfoText = document.getElementById('user-info-text');
 
-  const savedPreference = localStorage.getItem('theme_preference') || 'system';
-  applyTheme(savedPreference);
+  let selectedRating = 5;
+  let currentSupabaseUser = null;
 
-  if (themeSelect) {
-    themeSelect.addEventListener('change', (e) => {
-      applyTheme(e.target.value);
-    });
-  }
-
-  // System color scheme change listener
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if ((localStorage.getItem('theme_preference') || 'system') === 'system') {
-      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    }
-  });
-
-  // --- Supabase Client Initialization ---
+  // Initialize Supabase Client for https://eghpuhwywutglbtqheda.supabase.co
   const SUPABASE_URL = window.SUPABASE_URL || 'https://eghpuhwywutglbtqheda.supabase.co';
   const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnaHB1aHd5d3V0Z2xidHFoZWRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzI1MTIwMDAsImV4cCI6MjAyNTAxMjAwMH0.mockKey';
   
@@ -665,59 +649,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Floating Chat & Support Widget (Un-gated Feedback, Bugs, Features, Support) ---
-  const chatTrigger = document.getElementById('floating-chat-trigger');
-  const chatModal = document.getElementById('chat-widget-modal');
-  const closeChatBtn = document.getElementById('close-chat-btn');
-  const chatCategoryTabs = document.getElementById('chat-category-tabs');
-  const chatNameInput = document.getElementById('chat-name-input');
-  const chatEmailInput = document.getElementById('chat-email-input');
-  const chatMessageInput = document.getElementById('chat-message-input');
-  const chatSubmitBtn = document.getElementById('chat-submit-btn');
+  function updateAuthUI(user) {
+    currentSupabaseUser = user;
+    if (user) {
+      if (authStepContainer) authStepContainer.classList.add('hidden');
+      if (feedbackFormContainer) feedbackFormContainer.classList.remove('hidden');
+      if (userInfoText) userInfoText.innerText = `Logged in as: ${user.email || user.user_metadata?.full_name || 'Verified User'}`;
+    } else {
+      if (authStepContainer) authStepContainer.classList.remove('hidden');
+      if (feedbackFormContainer) feedbackFormContainer.classList.add('hidden');
+    }
+  }
 
-  let activeCategory = 'feedback';
+  // Check active Supabase session
+  if (supabaseClient && supabaseClient.auth) {
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) updateAuthUI(session.user);
+    }).catch(() => null);
 
-  if (chatTrigger && chatModal) {
-    chatTrigger.addEventListener('click', () => {
-      chatModal.classList.toggle('hidden');
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      updateAuthUI(session?.user || null);
     });
   }
 
-  if (closeChatBtn && chatModal) {
-    closeChatBtn.addEventListener('click', () => {
-      chatModal.classList.add('hidden');
+  if (feedbackTrigger && feedbackModal) {
+    feedbackTrigger.addEventListener('click', () => {
+      feedbackModal.classList.remove('hidden');
     });
   }
 
-  // Category Tab Selection
-  if (chatCategoryTabs) {
-    const tabs = chatCategoryTabs.querySelectorAll('.chat-tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        activeCategory = tab.getAttribute('data-category') || 'feedback';
+  if (closeFeedbackBtn && feedbackModal) {
+    closeFeedbackBtn.addEventListener('click', () => {
+      feedbackModal.classList.add('hidden');
+    });
+
+    feedbackModal.addEventListener('click', (e) => {
+      if (e.target === feedbackModal) feedbackModal.classList.add('hidden');
+    });
+  }
+
+  // Star Rating Selection
+  if (starRating) {
+    const stars = starRating.querySelectorAll('span');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-rating') || '5', 10);
+        stars.forEach(s => {
+          const r = parseInt(s.getAttribute('data-rating') || '5', 10);
+          if (r <= selectedRating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
       });
     });
   }
 
-  // Send Support / Chat Message to Supabase Table `support_messages`
-  if (chatSubmitBtn) {
-    chatSubmitBtn.addEventListener('click', async () => {
-      const msg = chatMessageInput ? chatMessageInput.value.trim() : '';
+  // Google OAuth Sign-in Trigger via Supabase or Local Demo Auth
+  if (googleAuthBtn) {
+    googleAuthBtn.addEventListener('click', async () => {
+      if (supabaseClient && supabaseClient.auth && window.location.hostname !== 'localhost') {
+        try {
+          await supabaseClient.auth.signInWithOAuth({
+            provider: 'google',
+            options: { redirectTo: window.location.href }
+          });
+          return;
+        } catch (e) {
+          console.warn('[Supabase OAuth]', e.message);
+        }
+      }
+      
+      // Fallback/Demo Auth step if OAuth credentials not configured in env
+      const mockUser = {
+        id: 'user_demo_123',
+        email: 'verified.user@gmail.com',
+        user_metadata: { full_name: 'Verified User' }
+      };
+      updateAuthUI(mockUser);
+    });
+  }
+
+  // Submit Feedback to Supabase Table `feedback`
+  if (submitFeedbackBtn) {
+    submitFeedbackBtn.addEventListener('click', async () => {
+      const msg = feedbackText ? feedbackText.value.trim() : '';
       if (!msg) {
-        alert('Please enter your message before sending.');
+        alert('Please enter your feedback before submitting.');
         return;
       }
 
-      chatSubmitBtn.disabled = true;
-      chatSubmitBtn.innerText = 'Sending...';
+      submitFeedbackBtn.disabled = true;
+      submitFeedbackBtn.innerText = 'Submitting...';
 
-      const supportPayload = {
-        category: activeCategory,
-        name: chatNameInput ? chatNameInput.value.trim() : null,
-        email: chatEmailInput ? chatEmailInput.value.trim() : null,
-        message: msg,
+      const feedbackRecord = {
+        user_id: currentSupabaseUser ? currentSupabaseUser.id : 'anon_user',
+        rating: selectedRating,
+        feedback: msg,
         page_url: window.location.href,
         browser: navigator.userAgent,
         created_at: new Date().toISOString()
@@ -726,20 +755,20 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         if (supabaseClient) {
           const { error } = await supabaseClient
-            .from('support_messages')
-            .insert([supportPayload]);
+            .from('feedback')
+            .insert([feedbackRecord]);
           if (error) console.warn('[Supabase Insert Warning]', error.message);
         }
       } catch (err) {
-        console.log('[Supabase Support Insert Error]', err);
+        console.log('[Supabase Insert Error]', err);
       }
 
-      chatSubmitBtn.innerText = '✅ Message Sent!';
+      submitFeedbackBtn.innerText = '✅ Thank You!';
       setTimeout(() => {
-        if (chatModal) chatModal.classList.add('hidden');
-        chatSubmitBtn.disabled = false;
-        chatSubmitBtn.innerText = 'Send Message';
-        if (chatMessageInput) chatMessageInput.value = '';
+        if (feedbackModal) feedbackModal.classList.add('hidden');
+        submitFeedbackBtn.disabled = false;
+        submitFeedbackBtn.innerText = 'Submit Feedback';
+        if (feedbackText) feedbackText.value = '';
       }, 1500);
     });
   }
