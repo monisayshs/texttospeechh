@@ -13,9 +13,17 @@ const PUBLIC_ROUTES = [
   { url: '/disclaimer', priority: '0.4', changefreq: 'yearly' }
 ];
 
+const BLOG_ROUTES = [
+  { url: '/blog/text-to-speech-complete-guide', priority: '0.9', changefreq: 'monthly' },
+  { url: '/blog/ultimate-ai-texttospeechh.com-guide', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/ai-voiceover-for-youtube-shorts', priority: '0.8', changefreq: 'monthly' },
+  { url: '/blog/text-to-speech-audiobook-creation', priority: '0.8', changefreq: 'monthly' }
+];
+
 function generateXmlSitemap() {
   const dateStr = new Date().toISOString().split('T')[0];
-  const urlBlocks = PUBLIC_ROUTES.map(r => `  <url>
+  const allRoutes = [...PUBLIC_ROUTES, ...BLOG_ROUTES];
+  const urlBlocks = allRoutes.map(r => `  <url>
     <loc>${BASE_URL}${r.url}</loc>
     <lastmod>${dateStr}</lastmod>
     <changefreq>${r.changefreq}</changefreq>

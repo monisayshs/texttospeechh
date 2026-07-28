@@ -19,6 +19,9 @@ function renderSeoPage(pageData, pathSlug) {
     { name: "Home", url: DOMAIN },
     { name: pageData.h1, url: canonicalUrl }
   ]));
+  const articleSchema = pathSlug.startsWith("blog/")
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title, pageData.metaDesc, canonicalUrl))}</script>\n  `
+    : "";
 
   const hreflangTags = hreflangMap.getHreflangHtmlTags();
   const footerHtml = getSaaSFooterHtml();
@@ -68,6 +71,7 @@ ${trackingHtml}
   <script type="application/ld+json">${softwareSchema}</script>
   <script type="application/ld+json">${faqSchema}</script>
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  ${articleSchema}
 
   <link rel="stylesheet" href="/style.css?v=8.0.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">

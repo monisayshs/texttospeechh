@@ -121,6 +121,37 @@ function getBreadcrumbSchema(items) {
   };
 }
 
+function getArticleSchema(title, description, url, datePublished, dateModified) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": url,
+    "datePublished": datePublished || "2026-07-29",
+    "dateModified": dateModified || "2026-07-29",
+    "author": {
+      "@type": "Organization",
+      "name": BRAND_NAME,
+      "url": DOMAIN
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": BRAND_NAME,
+      "url": DOMAIN,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${DOMAIN}/logo.svg`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
+    "image": `${DOMAIN}/og-image.png`
+  };
+}
+
 module.exports = {
   DOMAIN,
   BRAND_NAME,
@@ -131,5 +162,6 @@ module.exports = {
   getWebSiteSchema,
   getSoftwareApplicationSchema,
   getFAQSchema,
-  getBreadcrumbSchema
+  getBreadcrumbSchema,
+  getArticleSchema
 };
