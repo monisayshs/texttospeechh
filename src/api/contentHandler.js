@@ -12,12 +12,12 @@ function renderFaqDirectoryPage() {
   const footerHtml = getSaaSFooterHtml();
   const trackingHtml = getAllTrackingSnippetsHtml();
 
-  const faqList = faqEngine.FAQ_REPOSITORY.slice(0, 30); // Render top 30 featured FAQs
+  const faqList = faqEngine.FAQ_REPOSITORY.slice(0, 30);
 
   const faqItemsHtml = faqList.map(f => `
-    <div class="faq-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:20px; border-radius:12px; margin-bottom:15px;">
-      <h3 style="font-size:1.1rem; color:#00f2fe; margin-bottom:8px;">${f.q}</h3>
-      <p style="font-size:0.95rem; color:#d0d7de; line-height:1.6;">${f.a}</p>
+    <div class="feature-card glass-panel" style="margin-bottom:16px;">
+      <h3 style="font-size:1.15rem; color:var(--accent-blue); margin-bottom:8px;">${f.q}</h3>
+      <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6;">${f.a}</p>
     </div>
   `).join('');
 
@@ -26,15 +26,37 @@ function renderFaqDirectoryPage() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 ${trackingHtml}
+
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
+  </script>
+
   <title>Frequently Asked Questions (FAQ) | ${BRAND_NAME}</title>
   <meta name="description" content="Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.">
   <link rel="canonical" href="${DOMAIN}/faq">
-  <link rel="stylesheet" href="/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon & PWA Assets -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/style.css?v=7.0.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Top Utility Navigation Bar -->
+  <!-- Ambient Particle Background -->
+  <div class="particle-background" id="particle-bg"></div>
+
+  <!-- Sticky Top Utility Navigation Bar -->
   <div class="top-utility-bar">
     <nav class="top-utility-nav" aria-label="Top Utility Navigation">
       <ul>
@@ -49,31 +71,44 @@ ${trackingHtml}
   </div>
 
   <div class="app-container">
+    <!-- Header with Official Logo Emblem matching Home Page -->
     <header class="app-header">
-      <div class="logo-badge">
-        <a href="/" style="text-decoration:none; color:inherit;">
-          <h1>TextToSpeechH <span class="accent-text">AI</span></h1>
-        </a>
+      <div class="header-top-bar">
+        <div class="logo-badge">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+            <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
+            <h1>Frequently Asked Questions</h1>
+          </a>
+        </div>
+        <div class="status-pill-group">
+          <span class="status-pill provider-pill">Engine: Kokoro / Edge Active</span>
+          <span class="status-pill">FAQ & Help Hub</span>
+        </div>
       </div>
-      <p class="subtitle">Master FAQ & Help Directory</p>
+      <p class="subtitle">Find comprehensive answers regarding speech synthesis, audio exports, document uploads, and licensing.</p>
     </header>
 
-    <main class="main-card glass-panel" style="margin-bottom:30px;">
+    <main class="main-card glass-panel">
       ${eeatHeader}
-      <h1 style="font-size:2rem; margin-bottom:15px;" class="accent-text">Frequently Asked Questions</h1>
-      <p style="color:#8e9bb0; margin-bottom:25px;">Explore comprehensive answers regarding speech synthesis, audio exports, document uploads, and licensing.</p>
       
-      <div class="faq-list">
+      <div class="faq-list" style="margin-top:20px;">
         ${faqItemsHtml}
       </div>
 
-      <div style="margin-top:30px;">
-        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Try ${BRAND_NAME} Voice Generator</a>
+      <div style="margin-top:32px;">
+        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Return to Voice Generator</a>
       </div>
     </main>
 
     ${footerHtml}
   </div>
+
+  <!-- Floating Feedback Trigger Button -->
+  <button type="button" class="floating-feedback-trigger" id="floating-feedback-trigger" aria-label="Give Feedback">
+    <span>💬</span> Feedback
+  </button>
+
+  <script src="/app.js?v=7.0.0"></script>
 </body>
 </html>`;
 }
@@ -81,20 +116,44 @@ ${trackingHtml}
 function renderGuidePage(guideData, slug) {
   const eeatHeader = eeatGuidelines.getEeatHeaderHtml(guideData.h1);
   const footerHtml = getSaaSFooterHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml();
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+${trackingHtml}
+
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
+  </script>
+
   <title>${guideData.title}</title>
   <meta name="description" content="${guideData.metaDesc}">
   <link rel="canonical" href="${DOMAIN}/${slug}">
-  <link rel="stylesheet" href="/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon & PWA Assets -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="stylesheet" href="/style.css?v=7.0.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Top Utility Navigation Bar -->
+  <!-- Ambient Particle Background -->
+  <div class="particle-background" id="particle-bg"></div>
+
+  <!-- Sticky Top Utility Navigation Bar -->
   <div class="top-utility-bar">
     <nav class="top-utility-nav" aria-label="Top Utility Navigation">
       <ul>
@@ -109,46 +168,48 @@ function renderGuidePage(guideData, slug) {
   </div>
 
   <div class="app-container">
+    <!-- Header with Official Logo Emblem matching Home Page -->
     <header class="app-header">
-      <div class="logo-badge">
-        <a href="/" style="text-decoration:none; color:inherit;">
-          <h1>TextToSpeechH <span class="accent-text">AI</span></h1>
-        </a>
+      <div class="header-top-bar">
+        <div class="logo-badge">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+            <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
+            <h1>${guideData.h1}</h1>
+          </a>
+        </div>
+        <div class="status-pill-group">
+          <span class="status-pill provider-pill">Engine: Kokoro / Edge Active</span>
+          <span class="status-pill">Guide Article</span>
+        </div>
       </div>
-      <p class="subtitle">Educational Resource & Technical Guide</p>
+      <p class="subtitle">${guideData.metaDesc}</p>
     </header>
 
-    <main class="main-card glass-panel" style="margin-bottom:30px;">
+    <main class="main-card glass-panel">
       ${eeatHeader}
-      <h1 style="font-size:2rem; margin-bottom:15px;" class="accent-text">${guideData.h1}</h1>
-      <div class="page-body-content" style="line-height:1.7; font-size:1rem; color:#d0d7de;">
+      <div class="page-body-content" style="margin-top:20px;">
         ${guideData.content}
       </div>
-      <div style="margin-top:30px;">
-        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Try ${BRAND_NAME} Voice Generator</a>
+
+      <div style="margin-top:32px;">
+        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Return to Voice Generator</a>
       </div>
     </main>
 
     ${footerHtml}
   </div>
+
+  <!-- Floating Feedback Trigger Button -->
+  <button type="button" class="floating-feedback-trigger" id="floating-feedback-trigger" aria-label="Give Feedback">
+    <span>💬</span> Feedback
+  </button>
+
+  <script src="/app.js?v=7.0.0"></script>
 </body>
 </html>`;
 }
 
-module.exports = async (req, res) => {
-  const reqUrl = req.url.split('?')[0].replace(/^\/+|\/+$/g, '');
-
-  if (reqUrl === 'faq') {
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(renderFaqDirectoryPage());
-    return true;
-  }
-
-  if (educationalGuides.EDUCATIONAL_GUIDES[reqUrl]) {
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(renderGuidePage(educationalGuides.EDUCATIONAL_GUIDES[reqUrl], reqUrl));
-    return true;
-  }
-
-  return false;
+module.exports = {
+  renderFaqDirectoryPage,
+  renderGuidePage
 };
