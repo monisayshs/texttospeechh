@@ -24,11 +24,24 @@ CREATE TABLE IF NOT EXISTS public.feedback (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
 );
 
--- 3. Enable Row Level Security (RLS)
+-- 3. Create Support & Chat Messages Table (Un-gated Feedback, Bug Reports, Features, Support)
+CREATE TABLE IF NOT EXISTS public.support_messages (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  category TEXT DEFAULT 'feedback' NOT NULL,
+  name TEXT,
+  email TEXT,
+  message TEXT NOT NULL,
+  page_url TEXT,
+  browser TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+);
+
+-- 4. Enable Row Level Security (RLS)
 ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.feedback ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.support_messages ENABLE ROW LEVEL SECURITY;
 
--- 4. RLS Policies for Profiles Table
+-- 5. RLS Policies for Profiles Table
 CREATE POLICY "Public profiles are viewable by everyone."
   ON public.profiles FOR SELECT
   USING (true);
@@ -41,23 +54,25 @@ CREATE POLICY "Users can update their own profile."
   ON public.profiles FOR UPDATE
   USING (auth.uid() = id);
 
--- 5. RLS Policies for Feedback Table
--- Only authenticated users can insert feedback
+-- 6. RLS Policies for Feedback Table
 CREATE POLICY "Authenticated users can insert feedback."
   ON public.feedback FOR INSERT
   WITH CHECK (auth.role() = 'authenticated' AND auth.uid() = user_id);
 
--- Users can view their own feedback
 CREATE POLICY "Users can view their own feedback."
   ON public.feedback FOR SELECT
   USING (auth.uid() = user_id);
 
--- Users can edit their own feedback
-CREATE POLICY "Users can update their own feedback."
-  ON public.feedback FOR UPDATE
-  USING (auth.uid() = user_id);
+-- 7. RLS Policies for Support Messages Table
+CREATE POLICY "Anyone can insert support messages"
+  ON public.support_messages FOR INSERT
+  WITH CHECK (true);
 
--- 6. Automatically Create Profile on Auth User Signup Trigger
+CREATE POLICY "Anyone can select support messages"
+  ON public.support_messages FOR SELECT
+  USING (true);
+
+-- 8. Automatically Create Profile on Auth User Signup Trigger
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
