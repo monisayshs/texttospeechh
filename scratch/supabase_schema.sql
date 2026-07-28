@@ -1,5 +1,6 @@
 -- ====================================================================
 -- TextToSpeechH AI — Supabase Database DDL Schema Setup
+-- Project URL: https://eghpuhwywutglbtqheda.supabase.co
 -- Domain: https://texttospeechh.com
 -- ====================================================================
 

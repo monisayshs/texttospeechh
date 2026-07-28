@@ -636,9 +636,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedRating = 5;
   let currentSupabaseUser = null;
 
-  // Initialize Supabase Client if SDK is loaded
-  const SUPABASE_URL = window.SUPABASE_URL || 'https://texttospeechh-supabase.supabase.co';
-  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRleHR0b3NwZWVjaGgiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY3MjUxMjAwMCwiZXhwIjoy0debDgzMjAwMH0.mockKey';
+  // Initialize Supabase Client for https://eghpuhwywutglbtqheda.supabase.co
+  const SUPABASE_URL = window.SUPABASE_URL || 'https://eghpuhwywutglbtqheda.supabase.co';
+  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnaHB1aHd5d3V0Z2xidHFoZWRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzI1MTIwMDAsImV4cCI6MjAyNTAxMjAwMH0.mockKey';
   
   let supabaseClient = null;
   if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
