@@ -1,16 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB" />
-      <stop offset="100%" stop-color="#0284C7" />
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#60A5FA" />
     </linearGradient>
   </defs>
-  <!-- Rounded square background -->
-  <rect x="1" y="1" width="30" height="30" rx="7" fill="url(#favGrad)" />
-  <!-- Soundwave bars representing TTS brand icon -->
-  <rect x="5"  y="13" width="3" height="6"  rx="1.5" fill="#FFFFFF" opacity="0.95"/>
-  <rect x="10" y="9"  width="3" height="14" rx="1.5" fill="#FFFFFF" opacity="0.95"/>
-  <rect x="15" y="6"  width="3" height="20" rx="1.5" fill="#FFFFFF"/>
-  <rect x="20" y="9"  width="3" height="14" rx="1.5" fill="#FFFFFF" opacity="0.95"/>
-  <rect x="25" y="13" width="3" height="6"  rx="1.5" fill="#FFFFFF" opacity="0.95"/>
+  <!-- Solid rounded background -->
+  <rect x="0" y="0" width="512" height="512" rx="96" fill="url(#bgGrad)" />
+  <!-- White soundwave equalizer bars -->
+  <g transform="translate(64, 64)">
+    <rect x="60" y="180" width="24" height="100" rx="12" fill="#FFFFFF" opacity="0.8" />
+    <rect x="104" y="120" width="24" height="220" rx="12" fill="#FFFFFF" opacity="0.9" />
+    <rect x="148" y="70" width="24" height="280" rx="12" fill="#FFFFFF" />
+    <!-- T-S crossbar -->
+    <path d="M 40 110 H 344 C 357 110 368 121 368 134 V 134 C 368 147 357 158 344 158 H 40 C 27 158 16 147 16 134 V 134 C 16 121 27 110 40 110 Z" fill="#FFFFFF" />
+    <rect x="212" y="100" width="24" height="240" rx="12" fill="#FFFFFF" />
+    <rect x="256" y="140" width="24" height="180" rx="12" fill="#FFFFFF" opacity="0.9" />
+    <rect x="300" y="200" width="24" height="80" rx="12" fill="#FFFFFF" opacity="0.8" />
+  </g>
 </svg>
