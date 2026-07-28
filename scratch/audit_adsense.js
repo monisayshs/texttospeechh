@@ -36,7 +36,7 @@ function runAudit() {
     { name: '10. Top Utility Navigation Bar present', test: html.includes('class="top-utility-bar"') },
     { name: '11. Multi-column SaaS Footer present', test: html.includes('class="saas-footer"') },
     { name: '12. Copyright statement present with current year', test: html.includes('© 2026 TextToSpeechH AI') },
-    { name: '13. AdSense Slots / Responsive Units placed', test: html.includes('adsense-slot') },
+    { name: '13. Manual AdSense Placeholder Slots Removed (Auto Ads Ready)', test: !html.includes('adsense-slot') },
     { name: '14. Independent Trademark Disclaimer Box present', test: html.includes('Trademark Disclaimer') },
     { name: '15. Original Core Value Proposition & Tool Controls', test: html.includes('Free AI Voice Generator') },
     { name: '16. Feature Cards (Long Queue, File Import, MP3 Export)', test: html.includes('feature-card') },

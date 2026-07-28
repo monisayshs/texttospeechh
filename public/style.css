@@ -115,36 +115,6 @@ body {
   color: var(--accent-cyan);
 }
 
-/* AdSense Banners */
-.adsense-slot {
-  width: 100%;
-  max-width: 920px;
-  margin: 15px 0;
-}
-
-.ad-placeholder {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-  position: relative;
-}
-
-.ad-badge {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2px 8px;
-  border-radius: 4px;
-  color: var(--text-muted);
-}
-
-.ad-placeholder p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 5px;
-}
 
 /* App Container */
 .app-container {
