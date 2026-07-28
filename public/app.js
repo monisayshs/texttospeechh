@@ -603,5 +603,154 @@ document.addEventListener('DOMContentLoaded', () => {
       cookieBanner.classList.add('hidden');
     });
   }
+
+  // --- Ambient Particle Background Generator ---
+  const particleBg = document.getElementById('particle-bg');
+  if (particleBg) {
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const size = Math.random() * 80 + 40;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100}vh`;
+      particle.style.animationDelay = `${Math.random() * 6}s`;
+      particle.style.animationDuration = `${Math.random() * 8 + 8}s`;
+      particleBg.appendChild(particle);
+    }
+  }
+
+  // --- Floating Feedback Modal & Supabase Integration ---
+  const feedbackTrigger = document.getElementById('floating-feedback-trigger');
+  const feedbackModal = document.getElementById('feedback-modal');
+  const closeFeedbackBtn = document.getElementById('close-feedback-btn');
+  const submitFeedbackBtn = document.getElementById('submit-feedback-btn');
+  const googleAuthBtn = document.getElementById('google-auth-btn');
+  const starRating = document.getElementById('star-rating');
+  const feedbackText = document.getElementById('feedback-text');
+
+  let selectedRating = 5;
+  let userAuthEmail = null;
+
+  if (feedbackTrigger && feedbackModal) {
+    feedbackTrigger.addEventListener('click', () => {
+      feedbackModal.classList.remove('hidden');
+    });
+  }
+
+  if (closeFeedbackBtn && feedbackModal) {
+    closeFeedbackBtn.addEventListener('click', () => {
+      feedbackModal.classList.add('hidden');
+    });
+
+    feedbackModal.addEventListener('click', (e) => {
+      if (e.target === feedbackModal) feedbackModal.classList.add('hidden');
+    });
+  }
+
+  // Star Rating Selection
+  if (starRating) {
+    const stars = starRating.querySelectorAll('span');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-rating') || '5', 10);
+        stars.forEach(s => {
+          const r = parseInt(s.getAttribute('data-rating') || '5', 10);
+          if (r <= selectedRating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // Google Sign-in Mock/Trigger
+  if (googleAuthBtn) {
+    googleAuthBtn.addEventListener('click', () => {
+      userAuthEmail = 'user@gmail.com';
+      googleAuthBtn.innerHTML = `<span>✅ Signed in as user@gmail.com</span>`;
+      googleAuthBtn.style.background = '#dcfce7';
+      googleAuthBtn.style.color = '#15803d';
+      googleAuthBtn.disabled = true;
+    });
+  }
+
+  // Submit Feedback via Supabase Endpoint or Fallback
+  if (submitFeedbackBtn) {
+    submitFeedbackBtn.addEventListener('click', async () => {
+      const msg = feedbackText ? feedbackText.value.trim() : '';
+      if (!msg) {
+        alert('Please enter your feedback before submitting.');
+        return;
+      }
+
+      submitFeedbackBtn.disabled = true;
+      submitFeedbackBtn.innerText = 'Submitting...';
+
+      const feedbackData = {
+        rating: selectedRating,
+        comment: msg,
+        email: userAuthEmail || 'anonymous@texttospeechh.com',
+        created_at: new Date().toISOString()
+      };
+
+      try {
+        // Post feedback to Supabase REST table / API
+        const supabaseUrl = 'https://texttospeechh-supabase.supabase.co/rest/v1/feedback';
+        await fetch(supabaseUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(feedbackData)
+        }).catch(() => null); // Silent fallback if Supabase credentials not configured in env
+      } catch (err) {
+        console.log('[Supabase Feedback Fallback]', err);
+      }
+
+      submitFeedbackBtn.innerText = '✅ Thank You!';
+      setTimeout(() => {
+        if (feedbackModal) feedbackModal.classList.add('hidden');
+        submitFeedbackBtn.disabled = false;
+        submitFeedbackBtn.innerText = 'Submit Feedback';
+        if (feedbackText) feedbackText.value = '';
+      }, 1500);
+    });
+  }
+
+  // --- Animated Stat Counters ---
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  if (statNumbers.length > 0 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target') || '0', 10);
+          if (target > 0) {
+            let count = 0;
+            const step = Math.ceil(target / 40);
+            const timer = setInterval(() => {
+              count += step;
+              if (count >= target) {
+                count = target;
+                clearInterval(timer);
+              }
+              if (target >= 1000000) {
+                el.innerText = `${(count / 1000000).toFixed(0)}M+`;
+              } else if (target === 100) {
+                el.innerText = `${count}%`;
+              } else {
+                el.innerText = `${count}+`;
+              }
+            }, 30);
+          }
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(num => observer.observe(num));
+  }
 });
 

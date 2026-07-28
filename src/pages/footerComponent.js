@@ -38,7 +38,7 @@ function getSaaSFooterHtml() {
         </ul>
       </div>
 
-      <!-- AI Tools Section (100% Implemented Routes Only) -->
+      <!-- AI Tools Section -->
       <div class="footer-col">
         <h3 class="footer-col-title">AI Tools</h3>
         <ul class="footer-links-list">
@@ -77,9 +77,14 @@ function getSaaSFooterHtml() {
       </div>
     </div>
 
+    <!-- Independent Trademark Disclaimer Box -->
+    <div class="footer-disclaimer-box">
+      <p><strong>Trademark Disclaimer:</strong> Comparison pages published on TextToSpeechH AI represent independent software evaluations created for informational purposes. All product names, trademarks, logos, and registered brands are property of their respective owners. Mention of third-party product names does not imply affiliation, endorsement, or sponsorship by their respective holders.</p>
+    </div>
+
     <!-- Bottom Social & Copyright Bar -->
     <div class="footer-bottom-bar">
-      <p>© 2026 ${BRAND_NAME}. All Rights Reserved. Single Official Contact: <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:var(--accent-cyan);">${SINGLE_OFFICIAL_EMAIL}</a></p>
+      <p>© 2026 ${BRAND_NAME}. All Rights Reserved.</p>
       <div class="social-links" style="display:flex; align-items:center; gap:12px;">
         <a href="${OFFICIAL_INSTAGRAM}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); text-decoration:none; font-weight:500;" aria-label="Official Instagram">
           📸 Instagram: @webxpert.ai
