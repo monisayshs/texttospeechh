@@ -30,6 +30,7 @@
     { "src": "/community(.*)", "dest": "/api/index.js" },
     { "src": "/keyword/(.*)", "dest": "/api/index.js" },
     { "src": "/language/(.*)", "dest": "/api/index.js" },
+    { "src": "/compare/(.*)", "dest": "/api/index.js" },
     { "src": "/guide/(.*)", "dest": "/api/index.js" },
     { "src": "/blog/(.*)", "dest": "/api/index.js" },
     { "src": "/(.*)", "dest": "/public/$1" }
