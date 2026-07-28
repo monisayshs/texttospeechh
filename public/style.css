@@ -880,6 +880,15 @@ button:focus-visible {
   margin: 0;
 }
 
+.accordion-content code,
+.accordion-content kbd {
+  background: var(--bg-light-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  border: 1px solid var(--panel-border);
+}
+
 /* Unified Multi-Column SaaS Footer Across ALL Pages */
 .saas-footer {
   margin-top: var(--space-5);
