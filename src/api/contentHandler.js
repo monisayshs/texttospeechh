@@ -47,7 +47,7 @@ ${trackingHtml}
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="stylesheet" href="/style.css?v=7.0.0">
+  <link rel="stylesheet" href="/style.css?v=8.0.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@ ${trackingHtml}
     <header class="app-header">
       <div class="header-top-bar">
         <div class="logo-badge">
-          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
             <h1>Frequently Asked Questions</h1>
           </a>
@@ -108,7 +108,7 @@ ${trackingHtml}
     <span>💬</span> Feedback
   </button>
 
-  <script src="/app.js?v=7.0.0"></script>
+  <script src="/app.js?v=8.0.0"></script>
 </body>
 </html>`;
 }
@@ -144,7 +144,7 @@ ${trackingHtml}
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="stylesheet" href="/style.css?v=7.0.0">
+  <link rel="stylesheet" href="/style.css?v=8.0.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -172,7 +172,7 @@ ${trackingHtml}
     <header class="app-header">
       <div class="header-top-bar">
         <div class="logo-badge">
-          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
             <h1>${guideData.h1}</h1>
           </a>
@@ -204,12 +204,41 @@ ${trackingHtml}
     <span>💬</span> Feedback
   </button>
 
-  <script src="/app.js?v=7.0.0"></script>
+  <script src="/app.js?v=8.0.0"></script>
 </body>
 </html>`;
 }
 
-module.exports = {
-  renderFaqDirectoryPage,
-  renderGuidePage
-};
+async function contentHandler(req, res) {
+  try {
+    const reqUrl = req.url || '/';
+    const parsedUrl = new URL(reqUrl, DOMAIN);
+    const pathSlug = parsedUrl.pathname.replace(/^\/+|\/+$/g, '');
+
+    if (pathSlug === 'faq' || pathSlug === 'faq.html') {
+      const html = renderFaqDirectoryPage();
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    if (educationalGuides && educationalGuides[pathSlug]) {
+      const html = renderGuidePage(educationalGuides[pathSlug], pathSlug);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    return false;
+  } catch (err) {
+    console.error('[Content Handler Error]:', err);
+    return false;
+  }
+}
+
+module.exports = contentHandler;
+module.exports.contentHandler = contentHandler;
+module.exports.renderFaqDirectoryPage = renderFaqDirectoryPage;
+module.exports.renderGuidePage = renderGuidePage;

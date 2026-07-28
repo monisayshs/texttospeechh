@@ -518,14 +518,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadBtn) downloadBtn.disabled = false;
   }
 
-  // Audio Controls & Auto Stop Visualizer on Audio Ended
+  // Audio Controls & Visualizer State Machine (Idle = Off, Play = Animate, Pause = Freeze, Stop/End = Off)
   if (audioPlayer) {
     audioPlayer.addEventListener('ended', () => {
       console.log('[TextToSpeechH AI] Audio playback ended naturally.');
-      if (soundwave) soundwave.classList.remove('active');
-      if (animationTimer) {
-        clearInterval(animationTimer);
-        animationTimer = null;
+      if (soundwave) {
+        soundwave.classList.remove('active');
+        soundwave.style.animationPlayState = 'running';
       }
       if (pauseBtn) {
         pauseBtn.disabled = true;
@@ -544,11 +543,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (audioPlayer.paused) {
         audioPlayer.play();
         pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
-        if (soundwave) soundwave.classList.add('active');
+        if (soundwave) {
+          soundwave.classList.add('active');
+          soundwave.style.animationPlayState = 'running';
+        }
       } else {
         audioPlayer.pause();
         pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
-        if (soundwave) soundwave.classList.remove('active');
+        if (soundwave) {
+          soundwave.style.animationPlayState = 'paused';
+        }
       }
     });
   }
@@ -558,7 +562,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!audioPlayer) return;
       audioPlayer.pause();
       audioPlayer.currentTime = 0;
-      if (soundwave) soundwave.classList.remove('active');
+      if (soundwave) {
+        soundwave.classList.remove('active');
+        soundwave.style.animationPlayState = 'running';
+      }
       if (pauseBtn) {
         pauseBtn.disabled = true;
         pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';

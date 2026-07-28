@@ -75,7 +75,7 @@ ${trackingHtml}
   <script type="application/ld+json">${faqSchema}</script>
   <script type="application/ld+json">${breadcrumbSchema}</script>
 
-  <link rel="stylesheet" href="/style.css?v=7.0.0">
+  <link rel="stylesheet" href="/style.css?v=8.0.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -103,7 +103,7 @@ ${trackingHtml}
     <header class="app-header">
       <div class="header-top-bar">
         <div class="logo-badge">
-          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
             <h1>${pageData.h1}</h1>
           </a>
@@ -175,9 +175,55 @@ ${trackingHtml}
     </div>
   </div>
 
-  <script src="/app.js?v=7.0.0"></script>
+  <script src="/app.js?v=8.0.0"></script>
 </body>
 </html>`;
 }
 
-module.exports = { renderSeoPage };
+async function seoHandler(req, res) {
+  try {
+    const reqUrl = req.url || '/';
+    const parsedUrl = new URL(reqUrl, DOMAIN);
+    let pathSlug = parsedUrl.pathname.replace(/^\/+|\/+$/g, '');
+
+    if (!pathSlug) return false;
+
+    let pageData = null;
+
+    // 1. Legal Pages (/about, /privacy-policy, /terms, /disclaimer, /contact)
+    if (pathSlug === 'about' && LEGAL_PAGES.about) pageData = LEGAL_PAGES.about;
+    else if ((pathSlug === 'privacy-policy' || pathSlug === 'privacy') && LEGAL_PAGES.privacy) pageData = LEGAL_PAGES.privacy;
+    else if ((pathSlug === 'terms' || pathSlug === 'terms-of-service') && LEGAL_PAGES.terms) pageData = LEGAL_PAGES.terms;
+    else if (pathSlug === 'disclaimer' && LEGAL_PAGES.disclaimer) pageData = LEGAL_PAGES.disclaimer;
+    else if (pathSlug === 'contact' && LEGAL_PAGES.contact) pageData = LEGAL_PAGES.contact;
+    else if (LEGAL_PAGES[pathSlug]) pageData = LEGAL_PAGES[pathSlug];
+
+    // 2. Programmatic SEO Pages (/keyword/*, /language/*)
+    if (!pageData && PROGRAMMATIC_ROUTER && PROGRAMMATIC_ROUTER[pathSlug]) {
+      pageData = PROGRAMMATIC_ROUTER[pathSlug];
+    }
+
+    // 3. Blog Hub Articles (/blog/*)
+    if (!pageData && CONTENT_HUB_ARTICLES && CONTENT_HUB_ARTICLES[pathSlug]) {
+      pageData = CONTENT_HUB_ARTICLES[pathSlug];
+    }
+
+    if (pageData) {
+      const html = renderSeoPage(pageData, pathSlug);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    return false;
+  } catch (err) {
+    console.error('[SEO Handler Error]:', err);
+    return false;
+  }
+}
+
+// Export both the main handler function AND renderSeoPage helper
+module.exports = seoHandler;
+module.exports.seoHandler = seoHandler;
+module.exports.renderSeoPage = renderSeoPage;
