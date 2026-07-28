@@ -92,23 +92,23 @@ const LEGAL_PAGES = {
         <div class="contact-form-row">
           <div class="input-group">
             <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Your full name" required minlength="2" autocomplete="name">
+            <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Jane Doe" required minlength="2" autocomplete="name">
             <span class="input-error" id="name-error"></span>
           </div>
           <div class="input-group">
             <label for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <input type="email" id="contact-email" name="email" class="contact-input" placeholder="jane@example.com" required autocomplete="email">
             <span class="input-error" id="email-error"></span>
           </div>
         </div>
         <div class="input-group">
           <label for="contact-subject">Subject</label>
-          <input type="text" id="contact-subject" name="subject" placeholder="What is this regarding?" required>
+          <input type="text" id="contact-subject" name="subject" class="contact-input" placeholder="How can we help you?" required>
           <span class="input-error" id="subject-error"></span>
         </div>
         <div class="input-group">
           <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" placeholder="Tell us how we can help..." rows="5" required minlength="5"></textarea>
+          <textarea id="contact-message" name="message" class="contact-input" placeholder="Tell us more about your inquiry..." rows="5" required minlength="5"></textarea>
           <span class="input-error" id="message-error"></span>
         </div>
         <button type="submit" class="primary-btn" id="contact-submit-btn" style="width:100%;">

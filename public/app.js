@@ -909,14 +909,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function showFieldError(inputId, errorId, message) {
       const input = document.getElementById(inputId);
       const error = document.getElementById(errorId);
-      if (input) input.style.borderColor = '#ef4444';
+      if (input) input.classList.add('error');
       if (error) { error.textContent = message; error.style.display = 'block'; }
     }
 
     function clearFieldError(inputId, errorId) {
       const input = document.getElementById(inputId);
       const error = document.getElementById(errorId);
-      if (input) input.style.borderColor = '';
+      if (input) input.classList.remove('error');
       if (error) { error.textContent = ''; error.style.display = 'none'; }
     }
 

@@ -28,6 +28,9 @@
   --accent-indigo: #4f46e5;
   --accent-light: #eff6ff;
   
+  --btn-primary-bg: #1d4ed8;
+  --btn-primary-text: #ffffff;
+  
   /* High Contrast Charcoal Typography */
   --text-main: #0F172A;
   --text-secondary: #334155;
@@ -58,6 +61,8 @@
   --accent-cyan: #06b6d4;
   --accent-indigo: #6366f1;
   --accent-light: #1e3a5f;
+  --btn-primary-bg: #2563eb;
+  --btn-primary-text: #ffffff;
   --text-main: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
@@ -229,41 +234,97 @@ body {
   }
 }
 
-/* Contact Form */
+/* Contact Form — Premium Modern UI */
 .contact-form {
   max-width: 100%;
+}
+
+.contact-form .input-group {
+  margin-bottom: 22px;
 }
 
 .contact-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
+  gap: 22px;
 }
 
 @media (max-width: 640px) {
   .contact-form-row {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
 }
 
 .contact-form label {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-main);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-input {
   width: 100%;
+  height: 56px;
+  padding: 0 18px;
+  background: var(--panel-bg);
+  border: 1.5px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+textarea.contact-input {
+  height: auto;
+  min-height: 150px;
+  padding: 16px 18px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.contact-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.contact-input:hover {
+  border-color: var(--panel-border-hover);
+}
+
+.contact-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--panel-border-glow), 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.contact-input.error {
+  border-color: #ef4444;
+}
+
+.contact-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
 }
 
 .input-error {
   display: none;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #ef4444;
-  margin-top: 4px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.contact-form .primary-btn {
+  height: 56px;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-md);
 }
 
 /* App Container Layout Across ALL Pages */
@@ -679,25 +740,37 @@ button {
 }
 
 button:focus-visible {
-  outline: 2px solid var(--accent-blue);
+  outline: 3px solid var(--accent-blue);
   outline-offset: 2px;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: none;
+}
+
 .primary-btn {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, #3b82f6 100%);
-  color: #ffffff;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
   font-weight: 700;
   flex: 1 1 220px;
 }
 
 .primary-btn:hover:not(:disabled) {
+  background: #1e40af;
   transform: translateY(-3px);
-  box-shadow: 0 14px 35px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 14px 35px rgba(37, 99, 235, 0.4);
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .secondary-btn {
-  background: #ffffff;
+  background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   color: var(--text-main);
   flex: 1 1 120px;
@@ -710,24 +783,25 @@ button:focus-visible {
 }
 
 .secondary-btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .download-btn {
   background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #16a34a;
+  border: 1px solid #86efac;
+  color: #166534;
 }
 
 .download-btn:hover:not(:disabled) {
   background: #dcfce7;
-  color: #15803d;
+  color: #14532d;
+  border-color: #4ade80;
   transform: translateY(-2px);
 }
 
 .download-btn:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -1378,6 +1452,11 @@ button:focus-visible {
 [data-theme="dark"] .download-btn:hover:not(:disabled) {
   background: #065f46;
   color: #a7f3d0;
+  border-color: #34d399;
+}
+
+[data-theme="dark"] .primary-btn:hover:not(:disabled) {
+  background: #1e40af;
 }
 
 [data-theme="dark"] .clear-btn:hover {
@@ -1466,4 +1545,21 @@ button:focus-visible {
 [data-theme="dark"] textarea {
   color: var(--text-main);
   background: var(--panel-bg);
+}
+
+[data-theme="dark"] button:disabled {
+  opacity: 0.5;
+  filter: none;
+}
+
+[data-theme="dark"] #contact-success {
+  background: #064e3b !important;
+  border-color: #065f46 !important;
+  color: #a7f3d0 !important;
+}
+
+[data-theme="dark"] #contact-error {
+  background: #450a0a !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
 }
