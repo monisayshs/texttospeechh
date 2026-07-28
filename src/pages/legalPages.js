@@ -101,30 +101,69 @@ const LEGAL_PAGES = {
   },
 
   privacy: {
-    title: `Privacy Policy | ${BRAND_NAME} Data Protection & Trust Governance`,
+    title: `Privacy Policy | ${BRAND_NAME} Data Protection & GDPR/CCPA Compliance`,
     h1: `Privacy Policy`,
-    metaDesc: `Read the official Privacy Policy for ${BRAND_NAME} to learn how we protect your personal data, audio files, and script privacy. Official contact: ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Official Privacy Policy for ${BRAND_NAME}. Learn about our data collection practices, transient memory processing, Google AdSense cookie guidelines, GDPR user rights, and CCPA compliance. Official contact: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026</p>
+      <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
 
-      <p style="font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem;">
-        At <strong>${BRAND_NAME}</strong> (accessible from <a href="${DOMAIN}">${DOMAIN}</a>), protecting visitor data privacy is one of our foundational priorities. This Privacy Policy outlines the types of information collected and how it is protected.
+      <p style="font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.8rem;">
+        At <strong>${BRAND_NAME}</strong> (accessible from <a href="${DOMAIN}">${DOMAIN}</a>), we are deeply committed to safeguarding user privacy and data security. This Privacy Policy outlines the types of information we process, how data is managed, and your rights under global privacy regulations including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA/CPRA).
       </p>
 
-      <h2>1. Text Script & Audio File Storage</h2>
-      <p>
-        ${BRAND_NAME} operates on a zero-persistence architecture for text inputs. Text scripts submitted into the generator are processed transiently in memory to synthesize audio streams. We do not store, index, sell, or claim ownership over any user text or generated audio files.
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">1. Information We Process</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1rem;">
+        ${BRAND_NAME} operates on a privacy-first, zero-registration model. You are not required to create an account, log in, or submit personal identification details to utilize our neural text-to-speech features.
+      </p>
+      <ul style="line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li><strong>Uploaded Text &amp; Documents:</strong> Text input typed into our editor or extracted from uploaded documents (.pdf, .docx, .txt) is processed transiently in server memory (RAM) solely for neural audio synthesis. Script content is never permanently stored on persistent hard drives.</li>
+        <li><strong>Generated Audio Buffers:</strong> Output MP3 audio streams are retained temporarily in volatile memory or isolated short-lived temp buffers to facilitate instant user downloading, after which they are automatically purged.</li>
+        <li><strong>Technical &amp; Device Data:</strong> Like standard web platforms, our servers automatically record anonymous log data such as IP address, browser user-agent, operating system, timestamp, and referring URL to prevent denial-of-service (DDoS) abuse.</li>
+      </ul>
+
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">2. Cookies &amp; Advertising Practices (Google AdSense)</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1rem;">
+        ${BRAND_NAME} utilizes essential cookies and local browser storage to save your UI preferences (such as selected voice character, speech rate, and pitch slider values) locally on your device.
+      </p>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1rem;">
+        We partner with third-party advertising providers, including <strong>Google AdSense</strong>, to serve relevant advertisements. Google uses cookies (such as the DoubleClick DART cookie) to serve ads based on user visits to this website and other websites across the internet.
+      </p>
+      <ul style="line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">Google Ad Settings</a>.</li>
+        <li>Alternatively, users may opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">www.aboutads.info</a>.</li>
+      </ul>
+
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">3. European Union GDPR Compliance &amp; User Rights</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1rem;">
+        If you reside within the European Economic Area (EEA), you possess specific data protection rights under the GDPR:
+      </p>
+      <ul style="line-height: 1.8; color: #cbd5e1; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li><strong>The Right to Access:</strong> You have the right to request copies of any personal data held by us.</li>
+        <li><strong>The Right to Erasure:</strong> You have the right to request that we erase your personal data under certain conditions.</li>
+        <li><strong>The Right to Rectification &amp; Object:</strong> You have the right to correct inaccurate information or object to processing.</li>
+      </ul>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.5rem;">
+        To exercise any GDPR rights, contact our Data Protection Officer at <strong><a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a></strong>.
       </p>
 
-      <h2>2. Log Files & Analytics</h2>
-      <p>
-        Like most web platforms, ${BRAND_NAME} uses standard log files and privacy-focused analytics tools (such as Google Analytics and Microsoft Clarity) to analyze aggregate usage trends, manage site performance, and prevent automated bot abuse.
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">4. California Consumer Privacy Act (CCPA/CPRA)</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1rem;">
+        Under the California Consumer Privacy Act (CCPA), California residents have the right to request disclosure of categories of personal information collected, request deletion of personal information, and opt out of the sale or sharing of personal information.
+      </p>
+      <p style="font-size: 1rem; font-weight: 600; color: #34d399; margin-bottom: 1.5rem;">
+        ✔ ${BRAND_NAME} DOES NOT SELL, RENT, OR SHARE USER PERSONAL INFORMATION TO THIRD PARTIES FOR MONETARY OR OTHER VALUABLE CONSIDERATION.
       </p>
 
-      <h2>3. Contact Information</h2>
-      <p>
-        For privacy-related inquiries or data deletion requests, contact our legal team:<br>
-        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">5. Children's Online Privacy Protection Act (COPPA)</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.5rem;">
+        ${BRAND_NAME} does not knowingly collect any Personal Identifiable Information from children under the age of 13. If a parent or guardian believes that a child has submitted personal data on our website, please contact us immediately at <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>, and we will promptly remove such information.
+      </p>
+
+      <h2 style="font-size: 1.4rem; color: #ffffff; margin: 1.8rem 0 1rem 0;">6. Contact Details</h2>
+      <p style="font-size: 1rem; line-height: 1.7; color: #cbd5e1;">
+        For privacy questions, compliance requests, or legal inquiries, reach out to:<br>
+        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:#00f2fe;">${SINGLE_OFFICIAL_EMAIL}</a><br>
+        <strong>Website:</strong> <a href="${DOMAIN}" style="color:#00f2fe;">${DOMAIN}</a>
       </p>
     `
   },
