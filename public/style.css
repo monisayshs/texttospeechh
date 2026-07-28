@@ -496,14 +496,14 @@ textarea.contact-input {
   line-height: 1.8;
 }
 
-.page-body-content a {
+.page-body-content a:not(.primary-btn) {
   color: var(--accent-blue);
   text-decoration: none;
   font-weight: 600;
   transition: var(--transition-smooth);
 }
 
-.page-body-content a:hover {
+.page-body-content a:hover:not(.primary-btn) {
   color: var(--accent-blue-hover);
   text-decoration: underline;
 }
