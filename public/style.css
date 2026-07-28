@@ -791,7 +791,7 @@ button:focus-visible {
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: var(--transition-smooth);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
 }
 
@@ -800,48 +800,83 @@ button:focus-visible {
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
 }
 
+.accordion-item.active {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+}
+
 .accordion-header {
   width: 100%;
-  padding: 16px 20px;
+  padding: 18px 22px;
   background: #ffffff;
   border: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   font-size: 1.02rem;
   font-weight: 700;
   color: var(--text-main);
   cursor: pointer;
   text-align: left;
-  transition: var(--transition-smooth);
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
 .accordion-header:hover {
   color: var(--accent-blue);
 }
 
-.accordion-icon {
-  font-size: 1rem;
-  color: var(--accent-blue);
-  transition: transform 0.3s ease;
+.accordion-header:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: -2px;
+  border-radius: 2px;
 }
 
+.accordion-item.active .accordion-header {
+  color: var(--accent-blue);
+}
+
+/* SVG chevron icon — rotates 180° when open */
+.accordion-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--accent-blue);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* Height animation via CSS grid trick — no JS height calculation needed */
 .accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 350ms cubic-bezier(0.16, 1, 0.3, 1), padding 350ms ease;
-  padding: 0 20px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  opacity: 0;
 }
 
 .accordion-item.active .accordion-content {
-  max-height: 300px;
-  padding: 0 20px 20px 20px;
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.accordion-content-inner {
+  overflow: hidden;
+  padding: 0 22px;
+}
+
+.accordion-item.active .accordion-content-inner {
+  padding: 0 22px 20px 22px;
 }
 
 .accordion-content p {
   color: var(--text-secondary);
   font-size: 0.96rem;
   line-height: 1.75;
+  margin: 0;
 }
 
 /* Unified Multi-Column SaaS Footer Across ALL Pages */

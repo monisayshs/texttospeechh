@@ -812,28 +812,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
     statNumbers.forEach(num => observer.observe(num));
+  }
+
   // --- Accordion FAQ Section Toggle Logic ---
   const accordionHeaders = document.querySelectorAll('.accordion-header');
   if (accordionHeaders.length > 0) {
+
+    function closeAll() {
+      document.querySelectorAll('.accordion-item').forEach(item => {
+        item.classList.remove('active');
+        const btn = item.querySelector('.accordion-header');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    function openItem(item) {
+      item.classList.add('active');
+      const btn = item.querySelector('.accordion-header');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+
     accordionHeaders.forEach(header => {
+      // Click handler
       header.addEventListener('click', () => {
         const item = header.parentElement;
         const isActive = item.classList.contains('active');
+        closeAll();
+        if (!isActive) openItem(item);
+      });
 
-        // Collapse all open accordion items
-        document.querySelectorAll('.accordion-item').forEach(i => {
-          i.classList.remove('active');
-          const icon = i.querySelector('.accordion-icon');
-          if (icon) icon.innerText = '➕';
-        });
-
-        if (!isActive) {
-          item.classList.add('active');
-          const icon = header.querySelector('.accordion-icon');
-          if (icon) icon.innerText = '➖';
+      // Keyboard handler — Enter / Space
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
         }
       });
     });
   }
 });
-
