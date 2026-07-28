@@ -85,10 +85,45 @@ const LEGAL_PAGES = {
     metaDesc: `Get in touch with ${BRAND_NAME}. Every contact submission is routed directly to our official single inbox at ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
       <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-        Have questions, feedback, or need technical help with ${BRAND_NAME}? Email our single unified inbox directly at <strong><a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a></strong> or click the floating feedback button.
+        Have questions, feedback, or need technical help with ${BRAND_NAME}? Fill out the form below and we'll respond within 24 hours. You can also email our single unified inbox directly at <strong><a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a></strong>.
       </p>
 
-      <div class="glass-panel" style="padding: 1.5rem; border-radius: 12px; margin-bottom: 2.5rem;">
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="contact-form-row">
+          <div class="input-group">
+            <label for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your full name" required minlength="2" autocomplete="name">
+            <span class="input-error" id="name-error"></span>
+          </div>
+          <div class="input-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <span class="input-error" id="email-error"></span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="contact-subject">Subject</label>
+          <input type="text" id="contact-subject" name="subject" placeholder="What is this regarding?" required>
+          <span class="input-error" id="subject-error"></span>
+        </div>
+        <div class="input-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell us how we can help..." rows="5" required minlength="5"></textarea>
+          <span class="input-error" id="message-error"></span>
+        </div>
+        <button type="submit" class="primary-btn" id="contact-submit-btn" style="width:100%;">
+          <span id="contact-btn-text">Send Message</span>
+          <span id="contact-btn-spinner" class="hidden" style="display:none;"><span class="spinner"></span> Sending...</span>
+        </button>
+        <div id="contact-success" class="hidden" style="display:none; margin-top:16px; padding:16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; color:#166534;">
+          <strong>✓ Message Sent!</strong> Your message has been received. We'll respond within 24 hours.
+        </div>
+        <div id="contact-error" class="hidden" style="display:none; margin-top:16px; padding:16px; background:#fef2f2; border:1px solid #fecaca; border-radius:12px; color:#991b1b;">
+          <strong>✗ Failed to Send</strong> <span id="contact-error-text">Please try again later.</span>
+        </div>
+      </form>
+
+      <div class="glass-panel" style="padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
           <div style="font-size: 2.2rem;">✉️</div>
           <div>

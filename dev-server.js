@@ -12,6 +12,7 @@ const jobsHandler = require('./src/api/jobsHandler');
 const seoHandler = require('./src/api/seoHandler');
 const contentHandler = require('./src/api/contentHandler');
 const sitemapHandler = require('./src/api/sitemapHandler');
+const contactHandler = require('./api/contact');
 
 const PORT = 3000;
 
@@ -159,6 +160,11 @@ const server = http.createServer(async (req, res) => {
 
   if (reqUrl.startsWith('/api/jobs')) {
     handleApi(jobsHandler);
+    return;
+  }
+
+  if (reqUrl.startsWith('/api/contact')) {
+    handleApi(contactHandler);
     return;
   }
 

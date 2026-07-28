@@ -86,8 +86,9 @@ function getSaaSFooterHtml() {
     <div class="footer-bottom-bar">
       <p>© 2026 ${BRAND_NAME}. All Rights Reserved.</p>
       <div class="social-links" style="display:flex; align-items:center; gap:12px;">
-        <a href="${OFFICIAL_INSTAGRAM}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); text-decoration:none; font-weight:500;" aria-label="Official Instagram">
-          📸 Instagram: @webxpert.ai
+        <a href="${OFFICIAL_INSTAGRAM}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-blue); text-decoration:none; font-weight:500; display:inline-flex; align-items:center; gap:6px;" aria-label="Official Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram: @webxpert.ai
         </a>
       </div>
     </div>

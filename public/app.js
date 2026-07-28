@@ -9,6 +9,35 @@ window.startSynthesis = null;
 window.generateVoice = null;
 window.clearScriptText = null;
 
+//
+// Theme Toggle (Dark/Light Mode)
+//
+(function initTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'light';
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.setAttribute('aria-label', current === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+})();
+
+document.addEventListener('click', function themeToggleHandler(e) {
+  const btn = e.target.closest('#theme-toggle');
+  if (!btn) return;
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('tts_theme', next);
+  btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+});
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  if (!localStorage.getItem('tts_theme')) {
+    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements selection supporting both id naming conventions
   const textInput = document.getElementById('text-input');
@@ -539,8 +568,8 @@ document.addEventListener('DOMContentLoaded', () => {
         soundwave.classList.remove('active');
       }
       if (pauseBtn) {
-        pauseBtn.disabled = true;
-        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+        pauseBtn.disabled = false;
+        pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Play Audio';
       }
       if (downloadBtn) {
         downloadBtn.disabled = false;
@@ -553,6 +582,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pauseBtn.addEventListener('click', () => {
       if (!audioPlayer) return;
       if (audioPlayer.paused) {
+        if (audioPlayer.ended || audioPlayer.currentTime >= (audioPlayer.duration || 0)) {
+          audioPlayer.currentTime = 0;
+        }
         audioPlayer.play();
         pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
         if (soundwave) {
@@ -576,8 +608,8 @@ document.addEventListener('DOMContentLoaded', () => {
         soundwave.classList.remove('active');
       }
       if (pauseBtn) {
-        pauseBtn.disabled = true;
-        pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
+        pauseBtn.disabled = false;
+        pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Play Audio';
       }
     });
   }
@@ -857,6 +889,105 @@ document.addEventListener('DOMContentLoaded', () => {
           header.click();
         }
       });
+    });
+  }
+
+  // --- Contact Form Handler ---
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const subjectInput = document.getElementById('contact-subject');
+    const messageInput = document.getElementById('contact-message');
+    const submitBtn = document.getElementById('contact-submit-btn');
+    const btnText = document.getElementById('contact-btn-text');
+    const btnSpinner = document.getElementById('contact-btn-spinner');
+    const successDiv = document.getElementById('contact-success');
+    const errorDiv = document.getElementById('contact-error');
+    const errorText = document.getElementById('contact-error-text');
+
+    function showFieldError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (input) input.style.borderColor = '#ef4444';
+      if (error) { error.textContent = message; error.style.display = 'block'; }
+    }
+
+    function clearFieldError(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (input) input.style.borderColor = '';
+      if (error) { error.textContent = ''; error.style.display = 'none'; }
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validateForm() {
+      let valid = true;
+      clearFieldError('contact-name', 'name-error');
+      clearFieldError('contact-email', 'email-error');
+      clearFieldError('contact-subject', 'subject-error');
+      clearFieldError('contact-message', 'message-error');
+
+      if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
+        showFieldError('contact-name', 'name-error', 'Name is required (min 2 characters).');
+        valid = false;
+      }
+      if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+        showFieldError('contact-email', 'email-error', 'A valid email address is required.');
+        valid = false;
+      }
+      if (!subjectInput.value.trim()) {
+        showFieldError('contact-subject', 'subject-error', 'Subject is required.');
+        valid = false;
+      }
+      if (!messageInput.value.trim() || messageInput.value.trim().length < 5) {
+        showFieldError('contact-message', 'message-error', 'Message is required (min 5 characters).');
+        valid = false;
+      }
+      return valid;
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      if (successDiv) successDiv.style.display = 'none';
+      if (errorDiv) errorDiv.style.display = 'none';
+      if (btnText) btnText.style.display = 'none';
+      if (btnSpinner) btnSpinner.style.display = 'inline-flex';
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            subject: subjectInput.value.trim(),
+            message: messageInput.value.trim()
+          })
+        });
+
+        const data = await response.json();
+        if (response.ok && data.success) {
+          if (successDiv) successDiv.style.display = 'block';
+          contactForm.reset();
+        } else {
+          if (errorText) errorText.textContent = data.error || 'Failed to send message.';
+          if (errorDiv) errorDiv.style.display = 'block';
+        }
+      } catch (err) {
+        if (errorText) errorText.textContent = 'Network error. Please check your connection and try again.';
+        if (errorDiv) errorDiv.style.display = 'block';
+      } finally {
+        if (btnText) btnText.style.display = 'inline';
+        if (btnSpinner) btnSpinner.style.display = 'none';
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 });
