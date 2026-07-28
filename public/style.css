@@ -208,8 +208,8 @@ body {
 }
 
 .logo-badge-icon {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   filter: drop-shadow(0 3px 8px rgba(37, 99, 235, 0.2));
   transition: var(--transition-smooth);
   flex-shrink: 0;
