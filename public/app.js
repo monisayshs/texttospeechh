@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentAudioUrl = null;
   let animationTimer = null;
 
+  function setBarPlayState(state) {
+    if (!soundwave) return;
+    soundwave.querySelectorAll('.bar').forEach(bar => {
+      bar.style.animationPlayState = state;
+    });
+  }
+
   // Modern Glassmorphic Toast Notification Container
   let toastContainer = document.getElementById('toast-container');
   if (!toastContainer) {
@@ -345,7 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pauseBtn) pauseBtn.disabled = true;
     if (stopBtn) stopBtn.disabled = true;
     if (audioPlayer) audioPlayer.pause();
-    if (soundwave) soundwave.classList.remove('active');
+    if (soundwave) {
+      soundwave.classList.remove('active');
+      setBarPlayState('running');
+    }
 
     if (activeJobPollTimer) {
       clearInterval(activeJobPollTimer);
@@ -503,7 +513,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const playPromise = audioPlayer.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
-          if (soundwave) soundwave.classList.add('active');
+          if (soundwave) {
+            soundwave.classList.add('active');
+            setBarPlayState('running');
+          }
           if (pauseBtn) pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
         }).catch(err => {
           console.warn('Autoplay prevented by browser:', err);
@@ -524,7 +537,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('[TextToSpeechH AI] Audio playback ended naturally.');
       if (soundwave) {
         soundwave.classList.remove('active');
-        soundwave.style.animationPlayState = 'running';
       }
       if (pauseBtn) {
         pauseBtn.disabled = true;
@@ -545,14 +557,12 @@ document.addEventListener('DOMContentLoaded', () => {
         pauseBtn.innerHTML = '<span class="btn-icon">⏸</span> Pause';
         if (soundwave) {
           soundwave.classList.add('active');
-          soundwave.style.animationPlayState = 'running';
+          setBarPlayState('running');
         }
       } else {
         audioPlayer.pause();
         pauseBtn.innerHTML = '<span class="btn-icon">▶</span> Resume';
-        if (soundwave) {
-          soundwave.style.animationPlayState = 'paused';
-        }
+        setBarPlayState('paused');
       }
     });
   }
@@ -564,7 +574,6 @@ document.addEventListener('DOMContentLoaded', () => {
       audioPlayer.currentTime = 0;
       if (soundwave) {
         soundwave.classList.remove('active');
-        soundwave.style.animationPlayState = 'running';
       }
       if (pauseBtn) {
         pauseBtn.disabled = true;
