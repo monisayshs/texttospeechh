@@ -29,12 +29,30 @@ function renderSeoPage(pageData, pathSlug) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 ${trackingHtml}
+
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
+  </script>
+
+  <!-- SEO Primary Meta Tags -->
   <title>${pageData.title}</title>
+  <meta name="title" content="${pageData.title}">
   <meta name="description" content="${pageData.metaDesc}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${canonicalUrl}">
   ${hreflangTags}
+
+  <!-- Favicon & PWA Assets -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
@@ -57,85 +75,109 @@ ${trackingHtml}
   <script type="application/ld+json">${faqSchema}</script>
   <script type="application/ld+json">${breadcrumbSchema}</script>
 
-  <link rel="stylesheet" href="/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=6.0.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Ambient Particle Background -->
+  <div class="particle-background" id="particle-bg"></div>
+
   <!-- Top Utility Navigation Bar -->
   <div class="top-utility-bar">
     <nav class="top-utility-nav" aria-label="Top Utility Navigation">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms">Terms of Service</a></li>
-        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/about" ${pathSlug === 'about' ? 'class="active"' : ''}>About Us</a></li>
+        <li><a href="/contact" ${pathSlug === 'contact' ? 'class="active"' : ''}>Contact</a></li>
+        <li><a href="/privacy-policy" ${pathSlug === 'privacy-policy' ? 'class="active"' : ''}>Privacy Policy</a></li>
+        <li><a href="/terms" ${pathSlug === 'terms' ? 'class="active"' : ''}>Terms of Service</a></li>
+        <li><a href="/disclaimer" ${pathSlug === 'disclaimer' ? 'class="active"' : ''}>Disclaimer</a></li>
       </ul>
     </nav>
   </div>
 
   <div class="app-container">
+    <!-- Header with Official Logo Emblem matching Home Page -->
     <header class="app-header">
-      <div class="logo-badge">
-        <a href="/" style="text-decoration:none; color:inherit;">
-          <h1>TextToSpeechH <span class="accent-text">AI</span></h1>
-        </a>
+      <div class="header-top-bar">
+        <div class="logo-badge">
+          <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:12px;">
+            <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
+            <h1>${pageData.h1}</h1>
+          </a>
+        </div>
+        <div class="status-pill-group">
+          <span class="status-pill provider-pill">Engine: Kokoro / Edge Active</span>
+          <span class="status-pill">Trust Governance</span>
+        </div>
       </div>
-      <p class="subtitle">Convert text into realistic AI voices instantly using ${BRAND_NAME}</p>
+      <p class="subtitle">${pageData.metaDesc}</p>
     </header>
 
-    <main class="main-card glass-panel" style="margin-bottom:30px;">
-      <h1 style="font-size:2rem; margin-bottom:15px;" class="accent-text">${pageData.h1}</h1>
-      <div class="page-body-content" style="line-height:1.7; font-size:1rem; color:#d0d7de;">
+    <!-- Main Card Panel -->
+    <main class="main-card glass-panel">
+      <div class="page-body-content">
         ${pageData.content}
       </div>
-      <div style="margin-top:30px;">
-        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Try ${BRAND_NAME} Voice Generator</a>
+      <div style="margin-top:32px;">
+        <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Return to Voice Generator</a>
       </div>
     </main>
 
     ${footerHtml}
   </div>
+
+  <!-- Floating Feedback Trigger Button -->
+  <button type="button" class="floating-feedback-trigger" id="floating-feedback-trigger" aria-label="Give Feedback">
+    <span>💬</span> Feedback
+  </button>
+
+  <!-- Floating Feedback Modal -->
+  <div class="modal-overlay hidden" id="feedback-modal">
+    <div class="modal-card glass-panel">
+      <div class="modal-header">
+        <h3>💬 Share Product Feedback</h3>
+        <button type="button" class="close-modal-btn" id="close-feedback-btn">✖</button>
+      </div>
+
+      <!-- Step 1: Google Login Button -->
+      <div id="auth-step-container">
+        <button type="button" class="google-auth-btn" id="google-auth-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <p style="font-size:0.8rem; color:var(--text-muted); text-align:center;">Log in with Google to submit verified feedback.</p>
+      </div>
+
+      <!-- Step 2: Feedback Submission Form -->
+      <div id="feedback-form-container" class="hidden">
+        <p id="user-info-text" style="font-size:0.85rem; color:var(--accent-blue); margin-bottom:10px; font-weight:600; text-align:center;"></p>
+        
+        <div class="star-rating" id="star-rating">
+          <span data-rating="1">★</span>
+          <span data-rating="2">★</span>
+          <span data-rating="3">★</span>
+          <span data-rating="4">★</span>
+          <span data-rating="5" class="active">★</span>
+        </div>
+
+        <div class="input-group">
+          <textarea id="feedback-text" placeholder="Tell us how we can improve TextToSpeechH AI..." rows="4"></textarea>
+        </div>
+
+        <button type="button" class="primary-btn" id="submit-feedback-btn" style="width:100%;">
+          <span>Submit Feedback</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/app.js?v=6.0.0"></script>
 </body>
 </html>`;
 }
 
-module.exports = async (req, res) => {
-  const reqUrl = req.url.split('?')[0].replace(/^\/+|\/+$/g, '');
-
-  // Check programmatic pages
-  if (PROGRAMMATIC_ROUTER[reqUrl]) {
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(renderSeoPage(PROGRAMMATIC_ROUTER[reqUrl], reqUrl));
-    return true;
-  }
-
-  // Check content hub articles
-  if (CONTENT_HUB_ARTICLES[reqUrl]) {
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(renderSeoPage(CONTENT_HUB_ARTICLES[reqUrl], reqUrl));
-    return true;
-  }
-
-  // Check legal & trust pages with alias resolution
-  let legalKey = reqUrl;
-  if (reqUrl === 'privacy-policy' || reqUrl === 'privacy') legalKey = 'privacy';
-  if (reqUrl === 'terms-of-service' || reqUrl === 'terms') legalKey = 'terms';
-  if (reqUrl === 'contact-support' || reqUrl === 'contact' || reqUrl === 'support') legalKey = 'contact';
-  if (reqUrl === 'about-us' || reqUrl === 'about') legalKey = 'about';
-  if (reqUrl === 'cookie-policy' || reqUrl === 'cookie') legalKey = 'cookie';
-  if (reqUrl === 'refund-policy' || reqUrl === 'refund') legalKey = 'refund';
-  if (reqUrl === 'community-guidelines' || reqUrl === 'community') legalKey = 'community';
-  if (reqUrl === 'disclaimer') legalKey = 'disclaimer';
-  if (reqUrl === 'dmca') legalKey = 'dmca';
-  if (reqUrl === 'accessibility') legalKey = 'accessibility';
-
-  if (LEGAL_PAGES[legalKey]) {
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(renderSeoPage(LEGAL_PAGES[legalKey], reqUrl));
-    return true;
-  }
-
-  return false;
-};
+module.exports = { renderSeoPage };

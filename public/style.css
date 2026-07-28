@@ -1,5 +1,5 @@
 /* ----------------------------------------------------
-   TextToSpeechH AI Voice Platform - Premium White AI SaaS Theme
+   TextToSpeechH AI Voice Platform - Reference Design System
    Domain: https://texttospeechh.com
    Design System: Stripe / OpenAI / Apple White Aesthetic
 ------------------------------------------------------- */
@@ -13,7 +13,7 @@
   --space-5: 48px;
   --space-6: 64px;
 
-  /* Premium White Theme Color Palette */
+  /* White Theme Color Palette */
   --bg-light: #f8fafc;
   --bg-light-secondary: #f1f5f9;
   --panel-bg: #ffffff;
@@ -33,7 +33,7 @@
   --text-muted: #64748b;
   
   --glass-blur: blur(16px) saturate(180%);
-  --glass-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --glass-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
   --glass-shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.12);
   
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -106,7 +106,7 @@ body {
   width: 100%;
   max-width: 960px;
   margin-bottom: var(--space-2);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--panel-border);
@@ -171,8 +171,9 @@ body {
   width: 100%;
 }
 
-/* App Container Layout */
-.app-container {
+/* App Container Layout & Unified Containers Across ALL Pages */
+.app-container,
+.legal-container {
   width: 100%;
   max-width: 960px;
   display: flex;
@@ -182,8 +183,9 @@ body {
   z-index: 10;
 }
 
-/* Header Section */
-.app-header {
+/* Header Section (Hero across ALL Pages) */
+.app-header,
+.page-header {
   margin-bottom: var(--space-1);
   padding: var(--space-2) var(--space-1);
 }
@@ -247,19 +249,6 @@ body {
   color: var(--accent-blue);
 }
 
-.shortcut-trigger {
-  cursor: pointer;
-  user-select: none;
-}
-
-.shortcut-trigger:hover {
-  background: var(--accent-light);
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
-}
-
 .subtitle {
   color: var(--text-muted);
   font-size: 1.08rem;
@@ -267,9 +256,9 @@ body {
   font-weight: 400;
 }
 
-/* Glass Panel Component (White SaaS) */
+/* Glass Panel Component (Solid Crisp White SaaS Card) */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--panel-border);
@@ -292,6 +281,72 @@ body {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-indigo));
+}
+
+/* High Contrast Content Styling for Legal & Trust Pages */
+.page-body-content {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.page-body-content h1,
+.page-body-content h2,
+.page-body-content h3,
+.page-body-content h4 {
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.page-body-content h2 {
+  font-size: 1.55rem;
+}
+
+.page-body-content h3 {
+  font-size: 1.25rem;
+}
+
+.page-body-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+}
+
+.page-body-content ul,
+.page-body-content ol {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  line-height: 1.8;
+}
+
+.page-body-content a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.page-body-content a:hover {
+  color: var(--accent-blue-hover);
+  text-decoration: underline;
+}
+
+.legal-hero-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3);
+  background: #ffffff;
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.legal-hero-card h2 {
+  font-size: 1.75rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
 }
 
 /* Drag & Drop File Dropzone */
@@ -323,19 +378,11 @@ body {
   font-size: 0.95rem;
 }
 
-.dropzone-icon {
-  font-size: 1.4rem;
-}
-
 .file-label {
   color: var(--accent-blue);
   text-decoration: underline;
   cursor: pointer;
   font-weight: 600;
-}
-
-.file-label:hover {
-  color: var(--accent-blue-hover);
 }
 
 /* Text Area Section */
@@ -456,10 +503,6 @@ textarea::placeholder {
   gap: 6px;
 }
 
-.control-card label .icon {
-  font-size: 1rem;
-}
-
 select {
   width: 100%;
   height: 46px;
@@ -495,96 +538,7 @@ select option {
   padding: 8px;
 }
 
-/* Sliders */
-.slider-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.slider-val {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent-blue);
-}
-
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 6px;
-  background: #e2e8f0;
-  border-radius: 3px;
-  outline: none;
-  margin-top: 8px;
-  cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--accent-blue);
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
-  cursor: pointer;
-  transition: transform 0.15s;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.25);
-}
-
-/* Progress Section */
-.progress-section {
-  background: var(--accent-light);
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-3);
-  margin-bottom: var(--space-3);
-  animation: fadeIn 0.3s ease;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 0.85rem;
-}
-
-.progress-status-text {
-  font-weight: 600;
-  color: var(--accent-blue);
-}
-
-.progress-eta {
-  color: var(--text-muted);
-}
-
-.progress-percentage {
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.progress-bar-bg {
-  width: 100%;
-  height: 8px;
-  background: #e2e8f0;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
-  transition: width 0.3s ease;
-}
-
-/* Action Buttons Wrapper */
+/* Action Buttons */
 .actions-wrapper {
   display: flex;
   gap: var(--space-2);
@@ -592,7 +546,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-bottom: var(--space-3);
 }
 
-/* Buttons System */
 button {
   font-family: var(--font-family);
   font-size: 0.98rem;
@@ -607,41 +560,25 @@ button {
   transition: var(--transition-smooth);
   border: none;
   outline: none;
-  position: relative;
-  overflow: hidden;
 }
 
-/* Primary Generate Speech Button (Royal Blue Gradient) */
 .primary-btn {
   background: linear-gradient(135deg, var(--accent-blue) 0%, #3b82f6 100%);
   color: #ffffff;
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
   font-weight: 700;
-  letter-spacing: 0.01em;
   flex: 1 1 220px;
 }
 
 .primary-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, var(--accent-blue-hover) 0%, var(--accent-blue) 100%);
   box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45);
-}
-
-.primary-btn:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.primary-btn:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  box-shadow: none;
 }
 
 .secondary-btn {
   background: #ffffff;
   border: 1px solid var(--panel-border);
   color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
   flex: 1 1 140px;
 }
 
@@ -649,11 +586,6 @@ button {
   background: var(--bg-light);
   border-color: var(--panel-border-hover);
   transform: translateY(-2px);
-}
-
-.secondary-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
 }
 
 .download-btn {
@@ -664,9 +596,7 @@ button {
 
 .download-btn:hover:not(:disabled) {
   background: #dcfce7;
-  border-color: #86efac;
   color: #15803d;
-  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.2);
 }
 
 /* Soundwave Visualizer Container */
@@ -691,7 +621,7 @@ button {
 .soundwave .bar {
   width: 4px;
   height: 10px;
-  background: linear-gradient(180deg, var(--accent-blue), var(--accent-cyan));
+  background: var(--accent-blue);
   border-radius: 2px;
   transition: height 0.2s ease;
 }
@@ -699,17 +629,6 @@ button {
 .soundwave.active .bar {
   animation: soundwaveAnim 1.2s infinite ease-in-out alternate;
 }
-
-.soundwave.active .bar:nth-child(1) { animation-delay: 0.1s; }
-.soundwave.active .bar:nth-child(2) { animation-delay: 0.3s; }
-.soundwave.active .bar:nth-child(3) { animation-delay: 0.5s; }
-.soundwave.active .bar:nth-child(4) { animation-delay: 0.2s; }
-.soundwave.active .bar:nth-child(5) { animation-delay: 0.4s; }
-.soundwave.active .bar:nth-child(6) { animation-delay: 0.6s; }
-.soundwave.active .bar:nth-child(7) { animation-delay: 0.15s; }
-.soundwave.active .bar:nth-child(8) { animation-delay: 0.35s; }
-.soundwave.active .bar:nth-child(9) { animation-delay: 0.45s; }
-.soundwave.active .bar:nth-child(10) { animation-delay: 0.25s; }
 
 @keyframes soundwaveAnim {
   0% { height: 6px; }
@@ -753,7 +672,7 @@ button {
   font-weight: 500;
 }
 
-/* Features Grid */
+/* Features Grid Across ALL Pages */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -783,10 +702,6 @@ button {
   transition: var(--transition-smooth);
 }
 
-.feature-card:hover .feature-icon {
-  transform: scale(1.15) rotate(5deg);
-}
-
 .feature-card h3 {
   font-size: 1.15rem;
   font-weight: 700;
@@ -796,11 +711,11 @@ button {
 
 .feature-card p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Redesigned Premium White SaaS Footer */
+/* Unified Multi-Column SaaS Footer Across ALL Pages */
 .saas-footer {
   margin-top: var(--space-5);
   width: 100%;
@@ -834,11 +749,6 @@ button {
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-main);
-}
-
-.footer-brand-icon {
-  width: 32px;
-  height: 32px;
 }
 
 .footer-brand-desc {
@@ -913,7 +823,7 @@ button {
   color: var(--text-muted);
 }
 
-/* Floating Feedback Button & Glass Modal */
+/* Floating Feedback Trigger Button */
 .floating-feedback-trigger {
   position: fixed;
   bottom: 24px;
@@ -1005,7 +915,7 @@ button {
   color: #dc2626;
 }
 
-/* Rating Stars Selector */
+/* Star Rating Selector */
 .star-rating {
   display: flex;
   gap: 8px;
@@ -1075,11 +985,6 @@ button {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.5;
-}
-
-.cookie-banner-link {
-  color: var(--accent-blue);
-  text-decoration: underline;
 }
 
 .accept-cookies-btn {
