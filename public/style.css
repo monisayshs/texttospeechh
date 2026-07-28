@@ -919,6 +919,13 @@ button:focus-visible {
   }
 }
 
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
 .footer-brand-col h2 {
   font-size: 1.25rem;
   font-weight: 800;

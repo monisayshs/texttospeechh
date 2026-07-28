@@ -16,8 +16,8 @@ function getSaaSFooterHtml() {
     <div class="footer-top-grid">
       <!-- Brand Column -->
       <div class="footer-brand-col">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-          <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" style="width:32px; height:32px;">
+        <div class="footer-brand-row">
+          <img src="/logo-icon.svg" alt="TextToSpeechH AI Emblem" class="footer-brand-icon">
           <h2>TextToSpeechH <span class="accent-text">AI</span></h2>
         </div>
         <p class="footer-brand-desc">Convert text into ultra-realistic human voices instantly using ${BRAND_NAME}. Engineered for content creators, long script narrations, and global businesses.</p>
