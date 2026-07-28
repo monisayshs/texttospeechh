@@ -1176,36 +1176,6 @@ button:disabled {
   color: var(--text-muted);
 }
 
-/* Floating Feedback Trigger Button */
-.floating-feedback-trigger {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 999;
-  background: #ffffff;
-  border: 1px solid var(--panel-border);
-  color: var(--accent-blue);
-  padding: 12px 20px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: auto;
-}
-
-.floating-feedback-trigger:hover {
-  transform: translateY(-3px) scale(1.03);
-  border-color: var(--accent-blue);
-  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.25);
-  background: var(--accent-blue);
-  color: #ffffff;
-}
-
 /* Modal Overlay & Card */
 .modal-overlay {
   position: fixed;
@@ -1267,54 +1237,6 @@ button:disabled {
   background: #fee2e2;
   border-color: #f87171;
   color: #dc2626;
-}
-
-/* Star Rating Selector */
-.star-rating {
-  display: flex;
-  gap: 8px;
-  font-size: 1.8rem;
-  margin: var(--space-2) 0;
-  cursor: pointer;
-  justify-content: center;
-}
-
-.star-rating span {
-  color: #cbd5e1;
-  transition: var(--transition-smooth);
-}
-
-.star-rating span.active,
-.star-rating span:hover {
-  color: #f59e0b;
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
-  transform: scale(1.15);
-}
-
-/* Google Sign-in Auth Button */
-.google-auth-btn {
-  width: 100%;
-  background: #ffffff;
-  color: #1f2937;
-  border: 1px solid #d1d5db;
-  padding: 12px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  margin-bottom: var(--space-3);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-}
-
-.google-auth-btn:hover {
-  background: #f9fafb;
-  border-color: #9ca3af;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
 /* Cookie Banner */
@@ -1380,13 +1302,6 @@ button:disabled {
     width: 100%;
     flex: 1 1 100%;
   }
-
-  .floating-feedback-trigger {
-    bottom: 16px;
-    right: 16px;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-  }
 }
 
 [data-theme="dark"] body {
@@ -1414,9 +1329,7 @@ button:disabled {
 [data-theme="dark"] .accordion-header,
 [data-theme="dark"] .modal-card,
 [data-theme="dark"] .cookie-banner,
-[data-theme="dark"] .google-auth-btn,
 [data-theme="dark"] .secondary-btn,
-[data-theme="dark"] .feedback-trigger,
 [data-theme="dark"] select,
 [data-theme="dark"] textarea,
 [data-theme="dark"] option,
@@ -1469,30 +1382,6 @@ button:disabled {
   background: #450a0a;
   color: #fca5a5;
   border-color: #dc2626;
-}
-
-[data-theme="dark"] .star-rating span {
-  color: #475569;
-}
-
-[data-theme="dark"] .star-rating span.active,
-[data-theme="dark"] .star-rating span:hover {
-  color: #fbbf24;
-  text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
-}
-
-[data-theme="dark"] .google-auth-btn {
-  border-color: #475569;
-}
-
-[data-theme="dark"] .google-auth-btn:hover {
-  background: var(--bg-light-secondary);
-  border-color: #64748b;
-}
-
-[data-theme="dark"] .floating-feedback-trigger {
-  background: var(--bg-light-secondary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .modal-overlay {

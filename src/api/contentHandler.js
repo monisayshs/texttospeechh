@@ -29,12 +29,6 @@ function renderFaqDirectoryPage() {
 
 ${trackingHtml}
 
-  <!-- Supabase JS Client SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
-  </script>
-
   <title>Frequently Asked Questions (FAQ) | ${BRAND_NAME}</title>
   <meta name="description" content="Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.">
   <link rel="canonical" href="${DOMAIN}/faq">
@@ -110,10 +104,7 @@ ${trackingHtml}
     ${footerHtml}
   </div>
 
-  <!-- Floating Feedback Trigger Button -->
-  <button type="button" class="floating-feedback-trigger" id="floating-feedback-trigger" aria-label="Give Feedback">
-    <span>💬</span> Feedback
-  </button>
+  
 
   <script src="/app.js?v=8.0.0"></script>
 </body>
@@ -132,12 +123,6 @@ function renderGuidePage(guideData, slug) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ${trackingHtml}
-
-  <!-- Supabase JS Client SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    window.SUPABASE_URL = 'https://eghpuhwywutglbtqheda.supabase.co';
-  </script>
 
   <title>${guideData.title}</title>
   <meta name="description" content="${guideData.metaDesc}">
@@ -213,10 +198,7 @@ ${trackingHtml}
     ${footerHtml}
   </div>
 
-  <!-- Floating Feedback Trigger Button -->
-  <button type="button" class="floating-feedback-trigger" id="floating-feedback-trigger" aria-label="Give Feedback">
-    <span>💬</span> Feedback
-  </button>
+  
 
   <script src="/app.js?v=8.0.0"></script>
 </body>
