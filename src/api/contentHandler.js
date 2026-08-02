@@ -205,11 +205,20 @@ ${trackingHtml}
 </html>`;
 }
 
+function getRequestPathname(req) {
+  const rawUrl = req.headers['x-matched-path'] || req.headers['x-forwarded-uri'] || req.url || '/';
+  try {
+    const parsed = new URL(rawUrl, DOMAIN);
+    return parsed.pathname;
+  } catch (e) {
+    return rawUrl.split('?')[0];
+  }
+}
+
 async function contentHandler(req, res) {
   try {
-    const reqUrl = req.url || '/';
-    const parsedUrl = new URL(reqUrl, DOMAIN);
-    const pathSlug = parsedUrl.pathname.replace(/^\/+|\/+$/g, '');
+    const pathname = getRequestPathname(req);
+    const pathSlug = pathname.replace(/^\/+|\/+$/g, '');
 
     if (pathSlug === 'faq' || pathSlug === 'faq.html') {
       const html = renderFaqDirectoryPage();
@@ -219,8 +228,9 @@ async function contentHandler(req, res) {
       return true;
     }
 
-    if (educationalGuides && educationalGuides[pathSlug]) {
-      const html = renderGuidePage(educationalGuides[pathSlug], pathSlug);
+    const guidesMap = educationalGuides.EDUCATIONAL_GUIDES || educationalGuides;
+    if (guidesMap && guidesMap[pathSlug]) {
+      const html = renderGuidePage(guidesMap[pathSlug], pathSlug);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.end(html);

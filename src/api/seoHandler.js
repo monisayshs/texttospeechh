@@ -41,7 +41,18 @@ const AUTO_REDIRECT_MAP = {
   "keyword/voice-generator": "text-to-speech/voice-generator"
 };
 
+function getRequestPathname(req) {
+  const rawUrl = req.headers['x-matched-path'] || req.headers['x-forwarded-uri'] || req.url || '/';
+  try {
+    const parsed = new URL(rawUrl, DOMAIN);
+    return parsed.pathname;
+  } catch (e) {
+    return rawUrl.split('?')[0];
+  }
+}
+
 function renderSeoPage(pageData, pathSlug) {
+  if (!pageData) return "";
   const canonicalUrl = `${DOMAIN}/${pathSlug}`;
   const orgSchema = JSON.stringify(schemaGenerator.getOrganizationSchema());
   const webSiteSchema = JSON.stringify(schemaGenerator.getWebSiteSchema());
@@ -50,11 +61,11 @@ function renderSeoPage(pageData, pathSlug) {
   const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema([
     { name: "Home", url: DOMAIN },
     { name: "Text to Speech", url: `${DOMAIN}/text-to-speech` },
-    ...(pathSlug !== "text-to-speech" ? [{ name: pageData.h1 || pageData.title, url: canonicalUrl }] : [])
+    ...(pathSlug !== "text-to-speech" ? [{ name: pageData.h1 || pageData.title || pathSlug, url: canonicalUrl }] : [])
   ]));
 
   const articleSchema = (pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech")
-    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title, pageData.metaDesc, canonicalUrl))}</script>\n  `
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title || "Text to Speech", pageData.metaDesc || "", canonicalUrl))}</script>\n  `
     : "";
 
   const category = pageData.category ? `<span class="blog-category" style="font-size:0.8em; color:#00c896; text-transform:uppercase; letter-spacing:1px; font-weight:600;">${pageData.category}</span>` : '';
@@ -73,9 +84,9 @@ function renderSeoPage(pageData, pathSlug) {
 ${trackingHtml}
 
   <!-- SEO Primary Meta Tags -->
-  <title>${pageData.title}</title>
-  <meta name="title" content="${pageData.title}">
-  <meta name="description" content="${pageData.metaDesc}">
+  <title>${pageData.title || "Text to Speech | TextToSpeechH AI"}</title>
+  <meta name="title" content="${pageData.title || "Text to Speech"}">
+  <meta name="description" content="${pageData.metaDesc || ""}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${canonicalUrl}">
   ${hreflangTags}
@@ -91,15 +102,15 @@ ${trackingHtml}
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:title" content="${pageData.title}">
-  <meta property="og:description" content="${pageData.metaDesc}">
+  <meta property="og:title" content="${pageData.title || ""}">
+  <meta property="og:description" content="${pageData.metaDesc || ""}">
   <meta property="og:image" content="${DOMAIN}/og-image.png">
 
   <!-- Twitter Cards -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="${canonicalUrl}">
-  <meta property="twitter:title" content="${pageData.title}">
-  <meta property="twitter:description" content="${pageData.metaDesc}">
+  <meta property="twitter:title" content="${pageData.title || ""}">
+  <meta property="twitter:description" content="${pageData.metaDesc || ""}">
   <meta property="twitter:image" content="${DOMAIN}/og-image.png">
 
   <!-- JSON-LD Schemas -->
@@ -122,7 +133,7 @@ ${trackingHtml}
   <!-- Ambient Particle Background -->
   <div class="particle-background" id="particle-bg"></div>
 
-  <!-- Sticky Top Utility Navigation Bar (Strict Architecture Compliant: Home, Text to Speech, About Us, Contact, Privacy, Terms, Disclaimer) -->
+  <!-- Sticky Top Utility Navigation Bar -->
   <div class="top-utility-bar">
     <nav class="top-utility-nav" aria-label="Top Utility Navigation">
       <ul>
@@ -148,7 +159,7 @@ ${trackingHtml}
         <div class="logo-badge">
           <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
-            <h1>${pageData.h1}</h1>
+            <h1>${pageData.h1 || pageData.title}</h1>
           </a>
         </div>
         <div class="status-pill-group">
@@ -156,13 +167,13 @@ ${trackingHtml}
           <span class="status-pill">Trust Governance</span>
         </div>
       </div>
-      <p class="subtitle">${category}${readingTime} ${pageData.metaDesc}</p>
+      <p class="subtitle">${category}${readingTime} ${pageData.metaDesc || ""}</p>
     </header>
 
     <!-- Main Card Panel -->
     <main class="main-card glass-panel">
       <div class="page-body-content">
-        ${pageData.content}
+        ${pageData.content || ""}
       </div>
       <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
         <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Try Voice Generator Tool</a>
@@ -180,20 +191,27 @@ ${trackingHtml}
 
 async function seoHandler(req, res) {
   try {
-    const reqUrl = req.url || '/';
-    const parsedUrl = new URL(reqUrl, DOMAIN);
-    let pathSlug = parsedUrl.pathname.replace(/^\/+|\/+$/g, '');
+    const pathname = getRequestPathname(req);
+    let pathSlug = pathname.replace(/^\/+|\/+$/g, '');
 
     if (!pathSlug) return false;
 
     // 0. 301 Permanent Redirects for consolidation
-    if (AUTO_REDIRECT_MAP[pathSlug] || KEYWORD_REDIRECTS[pathSlug] || OLD_BLOG_REDIRECTS[pathSlug]) {
+    const redirectKey = Object.keys(AUTO_REDIRECT_MAP).find(k => k === pathSlug) ||
+                        (KEYWORD_REDIRECTS && KEYWORD_REDIRECTS[pathSlug]) ||
+                        (OLD_BLOG_REDIRECTS && OLD_BLOG_REDIRECTS[pathSlug]);
+
+    if (AUTO_REDIRECT_MAP[pathSlug] || (KEYWORD_REDIRECTS && KEYWORD_REDIRECTS[pathSlug]) || (OLD_BLOG_REDIRECTS && OLD_BLOG_REDIRECTS[pathSlug])) {
       const redirectTarget = AUTO_REDIRECT_MAP[pathSlug] || KEYWORD_REDIRECTS[pathSlug] || OLD_BLOG_REDIRECTS[pathSlug];
       const destination = `/${redirectTarget}`;
-      res.statusCode = 301;
-      res.setHeader('Location', destination);
-      res.setHeader('Content-Type', 'text/html; charset=utf-8');
-      res.end(`<html><head><meta http-equiv="refresh" content="0;url=${destination}"><title>301 Permanent Redirect</title></head><body><a href="${destination}">Redirecting to ${destination}</a></body></html>`);
+      if (typeof res.redirect === 'function') {
+        res.redirect(301, destination);
+      } else {
+        res.statusCode = 301;
+        res.setHeader('Location', destination);
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.end(`<html><head><meta http-equiv="refresh" content="0;url=${destination}"><title>301 Permanent Redirect</title></head><body><a href="${destination}">Redirecting to ${destination}</a></body></html>`);
+      }
       return true;
     }
 

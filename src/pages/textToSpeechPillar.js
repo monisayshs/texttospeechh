@@ -420,7 +420,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
         <ol style="line-height: 1.8; margin: 0; padding-left: 20px; font-size: 0.95rem;">
           <li><strong>Over-speeding Audio Output:</strong> Setting speech speed above 1.5x on promotional videos reduces listener retention by over 40%.</li>
           <li><strong>Ignoring Capitalization Signals:</strong> ALL-CAPS words are interpreted by neural models as shouted emphasis. Use proper title casing.</li>
-          <li><strong>Uncleaned Special Characters:</strong> Stray characters like `#`, `*`, or raw URLs confuse phonemizer parsers.</li>
+          <li><strong>Uncleaned Special Characters:</strong> Stray characters like '#' and '*' or raw URLs confuse phonemizer parsers.</li>
           <li><strong>Using Unlicensed Background Music:</strong> Mixing AI voiceovers with copyrighted music can trigger YouTube Content ID strikes. Always use royalty-free tracks.</li>
         </ol>
       </div>

@@ -12,11 +12,19 @@ const {
   get503Page 
 } = require('../src/pages/errorPages');
 
+function getRequestPathname(req) {
+  const rawUrl = req.headers['x-matched-path'] || req.headers['x-forwarded-uri'] || req.url || '/';
+  try {
+    const parsed = new URL(rawUrl, 'https://texttospeechh.com');
+    return parsed.pathname;
+  } catch (e) {
+    return rawUrl.split('?')[0];
+  }
+}
+
 module.exports = async (req, res) => {
   try {
-    const reqUrl = req.url || '/';
-    const parsedUrl = new URL(reqUrl, 'https://texttospeechh.com');
-    const pathname = parsedUrl.pathname;
+    const pathname = getRequestPathname(req);
 
     // Diagnostic Error Test Routes (Strict Exact Pathname Matches Only)
     if (pathname === '/500' || pathname === '/500.html') {
@@ -65,7 +73,7 @@ module.exports = async (req, res) => {
       if (isContentHandled) return;
     }
 
-    // SEO & Legal Page Handlers (/about, /privacy-policy, /terms, /disclaimer, /contact)
+    // SEO & Legal Page Handlers (/text-to-speech, /about, /privacy-policy, /terms, /disclaimer, /contact, /keyword/*)
     if (typeof seoHandler === 'function') {
       const isSeoHandled = await seoHandler(req, res);
       if (isSeoHandled) return;
@@ -74,12 +82,14 @@ module.exports = async (req, res) => {
     // Unmatched Routes -> 404 Custom Error Page
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(get404Page());
+    return res.end(get404Page());
 
   } catch (err) {
     console.error('[Global Router Error]:', err);
-    res.statusCode = 500;
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.end(get500Page());
+    if (!res.headersSent) {
+      res.statusCode = 500;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(get500Page());
+    }
   }
 };
