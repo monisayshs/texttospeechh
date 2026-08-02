@@ -7,6 +7,23 @@
 const DOMAIN = "https://texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
+// 301 redirect map: old keyword path → new blog path
+const KEYWORD_REDIRECTS = {
+  "keyword/free-ai-texttospeechh.com": "blog/text-to-speech",
+  "keyword/text-to-speech-free": "blog/free-text-to-speech",
+  "keyword/faceless-youtube-ai-voice": "blog/ai-text-to-speech",
+  "keyword/ai-voice-cloning": "blog/ai-text-to-speech",
+  "keyword/ai-text-to-speech": "blog/ai-text-to-speech",
+  "keyword/free-text-to-speech": "blog/free-text-to-speech",
+  "keyword/online-text-to-speech": "blog/online-text-to-speech",
+  "keyword/text-to-voice": "blog/text-to-voice",
+  "keyword/voice-generator": "blog/voice-generator"
+};
+
+const OLD_BLOG_REDIRECTS = {
+  "blog/text-to-speech-complete-guide": "blog/text-to-speech"
+};
+
 const PROGRAMMATIC_ROUTER = {
   // --- Competitor Comparison Hub ---
   "compare/texttospeechh-vs-elevenlabs": {
@@ -76,96 +93,26 @@ const PROGRAMMATIC_ROUTER = {
       <p>${BRAND_NAME} offers clear, natural narration for business and corporate video creators.</p>
     `
   },
-
-  // --- Master Keyword Clusters ---
-  "keyword/free-ai-texttospeechh.com": {
-    title: `Free AI Voice Generator Online | ${BRAND_NAME}`,
-    h1: `Free AI Voice Generator Online`,
-    metaDesc: `Convert text to realistic speech online using ${BRAND_NAME}. 100% free AI voice generator with high-quality natural voices and MP3 exports.`,
+  "compare/texttospeechh-vs-naturalreader": {
+    title: `${BRAND_NAME} vs NaturalReader | Best Free NaturalReader Alternative`,
+    h1: `${BRAND_NAME} vs NaturalReader: Free TTS Comparison`,
+    metaDesc: `Compare ${BRAND_NAME} and NaturalReader. ${BRAND_NAME} offers free neural text to speech with no word limits or premium upgrades.`,
     content: `
-      <h2>Generate Realistic AI Voices for Free</h2>
-      <p>Transform your script into lifelike human audio in seconds with ${BRAND_NAME}. No credit card or registration required.</p>
+      <h2>Free Alternative to NaturalReader</h2>
+      <p><a href="${DOMAIN}">${BRAND_NAME}</a> provides a compelling free alternative to NaturalReader for users who need natural AI voices without paying for premium tiers. With support for long scripts, multiple languages, and instant MP3 downloads, ${BRAND_NAME} delivers everything NaturalReader offers and more — at no cost.</p>
     `
   },
-  "keyword/text-to-speech-free": {
-    title: `Text to Speech Free Online | ${BRAND_NAME}`,
-    h1: `Text to Speech Free Online`,
-    metaDesc: `Free online text-to-speech converter. Generate clear, realistic speech audio from written scripts instantly with ${BRAND_NAME}.`,
+  "compare/texttospeechh-vs-ttsmaker": {
+    title: `${BRAND_NAME} vs TTSMaker | Best Free TTSMaker Alternative`,
+    h1: `${BRAND_NAME} vs TTSMaker: Free AI Voice Generator`,
+    metaDesc: `Compare ${BRAND_NAME} and TTSMaker. ${BRAND_NAME} delivers higher quality neural voices, longer script support, and better audio quality.`,
     content: `
-      <h2>Unlimited Free Text to Speech Converter</h2>
-      <p>${BRAND_NAME} converts scripts into high-quality MP3 audio files for podcasts, videos, and presentations.</p>
-    `
-  },
-  "keyword/faceless-youtube-ai-voice": {
-    title: `AI Voice Generator for Faceless YouTube & Shorts | ${BRAND_NAME}`,
-    h1: `Best AI Voice Generator for Faceless YouTube Channels`,
-    metaDesc: `Create high-engaging AI voiceovers for faceless YouTube channels, TikToks, and Instagram Reels using ${BRAND_NAME}.`,
-    content: `
-      <h2>Empowering Faceless YouTube & Automation Channels</h2>
-      <p>${BRAND_NAME} delivers clear, engaging voiceover narrations ideal for faceless YouTube channels, shorts, and TikTok automation.</p>
-    `
-  },
-  "keyword/ai-voice-cloning": {
-    title: `Free AI Voice Cloning & Neural Voice Synthesis | ${BRAND_NAME}`,
-    h1: `Free AI Voice Cloning & Neural Voice Synthesis`,
-    metaDesc: `Create realistic custom voice clones and neural voices online using ${BRAND_NAME}.`,
-    content: `
-      <h2>Neural Speech & Voice Synthesis</h2>
-      <p>${BRAND_NAME} uses modern neural TTS engines to craft clear, expressive voices for any project.</p>
-    `
-  },
-  "keyword/ai-text-to-speech": {
-    title: `AI Text to Speech Generator | ${BRAND_NAME}`,
-    h1: `AI Text to Speech Generator`,
-    metaDesc: `Convert written text into realistic AI speech with ${BRAND_NAME}. Free neural text-to-speech with natural voices and MP3 downloads.`,
-    content: `
-      <h2>AI-Powered Text to Speech Conversion</h2>
-      <p><a href="${DOMAIN}">${BRAND_NAME}</a> uses advanced neural AI to transform your written content into natural-sounding speech. Whether you need a voiceover for a video, narration for a presentation, or audio for accessibility, our AI text-to-speech engine delivers studio-quality results in seconds.</p>
-      <p>Unlike traditional TTS systems that sound robotic, our AI models understand context, punctuation, and natural speech patterns. The result is audio that listeners cannot distinguish from a human recording.</p>
-    `
-  },
-  "keyword/free-text-to-speech": {
-    title: `Free Text to Speech Converter | ${BRAND_NAME}`,
-    h1: `Free Text to Speech Converter`,
-    metaDesc: `Convert text to speech for free using ${BRAND_NAME}. No credit card required. Natural AI voices, MP3 downloads, and support for long scripts.`,
-    content: `
-      <h2>Free Text to Speech for Everyone</h2>
-      <p><a href="${DOMAIN}">${BRAND_NAME}</a> offers completely free text-to-speech conversion with no hidden costs or subscription fees. Paste your text, choose a voice, and download your audio instantly.</p>
-      <p>Free TTS should not mean low quality. Our neural voices produce natural intonation, rhythm, and clarity - making them suitable for professional content creation, education, and accessibility.</p>
-    `
-  },
-  "keyword/online-text-to-speech": {
-    title: `Online Text to Speech Converter | ${BRAND_NAME}`,
-    h1: `Online Text to Speech Converter`,
-    metaDesc: `Use ${BRAND_NAME} online to convert text to speech instantly from any browser. No downloads or installations required. Free and fast.`,
-    content: `
-      <h2>Online Text to Speech, Instant Results</h2>
-      <p>No software to install. No plugins to configure. <a href="${DOMAIN}">${BRAND_NAME}</a> runs entirely in your browser, letting you convert text to natural speech from any device with an internet connection.</p>
-      <p>Our online TTS engine processes scripts quickly and delivers high-bitrate MP3 downloads that work with any video editor or media player.</p>
-    `
-  },
-  "keyword/text-to-voice": {
-    title: `Text to Voice Converter | ${BRAND_NAME}`,
-    h1: `Text to Voice Converter`,
-    metaDesc: `Convert text to realistic voice audio online using ${BRAND_NAME}. Free neural voice generator with natural male and female voices.`,
-    content: `
-      <h2>Turn Your Text into Natural Voice Audio</h2>
-      <p>With <a href="${DOMAIN}">${BRAND_NAME}</a>, converting text to voice is simple. Type or paste your script, select from multiple neural voices, and generate lifelike audio instantly.</p>
-      <p>Our text-to-voice technology supports multiple languages, emotional intonation, and natural pacing — making it ideal for content creators, educators, and businesses.</p>
-    `
-  },
-  "keyword/voice-generator": {
-    title: `AI Voice Generator Online Free | ${BRAND_NAME}`,
-    h1: `AI Voice Generator Online Free`,
-    metaDesc: `Generate realistic AI voices for free with ${BRAND_NAME}. Natural neural TTS with male and female voices. MP3 download. No signup required.`,
-    content: `
-      <h2>Free AI Voice Generator for Any Project</h2>
-      <p><a href="${DOMAIN}">${BRAND_NAME}</a> is a powerful AI voice generator that produces natural-sounding speech from text. Choose from a library of neural voices, adjust pacing, and download professional-quality MP3 audio.</p>
-      <p>Perfect for YouTube voiceovers, podcast narration, e-learning content, commercial ads, and accessibility tools. All free, no credit card needed.</p>
+      <h2>Why ${BRAND_NAME} is Better Than TTSMaker</h2>
+      <p><a href="${DOMAIN}">${BRAND_NAME}</a> surpasses TTSMaker with superior neural voice quality, support for scripts up to 10,000 words, and a cleaner interface. Both are free, but ${BRAND_NAME} delivers more natural results for professional content creation.</p>
     `
   },
 
-  // --- 12 Global Language Pages ---
+  // --- Global Language Pages ---
   "language/english": {
     title: `English Text to Speech Online | ${BRAND_NAME}`,
     h1: `Free English Text to Speech AI Voice Generator`,
@@ -202,33 +149,6 @@ const PROGRAMMATIC_ROUTER = {
       <p>Generate high quality Spanish voiceovers for marketing and videos using ${BRAND_NAME}.</p>
     `
   },
-  "language/french": {
-    title: `French Text to Speech Online | ${BRAND_NAME}`,
-    h1: `Free French Text to Speech AI Voice Generator`,
-    metaDesc: `Convert French text into realistic neural French audio online with ${BRAND_NAME}.`,
-    content: `
-      <h2>Natural French Neural Speech</h2>
-      <p>${BRAND_NAME} provides natural French voice synthesis for podcasts and educational content.</p>
-    `
-  },
-  "language/german": {
-    title: `German Text to Speech Online | ${BRAND_NAME}`,
-    h1: `Free German Text to Speech AI Voice Generator`,
-    metaDesc: `Convert German text into clear neural speech online using ${BRAND_NAME}.`,
-    content: `
-      <h2>Realistic German Speech Generation</h2>
-      <p>${BRAND_NAME} offers natural German voiceovers for business and commercial narration.</p>
-    `
-  },
-  "language/japanese": {
-    title: `Japanese Text to Speech Online | ${BRAND_NAME}`,
-    h1: `Free Japanese Text to Speech AI Voice Generator`,
-    metaDesc: `Convert Japanese text into natural neural Japanese speech online with ${BRAND_NAME}.`,
-    content: `
-      <h2>Natural Japanese Speech Synthesis</h2>
-      <p>${BRAND_NAME} converts Japanese scripts into clear audio for video narration.</p>
-    `
-  },
   "language/arabic": {
     title: `Arabic Text to Speech Online | ${BRAND_NAME}`,
     h1: `Free Arabic Text to Speech AI Voice Generator`,
@@ -243,5 +163,7 @@ const PROGRAMMATIC_ROUTER = {
 module.exports = {
   DOMAIN,
   BRAND_NAME,
-  PROGRAMMATIC_ROUTER
+  PROGRAMMATIC_ROUTER,
+  KEYWORD_REDIRECTS,
+  OLD_BLOG_REDIRECTS
 };

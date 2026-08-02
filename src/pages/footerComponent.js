@@ -32,9 +32,9 @@ function getSaaSFooterHtml() {
         <ul class="footer-links-list">
           <li><a href="/about">About Us</a></li>
           <li><a href="/contact">Contact Support</a></li>
-          <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Blog & Guides</a></li>
-          <li><a href="/accessibility">Accessibility</a></li>
-          <li><a href="/community-guidelines">Community</a></li>
+          <li><a href="/text-to-speech/blog">Blog Hub</a></li>
+          <li><a href="/text-to-speech">Text to Speech Guide</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
         </ul>
       </div>
 
@@ -43,11 +43,11 @@ function getSaaSFooterHtml() {
         <h3 class="footer-col-title">AI Tools</h3>
         <ul class="footer-links-list">
           <li><a href="/">Free AI Voice Generator</a></li>
-          <li><a href="/keyword/text-to-speech-free">Text to Speech</a></li>
-          <li><a href="/keyword/free-ai-texttospeechh.com">Text to MP3 Converter</a></li>
-          <li><a href="/blog/text-to-speech-audiobook-creation">Long Text to Speech</a></li>
-          <li><a href="/language/hindi">Hindi Text to Speech</a></li>
-          <li><a href="/language/english">English Text to Speech</a></li>
+          <li><a href="/text-to-speech">Text to Speech</a></li>
+          <li><a href="/text-to-speech/free-text-to-speech">Free Text to Speech</a></li>
+          <li><a href="/text-to-speech/online-text-to-speech">Online Text to Speech</a></li>
+          <li><a href="/text-to-speech/text-to-voice">Text to Voice</a></li>
+          <li><a href="/text-to-speech/voice-generator">Voice Generator</a></li>
         </ul>
       </div>
 
