@@ -323,7 +323,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
               <td style="padding: 12px; font-weight: 600;">MP3 Export</td>
-              <td style="padding: 12px; color: #00c896; font-weight: 700;">Direct File Download (`/api/status`)</td>
+              <td style="padding: 12px; color: #00c896; font-weight: 700;">Direct File Download (<code>/api/status</code>)</td>
               <td style="padding: 12px;">Paywalled Export</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
