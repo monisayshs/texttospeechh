@@ -1795,22 +1795,6 @@ const BLOG_ARTICLES_MAP = {
       </div>
     `
   },
-        <h2>5. Frequently Asked Questions</h2>
-        <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: Will YouTube flag AI voiceovers as re-used content?</h3>
-            <p style="line-height:1.7; margin:0;">
-              No. As long as your overall video contains original visual editing, custom commentary, or educational synthesis, YouTube approves AI voiceovers for full Partner Program ad revenue.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
-      </div>
-    `
-  },
 
   // ARTICLE 5: ElevenLabs Alternatives
   "text-to-speech/blog/elevenlabs-alternatives": {
