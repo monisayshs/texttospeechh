@@ -37,4 +37,4 @@ Disallow: /scratch/
 Disallow: /tmp/
 
 # Production XML Sitemap Reference
-Sitemap: https://www.texttospeechh.com/sitemap.xml
+Sitemap: https://texttospeechh.com/sitemap.xml

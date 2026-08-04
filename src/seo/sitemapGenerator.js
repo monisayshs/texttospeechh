@@ -2,7 +2,9 @@
  * TextToSpeechH AI - Production XML Sitemap Generator Module
  */
 
-const BASE_URL = 'https://www.texttospeechh.com';
+const { BLOG_ARTICLES_MAP } = require('../pages/textToSpeechBlogHub');
+
+const BASE_URL = 'https://texttospeechh.com';
 
 const PUBLIC_ROUTES = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
@@ -14,7 +16,7 @@ const PUBLIC_ROUTES = [
   { url: '/disclaimer', priority: '0.4', changefreq: 'yearly' }
 ];
 
-const SPOKE_ROUTES = [
+const STATIC_SPOKE_ROUTES = [
   { url: '/text-to-speech/ai-text-to-speech', priority: '0.9', changefreq: 'weekly' },
   { url: '/text-to-speech/free-text-to-speech', priority: '0.9', changefreq: 'weekly' },
   { url: '/text-to-speech/online-text-to-speech', priority: '0.9', changefreq: 'weekly' },
@@ -23,17 +25,24 @@ const SPOKE_ROUTES = [
   { url: '/text-to-speech/read-aloud', priority: '0.8', changefreq: 'monthly' },
   { url: '/text-to-speech/pdf-to-speech', priority: '0.8', changefreq: 'monthly' },
   { url: '/text-to-speech/word-to-speech', priority: '0.8', changefreq: 'monthly' },
-  { url: '/text-to-speech/blog', priority: '0.9', changefreq: 'daily' },
-  { url: '/text-to-speech/blog/best-ai-voices', priority: '0.8', changefreq: 'monthly' },
-  { url: '/text-to-speech/blog/how-text-to-speech-works', priority: '0.8', changefreq: 'monthly' },
-  { url: '/text-to-speech/blog/text-to-speech-for-students', priority: '0.8', changefreq: 'monthly' },
-  { url: '/text-to-speech/blog/text-to-speech-for-youtube', priority: '0.8', changefreq: 'monthly' },
-  { url: '/text-to-speech/blog/elevenlabs-alternatives', priority: '0.8', changefreq: 'monthly' }
+  { url: '/text-to-speech/txt-to-speech', priority: '0.8', changefreq: 'monthly' },
+  { url: '/text-to-speech/blog', priority: '0.9', changefreq: 'daily' }
 ];
+
+function getDynamicBlogRoutes() {
+  if (!BLOG_ARTICLES_MAP) return [];
+  return Object.keys(BLOG_ARTICLES_MAP).map(slug => ({
+    url: `/${slug.replace(/^\/+/, '')}`,
+    priority: '0.8',
+    changefreq: 'monthly'
+  }));
+}
 
 function generateXmlSitemap() {
   const dateStr = new Date().toISOString().split('T')[0];
-  const allRoutes = [...PUBLIC_ROUTES, ...SPOKE_ROUTES];
+  const dynamicBlogRoutes = getDynamicBlogRoutes();
+  const allRoutes = [...PUBLIC_ROUTES, ...STATIC_SPOKE_ROUTES, ...dynamicBlogRoutes];
+  
   const urlBlocks = allRoutes.map(r => `  <url>
     <loc>${BASE_URL}${r.url}</loc>
     <lastmod>${dateStr}</lastmod>
@@ -50,5 +59,7 @@ ${urlBlocks}
 module.exports = {
   generateXmlSitemap,
   BASE_URL,
-  PUBLIC_ROUTES
+  PUBLIC_ROUTES,
+  STATIC_SPOKE_ROUTES,
+  getDynamicBlogRoutes
 };
