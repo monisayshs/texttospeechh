@@ -24,6 +24,7 @@ Disallow: /503
 Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
+Allow: /b92a2552d2aec9f72edbb0f9b5671603.txt
 
 # --- AI / LLM crawlers (allowed for citation & retrieval) ---
 User-agent: GPTBot

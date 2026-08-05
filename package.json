@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "node dev-server.js",
     "start": "node dev-server.js",
-    "build": "node -e \"console.log('TextToSpeechH AI Production Build Complete: 0 Errors, 0 Warnings')\""
+    "build": "node -e \"console.log('TextToSpeechH AI Production Build Complete: 0 Errors, 0 Warnings')\"",
+    "postbuild": "node scripts/notify-indexnow.js",
+    "indexnow": "node scripts/notify-indexnow.js"
   },
   "dependencies": {
-    "googleapis": "*",
     "mammoth": "*",
     "msedge-tts": "*",
     "pdf-parse": "*",

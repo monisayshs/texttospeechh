@@ -34,6 +34,8 @@
     { "src": "/api/languages", "dest": "/api/languages.js" },
     { "src": "/api/jobs", "dest": "/api/jobs.js" },
     { "src": "/api/index-now", "dest": "/api/index-now.js" },
+    { "src": "/indexnow", "dest": "/api/index-now.js" },
+    { "src": "/b92a2552d2aec9f72edbb0f9b5671603.txt", "dest": "/public/b92a2552d2aec9f72edbb0f9b5671603.txt" },
     { "src": "/sitemap.xml", "dest": "/api/index.js" },
     { "src": "/sitemap-main.xml", "dest": "/api/index.js" },
     { "src": "/sitemap-programmatic.xml", "dest": "/api/index.js" },

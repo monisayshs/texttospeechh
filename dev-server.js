@@ -13,6 +13,7 @@ const seoHandler = require('./src/api/seoHandler');
 const contentHandler = require('./src/api/contentHandler');
 const sitemapHandler = require('./src/api/sitemapHandler');
 const contactHandler = require('./api/contact');
+const indexNowHandler = require('./api/index-now');
 
 const PORT = 3000;
 
@@ -165,6 +166,12 @@ const server = http.createServer(async (req, res) => {
 
   if (reqUrl.startsWith('/api/contact')) {
     handleApi(contactHandler);
+    return;
+  }
+
+  if (reqUrl.startsWith('/indexnow')) {
+    req.body = {};
+    indexNowHandler(req, res);
     return;
   }
 
