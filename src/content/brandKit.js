@@ -1,11 +1,11 @@
 /**
  * Official Brand Kit & Asset Directory for TextToSpeechH AI
- * Website: https://texttospeechh.com
+ * Website: https://www.texttospeechh.com
  */
 
 const BRAND_KIT = {
   brandName: "TextToSpeechH AI",
-  website: "https://texttospeechh.com",
+  website: "https://www.texttospeechh.com",
   assets: {
     primaryLogo: "/logo.svg",
     logoDark: "/logo-dark.svg",

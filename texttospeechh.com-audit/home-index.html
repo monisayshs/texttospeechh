@@ -4,24 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Deferred Analytics (GA4 + Clarity) - loaded after idle/load to protect LCP -->
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0"></script>
   <script>
-    function loadTextToSpeechAnalytics() {
-      var dl = window.dataLayer || (window.dataLayer = []);
-      function gtag(){dl.push(arguments);}
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0';
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-VXH6Y61FQ0');
-      var c = document.createElement('script');
-      c.async = true;
-      c.src = 'https://www.clarity.ms/tag/xt0hsu1r65';
-      document.head.appendChild(c);
-    }
-    if ('requestIdleCallback' in window) { requestIdleCallback(loadTextToSpeechAnalytics, { timeout: 3000 }); }
-    else { window.addEventListener('load', loadTextToSpeechAnalytics, { once: true }); }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VXH6Y61FQ0');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xt0hsu1r65");
   </script>
 
   <!-- SEO Primary Meta Tags -->
@@ -40,8 +38,17 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Hreflang (only live URLs; no unsupported locales) -->
-  <link rel="alternate" hreflang="en" href="https://www.texttospeechh.com/" />
+  <!-- International Hreflang Tags -->
+  <link rel="alternate" hreflang="en-US" href="https://www.texttospeechh.com/" />
+  <link rel="alternate" hreflang="en-GB" href="https://www.texttospeechh.com/uk" />
+  <link rel="alternate" hreflang="en-CA" href="https://www.texttospeechh.com/ca" />
+  <link rel="alternate" hreflang="en-AU" href="https://www.texttospeechh.com/au" />
+  <link rel="alternate" hreflang="hi-IN" href="https://www.texttospeechh.com/hi" />
+  <link rel="alternate" hreflang="de-DE" href="https://www.texttospeechh.com/de" />
+  <link rel="alternate" hreflang="fr-FR" href="https://www.texttospeechh.com/fr" />
+  <link rel="alternate" hreflang="es-ES" href="https://www.texttospeechh.com/es" />
+  <link rel="alternate" hreflang="ja-JP" href="https://www.texttospeechh.com/ja" />
+  <link rel="alternate" hreflang="pt-BR" href="https://www.texttospeechh.com/pt" />
   <link rel="alternate" hreflang="x-default" href="https://www.texttospeechh.com/" />
 
   <!-- OpenGraph / Facebook -->
@@ -105,7 +112,7 @@
   <link rel="stylesheet" href="style.css?v=8.1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
   </script>
@@ -435,7 +442,7 @@
           <ul class="footer-links-list">
             <li><a href="/about">About Us</a></li>
             <li><a href="/contact">Contact Support</a></li>
-            <li><a href="/text-to-speech/blog">Blog & Guides</a></li>
+            <li><a href="/blog/ultimate-ai-texttospeechh.com-guide">Blog & Guides</a></li>
             <li><a href="/accessibility">Accessibility</a></li>
             <li><a href="/community-guidelines">Community</a></li>
           </ul>
@@ -446,9 +453,9 @@
           <h3 class="footer-col-title">AI Tools</h3>
           <ul class="footer-links-list">
             <li><a href="/">Free AI Voice Generator</a></li>
-            <li><a href="/text-to-speech/free-text-to-speech">Text to Speech</a></li>
-            <li><a href="/text-to-speech">Text to MP3 Converter</a></li>
-            <li><a href="/text-to-speech/pdf-to-speech">Long Text to Speech</a></li>
+            <li><a href="/keyword/text-to-speech-free">Text to Speech</a></li>
+            <li><a href="/keyword/free-ai-texttospeechh.com">Text to MP3 Converter</a></li>
+            <li><a href="/blog/text-to-speech-audiobook-creation">Long Text to Speech</a></li>
             <li><a href="/language/hindi">Hindi Text to Speech</a></li>
             <li><a href="/language/english">English Text to Speech</a></li>
           </ul>

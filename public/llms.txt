@@ -1,0 +1,64 @@
+# TextToSpeechH AI
+
+> Free AI voice generator and text-to-speech platform. Convert text into realistic neural AI voices with instant MP3 downloads, multi-language support, and long-script handling for videos, podcasts, audiobooks, and e-learning.
+
+Other: text-to-speech, AI voice generator, free text to speech, AI TTS, voiceover generator, mp3 converter, neural voices, read aloud, pdf to speech
+
+Sitemap: https://www.texttospeechh.com/sitemap.xml
+
+## Company / core pages
+
+- [Home (AI Voice Generator)](https://www.texttospeechh.com/) — Free neural text-to-speech tool with MP3 export.
+- [Text to Speech master guide](https://www.texttospeechh.com/text-to-speech) — Pillar article on AI voice synthesis.
+
+## Key tools
+
+- [Free Text to Speech](https://www.texttospeechh.com/text-to-speech/free-text-to-speech)
+- [Online Text to Speech](https://www.texttospeechh.com/text-to-speech/online-text-to-speech)
+- [AI Text to Speech](https://www.texttospeechh.com/text-to-speech/ai-text-to-speech)
+- [Text to Voice](https://www.texttospeechh.com/text-to-speech/text-to-voice)
+- [Voice Generator](https://www.texttospeechh.com/text-to-speech/voice-generator)
+- [Read Aloud](https://www.texttospeechh.com/text-to-speech/read-aloud)
+- [PDF to Speech](https://www.texttospeechh.com/text-to-speech/pdf-to-speech)
+- [Word to Speech](https://www.texttospeechh.com/text-to-speech/word-to-speech)
+- [TXT to Speech](https://www.texttospeechh.com/text-to-speech/txt-to-speech)
+
+## Languages
+
+- [English Text to Speech](https://www.texttospeechh.com/language/english)
+- [Hindi Text to Speech](https://www.texttospeechh.com/language/hindi)
+- [Urdu Text to Speech](https://www.texttospeechh.com/language/urdu)
+- [Spanish Text to Speech](https://www.texttospeechh.com/language/spanish)
+- [French Text to Speech](https://www.texttospeechh.com/language/french)
+- [German Text to Speech](https://www.texttospeechh.com/language/german)
+- [Arabic Text to Speech](https://www.texttospeechh.com/language/arabic)
+
+## Blog & guides
+
+- [Text to Speech Blog Hub](https://www.texttospeechh.com/text-to-speech/blog)
+- [Top 10 Best AI Voices in 2026](https://www.texttospeechh.com/text-to-speech/blog/best-ai-voices)
+- [How Text-to-Speech Works](https://www.texttospeechh.com/text-to-speech/blog/how-text-to-speech-works)
+- [Text-to-Speech for Students & Teachers](https://www.texttospeechh.com/text-to-speech/blog/text-to-speech-for-students)
+- [AI Voiceover for YouTube Shorts & Faceless Channels](https://www.texttospeechh.com/text-to-speech/blog/text-to-speech-for-youtube)
+- [Top Free ElevenLabs Alternatives](https://www.texttospeechh.com/text-to-speech/blog/elevenlabs-alternatives)
+- [Understanding AI Voice Cloning](https://www.texttospeechh.com/guide/understanding-ai-voice-cloning)
+- [How Voice Changers Work](https://www.texttospeechh.com/guide/how-voice-changers-work)
+
+## FAQ & support
+
+- [FAQ](https://www.texttospeechh.com/faq)
+- [About Us](https://www.texttospeechh.com/about)
+- [Contact](https://www.texttospeechh.com/contact)
+- [Privacy Policy](https://www.texttospeechh.com/privacy-policy)
+- [Terms of Service](https://www.texttospeechh.com/terms)
+- [Cookie Policy](https://www.texttospeechh.com/cookie-policy)
+- [Disclaimer](https://www.texttospeechh.com/disclaimer)
+
+## Software
+
+- Name: TextToSpeechH AI
+- Description: Free neural text-to-speech and AI voice generator
+- Price: Free (USD 0.00)
+- Application category: MultimediaApplication
+- Operating system: All (web-based)
+- Commercial rights: All generated MP3 audio is royalty-free and cleared for monetization.

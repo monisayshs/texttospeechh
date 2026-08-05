@@ -15,7 +15,7 @@ const {
 function getRequestPathname(req) {
   const rawUrl = req.headers['x-matched-path'] || req.headers['x-forwarded-uri'] || req.url || '/';
   try {
-    const parsed = new URL(rawUrl, 'https://texttospeechh.com');
+    const parsed = new URL(rawUrl, 'https://www.texttospeechh.com');
     return parsed.pathname;
   } catch (e) {
     return rawUrl.split('?')[0];

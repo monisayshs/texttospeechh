@@ -1,11 +1,11 @@
 /**
  * TextToSpeechH AI — Production Legal & Trust Governance Pages
  * Brand: TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  * Single Official Email Inbox: hello@texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const SINGLE_OFFICIAL_EMAIL = "hello@texttospeechh.com";
 
@@ -256,12 +256,12 @@ const LEGAL_PAGES = {
     `
   },
 
-  cookie: {
+  "cookie-policy": {
     title: `Cookie Policy | ${BRAND_NAME} Browser Storage & Preferences`,
     h1: `Cookie Policy`,
     metaDesc: `Read the official Cookie Policy for ${BRAND_NAME} to learn how local browser storage and advertising cookies are used on our platform. Official contact: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026</p>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
 
       <p style="font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem;">
         This Cookie Policy explains how <strong>${BRAND_NAME}</strong> uses cookies and similar local storage technologies to enhance user experience when visiting <a href="${DOMAIN}">${DOMAIN}</a>.
@@ -272,9 +272,114 @@ const LEGAL_PAGES = {
         We use essential local browser storage to save your UI settings (such as chosen voice character, speech rate, and pitch slider levels) so your custom preferences persist across sessions.
       </p>
 
-      <h2>2. Contact Us</h2>
+      <h2>2. Advertising & Analytics Cookies</h2>
+      <p>
+        We work with third-party advertising partners, including Google AdSense, and analytics providers (Google Analytics 4 and Microsoft Clarity) that may set cookies to measure site usage, aggregate audience statistics, and serve relevant advertising. You can opt out of personalized advertising at <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">Google Ad Settings</a>.
+      </p>
+
+      <h2>3. Managing Cookies</h2>
+      <p>
+        You can control or delete cookies through your browser settings at any time. Blocking certain cookies may affect how the generator remembers your saved voice and speed preferences.
+      </p>
+
+      <h2>4. Contact Us</h2>
       <p>
         Questions about our Cookie Policy? Contact:<br>
+        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>
+      </p>
+    `
+  },
+
+  dmca: {
+    title: `DMCA Policy | ${BRAND_NAME} Copyright & Takedown Notice`,
+    h1: `DMCA Policy`,
+    metaDesc: `Read the official DMCA copyright and takedown policy for ${BRAND_NAME}. Submit copyright infringement notices to our designated agent at ${SINGLE_OFFICIAL_EMAIL}.`,
+    content: `
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
+
+      <p style="font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem;">
+        <strong>${BRAND_NAME}</strong> respects the intellectual property rights of others and expects its users to do the same. In accordance with the Digital Millennium Copyright Act (DMCA), we will respond expeditiously to valid notices of claimed copyright infringement submitted to our designated agent.
+      </p>
+
+      <h2>1. Filing a Copyright Complaint</h2>
+      <p>
+        If you believe that content hosted on ${BRAND_NAME} infringes your copyright, please send a written notification to our designated agent containing the following information:
+      </p>
+      <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li>Your physical or electronic signature.</li>
+        <li>Identification of the copyrighted work claimed to have been infringed.</li>
+        <li>Identification of the material that is claimed to be infringing, including its location on the site.</li>
+        <li>Your contact information (name, email address, and phone number).</li>
+        <li>A statement of good faith belief that the use is not authorized by the copyright owner.</li>
+        <li>A statement, under penalty of perjury, that the information in your notice is accurate and that you are authorized to act on behalf of the owner.</li>
+      </ul>
+
+      <h2>2. Designated Agent</h2>
+      <p>
+        Submit all DMCA notices to:<br>
+        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>
+      </p>
+
+      <h2>3. Counter-Notification</h2>
+      <p>
+        If you believe your content was removed by mistake, you may file a counter-notification with the same contact details above. We will forward your counter-notification to the original complainant and restore the content as required by law.
+      </p>
+    `
+  },
+
+  accessibility: {
+    title: `Accessibility Statement | ${BRAND_NAME} WCAG 2.1 AA Compliance`,
+    h1: `Accessibility Statement`,
+    metaDesc: `Read the ${BRAND_NAME} accessibility statement. We are committed to WCAG 2.1 Level AA compliance, screen-reader compatibility, and keyboard navigation support.`,
+    content: `
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Last Updated: July 26, 2026</p>
+
+      <p style="font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem;">
+        <strong>${BRAND_NAME}</strong> is committed to ensuring digital accessibility for people with disabilities. We continuously improve the user experience for everyone and apply the relevant Web Content Accessibility Guidelines (WCAG 2.1 Level AA) to our web properties.
+      </p>
+
+      <h2>1. Accessibility Features</h2>
+      <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li>Screen-reader compatible semantic markup with ARIA labels.</li>
+        <li>Full keyboard navigation support for all interactive controls.</li>
+        <li>High-contrast light and dark themes.</li>
+        <li>Adjustable speech rate and pitch controls for auditory accessibility.</li>
+      </ul>
+
+      <h2>2. Feedback & Support</h2>
+      <p>
+        We welcome your feedback on the accessibility of ${BRAND_NAME}. If you encounter an accessibility barrier, please let us know so we can fix it:<br>
+        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>
+      </p>
+    `
+  },
+
+  "community-guidelines": {
+    title: `Community Guidelines | ${BRAND_NAME} Responsible Use Policy`,
+    h1: `Community Guidelines`,
+    metaDesc: `Read the ${BRAND_NAME} community guidelines covering responsible voice synthesis, acceptable use, privacy, and respectful communication.`,
+    content: `
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
+
+      <p style="font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.8rem;">
+        <strong>${BRAND_NAME}</strong> builds voice technology for creators, educators, and businesses. These guidelines keep our community safe, respectful, and focused on responsible use of AI speech synthesis.
+      </p>
+
+      <h2>1. Responsible Voice Synthesis</h2>
+      <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
+        <li>Do not generate deepfakes or un-consented impersonation of real individuals.</li>
+        <li>Do not create hateful, defamatory, fraudulent, or illegal audio content.</li>
+        <li>Do not use the service to deceive people into believing synthesized speech is a real person's words.</li>
+      </ul>
+
+      <h2>2. Respect & Privacy</h2>
+      <p>
+        Treat other users with respect. Do not share personal information about individuals without their consent. Text submitted to ${BRAND_NAME} is processed transiently in memory and is never permanently stored.
+      </p>
+
+      <h2>3. Reporting Violations</h2>
+      <p>
+        To report a violation of these guidelines, contact us at:<br>
         <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}">${SINGLE_OFFICIAL_EMAIL}</a>
       </p>
     `

@@ -25,6 +25,35 @@ Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
 
+# --- AI / LLM crawlers (allowed for citation & retrieval) ---
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -36,5 +65,8 @@ Disallow: /offline.html
 Disallow: /scratch/
 Disallow: /tmp/
 
-# Production XML Sitemap Reference
-Sitemap: https://texttospeechh.com/sitemap.xml
+# Production XML Sitemap Reference (canonical www host)
+Sitemap: https://www.texttospeechh.com/sitemap.xml
+
+# AI-friendly site index
+llms.txt: https://www.texttospeechh.com/llms.txt

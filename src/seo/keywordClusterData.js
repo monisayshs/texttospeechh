@@ -1,6 +1,6 @@
 /**
  * Master Keyword Cluster & Topical Authority Engine for TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  * Brand: TextToSpeechH AI
  */
 

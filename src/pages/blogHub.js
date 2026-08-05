@@ -1,10 +1,10 @@
 /**
  * Phase 7: Content Hub & Internal Linking Engine for TextToSpeechH AI
  * Official Brand: TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [

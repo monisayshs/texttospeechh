@@ -1,12 +1,12 @@
 /**
  * TextToSpeechH AI — Custom Production Error Pages & UI Components
  * Brand: TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  */
 
 const { getAllTrackingSnippetsHtml } = require('../seo/gaSnippet');
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const CONTACT_EMAIL = "hello@texttospeechh.com";
 

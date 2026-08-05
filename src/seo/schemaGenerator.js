@@ -1,13 +1,13 @@
 /**
  * Schema.org JSON-LD Generator for TextToSpeechH AI
  * Brand Name: TextToSpeechH AI
- * Website: https://texttospeechh.com
+ * Website: https://www.texttospeechh.com
  * Official Social: Instagram @webxpert.ai (https://www.instagram.com/webxpert.ai/)
  * Primary Contact: hello@texttospeechh.com
  * Customer Support: support@texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const CONTACT_EMAIL = "hello@texttospeechh.com";
 const SUPPORT_EMAIL = "support@texttospeechh.com";
@@ -132,7 +132,7 @@ function getArticleSchema(title, description, url, datePublished, dateModified) 
     "dateModified": dateModified || "2026-07-29",
     "author": {
       "@type": "Organization",
-      "name": BRAND_NAME,
+      "name": "TextToSpeechH AI Editorial Team",
       "url": DOMAIN
     },
     "publisher": {

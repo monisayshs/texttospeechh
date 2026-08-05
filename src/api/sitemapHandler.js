@@ -4,6 +4,7 @@ module.exports = async (req, res) => {
   const reqUrl = req.url.split('?')[0];
 
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
 
   if (reqUrl === '/sitemap.xml') {
     res.end(sitemapGenerator.getSitemapIndexXml());

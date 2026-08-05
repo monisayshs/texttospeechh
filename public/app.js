@@ -1,6 +1,6 @@
 /**
  * TextToSpeechH AI — Production Frontend Controller
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  * Official Instagram: @webxpert.ai
  */
 

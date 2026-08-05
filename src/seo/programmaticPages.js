@@ -1,23 +1,23 @@
 /**
  * Programmatic SEO Engine & Competitor Comparison Hub for TextToSpeechH AI
  * Official Brand: TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
-// 301 redirect map: old keyword path → new blog path
+// 301 redirect map: old keyword path → canonical destination (single-hop)
 const KEYWORD_REDIRECTS = {
-  "keyword/free-ai-texttospeechh.com": "blog/text-to-speech",
-  "keyword/text-to-speech-free": "blog/free-text-to-speech",
-  "keyword/faceless-youtube-ai-voice": "blog/ai-text-to-speech",
-  "keyword/ai-voice-cloning": "blog/ai-text-to-speech",
-  "keyword/ai-text-to-speech": "blog/ai-text-to-speech",
-  "keyword/free-text-to-speech": "blog/free-text-to-speech",
-  "keyword/online-text-to-speech": "blog/online-text-to-speech",
-  "keyword/text-to-voice": "blog/text-to-voice",
-  "keyword/voice-generator": "blog/voice-generator"
+  "keyword/free-ai-texttospeechh.com": "text-to-speech",
+  "keyword/text-to-speech-free": "text-to-speech/free-text-to-speech",
+  "keyword/faceless-youtube-ai-voice": "text-to-speech/blog/text-to-speech-for-youtube",
+  "keyword/ai-voice-cloning": "text-to-speech/ai-text-to-speech",
+  "keyword/ai-text-to-speech": "text-to-speech/ai-text-to-speech",
+  "keyword/free-text-to-speech": "text-to-speech/free-text-to-speech",
+  "keyword/online-text-to-speech": "text-to-speech/online-text-to-speech",
+  "keyword/text-to-voice": "text-to-speech/text-to-voice",
+  "keyword/voice-generator": "text-to-speech/voice-generator"
 };
 
 const OLD_BLOG_REDIRECTS = {
@@ -156,6 +156,26 @@ const PROGRAMMATIC_ROUTER = {
     content: `
       <h2>Realistic Arabic Neural Voiceover</h2>
       <p>${BRAND_NAME} delivers authentic Arabic neural voices for creators and businesses.</p>
+    `
+  },
+  "language/french": {
+    title: `French Text to Speech Online | ${BRAND_NAME}`,
+    h1: `Free French Text to Speech AI Voice Generator`,
+    metaDesc: `Convert French text into natural neural French speech online with ${BRAND_NAME}. Featuring Denise (Female) and Henri (Male) voices with Parisian diction.`,
+    content: `
+      <h2>Realistic French AI Voice Generation</h2>
+      <p>${BRAND_NAME} supports authentic Parisian French neural voices including <code>fr-FR-DeniseNeural</code> and <code>fr-FR-HenriNeural</code> for smooth word-liaison transitions and natural nasal vowel resonance. Ideal for French course materials, fashion branding, travel commentary, and e-learning content.</p>
+      <p>Generate studio-quality French voiceovers with adjustable speed and pitch, then download high-bitrate MP3 files with full commercial rights.</p>
+    `
+  },
+  "language/german": {
+    title: `German Text to Speech Online | ${BRAND_NAME}`,
+    h1: `Free German Text to Speech AI Voice Generator`,
+    metaDesc: `Convert German text into precise neural German speech online with ${BRAND_NAME}. Featuring Katja (Female) and Conrad (Male) voices with native articulation.`,
+    content: `
+      <h2>Realistic German AI Voice Generation</h2>
+      <p>${BRAND_NAME} delivers precise German neural voices including <code>de-DE-KatjaNeural</code> and <code>de-DE-ConradNeural</code>, with excellent articulation of complex multi-syllable compound nouns. Perfect for technical manuals, industrial guides, German educational content, and business presentations.</p>
+      <p>Convert German text into natural audio with instant MP3 downloads and zero subscription costs.</p>
     `
   }
 };

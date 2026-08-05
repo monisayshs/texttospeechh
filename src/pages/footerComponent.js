@@ -1,11 +1,11 @@
 /**
  * Production SaaS Multi-Column Footer Component for TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  * Official Social: Instagram @webxpert.ai (https://www.instagram.com/webxpert.ai/)
  * Single Official Contact: hello@texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 const OFFICIAL_INSTAGRAM = "https://www.instagram.com/webxpert.ai/";
 const SINGLE_OFFICIAL_EMAIL = "hello@texttospeechh.com";

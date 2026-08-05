@@ -1,32 +1,39 @@
 /**
- * Hreflang & International Target Generator for TextToSpeechH AI
- * Domain: https://texttospeechh.com
+ * Hreflang Generator for TextToSpeechH AI
+ * Canonical Domain: https://www.texttospeechh.com
+ *
+ * Only real, live locale pages are eligible for hreflang. The site ships
+ * dedicated /language/* landing pages (English, Hindi, Urdu, Spanish,
+ * Arabic, French, German). Every other page has no localized alternate, so
+ * emitting an hreflang block there would point search engines at 404 URLs.
+ * We therefore return an empty string (no hreflang) for non-language pages.
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 
-const REGIONAL_TARGETS = [
-  { lang: "en-US", url: `${DOMAIN}/`, region: "United States" },
-  { lang: "en-GB", url: `${DOMAIN}/uk`, region: "United Kingdom" },
-  { lang: "en-CA", url: `${DOMAIN}/ca`, region: "Canada" },
-  { lang: "en-AU", url: `${DOMAIN}/au`, region: "Australia" },
-  { lang: "hi-IN", url: `${DOMAIN}/hi`, region: "India" },
-  { lang: "de-DE", url: `${DOMAIN}/de`, region: "Germany" },
-  { lang: "fr-FR", url: `${DOMAIN}/fr`, region: "France" },
-  { lang: "es-ES", url: `${DOMAIN}/es`, region: "Spain" },
-  { lang: "ja-JP", url: `${DOMAIN}/ja`, region: "Japan" },
-  { lang: "pt-BR", url: `${DOMAIN}/pt`, region: "Brazil" },
-  { lang: "x-default", url: `${DOMAIN}/`, region: "Global Fallback" }
-];
+const LANGUAGE_HREFLANG = {
+  "language/english": "en",
+  "language/hindi": "hi",
+  "language/urdu": "ur",
+  "language/spanish": "es",
+  "language/arabic": "ar",
+  "language/french": "fr",
+  "language/german": "de"
+};
 
-function getHreflangHtmlTags() {
-  return REGIONAL_TARGETS.map(
-    t => `<link rel="alternate" hreflang="${t.lang}" href="${t.url}" />`
-  ).join("\n  ");
+function getHreflangHtmlTags(pathSlug) {
+  if (!pathSlug) return "";
+  if (!LANGUAGE_HREFLANG[pathSlug]) return "";
+
+  const tags = Object.entries(LANGUAGE_HREFLANG).map(
+    ([slug, lang]) => `<link rel="alternate" hreflang="${lang}" href="${DOMAIN}/${slug}" />`
+  );
+  tags.push(`<link rel="alternate" hreflang="x-default" href="${DOMAIN}/" />`);
+  return tags.join("\n  ");
 }
 
 module.exports = {
   DOMAIN,
-  REGIONAL_TARGETS,
+  LANGUAGE_HREFLANG,
   getHreflangHtmlTags
 };

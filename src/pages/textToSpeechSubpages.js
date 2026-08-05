@@ -1,9 +1,9 @@
 /**
  * Supporting Spokes for Text to Speech Architecture
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const TEXT_TO_SPEECH_SUBPAGES = {
@@ -138,6 +138,18 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     content: `
       <h2>Turn Microsoft Word Documents into Audio Recordings</h2>
       <p>Import your Word DOCX scripts directly to generate high-clarity spoken voiceovers without tedious copy-pasting.</p>
+    `
+  },
+  "text-to-speech/txt-to-speech": {
+    title: `TXT to Speech: Convert Plain Text Files to MP3 Audio | ${BRAND_NAME}`,
+    h1: `TXT to Speech Converter`,
+    metaDesc: `Convert plain text (.txt) files into natural spoken audio with ${BRAND_NAME}. Upload code notes, drafts, or raw exports and listen to them as MP3.`,
+    category: "Document Processing",
+    readingTime: "5 min read",
+    content: `
+      <h2>Convert Plain Text Files into Spoken Audio</h2>
+      <p>The <strong>TXT to Speech</strong> converter parses plain text (<code>.txt</code>) files, code notes, and raw script exports and turns them into natural neural voice audio with instant MP3 download.</p>
+      <p>Because plain text files carry no styling, ${BRAND_NAME} reads the raw characters verbatim, preserving exact wording, line breaks, and punctuation-driven pauses. It is the ideal pipeline for converting drafts, code readthroughs, and raw notes into listenable audio.</p>
     `
   }
 };

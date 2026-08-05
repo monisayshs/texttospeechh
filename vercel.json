@@ -1,5 +1,30 @@
 {
   "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/(style.css|app.js|logo.svg|logo-dark.svg|logo-light.svg|logo-icon.svg|favicon.svg|favicon-16x16.png|favicon-32x32.png|favicon.ico|apple-touch-icon.png|android-chrome-192x192.png|android-chrome-512x512.png|og-image.png|site.webmanifest)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/sitemap(.*).xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
+    }
+  ],
   "routes": [
     { "src": "/api/contact", "dest": "/api/contact.js" },
     { "src": "/api/generate", "dest": "/api/generate.js" },
@@ -8,8 +33,13 @@
     { "src": "/api/voices", "dest": "/api/voices.js" },
     { "src": "/api/languages", "dest": "/api/languages.js" },
     { "src": "/api/jobs", "dest": "/api/jobs.js" },
-    { "src": "/sitemap.xml", "dest": "/public/sitemap.xml" },
+    { "src": "/api/index-now", "dest": "/api/index-now.js" },
+    { "src": "/sitemap.xml", "dest": "/api/index.js" },
+    { "src": "/sitemap-main.xml", "dest": "/api/index.js" },
+    { "src": "/sitemap-programmatic.xml", "dest": "/api/index.js" },
+    { "src": "/sitemap-legal.xml", "dest": "/api/index.js" },
     { "src": "/robots.txt", "dest": "/public/robots.txt" },
+    { "src": "/llms.txt", "dest": "/public/llms.txt" },
     { "src": "/ads.txt", "dest": "/public/ads.txt" },
     { "src": "/500", "dest": "/api/index.js" },
     { "src": "/403", "dest": "/api/index.js" },
@@ -20,6 +50,7 @@
     { "src": "/text-to-speech", "dest": "/api/index.js" },
     { "src": "/text-to-speech/(.*)", "dest": "/api/index.js" },
     { "src": "/blog", "dest": "/api/index.js" },
+    { "src": "/blog/(.*)", "dest": "/api/index.js" },
     { "src": "/privacy(.*)", "dest": "/api/index.js" },
     { "src": "/terms(.*)", "dest": "/api/index.js" },
     { "src": "/contact(.*)", "dest": "/api/index.js" },
@@ -28,31 +59,13 @@
     { "src": "/disclaimer(.*)", "dest": "/api/index.js" },
     { "src": "/cookie(.*)", "dest": "/api/index.js" },
     { "src": "/dmca(.*)", "dest": "/api/index.js" },
-    { "src": "/refund(.*)", "dest": "/api/index.js" },
     { "src": "/accessibility(.*)", "dest": "/api/index.js" },
     { "src": "/community(.*)", "dest": "/api/index.js" },
+    { "src": "/refund(.*)", "dest": "/api/index.js" },
     { "src": "/keyword/(.*)", "dest": "/api/index.js" },
     { "src": "/language/(.*)", "dest": "/api/index.js" },
     { "src": "/compare/(.*)", "dest": "/api/index.js" },
     { "src": "/guide/(.*)", "dest": "/api/index.js" },
-    { "src": "/blog/(.*)", "dest": "/api/index.js" },
     { "src": "/(.*)", "dest": "/public/$1" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    },
-    {
-      "source": "/(style.css|app.js|logo.svg|logo-icon.svg|favicon.svg|favicon-16x16.png|favicon-32x32.png|apple-touch-icon.png|android-chrome-192x192.png|android-chrome-512x512.png|og-image.png)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    }
   ]
 }

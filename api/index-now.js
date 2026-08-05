@@ -4,7 +4,7 @@ const path = require('path');
 
 // Path to Google Cloud Service Account credentials JSON file
 const KEY_FILE = path.join(__dirname, '..', 'service-account.json');
-const TARGET_URL = 'https://texttospeechh.com/';
+const TARGET_URL = 'https://www.texttospeechh.com/';
 
 if (!fs.existsSync(KEY_FILE)) {
   console.error('\n❌ ERROR: service-account.json file not found in project root!');

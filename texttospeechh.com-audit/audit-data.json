@@ -1,0 +1,289 @@
+{
+  "summary": {
+    "health_score": 72,
+    "business_type": "AI SaaS tool - free online text-to-speech / AI voice generator",
+    "top_findings": [
+      "11 URLs return 404, including 4 dead sitemap URLs and footer links (/cookie-policy, /dmca, /accessibility, /community-guidelines, /language/french, /language/german) that render on every page",
+      "Sitemap lists 9 redirecting /blog/* URLs and 4 dead URLs, and completely omits the real blog posts under /text-to-speech/blog/*",
+      "Hreflang tags on every page point to 9 locale URLs (/uk, /ca, /au, /hi, /de, /fr, /es, /ja, /pt) that all return 404",
+      "Canonical host inconsistency: inner pages canonicalize to non-www (https://texttospeechh.com/...) which 308-redirects to www, while the homepage canonical uses www",
+      "Lab performance: FCP/LCP ~2.7s (likely 'Poor' on mobile) driven by render-blocking GA4 + Clarity third-party scripts"
+    ],
+    "quick_wins": [
+      "Point canonical tags on all inner pages to the www hostname (https://www.texttospeechh.com/...) to match the 308 redirect target",
+      "Create the 6 missing footer/legal pages or 301-redirect them to nearest equivalents",
+      "Fix or regenerate sitemap.xml: remove 4 dead URLs, replace /blog/* with /text-to-speech/*, add the 5 real blog posts",
+      "Remove broken hreflang locale targets until /uk, /fr, /de etc. are actually built; add self-referencing hreflang",
+      "Defer the GA4 and Clarity scripts (async already present) and add preload/preconnect hints to cut FCP"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 68,
+      "what_works": [
+        "HTTPS enforced with 308 non-www->www redirect and Strict-Transport-Security",
+        "Clean robots.txt with allow/disallow rules and sitemap reference",
+        "All 36 live pages emit a self-canonical",
+        "404 pages correctly return HTTP 404 with noindex, follow",
+        "Vercel CDN caching and Brotli compression (Content-Encoding: br)"
+      ],
+      "findings": [
+        {
+          "title": "11 broken URLs (9 unique targets) return HTTP 404",
+          "severity": "Critical",
+          "description": "Footer links on every page point to /cookie-policy, /dmca, /language/french and /language/german which all return 404. The homepage additionally links to /accessibility, /community-guidelines, /blog/ultimate-ai-texttospeechh.com-guide and /blog/text-to-speech-audiobook-creation (404). Blog post /text-to-speech/blog/text-to-speech-for-students links to dead /text-to-speech/txt-to-speech.",
+          "recommendation": "Create the missing legal/locale/community pages, or 301-redirect each dead URL to the nearest live equivalent (e.g. /cookie-policy -> /privacy-policy). Remove the four dead /blog/* footer links."
+        },
+        {
+          "title": "Sitemap contains 4 dead URLs, 9 redirecting URLs, and omits real blog posts",
+          "severity": "Critical",
+          "description": "sitemap.xml lists /blog/text-reader, /blog/ultimate-ai-texttospeechh.com-guide, /blog/ai-voiceover-for-youtube-shorts and /blog/text-to-speech-audiobook-creation (all 404). Nine /blog/* URLs 308-redirect to /text-to-speech/*. The five live blog posts (/text-to-speech/blog/best-ai-voices, elevenlabs-alternatives, how-text-to-speech-works, text-to-speech-for-students, text-to-speech-for-youtube) are not in the sitemap at all.",
+          "recommendation": "Regenerate sitemap.xml from live URLs: drop dead URLs, list only final /text-to-speech/* URLs, add all blog posts, keep the blog hub and tool pages. Re-submit in Search Console."
+        },
+        {
+          "title": "Canonical host inconsistent with redirect target",
+          "severity": "High",
+          "description": "All inner pages canonicalize to https://texttospeechh.com/... (non-www), but that hostname 308-redirects to https://www.texttospeechh.com. The homepage canonical correctly uses www. Google must follow the redirect to reconcile the canonical.",
+          "recommendation": "Update canonical tags on every inner page to https://www.texttospeechh.com/<path> and update the Organization/WebSite/SoftwareApplication schema 'url' fields likewise."
+        },
+        {
+          "title": "Security headers incomplete (no CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)",
+          "severity": "Medium",
+          "description": "Only Strict-Transport-Security is returned. No Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy or Permissions-Policy. Not a direct ranking blocker but weakens trust and click-through signals in some contexts.",
+          "recommendation": "Add X-Frame-Options: DENY, X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin and a CSP in vercel.json headers."
+        },
+        {
+          "title": "Robots.txt Sitemap line references non-www hostname",
+          "severity": "Low",
+          "description": "robots.txt declares 'Sitemap: https://texttospeechh.com/sitemap.xml' (non-www), which 308-redirects to www.",
+          "recommendation": "Update to https://www.texttospeechh.com/sitemap.xml."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 70,
+      "what_works": [
+        "Primary page scored 96/100 on QRG-aligned content quality (density 1.0, 5,941 tokens)",
+        "FAQ content is visible on-page (matches FAQPage schema)",
+        "1871-word in-depth guide on the primary page with structured headings and a comparison matrix",
+        "Unique meta descriptions on every page"
+      ],
+      "findings": [
+        {
+          "title": "12+ thin pages under 300 words",
+          "severity": "High",
+          "description": "Language pages (222-234 words: /language/english, hindi, spanish, urdu), tool landing pages (231-284 words: /text-to-speech/voice-generator, word-to-speech, read-aloud, pdf-to-speech, online-text-to-speech, text-to-voice, free-text-to-speech), and /contact (284) carry minimal unique content and are likely doorway-style.",
+          "recommendation": "Expand each tool/language page to 800+ words with unique use-case guidance, FAQ, and examples, or merge and redirect thin variants to the closest canonical page."
+        },
+        {
+          "title": "Doorway-pattern /keyword/* URLs redirect to tool pages",
+          "severity": "Medium",
+          "description": "/keyword/free-ai-texttospeechh.com and /keyword/text-to-speech-free 308-redirect to /text-to-speech and /text-to-speech/free-text-to-speech. Keyword-stuffed paths are a Google doorway-page pattern and waste crawl budget.",
+          "recommendation": "301-remove the /keyword/* URLs (or make them noindex) and ensure all internal links point directly to the canonical /text-to-speech/* paths."
+        },
+        {
+          "title": "Readability is very low (Flesch-Kincaid grade 15.2, FRE 16.0)",
+          "severity": "Medium",
+          "description": "The primary guide reads at post-graduate level with dense jargon (Tacotron 2, HiFi-GAN, WaveNet). Average sentence ~17 words, 84.6% of content is multi-syllable. This limits ranking for mass-market 'text to speech' queries.",
+          "recommendation": "Add a plain-language summary and shorten complex sentences; introduce sub-headers with scannable bullets and a TL;DR box aimed at a grade 8-9 reading level."
+        },
+        {
+          "title": "Weak E-E-A-T: no named author, no author bios, domain 9 days old",
+          "severity": "Medium",
+          "description": "Article schema author is the Organization 'TextToSpeechH AI' with no person byline, no author page, and no publish date rendered in HTML (JSON-LD only). Domain registered 2026-07-27 (Hostinger). sameAs points only to an Instagram profile.",
+          "recommendation": "Add named human authors with bios and credentials for each blog post, show visible publish/modified dates, expand the About page, and grow legit off-site mentions."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 78,
+      "what_works": [
+        "Every page has a unique title tag, meta description, canonical, and a single H1",
+        "Clean heading hierarchy (one H1, logical H2/H3 structure)",
+        "lang=\"en\" set, Open Graph and Twitter Card meta present",
+        "Internal linking to tool pages, language pages, and blog from the primary page"
+      ],
+      "findings": [
+        {
+          "title": "Title tags too long on ~30 pages (66-88 chars)",
+          "severity": "High",
+          "description": "Most titles exceed 60 chars and will truncate in SERPs, e.g. how-text-to-speech-works (88), elevenlabs-alternatives (82), text-to-speech-for-students (82). Brand suffix '| TextToSpeechH AI' pushes keywords past the limit.",
+          "recommendation": "Trim titles to 50-60 chars keeping the primary keyword first and shortening the brand suffix."
+        },
+        {
+          "title": "Some meta descriptions over 160 chars",
+          "severity": "Medium",
+          "description": "/privacy-policy (233), /terms (180), /about (198), /text-to-speech (161), and 3 others exceed the display limit and will be truncated in SERPs.",
+          "recommendation": "Rewrite descriptions to 140-158 chars with a clear call-to-action."
+        },
+        {
+          "title": "Hreflang locale targets are all 404 and not reciprocal",
+          "severity": "Critical",
+          "description": "Every page declares hreflang alternates to https://texttospeechh.com/uk, /ca, /au, /hi, /de, /fr, /es, /ja, /pt - all return 404. The existing /language/* pages (english, hindi, spanish, urdu) are not referenced. No self-referencing hreflang and no x-default localization.",
+          "recommendation": "Until localized sites are live, remove the hreflang block entirely. When built, point hreflang at the actual locale URLs (e.g. /language/french), add reciprocal tags on each locale page, and include a self-referencing entry plus x-default."
+        },
+        {
+          "title": "No visible publication date or author on blog posts",
+          "severity": "Low",
+          "description": "Article dates exist only in JSON-LD; no <time> or visible byline, reducing freshness signals in SERPs.",
+          "recommendation": "Render a visible publish date and author byline on every article."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 92,
+      "what_works": [
+        "All 36 live pages include valid JSON-LD",
+        "Primary page has 6 valid blocks: Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList, Article",
+        "BreadcrumbList and FAQPage schema match on-page content",
+        "SoftwareApplication marks the free tool with price 0.00"
+      ],
+      "findings": [
+        {
+          "title": "Article author is Organization only; no person-level authority",
+          "severity": "Medium",
+          "description": "Article.author and publisher both resolve to 'TextToSpeechH AI'. Google prefers named Person authors for article rich results and E-E-A-T.",
+          "recommendation": "Add author Person schema with name, jobTitle, url and sameAs for each post; keep Organization as publisher."
+        },
+        {
+          "title": "SoftwareApplication lacks aggregateRating and review data",
+          "severity": "Low",
+          "description": "The app schema has name/url/operatingSystem/applicationCategory/offers but no aggregateRating, review, or screenshot/image properties that would qualify for richer presentation.",
+          "recommendation": "Add aggregateRating/review only once real user reviews exist, plus a screenshot image."
+        },
+        {
+          "title": "Organization schema has a single sameAs and no address/contact page",
+          "severity": "Low",
+          "description": "sameAs lists only the Instagram profile; no telephone, address, or founder info. Weakens local/entity disambiguation.",
+          "recommendation": "Add additional legit sameAs profiles and a physical/registered address when available."
+        }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 65,
+      "what_works": [
+        "CLS 0.0 (no layout shift detected)",
+        "Very small page: ~213KB transfer, 11 main-document resources, single stylesheet + single script",
+        "Brotli compression and CDN caching via Vercel",
+        "TTFB ~703ms from our lab environment"
+      ],
+      "findings": [
+        {
+          "title": "FCP and LCP ~2.7s - likely 'Poor' on mobile",
+          "severity": "High",
+          "description": "Lab run (desktop viewport) shows first paint/FCP ~2688ms and LCP ~2688ms, above the 2.5s 'good' threshold. The 169KB Google Analytics gtag script and Microsoft Clarity load early and compete with the hero render.",
+          "recommendation": "Defer analytics with requestIdleCallback or load after load event; preload the LCP element; move Clarity behind idle time. Verify with PageSpeed Insights once an API key is configured."
+        },
+        {
+          "title": "Render-blocking Google Fonts request",
+          "severity": "Medium",
+          "description": "Inter font via Google Fonts is fetched render-blocking (47KB woff2). No font-display: swap or preload of the LCP font.",
+          "recommendation": "Add font-display=swap (already present), preload the woff2, or self-host the font subset."
+        },
+        {
+          "title": "No lazy loading or resource hints for core assets",
+          "severity": "Low",
+          "description": "0 lazy-loading images and no preload/dns-prefetch for app.js/style.css. Minor given the tiny payload, but preload of above-fold assets would cut FCP.",
+          "recommendation": "Preload app.js and style.css, and lazy-load any below-fold images once content imagery is added."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 55,
+      "what_works": [
+        "robots.txt allows all AI crawlers by default (no GPTBot/ClaudeBot blocks)",
+        "Long-form content with clear H2 structure is naturally citable",
+        "FAQPage and Article schema improve machine comprehension",
+        "Clean, semantic HTML headings help LLM extraction"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt or llms-full.txt file",
+          "severity": "High",
+          "description": "https://www.texttospeechh.com/llms.txt and /llms-full.txt both return 404. LLMs have no curated index of the site's key pages for citations.",
+          "recommendation": "Publish an llms.txt with the tool homepage, key tool pages, and top blog articles with one-line summaries, plus an llms-full.txt with condensed page content."
+        },
+        {
+          "title": "No external citations, sources, or named authors to build citability trust",
+          "severity": "Medium",
+          "description": "Articles cite no sources, studies, or external links; content reads as AI-generated. Domain is 9 days old with no backlink/authority footprint, so LLM answer engines have little reason to cite it.",
+          "recommendation": "Add real sources/footnotes, named expert authors, and earn off-site mentions (Reddit, ProductHunt, tutorials) that LLM crawlers can pick up."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 82,
+      "what_works": [
+        "Both existing <img> tags have descriptive alt text",
+        "og-image.png (38KB) and logo.svg are lightweight",
+        "SVG logo used for scalable branding"
+      ],
+      "findings": [
+        {
+          "title": "No content or illustrative images anywhere on the site",
+          "severity": "Medium",
+          "description": "The 36 live pages contain only 2 logo images total. No screenshots, hero imagery, or diagrams - the content is text-only, reducing engagement, image-SERP potential, and LCP candidates.",
+          "recommendation": "Add descriptive hero/screenshot images to the tool pages and blog posts with keyword-rich alt text; consider WebP/AVIF formats."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Fix or 301-redirect all 9 broken internal links (footer /cookie-policy, /dmca, /language/french, /language/german, homepage /accessibility, /community-guidelines, 2 dead blog links, /text-to-speech/txt-to-speech)",
+          "Regenerate sitemap.xml: remove 4 dead URLs, replace /blog/* redirects with /text-to-speech/* canonicals, add all 5 blog posts and blog hub",
+          "Remove broken hreflang locale tags or point them to real URLs; add self-referencing hreflang",
+          "Fix canonical tags on all inner pages to https://www.texttospeechh.com/<path>",
+          "Remove /keyword/* doorway URLs (301 to canonical tool pages)"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Trim title tags to 50-60 chars across ~30 pages",
+          "Rewrite meta descriptions over 160 chars (privacy-policy, terms, about, etc.)",
+          "Defer GA4 + Clarity and add preload hints to improve FCP/LCP below 2.5s",
+          "Expand the 12 thin tool/language pages to 800+ words of unique content",
+          "Add security headers via vercel.json (X-Frame-Options, nosniff, Referrer-Policy, CSP)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add named human authors with bios and visible publish dates on all articles",
+          "Add external citations/sources to build AI citability and E-E-A-T",
+          "Publish llms.txt and llms-full.txt",
+          "Add content imagery (screenshots, hero images) with alt text",
+          "Expand About page and add legitimate off-site profiles to Organization sameAs"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Connect Google Search Console + PageSpeed Insights API key and re-verify Core Web Vitals with field data",
+          "Track indexation of new pages and monitor crawl stats after sitemap changes",
+          "Watch for manual actions on /keyword/* doorway patterns after removal",
+          "Re-run this audit in 4-6 weeks to measure improvement"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

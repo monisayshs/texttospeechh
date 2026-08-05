@@ -1,0 +1,105 @@
+﻿{
+  "url": "https://www.texttospeechh.com/text-to-speech",
+  "status_code": 200,
+  "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n  <!-- Google Analytics (GA4) -->\n  <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0\"></script>\n  <script>\n    window.dataLayer = window.dataLayer || [];\n    function gtag(){dataLayer.push(arguments);}\n    gtag('js', new Date());\n    gtag('config', 'G-VXH6Y61FQ0');\n  </script>\n  <!-- Microsoft Clarity -->\n  <script type=\"text/javasc...",
+  "raw_content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n  <!-- Google Analytics (GA4) -->\n  <script async src=\"https:...",
+  "is_spa": false,
+  "extracted_text": "Quick Definition: What is Text to Speech (TTS)?\nText to Speech (TTS) is an assistive AI speech synthesis technology that converts written digital text into spoken vocal audio waveforms. Modern TTS systems utilize deep neural networks\u2014such as Kokoro-82M, Tacotron 2, and neural vocoders (HiFi-GAN, WaveNet)\u2014to synthesize ultra-realistic human voices complete with context-aware intonation, natural pitch contours, and realistic breathing pauses across global languages.\n1. Introduction: The AI Speech ...",
+  "publication_date": "2026-07-29",
+  "accessibility_tree": null,
+  "headers": {
+    "Age": "0",
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Content-Encoding": "br",
+    "Content-Type": "text/html; charset=utf-8",
+    "Date": "Tue, 04 Aug 2026 18:56:51 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000",
+    "X-Vercel-Cache": "MISS",
+    "X-Vercel-Id": "bom1::iad1::n4qtt-1785869810920-0cb433cf0aa0",
+    "Transfer-Encoding": "chunked"
+  },
+  "redirect_chain": [
+    {
+      "url": "https://texttospeechh.com/text-to-speech",
+      "status_code": 308
+    }
+  ],
+  "console_errors": [],
+  "render_diagnostics": [],
+  "render_engine": null,
+  "render_ms": null,
+  "mode_used": "raw",
+  "error": null,
+  "structured_data": {
+    "block_count": 6,
+    "processed_count": 6,
+    "total_bytes": 3137,
+    "truncated": false,
+    "blocks": [
+      {
+        "index": 1,
+        "size_bytes": 586,
+        "valid": true,
+        "types": [
+          "ContactPoint",
+          "Organization"
+        ],
+        "types_truncated": false
+      },
+      {
+        "index": 2,
+        "size_bytes": 270,
+        "valid": true,
+        "types": [
+          "SearchAction",
+          "WebSite"
+        ],
+        "types_truncated": false
+      },
+      {
+        "index": 3,
+        "size_bytes": 444,
+        "valid": true,
+        "types": [
+          "Offer",
+          "SoftwareApplication"
+        ],
+        "types_truncated": false
+      },
+      {
+        "index": 4,
+        "size_bytes": 746,
+        "valid": true,
+        "types": [
+          "Answer",
+          "FAQPage",
+          "Question"
+        ],
+        "types_truncated": false
+      },
+      {
+        "index": 5,
+        "size_bytes": 269,
+        "valid": true,
+        "types": [
+          "BreadcrumbList",
+          "ListItem"
+        ],
+        "types_truncated": false
+      },
+      {
+        "index": 6,
+        "size_bytes": 822,
+        "valid": true,
+        "types": [
+          "Article",
+          "ImageObject",
+          "Organization",
+          "WebPage"
+        ],
+        "types_truncated": false
+      }
+    ]
+  }
+}

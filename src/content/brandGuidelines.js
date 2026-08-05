@@ -1,6 +1,6 @@
 /**
  * Official Brand Guidelines for TextToSpeechH AI
- * Website: https://texttospeechh.com
+ * Website: https://www.texttospeechh.com
  */
 
 const BRAND_GUIDELINES = {

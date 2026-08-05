@@ -1,10 +1,10 @@
 /**
  * Educational Guides for Unimplemented Features (TextToSpeechH AI)
- * Domain: https://texttospeechh.com
+ * Domain: https://www.texttospeechh.com
  * Policy: High-Value Educational Content Instead of Fake Tool Pages
  */
 
-const DOMAIN = "https://texttospeechh.com";
+const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const EDUCATIONAL_GUIDES = {
