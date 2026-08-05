@@ -91,7 +91,7 @@ function renderSeoPage(pageData, pathSlug) {
       <div class="article-references" style="margin-top:36px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
         <h3 style="font-size:1.05rem; color:#00c896; margin:0 0 12px;">Sources & References</h3>
         <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:0.85rem; color:#8e9bb0;">
-          <li>W3C Web Accessibility Initiative — "Audio Content" & text-to-speech guidance: <a href="https://www.w3.org/WAI/media/av/audio/" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">www.w3.org/WAI/media/av/audio/</a></li>
+          <li>W3C Web Accessibility Initiative — "Audio Content & Video Content" text-to-speech guidance: <a href="https://www.w3.org/WAI/media/av/av-content/" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">www.w3.org/WAI/media/av/av-content/</a></li>
           <li>Wikipedia — Speech Synthesis & Speech Recognition: <a href="https://en.wikipedia.org/wiki/Speech_synthesis" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">en.wikipedia.org/wiki/Speech_synthesis</a></li>
           <li>van den Oord et al. — WaveNet: A Generative Model for Raw Audio: <a href="https://arxiv.org/abs/1609.03499" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">arxiv.org/abs/1609.03499</a></li>
           <li>Shen et al. — Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2): <a href="https://arxiv.org/abs/1712.05884" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">arxiv.org/abs/1712.05884</a></li>
