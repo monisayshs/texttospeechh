@@ -1,0 +1,94 @@
+warning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CONTEXT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'DECISIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'PROJECT_STATE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'SESSION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'TASKS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/api-reference.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/architecture.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/deployment.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/seo-system.md', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/AGENTS.md b/AGENTS.md[m
+[1mindex e0c0143..cf1ca1d 100644[m
+[1m--- a/AGENTS.md[m
+[1m+++ b/AGENTS.md[m
+[36m@@ -1,6 +1,6 @@[m
+ # TextToSpeechH AI — Universal AI Agent Guide[m
+ [m
+[31m-> **Note to AI Assistants:** This document is your mandatory entry point. Read this file completely before taking any action. It defines project identity, architecture rules, production safety constraints, decision routing, standard workflow, and self-updating protocols.[m
+[32m+[m[32m> **Note to AI Assistants:** This document is your entry point. Read this file completely before taking any action. It defines project identity, architecture rules, production safety constraints, decision routing, standard workflow, and self-updating protocols.[m
+ [m
+ ---[m
+ [m
+[36m@@ -8,11 +8,32 @@[m
+ [m
+ | Property | Value |[m
+ |----------|-------|[m
+[31m-| **Document Purpose** | Single mandatory entry point for all AI coding assistants (ChatGPT, Claude, Gemini, DeepSeek, Cursor, Windsurf, Aider, etc.) |[m
+[31m-| **Owner** | AI Lead & Repository Maintainer |[m
+[32m+[m[32m| **Document Purpose** | Single entry point for all AI coding assistants (ChatGPT, Claude, Gemini, DeepSeek, Cursor, Windsurf, Aider, etc.) |[m
+[32m+[m[32m| **Owner** | Repository Maintainers |[m
+ | **Update Trigger** | Architecture change, new document added, workflow sequence updated, safety rule added |[m
+ | **Update Frequency** | Low — updated only when core rules or document map changes |[m
+[31m-| **Related Documents** | [SESSION.md](file:///c:/Users/Admin/.gemini/antigravity-ide/scratch/voice-generator/SESSION.md), [PROJECT_STATE.md](file:///c:/Users/Admin/.gemini/antigravity-ide/scratch/voice-generator/PROJECT_STATE.md), [CONTEXT.md](file:///c:/Users/Admin/.gemini/antigravity-ide/scratch/voice-generator/CONTEXT.md), [DECISIONS.md](file:///c:/Users/Admin/.gemini/antigravity-ide/scratch/voice-generator/DECISIONS.md) |[m
+[32m+[m[32m| **Last Verified** | 2026-08-07 |[m
+[32m+[m[32m| **Verified Against** | `api/index.js`, `dev-server.js`, `vercel.json`, `src/services/*`, `src/providers/*`, `src/seo/*`, `public/*` |[m
+[32m+[m[32m| **Related Documents** | [SESSION.md](SESSION.md), [PROJECT_STATE.md](PROJECT_STATE.md), [CONTEXT.md](CONTEXT.md), [DECISIONS.md](DECISIONS.md) |[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## Source of Truth Policy[m
+[32m+[m
+[32m+[m[32m> **Source of Truth Notice:** If this document or any other documentation file conflicts with the implementation in source code, **the source code is authoritative**. Documentation exists to accelerate understanding, not to replace inspection of the code.[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## Mandatory Code Editing Rule[m
+[32m+[m
+[32m+[m[32mBefore modifying or adding code to any subsystem, every AI agent **MUST** follow these 4 steps:[m
+[32m+[m
+[32m+[m[32m1. **Read AGENTS.md** (for safety rules and global context)[m
+[32m+[m[32m2. **Read the relevant docs** (via the AI Decision Tree)[m
+[32m+[m[32m3. **Inspect the actual source code** (verify symbols, signatures, and runtime logic)[m
+[32m+[m[32m4. **Modify the code** (minimal diff footprint, evidence-justified edits)[m
+[32m+[m
+[32m+[m[32mNever rely on documentation alone. Documentation is guidance; the source code is authoritative.[m
+ [m
+ ---[m
+ [m
+[36m@@ -25,17 +46,17 @@[m
+ - **Deployment Platform**: Vercel (Serverless Functions v2 + Static Asset Edge CDN)[m
+ - **Current Version**: `1.0.0`[m
+ - **Architecture Style**: Modular Monolith on Serverless Edge[m
+[31m-- **Current Status**: Production (Live)[m
+[32m+[m[32m- **Current Status**: Live (Implemented, Ready for Review)[m
+ [m
+ ---[m
+ [m
+ ## 2. Project Philosophy[m
+ [m
+[31m-Every architectural and implementation choice in this repository must align with these core principles:[m
+[32m+[m[32mEvery architectural and implementation choice in this repository should align with these core principles:[m
+ [m
+ 1. **Performance First**: Every byte and millisecond matters. Defer non-critical assets (analytics, third-party widgets). Prefer native Node.js APIs over heavy npm dependencies to keep serverless cold starts minimal (< 200ms).[m
+ 2. **SEO First**: Organic search is the primary engine of user acquisition. Every page must be canonicalized, schema-enriched (JSON-LD), responsive, and accessible. Never break URL paths — always 301 redirect legacy paths.[m
+[31m-3. **Simplicity & Stability**: Prefer raw Node.js standard libraries (`http`, `fs`, `url`, `path`) over frameworks like Express. Failover gracefully (e.g., LoadBalancer TTS provider fallback) rather than throwing 500 errors to users.[m
+[32m+[m[32m3. **Simplicity & Stability**: Prefer raw Node.js standard libraries (`http`, `fs`, `url`, `path`) over frameworks like Express. Failover gracefully (e.g., LoadBalancer TTS provider fallback) rather than returning uncaught 500 errors to users.[m
+ 4. **Backward Compatibility**: Preserve existing API signatures, public routes, and redirect rules. Never remove a 301 redirect unless replacing it with an equivalent or better target.[m
+ 5. **Documentation is Part of the Code**: Code changes and documentation updates happen in the same commit/task. An un-documented architectural change is an incomplete change.[m
+ 6. **Avoid Unnecessary Dependencies**: Every added `npm` package increases bundle size, security surface, and cold start penalty. Justify any new dependency strictly.[m
+[36m@@ -73,12 +94,12 @@[m [mEvery AI agent working in this repository **MUST** follow this 12-step sequence:[m
+                                  │[m
+                                  ▼[m
+ ┌─────────────────────────────────────────────────────────────────┐[m
+[31m-│ 2. Read SESSION.md (Check ephemeral working state & progress)   │[m
+[32m+[m[32m│ 2. Read SESSION.md (Check working state & progress)             │[m
+ └────────────────────────────────┬────────────────────────────────┘[m
+                                  │[m
+                                  ▼[m
+ ┌─────────────────────────────────────────────────────────────────┐[m
+[31m-│ 3. Read PROJECT_STATE.md (If doing non-trivial or state work)   │[m
+[32m+[m[32m│ 3. Read PROJECT_STATE.md (If doing state work or system tasks)  │[m
+ └────────────────────────────────┬───────────────
