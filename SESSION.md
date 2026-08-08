@@ -54,10 +54,12 @@ If this document conflicts with the implementation, **the source code is authori
 
 - [x] Step 1: Patch `AGENTS.md` with Source of Truth Policy, relative links, and 4-step mandatory workflow.
 - [x] Step 2: Patch `CONTEXT.md` with Source of Truth Policy, relative links, and TODO markers.
-- [x] Step 3: Patch `SESSION.md` (this file).
-- [ ] Step 4: Patch `PROJECT_STATE.md`, `TASKS.md`, `CHANGELOG.md`, `DECISIONS.md`, and `README.md`.
-- [ ] Step 5: Patch `docs/architecture.md`, `docs/seo-system.md`, `docs/api-reference.md`, and `docs/deployment.md`.
-- [ ] Step 6: Produce final validation report.
+- [x] Step 3: Patch `SESSION.md`.
+- [x] Step 4: Patch `PROJECT_STATE.md`, `TASKS.md`, `CHANGELOG.md`, `DECISIONS.md`, and `README.md`.
+- [x] Step 5: Patch `docs/architecture.md`, `docs/seo-system.md`, `docs/api-reference.md`, and `docs/deployment.md`.
+- [x] Step 6: Produce final validation report.
+- [x] Step 7: Embed **Intelligent Task Classification & Context Loading Protocol** (6-step autonomous task workflow) into `AGENTS.md`.
+- [x] Step 8: Embed **Continuous Repository Learning Protocol** into `AGENTS.md` (Philosophy Principle 7 & Section 7.1).
 
 ---
 

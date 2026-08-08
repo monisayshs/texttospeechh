@@ -30,7 +30,7 @@ If this document conflicts with the implementation, **the source code is authori
 
 ### Added
 - **AI-Native Project Intelligence System v2.1 Patched**:
-  - `AGENTS.md`: Entry point and agent guide with repository identity, business philosophy, decision tree, 12-step workflow, safety rules, and Source of Truth policy.
+  - `AGENTS.md`: Entry point and agent guide with repository identity, business philosophy, decision tree, 12-step workflow, safety rules, Source of Truth policy, **Intelligent Task Classification & Context Loading Protocol**, and **Continuous Repository Learning Protocol** (Section 7.1).
   - `CONTEXT.md`: Business mission, product purpose, target audience, revenue model, and strategic roadmap.
   - `SESSION.md`: Ephemeral working memory for active AI session state and handoff notes.
   - `PROJECT_STATE.md`: Single source of truth for permanent project state, deployment info, SEO metrics, and technical debt.

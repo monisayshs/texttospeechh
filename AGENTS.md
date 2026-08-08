@@ -60,6 +60,7 @@ Every architectural and implementation choice in this repository should align wi
 4. **Backward Compatibility**: Preserve existing API signatures, public routes, and redirect rules. Never remove a 301 redirect unless replacing it with an equivalent or better target.
 5. **Documentation is Part of the Code**: Code changes and documentation updates happen in the same commit/task. An un-documented architectural change is an incomplete change.
 6. **Avoid Unnecessary Dependencies**: Every added `npm` package increases bundle size, security surface, and cold start penalty. Justify any new dependency strictly.
+7. **Continuous Repository Learning**: Every completed task is an opportunity to improve the repository's intelligence. Capture recurring patterns, workflow optimizations, and lessons learned so future AI agents never repeat solved problems.
 
 ---
 
@@ -83,7 +84,7 @@ Architecture Change     → docs/architecture.md → DECISIONS.md
 
 ---
 
-## 4. Standard AI Workflow
+## 4. Standard AI Workflow & Autonomous Task Classification
 
 Every AI agent working in this repository **MUST** follow this 12-step sequence:
 
@@ -148,6 +149,19 @@ Every AI agent working in this repository **MUST** follow this 12-step sequence:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+### 4.1 Intelligent Task Classification & Context Loading Protocol
+
+Before starting any task, perform the following 6-step workflow automatically:
+
+1. **Step 1 — Classify the User Request**: Automatically detect affected repository domain(s): `SEO`, `Deployment`, `API`, `Architecture`, `Frontend`, `Backend`, `Content`, `Security`, `Performance`, `Analytics`, `Documentation`, `Testing`, `Infrastructure`. If multiple systems are involved, classify all of them.
+2. **Step 2 — Load Only Relevant Context**: Load the minimum required documentation using the AI Decision Tree (e.g., `SEO` → `docs/seo-system.md`, `Deployment` → `docs/deployment.md`). Never load all documents unless necessary.
+3. **Step 3 — Inspect Source Code**: Documentation is guidance only. Always inspect the actual source code implementation before making changes. Source code is authoritative.
+4. **Step 4 — Expand Context Automatically**: If a task affects multiple systems (e.g. adding a new language page), automatically inspect all connected subsystems (`SEO`, `Sitemap`, `Schema`, `API`, `Routing`, `Analytics`) without waiting for the user to list every file.
+5. **Step 5 — Detect Side Effects**: Before making changes, check which intelligence files must be updated (`CHANGELOG.md`, `PROJECT_STATE.md`, `SESSION.md`, `TASKS.md`, `docs/*`, `README.md`). Update only the affected documents.
+6. **Step 6 — Ask Questions Only When Necessary**: Minimize questions. Only ask if the user's goal is ambiguous, multiple valid implementations exist, or a decision permanently alters architecture.
+
+> **Guiding Principle**: The user describes **WHAT** they want. The AI determines **HOW** to perform it by understanding the repository. Maximize autonomous reasoning and verify assumptions against source code before making changes.
+
 ---
 
 ## 5. Production Safety Rules
@@ -186,6 +200,17 @@ Documentation maintenance is mandatory. Whenever you make a change to the reposi
 | New SEO route, schema, or sitemap | [docs/seo-system.md](docs/seo-system.md), [PROJECT_STATE.md](PROJECT_STATE.md) |
 | Vercel config, env vars, or scripts | [docs/deployment.md](docs/deployment.md) |
 | Product roadmap or known issue change | [PROJECT_STATE.md](PROJECT_STATE.md), [TASKS.md](TASKS.md) |
+
+### 7.1 Continuous Repository Learning Protocol
+
+Every completed task is an opportunity to make the repository more intelligent. Whenever a recurring problem, workflow improvement, architectural lesson, or operational pattern is discovered:
+
+1. **Update DECISIONS.md**: Log any new architectural decision (ADR) or operational lesson learned.
+2. **Update AGENTS.md**: Refine global rules, workflow steps, or safety constraints if a better execution pattern is identified.
+3. **Update PROJECT_STATE.md**: Update technical debt, system status, or permanent project knowledge if permanent state changed.
+4. **Update docs/***: Update deep documentation files (`architecture.md`, `seo-system.md`, `api-reference.md`, `deployment.md`) if subsystem implementations changed.
+
+> **Core Rule**: Future AI agents must benefit from the work of previous AI agents. Never repeat solved problems; continuously compound repository intelligence over time.
 
 ---
 
