@@ -31,6 +31,23 @@
   --btn-primary-bg: #1d4ed8;
   --btn-primary-text: #ffffff;
   
+  /* Semantic Brand Color Tokens (Blue/Cyan Family) */
+  --color-primary: var(--accent-blue);
+  --color-primary-hover: var(--accent-blue-hover);
+  --color-primary-soft: var(--accent-light);
+  --color-accent: var(--accent-cyan);
+  --color-accent-soft: rgba(2, 132, 199, 0.1);
+  --color-success: var(--accent-blue);
+  --color-success-soft: var(--accent-light);
+  --color-success-border: rgba(37, 99, 235, 0.3);
+  --color-error: #ef4444;
+  --color-error-soft: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-border: var(--panel-border);
+  --color-surface: var(--panel-bg);
+  --color-text: var(--text-main);
+--color-text-muted: var(--text-muted);
+
   /* High Contrast Charcoal Typography */
   --text-main: #0F172A;
   --text-secondary: #334155;
@@ -63,6 +80,24 @@
   --accent-light: #1e3a5f;
   --btn-primary-bg: #2563eb;
   --btn-primary-text: #ffffff;
+
+  /* Semantic Brand Color Tokens - Dark Mode (Blue/Cyan Family) */
+  --color-primary: var(--accent-blue);
+  --color-primary-hover: var(--accent-blue-hover);
+  --color-primary-soft: var(--accent-light);
+  --color-accent: var(--accent-cyan);
+  --color-accent-soft: rgba(6, 182, 212, 0.15);
+  --color-success: var(--accent-blue);
+  --color-success-soft: var(--accent-light);
+  --color-success-border: rgba(59, 130, 246, 0.4);
+  --color-error: #f87171;
+  --color-error-soft: #450a0a;
+  --color-error-border: #7f1d1d;
+  --color-border: var(--panel-border);
+  --color-surface: var(--panel-bg);
+  --color-text: var(--text-main);
+  --color-text-muted: var(--text-muted);
+
   --text-main: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
@@ -143,6 +178,11 @@ body {
   padding: var(--space-1) var(--space-3);
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
   transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: nowrap;
 }
 
 .top-utility-bar:hover {
@@ -152,17 +192,25 @@ body {
 
 .top-utility-nav ul {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: var(--space-3);
   list-style: none;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 640px) {
+  .top-utility-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+  }
   .top-utility-nav ul {
     justify-content: center;
     gap: var(--space-2);
+    order: 1;
+    width: 100%;
   }
 }
 
@@ -788,15 +836,15 @@ button:disabled {
 }
 
 .download-btn {
-  background: #f0fdf4;
-  border: 1px solid #86efac;
-  color: #166534;
+  background: var(--color-success-soft);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success);
 }
 
 .download-btn:hover:not(:disabled) {
-  background: #dcfce7;
-  color: #14532d;
-  border-color: #4ade80;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--accent-blue-hover);
+  border-color: var(--accent-blue);
   transform: translateY(-2px);
 }
 
@@ -1065,6 +1113,9 @@ button:disabled {
   padding: var(--space-5) var(--space-3) var(--space-3) var(--space-3);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.03);
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-inline: max(var(--space-3), env(safe-area-inset-left)) max(var(--space-3), env(safe-area-inset-right));
 }
 
 .footer-top-grid {
@@ -1072,6 +1123,8 @@ button:disabled {
   grid-template-columns: 2fr repeat(4, 1fr);
   gap: var(--space-4);
   margin-bottom: var(--space-4);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -1080,9 +1133,70 @@ button:disabled {
   }
 }
 
+/* Mobile: ≤600px - Fully fluid grid based on available content width.
+   Brand always spans full width. Remaining 4 columns use auto-fit with
+   a minimum column width derived from actual link content length.
+   No arbitrary device breakpoints. */
 @media (max-width: 600px) {
   .footer-top-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+    gap: var(--space-3);
+  }
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile spacing optimizations - apply at ≤600px */
+@media (max-width: 600px) {
+  .saas-footer {
+    padding: var(--space-4) var(--space-2) var(--space-2) var(--space-2);
+    padding-inline: max(var(--space-2), env(safe-area-inset-left)) max(var(--space-2), env(safe-area-inset-right));
+  }
+
+  .footer-brand-desc {
+    margin: var(--space-1) 0;
+    max-width: none;
+  }
+
+  .footer-col-title {
+    margin-bottom: var(--space-1);
+  }
+
+  .footer-links-list {
+    gap: 8px;
+  }
+
+  .footer-links-list a {
+    font-size: 0.85rem;
+  }
+
+  .footer-disclaimer-box {
+    padding: var(--space-2) var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-disclaimer-box p {
+    font-size: 0.75rem;
+  }
+
+  .footer-bottom-bar {
+    padding-top: var(--space-2);
+    gap: var(--space-1);
+    font-size: 0.8rem;
+  }
+
+  .footer-contact-info p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Ensure footer columns never overflow and respect min-width: 0 */
+@media (max-width: 600px) {
+  .footer-col {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -1357,15 +1471,15 @@ button:disabled {
 }
 
 [data-theme="dark"] .download-btn {
-  background: #064e3b;
-  color: #6ee7b7;
-  border-color: #065f46;
+  background: var(--color-success-soft);
+  color: var(--color-success);
+  border-color: var(--color-success-border);
 }
 
 [data-theme="dark"] .download-btn:hover:not(:disabled) {
-  background: #065f46;
-  color: #a7f3d0;
-  border-color: #34d399;
+  background: rgba(59, 130, 246, 0.25);
+  color: var(--accent-blue-hover);
+  border-color: var(--accent-blue);
 }
 
 [data-theme="dark"] .primary-btn:hover:not(:disabled) {
@@ -1442,9 +1556,9 @@ button:disabled {
 }
 
 [data-theme="dark"] #contact-success {
-  background: #064e3b !important;
-  border-color: #065f46 !important;
-  color: #a7f3d0 !important;
+  background: var(--color-success-soft) !important;
+  border-color: var(--color-success-border) !important;
+  color: var(--color-success) !important;
 }
 
 [data-theme="dark"] #contact-error {
