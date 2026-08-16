@@ -30,34 +30,34 @@ function getBlogHubHtml() {
   const categories = [...new Set(articles.map(a => a.category))];
 
   const featuredHtml = featured.map(a => `
-    <article class="blog-card featured" style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.15); border-radius:12px; padding:24px; margin-bottom:20px;">
+    <article class="blog-card featured" style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); border-radius:12px; padding:24px; margin-bottom:20px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
         <div>
-          <span style="font-size:0.8em; color:#00c896; text-transform:uppercase; letter-spacing:1px;">${a.category}</span>
+          <span style="font-size:0.8em; color:var(--color-primary); text-transform:uppercase; letter-spacing:1px;">${a.category}</span>
           <h3 style="margin:8px 0 4px; font-size:1.3em;"><a href="/${a.slug}" style="color:inherit; text-decoration:none;">${a.title}</a></h3>
-          <p style="margin:4px 0; font-size:0.9em; opacity:0.7;">${a.readingTime} min read</p>
+          <p style="margin:4px 0; font-size:0.9em; color:var(--color-text-muted);">${a.readingTime} min read</p>
         </div>
-        <a href="/${a.slug}" style="background:#00c896; color:#000; padding:8px 20px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9em;">Read →</a>
+        <a href="/${a.slug}" style="background:var(--color-primary); color:var(--color-primary-on); padding:8px 20px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9em;">Read →</a>
       </div>
     </article>`).join('\n');
 
   const latestHtml = latest.map(a => `
-    <article class="blog-card" style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:20px; transition:all 0.2s;">
-      <span style="font-size:0.75em; color:#00c896; text-transform:uppercase; letter-spacing:1px;">${a.category}</span>
+    <article class="blog-card" style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:10px; padding:20px; transition:all 0.2s;">
+      <span style="font-size:0.75em; color:var(--color-primary); text-transform:uppercase; letter-spacing:1px;">${a.category}</span>
       <h3 style="margin:8px 0 4px; font-size:1.1em;"><a href="/${a.slug}" style="color:inherit; text-decoration:none;">${a.title}</a></h3>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
-        <span style="font-size:0.85em; opacity:0.6;">${a.readingTime} min read</span>
-        <span style="font-size:0.85em; opacity:0.6;">${a.tags.slice(0,2).join(", ")}</span>
+        <span style="font-size:0.85em; color:var(--color-text-muted);">${a.readingTime} min read</span>
+        <span style="font-size:0.85em; color:var(--color-text-muted);">${a.tags.slice(0,2).join(", ")}</span>
       </div>
     </article>`).join('\n');
 
   const categoryHtml = categories.map(c => `
-    <span style="display:inline-block; background:rgba(0,200,150,0.1); color:#00c896; padding:6px 14px; border-radius:20px; font-size:0.85em; cursor:pointer;">${c}</span>`).join('\n');
+    <span style="display:inline-block; background:var(--color-primary-soft); color:var(--color-primary); padding:6px 14px; border-radius:20px; font-size:0.85em; cursor:pointer;">${c}</span>`).join('\n');
 
   return `
     <section class="blog-hero" style="text-align:center; padding:40px 0 30px;">
       <h2 style="font-size:2.2em; margin:0 0 8px;">TextToSpeechH Blog</h2>
-      <p style="font-size:1.1em; opacity:0.7; max-width:600px; margin:0 auto;">Guides, tutorials, and resources for creating professional AI voiceovers.</p>
+      <p style="font-size:1.1em; color:var(--color-text-secondary); max-width:600px; margin:0 auto;">Guides, tutorials, and resources for creating professional AI voiceovers.</p>
       <div style="margin-top:20px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">${categoryHtml}</div>
     </section>
 
@@ -72,14 +72,14 @@ function getBlogHubHtml() {
         ${latestHtml}
       </div>
       <div style="margin-top:24px; text-align:center;">
-        <p style="font-size:0.9em; opacity:0.6;">${articles.length} articles across ${categories.length} categories</p>
+        <p style="font-size:0.9em; color:var(--color-text-muted);">${articles.length} articles across ${categories.length} categories</p>
       </div>
     </section>
 
-    <section class="newsletter" style="background:rgba(0,200,150,0.05); border-radius:12px; padding:30px; text-align:center; margin-top:40px;">
+    <section class="newsletter" style="background:var(--color-primary-soft); border-radius:12px; padding:30px; text-align:center; margin-top:40px;">
       <h3 style="margin:0 0 8px;">Stay Updated</h3>
-      <p style="opacity:0.7; margin:0 0 16px;">Get the latest AI voice guides and tutorials delivered to your inbox.</p>
-      <p style="font-size:0.9em; opacity:0.6;">Coming soon — we are building something great.</p>
+      <p style="color:var(--color-text-secondary); margin:0 0 16px;">Get the latest AI voice guides and tutorials delivered to your inbox.</p>
+      <p style="font-size:0.9em; color:var(--color-text-muted);">Coming soon — we are building something great.</p>
     </section>
 
     <div class="blog-cta" style="text-align:center; margin-top:32px;">
@@ -89,7 +89,7 @@ function getBlogHubHtml() {
 }
 
 function getTableOfContentsHtml(sections) {
-  return `<nav class="table-of-contents" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:20px 0;">
+  return `<nav class="table-of-contents" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:20px 0;">
     <p><strong>Table of Contents</strong></p>
     <ol style="margin:10px 0 0 20px; line-height:2;">
       ${sections.map(s => `<li><a href="#${s.id}">${s.label}</a></li>`).join('\n')}
@@ -111,7 +111,7 @@ const CONTENT_HUB_ARTICLES = {
     readingTime: "15 min read",
     metaDesc: `Everything you need to know about text to speech technology: how AI voice generators work, best use cases, step-by-step guides, and expert tips.`,
     content: `
-      <div class="definition-box" style="background:rgba(0,200,150,0.08); border-left:4px solid #00c896; padding:20px; border-radius:8px; margin-bottom:30px;">
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:30px;">
         <p style="font-size:1.1em; margin:0;"><strong>Quick Answer:</strong> Text to speech (TTS) is a technology that converts written text into spoken audio using artificial intelligence. Modern AI TTS systems produce human-like voices with natural intonation, rhythm, and emotion.</p>
       </div>
 
@@ -137,15 +137,15 @@ const CONTENT_HUB_ARTICLES = {
       <h2 id="types-of-tts">Types of Text-to-Speech Technology</h2>
       <div style="overflow-x:auto;">
         <table style="width:100%; border-collapse:collapse; margin:20px 0;">
-          <thead><tr style="background:rgba(0,200,150,0.1);">
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Type</th>
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Voice Quality</th>
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Example</th>
+          <thead><tr style="background:var(--color-primary-soft);">
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Type</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Voice Quality</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Example</th>
           </tr></thead>
           <tbody>
-            <tr><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);"><strong>Concatenative TTS</strong></td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">Robotic</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">Early GPS voices</td></tr>
-            <tr><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);"><strong>Parametric TTS</strong></td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">Smooth but artificial</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">Older screen readers</td></tr>
-            <tr><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);"><strong>Neural TTS</strong></td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);">Natural, human-like</td><td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.1);"><a href="${DOMAIN}">${BRAND_NAME}</a>, Microsoft Azure</td></tr>
+            <tr><td style="padding:10px; border-bottom:1px solid var(--color-border);"><strong>Concatenative TTS</strong></td><td style="padding:10px; border-bottom:1px solid var(--color-border);">Robotic</td><td style="padding:10px; border-bottom:1px solid var(--color-border);">Early GPS voices</td></tr>
+            <tr><td style="padding:10px; border-bottom:1px solid var(--color-border);"><strong>Parametric TTS</strong></td><td style="padding:10px; border-bottom:1px solid var(--color-border);">Smooth but artificial</td><td style="padding:10px; border-bottom:1px solid var(--color-border);">Older screen readers</td></tr>
+            <tr><td style="padding:10px; border-bottom:1px solid var(--color-border);"><strong>Neural TTS</strong></td><td style="padding:10px; border-bottom:1px solid var(--color-border);">Natural, human-like</td><td style="padding:10px; border-bottom:1px solid var(--color-border);"><a href="${DOMAIN}">${BRAND_NAME}</a>, Microsoft Azure</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,7 +177,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>Screen readers powered by TTS enable digital access for people with visual impairments and dyslexia.</p>
 
       <h2 id="how-to-choose">How to Choose the Best Text-to-Speech Software</h2>
-      <div style="background:rgba(0,200,150,0.05); padding:20px; border-radius:8px; margin:20px 0;">
+      <div style="background:var(--color-primary-soft); padding:20px; border-radius:8px; margin:20px 0;">
         <p><strong>Voice Quality</strong> — Neural TTS is the gold standard. Listen to samples before choosing.</p>
         <p><strong>Language Support</strong> — Verify the tool supports the languages you need.</p>
         <p><strong>Word Limits</strong> — Free tools often cap text length. Look for 5,000+ word support for long scripts.</p>
@@ -207,7 +207,7 @@ const CONTENT_HUB_ARTICLES = {
         <li><strong>Preview first</strong> — Always sample before generating full content</li>
       </ul>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Explore More on ${BRAND_NAME}:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/ai-text-to-speech">AI Text to Speech</a> — How neural TTS works</li>
@@ -230,10 +230,10 @@ const CONTENT_HUB_ARTICLES = {
       <div class="faq-item" style="margin-bottom:16px;"><p><strong>How many words can TTS handle?</strong></p><p><a href="${DOMAIN}">${BRAND_NAME}</a> handles up to 10,000 words per session with intelligent chunking.</p></div>
       <div class="faq-item" style="margin-bottom:16px;"><p><strong>Can TTS read PDF files?</strong></p><p>Yes. ${BRAND_NAME} accepts PDF uploads and extracts text for voice generation.</p></div>
 
-      <div style="text-align:center; margin-top:32px; padding:24px; background:rgba(0,200,150,0.05); border-radius:12px;">
+      <div style="text-align:center; margin-top:32px; padding:24px; background:var(--color-primary-soft); border-radius:12px;">
         <h3>Ready to Try Text to Speech?</h3>
         <p>Convert text to natural-sounding speech instantly — no signup, no credit card.</p>
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try ${BRAND_NAME} Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try ${BRAND_NAME} Free →</a>
       </div>
     `
   },
@@ -264,7 +264,7 @@ const CONTENT_HUB_ARTICLES = {
       <h2>Best AI Text to Speech Tools in 2026</h2>
       <p><a href="${DOMAIN}">${BRAND_NAME}</a> offers free neural AI TTS with voices powered by Microsoft Edge TTS, Kokoro-82M, and CosyVoice. Other popular options include ElevenLabs (paid), Google Cloud TTS (paid), and Amazon Polly (paid).</p>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Related Resources:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Complete Guide to Text to Speech</a></li>
@@ -275,7 +275,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try AI Text to Speech Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try AI Text to Speech Free →</a>
       </div>
     `
   },
@@ -302,10 +302,10 @@ const CONTENT_HUB_ARTICLES = {
       <h2>Free vs Paid TTS Comparison</h2>
       <div style="overflow-x:auto;">
         <table style="width:100%; border-collapse:collapse; margin:20px 0;">
-          <thead><tr style="background:rgba(0,200,150,0.1);">
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Feature</th>
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Free (${BRAND_NAME})</th>
-            <th style="padding:12px; text-align:left; border-bottom:2px solid #00c896;">Paid (ElevenLabs)</th>
+          <thead><tr style="background:var(--color-primary-soft);">
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Feature</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Free (${BRAND_NAME})</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-primary-border);">Paid (ElevenLabs)</th>
           </tr></thead>
           <tbody>
             <tr><td style="padding:10px;">Price</td><td style="padding:10px;"><strong>Free</strong></td><td style="padding:10px;">From $5/month</td></tr>
@@ -317,7 +317,7 @@ const CONTENT_HUB_ARTICLES = {
         </table>
       </div>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>More Free TTS Resources:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Text to Speech Guide</a></li>
@@ -328,7 +328,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Start Free TTS →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Start Free TTS →</a>
       </div>
     `
   },
@@ -363,7 +363,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>Learn more in our <a href="${DOMAIN}/blog/text-to-speech">complete text to speech guide</a>.</p>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try Online TTS Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try Online TTS Free →</a>
       </div>
     `
   },
@@ -390,7 +390,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>Voice quality depends on the TTS engine and your input text. Use natural, conversational language. Add punctuation for pacing. Choose a voice that matches your content's tone.</p>
       <p><a href="${DOMAIN}">${BRAND_NAME}</a> offers multiple neural voices including male, female, and language-specific options — all free to use.</p>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Related Guides:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Text to Speech Guide</a></li>
@@ -400,7 +400,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Convert Text to Voice Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Convert Text to Voice Free →</a>
       </div>
     `
   },
@@ -429,7 +429,7 @@ const CONTENT_HUB_ARTICLES = {
         <li>Accessibility solutions for visual impairments</li>
       </ul>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Explore More:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Text to Speech Guide</a></li>
@@ -440,7 +440,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try the Voice Generator Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try the Voice Generator Free →</a>
       </div>
     `
   },
@@ -468,7 +468,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>For the best read-aloud experience, use clear, well-structured text with proper punctuation. Break long paragraphs into shorter ones. Use headings to organize content — this helps TTS engines deliver better-paced audio.</p>
       <p>Try <a href="${DOMAIN}">${BRAND_NAME}</a> to experience high-quality read-aloud voices today.</p>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Related Resources:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-reader">Text Reader Tools</a></li>
@@ -478,7 +478,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try Read Aloud Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try Read Aloud Free →</a>
       </div>
     `
   },
@@ -505,7 +505,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>Professionals use text readers to review documents while multitasking. Students use them to study course materials. Writers use them to proofread by listening. The best text readers combine natural voices with support for long documents.</p>
       <p><a href="${DOMAIN}">${BRAND_NAME}</a> supports up to 10,000 words per session, making it ideal for reading long documents, research papers, and book chapters aloud.</p>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>See Also:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/read-aloud">Read Aloud Technology</a></li>
@@ -515,7 +515,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Try the Text Reader Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Try the Text Reader Free →</a>
       </div>
     `
   },
@@ -550,7 +550,7 @@ const CONTENT_HUB_ARTICLES = {
       <p>See our <a href="${DOMAIN}/blog/text-to-speech-audiobook-creation">audiobook creation guide</a> for detailed instructions on long-form PDF conversion.</p>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Convert PDF to Speech Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Convert PDF to Speech Free →</a>
       </div>
     `
   },
@@ -583,7 +583,7 @@ const CONTENT_HUB_ARTICLES = {
         <li><strong>Content creators</strong> — Convert written scripts into voiceovers</li>
       </ul>
 
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; margin:30px 0;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:20px; border-radius:8px; margin:30px 0;">
         <p><strong>Related Guides:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/pdf-to-speech">PDF to Speech</a></li>
@@ -593,7 +593,7 @@ const CONTENT_HUB_ARTICLES = {
       </div>
 
       <div style="text-align:center; margin-top:24px;">
-        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:#00c896; color:#000; border-radius:8px; text-decoration:none; font-weight:600;">Convert Word to Speech Free →</a>
+        <a href="${DOMAIN}" class="primary-btn" style="display:inline-block; padding:14px 32px; background:var(--color-primary); color:var(--color-primary-on); border-radius:8px; text-decoration:none; font-weight:600;">Convert Word to Speech Free →</a>
       </div>
     `
   },
@@ -612,7 +612,7 @@ const CONTENT_HUB_ARTICLES = {
         <li><strong>Multi-Lingual Voice Support:</strong> Seamlessly switching between 15+ languages.</li>
         <li><strong>Long Text Processing:</strong> Handling up to 10,000 words in a single queue job.</li>
       </ul>
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:15px; border-radius:8px; margin-top:20px;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:15px; border-radius:8px; margin-top:20px;">
         <p><strong>Explore More:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Complete TTS Guide</a></li>
@@ -637,7 +637,7 @@ const CONTENT_HUB_ARTICLES = {
         <li>Select a natural voice character on ${BRAND_NAME} (e.g., Guy or Jenny for English).</li>
         <li>Export the high-bitrate MP3 voiceover directly into your video editing software.</li>
       </ol>
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:15px; border-radius:8px; margin-top:20px;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:15px; border-radius:8px; margin-top:20px;">
         <p><strong>See Also:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/text-to-speech">Text to Speech Guide</a></li>
@@ -655,7 +655,7 @@ const CONTENT_HUB_ARTICLES = {
     content: `
       <h2>Long-Form Audiobooks Made Easy</h2>
       <p>Authors and educators can convert long PDF or DOCX manuscripts into full audiobooks using <a href="${DOMAIN}">${BRAND_NAME}</a>. Our 10,000-word queue engine processes chapters sequentially, preserving quotation marks and dialogue pauses.</p>
-      <div class="internal-links-box" style="background:rgba(255,255,255,0.03); padding:15px; border-radius:8px; margin-top:20px;">
+      <div class="internal-links-box" style="background:var(--color-bg-secondary); padding:15px; border-radius:8px; margin-top:20px;">
         <p><strong>Related:</strong></p>
         <ul>
           <li><a href="${DOMAIN}/blog/pdf-to-speech">PDF to Speech</a></li>

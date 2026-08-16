@@ -115,10 +115,10 @@ const LEGAL_PAGES = {
           <span id="contact-btn-text">Send Message</span>
           <span id="contact-btn-spinner" class="hidden" style="display:none;"><span class="spinner"></span> Sending...</span>
         </button>
-        <div id="contact-success" class="hidden" style="display:none; margin-top:16px; padding:16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; color:#166534;">
+        <div id="contact-success" class="hidden" style="display:none; margin-top:16px; padding:16px; background:var(--color-success-soft); border:1px solid var(--color-success-border); border-radius:12px; color:var(--color-success-text);">
           <strong>✓ Message Sent!</strong> Your message has been received. We'll respond within 24 hours.
         </div>
-        <div id="contact-error" class="hidden" style="display:none; margin-top:16px; padding:16px; background:#fef2f2; border:1px solid #fecaca; border-radius:12px; color:#991b1b;">
+        <div id="contact-error" class="hidden" style="display:none; margin-top:16px; padding:16px; background:var(--color-error-soft); border:1px solid var(--color-error-border); border-radius:12px; color:var(--color-error-text);">
           <strong>✗ Failed to Send</strong> <span id="contact-error-text">Please try again later.</span>
         </div>
       </form>
@@ -164,8 +164,8 @@ const LEGAL_PAGES = {
         We partner with third-party advertising providers, including <strong>Google AdSense</strong>, to serve relevant advertisements. Google uses cookies (such as the DoubleClick DART cookie) to serve ads based on user visits to this website and other websites across the internet.
       </p>
       <ul style="line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem;">
-        <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">Google Ad Settings</a>.</li>
-        <li>Alternatively, users may opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">www.aboutads.info</a>.</li>
+        <li>Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">Google Ad Settings</a>.</li>
+        <li>Alternatively, users may opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">www.aboutads.info</a>.</li>
       </ul>
 
       <h2 style="font-size: 1.4rem; margin: 1.8rem 0 1rem 0;">3. European Union GDPR Compliance &amp; User Rights</h2>
@@ -185,7 +185,7 @@ const LEGAL_PAGES = {
       <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1rem;">
         Under the California Consumer Privacy Act (CCPA), California residents have the right to request disclosure of categories of personal information collected, request deletion of personal information, and opt out of the sale or sharing of personal information.
       </p>
-      <p style="font-size: 1rem; font-weight: 600; color: #34d399; margin-bottom: 1.5rem;">
+      <p style="font-size: 1rem; font-weight: 600; color: var(--color-success-text); margin-bottom: 1.5rem;">
         ✔ ${BRAND_NAME} DOES NOT SELL, RENT, OR SHARE USER PERSONAL INFORMATION TO THIRD PARTIES FOR MONETARY OR OTHER VALUABLE CONSIDERATION.
       </p>
 
@@ -197,8 +197,8 @@ const LEGAL_PAGES = {
       <h2 style="font-size: 1.4rem; margin: 1.8rem 0 1rem 0;">6. Contact Details</h2>
       <p style="font-size: 1rem; line-height: 1.7;">
         For privacy questions, compliance requests, or legal inquiries, reach out to:<br>
-        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:#00f2fe;">${SINGLE_OFFICIAL_EMAIL}</a><br>
-        <strong>Website:</strong> <a href="${DOMAIN}" style="color:#00f2fe;">${DOMAIN}</a>
+        <strong>Email:</strong> <a href="mailto:${SINGLE_OFFICIAL_EMAIL}" style="color:var(--color-primary);">${SINGLE_OFFICIAL_EMAIL}</a><br>
+        <strong>Website:</strong> <a href="${DOMAIN}" style="color:var(--color-primary);">${DOMAIN}</a>
       </p>
     `
   },
@@ -274,7 +274,7 @@ const LEGAL_PAGES = {
 
       <h2>2. Advertising & Analytics Cookies</h2>
       <p>
-        We work with third-party advertising partners, including Google AdSense, and analytics providers (Google Analytics 4 and Microsoft Clarity) that may set cookies to measure site usage, aggregate audience statistics, and serve relevant advertising. You can opt out of personalized advertising at <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">Google Ad Settings</a>.
+        We work with third-party advertising partners, including Google AdSense, and analytics providers (Google Analytics 4 and Microsoft Clarity) that may set cookies to measure site usage, aggregate audience statistics, and serve relevant advertising. You can opt out of personalized advertising at <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">Google Ad Settings</a>.
       </p>
 
       <h2>3. Managing Cookies</h2>

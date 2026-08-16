@@ -17,8 +17,8 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
   readingTime: "25 min read",
   content: `
     <!-- Executive Summary / Quick Answer Box -->
-    <div class="definition-box" style="background: linear-gradient(135deg, rgba(0, 200, 150, 0.08) 0%, rgba(79, 172, 254, 0.08) 100%); border-left: 4px solid #00c896; padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-      <h2 style="font-size: 1.25rem; margin-top: 0; margin-bottom: 12px; color: #00c896; display: flex; align-items: center; gap: 8px;">
+    <div class="definition-box" style="background: var(--gradient-subtle); border-left: 4px solid var(--color-primary); padding: 24px; border-radius: 12px; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+      <h2 style="font-size: 1.25rem; margin-top: 0; margin-bottom: 12px; color: var(--color-primary); display: flex; align-items: center; gap: 8px;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         Quick Definition: What is Text to Speech (TTS)?
       </h2>
@@ -29,27 +29,27 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- Core Highlights Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px;">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 1.5rem; color: #00c896; margin-bottom: 4px; font-weight: 700;">Human-Grade AI</div>
-        <div style="font-size: 0.88rem; opacity: 0.7;">Zero metallic robotic distortion</div>
+      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Human-Grade AI</div>
+        <div style="font-size: 0.88rem; color: var(--color-text-secondary);">Zero metallic robotic distortion</div>
       </div>
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 1.5rem; color: #00c896; margin-bottom: 4px; font-weight: 700;">Document Upload</div>
-        <div style="font-size: 0.88rem; opacity: 0.7;">PDF, DOCX, and TXT parsing</div>
+      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Document Upload</div>
+        <div style="font-size: 0.88rem; color: var(--color-text-secondary);">PDF, DOCX, and TXT parsing</div>
       </div>
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 1.5rem; color: #00c896; margin-bottom: 4px; font-weight: 700;">Instant MP3</div>
-        <div style="font-size: 0.88rem; opacity: 0.7;">High-quality audio downloads</div>
+      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Instant MP3</div>
+        <div style="font-size: 0.88rem; color: var(--color-text-secondary);">High-quality audio downloads</div>
       </div>
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 1.5rem; color: #00c896; margin-bottom: 4px; font-weight: 700;">100% Free</div>
-        <div style="font-size: 0.88rem; opacity: 0.7;">No paywalls or forced signup</div>
+      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">100% Free</div>
+        <div style="font-size: 0.88rem; color: var(--color-text-secondary);">No paywalls or forced signup</div>
       </div>
     </div>
 
     <!-- Table of Contents -->
-    <nav class="table-of-contents" style="background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(0, 200, 150, 0.2); padding: 24px; border-radius: 12px; margin-bottom: 40px;">
-      <h2 style="font-size: 1.15rem; margin-top: 0; margin-bottom: 16px; color: #00c896; text-transform: uppercase; letter-spacing: 1px;">
+    <nav class="table-of-contents" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 24px; border-radius: 12px; margin-bottom: 40px;">
+      <h2 style="font-size: 1.15rem; margin-top: 0; margin-bottom: 16px; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px;">
         Table of Contents
       </h2>
       <ol style="margin: 0; padding-left: 20px; line-height: 2; font-size: 0.98rem;">
@@ -70,7 +70,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 1: Introduction -->
     <section id="introduction" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         1. Introduction: The AI Speech Revolution
       </h2>
       <p style="line-height: 1.8; margin-bottom: 16px;">
@@ -82,23 +82,23 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       <p style="line-height: 1.8; margin-bottom: 20px;">
         Whether you are a content creator creating narration for videos, a teacher adapting course materials for dyslexic learners, a developer building voice-enabled applications, or a business professional producing training materials, mastering Text-to-Speech allows you to scale audio production efficiently.
       </p>
-      <div style="background: rgba(0, 200, 150, 0.05); border: 1px dashed rgba(0, 200, 150, 0.3); padding: 18px; border-radius: 10px; margin-top: 20px;">
+      <div style="background: var(--color-primary-soft); border: 1px dashed var(--color-primary-border); padding: 18px; border-radius: 10px; margin-top: 20px;">
         <p style="margin: 0; font-size: 0.95rem;">
-          💡 <strong>Pro Tip:</strong> You can test live text-to-speech generation right now on our homepage without downloading software or creating an account. Visit <a href="${DOMAIN}" style="color: #00c896; font-weight: 600;">TextToSpeechH AI Generator</a> to generate audio instantly.
+          💡 <strong>Pro Tip:</strong> You can test live text-to-speech generation right now on our homepage without downloading software or creating an account. Visit <a href="${DOMAIN}" style="color: var(--color-primary); font-weight: 600;">TextToSpeechH AI Generator</a> to generate audio instantly.
         </p>
       </div>
     </section>
 
     <!-- SECTION 2: What is Text to Speech -->
     <section id="what-is-text-to-speech" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         2. What is Text-to-Speech (TTS)? Definition & Evolution
       </h2>
       <p style="line-height: 1.8; margin-bottom: 16px;">
         <strong>Text-to-Speech (TTS)</strong> is a computational process that parses digital text characters, converts them into linguistic representations (phonemes), and renders them as audible sound waves through computerized speech synthesis engines.
       </p>
       
-      <h3 style="font-size: 1.3rem; margin-top: 28px; margin-bottom: 14px; color: #00c896;">
+      <h3 style="font-size: 1.3rem; margin-top: 28px; margin-bottom: 14px; color: var(--color-primary);">
         The Historical Timeline of Speech Synthesis
       </h3>
       <ul style="line-height: 1.8; padding-left: 20px; margin-bottom: 24px;">
@@ -119,7 +119,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 3: Technical Deep Dive -->
     <section id="how-tts-works" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         3. How Text-to-Speech Works: Technical Deep Dive
       </h2>
       <p style="line-height: 1.8; margin-bottom: 16px;">
@@ -127,20 +127,20 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       </p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 24px 0;">
-        <div style="background: rgba(255,255,255,0.03); border-top: 3px solid #00c896; padding: 20px; border-radius: 0 0 10px 10px;">
-          <h3 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Stage 1: Text Normalization & G2P</h3>
+        <div style="background: var(--color-bg-secondary); border-top: 3px solid var(--color-primary); padding: 20px; border-radius: 0 0 10px 10px;">
+          <h3 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Stage 1: Text Normalization & G2P</h3>
           <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85; margin: 0;">
             Raw text is cleaned and standardized. Abbreviation expansion and <strong>Grapheme-to-Phoneme (G2P)</strong> conversion translate written letters into phonetic IPA symbols.
           </p>
         </div>
-        <div style="background: rgba(255,255,255,0.03); border-top: 3px solid #4facfe; padding: 20px; border-radius: 0 0 10px 10px;">
-          <h3 style="font-size: 1.15rem; margin-top: 0; color: #4facfe;">Stage 2: Acoustic Model Prediction</h3>
+        <div style="background: var(--color-bg-secondary); border-top: 3px solid var(--color-primary); padding: 20px; border-radius: 0 0 10px 10px;">
+          <h3 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Stage 2: Acoustic Model Prediction</h3>
           <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85; margin: 0;">
             The sequence of phonemes passes into an acoustic neural model. The model predicts a 2D <strong>Mel-Spectrogram</strong> representing energy across frequency channels over time.
           </p>
         </div>
-        <div style="background: rgba(255,255,255,0.03); border-top: 3px solid #00c896; padding: 20px; border-radius: 0 0 10px 10px;">
-          <h3 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Stage 3: Neural Vocoder Waveform Synthesis</h3>
+        <div style="background: var(--color-bg-secondary); border-top: 3px solid var(--color-primary); padding: 20px; border-radius: 0 0 10px 10px;">
+          <h3 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Stage 3: Neural Vocoder Waveform Synthesis</h3>
           <p style="font-size: 0.92rem; line-height: 1.6; opacity: 0.85; margin: 0;">
             A high-speed neural vocoder converts the 2D mel-spectrogram into raw audio PCM samples, adding natural vocal warmth, breathing, and pitch dynamics.
           </p>
@@ -150,7 +150,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 4: Types of TTS Compared -->
     <section id="types-of-tts" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         4. Types of Text-to-Speech Technologies Compared
       </h2>
       <p style="line-height: 1.8; margin-bottom: 20px;">
@@ -160,40 +160,40 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       <div style="overflow-x: auto; margin-bottom: 24px;">
         <table class="seo-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
           <thead>
-            <tr style="background: rgba(0,200,150,0.15); border-bottom: 2px solid #00c896;">
-              <th style="padding: 14px; color: #fff;">Technology</th>
-              <th style="padding: 14px; color: #fff;">Audio Realism</th>
-              <th style="padding: 14px; color: #fff;">Latency</th>
-              <th style="padding: 14px; color: #fff;">Best For</th>
-              <th style="padding: 14px; color: #fff;">Example Engines</th>
+            <tr style="background: var(--color-primary); border-bottom: 2px solid var(--color-primary-border);">
+              <th style="padding: 14px; color: var(--color-primary-on);">Technology</th>
+              <th style="padding: 14px; color: var(--color-primary-on);">Audio Realism</th>
+              <th style="padding: 14px; color: var(--color-primary-on);">Latency</th>
+              <th style="padding: 14px; color: var(--color-primary-on);">Best For</th>
+              <th style="padding: 14px; color: var(--color-primary-on);">Example Engines</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Formant Synthesis</td>
-              <td style="padding: 12px; color: #ff6b6b;">Low (Robotic)</td>
-              <td style="padding: 12px; color: #00c896;">Microseconds</td>
+              <td style="padding: 12px; color: var(--color-error);">Low (Robotic)</td>
+              <td style="padding: 12px; color: var(--color-success-text);">Microseconds</td>
               <td style="padding: 12px;">Embedded Systems, Microcontrollers</td>
               <td style="padding: 12px;">ePeak, DECtalk</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Concatenative</td>
-              <td style="padding: 12px; color: #feca57;">Medium (Glitchy)</td>
-              <td style="padding: 12px; color: #00c896;">Low</td>
+              <td style="padding: 12px; color: var(--color-warning);">Medium (Glitchy)</td>
+              <td style="padding: 12px; color: var(--color-success-text);">Low</td>
               <td style="padding: 12px;">Legacy GPS Navigation, Automated Telephony</td>
               <td style="padding: 12px;">Nuance Vocalizer (v1)</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Parametric HMM</td>
-              <td style="padding: 12px; color: #feca57;">Medium-High (Buzzy)</td>
-              <td style="padding: 12px; color: #00c896;">Low</td>
+              <td style="padding: 12px; color: var(--color-warning);">Medium-High (Buzzy)</td>
+              <td style="padding: 12px; color: var(--color-success-text);">Low</td>
               <td style="padding: 12px;">Basic Screen Readers</td>
               <td style="padding: 12px;">HTK, Festival</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,200,150,0.04);">
-              <td style="padding: 12px; font-weight: 600; color: #00c896;">Neural AI TTS</td>
-              <td style="padding: 12px; color: #00c896;">Ultra-High (Human-Grade)</td>
-              <td style="padding: 12px; color: #4facfe;">Real-Time Streaming</td>
+            <tr style="border-bottom: 1px solid var(--color-border); background: var(--color-primary-soft);">
+              <td style="padding: 12px; font-weight: 600; color: var(--color-primary);">Neural AI TTS</td>
+              <td style="padding: 12px; color: var(--color-success-text);">Ultra-High (Human-Grade)</td>
+              <td style="padding: 12px; color: var(--color-primary);">Real-Time Streaming</td>
               <td style="padding: 12px;">YouTube Voiceovers, Audiobooks, E-Learning, Podcasts</td>
               <td style="padding: 12px;"><strong>TextToSpeechH AI</strong>, Kokoro, Edge Neural</td>
             </tr>
@@ -204,48 +204,48 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 5: Major Use Cases -->
     <section id="major-use-cases" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         5. Major Use Cases Across Industries
       </h2>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.2rem; color: #00c896; margin-top: 0;">🎓 Accessibility & Auditory Learning</h3>
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-top: 0;">🎓 Accessibility & Auditory Learning</h3>
           <p style="font-size: 0.93rem; line-height: 1.7; opacity: 0.85;">
             Text to speech offers essential assistance to individuals with dyslexia, ADHD, visual impairments, or reading fatigue. Auditory reinforcement enhances comprehension for multi-modal learners.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Explore our dedicated guides on <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: #00c896;">Read Aloud Tools</a> and <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color: #00c896;">TTS for Students</a>.</em>
+            👉 <em>Explore our dedicated guides on <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-primary);">Read Aloud Tools</a> and <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color: var(--color-primary);">TTS for Students</a>.</em>
           </p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.2rem; color: #00c896; margin-top: 0;">🎬 Content Creation & Video Narration</h3>
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-top: 0;">🎬 Content Creation & Video Narration</h3>
           <p style="font-size: 0.93rem; line-height: 1.7; opacity: 0.85;">
             Creators use AI voiceovers for videos, social media content, and audio presentations. Clear neural voices allow rapid production without physical recording equipment.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Read our step-by-step tutorial: <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color: #00c896;">AI Voiceovers for YouTube Shorts</a>.</em>
+            👉 <em>Read our step-by-step tutorial: <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color: var(--color-primary);">AI Voiceovers for YouTube Shorts</a>.</em>
           </p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.2rem; color: #00c896; margin-top: 0;">📚 Document Narration & Audiobooks</h3>
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-top: 0;">📚 Document Narration & Audiobooks</h3>
           <p style="font-size: 0.93rem; line-height: 1.7; opacity: 0.85;">
             Authors and readers convert document files into spoken audio tracks. Direct file uploading simplifies converting long-form text.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Check out <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: #00c896;">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: #00c896;">Word to Speech</a> converters.</em>
+            👉 <em>Check out <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-primary);">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-primary);">Word to Speech</a> converters.</em>
           </p>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.2rem; color: #00c896; margin-top: 0;">💼 Corporate E-Learning & IVR</h3>
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-top: 0;">💼 Corporate E-Learning & IVR</h3>
           <p style="font-size: 0.93rem; line-height: 1.7; opacity: 0.85;">
             Businesses create localized employee training modules, product demos, and automated phone menus across multiple supported languages.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Learn more about <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color: #00c896;">AI Text to Speech Technology</a>.</em>
+            👉 <em>Learn more about <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color: var(--color-primary);">AI Text to Speech Technology</a>.</em>
           </p>
         </div>
       </div>
@@ -253,37 +253,37 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 6: Step-by-Step Guide -->
     <section id="step-by-step-guide" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         6. Step-by-Step Guide to Generating AI Voiceovers
       </h2>
       <p style="line-height: 1.8; margin-bottom: 24px;">
-        Follow these 4 simple steps to generate neural AI voiceovers using <a href="${DOMAIN}" style="color: #00c896; font-weight: 600;">TextToSpeechH AI</a>:
+        Follow these 4 simple steps to generate neural AI voiceovers using <a href="${DOMAIN}" style="color: var(--color-primary); font-weight: 600;">TextToSpeechH AI</a>:
       </p>
 
       <div style="counter-reset: step-counter;">
         <div style="position: relative; padding-left: 60px; margin-bottom: 24px;">
-          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: #00c896; color: #000; font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</div>
+          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</div>
           <h3 style="font-size: 1.2rem; margin-top: 4px; margin-bottom: 8px;">Paste Your Text or Upload a Document</h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin: 0;">
             Enter your text script into the text area on our <a href="${DOMAIN}">home page</a>, or click the file upload button to import <strong>PDF</strong>, <strong>DOCX</strong>, or <strong>TXT</strong> files directly.
           </p>
         </div>
         <div style="position: relative; padding-left: 60px; margin-bottom: 24px;">
-          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: #00c896; color: #000; font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
+          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
           <h3 style="font-size: 1.2rem; margin-top: 4px; margin-bottom: 8px;">Select Language & Neural AI Voice</h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin: 0;">
             Choose from supported neural voices (English US/UK, Hindi, Urdu, Spanish, French, German, Japanese, Arabic) from the voice dropdown selector.
           </p>
         </div>
         <div style="position: relative; padding-left: 60px; margin-bottom: 24px;">
-          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: #00c896; color: #000; font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</div>
+          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</div>
           <h3 style="font-size: 1.2rem; margin-top: 4px; margin-bottom: 8px;">Adjust Speed & Voice Pitch Controls</h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin: 0;">
             Fine-tune speaking rate and adjust pitch offset parameters to match your desired pacing.
           </p>
         </div>
         <div style="position: relative; padding-left: 60px; margin-bottom: 24px;">
-          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: #00c896; color: #000; font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</div>
+          <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</div>
           <h3 style="font-size: 1.2rem; margin-top: 4px; margin-bottom: 8px;">Generate Speech & Download MP3</h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin: 0;">
             Click <strong>Generate Audio</strong>. Listen using the built-in browser audio player or click <strong>Download MP3</strong> to save your audio file directly.
@@ -294,7 +294,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 7: Platform Comparison -->
     <section id="platform-comparison" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         7. Comprehensive Software Comparison Matrix
       </h2>
       <p style="line-height: 1.8; margin-bottom: 20px;">
@@ -304,44 +304,44 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       <div style="overflow-x: auto; margin-bottom: 24px;">
         <table class="seo-table" style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
           <thead>
-            <tr style="background: rgba(0,200,150,0.15); border-bottom: 2px solid #00c896;">
-              <th style="padding: 12px; color: #fff;">Feature / Criteria</th>
-              <th style="padding: 12px; color: #00c896; font-weight: 700;">TextToSpeechH AI</th>
-              <th style="padding: 12px; color: #fff;">Commercial Free Tiers</th>
+            <tr style="background: var(--color-primary); border-bottom: 2px solid var(--color-primary-border);">
+              <th style="padding: 12px; color: var(--color-primary-on);">Feature / Criteria</th>
+              <th style="padding: 12px; color: var(--color-primary-on); font-weight: 700;">TextToSpeechH AI</th>
+              <th style="padding: 12px; color: var(--color-primary-on);">Commercial Free Tiers</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Pricing Access</td>
-              <td style="padding: 12px; color: #00c896; font-weight: 700;">Free Web Access</td>
+              <td style="padding: 12px; color: var(--color-success-text); font-weight: 700;">Free Web Access</td>
               <td style="padding: 12px;">Strict Monthly Quota Caps</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Document Import</td>
-              <td style="padding: 12px; color: #00c896; font-weight: 700;">PDF, DOCX, TXT Direct Upload</td>
+              <td style="padding: 12px; color: var(--color-success-text); font-weight: 700;">PDF, DOCX, TXT Direct Upload</td>
               <td style="padding: 12px;">Text Copy/Paste Only</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">MP3 Export</td>
-              <td style="padding: 12px; color: #00c896; font-weight: 700;">Direct File Download (<code>/api/status</code>)</td>
+              <td style="padding: 12px; color: var(--color-success-text); font-weight: 700;">Direct File Download (<code>/api/status</code>)</td>
               <td style="padding: 12px;">Paywalled Export</td>
             </tr>
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <tr style="border-bottom: 1px solid var(--color-border);">
               <td style="padding: 12px; font-weight: 600;">Account Setup</td>
-              <td style="padding: 12px; color: #00c896; font-weight: 700;">Zero Signup Required</td>
+              <td style="padding: 12px; color: var(--color-success-text); font-weight: 700;">Zero Signup Required</td>
               <td style="padding: 12px;">Mandatory Account Login</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size: 0.88rem; opacity: 0.7;">
-        👉 <em>For competitor evaluation, read our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color: #00c896;">ElevenLabs Alternatives Guide</a>.</em>
+      <p style="font-size: 0.88rem; color: var(--color-text-secondary);">
+        👉 <em>For competitor evaluation, read our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color: var(--color-primary);">ElevenLabs Alternatives Guide</a>.</em>
       </p>
     </section>
 
     <!-- SECTION 8: Best Practices -->
     <section id="best-practices" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         8. Best Practices for Professional Audio Synthesis
       </h2>
       <p style="line-height: 1.8; margin-bottom: 16px;">
@@ -362,11 +362,11 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 9: Common Mistakes -->
     <section id="common-mistakes" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         9. Common Mistakes to Avoid in Voiceover Production
       </h2>
-      <div style="background: rgba(235, 77, 75, 0.08); border-left: 4px solid #eb4d4b; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-        <h3 style="font-size: 1.1rem; color: #eb4d4b; margin-top: 0;">❌ Avoid These Critical Errors:</h3>
+      <div style="background: var(--color-error-soft); border-left: 4px solid var(--color-error); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="font-size: 1.1rem; color: var(--color-error); margin-top: 0;">❌ Avoid These Critical Errors:</h3>
         <ol style="line-height: 1.8; margin: 0; padding-left: 20px; font-size: 0.95rem;">
           <li><strong>Over-speeding Audio Output:</strong> Setting speech speed too high reduces listener retention.</li>
           <li><strong>Ignoring Capitalization Signals:</strong> ALL-CAPS words may be interpreted by neural models as shouted emphasis. Use proper title casing.</li>
@@ -377,21 +377,21 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 10: Expert Tips -->
     <section id="expert-tips" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         10. Expert Tips & Advanced Workflow Optimization
       </h2>
       <p style="line-height: 1.8; margin-bottom: 16px;">
         For audio production teams, streamline your workflow with these tactics:
       </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
-        <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <h4 style="color: #00c896; margin-top: 0;">Multi-Speaker Dialogue Pass</h4>
+        <div style="background: var(--color-bg-secondary); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
+          <h4 style="color: var(--color-primary); margin-top: 0;">Multi-Speaker Dialogue Pass</h4>
           <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8; margin: 0;">
             Generate speaker lines separately using different male and female neural voices, then merge them in external audio software.
           </p>
         </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
-          <h4 style="color: #00c896; margin-top: 0;">Volume Normalization</h4>
+        <div style="background: var(--color-bg-secondary); padding: 18px; border-radius: 8px; border: 1px solid var(--color-border);">
+          <h4 style="color: var(--color-primary); margin-top: 0;">Volume Normalization</h4>
           <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.8; margin: 0;">
             Apply audio compression or normalization to exported MP3 files to equalize peak loudness levels for video integration.
           </p>
@@ -401,7 +401,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- SECTION 11: Codebase-Verified FAQ Matrix -->
     <section id="authoritative-faq" style="margin-bottom: 48px;">
-      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 18px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">
         11. Codebase-Verified FAQ Matrix
       </h2>
       <p style="line-height: 1.8; margin-bottom: 24px;">
@@ -411,27 +411,27 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 20px;">
 
         <!-- FAQ 1: Document Upload -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.15rem; color: #00c896; margin-top: 0; margin-bottom: 10px;">
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-top: 0; margin-bottom: 10px;">
             Q1: Which document file formats are supported for text conversion?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
             TextToSpeechH AI supports direct file uploads for <strong>PDF (<code>.pdf</code>)</strong>, <strong>Microsoft Word (<code>.docx</code>)</strong>, and <strong>Plain Text (<code>.txt</code>)</strong> documents via our backend upload handler (<code>/api/upload</code>). Our server-side file parser extracts raw body text while stripping unneeded formatting so speech synthesis can proceed smoothly.
           </p>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
-            👉 <em>Learn more on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: #00c896;">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: #00c896;">Word to Speech</a> converters.</em>
+            👉 <em>Learn more on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-primary);">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-primary);">Word to Speech</a> converters.</em>
           </p>
         </div>
 
         <!-- FAQ 2: Pronunciation Fixes -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.15rem; color: #00c896; margin-top: 0; margin-bottom: 10px;">
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-top: 0; margin-bottom: 10px;">
             Q2: Why does Text to Speech mispronounce certain words and how do I fix it?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
             TTS mispronunciations happen when an AI speech engine encounters homographs, unusual brand names, or technical jargon during phonetic conversion.
           </p>
-          <div style="background: rgba(0,0,0,0.2); padding: 14px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 12px;">
+          <div style="background: var(--color-bg-secondary); padding: 14px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 12px;">
             <strong>3 Proven Fixes for Pronunciation Errors:</strong>
             <ul style="margin: 6px 0 0 0; padding-left: 20px;">
               <li><strong>Phonetic Respelling:</strong> Write words phonetically (e.g., "En-vid-ee-ah" instead of "Nvidia").</li>
@@ -440,13 +440,13 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             </ul>
           </div>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
-            👉 <em>Read section 3 of our <a href="${DOMAIN}/text-to-speech" style="color: #00c896;">Text to Speech Guide</a>.</em>
+            👉 <em>Read section 3 of our <a href="${DOMAIN}/text-to-speech" style="color: var(--color-primary);">Text to Speech Guide</a>.</em>
           </p>
         </div>
 
         <!-- FAQ 3: Verified Voices -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.15rem; color: #00c896; margin-top: 0; margin-bottom: 10px;">
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-top: 0; margin-bottom: 10px;">
             Q3: Which verified neural voices and languages are available on TextToSpeechH AI?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
@@ -464,33 +464,33 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             <div>• Nanami (Japanese)</div>
           </div>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
-            👉 <em>Select voices on our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color: #00c896;">Voice Generator Tool</a>.</em>
+            👉 <em>Select voices on our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color: var(--color-primary);">Voice Generator Tool</a>.</em>
           </p>
         </div>
 
         <!-- FAQ 4: API Endpoint -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.15rem; color: #00c896; margin-top: 0; margin-bottom: 10px;">
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-top: 0; margin-bottom: 10px;">
             Q4: How do developers generate speech programmatically via the backend API?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
             Developers can call our <code>/api/generate</code> endpoint via POST or GET requests passing JSON or query parameters: <code>text</code>, <code>voice</code>, <code>rate</code> (e.g. <code>+0%</code>), and <code>pitch</code> (e.g. <code>+0Hz</code>). The API returns a completed audio payload containing base64 data URIs and direct download status links (<code>/api/status?jobId=...&download=true</code>).
           </p>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
-            👉 <em>Explore API options on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color: #00c896;">Online API Page</a>.</em>
+            👉 <em>Explore API options on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color: var(--color-primary);">Online API Page</a>.</em>
           </p>
         </div>
 
         <!-- FAQ 5: MP3 Download & Quality -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 22px; border-radius: 12px;">
-          <h3 style="font-size: 1.15rem; color: #00c896; margin-top: 0; margin-bottom: 10px;">
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 22px; border-radius: 12px;">
+          <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-top: 0; margin-bottom: 10px;">
             Q5: What audio format is exported for generated speech files?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
             Speech synthesis exports standard <strong>MP3 audio files</strong> (<code>audio/mpeg</code> mime type). This ensures instant playback in web browsers and universal compatibility with video editing applications like Adobe Premiere Pro, CapCut, and DaVinci Resolve.
           </p>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
-            👉 <em>Try generating audio on <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color: #00c896;">Free Text to Speech</a>.</em>
+            👉 <em>Try generating audio on <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color: var(--color-primary);">Free Text to Speech</a>.</em>
           </p>
         </div>
 
@@ -498,8 +498,8 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
     </section>
 
     <!-- SECTION 12: Conclusion & Hub Links -->
-    <section id="conclusion" style="margin-bottom: 40px; background: rgba(0, 200, 150, 0.05); border: 1px solid rgba(0, 200, 150, 0.2); padding: 32px; border-radius: 16px; text-align: center;">
-      <h2 style="font-size: 2rem; margin-top: 0; margin-bottom: 12px; color: #00c896;">
+    <section id="conclusion" style="margin-bottom: 40px; background: var(--color-primary-soft); border: 1px solid var(--color-primary-border); padding: 32px; border-radius: 16px; text-align: center;">
+      <h2 style="font-size: 2rem; margin-top: 0; margin-bottom: 12px; color: var(--color-primary);">
         Ready to Transform Text into Natural Speech?
       </h2>
       <p style="font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin: 0 auto 24px; opacity: 0.9;">
@@ -507,24 +507,24 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
       </p>
       
       <div style="margin-bottom: 30px;">
-        <a href="/" class="primary-btn" style="display: inline-block; padding: 16px 40px; background: #00c896; color: #000; font-weight: 800; font-size: 1.1rem; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 20px rgba(0, 200, 150, 0.4);">
+        <a href="/" class="primary-btn" style="display: inline-block; padding: 16px 40px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.1rem; border-radius: 10px; text-decoration: none; box-shadow: var(--shadow-primary);">
           Generate AI Voice Now — 100% Free →
         </a>
       </div>
 
       <!-- Spoke Links Hub Box -->
-      <div style="text-align: left; background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 10px; margin-top: 24px;">
-        <h3 style="font-size: 1.1rem; color: #00c896; margin-top: 0; margin-bottom: 12px;">Explore Text to Speech Solutions:</h3>
+      <div style="text-align: left; background: var(--color-bg-secondary); padding: 20px; border-radius: 10px; margin-top: 24px;">
+        <h3 style="font-size: 1.1rem; color: var(--color-primary); margin-top: 0; margin-bottom: 12px;">Explore Text to Speech Solutions:</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; font-size: 0.92rem;">
-          <div>• <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color: #fff; text-decoration: none;">AI Text to Speech</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color: #fff; text-decoration: none;">Free Text to Speech</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color: #fff; text-decoration: none;">Online Text to Speech</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/text-to-voice" style="color: #fff; text-decoration: none;">Text to Voice</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/voice-generator" style="color: #fff; text-decoration: none;">Voice Generator</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: #fff; text-decoration: none;">Read Aloud</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: #fff; text-decoration: none;">PDF to Speech</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: #fff; text-decoration: none;">Word to Speech</a></div>
-          <div>• <a href="${DOMAIN}/text-to-speech/blog" style="color: #00c896; font-weight: 600; text-decoration: none;">Text to Speech Blog Hub →</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color: var(--color-text); text-decoration: none;">AI Text to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color: var(--color-text); text-decoration: none;">Free Text to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color: var(--color-text); text-decoration: none;">Online Text to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/text-to-voice" style="color: var(--color-text); text-decoration: none;">Text to Voice</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/voice-generator" style="color: var(--color-text); text-decoration: none;">Voice Generator</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-text); text-decoration: none;">Read Aloud</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-text); text-decoration: none;">PDF to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-text); text-decoration: none;">Word to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/blog" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Text to Speech Blog Hub →</a></div>
         </div>
       </div>
     </section>

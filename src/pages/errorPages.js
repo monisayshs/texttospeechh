@@ -23,19 +23,24 @@ ${trackingHtml}
   <meta name="description" content="${statusCode} - ${title} on ${BRAND_NAME}.">
   <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <script>
+    (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+  </script>
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; background: #0b0f19;">
+<body style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
 
-  <div class="glass-panel" style="max-width: 580px; width: 100%; padding: 3rem 2.5rem; text-align: center; border-radius: 20px; border: 1px solid rgba(0, 242, 254, 0.2); background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(11, 15, 25, 0.95) 100%); shadow: 0 20px 50px rgba(0,0,0,0.5);">
+  <div class="glass-panel" style="max-width: 580px; width: 100%; padding: 3rem 2.5rem; text-align: center; border-radius: 20px; border: 1px solid var(--color-border); box-shadow: var(--shadow-xl);">
     
-    <div style="font-size: 4rem; font-weight: 800; background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">
+    <div style="font-size: 4rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">
       ${statusCode}
     </div>
 
-    <h1 style="font-size: 1.8rem; color: #ffffff; margin-bottom: 1rem; font-weight: 700;">${title}</h1>
+    <h1 style="font-size: 1.8rem; color: var(--color-text); margin-bottom: 1rem; font-weight: 700;">${title}</h1>
 
-    <p style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 2rem;">
+    <p style="font-size: 1.05rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 2rem;">
       ${message}
     </p>
 
@@ -46,8 +51,8 @@ ${trackingHtml}
       </a>
     </div>
 
-    <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: #64748b;">
-      Need assistance? Contact our team at <a href="mailto:${CONTACT_EMAIL}" style="color: #00f2fe; text-decoration: none;">${CONTACT_EMAIL}</a>
+    <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted);">
+      Need assistance? Contact our team at <a href="mailto:${CONTACT_EMAIL}" style="color: var(--color-primary); text-decoration: none;">${CONTACT_EMAIL}</a>
     </div>
   </div>
 

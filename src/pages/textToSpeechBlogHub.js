@@ -18,12 +18,12 @@ const BLOG_ARTICLES_LIST = [
 
 function getBlogHubPage() {
   const articlesHtml = BLOG_ARTICLES_LIST.map(a => `
-    <article class="blog-card glass-panel" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; margin-bottom:20px;">
-      <span style="font-size:0.8em; color:#00c896; text-transform:uppercase; letter-spacing:1px; font-weight:600;">${a.category}</span>
+    <article class="blog-card glass-panel" style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px; margin-bottom:20px;">
+      <span style="font-size:0.8em; color:var(--color-primary); text-transform:uppercase; letter-spacing:1px; font-weight:600;">${a.category}</span>
       <h3 style="margin:8px 0 10px; font-size:1.3em;"><a href="${DOMAIN}/${a.slug}" style="color:inherit; text-decoration:none;">${a.title}</a></h3>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
-        <span style="font-size:0.85em; opacity:0.6;">${a.readingTime}</span>
-        <a href="${DOMAIN}/${a.slug}" style="color:#00c896; text-decoration:none; font-weight:600; font-size:0.9em;">Read Full Guide →</a>
+        <span style="font-size:0.85em; color:var(--color-text-muted);">${a.readingTime}</span>
+        <a href="${DOMAIN}/${a.slug}" style="color:var(--color-primary); text-decoration:none; font-weight:600; font-size:0.9em;">Read Full Guide →</a>
       </div>
     </article>
   `).join('');
@@ -35,7 +35,7 @@ function getBlogHubPage() {
     category: "Blog Hub",
     readingTime: "Hub Directory",
     content: `
-      <div class="definition-box" style="background:rgba(0,200,150,0.08); border-left:4px solid #00c896; padding:20px; border-radius:8px; margin-bottom:30px;">
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:30px;">
         <p style="font-size:1.05em; margin:0;">Welcome to the official <strong>Text to Speech Knowledge Hub</strong> on ${BRAND_NAME}. Discover in-depth technical breakdowns, educational guides, video voiceover tutorials, and comprehensive software comparisons.</p>
       </div>
 
@@ -43,12 +43,12 @@ function getBlogHubPage() {
         ${articlesHtml}
       </div>
 
-      <div style="margin-top:40px; text-align:center; padding:24px; background:rgba(0,200,150,0.05); border-radius:12px;">
+      <div style="margin-top:40px; text-align:center; padding:24px; background:var(--color-primary-soft); border-radius:12px;">
         <h3 style="margin-top:0;">Looking for immediate voice generation?</h3>
-        <p style="opacity:0.8;">Try our free neural AI voice generator or explore our master pillar guide.</p>
+        <p style="color:var(--color-text-secondary);">Try our free neural AI voice generator or explore our master pillar guide.</p>
         <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
           <a href="/" class="primary-btn" style="text-decoration:none;">Try AI Voice Generator →</a>
-          <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600; text-decoration:none; padding:10px 20px;">Read Main Text to Speech Guide ◀</a>
+          <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600; text-decoration:none; padding:10px 20px;">Read Main Text to Speech Guide ◀</a>
         </div>
       </div>
     `
@@ -65,15 +65,15 @@ const BLOG_ARTICLES_MAP = {
     category: "AI Technology",
     readingTime: "28 min read",
     content: `
-      <div class="definition-box" style="background: rgba(0, 200, 150, 0.08); border-left: 4px solid #00c896; padding: 20px; border-radius: 8px; margin-bottom: 28px;">
-        <h2 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Quick Answer & Summary: What Are the Best AI Voices in 2026?</h2>
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer & Summary: What Are the Best AI Voices in 2026?</h2>
         <p style="margin: 0; line-height: 1.7;">
           The best <strong>neural AI voices</strong> combine multi-layer transformer acoustic models with high-frequency neural vocoders to produce natural human pitch intonation, realistic breath dynamics, and contextual emotional modulation without mechanical robotic buzzing. Leading free neural AI voice models in 2026—such as <strong>Jenny (US Female)</strong>, <strong>Guy (US Male)</strong>, <strong>Sonia (UK Female)</strong>, <strong>Swara (Hindi Female)</strong>, <strong>Madhur (Hindi Male)</strong>, <strong>Uzma (Urdu Female)</strong>, <strong>Elvira (Spanish Female)</strong>, <strong>Denise (French Female)</strong>, <strong>Katja (German Female)</strong>, and <strong>Nanami (Japanese Female)</strong>—deliver broadcast-grade clarity across audiobooks, YouTube Shorts, e-learning courses, and corporate narration.
         </p>
       </div>
 
-      <nav class="toc-box" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(0,200,150,0.2); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
-        <h3 style="margin-top:0; color:#00c896;">Table of Contents</h3>
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
         <ol style="margin:0; padding-left:20px; line-height:1.8;">
           <li><a href="#definition-best-voices" style="color:inherit;">1. What is a Neural AI Voice? (Definition & Conceptual Foundations)</a></li>
           <li><a href="#evolution-speech-synthesis" style="color:inherit;">2. Evolution of Speech Synthesis: From Formant to Deep Transformers</a></li>
@@ -103,7 +103,7 @@ const BLOG_ARTICLES_MAP = {
           Neural voices process full sentence structures simultaneously before producing output. By analyzing punctuation marks, clause boundaries, and surrounding syntax, the neural network predicts natural pitch drops at sentence endings, micro-pauses at commas, and energetic emphasis on key nouns. This results in fluid, highly intelligible speech that closely matches human vocal cadences.
         </p>
         <p style="line-height: 1.8;">
-          On <a href="${DOMAIN}">TextToSpeechH AI</a>, users can access 14 high-bitrate neural voices directly through the browser without paying subscription fees or undergoing account verification. To explore realistic speech synthesis in action, try the <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">TextToSpeechH AI Voice Generator</a> or learn more on our <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color:#00c896;">AI Text to Speech Page</a>.
+          On <a href="${DOMAIN}">TextToSpeechH AI</a>, users can access 14 high-bitrate neural voices directly through the browser without paying subscription fees or undergoing account verification. To explore realistic speech synthesis in action, try the <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">TextToSpeechH AI Voice Generator</a> or learn more on our <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color:var(--color-primary);">AI Text to Speech Page</a>.
         </p>
       </section>
 
@@ -129,28 +129,28 @@ const BLOG_ARTICLES_MAP = {
           Evaluating synthetic voices requires testing performance across both technical metrics and subjective listening comfort. We evaluated neural voice models against six core pillars:
         </p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:20px;">
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">1. Pitch Intonation & Prosody</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">1. Pitch Intonation & Prosody</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Does the voice rise naturally during questions and drop smoothly at periods, avoiding monotone drone?</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">2. Micro-Pauses & Breath Insertion</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">2. Micro-Pauses & Breath Insertion</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Does the voice respect commas, hyphens, and paragraph breaks with realistic breathing intervals?</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">3. Phonetic G2P Accuracy</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">3. Phonetic G2P Accuracy</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Does the model correctly pronounce homographs ("read" vs. "read", "lead" vs. "lead") based on context?</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">4. Multi-Lingual Accent Fidelity</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">4. Multi-Lingual Accent Fidelity</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Are regional accents (US, UK, Hindi, Urdu, Spanish, French, German, Japanese) authentic to native ears?</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">5. Listener Fatigue Index</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">5. Listener Fatigue Index</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Can users listen to 30+ minutes of audio without experiencing cognitive irritation or ear strain?</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">6. Direct MP3 Export Rights</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">6. Direct MP3 Export Rights</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Is the generated audio available for instant high-quality MP3 download with full commercial usage rights?</p>
           </div>
         </div>
@@ -164,8 +164,8 @@ const BLOG_ARTICLES_MAP = {
 
         <div style="display:flex; flex-direction:column; gap:24px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">1. Jenny (US English Female - Natural & Versatile)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">1. Jenny (US English Female - Natural & Versatile)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>en-US-JennyNeural</code> | <strong>Locale:</strong> American English | <strong>Gender:</strong> Female
             </p>
@@ -173,12 +173,12 @@ const BLOG_ARTICLES_MAP = {
               Jenny is widely recognized across the voice synthesis industry as the gold standard for conversational American English. Her balanced frequency spectrum provides warmth in the lower midrange while retaining crisp treble clarity. Jenny handles long-form narration, YouTube explainers, e-learning courseware, and audiobook chapters with smooth inflection.
             </p>
             <p style="line-height:1.7;">
-              <strong>Best For:</strong> Educational YouTube videos, long-form audiobooks, business presentations. Try Jenny on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:#00c896;">Online Text to Speech Generator</a>.
+              <strong>Best For:</strong> Educational YouTube videos, long-form audiobooks, business presentations. Try Jenny on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:var(--color-primary);">Online Text to Speech Generator</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">2. Guy (US English Male - Professional & Deep Baritone)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">2. Guy (US English Male - Professional & Deep Baritone)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>en-US-GuyNeural</code> | <strong>Locale:</strong> American English | <strong>Gender:</strong> Male
             </p>
@@ -186,12 +186,12 @@ const BLOG_ARTICLES_MAP = {
               Guy features a resonant, deep baritone vocal tone that conveys authority, calm assurance, and professional expertise. Guy excels in news broadcasting, corporate annual reports, tech tutorials, and faceless YouTube documentary commentary.
             </p>
             <p style="line-height:1.7;">
-              <strong>Best For:</strong> Commercials, corporate podcasts, news summaries, and documentaries. Test Guy for free at <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech</a>.
+              <strong>Best For:</strong> Commercials, corporate podcasts, news summaries, and documentaries. Test Guy for free at <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">3. Sonia (UK English Female - Refined Elegance & Clarity)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">3. Sonia (UK English Female - Refined Elegance & Clarity)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>en-GB-SoniaNeural</code> | <strong>Locale:</strong> British English | <strong>Gender:</strong> Female
             </p>
@@ -203,8 +203,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">4. Swara (Hindi Female - Expressive & Emotional)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">4. Swara (Hindi Female - Expressive & Emotional)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>hi-IN-SwaraNeural</code> | <strong>Locale:</strong> Indian Hindi | <strong>Gender:</strong> Female
             </p>
@@ -216,8 +216,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">5. Madhur (Hindi Male - Clear & Dynamic)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">5. Madhur (Hindi Male - Clear & Dynamic)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>hi-IN-MadhurNeural</code> | <strong>Locale:</strong> Indian Hindi | <strong>Gender:</strong> Male
             </p>
@@ -229,8 +229,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">6. Uzma (Urdu Female - Soft & Melodious)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">6. Uzma (Urdu Female - Soft & Melodious)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>ur-PK-UzmaNeural</code> | <strong>Locale:</strong> Pakistani Urdu | <strong>Gender:</strong> Female
             </p>
@@ -242,8 +242,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">7. Elvira (Spanish Female - Warm & Engaging Castilian)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">7. Elvira (Spanish Female - Warm & Engaging Castilian)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>es-ES-ElviraNeural</code> | <strong>Locale:</strong> European Spanish | <strong>Gender:</strong> Female
             </p>
@@ -255,8 +255,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">8. Denise (French Female - Smooth Parisian Diction)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">8. Denise (French Female - Smooth Parisian Diction)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>fr-FR-DeniseNeural</code> | <strong>Locale:</strong> French | <strong>Gender:</strong> Female
             </p>
@@ -268,8 +268,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">9. Katja (German Female - Precise & Articulate)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">9. Katja (German Female - Precise & Articulate)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>de-DE-KatjaNeural</code> | <strong>Locale:</strong> German | <strong>Gender:</strong> Female
             </p>
@@ -281,8 +281,8 @@ const BLOG_ARTICLES_MAP = {
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:24px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">10. Nanami (Japanese Female - Natural Pitch-Accent)</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:24px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">10. Nanami (Japanese Female - Natural Pitch-Accent)</h3>
             <p style="line-height:1.7;">
               <strong>Voice Identifier:</strong> <code>ja-JP-NanamiNeural</code> | <strong>Locale:</strong> Japanese | <strong>Gender:</strong> Female
             </p>
@@ -305,66 +305,66 @@ const BLOG_ARTICLES_MAP = {
         <div style="overflow-x:auto; margin-top:16px;">
           <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
             <thead>
-              <tr style="background:rgba(0,200,150,0.15); border-bottom:2px solid #00c896;">
-                <th style="padding:10px; color:#fff;">Voice Name</th>
-                <th style="padding:10px; color:#fff;">Model ID</th>
-                <th style="padding:10px; color:#fff;">Language / Accent</th>
-                <th style="padding:10px; color:#fff;">Vocal Profile</th>
-                <th style="padding:10px; color:#fff;">Primary Recommendation</th>
+              <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+                <th style="padding:10px; color:var(--color-primary-on);">Voice Name</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Model ID</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Language / Accent</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Vocal Profile</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Primary Recommendation</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Jenny</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Jenny</td>
                 <td style="padding:10px;"><code>en-US-JennyNeural</code></td>
                 <td style="padding:10px;">US English</td>
                 <td style="padding:10px;">Warm, Conversational</td>
                 <td style="padding:10px;">Audiobooks, Explainer Videos</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Guy</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Guy</td>
                 <td style="padding:10px;"><code>en-US-GuyNeural</code></td>
                 <td style="padding:10px;">US English</td>
                 <td style="padding:10px;">Authoritative Baritone</td>
                 <td style="padding:10px;">Corporate, Documentaries</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Sonia</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Sonia</td>
                 <td style="padding:10px;"><code>en-GB-SoniaNeural</code></td>
                 <td style="padding:10px;">UK English (RP)</td>
                 <td style="padding:10px;">Refined, Crisp Diction</td>
                 <td style="padding:10px;">Luxury Ads, Classics</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Swara</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Swara</td>
                 <td style="padding:10px;"><code>hi-IN-SwaraNeural</code></td>
                 <td style="padding:10px;">Hindi</td>
                 <td style="padding:10px;">Sweet, Expressive</td>
                 <td style="padding:10px;">Storytelling, Podcasts</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Madhur</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Madhur</td>
                 <td style="padding:10px;"><code>hi-IN-MadhurNeural</code></td>
                 <td style="padding:10px;">Hindi</td>
                 <td style="padding:10px;">Clear, Energetic Male</td>
                 <td style="padding:10px;">Tutorials, News Shorts</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Uzma</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Uzma</td>
                 <td style="padding:10px;"><code>ur-PK-UzmaNeural</code></td>
                 <td style="padding:10px;">Urdu</td>
                 <td style="padding:10px;">Soft, Melodious</td>
                 <td style="padding:10px;">Poetry, Literature</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Elvira</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Elvira</td>
                 <td style="padding:10px;"><code>es-ES-ElviraNeural</code></td>
                 <td style="padding:10px;">European Spanish</td>
                 <td style="padding:10px;">Warm, Natural</td>
                 <td style="padding:10px;">Commercials, Dubbing</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Katja</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Katja</td>
                 <td style="padding:10px;"><code>de-DE-KatjaNeural</code></td>
                 <td style="padding:10px;">German</td>
                 <td style="padding:10px;">Precise Technical</td>
@@ -394,8 +394,8 @@ const BLOG_ARTICLES_MAP = {
           Neural AI speech generators are transforming workflows across multiple industries:
         </p>
         <ul style="line-height: 1.8; padding-left: 20px;">
-          <li><strong>Content Creation & Faceless YouTube Channels:</strong> Creators use voices like Jenny and Guy to narrate YouTube Shorts, Reels, and documentaries without purchasing $300 microphones. Learn more on our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:#00c896;">YouTube AI Voiceover Guide</a>.</li>
-          <li><strong>Education & Assistive Learning:</strong> Students with dyslexia or visual impairments listen to textbooks using bimodal reading. Explore <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:#00c896;">Read Aloud</a> and <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech</a>.</li>
+          <li><strong>Content Creation & Faceless YouTube Channels:</strong> Creators use voices like Jenny and Guy to narrate YouTube Shorts, Reels, and documentaries without purchasing $300 microphones. Learn more on our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">YouTube AI Voiceover Guide</a>.</li>
+          <li><strong>Education & Assistive Learning:</strong> Students with dyslexia or visual impairments listen to textbooks using bimodal reading. Explore <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:var(--color-primary);">Read Aloud</a> and <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech</a>.</li>
           <li><strong>Audiobook & Podcast Publishing:</strong> Independent authors convert long manuscript chapters into MP3 audio tracks in minutes.</li>
           <li><strong>Multi-Lingual Localization:</strong> Businesses translate marketing assets into Spanish, French, German, or Hindi using native accents without hiring remote voice actors.</li>
         </ul>
@@ -406,20 +406,20 @@ const BLOG_ARTICLES_MAP = {
         <p style="line-height: 1.8;">
           Punctuation directly controls how neural acoustic models structure pauses. Consider these practical formatting examples:
         </p>
-        <div style="background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); padding:18px; border-radius:8px; font-family:monospace; font-size:0.9rem; line-height:1.6;">
-          <p style="color:#888; margin:0 0 8px;">// Example 1: Standard continuous script (fast pace)</p>
-          <p style="color:#fff; margin:0 0 16px;">"Welcome to our product overview today we are announcing three new features."</p>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:8px; font-family:monospace; font-size:0.9rem; line-height:1.6;">
+          <p style="color:var(--color-text-muted); margin:0 0 8px;">// Example 1: Standard continuous script (fast pace)</p>
+          <p style="color:var(--color-text); margin:0 0 16px;">"Welcome to our product overview today we are announcing three new features."</p>
           
-          <p style="color:#888; margin:0 0 8px;">// Example 2: Punctuation-tuned script (natural breathing pauses)</p>
-          <p style="color:#00c896; margin:0;">"Welcome to our product overview. Today... we are excited to announce three groundbreaking features."</p>
+          <p style="color:var(--color-text-muted); margin:0 0 8px;">// Example 2: Punctuation-tuned script (natural breathing pauses)</p>
+          <p style="color:var(--color-success-text); margin:0;">"Welcome to our product overview. Today... we are excited to announce three groundbreaking features."</p>
         </div>
       </section>
 
       <section id="pros-cons-ai-voices" style="margin-bottom: 40px;">
         <h2>9. Advantages & Disadvantages of Neural Speech Generators</h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-          <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#00c896; margin-top:0;">Key Advantages</h3>
+          <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Key Advantages</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Instant 24/7 audio synthesis without recording studios.</li>
               <li>Zero subscription costs or credit card paywalls on TextToSpeechH AI.</li>
@@ -427,8 +427,8 @@ const BLOG_ARTICLES_MAP = {
               <li>Multi-lingual support spanning English, Hindi, Urdu, Spanish, French, German, Japanese.</li>
             </ul>
           </div>
-          <div style="background:rgba(235,77,75,0.05); border:1px solid rgba(235,77,75,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#eb4d4b; margin-top:0;">Disadvantages & Limitations</h3>
+          <div style="background:var(--color-error-soft); border:1px solid var(--color-error-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-error); margin-top:0;">Disadvantages & Limitations</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Extreme emotional shouting or whispering requires specific script formatting.</li>
               <li>Unusual acronyms may require phonetic expansion (e.g. spelling out "N-A-S-A").</li>
@@ -477,8 +477,8 @@ const BLOG_ARTICLES_MAP = {
 
       <section id="decision-framework-voice" style="margin-bottom: 40px;">
         <h2>14. AI Voice Decision Framework (Interactive Selection Guide)</h2>
-        <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-          <h3 style="margin-top:0; color:#00c896;">Which AI Voice Should You Select?</h3>
+        <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+          <h3 style="margin-top:0; color:var(--color-primary);">Which AI Voice Should You Select?</h3>
           <ul style="line-height:1.8; padding-left:20px;">
             <li><strong>If creating YouTube Shorts or TikToks:</strong> Select <code>en-US-JennyNeural</code> or <code>hi-IN-SwaraNeural</code>.</li>
             <li><strong>If creating Corporate Presentations or Documentaries:</strong> Select <code>en-US-GuyNeural</code> or <code>en-GB-RyanNeural</code>.</li>
@@ -499,151 +499,151 @@ const BLOG_ARTICLES_MAP = {
         <h2>16. Frequently Asked Questions (20 Search-Intent Master Answers)</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: What is the most realistic AI voice available for free in 2026?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: What is the most realistic AI voice available for free in 2026?</h3>
             <p style="line-height:1.7; margin:0;">
-              <code>en-US-JennyNeural</code> and <code>en-US-GuyNeural</code> are widely considered the most realistic free AI voices due to their human-like pitch contours, natural breathing intervals, and smooth acoustic warmth. You can test both voices for free on <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">TextToSpeechH AI Voice Generator</a>.
+              <code>en-US-JennyNeural</code> and <code>en-US-GuyNeural</code> are widely considered the most realistic free AI voices due to their human-like pitch contours, natural breathing intervals, and smooth acoustic warmth. You can test both voices for free on <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">TextToSpeechH AI Voice Generator</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q2: Can I download generated audio tracks as MP3 files without sign-up?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: Can I download generated audio tracks as MP3 files without sign-up?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes! TextToSpeechH AI generates instant high-bitrate MP3 download links for every voice request. There are no mandatory signups, credit cards, or subscription requirements. Visit <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech</a>.
+              Yes! TextToSpeechH AI generates instant high-bitrate MP3 download links for every voice request. There are no mandatory signups, credit cards, or subscription requirements. Visit <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q3: Are AI voices on TextToSpeechH AI cleared for commercial YouTube monetization?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: Are AI voices on TextToSpeechH AI cleared for commercial YouTube monetization?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes. All audio synthesized through TextToSpeechH AI is royalty-free and cleared for commercial monetization on YouTube, TikTok, commercial podcasts, and client presentations.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q4: How do I fix robotic stuttering in AI voice audio?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: How do I fix robotic stuttering in AI voice audio?</h3>
             <p style="line-height:1.7; margin:0;">
               Robotic stuttering usually occurs when text contains raw code snippet characters or run-on sentences. Add commas to introduce natural pauses, expand abbreviations, and set rate to <code>+0%</code>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q5: What is the difference between neural voices and concatenative voices?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: What is the difference between neural voices and concatenative voices?</h3>
             <p style="line-height:1.7; margin:0;">
               Concatenative voices stitch together pre-recorded audio fragments, resulting in robotic clicks. Neural voices use deep neural networks to synthesize continuous, fluid acoustic waveforms sample-by-sample.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q6: How many languages does TextToSpeechH AI support?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q6: How many languages does TextToSpeechH AI support?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI supports 14 neural voices across US English, UK English, Hindi, Urdu, Spanish, French, German, Arabic, and Japanese.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q7: Can I adjust the speaking speed of AI voices?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q7: Can I adjust the speaking speed of AI voices?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes. You can customize the speed rate from -50% (slow) to +100% (fast) directly in the TextToSpeechH AI control panel.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q8: Which AI voice is best for Hindi YouTube Shorts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q8: Which AI voice is best for Hindi YouTube Shorts?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>hi-IN-SwaraNeural</code> and <code>hi-IN-MadhurNeural</code> are the top choices for Hindi video narration, offering crisp Devanagari pronunciation and energetic delivery.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q9: Can I convert PDF documents to audio with these voices?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q9: Can I convert PDF documents to audio with these voices?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes! You can upload PDF, DOCX, or TXT files directly to TextToSpeechH AI to convert complete documents into downloadable MP3 audio files. See <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech</a>.
+              Yes! You can upload PDF, DOCX, or TXT files directly to TextToSpeechH AI to convert complete documents into downloadable MP3 audio files. See <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q10: Does TextToSpeechH AI require software installation?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q10: Does TextToSpeechH AI require software installation?</h3>
             <p style="line-height:1.7; margin:0;">
               No. TextToSpeechH AI is a 100% web-based application. You can generate audio directly inside Chrome, Safari, Edge, Firefox, or mobile browsers.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q11: What is the best AI voice for British English audiobooks?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q11: What is the best AI voice for British English audiobooks?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-GB-SoniaNeural</code> delivers authentic Received Pronunciation British English, ideal for classic literature and premium audiobook projects.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q12: Can I adjust pitch settings on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q12: Can I adjust pitch settings on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, pitch offset controls allow you to fine-tune vocal pitch from -50Hz to +50Hz for custom character voices.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q13: How does TextToSpeechH AI handle long manuscripts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q13: How does TextToSpeechH AI handle long manuscripts?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI uses an asynchronous queue engine that processes text in chunks, merging them seamlessly into a unified MP3 audio file.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q14: Is there a character limit on free text generation?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q14: Is there a character limit on free text generation?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI provides free unlimited web generation without character quota paywalls.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q15: What is G2P in speech synthesis?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q15: What is G2P in speech synthesis?</h3>
             <p style="line-height:1.7; margin:0;">
               G2P stands for Grapheme-to-Phoneme translation, the linguistic process of converting written alphabet letters into phonetic sound units.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q16: Which voice is best for technical engineering documentation?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q16: Which voice is best for technical engineering documentation?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>de-DE-KatjaNeural</code> for German technical content and <code>en-US-GuyNeural</code> for English documentation provide the highest articulation.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q17: How can teachers use AI voices for accessibility?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q17: How can teachers use AI voices for accessibility?</h3>
             <p style="line-height:1.7; margin:0;">
               Teachers convert assignments into MP3 files so students with dyslexia or visual impairments can listen to lessons bimodally.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q18: What audio bitrate does TextToSpeechH AI export?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q18: What audio bitrate does TextToSpeechH AI export?</h3>
             <p style="line-height:1.7; margin:0;">
               Audio is exported in clean, high-bitrate MP3 format suitable for direct insertion into video editing software like Premiere Pro and CapCut.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q19: Are Japanese voices supported on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q19: Are Japanese voices supported on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes! <code>ja-JP-NanamiNeural</code> provides authentic Japanese pitch-accent vocalization.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q20: How do I return to the main Text to Speech guide?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q20: How do I return to the main Text to Speech guide?</h3>
             <p style="line-height:1.7; margin:0;">
-              You can navigate to our pillar resource anytime by visiting <a href="${DOMAIN}/text-to-speech" style="color:#00c896;">Text to Speech Master Guide</a>.
+              You can navigate to our pillar resource anytime by visiting <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">Text to Speech Master Guide</a>.
             </p>
           </div>
 
         </div>
       </section>
 
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
       </div>
     `
   },
@@ -656,8 +656,8 @@ const BLOG_ARTICLES_MAP = {
     category: "Engineering",
     readingTime: "30 min read",
     content: `
-      <div class="definition-box" style="background: rgba(0, 200, 150, 0.08); border-left: 4px solid #00c896; padding: 20px; border-radius: 8px; margin-bottom: 28px;">
-        <h2 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Engineering Summary: How Modern Neural Speech Engines Function</h2>
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Engineering Summary: How Modern Neural Speech Engines Function</h2>
         <p style="margin: 0; line-height: 1.7;">
           Modern <strong>Text-to-Speech (TTS)</strong> engines synthesize human speech through a 3-stage deep neural architecture: 
           <strong>1. Front-End Linguistic Text Normalization & Grapheme-to-Phoneme (G2P) Conversion</strong> → 
@@ -666,8 +666,8 @@ const BLOG_ARTICLES_MAP = {
         </p>
       </div>
 
-      <nav class="toc-box" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(0,200,150,0.2); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
-        <h3 style="margin-top:0; color:#00c896;">Table of Contents</h3>
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
         <ol style="margin:0; padding-left:20px; line-height:1.8;">
           <li><a href="#definition-tts-works" style="color:inherit;">1. Conceptual Definition: What is Text-to-Speech Synthesis?</a></li>
           <li><a href="#historical-architectures" style="color:inherit;">2. Architectural Evolution: Formant, Concatenative & Neural Pipelines</a></li>
@@ -699,7 +699,7 @@ const BLOG_ARTICLES_MAP = {
           The primary goal of neural text-to-speech is to model both <em>intelligibility</em> (ensuring every word is phonetically distinct) and <em>naturalness</em> (reproducing human pitch intonation, breathing pauses, and emotional emphasis).
         </p>
         <p style="line-height: 1.8;">
-          To test how modern neural speech synthesis sounds in practice, explore our free interactive web tools: visit the <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:#00c896;">Online Text to Speech Generator</a> or read about our core engine capabilities on <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color:#00c896;">AI Text to Speech</a>.
+          To test how modern neural speech synthesis sounds in practice, explore our free interactive web tools: visit the <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:var(--color-primary);">Online Text to Speech Generator</a> or read about our core engine capabilities on <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color:var(--color-primary);">AI Text to Speech</a>.
         </p>
       </section>
 
@@ -768,13 +768,13 @@ const BLOG_ARTICLES_MAP = {
         <p style="line-height: 1.8;">
           On <a href="${DOMAIN}">TextToSpeechH AI</a>, audio generation requests are executed by a robust, multi-layer node server architecture verified directly in our codebase:
         </p>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(0,200,150,0.3); padding:20px; border-radius:10px; margin-top:16px;">
-          <h4 style="color:#00c896; margin-top:0;">Verified TextToSpeechH AI Backend Components</h4>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-top:16px;">
+          <h4 style="color:var(--color-primary); margin-top:0;">Verified TextToSpeechH AI Backend Components</h4>
           <ul style="line-height:1.8; margin:0; padding-left:20px; font-size:0.95rem;">
             <li><strong>Voice Selection Endpoint (<code>/api/voices</code>):</strong> Exposes 14 verified neural voice models spanning English, Hindi, Urdu, Spanish, French, German, Arabic, and Japanese.</li>
             <li><strong>Asynchronous Job Queue (<code>queueService.js</code>):</strong> Manages inbound text synthesis jobs, storing temporary processing data in <code>/tmp/tts_jobs</code> to ensure high reliability.</li>
             <li><strong>Binary Audio Pipeline (<code>audioPipeline.js</code>):</strong> Concatenates binary MP3 chunks, normalizes audio buffers, and exports clean MP3 data streams directly to client browsers.</li>
-            <li><strong>Document Parser (<code>documentParser.js</code>):</strong> Extracts raw text from uploaded PDF, DOCX, and TXT files for seamless long-form voice synthesis. See our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech Tool</a>.</li>
+            <li><strong>Document Parser (<code>documentParser.js</code>):</strong> Extracts raw text from uploaded PDF, DOCX, and TXT files for seamless long-form voice synthesis. See our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a>.</li>
           </ul>
         </div>
       </section>
@@ -796,38 +796,38 @@ const BLOG_ARTICLES_MAP = {
           Neural TTS engines serve critical applications across software domains:
         </p>
         <ul style="line-height: 1.8; padding-left: 20px;">
-          <li><strong>Accessibility & Screen Readers:</strong> Empowering visually impaired users with smooth, low-fatigue audio reading via <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:#00c896;">Read Aloud</a>.</li>
-          <li><strong>Media Production:</strong> Powering faceless YouTube Shorts and documentary voiceovers. See <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:#00c896;">YouTube AI Voiceover Guide</a>.</li>
+          <li><strong>Accessibility & Screen Readers:</strong> Empowering visually impaired users with smooth, low-fatigue audio reading via <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:var(--color-primary);">Read Aloud</a>.</li>
+          <li><strong>Media Production:</strong> Powering faceless YouTube Shorts and documentary voiceovers. See <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">YouTube AI Voiceover Guide</a>.</li>
           <li><strong>Automated Publishing:</strong> Converting blogs into downloadable MP3 podcast episodes.</li>
         </ul>
       </section>
 
       <section id="practical-code-examples" style="margin-bottom: 40px;">
         <h2>10. Code Examples: Text Normalization & Pitch Controls</h2>
-        <div style="background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.1); padding:18px; border-radius:8px; font-family:monospace; font-size:0.9rem; line-height:1.6;">
-          <p style="color:#888; margin:0 0 8px;">// Example Payload sent to TextToSpeechH AI Endpoint</p>
-          <p style="color:#00c896; margin:0;">{</p>
-          <p style="color:#fff; margin:0 0 0 20px;">"text": "Welcome to TextToSpeechH AI.",</p>
-          <p style="color:#fff; margin:0 0 0 20px;">"voice": "en-US-JennyNeural",</p>
-          <p style="color:#fff; margin:0 0 0 20px;">"rate": "+0%",</p>
-          <p style="color:#fff; margin:0 0 0 20px;">"pitch": "+0Hz"</p>
-          <p style="color:#00c896; margin:0;">}</p>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:8px; font-family:monospace; font-size:0.9rem; line-height:1.6;">
+          <p style="color:var(--color-text-muted); margin:0 0 8px;">// Example Payload sent to TextToSpeechH AI Endpoint</p>
+          <p style="color:var(--color-primary); margin:0;">{</p>
+          <p style="color:var(--color-text); margin:0 0 0 20px;">"text": "Welcome to TextToSpeechH AI.",</p>
+          <p style="color:var(--color-text); margin:0 0 0 20px;">"voice": "en-US-JennyNeural",</p>
+          <p style="color:var(--color-text); margin:0 0 0 20px;">"rate": "+0%",</p>
+          <p style="color:var(--color-text); margin:0 0 0 20px;">"pitch": "+0Hz"</p>
+          <p style="color:var(--color-primary); margin:0;">}</p>
         </div>
       </section>
 
       <section id="pros-cons-tts-tech" style="margin-bottom: 40px;">
         <h2>11. Engineering Trade-Offs: Latency, Bitrate & Audio Realism</h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-          <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#00c896; margin-top:0;">Neural TTS Advantages</h3>
+          <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Neural TTS Advantages</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Human-like pitch intonation and breathing.</li>
               <li>Supports multi-lingual accent translation.</li>
               <li>Real-time streaming via asynchronous queues.</li>
             </ul>
           </div>
-          <div style="background:rgba(235,77,75,0.05); border:1px solid rgba(235,77,75,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#eb4d4b; margin-top:0;">Technical Challenges</h3>
+          <div style="background:var(--color-error-soft); border:1px solid var(--color-error-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-error); margin-top:0;">Technical Challenges</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>High GPU memory footprint during model inference.</li>
               <li>Requires G2P front-ends to prevent mispronunciations.</li>
@@ -873,28 +873,28 @@ const BLOG_ARTICLES_MAP = {
         <div style="overflow-x:auto; margin-top:16px;">
           <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
             <thead>
-              <tr style="background:rgba(0,200,150,0.15); border-bottom:2px solid #00c896;">
-                <th style="padding:10px; color:#fff;">Architecture</th>
-                <th style="padding:10px; color:#fff;">Latency</th>
-                <th style="padding:10px; color:#fff;">Audio Naturalness</th>
-                <th style="padding:10px; color:#fff;">Compute Cost</th>
+              <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+                <th style="padding:10px; color:var(--color-primary-on);">Architecture</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Latency</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Audio Naturalness</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Compute Cost</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Formant TTS</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Formant TTS</td>
                 <td style="padding:10px;">Ultra Low</td>
                 <td style="padding:10px;">Low (Robotic)</td>
                 <td style="padding:10px;">Minimal CPU</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Concatenative TTS</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Concatenative TTS</td>
                 <td style="padding:10px;">Low</td>
                 <td style="padding:10px;">Medium (Stitched)</td>
                 <td style="padding:10px;">High Memory</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                <td style="padding:10px; font-weight:600; color:#00c896;">Neural Transformer + HiFi-GAN</td>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">Neural Transformer + HiFi-GAN</td>
                 <td style="padding:10px;">Real-Time Streaming</td>
                 <td style="padding:10px;">Broadcast Human Grade</td>
                 <td style="padding:10px;">Optimized GPU/Node Queue</td>
@@ -915,151 +915,151 @@ const BLOG_ARTICLES_MAP = {
         <h2>18. Frequently Asked Questions (20 Master Technical Answers)</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: What is the main role of G2P in modern text to speech?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: What is the main role of G2P in modern text to speech?</h3>
             <p style="line-height:1.7; margin:0;">
               G2P converts written characters into International Phonetic Alphabet (IPA) tokens so the neural model pronounces words correctly based on context.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q2: What is a mel-spectrogram?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: What is a mel-spectrogram?</h3>
             <p style="line-height:1.7; margin:0;">
               A mel-spectrogram is a visual blueprint plotting sound frequencies over time using the human-perceived Mel frequency scale.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q3: What does a neural vocoder do?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: What does a neural vocoder do?</h3>
             <p style="line-height:1.7; margin:0;">
               A neural vocoder (like HiFi-GAN) takes mel-spectrogram blueprints and generates continuous audio PCM samples.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q4: How does TextToSpeechH AI process speech requests?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: How does TextToSpeechH AI process speech requests?</h3>
             <p style="line-height:1.7; margin:0;">
               Requests pass through our <code>/api/generate</code> endpoint into <code>queueService.js</code>, synthesizing MP3 buffers managed by <code>audioPipeline.js</code>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q5: Can I test text-to-speech for free on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Can I test text-to-speech for free on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes! You can use our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">Voice Generator</a> with zero fees or signups.
+              Yes! You can use our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">Voice Generator</a> with zero fees or signups.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q6: What voice models are supported in the codebase?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q6: What voice models are supported in the codebase?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI supports 14 neural voices including <code>en-US-JennyNeural</code>, <code>en-US-GuyNeural</code>, <code>hi-IN-SwaraNeural</code>, and <code>ur-PK-UzmaNeural</code>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q7: What file formats can be uploaded for text extraction?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q7: What file formats can be uploaded for text extraction?</h3>
             <p style="line-height:1.7; margin:0;">
-              TextToSpeechH AI parses PDF, DOCX, and TXT files via <code>documentParser.js</code>. Try <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech</a>.
+              TextToSpeechH AI parses PDF, DOCX, and TXT files via <code>documentParser.js</code>. Try <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q8: How does pitch offset control work?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q8: How does pitch offset control work?</h3>
             <p style="line-height:1.7; margin:0;">
               Pitch offset modifies acoustic model fundamental frequency (F0) parameters between -50Hz and +50Hz.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q9: What is Tacotron 2?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q9: What is Tacotron 2?</h3>
             <p style="line-height:1.7; margin:0;">
               Tacotron 2 is an influential Google neural architecture that mapped character text directly to mel-spectrograms.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q10: What is HiFi-GAN?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q10: What is HiFi-GAN?</h3>
             <p style="line-height:1.7; margin:0;">
               HiFi-GAN is a generative adversarial vocoder known for fast, high-fidelity audio waveform synthesis.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q11: Are generated audio files royalty free for commercial use?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q11: Are generated audio files royalty free for commercial use?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, all MP3 downloads on TextToSpeechH AI carry full commercial monetization rights.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q12: How does speed rate adjustment affect audio quality?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q12: How does speed rate adjustment affect audio quality?</h3>
             <p style="line-height:1.7; margin:0;">
               Speed rate scales frame duration in the acoustic model without distorting vocal pitch.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q13: Can I generate Hindi speech with neural quality?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q13: Can I generate Hindi speech with neural quality?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>hi-IN-SwaraNeural</code> and <code>hi-IN-MadhurNeural</code> deliver native Devanagari speech synthesis.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q14: What is Kokoro-82M?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q14: What is Kokoro-82M?</h3>
             <p style="line-height:1.7; margin:0;">
               Kokoro-82M is a popular lightweight open-source TTS transformer model designed for efficient speech inference.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q15: How does TextToSpeechH AI handle long text inputs?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q15: How does TextToSpeechH AI handle long text inputs?</h3>
             <p style="line-height:1.7; margin:0;">
               Long text is broken into chunks, queued via <code>queueService.js</code>, and merged into a single MP3 file by <code>audioPipeline.js</code>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q16: Does TextToSpeechH AI run in mobile web browsers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q16: Does TextToSpeechH AI run in mobile web browsers?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, TextToSpeechH AI is fully responsive and functions seamlessly on mobile iOS and Android web browsers.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q17: What is the best voice for YouTube Shorts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q17: What is the best voice for YouTube Shorts?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-US-JennyNeural</code> is the top recommendation for English short-form video narration.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q18: What is bimodal reading?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q18: What is bimodal reading?</h3>
             <p style="line-height:1.7; margin:0;">
               Bimodal reading is reading text visually while simultaneously listening to neural audio narration.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q19: Can I download MP3 files directly without plugins?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q19: Can I download MP3 files directly without plugins?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, direct browser MP3 downloads are generated automatically for every request.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q20: How do I access the main Text to Speech hub?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q20: How do I access the main Text to Speech hub?</h3>
             <p style="line-height:1.7; margin:0;">
-              Visit the <a href="${DOMAIN}/text-to-speech" style="color:#00c896;">Text to Speech Master Guide</a> anytime.
+              Visit the <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">Text to Speech Master Guide</a> anytime.
             </p>
           </div>
 
         </div>
       </section>
 
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
       </div>
     `
   },
@@ -1072,15 +1072,15 @@ const BLOG_ARTICLES_MAP = {
     category: "Education",
     readingTime: "28 min read",
     content: `
-      <div class="definition-box" style="background: rgba(0, 200, 150, 0.08); border-left: 4px solid #00c896; padding: 20px; border-radius: 8px; margin-bottom: 28px;">
-        <h2 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Educational Executive Summary: Bimodal Auditory Learning</h2>
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Educational Executive Summary: Bimodal Auditory Learning</h2>
         <p style="margin: 0; line-height: 1.7;">
           <strong>Text-to-Speech (TTS)</strong> empowers students and educators by enabling <strong>bimodal reading</strong> (simultaneous visual text tracking and natural auditory listening). Cognitive research demonstrates that bimodal learning reduces decoding fatigue by up to 38%, improves reading comprehension retention for students with dyslexia or ADHD, and enables rapid textbook review through downloadable MP3 study tracks.
         </p>
       </div>
 
-      <nav class="toc-box" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(0,200,150,0.2); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
-        <h3 style="margin-top:0; color:#00c896;">Table of Contents</h3>
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
         <ol style="margin:0; padding-left:20px; line-height:1.8;">
           <li><a href="#definition-bimodal-learning" style="color:inherit;">1. What is Bimodal Reading? (Cognitive Foundations)</a></li>
           <li><a href="#science-working-memory" style="color:inherit;">2. The Science of Working Memory & Dual-Coding Theory</a></li>
@@ -1110,7 +1110,7 @@ const BLOG_ARTICLES_MAP = {
           By presenting information across both visual and auditory neural pathways concurrently, bimodal processing reinforces word recognition, improves vocabulary acquisition, and dramatically reduces cognitive eye strain during long academic reading sessions.
         </p>
         <p style="line-height: 1.8;">
-          Students and teachers can access free bimodal tools directly on <a href="${DOMAIN}">TextToSpeechH AI</a>. Test instant text reading on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:#00c896;">Online Text to Speech Generator</a> or explore our assistive <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:#00c896;">Read Aloud Page</a>.
+          Students and teachers can access free bimodal tools directly on <a href="${DOMAIN}">TextToSpeechH AI</a>. Test instant text reading on our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:var(--color-primary);">Online Text to Speech Generator</a> or explore our assistive <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:var(--color-primary);">Read Aloud Page</a>.
         </p>
       </section>
 
@@ -1134,16 +1134,16 @@ const BLOG_ARTICLES_MAP = {
           For students with neurodivergent learning profiles—such as dyslexia, ADHD, or auditory processing variations—text-to-speech serves as a transformative assistive bridge:
         </p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:20px;">
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Dyslexia Support</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Dyslexia Support</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Bimodal listening bypasses phonological deficits, allowing dyslexic students to comprehend complex university-level texts at peer-level speeds.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">ADHD Focus Enhancement</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">ADHD Focus Enhancement</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Auditory pacing prevents mind-wandering, helping students with ADHD stay tethered to the reading rhythm without skipping lines.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Visual Strain Relief</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Visual Strain Relief</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;">Reduces eye fatigue during late-night study marathons by enabling hands-free, screen-free audio revision.</p>
           </div>
         </div>
@@ -1155,9 +1155,9 @@ const BLOG_ARTICLES_MAP = {
           TextToSpeechH AI includes verified native document parsing tools. Students can upload course materials directly into the browser to generate downloadable MP3 study files:
         </p>
         <ul style="line-height: 1.8; padding-left: 20px;">
-          <li><strong>PDF Documents (<code>.pdf</code>):</strong> Upload academic journal articles and syllabus files. Learn more at <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech</a>.</li>
-          <li><strong>Microsoft Word Documents (<code>.docx</code>):</strong> Convert research notes and draft essays. Visit <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:#00c896;">Word to Speech</a>.</li>
-          <li><strong>Plain Text Files (<code>.txt</code>):</strong> Instant parsing of code notes and raw text exports. Try <a href="${DOMAIN}/text-to-speech/txt-to-speech" style="color:#00c896;">TXT to Speech</a>.</li>
+          <li><strong>PDF Documents (<code>.pdf</code>):</strong> Upload academic journal articles and syllabus files. Learn more at <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech</a>.</li>
+          <li><strong>Microsoft Word Documents (<code>.docx</code>):</strong> Convert research notes and draft essays. Visit <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:var(--color-primary);">Word to Speech</a>.</li>
+          <li><strong>Plain Text Files (<code>.txt</code>):</strong> Instant parsing of code notes and raw text exports. Try <a href="${DOMAIN}/text-to-speech/txt-to-speech" style="color:var(--color-primary);">TXT to Speech</a>.</li>
         </ul>
       </section>
 
@@ -1189,8 +1189,8 @@ const BLOG_ARTICLES_MAP = {
         <p style="line-height: 1.8;">
           Language learners frequently struggle with accent inflection and phoneme boundaries. TextToSpeechH AI supports native neural voice models across key international languages:
         </p>
-        <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px; margin-top:16px;">
-          <h4 style="color:#00c896; margin-top:0;">Supported Language Voices for Students</h4>
+        <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px; margin-top:16px;">
+          <h4 style="color:var(--color-primary); margin-top:0;">Supported Language Voices for Students</h4>
           <ul style="line-height:1.8; margin:0; padding-left:20px; font-size:0.95rem;">
             <li><strong>Spanish (Castilian):</strong> <code>es-ES-ElviraNeural</code></li>
             <li><strong>French (Parisian):</strong> <code>fr-FR-DeniseNeural</code></li>
@@ -1212,16 +1212,16 @@ const BLOG_ARTICLES_MAP = {
       <section id="pros-cons-student-tts" style="margin-bottom: 40px;">
         <h2>9. Advantages & Disadvantages of AI Speech in Education</h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-          <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#00c896; margin-top:0;">Student Advantages</h3>
+          <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Student Advantages</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>100% free web generation with direct MP3 downloads.</li>
               <li>Saves hours of reading time during exam prep.</li>
               <li>Reduces dyslexia decoding stress and eye fatigue.</li>
             </ul>
           </div>
-          <div style="background:rgba(235,77,75,0.05); border:1px solid rgba(235,77,75,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#eb4d4b; margin-top:0;">Best Practices to Observe</h3>
+          <div style="background:var(--color-error-soft); border:1px solid var(--color-error-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-error); margin-top:0;">Best Practices to Observe</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Avoid listening passively without visual text tracking.</li>
               <li>Ensure math formulas are formatted in written words before generation.</li>
@@ -1264,8 +1264,8 @@ const BLOG_ARTICLES_MAP = {
 
       <section id="student-study-framework" style="margin-bottom: 40px;">
         <h2>14. Interactive Student Audio Study Framework</h2>
-        <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-          <h3 style="margin-top:0; color:#00c896;">Recommended Setup by Academic Discipline</h3>
+        <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+          <h3 style="margin-top:0; color:var(--color-primary);">Recommended Setup by Academic Discipline</h3>
           <ul style="line-height:1.8; padding-left:20px;">
             <li><strong>Humanities & History Reading:</strong> Voice <code>en-US-JennyNeural</code>, Rate <code>+0%</code>, visual bimodal tracking.</li>
             <li><strong>STEM & Science Manuals:</strong> Voice <code>en-US-GuyNeural</code>, Rate <code>-10%</code> with manual note-taking pauses.</li>
@@ -1285,151 +1285,151 @@ const BLOG_ARTICLES_MAP = {
         <h2>16. Frequently Asked Questions (20 Master Educational Answers)</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: Is TextToSpeechH AI 100% free for students and teachers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: Is TextToSpeechH AI 100% free for students and teachers?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes! TextToSpeechH AI is completely free with zero credit card requirements or subscription fees. Visit <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech</a>.
+              Yes! TextToSpeechH AI is completely free with zero credit card requirements or subscription fees. Visit <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q2: What is bimodal reading and how does it help students?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: What is bimodal reading and how does it help students?</h3>
             <p style="line-height:1.7; margin:0;">
               Bimodal reading is reading text visually while listening to neural audio narration, which reduces eye strain and improves comprehension retention.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q3: How does text-to-speech assist students with dyslexia?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: How does text-to-speech assist students with dyslexia?</h3>
             <p style="line-height:1.7; margin:0;">
-              It bypasses phonological decoding struggles, allowing dyslexic students to comprehend complex texts through high-quality audio narration via <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:#00c896;">Read Aloud</a>.
+              It bypasses phonological decoding struggles, allowing dyslexic students to comprehend complex texts through high-quality audio narration via <a href="${DOMAIN}/text-to-speech/read-aloud" style="color:var(--color-primary);">Read Aloud</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q4: Can I convert PDF textbooks into MP3 files?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: Can I convert PDF textbooks into MP3 files?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes! You can upload PDF files directly on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech Tool</a> to download full MP3 audio tracks.
+              Yes! You can upload PDF files directly on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a> to download full MP3 audio tracks.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q5: Can I proofread my college essays using text-to-speech?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Can I proofread my college essays using text-to-speech?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, listening to your essay read aloud by a neural voice helps you instantly spot typos, awkward phrasing, and run-on sentences.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q6: What document formats are supported?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q6: What document formats are supported?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI supports PDF (<code>.pdf</code>), Microsoft Word (<code>.docx</code>), and plain text (<code>.txt</code>) files.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q7: Can I adjust the speaking speed for study revision?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q7: Can I adjust the speaking speed for study revision?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, speed rate controls allow you to adjust playback speed from -50% to +100% to match your study pace.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q8: How does TTS help language students master pronunciation?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q8: How does TTS help language students master pronunciation?</h3>
             <p style="line-height:1.7; margin:0;">
               Students can select native neural voices in Spanish, French, German, Hindi, or Japanese to practice accurate phonetics.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q9: Is there a character limit on free student conversions?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q9: Is there a character limit on free student conversions?</h3>
             <p style="line-height:1.7; margin:0;">
               No. TextToSpeechH AI provides free unlimited web speech synthesis without daily quota limits.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q10: Can teachers create audio study guides for classrooms?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q10: Can teachers create audio study guides for classrooms?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, teachers can generate royalty-free MP3 audio tracks and share them with students for remote learning.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q11: Which AI voice is best for reading science textbooks?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q11: Which AI voice is best for reading science textbooks?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-US-GuyNeural</code> and <code>en-US-JennyNeural</code> provide clear articulation for complex technical jargon.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q12: Can I download audio directly onto my mobile phone?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q12: Can I download audio directly onto my mobile phone?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, clicking "Download MP3" saves audio files directly to your mobile device storage.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q13: Does TextToSpeechH AI work on Chromebooks?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q13: Does TextToSpeechH AI work on Chromebooks?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, TextToSpeechH AI operates 100% in the Chrome browser on Chromebooks without software installation.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q14: How does TTS support students with ADHD?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q14: How does TTS support students with ADHD?</h3>
             <p style="line-height:1.7; margin:0;">
               Continuous audio narration establishes a steady reading pace, preventing distraction and line-skipping.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q15: Can I convert Microsoft Word documents to speech?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q15: Can I convert Microsoft Word documents to speech?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes, use our dedicated <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:#00c896;">Word to Speech Tool</a> for instant <code>.docx</code> conversion.
+              Yes, use our dedicated <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:var(--color-primary);">Word to Speech Tool</a> for instant <code>.docx</code> conversion.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q16: Are Spanish voices available for language classes?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q16: Are Spanish voices available for language classes?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>es-ES-ElviraNeural</code> provides clear Castilian Spanish vocalization.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q17: What is speed listening?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q17: What is speed listening?</h3>
             <p style="line-height:1.7; margin:0;">
               Speed listening is listening to audio study guides at 1.25x to 1.75x speed to review material rapidly before exams.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q18: Do I need to create an account to download MP3 files?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q18: Do I need to create an account to download MP3 files?</h3>
             <p style="line-height:1.7; margin:0;">
               No account creation or registration is required to download MP3 tracks.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q19: How do I handle mathematical symbols in text to speech?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q19: How do I handle mathematical symbols in text to speech?</h3>
             <p style="line-height:1.7; margin:0;">
               Spell out math symbols (e.g. write "X plus Y equals Z") to ensure pristine vocal clarity.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q20: How do I return to the main Text to Speech portal?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q20: How do I return to the main Text to Speech portal?</h3>
             <p style="line-height:1.7; margin:0;">
-              Click <a href="${DOMAIN}/text-to-speech" style="color:#00c896;">Text to Speech Master Guide</a> anytime.
+              Click <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">Text to Speech Master Guide</a> anytime.
             </p>
           </div>
 
         </div>
       </section>
 
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
       </div>
     `
   },
@@ -1442,15 +1442,15 @@ const BLOG_ARTICLES_MAP = {
     category: "YouTube & Video",
     readingTime: "28 min read",
     content: `
-      <div class="definition-box" style="background: rgba(0, 200, 150, 0.08); border-left: 4px solid #00c896; padding: 20px; border-radius: 8px; margin-bottom: 28px;">
-        <h2 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">YouTube Creator Summary: Faceless Channels & AI Voiceover Monetization</h2>
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">YouTube Creator Summary: Faceless Channels & AI Voiceover Monetization</h2>
         <p style="margin: 0; line-height: 1.7;">
           Faceless YouTube channels leverage <strong>neural AI voice generators</strong> to publish daily video content across YouTube Shorts, Instagram Reels, TikTok, and long-form documentary channels without investing in expensive studio equipment. Audio generated on <strong>TextToSpeechH AI</strong> is 100% royalty-free, commercial-use cleared, and fully compatible with YouTube Partner Program monetization rules when paired with original visual editing and sound design.
         </p>
       </div>
 
-      <nav class="toc-box" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(0,200,150,0.2); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
-        <h3 style="margin-top:0; color:#00c896;">Table of Contents</h3>
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
         <ol style="margin:0; padding-left:20px; line-height:1.8;">
           <li><a href="#definition-faceless-youtube" style="color:inherit;">1. What is a Faceless YouTube Channel? (Creator Blueprint)</a></li>
           <li><a href="#youtube-monetization-policy" style="color:inherit;">2. YouTube Partner Program Policy: Reused Content vs. AI Speech</a></li>
@@ -1480,7 +1480,7 @@ const BLOG_ARTICLES_MAP = {
           Faceless channels dominate popular YouTube verticals like tech commentary, true crime, historical documentaries, finance explainers, and viral YouTube Shorts.
         </p>
         <p style="line-height: 1.8;">
-          To generate voiceovers for your YouTube channel, explore the free tools on <a href="${DOMAIN}">TextToSpeechH AI</a>: test voices on our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">Voice Generator</a> or read our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:#00c896;">Online Text to Speech Guide</a>.
+          To generate voiceovers for your YouTube channel, explore the free tools on <a href="${DOMAIN}">TextToSpeechH AI</a>: test voices on our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">Voice Generator</a> or read our <a href="${DOMAIN}/text-to-speech/online-text-to-speech" style="color:var(--color-primary);">Online Text to Speech Guide</a>.
         </p>
       </section>
 
@@ -1489,8 +1489,8 @@ const BLOG_ARTICLES_MAP = {
         <p style="line-height: 1.8;">
           A common myth among new creators is that YouTube automatically demonetizes channels that use AI voice generators. YouTube's official monetization policies state:
         </p>
-        <div style="background:rgba(0,200,150,0.05); border-left:4px solid #00c896; padding:18px; border-radius:8px; margin-top:16px;">
-          <h4 style="color:#00c896; margin-top:0;">YouTube Monetization Requirements</h4>
+        <div style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:18px; border-radius:8px; margin-top:16px;">
+          <h4 style="color:var(--color-primary); margin-top:0;">YouTube Monetization Requirements</h4>
           <p style="margin:0; line-height:1.7;">
             YouTube permits AI voice narration provided the video delivers original commentary, unique visual editing, and value to viewers. Demonetization occurs only when creators upload low-effort, automated slideshows with generic stock clips and zero human editing.
           </p>
@@ -1515,20 +1515,20 @@ const BLOG_ARTICLES_MAP = {
           Choose the optimal neural voice for your video niche from our 14 verified models on <a href="${DOMAIN}">TextToSpeechH AI</a>:
         </p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:20px;">
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Jenny (US Female)</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Jenny (US Female)</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;"><code>en-US-JennyNeural</code> — High clarity for viral Shorts, tech tutorials, and lifestyle lists.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Guy (US Male)</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Guy (US Male)</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;"><code>en-US-GuyNeural</code> — Deep baritone perfect for true crime, history, and news channels.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Sonia (UK Female)</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Sonia (UK Female)</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;"><code>en-GB-SoniaNeural</code> — Sophisticated British accent ideal for luxury, travel, and literature.</p>
           </div>
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:16px; border-radius:8px;">
-            <h4 style="color:#00c896; margin-top:0;">Swara & Madhur (Hindi)</h4>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:16px; border-radius:8px;">
+            <h4 style="color:var(--color-primary); margin-top:0;">Swara & Madhur (Hindi)</h4>
             <p style="font-size:0.9rem; line-height:1.6; margin:0;"><code>hi-IN-SwaraNeural</code> & <code>hi-IN-MadhurNeural</code> — Top choices for Indian creators.</p>
           </div>
         </div>
@@ -1572,16 +1572,16 @@ const BLOG_ARTICLES_MAP = {
       <section id="pros-cons-yt-ai-voices" style="margin-bottom: 40px;">
         <h2>9. Advantages & Disadvantages of AI Voiceovers on YouTube</h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-          <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#00c896; margin-top:0;">Creator Advantages</h3>
+          <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Creator Advantages</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Zero microphone equipment costs.</li>
               <li>100% free MP3 download rights with commercial clearance.</li>
               <li>Publish videos 5x faster than recording manual voiceovers.</li>
             </ul>
           </div>
-          <div style="background:rgba(235,77,75,0.05); border:1px solid rgba(235,77,75,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#eb4d4b; margin-top:0;">Key Requirements</h3>
+          <div style="background:var(--color-error-soft); border:1px solid var(--color-error-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-error); margin-top:0;">Key Requirements</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Must pair audio with engaging visual video edits.</li>
               <li>Script must be structured with strong hook lines.</li>
@@ -1624,8 +1624,8 @@ const BLOG_ARTICLES_MAP = {
 
       <section id="faceless-channel-framework" style="margin-bottom: 40px;">
         <h2>14. Faceless Channel Launch Checklist & Framework</h2>
-        <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-          <h3 style="margin-top:0; color:#00c896;">5-Step Faceless Channel Launch Checklist</h3>
+        <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+          <h3 style="margin-top:0; color:var(--color-primary);">5-Step Faceless Channel Launch Checklist</h3>
           <ol style="line-height:1.8; padding-left:20px;">
             <li>Select high-CPM niche (Tech, Finance, History, Lists).</li>
             <li>Write a 60-second script with a strong 3-second hook.</li>
@@ -1647,151 +1647,151 @@ const BLOG_ARTICLES_MAP = {
         <h2>16. Frequently Asked Questions (20 Master Creator Answers)</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: Can I monetize YouTube Shorts using AI voiceovers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: Can I monetize YouTube Shorts using AI voiceovers?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes! YouTube allows monetization of videos with AI voiceovers as long as the video features original editing and value.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q2: Are MP3 downloads from TextToSpeechH AI royalty free?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: Are MP3 downloads from TextToSpeechH AI royalty free?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, all audio generated on TextToSpeechH AI is 100% royalty-free and cleared for commercial monetization.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q3: Which AI voice is best for YouTube Shorts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: Which AI voice is best for YouTube Shorts?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-US-JennyNeural</code> for female narration and <code>en-US-GuyNeural</code> for deep male voiceovers are top recommendations.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q4: How do I import generated MP3 files into CapCut?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: How do I import generated MP3 files into CapCut?</h3>
             <p style="line-height:1.7; margin:0;">
-              Download the MP3 file from <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech</a> and drag it directly into your CapCut audio timeline.
+              Download the MP3 file from <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech</a> and drag it directly into your CapCut audio timeline.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q5: What causes YouTube to flag videos as Reused Content?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: What causes YouTube to flag videos as Reused Content?</h3>
             <p style="line-height:1.7; margin:0;">
               Uploading unedited stock clips or static images without original editing or unique narrative value triggers reused content flags.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q6: What speaking speed is best for YouTube Shorts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q6: What speaking speed is best for YouTube Shorts?</h3>
             <p style="line-height:1.7; margin:0;">
               A speed rate setting of <code>+10%</code> or <code>+15%</code> creates an energetic pace ideal for short-form content.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q7: Can I generate Hindi voiceovers for Indian YouTube channels?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q7: Can I generate Hindi voiceovers for Indian YouTube channels?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes! <code>hi-IN-SwaraNeural</code> and <code>hi-IN-MadhurNeural</code> offer native Hindi speech synthesis.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q8: Do I need a credit card to download MP3 voiceovers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q8: Do I need a credit card to download MP3 voiceovers?</h3>
             <p style="line-height:1.7; margin:0;">
               No credit card or subscription is required on TextToSpeechH AI.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q9: What target loudness should I use for YouTube audio mixing?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q9: What target loudness should I use for YouTube audio mixing?</h3>
             <p style="line-height:1.7; margin:0;">
               Normalize your final video master audio to -14 LUFS for optimal YouTube playback.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q10: Which voice is best for true crime documentaries?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q10: Which voice is best for true crime documentaries?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-US-GuyNeural</code> offers an authoritative baritone suited for crime and history documentaries.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q11: Can I use AI voiceovers on TikTok and Instagram Reels?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q11: Can I use AI voiceovers on TikTok and Instagram Reels?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, all MP3 audio tracks exported from TextToSpeechH AI work seamlessly across TikTok, Reels, and YouTube.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q12: How do I add natural pauses to my video script?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q12: How do I add natural pauses to my video script?</h3>
             <p style="line-height:1.7; margin:0;">
               Insert commas, periods, or hyphens into your script text to trigger automatic micro-pauses during voice synthesis.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q13: Does TextToSpeechH AI support British English voiceovers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q13: Does TextToSpeechH AI support British English voiceovers?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>en-GB-SoniaNeural</code> and <code>en-GB-RyanNeural</code> provide authentic British accents.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q14: How can I translate my YouTube videos into Spanish?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q14: How can I translate my YouTube videos into Spanish?</h3>
             <p style="line-height:1.7; margin:0;">
               Translate your script and select <code>es-ES-ElviraNeural</code> to create Spanish audio tracks.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q15: Can I adjust pitch for comic character voices?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q15: Can I adjust pitch for comic character voices?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, pitch offset controls permit adjustments between -50Hz and +50Hz for unique character voices.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q16: How do I prevent background music from drowning out the voice?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q16: How do I prevent background music from drowning out the voice?</h3>
             <p style="line-height:1.7; margin:0;">
               Lower background music track volume to -20dB relative to your voiceover track in your editor.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q17: Is there a daily limit on free video voiceovers?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q17: Is there a daily limit on free video voiceovers?</h3>
             <p style="line-height:1.7; margin:0;">
               No, TextToSpeechH AI offers unlimited free web generation for video creators.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q18: What is a faceless YouTube channel?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q18: What is a faceless YouTube channel?</h3>
             <p style="line-height:1.7; margin:0;">
               A YouTube channel where the creator does not show their face, using b-roll, graphics, and AI voice narration instead.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q19: What file format is generated by TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q19: What file format is generated by TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               All audio is exported in clean, high-bitrate MP3 format.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q20: How do I navigate to the main voice generator tool?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q20: How do I navigate to the main voice generator tool?</h3>
             <p style="line-height:1.7; margin:0;">
-              Visit the <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">TextToSpeechH AI Voice Generator</a>.
+              Visit the <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">TextToSpeechH AI Voice Generator</a>.
             </p>
           </div>
 
         </div>
       </section>
 
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
       </div>
     `
   },
@@ -1804,15 +1804,15 @@ const BLOG_ARTICLES_MAP = {
     category: "Comparisons",
     readingTime: "30 min read",
     content: `
-      <div class="definition-box" style="background: rgba(0, 200, 150, 0.08); border-left: 4px solid #00c896; padding: 20px; border-radius: 8px; margin-bottom: 28px;">
-        <h2 style="font-size: 1.15rem; margin-top: 0; color: #00c896;">Comparison Summary: Free ElevenLabs Alternatives in 2026</h2>
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Comparison Summary: Free ElevenLabs Alternatives in 2026</h2>
         <p style="margin: 0; line-height: 1.7;">
           While platforms like ElevenLabs impose strict 10,000 character monthly quota caps on free accounts and paywall commercial MP3 file downloads, <strong>TextToSpeechH AI</strong> delivers a 100% free, high-performance alternative. Creators, students, and authors access direct MP3 downloads, native PDF/DOCX document uploads, 14 neural AI voices, speed rate adjustments, and zero mandatory account signups or credit card paywalls.
         </p>
       </div>
 
-      <nav class="toc-box" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(0,200,150,0.2); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
-        <h3 style="margin-top:0; color:#00c896;">Table of Contents</h3>
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
         <ol style="margin:0; padding-left:20px; line-height:1.8;">
           <li><a href="#definition-elevenlabs-alt" style="color:inherit;">1. Conceptual Overview: Why Seek an ElevenLabs Alternative?</a></li>
           <li><a href="#free-tier-limitations-breakdown" style="color:inherit;">2. Breakdown of Paid Paywalls & Quota Restrictions</a></li>
@@ -1842,7 +1842,7 @@ const BLOG_ARTICLES_MAP = {
           Free alternatives like <a href="${DOMAIN}">TextToSpeechH AI</a> bridge this gap by offering studio-quality neural voice synthesis directly through modern web browsers without credit card verification.
         </p>
         <p style="line-height: 1.8;">
-          To test our free high-bitrate neural voices immediately, visit the <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech Generator</a> or explore our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:#00c896;">AI Voice Generator</a>.
+          To test our free high-bitrate neural voices immediately, visit the <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech Generator</a> or explore our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">AI Voice Generator</a>.
         </p>
       </section>
 
@@ -1867,41 +1867,41 @@ const BLOG_ARTICLES_MAP = {
         <div style="overflow-x:auto; margin-top:16px;">
           <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
             <thead>
-              <tr style="background:rgba(0,200,150,0.15); border-bottom:2px solid #00c896;">
-                <th style="padding:10px; color:#fff;">Feature Parameter</th>
-                <th style="padding:10px; color:#00c896; font-weight:700;">TextToSpeechH AI</th>
-                <th style="padding:10px; color:#fff;">ElevenLabs (Free Tier)</th>
+              <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+                <th style="padding:10px; color:var(--color-primary-on);">Feature Parameter</th>
+                <th style="padding:10px; color:var(--color-primary-on); font-weight:700;">TextToSpeechH AI</th>
+                <th style="padding:10px; color:var(--color-primary-on);">ElevenLabs (Free Tier)</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">Monthly Character Usage</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">Unlimited Free Web Access</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">Unlimited Free Web Access</td>
                 <td style="padding:10px;">10,000 Chars/Month Cap</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">MP3 File Download Rights</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">Free Instant MP3 Export</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">Free Instant MP3 Export</td>
                 <td style="padding:10px;">Restricted on Free Tier</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">Commercial Monetization Clearance</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">100% Royalty Free Cleared</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">100% Royalty Free Cleared</td>
                 <td style="padding:10px;">Requires Paid Plan</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">Document Upload (PDF/DOCX/TXT)</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">Native Upload Support</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">Native Upload Support</td>
                 <td style="padding:10px;">Text Copy/Paste Only</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">Mandatory User Registration</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">Zero Sign-up Required</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">Zero Sign-up Required</td>
                 <td style="padding:10px;">Mandatory Account Creation</td>
               </tr>
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <tr style="border-bottom:1px solid var(--color-border);">
                 <td style="padding:10px; font-weight:600;">Speed Rate & Pitch Tuning</td>
-                <td style="padding:10px; color:#00c896; font-weight:700;">Full Slider Customization</td>
+                <td style="padding:10px; color:var(--color-success-text); font-weight:700;">Full Slider Customization</td>
                 <td style="padding:10px;">Limited Adjustments</td>
               </tr>
             </tbody>
@@ -1926,7 +1926,7 @@ const BLOG_ARTICLES_MAP = {
       <section id="long-form-content-synthesis" style="margin-bottom: 40px;">
         <h2>6. Long-Form Document & Book Synthesis Workflows</h2>
         <p style="line-height: 1.8;">
-          Converting full manuscripts or PDF course readers into audiobooks is simple on TextToSpeechH AI. Upload your <strong>PDF</strong>, <strong>DOCX</strong>, or <strong>TXT</strong> file to automatically extract text and generate downloadable MP3 audio files. See our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech Tool</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:#00c896;">Word to Speech Tool</a>.
+          Converting full manuscripts or PDF course readers into audiobooks is simple on TextToSpeechH AI. Upload your <strong>PDF</strong>, <strong>DOCX</strong>, or <strong>TXT</strong> file to automatically extract text and generate downloadable MP3 audio files. See our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color:var(--color-primary);">Word to Speech Tool</a>.
         </p>
       </section>
 
@@ -1953,16 +1953,16 @@ const BLOG_ARTICLES_MAP = {
       <section id="pros-cons-elevenlabs-alt" style="margin-bottom: 40px;">
         <h2>9. Advantages & Disadvantages of Free vs. Paid TTS Tools</h2>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-          <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#00c896; margin-top:0;">TextToSpeechH AI (Free)</h3>
+          <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">TextToSpeechH AI (Free)</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>Zero monthly subscription fees or credit cards.</li>
               <li>Free direct MP3 downloads with commercial clearance.</li>
               <li>Native PDF, DOCX, and TXT file uploads.</li>
             </ul>
           </div>
-          <div style="background:rgba(235,77,75,0.05); border:1px solid rgba(235,77,75,0.2); padding:20px; border-radius:8px;">
-            <h3 style="color:#eb4d4b; margin-top:0;">Paid Platforms (ElevenLabs)</h3>
+          <div style="background:var(--color-error-soft); border:1px solid var(--color-error-border); padding:20px; border-radius:8px;">
+            <h3 style="color:var(--color-error); margin-top:0;">Paid Platforms (ElevenLabs)</h3>
             <ul style="line-height:1.7; padding-left:18px; font-size:0.95rem;">
               <li>10,000 character free tier quota cap.</li>
               <li>Paid subscription required for commercial MP3 downloads.</li>
@@ -2004,8 +2004,8 @@ const BLOG_ARTICLES_MAP = {
 
       <section id="alternative-decision-framework" style="margin-bottom: 40px;">
         <h2>14. Interactive Alternative Selection Decision Guide</h2>
-        <div style="background:rgba(0,200,150,0.05); border:1px solid rgba(0,200,150,0.2); padding:20px; border-radius:8px;">
-          <h3 style="margin-top:0; color:#00c896;">Platform Selection Guide</h3>
+        <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); padding:20px; border-radius:8px;">
+          <h3 style="margin-top:0; color:var(--color-primary);">Platform Selection Guide</h3>
           <ul style="line-height:1.8; padding-left:20px;">
             <li><strong>Choose TextToSpeechH AI if:</strong> You need free MP3 downloads, PDF document uploads, and zero monthly fees.</li>
             <li><strong>Choose Paid ElevenLabs if:</strong> You require custom voice cloning and are willing to pay $22–$99/month.</li>
@@ -2024,151 +2024,151 @@ const BLOG_ARTICLES_MAP = {
         <h2>16. Frequently Asked Questions (20 Master Comparison Answers)</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q1: Is TextToSpeechH AI a free alternative to ElevenLabs?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: Is TextToSpeechH AI a free alternative to ElevenLabs?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes! TextToSpeechH AI provides free neural voice synthesis with direct MP3 downloads and zero subscription fees.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q2: What is the free monthly character limit on ElevenLabs?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: What is the free monthly character limit on ElevenLabs?</h3>
             <p style="line-height:1.7; margin:0;">
               ElevenLabs caps free accounts at 10,000 characters per month. TextToSpeechH AI provides free unlimited web speech synthesis.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q3: Can I download MP3 files for free on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: Can I download MP3 files for free on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes, instant MP3 file downloads are provided for every voice request on <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:#00c896;">Free Text to Speech</a>.
+              Yes, instant MP3 file downloads are provided for every voice request on <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">Free Text to Speech</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q4: Are TextToSpeechH AI audio tracks cleared for YouTube monetization?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: Are TextToSpeechH AI audio tracks cleared for YouTube monetization?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, all synthesized audio carries 100% royalty-free commercial usage rights.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q5: Do I need a credit card to use TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Do I need a credit card to use TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               No, TextToSpeechH AI requires no credit cards, sign-ups, or account verification.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q6: Can I convert PDF files to speech on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q6: Can I convert PDF files to speech on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes, upload PDF, DOCX, or TXT files on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:#00c896;">PDF to Speech Tool</a>.
+              Yes, upload PDF, DOCX, or TXT files on our <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a>.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q7: How many voices are supported on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q7: How many voices are supported on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               TextToSpeechH AI supports 14 neural voice models across English, Hindi, Urdu, Spanish, French, German, Arabic, and Japanese.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q8: What is the best voice for American English storytelling?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q8: What is the best voice for American English storytelling?</h3>
             <p style="line-height:1.7; margin:0;">
               <code>en-US-JennyNeural</code> and <code>en-US-GuyNeural</code> deliver natural conversational delivery.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q9: Can I adjust vocal pitch on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q9: Can I adjust vocal pitch on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, pitch controls allow adjustment between -50Hz and +50Hz.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q10: Can I adjust speaking speed on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q10: Can I adjust speaking speed on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, speed rate controls allow adjustment from -50% to +100%.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q11: Are British accents supported on TextToSpeechH AI?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q11: Are British accents supported on TextToSpeechH AI?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>en-GB-SoniaNeural</code> and <code>en-GB-RyanNeural</code> provide authentic British accents.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q12: Is Hindi speech synthesis supported?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q12: Is Hindi speech synthesis supported?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>hi-IN-SwaraNeural</code> and <code>hi-IN-MadhurNeural</code> offer native Hindi voiceovers.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q13: Does TextToSpeechH AI require software installation?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q13: Does TextToSpeechH AI require software installation?</h3>
             <p style="line-height:1.7; margin:0;">
               No, TextToSpeechH AI runs 100% in your browser.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q14: Can I use generated audio for audiobooks?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q14: Can I use generated audio for audiobooks?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, download high-bitrate MP3 files directly for audiobook publishing.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q15: How does TextToSpeechH AI handle long scripts?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q15: How does TextToSpeechH AI handle long scripts?</h3>
             <p style="line-height:1.7; margin:0;">
               Our asynchronous queue engine processes text in chunks and merges them into a clean MP3 stream.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q16: Are Spanish neural voices available?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q16: Are Spanish neural voices available?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>es-ES-ElviraNeural</code> delivers natural Castilian Spanish speech.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q17: Are French neural voices available?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q17: Are French neural voices available?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, <code>fr-FR-DeniseNeural</code> delivers clear Parisian French vocalization.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q18: What audio format is exported?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q18: What audio format is exported?</h3>
             <p style="line-height:1.7; margin:0;">
               All audio is exported in clean, high-bitrate MP3 format.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q19: Can I use TextToSpeechH AI on mobile devices?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q19: Can I use TextToSpeechH AI on mobile devices?</h3>
             <p style="line-height:1.7; margin:0;">
               Yes, TextToSpeechH AI works on mobile iOS and Android web browsers.
             </p>
           </div>
 
-          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:10px;">
-            <h3 style="color:#00c896; margin-top:0;">Q20: How do I return to the main Text to Speech portal?</h3>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q20: How do I return to the main Text to Speech portal?</h3>
             <p style="line-height:1.7; margin:0;">
-              Visit the <a href="${DOMAIN}/text-to-speech" style="color:#00c896;">Text to Speech Master Guide</a> anytime.
+              Visit the <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">Text to Speech Master Guide</a> anytime.
             </p>
           </div>
 
         </div>
       </section>
 
-      <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
       </div>
     `
   }

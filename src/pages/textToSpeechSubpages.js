@@ -14,7 +14,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     category: "AI Technology",
     readingTime: "8 min read",
     content: `
-      <div class="definition-box" style="background:rgba(0,200,150,0.08); border-left:4px solid #00c896; padding:20px; border-radius:8px; margin-bottom:30px;">
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:30px;">
         <p style="font-size:1.05em; margin:0;"><strong>AI Text to Speech</strong> leverages artificial intelligence and deep neural networks to convert written text into natural human speech with emotion, inflection, and breathing pauses.</p>
       </div>
       <h2>How Artificial Intelligence Powers Modern Speech Synthesis</h2>
@@ -27,12 +27,12 @@ const TEXT_TO_SPEECH_SUBPAGES = {
         <li><strong>Zero Mechanical Distortion:</strong> Smooth acoustic energy transition without robotic buzzing.</li>
       </ul>
 
-      <div style="background:rgba(0,200,150,0.05); padding:20px; border-radius:10px; margin:30px 0; text-align:center;">
+      <div style="background:var(--color-primary-soft); padding:20px; border-radius:10px; margin:30px 0; text-align:center;">
         <h3 style="margin-top:0;">Experience Neural AI Speech Synthesis</h3>
         <p>Try ${BRAND_NAME} free voice generator on our home page or read the main pillar guide.</p>
         <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
           <a href="/" class="primary-btn" style="text-decoration:none;">Try AI Voice Generator →</a>
-          <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600; padding:10px 20px; text-decoration:none;">Read Main Text to Speech Guide ◀</a>
+          <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600; padding:10px 20px; text-decoration:none;">Read Main Text to Speech Guide ◀</a>
         </div>
       </div>
     `
@@ -44,7 +44,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     category: "Free Tools",
     readingTime: "7 min read",
     content: `
-      <div class="definition-box" style="background:rgba(0,200,150,0.08); border-left:4px solid #00c896; padding:20px; border-radius:8px; margin-bottom:30px;">
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:30px;">
         <p style="font-size:1.05em; margin:0;"><strong>Free Text to Speech</strong> on ${BRAND_NAME} provides high-quality neural voice synthesis with no subscription costs, credit cards, or character paywalls.</p>
       </div>
       <h2>Truly Free AI Voice Generation Without Subscriptions</h2>
@@ -59,7 +59,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
       </ul>
 
       <div style="margin-top:30px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Return to Text to Speech Main Guide</a>
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Text to Speech Main Guide</a>
       </div>
     `
   },
@@ -92,7 +92,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
       <p>Transforming text into voice simplifies content creation for video producers, audio creators, and corporate trainers. ${BRAND_NAME} renders natural human vocal inflections across any genre of written material.</p>
 
       <div style="margin-top:30px;">
-        <a href="${DOMAIN}/text-to-speech" style="color:#00c896; font-weight:600;">◀ Back to Text to Speech Pillar</a>
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Back to Text to Speech Pillar</a>
       </div>
     `
   },

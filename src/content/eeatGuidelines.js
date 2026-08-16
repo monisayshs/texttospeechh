@@ -27,9 +27,9 @@ const EDITORIAL_POLICY = {
 
 function getEeatHeaderHtml(pageTitle) {
   return `
-  <div class="eeat-badge-box" style="background:rgba(0, 242, 254, 0.05); border:1px solid rgba(0, 242, 254, 0.2); border-radius:10px; padding:12px 18px; margin-bottom:20px; font-size:0.82rem; color:#8e9bb0;">
-    <p style="margin-bottom:4px;"><strong>Verified EEAT Authority Content</strong> | Fact-Checked & Reviewed by <strong>TextToSpeechH AI Research Team</strong></p>
-    <p style="margin:0;">Last Updated: <strong>${EDITORIAL_POLICY.lastUpdated}</strong> | Editorial Status: <span style="color:#00f2fe;">${EDITORIAL_POLICY.reviewStatus}</span></p>
+  <div class="eeat-badge-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:10px; padding:12px 18px; margin-bottom:20px; font-size:0.82rem; color:var(--color-text-secondary);">
+    <p style="margin-bottom:4px;"><strong style="color:var(--color-text);">Verified EEAT Authority Content</strong> | Fact-Checked & Reviewed by <strong>TextToSpeechH AI Research Team</strong></p>
+    <p style="margin:0;">Last Updated: <strong style="color:var(--color-text);">${EDITORIAL_POLICY.lastUpdated}</strong> | Editorial Status: <span style="color:var(--color-success-text);">${EDITORIAL_POLICY.reviewStatus}</span></p>
   </div>`;
 }
 

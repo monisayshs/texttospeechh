@@ -68,8 +68,8 @@ function renderSeoPage(pageData, pathSlug) {
     ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title || "Text to Speech", pageData.metaDesc || "", canonicalUrl, pageData.datePublished, pageData.dateModified))}</script>\n  `
     : "";
 
-  const category = pageData.category ? `<span class="blog-category" style="font-size:0.8em; color:#00c896; text-transform:uppercase; letter-spacing:1px; font-weight:600;">${pageData.category}</span>` : '';
-  const readingTime = pageData.readingTime ? `<span class="blog-reading-time" style="font-size:0.85em; opacity:0.6; margin-left:12px;">${pageData.readingTime}</span>` : '';
+  const category = pageData.category ? `<span class="blog-category" style="font-size:0.8em; color:var(--color-primary); text-transform:uppercase; letter-spacing:1px; font-weight:600;">${pageData.category}</span>` : '';
+  const readingTime = pageData.readingTime ? `<span class="blog-reading-time" style="font-size:0.85em; color:var(--color-text-muted); margin-left:12px;">${pageData.readingTime}</span>` : '';
 
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
   const footerHtml = getSaaSFooterHtml();
@@ -77,25 +77,25 @@ function renderSeoPage(pageData, pathSlug) {
 
   const isArticle = pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech";
   const authorBylineHtml = isArticle ? `
-      <div class="article-byline" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:14px 0 4px; padding:12px 16px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; font-size:0.85rem; color:#8e9bb0;">
-        <span style="display:inline-flex; align-items:center; gap:8px;"><strong style="color:#e8eef7;">By TextToSpeechH AI Editorial Team</strong></span>
+      <div class="article-byline" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:14px 0 4px; padding:12px 16px; background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:10px; font-size:0.85rem; color:var(--color-text-muted);">
+        <span style="display:inline-flex; align-items:center; gap:8px;"><strong style="color:var(--color-text);">By TextToSpeechH AI Editorial Team</strong></span>
         <span aria-hidden="true">|</span>
-        <span>Published: <strong style="color:#e8eef7;">${pageData.datePublished || "July 29, 2026"}</strong></span>
+        <span>Published: <strong style="color:var(--color-text);">${pageData.datePublished || "July 29, 2026"}</strong></span>
         <span aria-hidden="true">|</span>
-        <span>Last Updated: <strong style="color:#e8eef7;">${pageData.dateModified || pageData.datePublished || "July 29, 2026"}</strong></span>
+        <span>Last Updated: <strong style="color:var(--color-text);">${pageData.dateModified || pageData.datePublished || "July 29, 2026"}</strong></span>
         <span aria-hidden="true">|</span>
-        <span>Fact-Checked by <strong style="color:#e8eef7;">TextToSpeechH AI Research Team</strong></span>
+        <span>Fact-Checked by <strong style="color:var(--color-text);">TextToSpeechH AI Research Team</strong></span>
       </div>` : '';
 
   const referencesHtml = isArticle ? `
-      <div class="article-references" style="margin-top:36px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
-        <h3 style="font-size:1.05rem; color:#00c896; margin:0 0 12px;">Sources & References</h3>
-        <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:0.85rem; color:#8e9bb0;">
-          <li>W3C Web Accessibility Initiative — "Audio Content & Video Content" text-to-speech guidance: <a href="https://www.w3.org/WAI/media/av/av-content/" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">www.w3.org/WAI/media/av/av-content/</a></li>
-          <li>Wikipedia — Speech Synthesis & Speech Recognition: <a href="https://en.wikipedia.org/wiki/Speech_synthesis" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">en.wikipedia.org/wiki/Speech_synthesis</a></li>
-          <li>van den Oord et al. — WaveNet: A Generative Model for Raw Audio: <a href="https://arxiv.org/abs/1609.03499" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">arxiv.org/abs/1609.03499</a></li>
-          <li>Shen et al. — Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2): <a href="https://arxiv.org/abs/1712.05884" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">arxiv.org/abs/1712.05884</a></li>
-          <li>Google — Neural Text-to-Speech & AI Overview documentation: <a href="https://cloud.google.com/text-to-speech" target="_blank" rel="noopener noreferrer" style="color:#00f2fe;">cloud.google.com/text-to-speech</a></li>
+      <div class="article-references" style="margin-top:36px; padding-top:20px; border-top:1px solid var(--color-border);">
+        <h3 style="font-size:1.05rem; color:var(--color-primary); margin:0 0 12px;">Sources & References</h3>
+        <ul style="margin:0; padding-left:18px; line-height:1.9; font-size:0.85rem; color:var(--color-text-muted);">
+          <li>W3C Web Accessibility Initiative — "Audio Content & Video Content" text-to-speech guidance: <a href="https://www.w3.org/WAI/media/av/av-content/" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">www.w3.org/WAI/media/av/av-content/</a></li>
+          <li>Wikipedia — Speech Synthesis & Speech Recognition: <a href="https://en.wikipedia.org/wiki/Speech_synthesis" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">en.wikipedia.org/wiki/Speech_synthesis</a></li>
+          <li>van den Oord et al. — WaveNet: A Generative Model for Raw Audio: <a href="https://arxiv.org/abs/1609.03499" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">arxiv.org/abs/1609.03499</a></li>
+          <li>Shen et al. — Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2): <a href="https://arxiv.org/abs/1712.05884" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">arxiv.org/abs/1712.05884</a></li>
+          <li>Google — Neural Text-to-Speech & AI Overview documentation: <a href="https://cloud.google.com/text-to-speech" target="_blank" rel="noopener noreferrer" style="color:var(--color-primary);">cloud.google.com/text-to-speech</a></li>
         </ul>
       </div>` : '';
 
@@ -244,7 +244,7 @@ ${trackingHtml}
       ${referencesHtml}
       <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
         <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Try Voice Generator Tool</a>
-        ${pathSlug !== 'text-to-speech' ? `<a href="/text-to-speech" style="display:inline-flex; text-decoration:none; background:rgba(0,200,150,0.15); color:#00c896; padding:10px 20px; border-radius:8px; font-weight:600;">Text to Speech Main Guide ◀</a>` : ''}
+        ${pathSlug !== 'text-to-speech' ? `<a href="/text-to-speech" style="display:inline-flex; text-decoration:none; background:var(--color-primary-soft); color:var(--color-primary); padding:10px 20px; border-radius:8px; font-weight:600;">Text to Speech Main Guide ◀</a>` : ''}
       </div>
     </main>
 

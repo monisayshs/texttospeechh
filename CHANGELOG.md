@@ -26,6 +26,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [Unreleased] - 2026-08-16
+
+### Changed
+- **Complete color migration to centralized semantic CSS variables** across all server-rendered templates:
+  - Migrated `blogHub.js`, `textToSpeechBlogHub.js`, `textToSpeechPillar.js`, `textToSpeechSubpages.js`, `legalPages.js`, `errorPages.js`, `programmaticPages.js`, and `eeatGuidelines.js` from legacy hard-coded green/teal/cyan brand colors (`#00c896`, `#00f2fe`, `#4facfe`, `rgba(0,200,150,*)`) to semantic tokens in `public/style.css` (`--color-primary*`, `--color-accent*`, `--color-success*`, `--color-error*`, `--color-warning*`, `--color-bg*`, `--color-border`, `--color-text*`, `--gradient-*`, `--shadow-*`).
+  - Decorative/neutral green and cyan now use premium Blue + Deep Navy; genuine semantic states (verified status, compliance assurances, favorable feature cells, recommended-code examples, success/error/warning boxes) retain green/red/amber via `--color-success-*`, `--color-error-*`, `--color-warning-*`.
+  - Theme-hostile neutral surfaces (`rgba(255,255,255,0.03/0.08/0.1)`, `rgba(0,0,0,0.2)`) replaced with theme-aware `--color-bg-secondary` / `--color-border`.
+  - `errorPages.js`: added the standard theme-init script (localStorage + `prefers-color-scheme`), switched page font Outfit → Inter to match homepage, and fixed a `shadow:` typo → `box-shadow: var(--shadow-xl)`.
+  - Verified: `node --check` passes on all migrated files, `rg` finds zero legacy color tokens in `src/`, `npm run build` passes (0 errors/0 warnings).
+
+---
+
 ## [1.0.0] - 2026-08-07
 
 ### Added

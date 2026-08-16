@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showErrorToast(msg, allowRetry = true) {
     const toast = document.createElement('div');
-    toast.style.cssText = 'pointer-events:auto; background:rgba(15, 23, 42, 0.95); border:1px solid #ef4444; color:#ffffff; padding:16px 20px; border-radius:12px; font-size:0.95rem; box-shadow:0 10px 30px rgba(0,0,0,0.5); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:space-between; gap:12px; animation: slideUp 0.3s ease;';
+    toast.style.cssText = 'pointer-events:auto; background:var(--color-surface); border:1px solid var(--color-error); color:var(--color-text); padding:16px 20px; border-radius:12px; font-size:0.95rem; box-shadow:var(--shadow-xl); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:space-between; gap:12px; animation: slideUp 0.3s ease;';
     
     const content = document.createElement('div');
     content.style.cssText = 'display:flex; align-items:center; gap:10px;';
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allowRetry) {
       const retryBtn = document.createElement('button');
       retryBtn.textContent = 'Retry';
-      retryBtn.style.cssText = 'background:#ef4444; color:#fff; border:none; padding:6px 12px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;';
+      retryBtn.style.cssText = 'background:var(--color-error); color:var(--color-error-text); border:none; padding:6px 12px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;';
       retryBtn.onclick = () => {
         toast.remove();
         startSynthesis();
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeBtn = document.createElement('button');
     closeBtn.textContent = '✖';
-    closeBtn.style.cssText = 'background:none; border:none; color:#94a3b8; font-size:1.1rem; cursor:pointer; padding:2px 6px;';
+    closeBtn.style.cssText = 'background:none; border:none; color:var(--color-text-muted); font-size:1.1rem; cursor:pointer; padding:2px 6px;';
     closeBtn.onclick = () => toast.remove();
     actions.appendChild(closeBtn);
 
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('online', () => {
     const onlineToast = document.createElement('div');
-    onlineToast.style.cssText = 'pointer-events:auto; background:rgba(15, 23, 42, 0.95); border:1px solid #10b981; color:#34d399; padding:14px 18px; border-radius:12px; font-size:0.95rem; box-shadow:0 10px 30px rgba(0,0,0,0.5); backdrop-filter:blur(10px); display:flex; align-items:center; gap:10px;';
+    onlineToast.style.cssText = 'pointer-events:auto; background:var(--color-surface); border:1px solid var(--color-success); color:var(--color-success-text); padding:14px 18px; border-radius:12px; font-size:0.95rem; box-shadow:var(--shadow-xl); backdrop-filter:blur(10px); display:flex; align-items:center; gap:10px;';
     onlineToast.innerHTML = `<span>✓</span> <span>Network connection restored. Online!</span>`;
     toastContainer.appendChild(onlineToast);
     setTimeout(() => onlineToast.remove(), 4000);
