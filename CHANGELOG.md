@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 | **Owner** | Repository Maintainers |
 | **Update Trigger** | Every feature release, bug fix, deployment, or documentation milestone |
 | **Update Frequency** | Medium — updated with every meaningful commit or release |
-| **Last Verified** | 2026-08-07 |
+| **Last Verified** | 2026-08-18 |
 | **Verified Against** | Git history & inspected workspace state |
 | **Related Documents** | [PROJECT_STATE.md](PROJECT_STATE.md), [DECISIONS.md](DECISIONS.md), [AGENTS.md](AGENTS.md) |
 
@@ -26,7 +26,14 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
-## [Unreleased] - 2026-08-16
+## [Unreleased] - 2026-08-18
+
+### Added
+- **Homepage WebSite JSON-LD structured-data block** (`public/index.html`):
+  - Added a static `<script type="application/ld+json">` block with `@type: WebSite`, `name: "TextToSpeechH AI"`, `alternateName: "TextToSpeechH"`, and `url: https://www.texttospeechh.com/`.
+  - No `potentialAction` / `SearchAction` was added.
+  - Existing `SoftwareApplication` and `Organization` JSON-LD blocks were not modified.
+  - No sitemap, robots.txt, canonical, redirect, or indexing configuration was changed.
 
 ### Changed
 - **Complete color migration to centralized semantic CSS variables** across all server-rendered templates:

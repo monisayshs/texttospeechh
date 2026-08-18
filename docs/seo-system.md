@@ -10,8 +10,8 @@
 | **Owner** | Repository Maintainers |
 | **Update Trigger** | New page category added, sitemap modified, JSON-LD schema updated, redirect added, IndexNow config changed |
 | **Update Frequency** | Medium — updated whenever SEO features or routes change |
-| **Last Verified** | 2026-08-07 |
-| **Verified Against** | `src/seo/*`, `src/api/seoHandler.js`, `src/api/sitemapHandler.js`, `scripts/notify-indexnow.js` |
+| **Last Verified** | 2026-08-18 |
+| **Verified Against** | `src/seo/*`, `src/api/seoHandler.js`, `src/api/sitemapHandler.js`, `scripts/notify-indexnow.js`, `public/index.html` |
 | **Related Documents** | [AGENTS.md](../AGENTS.md), [DECISIONS.md](../DECISIONS.md), [docs/architecture.md](architecture.md) |
 
 ---
@@ -111,7 +111,7 @@ The project uses a structured **Sitemap Index** located at `/sitemap.xml`:
 Every server-rendered HTML page injects structured data in standard `<script type="application/ld+json">` blocks:
 
 - **Organization Schema**: Defines `TextToSpeechH AI` brand, logo, domain, and social profiles.
-- **WebSite Schema**: Injects Google Sitelinks Searchbox capabilities.
+- **WebSite Schema**: Injects Google Sitelinks Searchbox capabilities. The homepage (`public/index.html`) also includes a static `WebSite` JSON-LD block with `name`, `alternateName`, and `url` fields (no `potentialAction`).
 - **SoftwareApplication Schema**: Describes the web app, operating system compatibility, free pricing tier (`Price: $0.00`), and aggregate rating.
 - **FAQPage Schema**: Formats relevant FAQ questions and answers into JSON-LD arrays for Google Rich Search Results.
 - **BreadcrumbList Schema**: Provides structured navigational breadcrumbs (`Home` > `Text to Speech` > `[Current Page]`).
