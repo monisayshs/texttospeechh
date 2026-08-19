@@ -94,7 +94,7 @@ const PROGRAMMATIC_ROUTER = {
     `
   },
   "compare/texttospeechh-vs-naturalreader": {
-    title: `${BRAND_NAME} vs NaturalReader | Best Free NaturalReader Alternative`,
+    title: `${BRAND_NAME} vs NaturalReader | Free Alternative`,
     h1: `${BRAND_NAME} vs NaturalReader: Free TTS Comparison`,
     metaDesc: `Compare ${BRAND_NAME} and NaturalReader. ${BRAND_NAME} offers free neural text to speech with no word limits or premium upgrades.`,
     content: `

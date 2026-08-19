@@ -35,6 +35,24 @@ If this document conflicts with the implementation, **the source code is authori
   - Existing `SoftwareApplication` and `Organization` JSON-LD blocks were not modified.
   - No sitemap, robots.txt, canonical, redirect, or indexing configuration was changed.
 
+### Fixed
+- **SEO title length fix for `/text-to-speech` pillar page**:
+  - Reduced `<title>` and `<meta name="title">` from 81 characters to 59 characters to meet the 70-character SEO best-practice limit.
+  - New title: `Text to Speech: AI Voice Synthesis Guide | TextToSpeechH AI`.
+  - Source of truth updated in `src/pages/textToSpeechPillar.js`; `meta[name="title"]`, Open Graph, Twitter, Article JSON-LD `headline`, and canonical URL are synchronized automatically via `renderSeoPage()` in `src/api/seoHandler.js`.
+  - Verified via local dev server (`node dev-server.js`) on `http://localhost:3000/text-to-speech`.
+
+- **WebSite JSON-LD Schema Alignment** (`src/seo/schemaGenerator.js`):
+  - Removed invalid `potentialAction` / `SearchAction` block targeting non-existent `/search?q=` endpoint across all server-rendered pages.
+  - Added `alternateName: "TextToSpeechH"` to align `getWebSiteSchema()` with `public/index.html`.
+
+- **Subpage & Comparison SEO Title Length Optimization**:
+  - `src/pages/textToSpeechSubpages.js`: Trimmed titles on `/text-to-speech/free-text-to-speech` (72->67), `/text-to-speech/text-to-voice` (71->65), `/text-to-speech/word-to-speech` (71->59), and `/text-to-speech/txt-to-speech` (71->65) to strictly stay within the 70-character limit.
+  - `src/seo/programmaticPages.js`: Trimmed title on `/compare/texttospeechh-vs-naturalreader` (71->52).
+
+- **Temporary GSC Audit Artifact Cleanup** (`.gitignore`):
+  - Ignored `gsc_*.json`, `all_url_checks.json`, `gsc-report.txt`, `gsc-url-checks-results.json`, and `.kilo/` to maintain clean source control.
+
 ### Changed
 - **Complete color migration to centralized semantic CSS variables** across all server-rendered templates:
   - Migrated `blogHub.js`, `textToSpeechBlogHub.js`, `textToSpeechPillar.js`, `textToSpeechSubpages.js`, `legalPages.js`, `errorPages.js`, `programmaticPages.js`, and `eeatGuidelines.js` from legacy hard-coded green/teal/cyan brand colors (`#00c896`, `#00f2fe`, `#4facfe`, `rgba(0,200,150,*)`) to semantic tokens in `public/style.css` (`--color-primary*`, `--color-accent*`, `--color-success*`, `--color-error*`, `--color-warning*`, `--color-bg*`, `--color-border`, `--color-text*`, `--gradient-*`, `--shadow-*`).

@@ -45,12 +45,8 @@ function getWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": BRAND_NAME,
-    "url": DOMAIN,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${DOMAIN}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    "alternateName": "TextToSpeechH",
+    "url": DOMAIN
   };
 }
 

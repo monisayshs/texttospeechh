@@ -38,7 +38,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     `
   },
   "text-to-speech/free-text-to-speech": {
-    title: `Free Text to Speech: Best No-Cost AI Voice Generator | ${BRAND_NAME}`,
+    title: `Free Text to Speech: No-Cost AI Voice Generator | ${BRAND_NAME}`,
     h1: `Free Text to Speech Generator Online`,
     metaDesc: `Looking for 100% free text to speech without word caps or hidden fees? ${BRAND_NAME} offers natural neural voice synthesis and free MP3 downloads.`,
     category: "Free Tools",
@@ -82,7 +82,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     `
   },
   "text-to-speech/text-to-voice": {
-    title: `Text to Voice Converter: Turn Written Words to Audio | ${BRAND_NAME}`,
+    title: `Text to Voice Converter: Convert Text to Audio | ${BRAND_NAME}`,
     h1: `Text to Voice Converter`,
     metaDesc: `Turn written documents, articles, and scripts into natural vocal narration with ${BRAND_NAME} free text-to-voice technology.`,
     category: "Audio Conversion",
@@ -130,7 +130,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     `
   },
   "text-to-speech/word-to-speech": {
-    title: `Word to Speech: Convert DOCX Documents to Voiceovers | ${BRAND_NAME}`,
+    title: `Word to Speech: Convert DOCX to Voiceover | ${BRAND_NAME}`,
     h1: `Word DOCX to Speech Converter`,
     metaDesc: `Convert Microsoft Word (.docx) documents into professional voiceovers and MP3 audio files for free with ${BRAND_NAME}.`,
     category: "Document Processing",
@@ -141,7 +141,7 @@ const TEXT_TO_SPEECH_SUBPAGES = {
     `
   },
   "text-to-speech/txt-to-speech": {
-    title: `TXT to Speech: Convert Plain Text Files to MP3 Audio | ${BRAND_NAME}`,
+    title: `TXT to Speech: Convert Plain Text to MP3 Audio | ${BRAND_NAME}`,
     h1: `TXT to Speech Converter`,
     metaDesc: `Convert plain text (.txt) files into natural spoken audio with ${BRAND_NAME}. Upload code notes, drafts, or raw exports and listen to them as MP3.`,
     category: "Document Processing",
