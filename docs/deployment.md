@@ -6,12 +6,12 @@
 
 | Property | Value |
 |----------|-------|
-| **Document Purpose** | Guide for Vercel deployment, environment variable management, build scripts, and step-by-step failure recovery |
+| **Document Purpose** | Guide for Cloudflare Pages deployment, environment variable management, build scripts, and step-by-step failure recovery |
 | **Owner** | Repository Maintainers |
-| **Update Trigger** | Vercel configuration modified, environment variable added, build pipeline changed |
+| **Update Trigger** | Cloudflare configuration modified, environment variable added, build pipeline changed |
 | **Update Frequency** | Low — updated when deployment architecture changes |
-| **Last Verified** | 2026-08-07 |
-| **Verified Against** | `vercel.json`, `package.json`, `scripts/notify-indexnow.js`, `.env.local` |
+| **Last Verified** | 2026-09-18 |
+| **Verified Against** | `wrangler.toml`, `functions/[[path]].js`, `package.json`, `scripts/notify-indexnow.js` |
 | **Related Documents** | [AGENTS.md](../AGENTS.md), [DECISIONS.md](../DECISIONS.md), [PROJECT_STATE.md](../PROJECT_STATE.md) |
 
 ---
@@ -24,104 +24,77 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Deployment Architecture Overview
 
-TextToSpeechH AI deploys to **Vercel** via git push integration:
+TextToSpeechH AI deploys to **Cloudflare Pages + Workers** with authoritative Cloudflare DNS (`aurora.ns.cloudflare.com` & `bruce.ns.cloudflare.com`):
 
-- **Platform Target**: Vercel Serverless Functions (v2) + Edge CDN
-- **Build Trigger**: Git push to `main` branch
-- **Build Command**: `npm run build` (`node -e "console.log('Build Complete')"`)
-- **Postbuild Command**: `npm run postbuild` (`node scripts/notify-indexnow.js`)
-- **Output Artifacts**: Static files served from `public/`, serverless functions loaded from `api/`.
-
----
-
-## 2. Environment Variables Inventory
-
-The system operates with minimal environment configuration:
-
-| Variable Name | Required? | Default / Fallback | Description |
-|---------------|-----------|--------------------|-------------|
-| `VERCEL_OIDC_TOKEN` | System | (Vercel Managed) | OIDC authentication token injected by Vercel deployment runner |
-| `INDEXNOW_KEY` | Optional | `b92a2552d2aec9f72edbb0f9b5671603` | IndexNow verification key for Bing Webmaster API |
-| `INDEXNOW_STRICT` | Optional | `false` | If set to `true`, IndexNow network errors will fail local postbuild scripts |
-| `NODE_ENV` | Optional | `production` | Node execution environment mode |
+- **Platform Target**: Cloudflare Pages + Workers Edge Network (Project `texttospeechh`)
+- **Authoritative Zone**: `texttospeechh.com` (Zone ID `517b6807c6949698a3bba05a0ca7bde0`)
+- **Deployment Command**: `npx wrangler pages deploy public --project-name=texttospeechh`
+- **Output Artifacts**: Static files served from `public/`, serverless functions loaded from `functions/[[path]].js`.
+- **Backup Infrastructure**: Vercel production project (`prj_oZCbunEGLj8yH4ET81OB9bQHhbA3`) retained as zero-downtime rollback target.
 
 ---
 
-## 3. Vercel Configuration & Route Ordering (`vercel.json`)
+## 2. Environment Variables & Bindings Inventory
 
-> [!IMPORTANT]
-> Route ordering in `vercel.json` is critical. Specific routes must precede wildcards.
+| Binding / Variable Name | Type | Description |
+|-------------------------|------|-------------|
+| `TTS_JOBS_KV` | KV Namespace | Cloudflare KV binding (`d63d268287be400a9e8f45858647619c`) for job metadata tracking |
+| `TTS_AUDIO_R2` | R2 Bucket | Cloudflare R2 binding (`tts-audio-store`) for binary MP3 audio persistence |
+| `AI` | Workers AI | Cloudflare Workers AI binding |
+| `AZURE_SPEECH_KEY` | Environment Secret | Optional Azure Speech API key for commercial failover |
+| `AZURE_SPEECH_REGION` | Environment Secret | Optional Azure Speech region |
+| `INDEXNOW_KEY` | Optional Secret | `b92a2552d2aec9f72edbb0f9b5671603` for Bing Webmaster API |
 
-```json
-{
-  "version": 2,
-  "headers": [ /* HSTS, Security, and Asset Caching Headers */ ],
-  "routes": [
-    { "src": "/api/generate", "dest": "/api/generate.js" },
-    { "src": "/api/status", "dest": "/api/status.js" },
-    { "src": "/api/upload", "dest": "/api/upload.js" },
-    { "src": "/sitemap.xml", "dest": "/api/index.js" },
-    { "src": "/text-to-speech/(.*)", "dest": "/api/index.js" },
-    { "src": "/blog/(.*)", "dest": "/api/index.js" },
-    { "src": "/(.*)", "dest": "/public/$1" }
-  ]
-}
+---
+
+## 3. Cloudflare Pages Configuration (`wrangler.toml`)
+
+```toml
+name = "texttospeechh"
+pages_build_output_dir = "public"
+compatibility_date = "2026-08-19"
+compatibility_flags = [ "nodejs_compat" ]
+
+[[kv_namespaces]]
+binding = "TTS_JOBS_KV"
+id = "d63d268287be400a9e8f45858647619c"
+
+[[r2_buckets]]
+binding = "TTS_AUDIO_R2"
+bucket_name = "tts-audio-store"
+
+[ai]
+binding = "AI"
 ```
 
 ---
 
 ## 4. Step-by-Step Deployment Failure Recovery Workflow
 
-If a Vercel deployment returns errors during build/runtime, follow this 6-step diagnostic protocol:
+If a Cloudflare Pages deployment returns errors, follow this protocol:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ STEP 1: Check Vercel Build Logs                                 │
-│ Inspect build console output in Vercel Dashboard / CLI          │
+│ STEP 1: Check Wrangler Logs                                     │
+│ Inspect CLI output during npx wrangler pages deploy             │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ STEP 2: Identify Failing Build Step                             │
-│ Pinpoint whether failure occurred in: npm install, npm build,   │
-│ postbuild (notify-indexnow.js), or function compilation         │
+│ STEP 2: Verify `nodejs_compat` Flag                             │
+│ Ensure compatibility_flags = ["nodejs_compat"] is in wrangler.toml│
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ STEP 3: Verify Environment Variables                            │
-│ Check that VERCEL_OIDC_TOKEN and Node runtime flags are valid   │
+│ STEP 3: Verify KV & R2 Bindings                                 │
+│ Confirm TTS_JOBS_KV and TTS_AUDIO_R2 exist in Cloudflare account│
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│ STEP 4: Verify Vercel Routes (`vercel.json`)                     │
-│ Ensure no syntax errors exist in vercel.json and route order    │
-│ follows API → Static overrides → Dynamic → Catch-all asset       │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│ STEP 5: Verify Postbuild Scripts                                │
-│ Check that scripts/notify-indexnow.js caught exceptions and did  │
-│ not exit with non-zero status code (unless INDEXNOW_STRICT=true)│
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│ STEP 6: Document Root Cause in DECISIONS.md                     │
-│ If the incident reveals a new failure mode or lesson learned,   │
-│ log a new entry in DECISIONS.md under Lessons Learned           │
+│ STEP 4: Fallback to Vercel Infrastructure                       │
+│ If Cloudflare experiences major regional outage, update Hostinger│
+│ nameservers to point back to orbit.dns-parking.com / Vercel IP  │
 └─────────────────────────────────────────────────────────────────┘
 ```
-
----
-
-## 5. Local Pre-Deployment Verification Protocol
-
-Before pushing changes to `main`, execute local validation:
-
-1. **Start Dev Server**: Run `node dev-server.js` and verify app loads on `http://localhost:3000`.
-2. **Test Core API**: Send a POST request to `http://localhost:3000/api/generate` with a sample prompt.
-3. **Verify IndexNow Script**: Run `node scripts/notify-indexnow.js` locally and confirm it exits with code `0`.
-4. **Verify Clean Git Status**: Ensure documentation files (`CHANGELOG.md`, `SESSION.md`, `PROJECT_STATE.md`) are updated.

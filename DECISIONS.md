@@ -12,8 +12,8 @@ This document serves as the institutional memory of the repository. It records m
 | **Owner** | Repository Maintainers |
 | **Update Trigger** | New architectural decision made, production incident resolved, or critical bug root cause analyzed |
 | **Update Frequency** | Low-Medium — updated whenever a structural decision or post-mortem occurs |
-| **Last Verified** | 2026-08-07 |
-| **Verified Against** | `api/index.js`, `dev-server.js`, `vercel.json`, `scripts/notify-indexnow.js`, `src/api/seoHandler.js` |
+| **Last Verified** | 2026-09-18 |
+| **Verified Against** | `functions/[[path]].js`, `wrangler.toml`, `src/providers/edge/edgeProvider.js`, `src/services/*` |
 | **Related Documents** | [AGENTS.md](AGENTS.md), [docs/architecture.md](docs/architecture.md), [docs/deployment.md](docs/deployment.md) |
 
 ---
@@ -39,17 +39,17 @@ If this document conflicts with the implementation, **the source code is authori
 - **Date**: 2026-07-20
 - **Status**: Accepted
 - **Context**: Relying on a single third-party TTS provider creates single-point-of-failure vulnerabilities. Commercial AI voice providers frequently rate-limit or experience brief regional outages.
-- **Decision**: Implement a LoadBalancer (`src/services/loadBalancer.js`) that sequences Kokoro → CosyVoice → Edge TTS. Edge TTS (`msedge-tts`) is treated as the immutable fallback.
-- **Consequences**: Voice synthesis availability is increased. If Kokoro or CosyVoice fail, requests transition to Edge TTS without throwing errors to users.
+- **Decision**: Implement a LoadBalancer (`src/services/loadBalancer.js`) that sequences Edge TTS → Kokoro → CosyVoice → Azure TTS. Edge TTS (`msedge-tts` / `cloudflare:sockets`) is treated as the primary high-speed engine.
+- **Consequences**: Voice synthesis availability is increased. If primary synthesis fails, requests transition to fallback engines without throwing errors to users.
 
 ---
 
-### ADR-003: Disk-Backed Queue Management via `/tmp/tts_jobs`
-- **Date**: 2026-07-25
+### ADR-003: Disk & Cloud-Backed Queue Management via KV & R2
+- **Date**: 2026-07-25 (Updated 2026-09-18)
 - **Status**: Accepted
-- **Context**: Long-text TTS requests exceed default serverless execution timeouts. Storing job state in memory fails because Vercel function instances are stateless and transient.
-- **Decision**: Store long-form synthesis jobs in the local serverless `/tmp` directory (`/tmp/tts_jobs`). `queueService.js` chunks text, writes audio buffers to `/tmp`, and provides status updates via `/api/status`.
-- **Consequences**: Long-text generation works within serverless constraints without requiring an external Redis cluster.
+- **Context**: Long-text TTS requests exceed default serverless execution timeouts. Storing job state in memory fails because serverless function instances are stateless and transient.
+- **Decision**: Store long-form synthesis jobs in Cloudflare KV (`TTS_JOBS_KV`) for metadata and Cloudflare R2 (`TTS_AUDIO_R2`) for binary MP3 audio persistence. Fallback to `/tmp/tts_jobs` in local development.
+- **Consequences**: Long-text generation and streaming audio downloads work seamlessly across globally distributed serverless isolates.
 
 ---
 
@@ -59,6 +59,15 @@ If this document conflicts with the implementation, **the source code is authori
 - **Context**: Vendor-specific AI configurations (e.g. `.cursorrules`, `.claude/`) lock repository intelligence to specific tools and fragment rules across multiple proprietary files.
 - **Decision**: Standardize all AI intelligence on root Markdown documents anchored by `AGENTS.md` and a single `docs/` knowledge folder.
 - **Consequences**: AI coding assistants (ChatGPT, Claude, Gemini, DeepSeek, Cursor, Windsurf, Aider) read and adhere to the project system without custom plugins.
+
+---
+
+### ADR-005: Platform Migration to Cloudflare Pages + Workers with `cloudflare:sockets`
+- **Date**: 2026-09-18
+- **Status**: Accepted
+- **Context**: Moving from Vercel to Cloudflare Edge required socket transport for Bing Speech API WebSocket connections, as standard WebSocket constructors are restricted in serverless worker isolates.
+- **Decision**: Implement `cloudflare:sockets` TLS TCP socket transport in `EdgeProvider` (`src/providers/edge/edgeProvider.js`) bridged via `functions/[[path]].js` (`globalThis.cfConnect`). Point authoritative DNS nameservers to Cloudflare (`aurora.ns.cloudflare.com` & `bruce.ns.cloudflare.com`).
+- **Consequences**: Global edge performance, native WebSocket streaming, zero third-party proxy dependencies, and retaining Vercel production as a backup rollback target.
 
 ---
 
@@ -74,17 +83,13 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
-### LESSON-002: Vercel Route Order Priority (Wildcard Catch-All Interception)
-- **Date**: 2026-08-05
+### LESSON-002: Vercel & Cloudflare Edge Route Order Priority
+- **Date**: 2026-08-05 (Updated 2026-09-18)
 - **Category**: SEO / Routing
-- **Incident Summary**: Adding a broad `/blog/(.*)` rewrite entry before static file definitions in `vercel.json` caused static assets like `favicon.ico` and `style.css` to be intercepted by `api/index.js`, returning 404 HTML error pages for CSS files.
-- **Root Cause**: `vercel.json` routes evaluate sequentially from top to bottom. Broad regex patterns catch requests before lower static file patterns are evaluated.
-- **Permanent Rule**: In `vercel.json`, route order must strictly be:
-  1. Specific API endpoints (`/api/generate`, `/api/status`)
-  2. Static file overrides (`/robots.txt`, `/llms.txt`, `/ads.txt`)
-  3. Dynamic content routes (`/text-to-speech/(.*)`, `/blog/(.*)`)
-  4. Catch-all static asset fallback (`/(.*)` -> `/public/$1`)
-- **Fix Implemented**: Reordered `vercel.json` routes table and verified asset delivery in dev-server.
+- **Incident Summary**: Adding a broad `/blog/(.*)` rewrite entry before static file definitions caused static assets to be intercepted by dynamic API handlers.
+- **Root Cause**: Route rules evaluate sequentially. Broad regex patterns catch requests before lower static file patterns are evaluated.
+- **Permanent Rule**: Route tables (`vercel.json`, `public/_redirects`, `functions/[[path]].js`) must evaluate static file extensions and specific API routes before dynamic catch-all SSR routes.
+- **Fix Implemented**: Reordered routes tables and added `STATIC_EXTENSIONS` set check in `functions/[[path]].js`.
 
 ---
 
@@ -93,5 +98,5 @@ If this document conflicts with the implementation, **the source code is authori
 - **Category**: SEO
 - **Incident Summary**: Renaming `/keyword/free-text-to-speech` to `/text-to-speech/free-text-to-speech` without a redirect rule caused Google Search Console to register 404 crawl errors.
 - **Root Cause**: URL structure refactoring without mapping legacy routes to new canonical targets.
-- **Permanent Rule**: Never remove or change a public URL path without adding a 301 permanent redirect mapping in `AUTO_REDIRECT_MAP` (`src/api/seoHandler.js`).
+- **Permanent Rule**: Never remove or change a public URL path without adding a 301 permanent redirect mapping in `AUTO_REDIRECT_MAP` (`src/api/seoHandler.js`) and `public/_redirects`.
 - **Fix Implemented**: Added 301 automatic redirect mapping layer for all legacy `/blog/*` and `/keyword/*` paths.

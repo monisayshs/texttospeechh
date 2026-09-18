@@ -10,8 +10,8 @@
 | **Owner** | Repository Maintainers |
 | **Update Trigger** | Task start, progress milestone, blocker encountered, or task completion |
 | **Update Frequency** | High — updated whenever task state changes |
-| **Last Verified** | 2026-08-07 |
-| **Verified Against** | Active workspace state & inspected code |
+| **Last Verified** | 2026-09-18 |
+| **Verified Against** | Active workspace state & Cloudflare Pages production deployment |
 | **Related Documents** | [SESSION.md](SESSION.md), [PROJECT_STATE.md](PROJECT_STATE.md), [AGENTS.md](AGENTS.md) |
 
 ---
@@ -38,19 +38,7 @@ If this document conflicts with the implementation, **the source code is authori
 
 *Tasks currently being executed in the active session:*
 
-- [/] **AI-Native Project Intelligence System v2.1 Patching**:
-  - [x] Patch `AGENTS.md` (Source of Truth, relative links, Maintainers ownership)
-  - [x] Patch `CONTEXT.md` (Source of Truth, relative links, TODO markers)
-  - [x] Patch `SESSION.md` (Source of Truth, relative links)
-  - [x] Patch `PROJECT_STATE.md` (Source of Truth, relative links)
-  - [x] Patch `TASKS.md` (Source of Truth, relative links)
-  - [ ] Patch `CHANGELOG.md`
-  - [ ] Patch `DECISIONS.md`
-  - [ ] Patch `README.md`
-  - [ ] Patch `docs/architecture.md`
-  - [ ] Patch `docs/seo-system.md`
-  - [ ] Patch `docs/api-reference.md`
-  - [ ] Patch `docs/deployment.md`
+- *(None currently in progress — post-migration master task completed)*
 
 ---
 
@@ -66,10 +54,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 *Recently completed work items (kept for historical context):*
 
+- [x] **Full Vercel to Cloudflare Platform Migration**:
+  - Built `functions/[[path]].js` Pages Functions catch-all serverless router.
+  - Built `cloudflare:sockets` EdgeProvider socket transport for Microsoft Neural Speech.
+  - Configured Cloudflare KV (`TTS_JOBS_KV`) & R2 (`TTS_AUDIO_R2`) storage bindings.
+  - Deployed commit `0fab799` to Cloudflare Pages Production (`texttospeechh.pages.dev`).
+  - Activated Cloudflare Authoritative DNS (`aurora.ns.cloudflare.com` & `bruce.ns.cloudflare.com`).
+  - Verified live production domain traffic (`texttospeechh.com` & `www.texttospeechh.com`), SSL, APIs, and TTS synthesis.
+  - Retained Vercel production as zero-downtime backup rollback target.
 - [x] **Repository Discovery & Analysis**: Inspected dev-server, Vercel router, providers, services, SEO engine, content handlers, and assets.
 - [x] **Architecture v2.1 Design**: Designed 12-file vendor-neutral Markdown intelligence system architecture.
 - [x] **IndexNow Postbuild Automation**: Implemented `scripts/notify-indexnow.js` with non-blocking error handling to notify Bing Webmaster on deployment.
 - [x] **Hub-and-Spoke SEO Restructure**: Consolidated legacy routes into unified canonical `/text-to-speech/*` structure with 301 redirects.
-- [x] **Multi-Provider Failover LoadBalancer**: Built `LoadBalancer.js` supporting Kokoro, CosyVoice, and Edge TTS with exponential backoff.
-- [x] **Disk-Backed Queue Processing**: Built `queueService.js` utilizing `/tmp/tts_jobs` for long text synthesis on serverless.
+- [x] **Multi-Provider Failover LoadBalancer**: Built `LoadBalancer.js` supporting Kokoro, CosyVoice, Edge, and Azure TTS with exponential backoff.
+- [x] **Disk & KV Queue Processing**: Built `queueService.js` utilizing KV & R2 storage for long text synthesis on serverless.
 - [x] **Deferred Telemetry Loading**: Updated GA4 (`G-VXH6Y61FQ0`) and Microsoft Clarity (`xt0hsu1r65`) loading scripts to prevent blocking initial render.
