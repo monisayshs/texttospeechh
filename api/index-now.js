@@ -1,4 +1,3 @@
-const https = require('https');
 const {
   HOST,
   INDEXNOW_KEY,
@@ -16,37 +15,25 @@ function sendJson(res, statusCode, payload) {
   res.end(JSON.stringify(payload));
 }
 
-function forwardToEngine(endpoint, payload) {
-  return new Promise((resolve) => {
-    const target = new URL(endpoint);
+/**
+ * Forward IndexNow payload to search engine endpoint using fetch() (Workers-compatible)
+ */
+async function forwardToEngine(endpoint, payload) {
+  try {
     const body = JSON.stringify(payload);
-
-    const req = https.request(
-      {
-        hostname: target.hostname,
-        port: 443,
-        path: target.pathname,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-          'Content-Length': Buffer.byteLength(body)
-        },
-        timeout: 10000
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
       },
-      (res) => {
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () =>
-          resolve({ endpoint, statusCode: res.statusCode, body: data })
-        );
-      }
-    );
-
-    req.on('timeout', () => req.destroy(new Error('timeout')));
-    req.on('error', (err) => resolve({ endpoint, statusCode: 0, body: err.message }));
-    req.write(body);
-    req.end();
-  });
+      body: body,
+      signal: AbortSignal.timeout ? AbortSignal.timeout(10000) : undefined
+    });
+    const data = await res.text();
+    return { endpoint, statusCode: res.status, body: data };
+  } catch (err) {
+    return { endpoint, statusCode: 0, body: err.message };
+  }
 }
 
 async function submitToEngines(payload) {
@@ -57,14 +44,19 @@ async function submitToEngines(payload) {
 }
 
 async function handlePost(req, res) {
-  let raw = '';
-  for await (const chunk of req) raw += chunk;
-
   let body;
-  try {
-    body = raw ? JSON.parse(raw) : {};
-  } catch (e) {
-    return sendJson(res, 400, { error: 'Invalid JSON payload' });
+  
+  // Support both Node stream (dev-server) and pre-parsed body (Cloudflare adapter)
+  if (req.body && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
+    body = req.body;
+  } else {
+    let raw = '';
+    try {
+      for await (const chunk of req) raw += chunk;
+      body = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return sendJson(res, 400, { error: 'Invalid JSON payload' });
+    }
   }
 
   const { host, key, keyLocation, urlList } = body || {};

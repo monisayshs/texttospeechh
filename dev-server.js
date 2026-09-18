@@ -105,29 +105,23 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === 'POST') {
       const contentType = req.headers['content-type'] || '';
-      if (contentType.includes('application/octet-stream') || reqUrl.startsWith('/api/upload')) {
-        let body = '';
-        req.on('data', chunk => body += chunk.toString());
-        req.on('end', () => {
+      const chunks = [];
+      req.on('data', chunk => chunks.push(chunk));
+      req.on('end', () => {
+        const rawBuf = Buffer.concat(chunks);
+        if (contentType.includes('application/json')) {
           try {
-            req.body = body ? JSON.parse(body) : {};
+            req.body = rawBuf.length > 0 ? JSON.parse(rawBuf.toString('utf-8')) : {};
           } catch (e) {
             req.body = {};
           }
-          runHandler();
-        });
-      } else {
-        let body = '';
-        req.on('data', chunk => body += chunk.toString());
-        req.on('end', () => {
-          try {
-            req.body = body ? JSON.parse(body) : {};
-          } catch (e) {
-            req.body = {};
-          }
-          runHandler();
-        });
-      }
+        } else if (rawBuf.length > 0) {
+          req.body = rawBuf;
+        } else {
+          req.body = {};
+        }
+        runHandler();
+      });
     } else {
       req.body = {};
       runHandler();

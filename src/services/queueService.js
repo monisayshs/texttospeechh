@@ -1,15 +1,35 @@
 const crypto = require('crypto');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
 const scriptEngine = require('./scriptEngine');
 const loadBalancer = require('./loadBalancer');
 const audioPipeline = require('./audioPipeline');
 
-const TMP_JOBS_DIR = path.join(os.tmpdir(), 'tts_jobs');
+/**
+ * Detect if running inside Cloudflare Workers/Pages (no filesystem access)
+ */
+function isCloudflareRuntime() {
+  return (typeof globalThis.caches !== 'undefined' && typeof globalThis.caches.default !== 'undefined') ||
+         (typeof navigator !== 'undefined' && navigator.userAgent === 'Cloudflare-Workers');
+}
 
 /**
- * Production Request Queue Service with Disk Persistence (/tmp) & Serverless Function Compatibility.
+ * Lazy-load filesystem modules (unavailable in Workers runtime)
+ */
+let fs, path, os, TMP_JOBS_DIR;
+function initFilesystem() {
+  if (fs) return true;
+  try {
+    fs = require('fs');
+    path = require('path');
+    os = require('os');
+    TMP_JOBS_DIR = path.join(os.tmpdir(), 'tts_jobs');
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Production Request Queue Service with KV/R2 (Cloudflare) and Disk Persistence (/tmp, Node/Vercel) support.
  */
 class QueueService {
   constructor() {
@@ -18,15 +38,26 @@ class QueueService {
     this.activeWorkerCount = 0;
     this.maxConcurrentWorkers = 2;
 
-    this.ensureTmpDir();
+    // Only set up filesystem and intervals in full Node environments
+    if (!isCloudflareRuntime()) {
+      if (initFilesystem()) {
+        this.ensureTmpDir();
+      }
 
-    // Auto-cleanup expired jobs
-    if (typeof setInterval !== 'undefined') {
-      setInterval(() => this.cleanupExpiredJobs(), 15 * 60 * 1000);
+      // Auto-cleanup expired jobs (guarded for serverless/edge worker compatibility)
+      const isStandardNodeEnv = typeof process !== 'undefined' && process.versions && process.versions.node && typeof process.env !== 'undefined' && !process.env.CF_PAGES && !process.env.VERCEL;
+      if (isStandardNodeEnv && typeof setInterval !== 'undefined') {
+        try {
+          setInterval(() => this.cleanupExpiredJobs(), 15 * 60 * 1000);
+        } catch (e) {
+          // Ignore interval setup in stateless environments
+        }
+      }
     }
   }
 
   ensureTmpDir() {
+    if (!initFilesystem()) return;
     try {
       if (!fs.existsSync(TMP_JOBS_DIR)) {
         fs.mkdirSync(TMP_JOBS_DIR, { recursive: true });
@@ -36,7 +67,87 @@ class QueueService {
     }
   }
 
+  async saveJob(job, env = null) {
+    // Cloudflare KV & R2 Storage Adapter
+    if (env && env.TTS_JOBS_KV) {
+      try {
+        const meta = {
+          id: job.id,
+          state: job.state,
+          progress: job.progress,
+          processedChunks: job.processedChunks,
+          totalChunks: job.totalChunks,
+          etaSeconds: job.etaSeconds,
+          wordCount: job.wordCount,
+          error: job.error,
+          createdAt: job.createdAt,
+          updatedAt: job.updatedAt,
+          hasAudio: !!job.audioBuffer,
+          audioSize: job.audioBuffer ? job.audioBuffer.length : 0
+        };
+
+        // Save metadata to Cloudflare KV with 1-hour auto-expiration
+        await env.TTS_JOBS_KV.put(`job:${job.id}`, JSON.stringify(meta), { expirationTtl: 3600 });
+
+        // Save binary MP3 audio to Cloudflare R2
+        if (job.audioBuffer && env.TTS_AUDIO_R2) {
+          await env.TTS_AUDIO_R2.put(`audio/${job.id}.mp3`, job.audioBuffer, {
+            httpMetadata: { contentType: 'audio/mpeg' }
+          });
+        }
+        return;
+      } catch (e) {
+        console.warn('[QueueService] Cloudflare KV/R2 save warning:', e.message);
+      }
+    }
+
+    // Default Node / Vercel Filesystem Fallback (skip if fs unavailable)
+    if (initFilesystem()) {
+      this.saveJobToDisk(job);
+    }
+  }
+
+  async loadJob(jobId, env = null) {
+    // Cloudflare KV & R2 Storage Adapter
+    if (env && env.TTS_JOBS_KV) {
+      try {
+        const metaStr = await env.TTS_JOBS_KV.get(`job:${jobId}`);
+        if (!metaStr) return null;
+
+        const meta = JSON.parse(metaStr);
+        let audioBuffer = null;
+
+        if (meta.hasAudio && env.TTS_AUDIO_R2) {
+          const r2Obj = await env.TTS_AUDIO_R2.get(`audio/${jobId}.mp3`);
+          if (r2Obj) {
+            const arrBuf = await r2Obj.arrayBuffer();
+            audioBuffer = Buffer.from(arrBuf);
+          }
+        }
+
+        const job = {
+          ...meta,
+          audioBuffer: audioBuffer,
+          chunks: [],
+          options: {}
+        };
+
+        this.jobs.set(jobId, job);
+        return job;
+      } catch (e) {
+        console.warn('[QueueService] Cloudflare KV/R2 load warning:', e.message);
+      }
+    }
+
+    // Default Node / Vercel Filesystem Fallback
+    if (initFilesystem()) {
+      return this.loadJobFromDisk(jobId);
+    }
+    return null;
+  }
+
   saveJobToDisk(job) {
+    if (!initFilesystem()) return;
     try {
       this.ensureTmpDir();
       const metaPath = path.join(TMP_JOBS_DIR, `${job.id}.json`);
@@ -66,6 +177,7 @@ class QueueService {
   }
 
   loadJobFromDisk(jobId) {
+    if (!initFilesystem()) return null;
     try {
       const metaPath = path.join(TMP_JOBS_DIR, `${jobId}.json`);
       if (!fs.existsSync(metaPath)) return null;
@@ -98,10 +210,12 @@ class QueueService {
   /**
    * Create & enqueue a new voice synthesis job
    */
-  async createJobAsync(text, options = {}, priority = 'NORMAL') {
+  async createJobAsync(text, options = {}, priority = 'NORMAL', env = null) {
     const jobId = crypto.randomBytes(12).toString('hex');
     const chunks = scriptEngine.splitScript(text);
     const wordCount = text.trim().split(/\s+/).length;
+
+    console.log('[DIAG queueService.createJobAsync] options:', JSON.stringify(options), '| voice:', options.voice, '| rate:', options.rate, '| pitch:', options.pitch, '| style:', options.style);
 
     const job = {
       id: jobId,
@@ -122,15 +236,15 @@ class QueueService {
     };
 
     this.jobs.set(jobId, job);
-    this.saveJobToDisk(job);
+    await this.saveJob(job, env);
 
     console.log(`[QueueService] Enqueued Job ${jobId} (${wordCount} words, ${chunks.length} chunks)`);
 
     // In Serverless or Single-Request mode, synthesize immediately
-    await this.processJob(job);
-    this.saveJobToDisk(job);
+    await this.processJob(job, env);
+    await this.saveJob(job, env);
 
-    return this.getJobStatus(jobId);
+    return await this.getJobStatusAsync(jobId, env);
   }
 
   createJob(text, options = {}, priority = 'NORMAL') {
@@ -157,7 +271,9 @@ class QueueService {
     };
 
     this.jobs.set(jobId, job);
-    this.saveJobToDisk(job);
+    if (initFilesystem()) {
+      this.saveJobToDisk(job);
+    }
 
     this.processJob(job).catch(err => console.error('[QueueService] Async job error:', err));
 
@@ -165,12 +281,43 @@ class QueueService {
   }
 
   /**
-   * Get job progress status
+   * Async Get job progress status (KV/R2 Aware)
+   */
+  async getJobStatusAsync(jobId, env = null) {
+    let job = this.jobs.get(jobId);
+    if (!job) {
+      job = await this.loadJob(jobId, env);
+    }
+    if (!job) return null;
+
+    return {
+      jobId: job.id,
+      state: job.state,
+      progress: job.progress,
+      processedChunks: job.processedChunks,
+      totalChunks: job.totalChunks,
+      etaSeconds: job.etaSeconds,
+      wordCount: job.wordCount,
+      error: job.error,
+      hasAudio: !!job.audioBuffer,
+      audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
+      providerUsed: job.providerUsed || 'unknown',
+      diagnosticVoice: job.options.voice,
+      diagnosticRate: job.options.rate,
+      diagnosticPitch: job.options.pitch,
+      diagnosticStyle: job.options.style
+    };
+  }
+
+  /**
+   * Get job progress status (Sync fallback for local Node)
    */
   getJobStatus(jobId) {
     let job = this.jobs.get(jobId);
     if (!job) {
-      job = this.loadJobFromDisk(jobId);
+      if (initFilesystem()) {
+        job = this.loadJobFromDisk(jobId);
+      }
     }
     if (!job) return null;
 
@@ -189,12 +336,26 @@ class QueueService {
   }
 
   /**
-   * Get job final merged audio buffer
+   * Async Get job final merged audio buffer (KV/R2 Aware)
+   */
+  async getJobAudioAsync(jobId, env = null) {
+    let job = this.jobs.get(jobId);
+    if (!job || !job.audioBuffer) {
+      job = await this.loadJob(jobId, env);
+    }
+    if (!job || !job.audioBuffer) return null;
+    return job.audioBuffer;
+  }
+
+  /**
+   * Get job final merged audio buffer (Sync fallback for local Node)
    */
   getJobAudio(jobId) {
     let job = this.jobs.get(jobId);
     if (!job || !job.audioBuffer) {
-      job = this.loadJobFromDisk(jobId);
+      if (initFilesystem()) {
+        job = this.loadJobFromDisk(jobId);
+      }
     }
     if (!job || !job.audioBuffer) return null;
     return job.audioBuffer;
@@ -203,10 +364,10 @@ class QueueService {
   /**
    * Worker loop processing single job
    */
-  async processJob(job) {
+  async processJob(job, env = null) {
     job.state = 'PROCESSING';
     job.updatedAt = Date.now();
-    this.saveJobToDisk(job);
+    await this.saveJob(job, env);
 
     console.log(`[QueueService] Processing Job ${job.id} (${job.totalChunks} chunks)...`);
 
@@ -216,6 +377,7 @@ class QueueService {
     try {
       for (let i = 0; i < job.chunks.length; i++) {
         const chunkText = job.chunks[i];
+        console.log('[DIAG queueService.processJob] Calling loadBalancer with options.voice:', job.options.voice, '| rate:', job.options.rate, '| pitch:', job.options.pitch, '| style:', job.options.style);
         const chunkAudio = await loadBalancer.synthesizeWithFailover(
           chunkText,
           job.options,
@@ -231,24 +393,26 @@ class QueueService {
         const remainingChunks = job.totalChunks - (i + 1);
         job.etaSeconds = Math.max(0, Math.ceil(remainingChunks * avgChunkSec));
 
-        this.saveJobToDisk(job);
+        // Save progress (use KV/R2 if available, otherwise disk)
+        await this.saveJob(job, env);
       }
 
-      job.audioBuffer = audioPipeline.processAndMergeChunks(audioChunks, job.options);
+       job.audioBuffer = audioPipeline.processAndMergeChunks(audioChunks, job.options);
+      job.providerUsed = audioChunks.length > 0 && audioChunks[0] && audioChunks[0].providerUsed ? audioChunks[0].providerUsed : 'unknown';
       job.state = 'COMPLETED';
       job.progress = 100;
       job.etaSeconds = 0;
       job.updatedAt = Date.now();
 
-      this.saveJobToDisk(job);
-      console.log(`[QueueService] Job ${job.id} COMPLETED! Size: ${job.audioBuffer.length} bytes.`);
+      await this.saveJob(job, env);
+      console.log(`[DIAG queueService.processJob] Job ${job.id} COMPLETED! Size: ${job.audioBuffer.length} bytes. providerUsed: ${job.providerUsed || 'unknown'} | voice: ${job.options.voice} | rate: ${job.options.rate} | pitch: ${job.options.pitch} | style: ${job.options.style}`);
 
     } catch (err) {
       console.error(`[QueueService] Job ${job.id} FAILED:`, err);
       job.state = 'FAILED';
       job.error = err.message || 'Speech synthesis failed after failover retries.';
       job.updatedAt = Date.now();
-      this.saveJobToDisk(job);
+      await this.saveJob(job, env);
     }
   }
 

@@ -1,11 +1,13 @@
 const BaseProvider = require('../baseProvider');
-const http = require('http');
-const https = require('https');
 
 /**
  * Kokoro-82M Provider
  * License: Apache 2.0 (Verified 100% Commercial SaaS Permitted)
  * Speed: 82M Ultra-Lightweight Neural Model
+ * 
+ * Compatible with both Node.js and Cloudflare Workers runtimes.
+ * Uses fetch() as primary HTTP client (Workers-compatible).
+ * Falls back to Node http/https only when fetch is unavailable.
  */
 class KokoroProvider extends BaseProvider {
   constructor() {
@@ -18,54 +20,34 @@ class KokoroProvider extends BaseProvider {
       return false; // Graceful failover to next provider if self-hosted endpoint is not connected
     }
     try {
-      const url = new URL(this.endpoint);
-      const client = url.protocol === 'https:' ? https : http;
-      return new Promise((resolve) => {
-        const req = client.request(url, { method: 'HEAD', timeout: 1500 }, (res) => {
-          resolve(res.statusCode < 500);
-        });
-        req.on('error', () => resolve(false));
-        req.end();
-      });
+      const res = await fetch(this.endpoint, { method: 'HEAD' });
+      return res.status < 500;
     } catch (e) {
       return false;
     }
   }
 
   async synthesizeChunk(text, options = {}) {
-    const payload = JSON.stringify({
+    const payloadObj = {
       model: 'kokoro',
       input: text,
       voice: options.voice || 'af_bella',
       response_format: 'mp3',
       speed: parseFloat(options.rate || '1.0') || 1.0
+    };
+
+    const res = await fetch(this.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payloadObj)
     });
 
-    const url = new URL(this.endpoint);
-    const client = url.protocol === 'https:' ? https : http;
+    if (!res.ok) {
+      throw new Error(`Kokoro provider status ${res.status}`);
+    }
 
-    return new Promise((resolve, reject) => {
-      const req = client.request(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(payload)
-        },
-        timeout: 15000
-      }, (res) => {
-        if (res.statusCode !== 200) {
-          reject(new Error(`Kokoro provider status ${res.statusCode}`));
-          return;
-        }
-        const chunks = [];
-        res.on('data', chunk => chunks.push(chunk));
-        res.on('end', () => resolve(Buffer.concat(chunks)));
-      });
-
-      req.on('error', err => reject(new Error(`Kokoro error: ${err.message}`)));
-      req.write(payload);
-      req.end();
-    });
+    const arrayBuf = await res.arrayBuffer();
+    return Buffer.from(arrayBuf);
   }
 }
 

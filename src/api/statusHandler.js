@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
 
   // Handle Binary Audio Stream Download (Format: texttospeechh-voice-YYYYMMDD-HHMMSS.mp3)
   if (download === 'true') {
-    const audioBuffer = queueService.getJobAudio(jobId);
+    const audioBuffer = await queueService.getJobAudioAsync(jobId, req.env);
     if (!audioBuffer) {
       res.status(404).json({ error: 'Audio not found or job has not completed yet.' });
       return;
@@ -66,7 +66,7 @@ module.exports = async (req, res) => {
   }
 
   // Return job status JSON
-  const status = queueService.getJobStatus(jobId);
+  const status = await queueService.getJobStatusAsync(jobId, req.env);
   if (!status) {
     res.status(404).json({ error: 'Job not found or expired.' });
     return;

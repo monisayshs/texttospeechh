@@ -1,0 +1,18 @@
+name = "texttospeechh"
+pages_build_output_dir = "public"
+compatibility_date = "2026-08-19"
+compatibility_flags = [ "nodejs_compat" ]
+
+# Cloudflare KV Namespace Binding for Job Metadata (TTL auto-expire)
+[[kv_namespaces]]
+binding = "TTS_JOBS_KV"
+id = "d63d268287be400a9e8f45858647619c"
+
+# Cloudflare R2 Bucket Binding for Binary MP3 Audio Files
+[[r2_buckets]]
+binding = "TTS_AUDIO_R2"
+bucket_name = "tts-audio-store"
+
+# Cloudflare Workers AI Binding
+[ai]
+binding = "AI"

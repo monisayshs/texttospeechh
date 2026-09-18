@@ -30,6 +30,8 @@ const AUTO_REDIRECT_MAP = {
   "blog/elevenlabs-alternatives": "text-to-speech/blog/elevenlabs-alternatives",
 
   // Legacy Keyword Aliases
+  "text-to-speech-free": "text-to-speech/free-text-to-speech",
+  "mp3-voice-generator": "text-to-speech/mp3-voice-generator",
   "keyword/text-to-speech-free": "text-to-speech/free-text-to-speech",
   "keyword/free-ai-texttospeechh.com": "text-to-speech",
   "keyword/faceless-youtube-ai-voice": "text-to-speech/blog/text-to-speech-for-youtube",

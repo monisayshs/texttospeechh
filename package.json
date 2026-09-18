@@ -8,13 +8,23 @@
     "start": "node dev-server.js",
     "build": "node -e \"console.log('TextToSpeechH AI Production Build Complete: 0 Errors, 0 Warnings')\"",
     "postbuild": "node scripts/notify-indexnow.js",
-    "indexnow": "node scripts/notify-indexnow.js"
+    "indexnow": "node scripts/notify-indexnow.js",
+    "pages:dev": "npx wrangler pages dev public --compatibility-date=2026-08-19 --compatibility-flags=nodejs_compat --port=8788",
+    "pages:deploy": "npx wrangler pages deploy public --project-name=texttospeechh"
   },
   "dependencies": {
     "mammoth": "*",
     "msedge-tts": "*",
     "pdf-parse": "*",
     "sharp": "^0.35.3",
+    "ws": "^8.21.3",
     "xml-escape": "*"
+  },
+  "devDependencies": {
+    "wrangler": "^4.134.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260917.1": true
   }
 }

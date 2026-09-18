@@ -304,13 +304,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (ext === '.txt') {
         payload.text = await file.text();
       } else {
-        const arrayBuffer = await file.arrayBuffer();
-        const bytes = new Uint8Array(arrayBuffer);
-        let binary = '';
-        for (let i = 0; i < bytes.byteLength; i++) {
-          binary += String.fromCharCode(bytes[i]);
-        }
-        payload.fileData = btoa(binary);
+        const base64DataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (err) => reject(err);
+          reader.readAsDataURL(file);
+        });
+        const base64String = (typeof base64DataUrl === 'string' && base64DataUrl.includes(','))
+          ? base64DataUrl.split(',')[1]
+          : base64DataUrl;
+        payload.fileData = base64String;
       }
 
       const response = await fetch('/api/upload', {
@@ -614,16 +617,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Single-Click High Bitrate MP3 Download
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
-      if (!currentAudioBlob) return;
-      const a = document.createElement('a');
-      a.href = currentAudioUrl;
-      a.download = `TextToSpeechH_AI_${activeJobId || 'voice'}.mp3`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      if (currentAudioBlob) {
+        const url = URL.createObjectURL(currentAudioBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `TextToSpeechH_AI_${activeJobId || Date.now()}.mp3`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }, 200);
+      } else if (activeJobId) {
+        window.location.href = `/api/status?jobId=${activeJobId}&download=true`;
+      } else {
+        showErrorToast('No audio available to download yet. Generate audio first.', false);
+      }
     });
   }
 

@@ -1,0 +1,30 @@
+# TextToSpeechH AI — 301 Permanent Redirects for Hub & Spoke SEO Consolidation
+/blog                               /text-to-speech/blog                     301
+/blog/text-to-speech                /text-to-speech                          301
+/blog/ai-text-to-speech             /text-to-speech/ai-text-to-speech        301
+/blog/free-text-to-speech           /text-to-speech/free-text-to-speech      301
+/blog/online-text-to-speech         /text-to-speech/online-text-to-speech    301
+/blog/text-to-voice                 /text-to-speech/text-to-voice            301
+/blog/voice-generator               /text-to-speech/voice-generator          301
+/blog/read-aloud                    /text-to-speech/read-aloud               301
+/blog/pdf-to-speech                 /text-to-speech/pdf-to-speech            301
+/blog/word-to-speech                /text-to-speech/word-to-speech           301
+/blog/best-ai-voices                /text-to-speech/blog/best-ai-voices   301
+/blog/how-text-to-speech-works      /text-to-speech/blog/how-text-to-speech-works 301
+/blog/text-to-speech-for-students   /text-to-speech/blog/text-to-speech-for-students 301
+/blog/text-to-speech-for-youtube    /text-to-speech/blog/text-to-speech-for-youtube 301
+/blog/elevenlabs-alternatives       /text-to-speech/blog/elevenlabs-alternatives 301
+
+# Legacy Keyword Alias 301 Redirects
+/keyword/text-to-speech-free        /text-to-speech/free-text-to-speech      301
+/keyword/free-ai-texttospeechh.com  /text-to-speech                          301
+/keyword/faceless-youtube-ai-voice  /text-to-speech/blog/text-to-speech-for-youtube 301
+/keyword/ai-voice-cloning           /text-to-speech/ai-text-to-speech        301
+/keyword/ai-text-to-speech          /text-to-speech/ai-text-to-speech        301
+/keyword/free-text-to-speech        /text-to-speech/free-text-to-speech      301
+/keyword/online-text-to-speech      /text-to-speech/online-text-to-speech    301
+/keyword/text-to-voice              /text-to-speech/text-to-voice            301
+/keyword/voice-generator            /text-to-speech/voice-generator          301
+
+# IndexNow Endpoint Alias
+/indexnow                           /api/index-now                           200

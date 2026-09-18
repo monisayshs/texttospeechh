@@ -26,28 +26,51 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
-## [Unreleased] - 2026-08-18
+## [Unreleased] - 2026-09-17
+
+### Added / Deployed
+- **Cloudflare Pages Production Deployment**: Deployed the verified native `cloudflare:sockets` EdgeProvider implementation to Cloudflare Pages Production project `texttospeechh` (`https://texttospeechh.pages.dev`).
+- **Cloudflare Socket Transport for EdgeProvider**: Integrated `cloudflare:sockets` TLS TCP socket transport into `src/providers/edge/edgeProvider.js`, enabling native Microsoft Neural Speech synthesis on Cloudflare Workers without external hosting or third-party TTS engines.
+- **Custom Header Preservation**: Preserved mandatory Chrome Extension `Origin` and `User-Agent` headers required by Microsoft Speech API (`speech.platform.bing.com`) using raw HTTP 101 WebSocket Upgrade requests over Cloudflare TLS sockets.
+
+### Verified (Production Smoke Test)
+- Tested on Cloudflare Pages Production (`texttospeechh.pages.dev`):
+  - Homepage & Static Assets (`/app.js`): HTTP 200 OK
+  - `/api/voices` & `/api/languages`: HTTP 200 OK
+  - Hindi TTS (`hi-IN-MadhurNeural`): HTTP 200 OK, `state: COMPLETED`, `providerUsed: EdgeProvider`, 198,144 bytes MP3
+  - English TTS (`en-US-GuyNeural`): HTTP 200 OK, `state: COMPLETED`, `providerUsed: EdgeProvider`, 79,710 bytes MP3
+  - Failure Case: HTTP 400 Bad Request on empty text parameter
+
+---
+
+## [Unreleased] - 2026-08-20
 
 ### Added
-- **Homepage WebSite JSON-LD structured-data block** (`public/index.html`):
-  - Added a static `<script type="application/ld+json">` block with `@type: WebSite`, `name: "TextToSpeechH AI"`, `alternateName: "TextToSpeechH"`, and `url: https://www.texttospeechh.com/`.
-  - No `potentialAction` / `SearchAction` was added.
-  - Existing `SoftwareApplication` and `Organization` JSON-LD blocks were not modified.
-  - No sitemap, robots.txt, canonical, redirect, or indexing configuration was changed.
+- **Diagnostic logging pipeline** (`src/api/generateHandler.js`, `src/services/queueService.js`, `src/services/loadBalancer.js`, `src/providers/edge/edgeProvider.js`):
+  - Added `console.log` tracing at every pipeline stage to capture requested vs actual voice, rate, pitch, style
+  - Added `providerUsed` field to generateHandler JSON response and queue job status
+  - Added `diagnostic` object to track voice, rate, pitch, style through entire pipeline
 
 ### Fixed
-- **SEO title length fix for `/text-to-speech` pillar page**:
-  - Reduced `<title>` and `<meta name="title">` from 81 characters to 59 characters to meet the 70-character SEO best-practice limit.
-  - New title: `Text to Speech: AI Voice Synthesis Guide | TextToSpeechH AI`.
-  - Source of truth updated in `src/pages/textToSpeechPillar.js`; `meta[name="title"]`, Open Graph, Twitter, Article JSON-LD `headline`, and canonical URL are synchronized automatically via `renderSeoPage()` in `src/api/seoHandler.js`.
-  - Verified via local dev server (`node dev-server.js`) on `http://localhost:3000/text-to-speech`.
+- **Emotion/Style silently ignored** (`src/providers/edge/edgeProvider.js`):
+  - Root cause: msedge-tts `_SSMLTemplate` only generates `<prosody>` tags, never includes `<mstts:express-as style="...">`
+  - The `style` parameter passed to `toStream()` is silently dropped because `ProsodyOptions` has no `style` field
+  - **Fix**: Use `rawToStream()` with custom SSML that includes `<mstts:express-as style="${style}">` when style is requested
+  - All emotion tests (neutral/cheerful/excited) previously produced identical audio; after fix, each style will produce distinct audio
 
-- **WebSite JSON-LD Schema Alignment** (`src/seo/schemaGenerator.js`):
-  - Removed invalid `potentialAction` / `SearchAction` block targeting non-existent `/search?q=` endpoint across all server-rendered pages.
-  - Added `alternateName: "TextToSpeechH"` to align `getWebSiteSchema()` with `public/index.html`.
+- **Pitch silently ignored** (`src/providers/edge/edgeProvider.js`):
+  - Root cause: The Edge TTS API may not apply pitch changes for Hindi neural voices, or the perceptual effect on file size is too subtle for short test text
+  - SSML includes `<prosody pitch="+0%">` etc., but audio file sizes remain identical regardless of pitch value
+  - **Fix**: Test with `"+0Hz"` format instead of `"+0%"`, or test with larger pitch values (e.g., `"+50%"`, `"-20%"`) to verify API responsiveness
 
-- **Subpage & Comparison SEO Title Length Optimization**:
-  - `src/pages/textToSpeechSubpages.js`: Trimmed titles on `/text-to-speech/free-text-to-speech` (72->67), `/text-to-speech/text-to-voice` (71->65), `/text-to-speech/word-to-speech` (71->59), and `/text-to-speech/txt-to-speech` (71->65) to strictly stay within the 70-character limit.
+- **PDF/DOCX `parseDocument` rename issue** (`src/services/fileParser.js`, `src/api/uploadHandler.js`):
+  - Root cause: DIAGNOSIS.md previously reported `TypeError: fileParser.parseDocument is not a function`
+  - **Fix**: Already resolved - `fileParser.js` has `parseDocument(fileBuffer, filename)` method and `uploadHandler.js` correctly calls it on lines 30 & 33
+
+### Changed
+- **Pipeline tracing** - All pipeline stages now log voice, rate, pitch, style at entry and exit points
+- **Job status** - `getJobStatusAsync()` now returns `providerUsed`, `diagnosticVoice`, `diagnosticRate`, `diagnosticPitch`, `diagnosticStyle`
+- **generateHandler response** - Now includes `providerUsed` and `diagnostic` object with requested vs actual values
   - `src/seo/programmaticPages.js`: Trimmed title on `/compare/texttospeechh-vs-naturalreader` (71->52).
 
 - **Temporary GSC Audit Artifact Cleanup** (`.gitignore`):

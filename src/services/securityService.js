@@ -7,8 +7,15 @@ class SecurityService {
     this.maxRequestsPerMinute = 40;
     this.maxFileSizeBytes = 10 * 1024 * 1024; // 10 MB limit
 
-    // Periodic cleanup of rate limit table every 5 minutes
-    setInterval(() => this.cleanupRateLimits(), 5 * 60 * 1000);
+    // Periodic cleanup of rate limit table every 5 minutes (guarded for serverless/edge worker compatibility)
+    const isStandardNodeEnv = typeof process !== 'undefined' && process.versions && process.versions.node && typeof process.env !== 'undefined' && !process.env.CF_PAGES && !process.env.VERCEL;
+    if (isStandardNodeEnv && typeof setInterval !== 'undefined') {
+      try {
+        setInterval(() => this.cleanupRateLimits(), 5 * 60 * 1000);
+      } catch (e) {
+        // Ignore interval setup in stateless environments
+      }
+    }
   }
 
   /**
@@ -25,6 +32,7 @@ class SecurityService {
 
   /**
    * Sanitize file path against path traversal attacks
+   * 
    */
   sanitizeFilename(filename) {
     if (!filename || typeof filename !== 'string') return 'document.txt';

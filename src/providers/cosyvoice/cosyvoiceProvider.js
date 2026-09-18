@@ -1,11 +1,12 @@
 const BaseProvider = require('../baseProvider');
-const http = require('http');
-const https = require('https');
 
 /**
  * CosyVoice 2 Provider
  * License: Apache 2.0 (Verified Base Checkpoint Commercial SaaS Permitted)
  * Speed: Multi-Lingual Expressive Voice Generation
+ * 
+ * Compatible with both Node.js and Cloudflare Workers runtimes.
+ * Uses fetch() as primary HTTP client (Workers-compatible).
  */
 class CosyVoiceProvider extends BaseProvider {
   constructor() {
@@ -18,52 +19,32 @@ class CosyVoiceProvider extends BaseProvider {
       return false; // Graceful failover to next provider if self-hosted endpoint is not connected
     }
     try {
-      const url = new URL(this.endpoint);
-      const client = url.protocol === 'https:' ? https : http;
-      return new Promise((resolve) => {
-        const req = client.request(url, { method: 'HEAD', timeout: 1500 }, (res) => {
-          resolve(res.statusCode < 500);
-        });
-        req.on('error', () => resolve(false));
-        req.end();
-      });
+      const res = await fetch(this.endpoint, { method: 'HEAD' });
+      return res.status < 500;
     } catch (e) {
       return false;
     }
   }
 
   async synthesizeChunk(text, options = {}) {
-    const payload = JSON.stringify({
+    const payloadObj = {
       text: text,
       voice: options.voice || 'Hindi-Swara',
       speed: options.rate || '1.0'
+    };
+
+    const res = await fetch(this.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payloadObj)
     });
 
-    const url = new URL(this.endpoint);
-    const client = url.protocol === 'https:' ? https : http;
+    if (!res.ok) {
+      throw new Error(`CosyVoice 2 provider status ${res.status}`);
+    }
 
-    return new Promise((resolve, reject) => {
-      const req = client.request(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(payload)
-        },
-        timeout: 20000
-      }, (res) => {
-        if (res.statusCode !== 200) {
-          reject(new Error(`CosyVoice 2 provider status ${res.statusCode}`));
-          return;
-        }
-        const chunks = [];
-        res.on('data', chunk => chunks.push(chunk));
-        res.on('end', () => resolve(Buffer.concat(chunks)));
-      });
-
-      req.on('error', err => reject(new Error(`CosyVoice 2 error: ${err.message}`)));
-      req.write(payload);
-      req.end();
-    });
+    const arrayBuf = await res.arrayBuffer();
+    return Buffer.from(arrayBuf);
   }
 }
 
