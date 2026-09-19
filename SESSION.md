@@ -36,13 +36,14 @@ If this document conflicts with the implementation, **the source code is authori
 ## 2. Session Execution & Post-Cutover Verification Progress
 
 - [x] Implemented non-blocking GA4 event dispatcher helper `trackGA4Event` in `public/app.js`.
+- [x] Initialized global `window.gtag` command queue in `src/seo/gaSnippet.js` before deferred analytics loading to fix GA4 event dispatch reliability.
 - [x] Added `generate_tts` conversion event trigger upon successful voice synthesis completion.
 - [x] Added `upload_file` conversion event trigger upon successful document extraction (`.txt`, `.docx`, `.pdf`).
 - [x] Added `download_audio` conversion event trigger upon MP3 download click/action.
 - [x] Added `contact_submit` conversion event trigger upon successful contact form API submission.
 - [x] Enforced strict PII safety (zero raw text, zero emails, zero filenames, zero IP addresses sent).
-- [x] Verified JavaScript syntax (`node -c public/app.js`) and verified build (`npm run build`).
-- [x] Updated `CHANGELOG.md` and `SESSION.md`.
+- [x] Verified JavaScript syntax (`node -c src/seo/gaSnippet.js`, `node -c public/app.js`) and verified build (`npm run build`).
+- [x] Updated `src/seo/gaSnippet.js`, `public/app.js`, `CHANGELOG.md`, and `SESSION.md`.
 
 ---
 

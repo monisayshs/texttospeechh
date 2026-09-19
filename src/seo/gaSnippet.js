@@ -12,15 +12,15 @@ const CLARITY_PROJECT_ID = 'xt0hsu1r65';
 function getDeferredAnalyticsScript() {
   return `  <!-- Deferred Analytics (GA4 + Clarity) - loaded after idle/load to protect LCP -->
   <script>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', '${GA_MEASUREMENT_ID}');
     function loadTtsAnalytics() {
-      var dl = window.dataLayer || (window.dataLayer = []);
-      function gtag(){dl.push(arguments);}
       var gh = document.createElement('script');
       gh.async = true;
       gh.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}';
       document.head.appendChild(gh);
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}');
       var ch = document.createElement('script');
       ch.async = true;
       ch.src = 'https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}';

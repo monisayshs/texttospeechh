@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentAudioUrl = null;
   let animationTimer = null;
 
-  // GA4 Event Dispatcher Helper (Safe & Non-Blocking, No PII)
+  // GA4 Event Dispatcher Helper (Safe & Non-Blocking, Standard Command Queue, No PII)
   function trackGA4Event(eventName, eventParams = {}) {
     try {
-      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      if (typeof window !== 'undefined') {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
         window.gtag('event', eventName, eventParams);
-      } else if (typeof window !== 'undefined' && Array.isArray(window.dataLayer)) {
-        window.dataLayer.push({ event: eventName, ...eventParams });
       }
     } catch (err) {
       console.warn('[GA4 Event Error]:', err);
