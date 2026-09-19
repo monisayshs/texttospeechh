@@ -26,6 +26,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.2.0] - 2026-09-19
+
+### Added
+- **Google Analytics 4 Custom Conversion Event Tracking**: Implemented non-blocking, PII-compliant custom conversion event tracking in `public/app.js` under GA4 Measurement ID `G-VXH6Y61FQ0`:
+  - `generate_tts`: Triggered on successful voice synthesis completion (instant audio payload or multi-chunk async job completion). Captures safe parameters `selected_voice`, `text_length_bucket`, and `tone_style`.
+  - `upload_file`: Triggered on successful document text extraction (`.txt`, `.docx`, `.pdf`). Captures safe parameter `file_type`.
+  - `download_audio`: Triggered when user clicks/initiates MP3 audio download. Captures safe parameter `selected_voice`.
+  - `contact_submit`: Triggered on successful contact form submission (`/api/contact`). Captures safe parameter `form_name`.
+- **Safe GA4 Event Dispatcher (`trackGA4Event`)**: Added a non-blocking wrapper function checking for `window.gtag` or fallback `window.dataLayer.push` to guarantee zero website performance degradation or UI errors if analytics is blocked or loading asynchronously.
+
+---
+
 ## [1.1.0] - 2026-09-18
 
 ### Added / Deployed

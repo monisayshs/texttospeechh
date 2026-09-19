@@ -75,6 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentAudioUrl = null;
   let animationTimer = null;
 
+  // GA4 Event Dispatcher Helper (Safe & Non-Blocking, No PII)
+  function trackGA4Event(eventName, eventParams = {}) {
+    try {
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', eventName, eventParams);
+      } else if (typeof window !== 'undefined' && Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({ event: eventName, ...eventParams });
+      }
+    } catch (err) {
+      console.warn('[GA4 Event Error]:', err);
+    }
+  }
+
+  function getTextLengthBucket(length) {
+    if (!length || length <= 0) return '0';
+    if (length <= 100) return '1-100';
+    if (length <= 500) return '101-500';
+    if (length <= 2000) return '501-2000';
+    return '2001+';
+  }
+
   function setBarPlayState(state) {
     if (!soundwave) return;
     soundwave.querySelectorAll('.bar').forEach(bar => {
@@ -326,6 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (response.ok && data.success) {
         if (textInput) textInput.value = data.text;
         updateTextStats();
+        trackGA4Event('upload_file', {
+          file_type: ext
+        });
       } else {
         throw new Error(data.error || 'Document extraction failed.');
       }
@@ -429,6 +453,12 @@ document.addEventListener('DOMContentLoaded', () => {
               await animateProgressStep(85, 'Generating High-Bitrate Voice Audio...', 1, 300);
               await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
               
+              trackGA4Event('generate_tts', {
+                selected_voice: payload.voice || 'unknown',
+                text_length_bucket: getTextLengthBucket(text.length),
+                tone_style: payload.style || 'neutral'
+              });
+
               playAudioBlob(blob);
               setButtonLoadingState(false);
               setTimeout(hideProgressBar, 1800);
@@ -443,6 +473,11 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (contentType.includes('audio/')) {
         const audioBlob = await response.blob();
         await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
+        trackGA4Event('generate_tts', {
+          selected_voice: payload.voice || 'unknown',
+          text_length_bucket: getTextLengthBucket(text.length),
+          tone_style: payload.style || 'neutral'
+        });
         playAudioBlob(audioBlob);
         setButtonLoadingState(false);
         setTimeout(hideProgressBar, 1800);
@@ -500,6 +535,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const audioRes = await fetch(`/api/status?jobId=${jobId}&download=true`);
           const audioBlob = await audioRes.blob();
+
+          trackGA4Event('generate_tts', {
+            selected_voice: voiceSelect ? voiceSelect.value : 'unknown',
+            text_length_bucket: getTextLengthBucket(textInput ? textInput.value.length : 0),
+            tone_style: emotionSelect ? emotionSelect.value : 'neutral'
+          });
 
           playAudioBlob(audioBlob);
           setButtonLoadingState(false);
@@ -620,6 +661,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (downloadBtn) {
     downloadBtn.addEventListener('click', () => {
       if (currentAudioBlob) {
+        trackGA4Event('download_audio', {
+          selected_voice: voiceSelect ? voiceSelect.value : 'unknown'
+        });
         const url = URL.createObjectURL(currentAudioBlob);
         const a = document.createElement('a');
         a.href = url;
@@ -631,6 +675,9 @@ document.addEventListener('DOMContentLoaded', () => {
           URL.revokeObjectURL(url);
         }, 200);
       } else if (activeJobId) {
+        trackGA4Event('download_audio', {
+          selected_voice: voiceSelect ? voiceSelect.value : 'unknown'
+        });
         window.location.href = `/api/status?jobId=${activeJobId}&download=true`;
       } else {
         showErrorToast('No audio available to download yet. Generate audio first.', false);
@@ -951,6 +998,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         if (response.ok && data.success) {
           if (successDiv) successDiv.style.display = 'block';
+          trackGA4Event('contact_submit', {
+            form_name: 'contact_form'
+          });
           contactForm.reset();
         } else {
           if (errorText) errorText.textContent = data.error || 'Failed to send message.';

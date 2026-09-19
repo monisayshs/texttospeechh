@@ -26,31 +26,28 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
-- **Session Timestamp**: 2026-09-18
-- **Current Objective**: COMPLETED — Verified Hostinger nameserver cutover to Cloudflare (`aurora.ns.cloudflare.com`, `bruce.ns.cloudflare.com`). Cloudflare Zone `texttospeechh.com` is **ACTIVE**.
-- **Active Branch**: `main` (Synced with `origin/main` @ `0fab799`)
+- **Session Timestamp**: 2026-09-19
+- **Current Objective**: COMPLETED — Implemented and verified Google Analytics 4 (GA4) custom conversion event tracking (`generate_tts`, `upload_file`, `download_audio`, `contact_submit`) under Measurement ID `G-VXH6Y61FQ0`.
+- **Active Branch**: `main`
 - **Active AI Model**: Antigravity
 
 ---
 
 ## 2. Session Execution & Post-Cutover Verification Progress
 
-- [x] Hostinger nameservers updated to `aurora.ns.cloudflare.com` and `bruce.ns.cloudflare.com`.
-- [x] Verified Cloudflare Zone Status via API: **`ACTIVE`** (Zone ID: `517b6807c6949698a3bba05a0ca7bde0`).
-- [x] Executed live HTTP audit against `https://texttospeechh.com`:
-  - Server Header: `cloudflare` (PASS)
-  - CF-Ray Header: Active (`a3ce3c014fbf9b81-HKG`)
-  - Redirect: `HTTP 308` to `https://www.texttospeechh.com/` (PASS)
-- [x] Executed live API & TTS tests:
-  - `/api/voices` & `/api/languages`: `HTTP 200 OK`
-  - Hindi TTS (`hi-IN-MadhurNeural`): `HTTP 200 OK`, `EdgeProvider`, `state: COMPLETED`, Audio payload 86,039 bytes
-  - Storage: KV & R2 binary audio delivery verified 100%
-- [x] Confirmed zero 5xx errors and zero user-facing downtime. Global DNS propagation active.
+- [x] Implemented non-blocking GA4 event dispatcher helper `trackGA4Event` in `public/app.js`.
+- [x] Added `generate_tts` conversion event trigger upon successful voice synthesis completion.
+- [x] Added `upload_file` conversion event trigger upon successful document extraction (`.txt`, `.docx`, `.pdf`).
+- [x] Added `download_audio` conversion event trigger upon MP3 download click/action.
+- [x] Added `contact_submit` conversion event trigger upon successful contact form API submission.
+- [x] Enforced strict PII safety (zero raw text, zero emails, zero filenames, zero IP addresses sent).
+- [x] Verified JavaScript syntax (`node -c public/app.js`) and verified build (`npm run build`).
+- [x] Updated `CHANGELOG.md` and `SESSION.md`.
 
 ---
 
 ## 3. Current Step & Next Handoff
 
-- **Last Completed Step**: Post-nameserver cutover verification complete. Cloudflare Zone is active.
-- **Next Immediate Step**: Monitor global ISP DNS propagation.
-- **Current Blockers**: None.
+- **Last Completed Step**: GA4 conversion tracking implementation & verification complete.
+- **Next Immediate Step**: User can manually mark `generate_tts`, `upload_file`, `download_audio`, and `contact_submit` as **Key events** in the GA4 Dashboard under **Admin > Data display > Key events**.
+- **Current Blockers**: None. Awaiting user review before commit or deployment.
