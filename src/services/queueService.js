@@ -242,7 +242,6 @@ class QueueService {
 
     // In Serverless or Single-Request mode, synthesize immediately
     await this.processJob(job, env);
-    await this.saveJob(job, env);
 
     return await this.getJobStatusAsync(jobId, env);
   }
@@ -301,6 +300,7 @@ class QueueService {
       error: job.error,
       hasAudio: !!job.audioBuffer,
       audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
+      audioBuffer: job.audioBuffer || null,
       providerUsed: job.providerUsed || 'unknown',
       diagnosticVoice: job.options.voice,
       diagnosticRate: job.options.rate,
@@ -393,8 +393,10 @@ class QueueService {
         const remainingChunks = job.totalChunks - (i + 1);
         job.etaSeconds = Math.max(0, Math.ceil(remainingChunks * avgChunkSec));
 
-        // Save progress (use KV/R2 if available, otherwise disk)
-        await this.saveJob(job, env);
+        // Save intermediate progress for multi-chunk jobs (skip for 1-chunk jobs as final save is done next)
+        if (job.totalChunks > 1) {
+          await this.saveJob(job, env);
+        }
       }
 
        job.audioBuffer = audioPipeline.processAndMergeChunks(audioChunks, job.options);

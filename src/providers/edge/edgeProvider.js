@@ -438,10 +438,12 @@ class EdgeProvider extends BaseProvider {
     const pitchStr = formatPercentagePitch(options.pitch);
     const styleName = options.style || 'neutral';
 
-    console.log('[DIAG edgeProvider.synthesizeChunk] voiceName:', voiceName, '| rateStr:', rateStr, '| pitchStr:', pitchStr, '| styleName:', styleName, '| MsEdgeTTS loaded:', !!MsEdgeTTS, '| OUTPUT_FORMAT loaded:', !!OUTPUT_FORMAT, '| WebSocket loaded:', !!WebSocketModule);
+    const isCloudflareEdge = (typeof globalThis !== 'undefined' && typeof globalThis.cfConnect === 'function') || (typeof process !== 'undefined' && process.env && process.env.CF_PAGES);
 
-    // Attempt 1: msedge-tts package (supports voice, rate, pitch, style)
-    if (MsEdgeTTS && OUTPUT_FORMAT) {
+    console.log('[DIAG edgeProvider.synthesizeChunk] voiceName:', voiceName, '| rateStr:', rateStr, '| pitchStr:', pitchStr, '| styleName:', styleName, '| isCloudflareEdge:', isCloudflareEdge, '| MsEdgeTTS loaded:', !!MsEdgeTTS, '| OUTPUT_FORMAT loaded:', !!OUTPUT_FORMAT, '| WebSocket loaded:', !!WebSocketModule);
+
+    // Attempt 1: msedge-tts package (for local Node.js dev-server only; skipped on Cloudflare Edge)
+    if (!isCloudflareEdge && MsEdgeTTS && OUTPUT_FORMAT) {
       try {
         console.log('[DIAG edgeProvider] Attempt 1: msedge-tts with voice:', voiceName, '| rate:', rateStr, '| pitch:', pitchStr, '| style:', styleName);
         const tts = new MsEdgeTTS({ enableLogger: true });
@@ -468,6 +470,8 @@ class EdgeProvider extends BaseProvider {
        } catch (e) {
         console.warn('[DIAG edgeProvider] msedge-tts attempt failed:', e.message, '| stack:', e.stack?.split('\n')[1]?.trim());
       }
+    } else if (isCloudflareEdge) {
+      console.log('[DIAG edgeProvider] Running on Cloudflare Edge — skipping msedge-tts and using direct cloudflare:sockets transport.');
     } else {
       console.warn('[DIAG edgeProvider] msedge-tts NOT available (MsEdgeTTS or OUTPUT_FORMAT undefined)');
     }

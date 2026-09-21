@@ -40,8 +40,8 @@ module.exports = async (req, res) => {
 
     // Synthesize audio job cleanly (Serverless, Cloudflare & Localhost compatible)
     const jobInfo = await queueService.createJobAsync(sanitizedText, options, priority || 'NORMAL', req.env);
-    const audioBuffer = await queueService.getJobAudioAsync(jobInfo.jobId, req.env);
-    const audioBase64 = audioBuffer ? audioBuffer.toString('base64') : null;
+    const audioBuffer = (jobInfo && jobInfo.audioBuffer) ? jobInfo.audioBuffer : (await queueService.getJobAudioAsync(jobInfo.jobId, req.env));
+    const base64Data = audioBuffer ? audioBuffer.toString('base64') : null;
     const providerUsed = jobInfo.providerUsed || 'unknown';
     const diagVoice = jobInfo.diagnosticVoice || options.voice;
     const diagRate = jobInfo.diagnosticRate || options.rate;
@@ -75,8 +75,7 @@ module.exports = async (req, res) => {
       totalChunks: jobInfo.totalChunks,
       wordCount: jobInfo.wordCount,
       etaSeconds: jobInfo.etaSeconds,
-      audioBase64: audioBase64,
-      audioDataUri: audioBase64 ? `data:audio/mpeg;base64,${audioBase64}` : null,
+      audioDataUri: base64Data ? `data:audio/mpeg;base64,${base64Data}` : null,
       statusUrl: `/api/status?jobId=${jobInfo.jobId}`,
       downloadUrl: `/api/status?jobId=${jobInfo.jobId}&download=true`,
       providerUsed: providerUsed,
