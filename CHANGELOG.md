@@ -29,6 +29,10 @@ If this document conflicts with the implementation, **the source code is authori
 ## [1.3.0] - 2026-09-21
 
 ### Added / Fixed
+- **IndexNow Engine Submission (Option A)**:
+  - Executed `scripts/notify-indexnow.js` to notify search engines of all 46 sitemap URLs. Verified live key endpoint `https://www.texttospeechh.com/b92a2552d2aec9f72edbb0f9b5671603.txt`.
+- **Core Spoke Pages Content Expansion (Option B)**:
+  - Expanded all 9 core keyword spoke pages in `src/pages/textToSpeechSubpages.js` to 681 - 977 words each with neural architecture explanations, comparison matrices, and FAQ accordions.
 - **Phase 1 SEO Fixes**:
   - Fixed truncated About-page meta description in `src/pages/legalPages.js` and centralized HTML attribute escaping in `src/api/seoHandler.js`.
   - Standardized homepage URL formatting in `src/seo/schemaGenerator.js` to `https://www.texttospeechh.com/`.
