@@ -38,17 +38,26 @@ module.exports = async (req, res) => {
     console.log('[DIAG generateHandler] RECEIVED voice:', voice, '| rate:', rate, '| pitch:', pitch, '| style:', style);
     console.log('[DIAG generateHandler] options.voice:', options.voice, '| options.rate:', options.rate, '| options.pitch:', options.pitch, '| options.style:', options.style);
 
+    const tReqStart = Date.now();
+
     // Synthesize audio job cleanly (Serverless, Cloudflare & Localhost compatible)
     const jobInfo = await queueService.createJobAsync(sanitizedText, options, priority || 'NORMAL', req.env);
+    const tJobDone = Date.now();
     const audioBuffer = (jobInfo && jobInfo.audioBuffer) ? jobInfo.audioBuffer : (await queueService.getJobAudioAsync(jobInfo.jobId, req.env));
     const base64Data = audioBuffer ? audioBuffer.toString('base64') : null;
+    const tBase64Done = Date.now();
     const providerUsed = jobInfo.providerUsed || 'unknown';
     const diagVoice = jobInfo.diagnosticVoice || options.voice;
     const diagRate = jobInfo.diagnosticRate || options.rate;
     const diagPitch = jobInfo.diagnosticPitch || options.pitch;
     const diagStyle = jobInfo.diagnosticStyle || options.style;
 
-    console.log('[DIAG generateHandler] job completed. providerUsed:', providerUsed, '| diagVoice:', diagVoice, '| diagRate:', diagRate, '| diagPitch:', diagPitch, '| diagStyle:', diagStyle, '| audioSize:', audioBuffer ? audioBuffer.length : 0);
+    const socketTimings = (audioBuffer && audioBuffer.timings) ? audioBuffer.timings : {};
+    const totalServerMs = tBase64Done - tReqStart;
+
+    res.setHeader('Server-Timing', `t_total;dur=${totalServerMs}, t_synthesis;dur=${tJobDone - tReqStart}, t_socket;dur=${socketTimings.totalSocketMs || 0}`);
+
+    console.log('[DIAG generateHandler] job completed. providerUsed:', providerUsed, '| diagVoice:', diagVoice, '| diagRate:', diagRate, '| diagPitch:', diagPitch, '| diagStyle:', diagStyle, '| audioSize:', audioBuffer ? audioBuffer.length : 0, '| totalServerMs:', totalServerMs);
     
     if (jobInfo.state === 'FAILED' || !audioBuffer || audioBuffer.length === 0) {
       res.status(502).json({
@@ -62,7 +71,11 @@ module.exports = async (req, res) => {
           requestedPitch: options.pitch,
           requestedStyle: options.style,
           actualVoice: diagVoice,
-          audioSize: 0
+          audioSize: 0,
+          timings: {
+            totalServerMs: totalServerMs,
+            synthesisMs: tJobDone - tReqStart
+          }
         }
       });
       return;
@@ -88,7 +101,15 @@ module.exports = async (req, res) => {
         actualRate: diagRate,
         actualPitch: diagPitch,
         actualStyle: diagStyle,
-        audioSize: audioBuffer ? audioBuffer.length : 0
+        audioSize: audioBuffer ? audioBuffer.length : 0,
+        timings: {
+          totalServerMs: totalServerMs,
+          synthesisMs: tJobDone - tReqStart,
+          socketConnectMs: socketTimings.connectMs || 0,
+          firstByteMs: socketTimings.firstByteMs || 0,
+          socketSynthesisMs: socketTimings.synthesisMs || 0,
+          socketTotalMs: socketTimings.totalSocketMs || 0
+        }
       }
     });
 

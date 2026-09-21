@@ -172,8 +172,10 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
         return Buffer.concat([header, maskedPayload]);
       };
 
+      const tConnStart = Date.now();
       const socket = cfConnectFn({ hostname: 'speech.platform.bing.com', port: 443 }, { secureTransport: 'on' });
       await socket.opened;
+      const tConnDone = Date.now();
 
       const writer = socket.writable.getWriter();
       const reader = socket.readable.getReader();
@@ -183,6 +185,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       let readBuf = Buffer.alloc(0);
       let isHandshakeDone = false;
       const audioChunks = [];
+      let tFirstByte = 0;
 
       const readTimeout = setTimeout(() => {
         try { writer.close(); } catch (e) {}
@@ -264,11 +267,18 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
 
             const strHead = payload.slice(0, Math.min(payload.length, 200)).toString('utf8');
             if (strHead.includes('Path:turn.end')) {
+              const tFinalByte = Date.now();
               clearTimeout(readTimeout);
               try { writer.close(); } catch (e) {}
               const finalAudio = Buffer.concat(audioChunks);
               if (finalAudio.length > 0) {
-                console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes for voice '${voiceName}'.`);
+                finalAudio.timings = {
+                  connectMs: tConnDone - tConnStart,
+                  firstByteMs: tFirstByte ? (tFirstByte - tConnStart) : 0,
+                  synthesisMs: tFinalByte - (tFirstByte || tConnDone),
+                  totalSocketMs: tFinalByte - tConnStart
+                };
+                console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes. Socket timings:`, JSON.stringify(finalAudio.timings));
                 return finalAudio;
               }
               break;
@@ -279,6 +289,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
               if (payload.length >= 2 + headerLen) {
                 const headerStr = payload.slice(2, 2 + headerLen).toString('utf8');
                 if (headerStr.includes('Path:audio')) {
+                  if (!tFirstByte) tFirstByte = Date.now();
                   const audioData = payload.slice(2 + headerLen);
                   if (audioData.length > 0) {
                     audioChunks.push(audioData);

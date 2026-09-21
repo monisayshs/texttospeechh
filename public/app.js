@@ -418,8 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
       activeJobPollTimer = null;
     }
 
-    // Phase 1 Progress Animation (0% -> 25%)
-    await animateProgressStep(25, 'Initializing TextToSpeechH AI Engine...', 3, 300);
+    // Show Progress Section immediately & send fetch without artificial pre-delays
+    showProgressBar();
+    updateProgressUI(0, 1, 20, null, 'Synthesizing TextToSpeechH AI Voice...');
 
     const payload = {
       text: text,
@@ -430,9 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      // Phase 2 Progress Animation (25% -> 55%)
-      animateProgressStep(55, 'Processing Script Chunk 1/1...', 2, 600);
-
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -450,8 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (data.audioDataUri) {
             const blob = dataURItoBlob(data.audioDataUri);
             if (blob) {
-              await animateProgressStep(85, 'Generating High-Bitrate Voice Audio...', 1, 300);
-              await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
+              updateProgressUI(1, 1, 100, 0, 'Synthesis Complete!');
               
               trackGA4Event('generate_tts', {
                 selected_voice: payload.voice || 'unknown',
@@ -461,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
               playAudioBlob(blob);
               setButtonLoadingState(false);
-              setTimeout(hideProgressBar, 1800);
+              setTimeout(hideProgressBar, 1000);
               return;
             }
           }
@@ -472,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (contentType.includes('audio/')) {
         const audioBlob = await response.blob();
-        await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
+        updateProgressUI(1, 1, 100, 0, 'Synthesis Complete!');
         trackGA4Event('generate_tts', {
           selected_voice: payload.voice || 'unknown',
           text_length_bucket: getTextLengthBucket(text.length),
@@ -480,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         playAudioBlob(audioBlob);
         setButtonLoadingState(false);
-        setTimeout(hideProgressBar, 1800);
+        setTimeout(hideProgressBar, 1000);
       } else {
         throw new Error('Unexpected server response.');
       }
