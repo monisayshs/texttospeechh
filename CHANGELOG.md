@@ -29,6 +29,9 @@ If this document conflicts with the implementation, **the source code is authori
 ## [1.3.0] - 2026-09-21
 
 ### Added / Fixed
+- **Duplicate Content Protection for Cloudflare `.pages.dev` Subdomains**:
+  - Configured automatic **301 Permanent Redirect** in `functions/[[path]].js` for all `*.pages.dev` requests directing traffic and bots exclusively to `https://www.texttospeechh.com${pathname}${search}`.
+  - Added `X-Robots-Tag: noindex, follow` header to all `*.pages.dev` responses to instruct search engine crawlers to de-index preview subdomains and consolidate domain authority on `www.texttospeechh.com`.
 - **IndexNow Engine Submission (Option A)**:
   - Executed `scripts/notify-indexnow.js` to notify search engines of all 46 sitemap URLs. Verified live key endpoint `https://www.texttospeechh.com/b92a2552d2aec9f72edbb0f9b5671603.txt`.
 - **Core Spoke Pages Content Expansion (Option B)**:
