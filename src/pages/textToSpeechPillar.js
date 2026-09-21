@@ -200,6 +200,9 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
           </tbody>
         </table>
       </div>
+      <p style="font-size: 0.9rem; line-height: 1.6; margin-top: 12px; color: var(--color-text-secondary);">
+        👉 <em>Interested in specialized speech synthesis models? Read our in-depth research guides on <a href="${DOMAIN}/guide/understanding-ai-voice-cloning" style="color: var(--color-primary); font-weight: 600;">Understanding AI Voice Cloning</a> and <a href="${DOMAIN}/guide/how-voice-changers-work" style="color: var(--color-primary); font-weight: 600;">How Voice Changers Work</a>.</em>
+      </p>
     </section>
 
     <!-- SECTION 5: Major Use Cases -->
@@ -405,7 +408,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
         11. Codebase-Verified FAQ Matrix
       </h2>
       <p style="line-height: 1.8; margin-bottom: 24px;">
-        Every answer in this matrix is verified against our system implementation:
+        Every answer in this matrix is verified against our system implementation. For additional questions, browse our full <a href="${DOMAIN}/faq" style="color: var(--color-primary); font-weight: 600;">Frequently Asked Questions Directory</a>.
       </p>
 
       <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 20px;">
@@ -524,6 +527,9 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
           <div>• <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-text); text-decoration: none;">Read Aloud</a></div>
           <div>• <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-text); text-decoration: none;">PDF to Speech</a></div>
           <div>• <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-text); text-decoration: none;">Word to Speech</a></div>
+          <div>• <a href="${DOMAIN}/faq" style="color: var(--color-text); text-decoration: none;">FAQ Directory</a></div>
+          <div>• <a href="${DOMAIN}/guide/understanding-ai-voice-cloning" style="color: var(--color-text); text-decoration: none;">Voice Cloning Guide</a></div>
+          <div>• <a href="${DOMAIN}/guide/how-voice-changers-work" style="color: var(--color-text); text-decoration: none;">Voice Changers Guide</a></div>
           <div>• <a href="${DOMAIN}/text-to-speech/blog" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Text to Speech Blog Hub →</a></div>
         </div>
       </div>

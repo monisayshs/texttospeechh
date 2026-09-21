@@ -9,11 +9,11 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
-  { slug: "text-to-speech/blog/best-ai-voices", title: "Top 10 Best AI Voices & Neural TTS Models in 2026", category: "AI Technology", readingTime: "18 min read" },
-  { slug: "text-to-speech/blog/how-text-to-speech-works", title: "How Text-to-Speech Works: Tacotron, WaveNet, Kokoro & Neural Vocoders", category: "Engineering", readingTime: "22 min read" },
-  { slug: "text-to-speech/blog/text-to-speech-for-students", title: "Text-to-Speech for Students & Teachers: Auditory Learning Guide", category: "Education", readingTime: "19 min read" },
-  { slug: "text-to-speech/blog/text-to-speech-for-youtube", title: "AI Voiceover Guide for YouTube Shorts & Faceless Channels", category: "YouTube & Video", readingTime: "20 min read" },
-  { slug: "text-to-speech/blog/elevenlabs-alternatives", title: "Top Free ElevenLabs Alternatives for Unlimited Speech Synthesis", category: "Comparisons", readingTime: "21 min read" }
+  { slug: "text-to-speech/blog/best-ai-voices", title: "Top 10 Best AI Voices & Neural TTS Models in 2026", category: "AI Technology", readingTime: "18 min read", cta: "Read Best AI Voices Guide →" },
+  { slug: "text-to-speech/blog/how-text-to-speech-works", title: "How Text-to-Speech Works: Tacotron, WaveNet, Kokoro & Neural Vocoders", category: "Engineering", readingTime: "22 min read", cta: "Read How Text to Speech Works Guide →" },
+  { slug: "text-to-speech/blog/text-to-speech-for-students", title: "Text-to-Speech for Students & Teachers: Auditory Learning Guide", category: "Education", readingTime: "19 min read", cta: "Read TTS for Students Guide →" },
+  { slug: "text-to-speech/blog/text-to-speech-for-youtube", title: "AI Voiceover Guide for YouTube Shorts & Faceless Channels", category: "YouTube & Video", readingTime: "20 min read", cta: "Read YouTube Voiceover Guide →" },
+  { slug: "text-to-speech/blog/elevenlabs-alternatives", title: "Top Free ElevenLabs Alternatives for Unlimited Speech Synthesis", category: "Comparisons", readingTime: "21 min read", cta: "Read ElevenLabs Alternatives Guide →" }
 ];
 
 function getBlogHubPage() {
@@ -23,7 +23,7 @@ function getBlogHubPage() {
       <h3 style="margin:8px 0 10px; font-size:1.3em;"><a href="${DOMAIN}/${a.slug}" style="color:inherit; text-decoration:none;">${a.title}</a></h3>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
         <span style="font-size:0.85em; color:var(--color-text-muted);">${a.readingTime}</span>
-        <a href="${DOMAIN}/${a.slug}" style="color:var(--color-primary); text-decoration:none; font-weight:600; font-size:0.9em;">Read Full Guide →</a>
+        <a href="${DOMAIN}/${a.slug}" style="color:var(--color-primary); text-decoration:none; font-weight:600; font-size:0.9em;">${a.cta}</a>
       </div>
     </article>
   `).join('');

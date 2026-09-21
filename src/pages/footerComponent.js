@@ -51,6 +51,21 @@ function getSaaSFooterHtml() {
         </ul>
       </div>
 
+      <!-- Compare TTS Tools Section -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Compare Tools</h3>
+        <ul class="footer-links-list">
+          <li><a href="/compare/texttospeechh-vs-elevenlabs">TextToSpeechH AI vs ElevenLabs</a></li>
+          <li><a href="/compare/texttospeechh-vs-speechify">TextToSpeechH AI vs Speechify</a></li>
+          <li><a href="/compare/texttospeechh-vs-murf-ai">TextToSpeechH AI vs Murf AI</a></li>
+          <li><a href="/compare/texttospeechh-vs-playht">TextToSpeechH AI vs PlayHT</a></li>
+          <li><a href="/compare/texttospeechh-vs-lovo">TextToSpeechH AI vs LOVO AI</a></li>
+          <li><a href="/compare/texttospeechh-vs-wellsaid-labs">TextToSpeechH AI vs WellSaid</a></li>
+          <li><a href="/compare/texttospeechh-vs-naturalreader">TextToSpeechH AI vs NaturalReader</a></li>
+          <li><a href="/compare/texttospeechh-vs-ttsmaker">TextToSpeechH AI vs TTSMaker</a></li>
+        </ul>
+      </div>
+
       <!-- Languages Section -->
       <div class="footer-col">
         <h3 class="footer-col-title">Languages</h3>
@@ -58,6 +73,7 @@ function getSaaSFooterHtml() {
           <li><a href="/language/english">English TTS</a></li>
           <li><a href="/language/hindi">Hindi TTS</a></li>
           <li><a href="/language/urdu">Urdu TTS</a></li>
+          <li><a href="/language/arabic">Arabic TTS</a></li>
           <li><a href="/language/spanish">Spanish TTS</a></li>
           <li><a href="/language/french">French TTS</a></li>
           <li><a href="/language/german">German TTS</a></li>
