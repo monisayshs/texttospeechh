@@ -53,6 +53,16 @@ function getRequestPathname(req) {
   }
 }
 
+function escapeHtmlAttribute(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function renderSeoPage(pageData, pathSlug) {
   if (!pageData) return "";
   const canonicalUrl = `${DOMAIN}/${pathSlug}`;
@@ -61,10 +71,15 @@ function renderSeoPage(pageData, pathSlug) {
   const softwareSchema = JSON.stringify(schemaGenerator.getSoftwareApplicationSchema());
   const faqSchema = JSON.stringify(schemaGenerator.getFAQSchema());
   const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema([
-    { name: "Home", url: DOMAIN },
+    { name: "Home", url: `${DOMAIN}/` },
     { name: "Text to Speech", url: `${DOMAIN}/text-to-speech` },
     ...(pathSlug !== "text-to-speech" ? [{ name: pageData.h1 || pageData.title || pathSlug, url: canonicalUrl }] : [])
   ]));
+
+  const rawTitle = pageData.title || "Text to Speech | TextToSpeechH AI";
+  const rawDesc = pageData.metaDesc || "";
+  const safeTitle = escapeHtmlAttribute(rawTitle);
+  const safeDesc = escapeHtmlAttribute(rawDesc);
 
   const articleSchema = (pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech")
     ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title || "Text to Speech", pageData.metaDesc || "", canonicalUrl, pageData.datePublished, pageData.dateModified))}</script>\n  `
@@ -110,9 +125,9 @@ function renderSeoPage(pageData, pathSlug) {
 ${trackingHtml}
 
   <!-- SEO Primary Meta Tags -->
-  <title>${pageData.title || "Text to Speech | TextToSpeechH AI"}</title>
-  <meta name="title" content="${pageData.title || "Text to Speech"}">
-  <meta name="description" content="${pageData.metaDesc || ""}">
+  <title>${safeTitle}</title>
+  <meta name="title" content="${safeTitle}">
+  <meta name="description" content="${safeDesc}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${canonicalUrl}">
   ${hreflangTags}
@@ -128,15 +143,15 @@ ${trackingHtml}
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:title" content="${pageData.title || ""}">
-  <meta property="og:description" content="${pageData.metaDesc || ""}">
+  <meta property="og:title" content="${safeTitle}">
+  <meta property="og:description" content="${safeDesc}">
   <meta property="og:image" content="${DOMAIN}/og-image.png">
 
   <!-- Twitter Cards -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="${canonicalUrl}">
-  <meta property="twitter:title" content="${pageData.title || ""}">
-  <meta property="twitter:description" content="${pageData.metaDesc || ""}">
+  <meta property="twitter:title" content="${safeTitle}">
+  <meta property="twitter:description" content="${safeDesc}">
   <meta property="twitter:image" content="${DOMAIN}/og-image.png">
 
   <!-- JSON-LD Schemas -->

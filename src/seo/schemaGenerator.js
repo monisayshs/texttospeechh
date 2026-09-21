@@ -100,7 +100,7 @@ function getFAQSchema(faqs) {
 
 function getBreadcrumbSchema(items) {
   const defaultItems = [
-    { name: "Home", url: DOMAIN },
+    { name: "Home", url: `${DOMAIN}/` },
     { name: "Free AI Voice Generator", url: `${DOMAIN}/` }
   ];
   const list = items || defaultItems;
