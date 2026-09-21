@@ -26,6 +26,23 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.3.0] - 2026-09-21
+
+### Added / Fixed
+- **Phase 1 SEO Fixes**:
+  - Fixed truncated About-page meta description in `src/pages/legalPages.js` and centralized HTML attribute escaping in `src/api/seoHandler.js`.
+  - Standardized homepage URL formatting in `src/seo/schemaGenerator.js` to `https://www.texttospeechh.com/`.
+  - Added `noindex, follow` directive header to search handler `src/api/searchHandler.js`.
+- **Phase 2A Internal Link Architecture**:
+  - Added "Compare TTS Tools" link matrix to footer in `src/pages/footerComponent.js`, eliminating 12 orphan pages.
+  - Replaced generic `"Read Full Guide →"` anchors with descriptive anchor text in `src/pages/blogPages.js`.
+- **Phase 2B Programmatic Content Expansion**:
+  - Expanded all 8 competitor comparison pages in `src/seo/programmaticPages.js` to 674 - 710 words each with comparative matrices, pros/cons boxes, and FAQ accordions.
+- **Phase 2C High-Intent Use-Case Landing Spokes**:
+  - Created `/use-case/youtube-voiceover` (605 words) and `/use-case/audiobook-generator` (679 words) landing spokes and added them to navigation, footer, and sitemaps.
+
+---
+
 ## [1.2.0] - 2026-09-19
 
 ### Added / Fixed
