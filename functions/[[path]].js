@@ -192,6 +192,20 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
+  // SEO Safety: Redirect all *.pages.dev requests to official domain www.texttospeechh.com
+  // Also send X-Robots-Tag: noindex, follow to prevent duplicate indexing on preview domains.
+  if (url.hostname.endsWith('.pages.dev')) {
+    const targetUrl = `https://www.texttospeechh.com${url.pathname}${url.search}`;
+    return new Response(`Redirecting to ${targetUrl}`, {
+      status: 301,
+      headers: {
+        'Location': targetUrl,
+        'X-Robots-Tag': 'noindex, follow',
+        'Cache-Control': 'public, max-age=3600'
+      }
+    });
+  }
+
   // Static asset passthrough — let Cloudflare Pages CDN handle these directly
   const lastDot = pathname.lastIndexOf('.');
   if (lastDot > 0) {
