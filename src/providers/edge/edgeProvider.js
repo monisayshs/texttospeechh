@@ -98,14 +98,10 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
   const cleanText = cleanTextForSynthesis(text) || text;
   const escapedText = xmlEscape(cleanText);
   const langCode = voiceName.substring(0, 5);
-  const style = TONE_STYLE_MAP[styleName] || 'neutral';
-  const supportedStyles = VOICE_STYLE_SUPPORT_MAP[voiceName] || [];
-  const isStyleSupported = style !== 'neutral' && supportedStyles.includes(style);
 
-  let ssmlInner = `<prosody rate="${rateStr}" pitch="${pitchStr}">${escapedText}</prosody>`;
-  if (isStyleSupported) {
-    ssmlInner = `<mstts:express-as style="${style}">${ssmlInner}</mstts:express-as>`;
-  }
+  // Note: Edge ReadAloud WebSocket endpoint handles prosody (rate, pitch) natively.
+  // mstts:express-as is an Azure Speech API enterprise feature not supported on Edge socket transport.
+  const ssmlInner = `<prosody rate="${rateStr}" pitch="${pitchStr}">${escapedText}</prosody>`;
 
   const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="${langCode}">
   <voice name="${voiceName}">

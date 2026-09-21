@@ -1,7 +1,7 @@
 const queueService = require('../services/queueService');
 const securityService = require('../services/securityService');
 
-const CURRENT_COMMIT = 'e861384';
+const CURRENT_COMMIT = 'd6563fd';
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
