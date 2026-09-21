@@ -71,15 +71,13 @@ const TONE_STYLE_MAP = {
   'excited': 'excited',
   'sad': 'sad',
   'serious': 'angry',
-  'professional': 'calm'
+  'professional': 'newscast'
 };
 
 const VOICE_STYLE_SUPPORT_MAP = {
-  'en-US-JennyNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
-  'en-US-GuyNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
-  'en-US-AriaNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
-  'en-GB-SoniaNeural': ['neutral', 'cheerful', 'sad'],
-  'en-GB-RyanNeural': ['neutral', 'cheerful']
+  'en-US-JennyNeural': ['cheerful', 'excited', 'sad', 'angry'],
+  'en-US-GuyNeural': ['cheerful', 'excited', 'sad', 'angry', 'newscast'],
+  'en-US-AriaNeural': ['cheerful', 'excited', 'sad', 'angry']
 };
 
 function cleanTextForSynthesis(text) {
