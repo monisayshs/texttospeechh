@@ -74,6 +74,14 @@ const TONE_STYLE_MAP = {
   'professional': 'calm'
 };
 
+const VOICE_STYLE_SUPPORT_MAP = {
+  'en-US-JennyNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
+  'en-US-GuyNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
+  'en-US-AriaNeural': ['neutral', 'cheerful', 'excited', 'sad', 'angry', 'calm'],
+  'en-GB-SoniaNeural': ['neutral', 'cheerful', 'sad'],
+  'en-GB-RyanNeural': ['neutral', 'cheerful']
+};
+
 function cleanTextForSynthesis(text) {
   if (!text) return '';
   let result = text;
@@ -93,9 +101,11 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
   const escapedText = xmlEscape(cleanText);
   const langCode = voiceName.substring(0, 5);
   const style = TONE_STYLE_MAP[styleName] || 'neutral';
+  const supportedStyles = VOICE_STYLE_SUPPORT_MAP[voiceName] || [];
+  const isStyleSupported = style !== 'neutral' && supportedStyles.includes(style);
 
   let ssmlInner = `<prosody rate="${rateStr}" pitch="${pitchStr}">${escapedText}</prosody>`;
-  if (style && style !== 'neutral') {
+  if (isStyleSupported) {
     ssmlInner = `<mstts:express-as style="${style}">${ssmlInner}</mstts:express-as>`;
   }
 
