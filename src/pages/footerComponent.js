@@ -44,6 +44,8 @@ function getSaaSFooterHtml() {
         <ul class="footer-links-list">
           <li><a href="/">Free AI Voice Generator</a></li>
           <li><a href="/text-to-speech">Text to Speech</a></li>
+          <li><a href="/use-case/youtube-voiceover">YouTube Voice Generator</a></li>
+          <li><a href="/use-case/audiobook-generator">Audiobook Voice Generator</a></li>
           <li><a href="/text-to-speech/free-text-to-speech">Free Text to Speech</a></li>
           <li><a href="/text-to-speech/online-text-to-speech">Online Text to Speech</a></li>
           <li><a href="/text-to-speech/text-to-voice">Text to Voice</a></li>
