@@ -278,18 +278,17 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
               const tFinalByte = Date.now();
               clearTimeout(readTimeout);
               try { writer.close(); } catch (e) {}
+              try { reader.cancel(); } catch (e) {}
+              try { socket.close(); } catch (e) {}
               const finalAudio = Buffer.concat(audioChunks);
-              if (finalAudio.length > 0) {
-                finalAudio.timings = {
-                  connectMs: tConnDone - tConnStart,
-                  firstByteMs: tFirstByte ? (tFirstByte - tConnStart) : 0,
-                  synthesisMs: tFinalByte - (tFirstByte || tConnDone),
-                  totalSocketMs: tFinalByte - tConnStart
-                };
-                console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes. Socket timings:`, JSON.stringify(finalAudio.timings));
-                return finalAudio;
-              }
-              break;
+              finalAudio.timings = {
+                connectMs: tConnDone - tConnStart,
+                firstByteMs: tFirstByte ? (tFirstByte - tConnStart) : 0,
+                synthesisMs: tFinalByte - (tFirstByte || tConnDone),
+                totalSocketMs: tFinalByte - tConnStart
+              };
+              console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes. Socket timings:`, JSON.stringify(finalAudio.timings));
+              return finalAudio;
             }
 
             if (payload.length >= 2) {
