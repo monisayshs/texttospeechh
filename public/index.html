@@ -144,6 +144,22 @@
         </ul>
       </nav>
       <div class="top-bar-actions">
+        <!-- Language Switcher Dropdown -->
+        <select id="header-lang-select" onchange="if(this.value) window.location.href=this.value;" aria-label="Select Language" style="height:36px; padding:0 8px; font-size:0.82rem; font-weight:600; border-radius:8px; background:var(--color-bg-secondary); color:var(--color-text); border:1px solid var(--color-border); cursor:pointer; outline:none;">
+          <option value="">🌐 Language</option>
+          <option value="/language/english">🇺🇸 English</option>
+          <option value="/language/hindi">🇮🇳 हिन्दी (Hindi)</option>
+          <option value="/language/urdu">🇵🇰 اردو (Urdu)</option>
+          <option value="/language/spanish">🇪🇸 Español</option>
+          <option value="/language/arabic">🇸🇦 العربية</option>
+          <option value="/language/french">🇫🇷 Français</option>
+          <option value="/language/german">🇩🇪 Deutsch</option>
+          <option value="/language/japanese">🇯🇵 日本語</option>
+          <option value="/language/portuguese">🇧🇷 Português</option>
+          <option value="/language/italian">🇮🇹 Italiano</option>
+          <option value="/language/russian">🇷🇺 Русский</option>
+          <option value="/language/turkish">🇹🇷 Türkçe</option>
+        </select>
         <button class="search-trigger" id="search-trigger" aria-label="Search the site" type="button">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
