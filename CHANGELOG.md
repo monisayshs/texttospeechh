@@ -26,9 +26,12 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
-## [1.3.0] - 2026-09-21
+## [1.3.0] - 2026-09-22
 
 ### Added / Fixed
+- **PDF Annotation, Sticky Note & Comment Extraction Engine**:
+  - Implemented `extractPdfAnnotations(buffer)` in `src/services/fileParser.js` to parse PDF `/Subtype /(Text|FreeText|Highlight|Popup|Stamp|Ink|Underline|Squiggly|StrikeOut|Caret)` objects and `/Contents` string dictionaries.
+  - Automatically appends extracted PDF reviewer comments and sticky notes to the main text stream, ensuring both document body text and annotations are synthesized into neural audio MP3 recordings.
 - **Duplicate Content Protection for Cloudflare `.pages.dev` Subdomains**:
   - Configured automatic **301 Permanent Redirect** in `functions/[[path]].js` for all `*.pages.dev` requests directing traffic and bots exclusively to `https://www.texttospeechh.com${pathname}${search}`.
   - Added `X-Robots-Tag: noindex, follow` header to all `*.pages.dev` responses to instruct search engine crawlers to de-index preview subdomains and consolidate domain authority on `www.texttospeechh.com`.
