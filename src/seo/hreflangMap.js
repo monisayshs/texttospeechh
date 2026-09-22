@@ -18,7 +18,12 @@ const LANGUAGE_HREFLANG = {
   "language/spanish": "es",
   "language/arabic": "ar",
   "language/french": "fr",
-  "language/german": "de"
+  "language/german": "de",
+  "language/japanese": "ja",
+  "language/portuguese": "pt",
+  "language/italian": "it",
+  "language/russian": "ru",
+  "language/turkish": "tr"
 };
 
 function getHreflangHtmlTags(pathSlug) {

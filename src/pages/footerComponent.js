@@ -79,6 +79,11 @@ function getSaaSFooterHtml() {
           <li><a href="/language/spanish">Spanish TTS</a></li>
           <li><a href="/language/french">French TTS</a></li>
           <li><a href="/language/german">German TTS</a></li>
+          <li><a href="/language/japanese">Japanese TTS</a></li>
+          <li><a href="/language/portuguese">Portuguese TTS</a></li>
+          <li><a href="/language/italian">Italian TTS</a></li>
+          <li><a href="/language/russian">Russian TTS</a></li>
+          <li><a href="/language/turkish">Turkish TTS</a></li>
         </ul>
       </div>
 
