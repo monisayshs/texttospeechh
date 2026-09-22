@@ -26,6 +26,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.4.0] - 2026-09-22
+
+### Added
+- **Global Multilingual SEO Expansion (12 Top Search Languages)**:
+  - Added dedicated native language landing pages for 12 top global search languages: English (`/language/english`), Hindi (`/language/hindi`), Urdu (`/language/urdu`), Spanish (`/language/spanish`), Arabic (`/language/arabic`), French (`/language/french`), German (`/language/german`), Japanese (`/language/japanese`), Portuguese (`/language/portuguese`), Italian (`/language/italian`), Russian (`/language/russian`), and Turkish (`/language/turkish`).
+  - Implemented translated native titles, meta descriptions, definition boxes, voice model comparison tables, FAQs, and native CTA buttons (e.g. French: *"Générer de l'Audio"*, German: *"Audio generieren"*, Japanese: *"日本語音声を作成する"*).
+- **Hreflang International Target Matrix**:
+  - Updated `src/seo/hreflangMap.js` to automatically emit self-referencing and bidirectional `<link rel="alternate" hreflang="xx">` tags (`en`, `hi`, `ur`, `es`, `ar`, `fr`, `de`, `ja`, `pt`, `it`, `ru`, `tr`) plus `x-default` pointing to `https://www.texttospeechh.com/`.
+- **Footer Navigation & Sitemap Integration**:
+  - Updated `src/pages/footerComponent.js` to list all 12 languages in the footer matrix, eliminating orphan pages.
+  - Automatically included all 12 language routes in XML sitemap generation.
+
 ## [1.3.0] - 2026-09-22
 
 ### Added / Fixed

@@ -10,8 +10,8 @@
 | **Owner** | Repository Maintainers |
 | **Update Trigger** | Version release, deployment, major feature completion, new technical debt discovery, roadmap update |
 | **Update Frequency** | Medium — updated whenever permanent project state evolves |
-| **Last Verified** | 2026-09-18 |
-| **Verified Against** | `functions/[[path]].js`, `wrangler.toml`, `src/providers/edge/edgeProvider.js`, `src/services/*` |
+| **Last Verified** | 2026-09-22 |
+| **Verified Against** | `functions/[[path]].js`, `wrangler.toml`, `src/providers/edge/edgeProvider.js`, `src/seo/hreflangMap.js` |
 | **Related Documents** | [AGENTS.md](AGENTS.md), [SESSION.md](SESSION.md), [TASKS.md](TASKS.md), [DECISIONS.md](DECISIONS.md) |
 
 ---
@@ -24,7 +24,7 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. System & Deployment Status
 
-- **Project Version**: `1.3.0`
+- **Project Version**: `1.4.0`
 - **Production URL**: `https://www.texttospeechh.com`
 - **Hosting Platform**: Cloudflare Pages + Workers (Project `texttospeechh`) with Vercel Rollback Target
 - **Primary Domain**: `www.texttospeechh.com`
