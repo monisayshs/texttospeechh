@@ -112,31 +112,65 @@ class FileParser {
     }
   }
 
+  /**
+   * Heuristic readability check. PDFs built with subset/custom font encodings
+   * and no ToUnicode map decode to symbol soup (e.g. "D+,1 / e G0 O K9<").
+   * Returning that as "extracted text" would fill the TTS box with garbage,
+   * so it is treated as a failed extraction instead of valid text.
+   */
+  looksLikeGarbage(text) {
+    if (!text || text.length < 60) return false; // too short to judge reliably
+    const tokens = text.split(/\s+/).filter(Boolean);
+    if (tokens.length < 10) return false;
+    let wordLike = 0;
+    for (const t of tokens) {
+      const letters = (t.match(/[a-zA-Z\u0900-\u097F]/g) || []).length;
+      if (t.length >= 3 && letters / t.length >= 0.7) wordLike++;
+    }
+    return wordLike / tokens.length < 0.15;
+  }
+
   async parsePdf(buffer) {
     let mainText = '';
 
-    // Primary Engine: pdf-parse library
+    // Primary Engine: pdf-parse library (v2 API; v1 function API as fallback).
+    // NOTE: package.json pins pdf-parse to v2. The v2 module exports a PDFParse
+    // class, NOT a callable function — calling require('pdf-parse') as a function
+    // silently fails, so both shapes are handled explicitly here.
     try {
-      let pdfParse;
-      try {
-        pdfParse = require('pdf-parse/lib/pdf-parse.js');
-      } catch (e) {
-        pdfParse = require('pdf-parse');
-      }
-      if (typeof pdfParse !== 'function' && pdfParse && typeof pdfParse.default === 'function') {
-        pdfParse = pdfParse.default;
-      }
-      if (typeof pdfParse === 'function') {
-        const data = await pdfParse(buffer, { max: 0 });
-        if (data && data.text) {
-          const cleaned = data.text
-            .replace(/[\r\n]+/g, ' ')
-            .replace(/\s+/g, ' ')
-            .replace(/endstream|endobj|xref|trailer|startxref/gi, '')
-            .trim();
-          if (cleaned.length > 0) {
-            mainText = cleaned;
+      const mod = require('pdf-parse');
+      let extracted = '';
+      const PDFParse = (mod && mod.PDFParse) || (mod && mod.default && mod.default.PDFParse);
+      if (typeof PDFParse === 'function') {
+        const parser = new PDFParse({ data: buffer });
+        const result = await parser.getText();
+        if (result) {
+          extracted = result.text
+            || (Array.isArray(result.pages) ? result.pages.map((p) => p.text).join(' ') : '');
+        }
+      } else if (typeof mod === 'function') {
+        // Legacy pdf-parse v1 API
+        const data = await mod(buffer, { max: 0 });
+        if (data && data.text) extracted = data.text;
+      } else {
+        try {
+          const legacy = require('pdf-parse/lib/pdf-parse.js');
+          const fn = typeof legacy === 'function' ? legacy : legacy && legacy.default;
+          if (typeof fn === 'function') {
+            const data = await fn(buffer, { max: 0 });
+            if (data && data.text) extracted = data.text;
           }
+        } catch (e) {}
+      }
+      if (extracted) {
+        const cleaned = extracted
+          .replace(/--\s*\d+\s+of\s+\d+\s*--/gi, ' ')
+          .replace(/[\r\n]+/g, ' ')
+          .replace(/\s+/g, ' ')
+          .replace(/endstream|endobj|xref|trailer|startxref/gi, '')
+          .trim();
+        if (cleaned.length > 0) {
+          mainText = cleaned;
         }
       }
     } catch (err) {
@@ -210,6 +244,11 @@ class FileParser {
 
     if (!mainText) {
       throw new Error('Unable to extract readable text from the uploaded PDF document.');
+    }
+
+    // Reject symbol-soup output from undecodable font encodings (see looksLikeGarbage).
+    if (this.looksLikeGarbage(mainText)) {
+      throw new Error('This PDF uses a font encoding we cannot read, so no readable text could be extracted. Try re-exporting it as a standard PDF (Print -> Save as PDF) or paste the text manually.');
     }
 
     // Extract PDF Annotations & Sticky Notes if present

@@ -48,3 +48,11 @@ If this document conflicts with the implementation, **the source code is authori
 - **Last Completed Step**: First SEO content cluster (2 new articles + ElevenLabs refresh) published as v1.5.0 and deployed.
 - **Next Immediate Step**: Verify the 3 article URLs live on production; then weekly ranking/site-health monitoring.
 - **Current Blockers**: None.
+---
+
+## 4. PDF Extraction Bug Fix — 2026-09-23 (v1.6.1)
+- **Bug**: PDF upload filled the TTS textarea with garbage characters (e.g. `D+,1 / e G0 O K9< ...`) — reported by user from live site.
+- **Root cause**: `"pdf-parse": "*"` installed v2.4.5 in production, but `fileParser.js` targeted the v1 function API. v2 exports a `PDFParse` class, so the primary engine silently skipped and every PDF went through the naive raw-stream fallback (no font decoding → symbol soup on custom-encoded fonts).
+- **Fix**: primary engine rewritten for v2 API (`new PDFParse({data})` → `getText()`); `pdf-parse` pinned to `^2.4.5`; added `looksLikeGarbage()` heuristic → clean user-facing error instead of garbage output.
+- **Verified**: normal PDFs extract correctly via v2 engine; garbage sample flagged; English/Hindi/invoice samples pass; empty file → clean error.
+- **Pending**: commit + push to main (Cloudflare Pages auto-deploy); user to re-test PDF upload on live site.

@@ -15,7 +15,7 @@
   "dependencies": {
     "mammoth": "*",
     "msedge-tts": "*",
-    "pdf-parse": "*",
+    "pdf-parse": "^2.4.5",
     "sharp": "^0.35.3",
     "ws": "^8.21.3",
     "xml-escape": "*"

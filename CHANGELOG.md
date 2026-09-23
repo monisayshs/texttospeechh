@@ -26,6 +26,15 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.6.1] - 2026-09-23
+
+### Fixed
+- **PDF text extraction returning garbage characters** (`src/services/fileParser.js`, `package.json`):
+  - Root cause: `package.json` declared `"pdf-parse": "*"`, so production installed v2.4.5 — but the parser code was written for the v1 API (`require('pdf-parse')` as a callable function). In v2 the module exports a `PDFParse` class instead, so the primary engine silently skipped every PDF and all extraction fell through to the naive raw-stream fallback, which emits symbol soup for PDFs with subset/custom font encodings.
+  - Primary engine rewritten for the pdf-parse v2 API (`new PDFParse({ data })` → `getText()`), with legacy v1 function fallback kept for safety.
+  - Pinned `pdf-parse` to `^2.4.5` in `package.json` (matches `package-lock.json`).
+  - Added `looksLikeGarbage()` readability heuristic: if extracted text scores as undecodable symbol soup, extraction now fails with a clear user-facing message ("This PDF uses a font encoding we cannot read… try re-exporting as a standard PDF or paste the text manually") instead of filling the TTS textarea with garbage. The frontend already surfaces this as a `File Import Error` toast.
+
 ## [1.6.0] - 2026-09-23
 
 ### Added
