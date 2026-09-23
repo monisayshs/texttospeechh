@@ -104,6 +104,8 @@ The project uses a structured **Sitemap Index** located at `/sitemap.xml`:
 2. **`sitemap-programmatic.xml`**: Programmatic language pages, keyword spokes, and comparison pages.
 3. **`sitemap-legal.xml`**: Legal pages (`/privacy-policy`, `/terms`, `/disclaimer`, `/about`, `/contact`).
 
+> **Note (2026-09-23):** `lastmod` is dynamic — `sitemapGenerator.js` emits the current date on every generation (previously hardcoded to `2026-08-05`), so crawlers always receive a fresh freshness signal.
+
 ---
 
 ## 5. JSON-LD Structured Data (`src/seo/schemaGenerator.js`)
@@ -113,7 +115,7 @@ Every server-rendered HTML page injects structured data in standard `<script typ
 - **Organization Schema**: Defines `TextToSpeechH AI` brand, logo, domain, and social profiles.
 - **WebSite Schema**: Injects Google Sitelinks Searchbox capabilities. The homepage (`public/index.html`) also includes a static `WebSite` JSON-LD block with `name`, `alternateName`, and `url` fields (no `potentialAction`).
 - **SoftwareApplication Schema**: Describes the web app, operating system compatibility, free pricing tier (`Price: $0.00`), and aggregate rating.
-- **FAQPage Schema**: Formats relevant FAQ questions and answers into JSON-LD arrays for Google Rich Search Results.
+- **FAQPage Schema**: Formats relevant FAQ questions and answers into JSON-LD arrays for Google Rich Search Results. Applied to article pages, the `/faq` directory page (all 30 Q&As, added 2026-09-23), and the homepage FAQ accordion section (4 Q&As, added 2026-09-23).
 - **BreadcrumbList Schema**: Provides structured navigational breadcrumbs (`Home` > `Text to Speech` > `[Current Page]`).
 - **Article Schema**: Formats blog posts with `author`, `datePublished`, `dateModified`, and `publisher` attributes.
 

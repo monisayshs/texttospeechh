@@ -21,6 +21,18 @@ function renderFaqDirectoryPage() {
     </div>
   `).join('');
 
+  // FAQPage structured data for Google rich results (matches visible Q&As above).
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqList.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
+  const faqSchemaJson = JSON.stringify(faqSchema).replace(/</g, '\\u003c');
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +43,9 @@ ${trackingHtml}
 
   <title>Frequently Asked Questions (FAQ) | ${BRAND_NAME}</title>
   <meta name="description" content="Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="${DOMAIN}/faq">
+  <script type="application/ld+json">${faqSchemaJson}</script>
 
   <!-- Favicon & PWA Assets -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">

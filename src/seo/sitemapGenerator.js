@@ -12,7 +12,9 @@ const { PROGRAMMATIC_ROUTER } = require('./programmaticPages');
 const { EDUCATIONAL_GUIDES } = require('../content/educationalGuides');
 
 const BASE_URL = 'https://www.texttospeechh.com';
-const LAST_MOD = '2026-08-05';
+// Dynamic lastmod: the sitemap is generated per-request, so always emit
+// today's date — crawlers get a fresh freshness signal on every deploy/crawl.
+const LAST_MOD = new Date().toISOString().split('T')[0];
 
 const PUBLIC_ROUTES = [
   { url: '/', priority: '1.0', changefreq: 'daily' },

@@ -9,11 +9,11 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
-  { slug: "text-to-speech/blog/best-ai-voices", title: "Top 10 Best AI Voices & Neural TTS Models in 2026", category: "AI Technology", readingTime: "18 min read", cta: "Read Best AI Voices Guide →" },
-  { slug: "text-to-speech/blog/how-text-to-speech-works", title: "How Text-to-Speech Works: Tacotron, WaveNet, Kokoro & Neural Vocoders", category: "Engineering", readingTime: "22 min read", cta: "Read How Text to Speech Works Guide →" },
-  { slug: "text-to-speech/blog/text-to-speech-for-students", title: "Text-to-Speech for Students & Teachers: Auditory Learning Guide", category: "Education", readingTime: "19 min read", cta: "Read TTS for Students Guide →" },
-  { slug: "text-to-speech/blog/text-to-speech-for-youtube", title: "AI Voiceover Guide for YouTube Shorts & Faceless Channels", category: "YouTube & Video", readingTime: "20 min read", cta: "Read YouTube Voiceover Guide →" },
-  { slug: "text-to-speech/blog/elevenlabs-alternatives", title: "Top Free ElevenLabs Alternatives for Unlimited Speech Synthesis", category: "Comparisons", readingTime: "21 min read", cta: "Read ElevenLabs Alternatives Guide →" }
+  { slug: "text-to-speech/blog/best-ai-voices", title: "Best AI Voices & Neural TTS Models 2026", category: "AI Technology", readingTime: "18 min read", cta: "Read Best AI Voices Guide →" },
+  { slug: "text-to-speech/blog/how-text-to-speech-works", title: "How Text-to-Speech Works: Neural Guide", category: "Engineering", readingTime: "22 min read", cta: "Read How Text to Speech Works Guide →" },
+  { slug: "text-to-speech/blog/text-to-speech-for-students", title: "Text-to-Speech for Students & Teachers", category: "Education", readingTime: "19 min read", cta: "Read TTS for Students Guide →" },
+  { slug: "text-to-speech/blog/text-to-speech-for-youtube", title: "AI Voiceover Guide for YouTube Shorts", category: "YouTube & Video", readingTime: "20 min read", cta: "Read YouTube Voiceover Guide →" },
+  { slug: "text-to-speech/blog/elevenlabs-alternatives", title: "Top Free ElevenLabs Alternatives 2026", category: "Comparisons", readingTime: "21 min read", cta: "Read ElevenLabs Alternatives Guide →" }
 ];
 
 function getBlogHubPage() {
@@ -59,7 +59,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 1: Best AI Voices
   "text-to-speech/blog/best-ai-voices": {
-    title: `Top 10 Best AI Voices & Neural TTS Models in 2026 | ${BRAND_NAME}`,
+    title: `Best AI Voices & Neural TTS Models 2026 | ${BRAND_NAME}`,
     h1: `Top 10 Best AI Voices & Neural TTS Models in 2026`,
     metaDesc: `The definitive guide to the top 10 best AI voices and neural TTS models in 2026. Compare vocal realism, emotional depth, multi-lingual support, and free MP3 downloads.`,
     category: "AI Technology",
@@ -650,7 +650,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 2: How Text-to-Speech Works
   "text-to-speech/blog/how-text-to-speech-works": {
-    title: `How Text-to-Speech Works: Tacotron, WaveNet, Kokoro & Neural Vocoders | ${BRAND_NAME}`,
+    title: `How Text-to-Speech Works: Neural Guide | ${BRAND_NAME}`,
     h1: `How Text-to-Speech Works: Neural Architecture Deep Dive`,
     metaDesc: `Learn how modern neural Text-to-Speech engines work. Deep dive into G2P phonemizers, mel-spectrogram acoustic models, and neural vocoders like HiFi-GAN.`,
     category: "Engineering",
@@ -1066,7 +1066,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 3: Students & Teachers
   "text-to-speech/blog/text-to-speech-for-students": {
-    title: `Text-to-Speech for Students & Teachers: Auditory Learning Guide | ${BRAND_NAME}`,
+    title: `Text-to-Speech for Students & Teachers | ${BRAND_NAME}`,
     h1: `Text-to-Speech for Students & Teachers: Comprehensive Auditory Guide`,
     metaDesc: `Learn how text-to-speech tools help students study faster, improve reading comprehension, and assist learners with dyslexia, ADHD, and language study.`,
     category: "Education",
@@ -1436,7 +1436,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 4: YouTube & Video Voiceovers
   "text-to-speech/blog/text-to-speech-for-youtube": {
-    title: `AI Voiceover Guide for YouTube Shorts & Faceless Channels | ${BRAND_NAME}`,
+    title: `AI Voiceover Guide for YouTube Shorts | ${BRAND_NAME}`,
     h1: `AI Voiceover Guide for YouTube Shorts & Faceless Channels`,
     metaDesc: `Learn how to generate high-retention AI voiceovers for YouTube Shorts, Reels, and faceless YouTube channels for free using neural AI speech synthesis.`,
     category: "YouTube & Video",
@@ -1798,7 +1798,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 5: ElevenLabs Alternatives
   "text-to-speech/blog/elevenlabs-alternatives": {
-    title: `Top Free ElevenLabs Alternatives for Unlimited Speech Synthesis | ${BRAND_NAME}`,
+    title: `Top Free ElevenLabs Alternatives 2026 | ${BRAND_NAME}`,
     h1: `Top Free ElevenLabs Alternatives for Unlimited Speech Synthesis`,
     metaDesc: `Looking for a free ElevenLabs alternative? Compare TextToSpeechH AI with ElevenLabs for long text scripts, MP3 downloads, and zero subscription costs.`,
     category: "Comparisons",
