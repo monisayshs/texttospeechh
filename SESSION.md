@@ -56,3 +56,10 @@ If this document conflicts with the implementation, **the source code is authori
 - **Fix**: primary engine rewritten for v2 API (`new PDFParse({data})` → `getText()`); `pdf-parse` pinned to `^2.4.5`; added `looksLikeGarbage()` heuristic → clean user-facing error instead of garbage output.
 - **Verified**: normal PDFs extract correctly via v2 engine; garbage sample flagged; English/Hindi/invoice samples pass; empty file → clean error.
 - **Pending**: commit + push to main (Cloudflare Pages auto-deploy); user to re-test PDF upload on live site.
+
+## 5. PDF Extraction v1.6.2 — 2026-09-23 (ToUnicode-aware engine)
+- **Bug**: v1.6.1 did NOT fix production — user's `Application_Print_Preview.pdf` still failed with "Unable to extract readable text".
+- **Root cause**: pdf-parse v2 **cannot run in Cloudflare Workers at all** — its bundled web build requires DOM APIs (`DOMMatrix is not defined` in workerd, verified via `wrangler dev`). Primary engine throws on every PDF in production; the font-unaware fallback then produced garbage (caught by the v1.6.1 guard → clean error, but no text).
+- **Fix** (`src/services/fileParser.js`, no new dependencies): new secondary engine `extractPdfTextSmart()` — resolves each page's font resources, parses ToUnicode CMaps (`bfchar`/`bfrange`, 1-/2-byte codes), decodes `Tj`/`TJ`/`'`/`"` operators per active font (`Tf`); handles Identity-H subset fonts (Chrome Skia/PDF), hex strings, TJ kerning, inline-image skipping. Legacy raw scan kept as tertiary last resort.
+- **Verified**: in real workerd runtime, user's PDF extracts 6,557 clean chars (100% word recall vs pdf-parse v2 reference); simple WinAnsi PDFs fine; garbage input still → clean error.
+- **Deployed**: commit `f157e88` pushed to `main` via GitHub API; Cloudflare Pages auto-deploy triggered. User to re-upload the PDF on the live site to confirm.
