@@ -26,6 +26,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.6.0] - 2026-09-23
+
+### Added
+- **Week 1 Quick-Win Content Cluster — 4 New Blog Articles + 2 H2 Fold-ins** (user-approved drafts, SERP weakness-verified 2026-09-23):
+  - NEW `text-to-speech/blog/free-text-to-speech-pdf-to-audio` — "Free Text to Speech: Convert PDF to Audio" (how-to guide; targets `free text to speech pdf to audio`, weakest SERP: old/spam PDFs ranking).
+  - NEW `text-to-speech/blog/text-to-speech-for-podcast-free` — "Text to Speech for Podcast: Free Tools Guide" (creator workflow script→MP3; targets `text to speech for podcast free`, press-release-only SERP).
+  - NEW `text-to-speech/blog/murf-ai-free-alternative` — "Murf AI Free Alternative: 7 Best Picks (2026)" (targets `murf ai free alternative`; honest per-gap ranking vs Murf's 10-min lifetime free plan).
+  - NEW `text-to-speech/blog/best-ai-voice-generators-free` H2 + `text-to-speech/blog/best-free-text-to-speech-tools` H2 fold-ins: "Free TTS With No Character Limit" and "AI Voice Generators That Work Without Sign-Up" sections added before FAQ (TOC updated, FAQ renumbered) — cannibalization-safe alternative to standalone articles.
+  - All articles: keyword in first 100 words, direct answer in opening, H2/H3 hierarchy, comparison tables, FAQ sections, CTA box before FAQ with per-article tool route, descriptive-anchor internal links, 1–2 external authority links, `datePublished`/`dateModified` = 2026-09-23, ≤64-char SERP titles.
+  - New slugs auto-included in `sitemap-main.xml` via `getDynamicBlogRoutes()` (11 blog articles total).
+- **Fact-checked free-tier claims** (official pricing pages / site claims, 2026-09-23): Murf AI free = 10 min lifetime, no downloads, no commercial rights ($19/mo Creator); Speechify free = ~10 basic voices, 1.5x speed cap; TTSMaker 20,000 chars/week; NaturalReader unlimited basic + 20 min/day premium; TextaVoice claims flagged as unverified company claims; Play.ht omitted from Murf draft (free plan unverified). Zero "we tested" claims.
+
 ## [1.5.0] - 2026-09-23
 
 ### Added

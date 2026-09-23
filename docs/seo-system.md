@@ -100,7 +100,7 @@ The project uses a structured **Sitemap Index** located at `/sitemap.xml`:
 </sitemapindex>
 ```
 
-1. **`sitemap-main.xml`**: Root homepage, pillar page, sub-tool spokes, blog hub, and individual blog articles (7 articles as of 2026-09-23 — auto-includes new `BLOG_ARTICLES_MAP` slugs).
+1. **`sitemap-main.xml`**: Root homepage, pillar page, sub-tool spokes, blog hub, and individual blog articles (7 articles as of 2026-09-23 morning; 11 articles after the v1.6.0 Week 1 quick-win cluster — auto-includes new `BLOG_ARTICLES_MAP` slugs).
 2. **`sitemap-programmatic.xml`**: Programmatic language pages, keyword spokes, and comparison pages.
 3. **`sitemap-legal.xml`**: Legal pages (`/privacy-policy`, `/terms`, `/disclaimer`, `/about`, `/contact`).
 
