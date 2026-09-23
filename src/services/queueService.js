@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const scriptEngine = require('./scriptEngine');
 const loadBalancer = require('./loadBalancer');
 const audioPipeline = require('./audioPipeline');
+const wordTimingService = require('./wordTimingService');
 
 /**
  * Detect if running inside Cloudflare Workers/Pages (no filesystem access)
@@ -83,7 +84,10 @@ class QueueService {
           createdAt: job.createdAt,
           updatedAt: job.updatedAt,
           hasAudio: !!job.audioBuffer,
-          audioSize: job.audioBuffer ? job.audioBuffer.length : 0
+          audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
+          // Read-Along: persist merged word timings so /api/status can serve them
+          hasWordTimings: !!(job.wordTimings && job.wordTimings.length > 0),
+          wordTimings: job.wordTimings || null
         };
 
         // Save metadata to Cloudflare KV with 1-hour auto-expiration
@@ -163,7 +167,10 @@ class QueueService {
         createdAt: job.createdAt,
         updatedAt: job.updatedAt,
         hasAudio: !!job.audioBuffer,
-        audioSize: job.audioBuffer ? job.audioBuffer.length : 0
+        audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
+        // Read-Along: persist merged word timings so /api/status can serve them
+        hasWordTimings: !!(job.wordTimings && job.wordTimings.length > 0),
+        wordTimings: job.wordTimings || null
       };
       fs.writeFileSync(metaPath, JSON.stringify(meta), 'utf-8');
 
@@ -301,6 +308,9 @@ class QueueService {
       hasAudio: !!job.audioBuffer,
       audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
       audioBuffer: job.audioBuffer || null,
+      // Read-Along: word timings for the merged audio (null when unavailable)
+      wordTimings: job.wordTimings || null,
+      readAlongAvailable: !!(job.wordTimings && job.wordTimings.length > 0),
       providerUsed: job.providerUsed || 'unknown',
       diagnosticVoice: job.options.voice,
       diagnosticRate: job.options.rate,
@@ -372,6 +382,7 @@ class QueueService {
     console.log(`[QueueService] Processing Job ${job.id} (${job.totalChunks} chunks)...`);
 
     const audioChunks = [];
+    const chunkTimingInputs = []; // Read-Along: [{buffer, timings}] per chunk for offset merging
     const startTime = Date.now();
 
     try {
@@ -385,6 +396,8 @@ class QueueService {
         );
 
         audioChunks.push(chunkAudio);
+        // Read-Along: capture per-chunk word timings (null when provider has none, e.g. failover)
+        chunkTimingInputs.push({ buffer: chunkAudio, timings: (chunkAudio && chunkAudio.wordTimings) || null });
         job.processedChunks = i + 1;
         job.progress = Math.round(((i + 1) / job.totalChunks) * 100);
 
@@ -400,6 +413,17 @@ class QueueService {
       }
 
        job.audioBuffer = audioPipeline.processAndMergeChunks(audioChunks, job.options);
+      // Read-Along: merge per-chunk word timings with cumulative audio-duration offsets.
+      // Stays null when no provider emitted timings (failover) — frontend hides the toggle.
+      try {
+        const mergedTimings = wordTimingService.mergeChunkTimings(chunkTimingInputs);
+        if (mergedTimings.timings && mergedTimings.timings.length > 0) {
+          job.wordTimings = mergedTimings.timings;
+          console.log(`[QueueService] Job ${job.id} word timings merged: ${job.wordTimings.length} words, audio duration ~${mergedTimings.totalDurationMs}ms`);
+        }
+      } catch (e) {
+        console.warn(`[QueueService] Job ${job.id} word timing merge failed (non-fatal):`, e.message);
+      }
       job.providerUsed = audioChunks.length > 0 && audioChunks[0] && audioChunks[0].providerUsed ? audioChunks[0].providerUsed : 'unknown';
       job.state = 'COMPLETED';
       job.progress = 100;

@@ -408,6 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pauseBtn) pauseBtn.disabled = true;
     if (stopBtn) stopBtn.disabled = true;
     if (audioPlayer) audioPlayer.pause();
+    resetReadAlong(); // Read-Along: new generation never auto-starts highlighting
     if (soundwave) {
       soundwave.classList.remove('active');
       setBarPlayState('running');
@@ -457,6 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
               });
 
               playAudioBlob(blob);
+              setReadAlongData(data.wordTimings); // Read-Along: enable toggle only if timings came back
               setButtonLoadingState(false);
               setTimeout(hideProgressBar, 1000);
               return;
@@ -540,6 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
 
           playAudioBlob(audioBlob);
+          setReadAlongData(status.wordTimings); // Read-Along: enable toggle only if timings came back
           setButtonLoadingState(false);
           setTimeout(hideProgressBar, 1800);
         } else if (status.state === 'FAILED') {
@@ -599,6 +602,156 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pauseBtn) pauseBtn.disabled = false;
     if (stopBtn) stopBtn.disabled = false;
     if (downloadBtn) downloadBtn.disabled = false;
+  }
+
+  // === Read-Along: word-by-word highlighting (toggle-gated, hidden by default) ===
+  // The highlight box NEVER opens on its own — only when the user clicks the
+  // "Read-Along" toggle. Toggle off hides the box and stops highlighting;
+  // normal playback/download is untouched.
+  const readAlongBtn = document.getElementById('readalong-btn');
+  const readAlongBtnLabel = document.getElementById('readalong-btn-label');
+  const readAlongBox = document.getElementById('readalong-box');
+  const readAlongWords = document.getElementById('readalong-words');
+
+  let currentWordTimings = null; // [{s,e,w}] in ms for the current audio, or null
+  let readAlongOn = false;
+  let readAlongRafId = null;
+  let readAlongActiveIdx = -1;
+  let readAlongSpans = [];
+
+  function resetReadAlong() {
+    // Called on every new generation: highlighting must NEVER auto-start.
+    readAlongOn = false;
+    currentWordTimings = null;
+    readAlongActiveIdx = -1;
+    readAlongSpans = [];
+    stopReadAlongLoop();
+    if (readAlongBox) readAlongBox.classList.add('hidden');
+    if (readAlongWords) readAlongWords.innerHTML = '';
+    setReadAlongToggleUI(false);
+    if (readAlongBtn) readAlongBtn.classList.add('hidden'); // shown only when timings arrive
+  }
+
+  function setReadAlongToggleUI(on) {
+    if (readAlongBtnLabel) readAlongBtnLabel.textContent = on ? 'Read-Along: ON' : 'Read-Along: OFF';
+    if (readAlongBtn) {
+      readAlongBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      readAlongBtn.classList.toggle('is-on', !!on);
+    }
+  }
+
+  // Called when fresh timings arrive for the current audio (instant or polled path).
+  // Shows the toggle button but keeps the box hidden until the user opts in.
+  function setReadAlongData(timings) {
+    if (Array.isArray(timings) && timings.length > 0 && readAlongBtn) {
+      currentWordTimings = timings;
+      readAlongBtn.classList.remove('hidden');
+    } else {
+      currentWordTimings = null;
+      if (readAlongBtn) readAlongBtn.classList.add('hidden');
+    }
+  }
+
+  function buildReadAlongSpans() {
+    if (!readAlongWords || !currentWordTimings) return;
+    const frag = document.createDocumentFragment();
+    readAlongSpans = [];
+    currentWordTimings.forEach((t, i) => {
+      const span = document.createElement('span');
+      span.className = 'rw';
+      span.textContent = t.w;
+      span.dataset.idx = i;
+      frag.appendChild(span);
+      frag.appendChild(document.createTextNode(' '));
+      readAlongSpans.push(span);
+    });
+    readAlongWords.innerHTML = '';
+    readAlongWords.appendChild(frag);
+  }
+
+  function findActiveWordIdx(tMs) {
+    // Binary search: largest i with timings[i].s <= tMs; gap between words → -1
+    const T = currentWordTimings;
+    let lo = 0, hi = T.length - 1, ans = -1;
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1;
+      if (T[mid].s <= tMs) { ans = mid; lo = mid + 1; } else { hi = mid - 1; }
+    }
+    if (ans === -1) return -1;
+    return tMs < T[ans].e ? ans : -1;
+  }
+
+  function paintReadAlongWord(idx) {
+    if (idx === readAlongActiveIdx) return;
+    if (readAlongActiveIdx >= 0 && readAlongSpans[readAlongActiveIdx]) {
+      readAlongSpans[readAlongActiveIdx].classList.remove('active');
+    }
+    readAlongActiveIdx = idx;
+    if (idx >= 0 && readAlongSpans[idx]) {
+      readAlongSpans[idx].classList.add('active');
+      // Auto-scroll: keeps the spoken word visible (no-op when already in view)
+      try { readAlongSpans[idx].scrollIntoView({ block: 'nearest', inline: 'nearest' }); } catch (e) {}
+    }
+  }
+
+  function clearReadAlongHighlight() {
+    paintReadAlongWord(-1);
+  }
+
+  function readAlongTick() {
+    if (!readAlongOn) return;
+    if (audioPlayer && currentWordTimings && currentWordTimings.length) {
+      if (audioPlayer.paused && audioPlayer.currentTime === 0) {
+        clearReadAlongHighlight(); // stop pressed → clear highlight
+      } else if (!audioPlayer.paused && !audioPlayer.ended) {
+        paintReadAlongWord(findActiveWordIdx(audioPlayer.currentTime * 1000));
+      }
+      // paused mid-way or ended: freeze the last highlight — no change
+    }
+    readAlongRafId = requestAnimationFrame(readAlongTick);
+  }
+
+  function stopReadAlongLoop() {
+    if (readAlongRafId) { cancelAnimationFrame(readAlongRafId); readAlongRafId = null; }
+  }
+
+  function setReadAlong(on) {
+    if (on && !currentWordTimings) return; // no timings → stay off
+    readAlongOn = on;
+    setReadAlongToggleUI(on);
+    if (on) {
+      if (!readAlongSpans.length) buildReadAlongSpans();
+      if (readAlongBox) {
+        readAlongBox.classList.remove('hidden');
+        readAlongBox.scrollTop = 0;
+      }
+      readAlongActiveIdx = -1;
+      stopReadAlongLoop();
+      readAlongRafId = requestAnimationFrame(readAlongTick);
+      // Start playback so highlighting is live the moment the box opens
+      if (audioPlayer && audioPlayer.src && (audioPlayer.paused || audioPlayer.ended)) {
+        if (audioPlayer.ended) audioPlayer.currentTime = 0;
+        try {
+          const p = audioPlayer.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        } catch (e) {}
+      }
+      trackGA4Event('readalong_toggle', { state: 'on' });
+    } else {
+      stopReadAlongLoop();
+      clearReadAlongHighlight();
+      if (readAlongBox) readAlongBox.classList.add('hidden');
+      trackGA4Event('readalong_toggle', { state: 'off' });
+    }
+  }
+
+  if (readAlongBtn) {
+    readAlongBtn.addEventListener('click', () => setReadAlong(!readAlongOn));
+  }
+
+  if (audioPlayer) {
+    // Seek support: force re-evaluation on the next animation frame
+    audioPlayer.addEventListener('seeked', () => { readAlongActiveIdx = -1; });
   }
 
   // Audio Controls & Visualizer State Machine (Idle = Off, Play = Animate, Pause = Freeze, Stop/End = Off)

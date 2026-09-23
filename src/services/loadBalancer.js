@@ -60,6 +60,10 @@ class LoadBalancer {
             const result = Buffer.from(audioBuffer);
             result.providerUsed = provider.constructor.name;
             result.providerDisplayName = provider.name;
+            // Read-Along: Buffer.from() drops custom props — carry word timings through
+            if (audioBuffer.wordTimings && audioBuffer.wordTimings.length > 0) {
+              result.wordTimings = audioBuffer.wordTimings;
+            }
             console.log('[DIAG loadBalancer] Returning buffer with providerUsed:', provider.constructor.name);
             return result;
           }

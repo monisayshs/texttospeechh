@@ -63,3 +63,17 @@ If this document conflicts with the implementation, **the source code is authori
 - **Fix** (`src/services/fileParser.js`, no new dependencies): new secondary engine `extractPdfTextSmart()` — resolves each page's font resources, parses ToUnicode CMaps (`bfchar`/`bfrange`, 1-/2-byte codes), decodes `Tj`/`TJ`/`'`/`"` operators per active font (`Tf`); handles Identity-H subset fonts (Chrome Skia/PDF), hex strings, TJ kerning, inline-image skipping. Legacy raw scan kept as tertiary last resort.
 - **Verified**: in real workerd runtime, user's PDF extracts 6,557 clean chars (100% word recall vs pdf-parse v2 reference); simple WinAnsi PDFs fine; garbage input still → clean error.
 - **Deployed**: commit `f157e88` pushed to `main` via GitHub API; Cloudflare Pages auto-deploy triggered. User to re-upload the PDF on the live site to confirm.
+
+## 6. Read-Along Word-by-Word Highlighting — 2026-09-23 (v1.7.0, user-approved, tested, unpushed)
+- **Feature**: opt-in word-by-word text highlighting synced to the spoken audio, per user's exact UX requirement — a **"Read-Along: OFF"** toggle near the player; highlight box hidden by default; highlighting starts ONLY on user click; toggle OFF hides the box and stops the loop; normal listen/download flow untouched.
+- **Implementation**:
+  - `src/services/wordTimingService.js` (new): parses Edge `Path:audio.metadata` WordBoundary frames → compact `{s,e,w}` timings in integer ms; MP3 frame-header walk for true chunk durations; merges multi-chunk timings with cumulative offsets; fail-closed (null/empty when unavailable).
+  - `src/providers/edge/edgeProvider.js`: `wordBoundaryEnabled` on all 3 paths (CF raw socket, Node ws, msedge-tts); attaches `wordTimings` to audio buffers.
+  - `src/services/loadBalancer.js`, `src/services/queueService.js`: preserve/capture/merge timings per chunk; persist in KV/disk; expose `wordTimings` + `readAlongAvailable` in job status.
+  - `src/api/generateHandler.js`: returns both fields in instant and poll responses.
+  - `public/index.html` / `app.js` / `style.css`: hidden toggle + highlight box; toggle-gated controller (binary search + rAF, safe text spans, auto-scroll, pause/resume/seek/stop/end/regeneration, mobile, dark mode); no-timing/failover → button stays hidden.
+- **Verified**:
+  - Real end-to-end synthesis through the production Cloudflare-socket code path (live Bing, 3 chunks): 240/240 words timed, monotonic, last word end 82,531ms ≤ measured 83,400ms, English + Hindi, handler returns 200 with timings.
+  - Module runs correctly in real workerd (`wrangler dev`); all changed files pass `node --check`; frontend binary-search logic unit-tested; fixed a real bug found during testing (MP3 duration walk was capped at 200,000 byte-position → under-measured chunk durations and broke merge offsets; now frame-count capped).
+  - Known environment limits: `wrangler pages dev` full run blocked by missing CLOUDFLARE_API_TOKEN (remote AI binding) — unrelated to this feature; live UX click-through still to be confirmed after deploy.
+- **Pending**: commit v1.7.0 + push via GitHub Git Data API (plain `git push` has no auth), then verify production deploy and live read-along behavior. SEO fold-ins (highlighting H2s) scheduled as follow-up AFTER live verification.

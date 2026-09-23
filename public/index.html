@@ -358,6 +358,9 @@
         <button class="secondary-btn download-btn" id="download-btn" disabled>
           <span class="btn-icon">⬇</span> Download MP3
         </button>
+        <button class="secondary-btn readalong-toggle hidden" id="readalong-btn" aria-pressed="false" title="Highlight each word as it is spoken">
+          <span class="btn-icon">📖</span> <span id="readalong-btn-label">Read-Along: OFF</span>
+        </button>
       </div>
 
       <!-- Soundwave Visualizer & Audio Element -->
@@ -375,6 +378,11 @@
           <div class="bar"></div>
         </div>
         <audio id="audio-player" hidden></audio>
+      </div>
+
+      <!-- Read-Along: word-by-word highlighting box (hidden by default; opens via the Read-Along toggle) -->
+      <div class="readalong-box hidden" id="readalong-box" aria-label="Read-along highlighted text">
+        <div class="readalong-words" id="readalong-words"></div>
       </div>
 
     </main>

@@ -60,6 +60,7 @@ Synthesizes text into an MP3 audio buffer using the LoadBalancer multi-provider 
       "message": "Long text queued for synthesis. Poll /api/status for progress."
     }
     ```
+- **Read-Along timings**: when word timings are available, both the instant and async responses also include `wordTimings` (array of `{s, e, w}` — word start/end in ms and word text) and `readAlongAvailable: true`. The frontend shows its opt-in "Read-Along" highlight toggle only when these are present; highlighting never starts automatically.
 - **Error Responses**:
   - `400 Bad Request`: `{ "error": "Text prompt is empty or exceeds 10,000 word limit." }`
   - `429 Too Many Requests`: `{ "error": "Rate limit exceeded. Please wait 60 seconds." }`
@@ -97,6 +98,9 @@ Polls processing state for long-text synthesis jobs managed by `queueService.js`
       "audioUrl": "/api/status?jobId=job_1723049100_a8f9&download=true"
     }
     ```
+  - When word timings are available (Edge provider with `wordBoundaryEnabled`), the completed status also includes:
+    - `wordTimings`: array of `{s, e, w}` objects — word start/end in integer milliseconds and the spoken word text (merged across chunks).
+    - `readAlongAvailable`: `true` when `wordTimings` is non-empty (drives the opt-in Read-Along highlight toggle in the frontend).
 - **Response (Audio Stream Request - with `download=true`)**:
   - **Status**: `200 OK`
   - **Content-Type**: `audio/mpeg`

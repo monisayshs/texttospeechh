@@ -1,5 +1,6 @@
 const BaseProvider = require('../baseProvider');
 const crypto = require('crypto');
+const wordTimingService = require('../../services/wordTimingService');
 
 function xmlEscape(str) {
   if (!str) return '';
@@ -189,6 +190,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       let readBuf = Buffer.alloc(0);
       let isHandshakeDone = false;
       const audioChunks = [];
+      const wordTimings = []; // Read-Along: per-word {s,e,w} timings (ms), null when unavailable
       let tFirstByte = 0;
 
       const readTimeout = setTimeout(() => {
@@ -215,7 +217,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
                 `X-Timestamp:${timestamp}\r\n` +
                 "Content-Type:application/json; charset=utf-8\r\n" +
                 "Path:speech.config\r\n\r\n" +
-                '{\n    "context": {\n        "synthesis": {\n            "audio": {\n                "metadataoptions": {\n                    "sentenceBoundaryEnabled": "false",\n                    "wordBoundaryEnabled": "false"\n                },\n                "outputFormat": "audio-24khz-96kbitrate-mono-mp3"\n            }\n        }\n    }\n}';
+                '{\n    "context": {\n        "synthesis": {\n            "audio": {\n                "metadataoptions": {\n                    "sentenceBoundaryEnabled": "false",\n                    "wordBoundaryEnabled": "true"\n                },\n                "outputFormat": "audio-24khz-96kbitrate-mono-mp3"\n            }\n        }\n    }\n}';
 
               const ssmlMsg = `X-RequestId:${connectionId}\r\nX-Timestamp:${timestamp}\r\nContent-Type:application/ssml+xml\r\nPath:ssml\r\n\r\n${ssml}`;
 
@@ -283,8 +285,21 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
                 synthesisMs: tFinalByte - (tFirstByte || tConnDone),
                 totalSocketMs: tFinalByte - tConnStart
               };
-              console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes. Socket timings:`, JSON.stringify(finalAudio.timings));
+              // Read-Along: attach collected word timings (null when unavailable)
+              if (wordTimings.length > 0) finalAudio.wordTimings = wordTimings;
+              console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes. Socket timings:`, JSON.stringify(finalAudio.timings), '| wordTimings:', wordTimings.length);
               return finalAudio;
+            }
+
+            if (opcode === 0x1) {
+              // Text frame — never audio. Check for word-boundary metadata (Path:audio.metadata).
+              if (strHead.includes('Path:audio.metadata')) {
+                try {
+                  const bounds = wordTimingService.extractFromFrameText(payload.toString('utf8'));
+                  for (const b of bounds) wordTimings.push(b);
+                } catch (e) { /* metadata is optional; never break audio */ }
+              }
+              continue;
             }
 
             if (payload.length >= 2) {
@@ -307,7 +322,8 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       clearTimeout(readTimeout);
       const finalAudio = Buffer.concat(audioChunks);
       if (finalAudio.length > 0) {
-        console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes for voice '${voiceName}'.`);
+        if (wordTimings.length > 0) finalAudio.wordTimings = wordTimings;
+        console.log(`[EdgeProvider] Cloudflare Socket Synthesis SUCCESS! Generated ${finalAudio.length} audio bytes for voice '${voiceName}'. wordTimings: ${wordTimings.length}`);
         return finalAudio;
       }
       diagErrors.push('Cloudflare Sockets returned 0 audio bytes');
@@ -338,6 +354,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
     }, 10000);
 
     const audioChunks = [];
+    const wordTimings = []; // Read-Along: per-word {s,e,w} timings (ms), null when unavailable
 
     const sendConfigAndSsml = () => {
       const timestamp = new Date().toISOString();
@@ -345,7 +362,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
         `X-Timestamp:${timestamp}\r\n` +
         "Content-Type:application/json; charset=utf-8\r\n" +
         "Path:speech.config\r\n\r\n" +
-        '{"context":{"system":{"name":"SpeechSDK","version":"1.30.0","build":"JavaScript","lang":"en-US"},"synthesis":{"audio":{"metadataoptions":{"sentenceBoundaryEnabled":"false","wordBoundaryEnabled":"false"},"outputFormat":"audio-24khz-96kbitrate-mono-mp3"}}}}'
+        '{"context":{"system":{"name":"SpeechSDK","version":"1.30.0","build":"JavaScript","lang":"en-US"},"synthesis":{"audio":{"metadataoptions":{"sentenceBoundaryEnabled":"false","wordBoundaryEnabled":"true"},"outputFormat":"audio-24khz-96kbitrate-mono-mp3"}}}}'
       );
       const ssmlMsg = `X-RequestId:${connectionId}\r\nX-Timestamp:${timestamp}\r\nContent-Type:application/ssml+xml\r\nPath:ssml\r\n\r\n${ssml}`;
 
@@ -361,7 +378,20 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
         clearTimeout(timeoutTimer);
         try { ws.close(); } catch (e) {}
         if (audioChunks.length === 0) return reject(new Error('MS Edge TTS returned empty audio'));
-        return resolve(Buffer.concat(audioChunks));
+        const out = Buffer.concat(audioChunks);
+        // Read-Along: attach collected word timings (null when unavailable)
+        if (wordTimings.length > 0) out.wordTimings = wordTimings;
+        console.log(`[EdgeProvider] Node ws Synthesis SUCCESS! ${out.length} audio bytes, wordTimings: ${wordTimings.length}`);
+        return resolve(out);
+      }
+
+      if (str.includes('Path:audio.metadata')) {
+        // Text frame carrying word-boundary metadata — parse, never treat as audio
+        try {
+          const bounds = wordTimingService.extractFromFrameText(str);
+          for (const b of bounds) wordTimings.push(b);
+        } catch (e) { /* metadata is optional; never break audio */ }
+        return;
       }
 
       if (buf.length >= 2) {
@@ -461,7 +491,7 @@ class EdgeProvider extends BaseProvider {
       try {
         console.log('[DIAG edgeProvider] Attempt 1: msedge-tts with voice:', voiceName, '| rate:', rateStr, '| pitch:', pitchStr, '| style:', styleName);
         const tts = new MsEdgeTTS({ enableLogger: true });
-        const setMetaResult = await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+        const setMetaResult = await tts.setMetadata(voiceName, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });
         console.log('[DIAG edgeProvider] msedge-tts setMetadata resolved. _voice:', tts._voice, '| _outputFormat:', tts._outputFormat, '| voiceLocale:', tts._metadataOptions.voiceLocale);
         const { audioStream, metadataStream } = await tts.toStream(cleanTextForSynthesis(text), {
           rate: rateStr,
@@ -471,14 +501,43 @@ class EdgeProvider extends BaseProvider {
 
         console.log('[DIAG edgeProvider] msedge-tts toStream returned. audioStream type:', typeof audioStream, '| has on:', typeof audioStream.on, '| metadataStream:', !!metadataStream);
         const chunks = [];
+        // Read-Along: collect word-boundary metadata (best-effort; never breaks audio)
+        const metaParts = [];
+        let metaDone = false;
+        if (metadataStream && typeof metadataStream.on === 'function') {
+          metadataStream.on('data', (c) => { try { metaParts.push(c.toString('utf8')); } catch (e) {} });
+          metadataStream.on('end', () => { metaDone = true; });
+          metadataStream.on('close', () => { metaDone = true; });
+          metadataStream.on('error', () => { metaDone = true; });
+        } else {
+          metaDone = true;
+        }
         await new Promise((resolve, reject) => {
           audioStream.on('data', (c) => { console.log('[DIAG edgeProvider] msedge-tts audioStream data chunk:', c.length, 'bytes'); chunks.push(c); });
           audioStream.on('end', resolve);
           audioStream.on('error', reject);
         });
         if (chunks.length > 0) {
-          console.log('[DIAG edgeProvider] msedge-tts SUCCESS! chunks:', chunks.length, '| total bytes:', Buffer.concat(chunks).length);
-          return Buffer.concat(chunks);
+          const audioBuf = Buffer.concat(chunks);
+          // Allow trailing metadata frames a brief window to flush, then parse what we have
+          try {
+            if (!metaDone) {
+              await new Promise((r) => {
+                const t = setTimeout(() => r(), 800);
+                if (metadataStream && typeof metadataStream.once === 'function') {
+                  metadataStream.once('end', () => { clearTimeout(t); r(); });
+                  metadataStream.once('close', () => { clearTimeout(t); r(); });
+                }
+              });
+            }
+            const wt = wordTimingService.parseWordBoundaryBodies(metaParts);
+            if (wt.length > 0) audioBuf.wordTimings = wt;
+            console.log('[DIAG edgeProvider] msedge-tts SUCCESS! chunks:', chunks.length, '| total bytes:', audioBuf.length, '| wordTimings:', wt.length);
+          } catch (e) {
+            console.log('[DIAG edgeProvider] msedge-tts SUCCESS! chunks:', chunks.length, '| total bytes:', audioBuf.length, '| wordTimings: n/a');
+          }
+          try { tts.close(); } catch (e) {}
+          return audioBuf;
         }
         console.warn('[DIAG edgeProvider] msedge-tts returned 0 chunks');
        } catch (e) {

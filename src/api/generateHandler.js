@@ -95,6 +95,9 @@ module.exports = async (req, res) => {
       statusUrl: `/api/status?jobId=${jobInfo.jobId}`,
       downloadUrl: `/api/status?jobId=${jobInfo.jobId}&download=true`,
       providerUsed: providerUsed,
+      // Read-Along: compact word timings [{s,e,w}] in ms; null when provider gave none
+      wordTimings: jobInfo.wordTimings || null,
+      readAlongAvailable: !!(jobInfo.wordTimings && jobInfo.wordTimings.length > 0),
       diagnostic: {
         requestedVoice: options.voice,
         requestedRate: options.rate,

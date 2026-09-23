@@ -26,6 +26,15 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.7.0] - 2026-09-23
+
+### Added
+- **Read-Along word-by-word highlighting (opt-in)** (`src/services/wordTimingService.js`, Edge provider, queue, API, frontend):
+  - Edge `wordBoundaryEnabled` turned on across all three synthesis paths (Cloudflare raw socket, Node `ws`, local `msedge-tts`); `Path:audio.metadata` frames parsed into compact `{s,e,w}` word timings (ms); fail-closed so synthesis never breaks when metadata is unavailable.
+  - Per-chunk timings merged with measured MP3 frame-walk durations; merged `wordTimings` + `readAlongAvailable` persisted in KV/disk metadata and returned by `/api/generate` (instant and poll paths).
+  - Frontend: hidden **"Read-Along: OFF"** toggle appears near the player only when timings exist; the highlight box opens and live highlighting starts **only on user click** — never automatically after generation. Toggle OFF hides the box and stops the loop. Handles pause/resume/seek/stop/end/regeneration, auto-scroll, mobile, dark mode, and no-timing/failover providers (button stays hidden, normal playback untouched).
+  - Verified end-to-end through the real production code path (live Bing synthesis, 3 chunks, 240/240 words, monotonic, final word inside measured audio duration) and in a real workerd runtime.
+
 ## [1.6.2] - 2026-09-23
 
 ### Fixed
