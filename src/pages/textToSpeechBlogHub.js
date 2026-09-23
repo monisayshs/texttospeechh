@@ -3003,7 +3003,8 @@ const BLOG_ARTICLES_MAP = {
           <li><a href="#pdf-audio-free-tools-that-convert-pdf-to-audio" style="color:inherit;">2. Free Tools That Convert PDF to Audio</a></li>
           <li><a href="#pdf-audio-comparison-table" style="color:inherit;">3. Comparison Table</a></li>
           <li><a href="#pdf-audio-tips-for-better-pdf-to-audio-results" style="color:inherit;">4. Tips for Better PDF-to-Audio Results</a></li>
-          <li><a href="#faq-pdf-audio" style="color:inherit;">5. Frequently Asked Questions</a></li>
+          <li><a href="#pdf-audio-read-along-highlighting" style="color:inherit;">5. Read Along While You Listen: PDF Readers With Word Highlighting</a></li>
+          <li><a href="#faq-pdf-audio" style="color:inherit;">6. Frequently Asked Questions</a></li>
         </ol>
       </nav>
 
@@ -3131,8 +3132,23 @@ const BLOG_ARTICLES_MAP = {
       </div>
       </section>
 
+      <section id="pdf-audio-read-along-highlighting" style="margin-bottom: 40px;">
+        <h2>5. Read Along While You Listen: PDF Readers With Word Highlighting</h2>
+      <p style="line-height: 1.8;">
+        Converting a PDF to audio solves the listening part &mdash; but many readers also want to <em>follow along</em> visually, with each word lighting up as it's spoken. This read-along style highlighting is a genuine accessibility win: dyslexic readers, students working through dense textbooks, and language learners all retain more when eyes and ears track together.
+      </p>
+      <p style="line-height: 1.8;">
+        Free tools that combine PDF reading with live word highlighting:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>NaturalReader (free tier)</strong> &mdash; opens PDFs directly and highlights text as it reads aloud.</li>
+        <li><strong>Microsoft Edge Read Aloud</strong> &mdash; open the PDF in Edge and read aloud with on-page highlighting, no install needed.</li>
+        <li><strong>texttospeechh &mdash; Read-Along mode</strong> &mdash; extract your PDF's text, then hit the "Read-Along" toggle next to the player to watch each word highlight in sync. Off by default, so plain listening and MP3 downloads work exactly as before.</li>
+      </ul>
+      </section>
+
       <section id="faq-pdf-audio" style="margin-bottom:40px;">
-        <h2>5. Frequently Asked Questions</h2>
+        <h2>6. Frequently Asked Questions</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
@@ -3767,9 +3783,10 @@ const BLOG_ARTICLES_MAP = {
           <li><a href="#speechify-alt-mp3-export-tools-when-you-want-to-keep-t" style="color:inherit;">3. MP3-Export Tools: When You Want to Keep the Audio</a></li>
           <li><a href="#speechify-alt-the-buy-once-option" style="color:inherit;">4. The Buy-Once Option</a></li>
           <li><a href="#speechify-alt-comparison-table" style="color:inherit;">5. Comparison Table</a></li>
-          <li><a href="#speechify-alt-read-aloud-vs-voiceover-don-t-mix-them-u" style="color:inherit;">6. Read-Aloud vs. Voiceover: Don&#x27;t Mix Them Up</a></li>
-          <li><a href="#speechify-alt-which-speechify-alternative-should-you-p" style="color:inherit;">7. Which Speechify Alternative Should You Pick?</a></li>
-          <li><a href="#faq-speechify-alt" style="color:inherit;">8. Frequently Asked Questions</a></li>
+          <li><a href="#speechify-alt-word-by-word-highlighting" style="color:inherit;">6. Speechify Alternatives With Word-by-Word Highlighting</a></li>
+          <li><a href="#speechify-alt-read-aloud-vs-voiceover-don-t-mix-them-u" style="color:inherit;">7. Read-Aloud vs. Voiceover: Don&#x27;t Mix Them Up</a></li>
+          <li><a href="#speechify-alt-which-speechify-alternative-should-you-p" style="color:inherit;">8. Which Speechify Alternative Should You Pick?</a></li>
+          <li><a href="#faq-speechify-alt" style="color:inherit;">9. Frequently Asked Questions</a></li>
         </ol>
       </nav>
 
@@ -3873,6 +3890,7 @@ const BLOG_ARTICLES_MAP = {
               <th style="padding:10px; color:var(--color-primary-on);">MP3 download</th>
               <th style="padding:10px; color:var(--color-primary-on);">PDF support</th>
               <th style="padding:10px; color:var(--color-primary-on);">Offline</th>
+              <th style="padding:10px; color:var(--color-primary-on);">Word highlighting</th>
             </tr>
           </thead>
           <tbody>
@@ -3883,7 +3901,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">No</td>
               <td style="padding:10px;">Yes</td>
               <td style="padding:10px;">App-dependent</td>
-            </tr>
+            
+              <td style="padding:10px;">Yes (basic voices)</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">NaturalReader (free)</td>
               <td style="padding:10px;">Free</td>
@@ -3891,7 +3910,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">Limited</td>
               <td style="padding:10px;">Yes (20+ file types)</td>
               <td style="padding:10px;">Via apps</td>
-            </tr>
+            
+              <td style="padding:10px;">Yes</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">TTSReader</td>
               <td style="padding:10px;">Widely described as free</td>
@@ -3899,7 +3919,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">Limited</td>
               <td style="padding:10px;">Basic</td>
               <td style="padding:10px;">No</td>
-            </tr>
+            
+              <td style="padding:10px;">No</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">Edge Read Aloud</td>
               <td style="padding:10px;">Free (in browser)</td>
@@ -3907,7 +3928,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">No</td>
               <td style="padding:10px;">Web pages</td>
               <td style="padding:10px;">No</td>
-            </tr>
+            
+              <td style="padding:10px;">Yes (web pages)</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">texttospeechh</td>
               <td style="padding:10px;">Free</td>
@@ -3915,7 +3937,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">Yes</td>
               <td style="padding:10px;">Text-based</td>
               <td style="padding:10px;">After download</td>
-            </tr>
+            
+              <td style="padding:10px;">Yes (Read-Along toggle)</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">TTSMaker (free)</td>
               <td style="padding:10px;">Free (20k chars/week)</td>
@@ -3923,7 +3946,8 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">Yes</td>
               <td style="padding:10px;">Text-based</td>
               <td style="padding:10px;">After download</td>
-            </tr>
+            
+              <td style="padding:10px;">No (export only)</td></tr>
             <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;">Voice Dream Reader</td>
               <td style="padding:10px;">~$14.99 one-time</td>
@@ -3931,21 +3955,41 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">Varies</td>
               <td style="padding:10px;">Yes</td>
               <td style="padding:10px;">Yes</td>
-            </tr>
+            
+              <td style="padding:10px;">Yes</td></tr>
           </tbody>
         </table>
       </div>
       </section>
 
+      <section id="speechify-alt-word-by-word-highlighting" style="margin-bottom: 40px;">
+        <h2>6. Speechify Alternatives With Word-by-Word Highlighting</h2>
+      <p style="line-height: 1.8;">
+        If you're hunting for a <strong>free alternative to Speechify</strong> specifically because of its famous word-by-word highlighting &mdash; the karaoke-style read-along that lights up each word as it's spoken &mdash; you're not alone. For dyslexic readers, students, and language learners, highlighting is often the deciding feature: it keeps your eyes on the right line and makes long documents far less tiring to follow.
+      </p>
+      <p style="line-height: 1.8;">
+        Here's the honest picture: Speechify's highlighting is excellent, but it's tied to a paid plan for the best voices. Among free tools, true live highlighting (not just audio) is rare. The free options below handle it differently:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>NaturalReader (free tier)</strong> &mdash; highlights text as it reads in the web app and Chrome extension; the closest free match to Speechify's read-along experience.</li>
+        <li><strong>Microsoft Edge Read Aloud</strong> &mdash; highlights the current sentence/word on web pages, built into the browser, no account needed.</li>
+        <li><strong>iOS Speak Screen</strong> &mdash; highlights words system-wide on iPhone/iPad (Settings &rarr; Accessibility &rarr; Spoken Content).</li>
+        <li><strong>texttospeechh &mdash; Read-Along mode</strong> &mdash; paste your text, hit the "Read-Along" toggle next to the player, and each word lights up in sync with the audio. Highlighting stays off by default so normal listening and MP3 downloads are never interrupted.</li>
+      </ul>
+      <p style="line-height: 1.8;">
+        <em>Tip: if you mainly want <strong>speechify free</strong>-style listening without paying, pair any of these read-aloud tools with an MP3-export tool (like the ones in section 3) for offline listening.</em>
+      </p>
+      </section>
+
       <section id="speechify-alt-read-aloud-vs-voiceover-don-t-mix-them-u" style="margin-bottom: 40px;">
-        <h2>6. Read-Aloud vs. Voiceover: Don't Mix Them Up</h2>
+        <h2>7. Read-Aloud vs. Voiceover: Don't Mix Them Up</h2>
       <p style="line-height: 1.8;">
         A quick but important distinction: tools in this list read text aloud for <em>listening</em> — studying, accessibility, catching up on articles, commutes. That's a different job from AI voice generators made for content creators, which produce polished voiceovers for videos and podcasts. If you're making content rather than consuming it, see our roundup of <a href="https://www.texttospeechh.com/text-to-speech/blog/best-ai-voice-generators-free" style="color:var(--color-primary);">AI voice generators made for content creators</a> instead.
       </p>
       </section>
 
       <section id="speechify-alt-which-speechify-alternative-should-you-p" style="margin-bottom: 40px;">
-        <h2>7. Which Speechify Alternative Should You Pick?</h2>
+        <h2>8. Which Speechify Alternative Should You Pick?</h2>
       <ul style="line-height: 1.8; padding-left: 20px;">
         <li><strong>Best overall free read-aloud:</strong> NaturalReader — unlimited basic voices, premium voice minutes daily, strong PDF support.</li>
         <li><strong>Easiest, no signup:</strong> TTSReader — open the site and listen.</li>
@@ -3964,7 +4008,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="faq-speechify-alt" style="margin-bottom:40px;">
-        <h2>8. Frequently Asked Questions</h2>
+        <h2>9. Frequently Asked Questions</h2>
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
