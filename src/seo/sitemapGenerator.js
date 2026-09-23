@@ -12,9 +12,12 @@ const { PROGRAMMATIC_ROUTER } = require('./programmaticPages');
 const { EDUCATIONAL_GUIDES } = require('../content/educationalGuides');
 
 const BASE_URL = 'https://www.texttospeechh.com';
-// Dynamic lastmod: the sitemap is generated per-request, so always emit
-// today's date — crawlers get a fresh freshness signal on every deploy/crawl.
-const LAST_MOD = new Date().toISOString().split('T')[0];
+// Dynamic lastmod: computed per-request (not at module load) so every crawl
+// gets today's date. Module-level `new Date()` can freeze at the worker's
+// cold-start time (or epoch) in serverless runtimes, so never cache it here.
+function getLastMod() {
+  return new Date().toISOString().split('T')[0];
+}
 
 const PUBLIC_ROUTES = [
   { url: '/', priority: '1.0', changefreq: 'daily' },
@@ -77,7 +80,7 @@ function getGuideRoutes() {
 function toUrlBlocks(routes) {
   return routes.map(r => `  <url>
     <loc>${BASE_URL}${r.url}</loc>
-    <lastmod>${LAST_MOD}</lastmod>
+    <lastmod>${getLastMod()}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
   </url>`).join('\n');
@@ -132,15 +135,15 @@ function getSitemapIndexXml() {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${BASE_URL}/sitemap-main.xml</loc>
-    <lastmod>${LAST_MOD}</lastmod>
+    <lastmod>${getLastMod()}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${BASE_URL}/sitemap-programmatic.xml</loc>
-    <lastmod>${LAST_MOD}</lastmod>
+    <lastmod>${getLastMod()}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${BASE_URL}/sitemap-legal.xml</loc>
-    <lastmod>${LAST_MOD}</lastmod>
+    <lastmod>${getLastMod()}</lastmod>
   </sitemap>
 </sitemapindex>`;
 }
@@ -152,7 +155,7 @@ module.exports = {
   getSitemapProgrammaticXml,
   getSitemapLegalXml,
   BASE_URL,
-  LAST_MOD,
+  getLastMod,
   PUBLIC_ROUTES,
   LEGAL_ROUTES,
   STATIC_SPOKE_ROUTES,

@@ -33,6 +33,7 @@ If this document conflicts with the implementation, **the source code is authori
   - Added `FAQPage` JSON-LD structured data to `/faq` (built from all 30 visible Q&As) and to the homepage FAQ accordion section (4 Q&As) — unlocks FAQ rich-result eligibility.
   - Added missing `<meta name="robots" content="index, follow">` to `/faq` for consistency.
   - Sitemap `lastmod` is now dynamic: `src/seo/sitemapGenerator.js` emits today's date on every generation instead of the hardcoded `2026-08-05`.
+  - Sitemap `lastmod` is computed per-request (not at module load): serverless cold-starts were freezing the date at epoch (`1970-01-01`) on Cloudflare — fixed 2026-09-23.
   - Shortened SERP titles to ≤60 characters: homepage (66→56), all 5 blog articles, and `/language/hindi` (120→79 bytes).
 
 ## [1.4.0] - 2026-09-22
