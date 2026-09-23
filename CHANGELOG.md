@@ -26,6 +26,17 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.5.0] - 2026-09-23
+
+### Added
+- **First SEO Content Cluster — 2 New Blog Articles + 1 Refresh**:
+  - NEW `text-to-speech/blog/best-free-text-to-speech-tools` — "Best Free Text to Speech Tools Tested in 2026" (utility angle: PDF reading, no-signup tools, multilingual voices; targets `free text to speech` 10K–100K).
+  - NEW `text-to-speech/blog/best-ai-voice-generators-free` — "Best AI Voice Generators With Free Plans (2026)" (creator angle: faceless YouTube, voice realism scores, cloning safety, monetization rules; targets `ai voice generator` 10K–100K).
+  - REFRESHED `text-to-speech/blog/elevenlabs-alternatives` — "7 Best Free ElevenLabs Alternatives (2026)": re-ranked by free-tier generosity, creator filter, new Privacy Score section, "Why People Leave ElevenLabs", 10 FAQs (was 20 thin Q&As).
+  - All articles: keyword in first 100 words, H2/H3 structure, comparison tables, descriptive-anchor internal linking (no generic anchors), 1–2 external authority links, FAQ sections, `datePublished`/`dateModified` = 2026-09-23, ≤60-char SERP titles.
+  - New slugs auto-included in `sitemap-main.xml` via `getDynamicBlogRoutes()`.
+- **Fact-Checked Free-Tier Claims**: TTSMaker 20,000 chars/week (official pricing page), NaturalReader free = unlimited basic voices + 20 min/day premium voices, ElevenLabs 10,000 chars/month — verified 2026-09-23; remaining figures hedged as "at time of writing".
+
 ## [1.4.1] - 2026-09-23
 
 ### Fixed

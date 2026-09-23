@@ -24,7 +24,7 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. System & Deployment Status
 
-- **Project Version**: `1.4.0`
+- **Project Version**: `1.5.0`
 - **Production URL**: `https://www.texttospeechh.com`
 - **Hosting Platform**: Cloudflare Pages + Workers (Project `texttospeechh`) with Vercel Rollback Target
 - **Primary Domain**: `www.texttospeechh.com`
