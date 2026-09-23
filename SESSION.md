@@ -26,8 +26,10 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
-- **Session Timestamp**: 2026-09-23
-- **Current Objective**: COMPLETED — Week 1 quick-win content cluster published: 4 new blog articles (`free-text-to-speech-pdf-to-audio`, `text-to-speech-for-podcast-free`, `murf-ai-free-alternative`, `speechify-alternative-free`) + 2 H2 fold-ins into existing articles (no-character-limit → `best-free-text-to-speech-tools`; no-signup → `best-ai-voice-generators-free`), all from user-approved drafts, fact-checked 2026-09-23, per SEO playbook. v1.6.0 committed and pushed; pending production deploy + Search Console indexing requests for the 4 new URLs.
+- **Session Timestamp**: 2026-09-23 (night)
+- **Current Objective**: COMPLETED — H2 fold-ins for Read-Along highlighting deployed to 2 articles: `speechify-alternative-free` gained "6. Speechify Alternatives With Word-by-Word Highlighting" (verified keyword variants woven in: free alternative to speechify / speechify free / speechify free alternative) + "Word highlighting" comparison-table column; `free-text-to-speech-pdf-to-audio` gained "5. Read Along While You Listen: PDF Readers With Word Highlighting". TOC entries added, subsequent sections renumbered. Published on user's explicit "publish kardo". Feature claim honest: Read-Along toggle verified live by user click-test before including the texttospeechh bullet.
+
+
 - **Active Branch**: `main`
 - **Latest Commit**: (pending — v1.5.0 content-cluster commit)
 - **Active AI Model**: Antigravity
