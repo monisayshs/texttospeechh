@@ -26,6 +26,15 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.6.2] - 2026-09-23
+
+### Fixed
+- **PDF text extraction still failing in production for subset-font PDFs** (`src/services/fileParser.js`):
+  - Root cause of the v1.6.1 follow-up: pdf-parse v2 **cannot run in the Cloudflare Workers/Pages runtime at all** — its bundled web build requires DOM APIs (`DOMMatrix is not defined` in workerd), so the primary engine throws on every PDF in production and extraction always fell through to the font-unaware fallback.
+  - Added a dependency-free **ToUnicode-aware extraction engine** (new secondary engine, runs before the legacy raw scan): resolves each page's font resources, parses fonts' ToUnicode CMaps (`bfchar`/`bfrange`, 1- and 2-byte codes), and decodes `Tj`/`TJ`/`'`/`"` text-showing operators per active font (`Tf`). Handles `Identity-H` subset fonts from Chrome "Print → Save as PDF" (Skia/PDF), hex strings, TJ kerning arrays, and inline-image skipping.
+  - Verified in a real workerd runtime (`wrangler dev`): the previously failing `Application_Print_Preview.pdf` now extracts 6,557 clean characters (100% word recall vs pdf-parse v2 reference); simple WinAnsi PDFs and the garbage-input guard behavior unchanged.
+  - No new dependencies (per repo policy).
+
 ## [1.6.1] - 2026-09-23
 
 ### Fixed
