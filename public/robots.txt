@@ -69,5 +69,5 @@ Disallow: /tmp/
 # Production XML Sitemap Reference (canonical www host)
 Sitemap: https://www.texttospeechh.com/sitemap.xml
 
-# AI-friendly site index
-llms.txt: https://www.texttospeechh.com/llms.txt
+# LLM Documentation Index
+# llms.txt: https://www.texttospeechh.com/llms.txt

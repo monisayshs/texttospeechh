@@ -10,13 +10,15 @@ const GA_MEASUREMENT_ID = 'G-VXH6Y61FQ0';
 const CLARITY_PROJECT_ID = 'xt0hsu1r65';
 
 function getDeferredAnalyticsScript() {
-  return `  <!-- Deferred Analytics (GA4 + Clarity) - loaded after idle/load to protect LCP -->
+  return `  <!-- Deferred Analytics (GA4 + Clarity) - loaded on interaction to protect mobile LCP -->
   <script>
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', '${GA_MEASUREMENT_ID}');
     function loadTtsAnalytics() {
+      if (window._analyticsLoaded) return;
+      window._analyticsLoaded = true;
       var gh = document.createElement('script');
       gh.async = true;
       gh.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}';
@@ -26,8 +28,10 @@ function getDeferredAnalyticsScript() {
       ch.src = 'https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}';
       document.head.appendChild(ch);
     }
-    if ('requestIdleCallback' in window) { requestIdleCallback(loadTtsAnalytics, { timeout: 3000 }); }
-    else { window.addEventListener('load', loadTtsAnalytics, { once: true }); }
+    ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
+      window.addEventListener(evt, loadTtsAnalytics, { once: true, passive: true });
+    });
+    setTimeout(loadTtsAnalytics, 7000);
   </script>`;
 }
 

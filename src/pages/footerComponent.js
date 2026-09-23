@@ -101,8 +101,8 @@ function getSaaSFooterHtml() {
     </div>
 
     <!-- Independent Trademark Disclaimer Box -->
-    <div class="footer-disclaimer-box">
-      <p><strong>Trademark Disclaimer:</strong> Comparison pages published on TextToSpeechH AI represent independent software evaluations created for informational purposes. All product names, trademarks, logos, and registered brands are property of their respective owners. Mention of third-party product names does not imply affiliation, endorsement, or sponsorship by their respective holders.</p>
+    <div class="footer-disclaimer-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:16px; margin-bottom:24px;">
+      <p style="font-size:0.8rem; color:var(--color-text-secondary); line-height:1.6; margin:0;"><strong style="color:var(--color-text);">Trademark Disclaimer:</strong> Comparison pages published on TextToSpeechH AI represent independent software evaluations created for informational purposes. All product names, trademarks, logos, and registered brands are property of their respective owners. Mention of third-party product names does not imply affiliation, endorsement, or sponsorship by their respective holders.</p>
     </div>
 
     <!-- Bottom Social & Copyright Bar -->

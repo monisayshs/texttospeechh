@@ -5,23 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Deferred Analytics (GA4 + Clarity) - loaded after idle/load to protect LCP -->
+  <!-- Deferred Analytics (GA4 + Clarity) - loaded on interaction to protect mobile LCP -->
   <script>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-VXH6Y61FQ0');
     function loadTextToSpeechAnalytics() {
-      var dl = window.dataLayer || (window.dataLayer = []);
-      function gtag(){dl.push(arguments);}
+      if (window._analyticsLoaded) return;
+      window._analyticsLoaded = true;
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0';
       document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', 'G-VXH6Y61FQ0');
       var c = document.createElement('script');
       c.async = true;
       c.src = 'https://www.clarity.ms/tag/xt0hsu1r65';
       document.head.appendChild(c);
     }
-    if ('requestIdleCallback' in window) { requestIdleCallback(loadTextToSpeechAnalytics, { timeout: 3000 }); }
-    else { window.addEventListener('load', loadTextToSpeechAnalytics, { once: true }); }
+    ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
+      window.addEventListener(evt, loadTextToSpeechAnalytics, { once: true, passive: true });
+    });
+    setTimeout(loadTextToSpeechAnalytics, 7000);
   </script>
 
   <!-- SEO Primary Meta Tags -->
