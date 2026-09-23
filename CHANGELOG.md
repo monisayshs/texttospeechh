@@ -26,6 +26,15 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [1.7.1] - 2026-09-23
+
+### Fixed
+- **Homepage SEO fixes from single-page audit** (`public/index.html`):
+  - Meta description rewritten to remove brand-name repetition (was flagged as templated metadata spending SERP characters on the brand): now "Convert text into realistic AI voices instantly. Free online text-to-speech with natural voices, MP3 downloads & multi-language support. No sign-up needed." (155 chars, in the 150–160 target range). Applied to `description`, `og:description`, and `twitter:description`.
+  - Vague H2 headings made descriptive: search modal title "Search TextToSpeechH AI" → "Search"; footer brand heading "TextToSpeechH AI" → "TextToSpeechH AI — Free Text to Speech Platform".
+  - Freshness signal: footer copyright bar now shows "Last updated: September 2026".
+  - E-E-A-T trust signal: footer brand column now includes "Built by the TextToSpeechH AI team." linking to `/about`, alongside the existing official contact email.
+
 ## [1.7.0] - 2026-09-23
 
 ### Added

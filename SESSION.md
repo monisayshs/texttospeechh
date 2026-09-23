@@ -79,3 +79,13 @@ If this document conflicts with the implementation, **the source code is authori
   - Module runs correctly in real workerd (`wrangler dev`); all changed files pass `node --check`; frontend binary-search logic unit-tested; fixed a real bug found during testing (MP3 duration walk was capped at 200,000 byte-position → under-measured chunk durations and broke merge offsets; now frame-count capped).
   - Known environment limits: `wrangler pages dev` full run blocked by missing CLOUDFLARE_API_TOKEN (remote AI binding) — unrelated to this feature; live UX click-through still to be confirmed after deploy.
 - **Pending**: commit v1.7.0 + push via GitHub Git Data API (plain `git push` has no auth), then verify production deploy and live read-along behavior. SEO fold-ins (highlighting H2s) scheduled as follow-up AFTER live verification.
+
+## 7. Homepage SEO Fixes — 2026-09-23 (v1.7.1)
+- **Trigger**: user asked for a homepage SEO audit; ran the newly installed claude-seo skill (`seo-page`) against https://www.texttospeechh.com/ → overall 90/100 (On-Page 88, Content 80, Technical 95, Schema 90, Images 95). User then said "fix all issues found".
+- **Fixes** (`public/index.html` only, minimal diff):
+  1. Meta description rewritten (brand-name repetition removed, CTA added): 155 chars, in 150–160 range; applied to `description`, `og:description`, `twitter:description`. Verified with skill's `metadata_template.py` → templated=false, no flags.
+  2. Vague H2s: search modal "Search TextToSpeechH AI" → "Search"; footer brand H2 → "TextToSpeechH AI — Free Text to Speech Platform".
+  3. Freshness: footer copyright bar now shows "Last updated: September 2026".
+  4. E-E-A-T: footer brand column now shows "Built by the TextToSpeechH AI team." linking to `/about`.
+- **Verified**: tag balance OK (div 95/95, h2 3/3), new H2 list confirmed, description length 155.
+- **Pending**: commit v1.7.1 + push via GitHub Git Data API, then verify live HTML reflects the changes.
