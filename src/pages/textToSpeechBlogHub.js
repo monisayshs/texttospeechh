@@ -20,6 +20,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/text-to-speech-for-podcast-free", title: "Text to Speech for Podcast: Free Tools Guide", category: "Guides", readingTime: "9 min read", cta: "Read Podcast TTS Guide →" },
   { slug: "text-to-speech/blog/murf-ai-free-alternative", title: "Murf AI Free Alternative: 7 Best Picks (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Murf Alternatives Guide →" },
   { slug: "text-to-speech/blog/speechify-alternative-free", title: "Speechify Alternative: Free Read-Aloud Tools", category: "Comparisons", readingTime: "8 min read", cta: "Read Speechify Alternatives Guide →" },
+  { slug: "text-to-speech/blog/gemini-flash-tts-guide", title: "Gemini Flash TTS: What It Is, Pricing & Free Alternatives", category: "AI Technology", readingTime: "10 min read", cta: "Read Gemini Flash TTS Guide →" },
 ];
 
 function getBlogHubPage() {
@@ -4057,6 +4058,269 @@ const BLOG_ARTICLES_MAP = {
             <h3 style="color:var(--color-primary); margin-top:0;">Q7: Which free Speechify alternative lets me export MP3 files?</h3>
             <p style="line-height:1.7; margin:0 0 8px;">
               Speechify's free plan does not include MP3 downloads. For free MP3 export, texttospeechh offers free MP3 downloads with no credit card required (per the site FAQ), and TTSMaker's free tier includes around 20,000 characters per week with unlimited downloads.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      </div>
+    `
+  },
+  // ARTICLE 12: Gemini Flash TTS Guide
+  "text-to-speech/blog/gemini-flash-tts-guide": {
+    title: `Gemini Flash TTS: What It Is, Pricing & Free Alternatives | ${BRAND_NAME}`,
+    h1: `Gemini Flash TTS: What It Is, Pricing & Free Alternatives`,
+    metaDesc: `Google launched Gemini Flash TTS on Sept 23, 2026 with prompt-designed voices. Honest guide: what it is, real pricing (doubles Jan 2027), benchmark reality, and free alternatives.`,
+    category: "AI Technology",
+    readingTime: "10 min read",
+    datePublished: "September 25, 2026",
+    dateModified: "September 25, 2026",
+    content: `
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: What Is Gemini Flash TTS?</h2>
+        <p style="margin: 0 0 10px; line-height: 1.7;">
+          <strong>Gemini Flash TTS</strong> is Google's new text-to-speech model, launched September 23, 2026 alongside a cheaper sibling, Flash-Lite TTS. The headline feature: instead of picking a voice from a preset list, you <strong>describe the voice you want in plain text</strong> — its accent, role, age, vibe — and the model builds it from that description alone. It also clones a voice from a 30-second clip, supports 100+ languages, and lets you write stage directions like [laughs] directly into your script.
+        </p>
+        <p style="margin: 0; line-height: 1.7;">
+          The catches: it is API-only, it is not free, and current prices <strong>double on January 1, 2027</strong>. This guide covers what it does, what it costs, how it honestly benchmarks, and the free alternatives worth trying first.
+        </p>
+      </div>
+
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
+        <ol style="margin:0; padding-left:20px; line-height:1.8;">
+          <li><a href="#gflash-what-is" style="color:inherit;">1. What Is Gemini Flash TTS, Exactly?</a></li>
+          <li><a href="#gflash-features" style="color:inherit;">2. The Features Worth Caring About</a></li>
+          <li><a href="#gflash-pricing" style="color:inherit;">3. Pricing — Including the Part Google Hopes You Skim</a></li>
+          <li><a href="#gflash-benchmarks" style="color:inherit;">4. How Good Is It Really? Honest Benchmarks</a></li>
+          <li><a href="#gflash-vs" style="color:inherit;">5. Gemini Flash TTS vs ElevenLabs vs Free Tools</a></li>
+          <li><a href="#gflash-free-alternatives" style="color:inherit;">6. Try the Free Route Before You Open Your Wallet</a></li>
+          <li><a href="#gflash-who-for" style="color:inherit;">7. Who Is Gemini Flash TTS Actually For?</a></li>
+          <li><a href="#faq-gflash" style="color:inherit;">8. Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <section id="gflash-what-is" style="margin-bottom: 40px;">
+        <h2>1. What Is Gemini Flash TTS, Exactly?</h2>
+      <p style="line-height: 1.8;">
+        It is Google DeepMind's newest text-to-speech model, part of the Gemini Audio family. Right now you access it through the Gemini API and Google AI Studio. Everyday users will bump into it inside Gemini Notebook and Google Vids; enterprise API access via Gemini Enterprise is still rolling out.
+      </p>
+      <p style="line-height: 1.8;">
+        Google launched <strong>two models, not one</strong> — aimed at very different people:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Flash TTS</strong> — the creative one. Character voices, directed performances, gaming dialogue, audiobooks, podcasts. This is where the "describe your voice in text" magic lives.</li>
+        <li><strong>Flash-Lite TTS</strong> — the workhorse. High-volume dubbing, voice agents, narrated content at scale. Same fine control over tone and pacing, less creative flair, lower price.</li>
+      </ul>
+      <p style="line-height: 1.8;">
+        Both accept text input up to 8K tokens and return up to 64K tokens of audio per request — long-form content is fine.
+      </p>
+      </section>
+
+      <section id="gflash-features" style="margin-bottom: 40px;">
+        <h2>2. The Features Worth Caring About</h2>
+      <h3>Design a voice with words</h3>
+      <p style="line-height: 1.8;">
+        This is the thing that made us pay attention. No voice library, no casting call — you write a description and get a voice. Google reports 2,000+ production voices in the library on top of whatever you design yourself. For anyone who has ever thought "I wish there was a voice that sounds like <em>this</em>," it is a big deal.
+      </p>
+      <h3>Voice cloning from a 30-second clip</h3>
+      <p style="line-height: 1.8;">
+        Thirty seconds of audio and you have a working voice profile. But here is what we respect: Google did not leave the door open for misuse. Cloning requires a spoken consent recording from the voice owner that must acoustically match the sample. Saved voices are capped at 200 per project and expire after a year. Every output carries an inaudible SynthID watermark plus C2PA provenance data, so it can always be identified as synthetic. No consent, no clone. Good.
+      </p>
+      <h3>Direct the performance, line by line</h3>
+      <p style="line-height: 1.8;">
+        You write stage directions straight into your script — &lt;laughs&gt;, &lt;sigh&gt;, &lt;gasp&gt; — and the model performs them. It handles two-voice conversations too, so dialogue scenes do not need stitching from separate generations. If you have ever generated TTS audio and thought "it sounds right but it doesn't <em>act</em> right," this is aimed squarely at that frustration.
+      </p>
+      <h3>100+ languages with accent modeling</h3>
+      <p style="line-height: 1.8;">
+        Both models cover 100+ languages and dialects. Google claims top scores on accent modeling — we will come back to that claim in the benchmarks section, because it needs context.
+      </p>
+      </section>
+
+      <section id="gflash-pricing" style="margin-bottom: 40px;">
+        <h2>3. Pricing — Including the Part Google Hopes You Skim</h2>
+      <p style="line-height: 1.8;">
+        Current pricing, valid through December 31, 2026:
+      </p>
+      <div style="overflow-x:auto; margin-top:16px;">
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+          <thead>
+            <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+              <th style="padding:10px; color:var(--color-primary-on);">Model</th>
+              <th style="padding:10px; color:var(--color-primary-on);">Input (text)</th>
+              <th style="padding:10px; color:var(--color-primary-on);">Output (audio)</th>
+              <th style="padding:10px; color:var(--color-primary-on);">Rough cost / hour</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;">Flash TTS</td>
+              <td style="padding:10px;">$0.50 / 1M tokens</td>
+              <td style="padding:10px;">$9 / 1M tokens</td>
+              <td style="padding:10px;">~$0.81/hour</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;">Flash-Lite TTS</td>
+              <td style="padding:10px;">$0.50 / 1M tokens</td>
+              <td style="padding:10px;">$6 / 1M tokens</td>
+              <td style="padding:10px;">~$0.54/hour</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="line-height: 1.8;">
+        Audio is billed at 25 tokens per second, and batch requests cost half. Sounds reasonable — here is the catch: <strong>these prices double on January 1, 2027.</strong> The current rates are introductory. If you are planning a project on this API, do your math against the 2027 prices, not today's. We have seen too many people build on intro pricing and get a nasty surprise.
+      </p>
+      <p style="line-height: 1.8;">
+        There is no free tier for the API itself. You can poke around in the AI Studio playground, but real usage means paying.
+      </p>
+      </section>
+
+      <section id="gflash-benchmarks" style="margin-bottom: 40px;">
+        <h2>4. How Good Is It Really? Honest Benchmarks</h2>
+      <p style="line-height: 1.8;">
+        Google's announcement calls these its "most expressive audio generation models yet" and highlights a first-place finish on Hume AI's Voice Design Benchmark (71.4). Two things you deserve to know:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Google DeepMind signed a licensing deal with Hume AI in January 2026 and hired its founder</strong>, Alan Cowen — who co-authored Google's own announcement. We are not saying the benchmark is rigged. We are saying you should know about the relationship before treating that #1 as gospel.</li>
+        <li><strong>On the independent Artificial Analysis Speech Arena, Flash TTS ranks second</strong> — behind Cartesia Sonic 3.6. Flash-Lite sits sixth. On cloned-voice leaderboards, eighth and eleventh respectively.</li>
+      </ul>
+      <p style="line-height: 1.8;">
+        Our honest take: it is genuinely among the best TTS models you can use today, and voice-design-from-text is a real leap. But "best on every test" it is not. Anyone telling you otherwise is reading the press release, not the leaderboards.
+      </p>
+      </section>
+
+      <section id="gflash-vs" style="margin-bottom: 40px;">
+        <h2>5. Gemini Flash TTS vs ElevenLabs vs Free Tools</h2>
+      <div style="overflow-x:auto; margin-top:16px;">
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+          <thead>
+            <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+              <th style="padding:10px; color:var(--color-primary-on);"></th>
+              <th style="padding:10px; color:var(--color-primary-on);">Gemini Flash TTS</th>
+              <th style="padding:10px; color:var(--color-primary-on);">ElevenLabs</th>
+              <th style="padding:10px; color:var(--color-primary-on);">Our free tool</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Voice design from text prompt</strong></td>
+              <td style="padding:10px;">Yes — the standout feature</td>
+              <td style="padding:10px;">Partial (Voice Design exists, less directorial)</td>
+              <td style="padding:10px;">Preset voices</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Voice cloning</strong></td>
+              <td style="padding:10px;">30-sec clip + strict consent checks</td>
+              <td style="padding:10px;">Instant &amp; Professional tiers</td>
+              <td style="padding:10px;">Not available</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Languages</strong></td>
+              <td style="padding:10px;">100+</td>
+              <td style="padding:10px;">70+</td>
+              <td style="padding:10px;">Multiple</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Cost</strong></td>
+              <td style="padding:10px;">~$0.81/hr until Jan 2027, then ~$1.62</td>
+              <td style="padding:10px;">Varies by plan</td>
+              <td style="padding:10px;">Free</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Watermarking</strong></td>
+              <td style="padding:10px;">SynthID + C2PA built in</td>
+              <td style="padding:10px;">Varies</td>
+              <td style="padding:10px;">None</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Best for</strong></td>
+              <td style="padding:10px;">Developers, studios, voice agents</td>
+              <td style="padding:10px;">Creators chasing maximum realism</td>
+              <td style="padding:10px;">Quick free voiceovers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="line-height: 1.8;">
+        For the full landscape, see our <a href="${DOMAIN}/text-to-speech/blog/best-ai-voice-generators-free" style="color:var(--color-primary);">best free AI voice generators</a> and <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives</a> guides.
+      </p>
+      </section>
+
+      <section id="gflash-free-alternatives" style="margin-bottom: 40px;">
+        <h2>6. Try the Free Route Before You Open Your Wallet</h2>
+      <p style="line-height: 1.8;">
+        Our genuine advice: unless your project specifically needs prompt-designed character voices or line-by-line direction, you do not need an API for a voiceover. You need a voiceover.
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>TextToSpeechH (this site)</strong> — free, in your browser, no signup. Paste your text, pick a voice, hit generate, download. It will not invent a custom character from a paragraph of description like Flash TTS does — but for narration, YouTube videos, and podcasts, it gets the job done at exactly zero cost.</li>
+        <li><strong>TTSMaker</strong> — 20,000 characters a week free, downloads included, commercial use allowed per its site.</li>
+        <li><strong>ElevenLabs free plan</strong> — 10,000 characters a month of genuinely top-tier realism. Perfect for testing whether premium quality matters for your use case before you spend anything.</li>
+      </ul>
+      <p style="line-height: 1.8;">
+        The full breakdown — quotas, download rights, commercial terms: <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a>.
+      </p>
+      <div class="cta-box" style="background: linear-gradient(135deg, var(--color-primary-soft), var(--color-bg-secondary)); border: 2px solid var(--color-primary); border-radius: 12px; padding: 28px; margin: 36px 0; text-align: center;">
+        <h2 style="margin-top: 0; color: var(--color-primary); font-size: 1.35rem;">Make Your First Voiceover Free, Right Now</h2>
+        <p style="line-height: 1.7; margin-bottom: 20px;">Before you wire up an API and start watching token meters, try the simple path: type, pick a voice, download. Free, no signup, no pricing tiers, no January surprises.</p>
+        <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="display: inline-block; background: var(--color-primary); color: #ffffff; padding: 14px 32px; border-radius: 8px; font-weight: 700; text-decoration: none;">Try TextToSpeechH Free →</a>
+      </div>
+      </section>
+
+      <section id="gflash-who-for" style="margin-bottom: 40px;">
+        <h2>7. Who Is Gemini Flash TTS Actually For?</h2>
+      <p style="line-height: 1.8;">
+        Let us cut through the hype:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Game studios and audiobook producers</strong> who need directed, characterful performances and are comfortable working through an API — this was built for you.</li>
+        <li><strong>Developers building voice agents or dubbing pipelines</strong> — Flash-Lite's lane. The per-hour cost is honestly cheap until January 2027.</li>
+        <li><strong>Everyone else making a voiceover for a video, a podcast, or a presentation</strong> — start free. Flash TTS's superpowers only earn their price when your project actually needs them. Most projects do not.</li>
+      </ul>
+      </section>
+
+      <section id="faq-gflash" style="margin-bottom: 40px;">
+        <h2>8. Frequently Asked Questions</h2>
+        <div style="display:grid; gap:14px;">
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: Is Gemini Flash TTS free?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              No. It is API-only, roughly $0.81/hour of audio for Flash and $0.54/hour for Flash-Lite through the end of 2026 — then those prices double. You can experiment in the Google AI Studio playground without paying.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: Can Gemini Flash TTS clone my voice?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              Yes, from about 30 seconds of audio. But Google makes you record a spoken consent statement, verifies it matches your sample, watermarks everything with SynthID, and deletes saved voices after a year. It is cloning with guardrails.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: How many languages does Gemini Flash TTS support?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              100+ languages and dialects. Google claims leading accent-modeling scores — but remember the Hume AI relationship context from the benchmarks section above.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: Is Gemini Flash TTS better than ElevenLabs?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              On some benchmarks, yes; on the independent Artificial Analysis Speech Arena, it ranks second behind Cartesia Sonic 3.6. For raw realism, ElevenLabs remains a top pick — see our <a href="${DOMAIN}/text-to-speech/blog/best-ai-voice-generators-free" style="color:var(--color-primary);">voice generator comparison</a>.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Do the prices really double in January 2027?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              That is what the current terms state. Plan accordingly — we would rather you hear it from us now than from your invoice later.
+            </p>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              Gemini Flash TTS is a genuine step forward for voice design — describing a voice in words and getting it back is the kind of feature that changes workflows. But it is a developer API with metered pricing that doubles in January 2027, not a casual tool. If you need a voiceover today, the free route gets you there faster: generate it in your browser with texttospeechh, download the MP3, and move on with your project.
             </p>
           </div>
 
