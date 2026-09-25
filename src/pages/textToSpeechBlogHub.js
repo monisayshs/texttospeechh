@@ -4132,7 +4132,7 @@ const BLOG_ARTICLES_MAP = {
       </p>
       <h3>Direct the performance, line by line</h3>
       <p style="line-height: 1.8;">
-        You write stage directions straight into your script — &lt;laughs&gt;, &lt;sigh&gt;, &lt;gasp&gt; — and the model performs them. It handles two-voice conversations too, so dialogue scenes do not need stitching from separate generations. If you have ever generated TTS audio and thought "it sounds right but it doesn't <em>act</em> right," this is aimed squarely at that frustration.
+        You write stage directions straight into your script — [laughs], [sighs], [cheerfully] — and the model performs them. It handles two-voice conversations too, so dialogue scenes do not need stitching from separate generations. If you have ever generated TTS audio and thought "it sounds right but it doesn't <em>act</em> right," this is aimed squarely at that frustration.
       </p>
       <h3>100+ languages with accent modeling</h3>
       <p style="line-height: 1.8;">
@@ -4202,7 +4202,7 @@ const BLOG_ARTICLES_MAP = {
               <th style="padding:10px; color:var(--color-primary-on);"></th>
               <th style="padding:10px; color:var(--color-primary-on);">Gemini Flash TTS</th>
               <th style="padding:10px; color:var(--color-primary-on);">ElevenLabs</th>
-              <th style="padding:10px; color:var(--color-primary-on);">Our free tool</th>
+              <th style="padding:10px; color:var(--color-primary-on);">texttospeechh (Free)</th>
             </tr>
           </thead>
           <tbody>
@@ -4237,6 +4237,12 @@ const BLOG_ARTICLES_MAP = {
               <td style="padding:10px;">None</td>
             </tr>
             <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:10px;"><strong>Read-along word highlighting</strong></td>
+              <td style="padding:10px;">No</td>
+              <td style="padding:10px;">No</td>
+              <td style="padding:10px;">Yes — free</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
               <td style="padding:10px;"><strong>Best for</strong></td>
               <td style="padding:10px;">Developers, studios, voice agents</td>
               <td style="padding:10px;">Creators chasing maximum realism</td>
@@ -4256,7 +4262,7 @@ const BLOG_ARTICLES_MAP = {
         Our genuine advice: unless your project specifically needs prompt-designed character voices or line-by-line direction, you do not need an API for a voiceover. You need a voiceover.
       </p>
       <ul style="line-height: 1.8; padding-left: 20px;">
-        <li><strong>TextToSpeechH (this site)</strong> — free, in your browser, no signup. Paste your text, pick a voice, hit generate, download. It will not invent a custom character from a paragraph of description like Flash TTS does — but for narration, YouTube videos, and podcasts, it gets the job done at exactly zero cost.</li>
+        <li><strong>TextToSpeechH (this site)</strong> — free, in your browser, no signup. Paste your text, pick a voice, hit generate, download. It will not invent a custom character from a paragraph of description like Flash TTS does — but for narration, YouTube videos, and podcasts, it gets the job done at exactly zero cost. Plus you get <strong>free Read-Along word highlighting</strong> — words light up as they are spoken — which basic tools like TTSMaker simply do not offer.</li>
         <li><strong>TTSMaker</strong> — 20,000 characters a week free, downloads included, commercial use allowed per its site.</li>
         <li><strong>ElevenLabs free plan</strong> — 10,000 characters a month of genuinely top-tier realism. Perfect for testing whether premium quality matters for your use case before you spend anything.</li>
       </ul>
