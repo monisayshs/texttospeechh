@@ -26,7 +26,15 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
-## [1.7.1] - 2026-09-23
+## [1.7.2] - 2026-09-26
+
+### Fixed
+- **KV write quota exhaustion (free tier 1,000 writes/day)** (`src/services/queueService.js`):
+  - Root cause: `processJob` saved job metadata to KV (`TTS_JOBS_KV.put`) on **every** processed chunk. A 10-chunk TTS job burned ~13 writes (create + processing + 10 chunk saves + completion); ~80 jobs/day hit 90% of the daily free-tier quota (Cloudflare alert 2026-09-26), after which new TTS jobs would fail with KV 429s until the next-day reset.
+  - Intermediate progress saves are now **throttled to every 5th chunk** (last chunk skipped — the completion save always persists final state). Same 10-chunk job now costs ~4 writes instead of ~13 (~70% fewer writes).
+  - No UX change: progress bar keeps updating (saves still land roughly every ~12s), audio generation path untouched, create/processing/completion/failure saves unchanged.
+
+---
 
 ### Fixed
 - **Homepage SEO fixes from single-page audit** (`public/index.html`):
