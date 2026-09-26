@@ -406,8 +406,13 @@ class QueueService {
         const remainingChunks = job.totalChunks - (i + 1);
         job.etaSeconds = Math.max(0, Math.ceil(remainingChunks * avgChunkSec));
 
-        // Save intermediate progress for multi-chunk jobs (skip for 1-chunk jobs as final save is done next)
-        if (job.totalChunks > 1) {
+        // Throttled intermediate progress save: every 5th chunk only.
+        // KV writes are capped at 1,000/day on the free tier and per-chunk saves
+        // were exhausting the quota (90% alert on 2026-09-26). The completion save
+        // below always persists the final state, so the last chunk is skipped here.
+        // Progress bar keeps working: saves still land ~every 12s (5 chunks x ~2.5s).
+        const isLastChunk = (i + 1) === job.totalChunks;
+        if (job.totalChunks > 1 && !isLastChunk && ((i + 1) % 5 === 0)) {
           await this.saveJob(job, env);
         }
       }
