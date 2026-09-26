@@ -20,6 +20,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/text-to-speech-for-podcast-free", title: "Text to Speech for Podcast: Free Tools Guide", category: "Guides", readingTime: "9 min read", cta: "Read Podcast TTS Guide →" },
   { slug: "text-to-speech/blog/murf-ai-free-alternative", title: "Murf AI Free Alternative: 7 Best Picks (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Murf Alternatives Guide →" },
   { slug: "text-to-speech/blog/speechify-alternative-free", title: "Speechify Alternative: Free Read-Aloud Tools", category: "Comparisons", readingTime: "8 min read", cta: "Read Speechify Alternatives Guide →" },
+  { slug: "text-to-speech/blog/gemini-flash-tts-guide", title: "Gemini Flash TTS: What It Is, Pricing & Free Alternatives", category: "AI Technology", readingTime: "10 min read", cta: "Read Gemini Flash TTS Guide →" },
   { slug: "text-to-speech/blog/ai-audiobook-generator-guide", title: "How to Create Audiobooks from Text (Free AI Guide)", category: "Guides", readingTime: "8 min read", cta: "Read AI Audiobook Guide \u2192" },
 ];
 
