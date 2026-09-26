@@ -20,7 +20,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/text-to-speech-for-podcast-free", title: "Text to Speech for Podcast: Free Tools Guide", category: "Guides", readingTime: "9 min read", cta: "Read Podcast TTS Guide →" },
   { slug: "text-to-speech/blog/murf-ai-free-alternative", title: "Murf AI Free Alternative: 7 Best Picks (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Murf Alternatives Guide →" },
   { slug: "text-to-speech/blog/speechify-alternative-free", title: "Speechify Alternative: Free Read-Aloud Tools", category: "Comparisons", readingTime: "8 min read", cta: "Read Speechify Alternatives Guide →" },
-  { slug: "text-to-speech/blog/gemini-flash-tts-guide", title: "Gemini Flash TTS: What It Is, Pricing & Free Alternatives", category: "AI Technology", readingTime: "10 min read", cta: "Read Gemini Flash TTS Guide →" },
+  { slug: "text-to-speech/blog/ai-audiobook-generator-guide", title: "How to Create Audiobooks from Text (Free AI Guide)", category: "Guides", readingTime: "8 min read", cta: "Read AI Audiobook Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -4332,6 +4332,201 @@ const BLOG_ARTICLES_MAP = {
 
         </div>
       </section>
+
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      </div>
+    `
+  },
+  "text-to-speech/blog/ai-audiobook-generator-guide": {
+    title: `How to Create Audiobooks from Text (Free AI Guide) | ${BRAND_NAME}`,
+    h1: `How to Create Audiobooks from Text (Free AI Guide)`,
+    metaDesc: `Turn any book into an audiobook for free. Honest 2026 guide: the chapter-by-chapter workflow, free tools that survive a full book, and the traps to avoid.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    datePublished: "September 26, 2026",
+    dateModified: "September 26, 2026",
+    content: `
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: How Do You Create an Audiobook from Text for Free?</h2>
+        <p style="margin: 0 0 10px; line-height: 1.7;">
+          Split your book into chapters, <strong>lock one narrator voice</strong> for the entire project, generate chapter by chapter with a free TTS tool (up to 10,000 words per request on texttospeechh), proof-listen with read-along word highlighting, then name your MP3 files clearly. The whole process costs nothing — you pay in time, not money.
+        </p>
+        <p style="margin: 0; line-height: 1.7;">
+          The part most guides skip: audiobooks are a different craft from voiceovers. Ten hours of audio punishes every shortcut. This guide covers the workflow that actually survives a full book.
+        </p>
+      </div>
+
+      <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
+        <ol style="margin:0; padding-left:20px; line-height:1.8;">
+          <li><a href="#abook-different" style="color:inherit;">1. What Makes an Audiobook Different from a Voiceover</a></li>
+          <li><a href="#abook-workflow" style="color:inherit;">2. The Free Audiobook Workflow, Step by Step</a></li>
+          <li><a href="#abook-tools" style="color:inherit;">3. Free Tools That Actually Work for Audiobooks</a></li>
+          <li><a href="#abook-traps" style="color:inherit;">4. The Traps: Rights, Quality, and Expectations</a></li>
+          <li><a href="#faq-abook" style="color:inherit;">5. Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <section id="abook-different" style="margin-bottom: 40px;">
+        <h2>1. What Makes an Audiobook Different from a Voiceover</h2>
+      <p style="line-height: 1.8;">
+        A YouTube voiceover is three minutes long. An audiobook is ten hours. That difference breaks most free TTS tools in ways you will not notice until chapter 4:
+      </p>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Consistency.</strong> Your narrator cannot suddenly change voice, speed, or accent in chapter 6. You lock one voice for the entire book and you do not touch the settings again. Write them down — future you will thank present you when chapter 14 needs regenerating.</li>
+        <li><strong>Long-form chunking.</strong> No browser tool swallows 100,000 words in one request. You generate chapter by chapter (or in 5,000–10,000-word chunks) and keep going until it is done.</li>
+        <li><strong>Pacing and pauses.</strong> Listeners need breathing room between paragraphs and chapters. Plain TTS runs everything together; audiobooks need deliberate silence. A beat of quiet is doing real work.</li>
+        <li><strong>Chapter structure.</strong> The finished file should be navigable — either one long MP3 with chapter markers or separate files per chapter, clearly named.</li>
+      </ul>
+      <p style="line-height: 1.8;">
+        Any guide that skips these steps is not an audiobook guide. It is a voiceover guide in a trench coat.
+      </p>
+      </section>
+
+      <section id="abook-workflow" style="margin-bottom: 40px;">
+        <h2>2. The Free Audiobook Workflow, Step by Step</h2>
+      <h3>Step 1: Prepare your text before you touch any tool</h3>
+      <p style="line-height: 1.8;">
+        Split your manuscript into chapters first. Strip out footers, page numbers, and formatting junk. If you are converting a PDF or DOCX, clean the extracted text — headers repeated on every page <em>will</em> get read aloud if you do not remove them, and discovering that at minute 40 of proof-listening is a special kind of pain.
+      </p>
+      <p style="line-height: 1.8;">
+        Working with a public domain book? Project Gutenberg gives you clean text files, which makes this whole step nearly painless.
+      </p>
+      <h3>Step 2: Lock one voice for the entire book</h3>
+      <p style="line-height: 1.8;">
+        This is the single most important decision you will make, and it is tempting to rush it. Do not. Generate a few minutes with two or three candidate voices, then actually listen — not 30 seconds, a real 10 minutes. A voice that charms you in a sample can grate on you by hour three. Once you choose, that is your narrator: same voice, same speed, same settings, all the way through.
+      </p>
+      <h3>Step 3: Generate chapter by chapter</h3>
+      <p style="line-height: 1.8;">
+        Paste one chapter at a time. Keep each generation under the tool&apos;s word limit — <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> handles up to 10,000 words per request, which covers most chapters comfortably. Generate, listen to the first 30 seconds to catch anything weird, then download the MP3 and move on.
+      </p>
+      <p style="line-height: 1.8;">
+        Where the narration should feel alive, add simple stage-direction tags: <code>[cheerfully]</code> for an excited passage, <code>[sighs]</code> for a weary one. Small cues, big difference — it is what separates &ldquo;text being read&rdquo; from &ldquo;story being told.&rdquo;
+      </p>
+      <h3>Step 4: Proof-listen with read-along highlighting</h3>
+      <p style="line-height: 1.8;">
+        This is the step where most DIY audiobooks quietly die, because most people skip it. Do not. Listen to each chapter with the text in front of you — TextToSpeechH&apos;s <strong>read-along word highlighting</strong> follows the narration word by word, so mispronunciations and awkward pauses jump out at you instead of hiding in the audio. Fix the text, regenerate the chapter, move on. A five-minute fix now beats a one-star review later, every time.
+      </p>
+      <h3>Step 5: Assemble and name your files</h3>
+      <p style="line-height: 1.8;">
+        Name every file clearly — <code>my-book-chapter-01.mp3</code> — so they play in order on any device, no surprises. Optional but nice: add basic ID3 metadata (title, author, track number) with a free tag editor so it shows up properly in audiobook players instead of &ldquo;Unknown Artist, Track 1.&rdquo;
+      </p>
+      <p style="line-height: 1.8;">
+        That is the whole process. Simple on paper — but each step exists because skipping it produces a noticeably worse book.
+      </p>
+      </section>
+
+      <section id="abook-tools" style="margin-bottom: 40px;">
+        <h2>3. Free Tools That Actually Work for Audiobooks</h2>
+      <p style="line-height: 1.8;">
+        Not every free TTS tool survives a full book. Here is the honest rundown:
+      </p>
+      <div style="overflow-x:auto; margin-bottom: 20px;">
+          <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+            <thead>
+              <tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+                <th style="padding:10px; color:var(--color-primary-on);">Tool</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Cost</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Word limit</th>
+                <th style="padding:10px; color:var(--color-primary-on);">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600; color:var(--color-primary);">texttospeechh (Free)</td>
+                <td style="padding:10px;">Free, no signup</td>
+                <td style="padding:10px;">10,000 words/request</td>
+                <td style="padding:10px;">Full-book narration with read-along proofreading</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600;">ElevenLabs free tier</td>
+                <td style="padding:10px;">Free (limited)</td>
+                <td style="padding:10px;">~10,000 chars/month</td>
+                <td style="padding:10px;">Testing premium voice quality on short books</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600;">TTSMaker</td>
+                <td style="padding:10px;">Free (limited)</td>
+                <td style="padding:10px;">20,000 chars/week</td>
+                <td style="padding:10px;">Short stories and samples</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:10px; font-weight:600;">Microsoft Edge Read Aloud</td>
+                <td style="padding:10px;">Free</td>
+                <td style="padding:10px;">No strict limit</td>
+                <td style="padding:10px;">Quick listening, no downloads</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <p style="line-height: 1.8;">
+        The honest truth? Premium tools sound slightly better — but their free tiers run out mid-book. A free tool that lets you <em>finish the whole project</em> beats a premium tool that lets you finish chapter one. Every time.
+      </p>
+      <p style="line-height: 1.8;">
+        Want the wider landscape of free options? See our roundups of the <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> and the <a href="${DOMAIN}/text-to-speech/blog/best-ai-voice-generators-free" style="color:var(--color-primary);">best AI voice generators</a>.
+      </p>
+      </section>
+
+      <section id="abook-traps" style="margin-bottom: 40px;">
+        <h2>4. The Traps: Rights, Quality, and Expectations</h2>
+      <ul style="line-height: 1.8; padding-left: 20px;">
+        <li><strong>Commercial rights.</strong> Your own writing and public domain works? Go wild. Narrating a copyrighted book you do not own the rights to — even with AI doing the talking — is still infringement. Do not.</li>
+        <li><strong>The 10-hour test.</strong> Listen to at least 10 minutes of your chosen voice before committing to a whole book. This is the cheapest insurance in the entire process.</li>
+        <li><strong>Robotic dialogue.</strong> AI narrators handle plain prose better than back-and-forth dialogue. If your book is dialogue-heavy, lean on stage directions and expect some regenerating. It is normal.</li>
+        <li><strong>AI disclosure.</strong> Audible and other platforms increasingly require you to disclose AI narration. Check the platform&apos;s current policy before you publish — the rules are genuinely still evolving in 2026, so verify, do not assume.</li>
+      </ul>
+      </section>
+
+      <section id="faq-abook" style="margin-bottom: 40px;">
+        <h2>5. Frequently Asked Questions</h2>
+        <div style="display:grid; gap:14px;">
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q1: Can I really make an audiobook for free?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              Yes — for the narration itself. Tools like <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> generate and export MP3s at no cost. You pay in time instead of money, mostly in text prep and proof-listening. Fair trade.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q2: How long does it take to convert a book to audio?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              A 100,000-word novel produces roughly 11 hours of audio. Generation is the fast part; the real time goes into chapter-by-chapter generation, proof-listening, and fixing mispronunciations. Budget a few evenings and you will be fine.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q3: Do I need a paid tool for good quality?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              No. Modern free neural voices are genuinely good enough for listening. Paid tools edge ahead on emotional acting and voice variety — worth it for a commercial release, optional for personal projects.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q4: What is the best format for my finished audiobook?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              MP3 is the universal choice — plays everywhere, no drama. M4B adds chapter markers and bookmarks for Apple devices if you want to go the extra step.
+            </p>
+          </div>
+
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Can I sell an AI-narrated audiobook?</h3>
+            <p style="line-height:1.7; margin:0 0 8px;">
+              You can sell audiobooks of works you own the rights to — your own books, public domain works. Major platforms require AI-narration disclosure, and buyers expect higher quality from paid books, so proof-listen ruthlessly. Your reputation is worth more than the hours you would save skipping it.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); border-radius:12px; padding:24px; margin-bottom:28px; text-align:center;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Narrate your first chapter today</h3>
+        <p style="line-height:1.7; margin:0 0 16px;">
+          Skip the $3,000 narrator. Paste your first chapter, pick a voice, listen along with read-along highlighting, and download the MP3. Free, no signup — and if the voice holds up through chapter one, congratulations: you have found your narrator for the whole book.
+        </p>
+        <a href="${DOMAIN}/" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;">Try TextToSpeechH Free</a>
+      </div>
 
       <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
         <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
