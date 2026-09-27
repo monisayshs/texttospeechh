@@ -89,3 +89,11 @@ If this document conflicts with the implementation, **the source code is authori
   4. E-E-A-T: footer brand column now shows "Built by the TextToSpeechH AI team." linking to `/about`.
 - **Verified**: tag balance OK (div 95/95, h2 3/3), new H2 list confirmed, description length 155.
 - **Pending**: commit v1.7.1 + push via GitHub Git Data API, then verify live HTML reflects the changes.
+
+## 7. SEO Quick Fixes — 2026-09-27 (user-requested, pushed)
+
+- **Audiobook CTR fix** (`ai-audiobook-generator-guide`): title tag → "AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)" (leads with the exact #2-ranking query), H1 aligned, meta description rewritten as click-focused pitch. dateModified → September 27, 2026.
+- **Internal links → best-ai-voices** (pos ~10.4): contextual links added from best-ai-voice-generators-free, elevenlabs-alternatives, ai-audiobook-generator-guide. dateModified bumped on the two comparison articles.
+- **Verified, no fix needed**: homepage has only ONE "Frequently Asked Questions" H2 (live + source) — earlier duplicate finding was a false positive. Blog hub `/text-to-speech/blog` is fully server-rendered (13 article cards in initial HTML) — no CSR issue.
+- **Commits**: 6e80345 (content) + d7be11e (changelog). Render-verified locally via renderSeoPage before push.
+- **Pending**: confirm live deploy reflects new title/meta (check in a few minutes).
