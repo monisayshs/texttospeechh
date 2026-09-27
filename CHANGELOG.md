@@ -26,6 +26,18 @@ If this document conflicts with the implementation, **the source code is authori
 
 ---
 
+## [Unreleased]
+
+### Changed
+- **Audiobook article CTR fix** (`src/pages/textToSpeechBlogHub.js`, `ai-audiobook-generator-guide`): title tag rewritten to lead with the exact ranking query — "AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)" (was "How to Create Audiobooks from Text (Free AI Guide)"); H1 aligned to match; meta description rewritten as a click-focused pitch (free, no signup, no studio, 10-hour-book workflow). `dateModified` bumped to September 27, 2026. Article ranks #2 for "ai audiobook generator" with impressions but zero clicks — new title/meta target the CTR gap.
+- **Internal links to best-ai-voices** (`src/pages/textToSpeechBlogHub.js`): added contextual in-content links to `/text-to-speech/blog/best-ai-voices` from three related articles (best-ai-voice-generators-free, elevenlabs-alternatives, ai-audiobook-generator-guide) to push it from ~position 10.4 toward page one. `dateModified` updated on the two comparison articles.
+
+### Verified (no change needed)
+- **Homepage duplicate FAQ H2**: checked live homepage and `public/index.html` — only ONE "Frequently Asked Questions" H2 exists. The earlier report finding was a false positive; nothing to merge.
+- **Blog hub server-side rendering**: checked live `/text-to-speech/blog` — all 13 article cards are present in the server-rendered HTML (no client-side rendering). Google can crawl the article list directly; no fix needed.
+
+---
+
 ## [1.7.2] - 2026-09-26
 
 ### Fixed
