@@ -40,7 +40,8 @@ const AUTO_REDIRECT_MAP = {
   "keyword/free-text-to-speech": "text-to-speech/free-text-to-speech",
   "keyword/online-text-to-speech": "text-to-speech/online-text-to-speech",
   "keyword/text-to-voice": "text-to-speech/text-to-voice",
-  "keyword/voice-generator": "text-to-speech/voice-generator"
+  "keyword/voice-generator": "text-to-speech/voice-generator",
+  "text-to-speech/tts-to-speech": "text-to-speech"
 };
 
 function getRequestPathname(req) {
