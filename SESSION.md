@@ -97,3 +97,8 @@ If this document conflicts with the implementation, **the source code is authori
 - **Verified, no fix needed**: homepage has only ONE "Frequently Asked Questions" H2 (live + source) — earlier duplicate finding was a false positive. Blog hub `/text-to-speech/blog` is fully server-rendered (13 article cards in initial HTML) — no CSR issue.
 - **Commits**: 6e80345 (content) + d7be11e (changelog). Render-verified locally via renderSeoPage before push.
 - **Pending**: confirm live deploy reflects new title/meta (check in a few minutes).
+
+## 8. Published AI Video Dubbing guide — 2026-09-27 (user said "publish kardo")
+- New article `text-to-speech/blog/ai-video-dubbing-guide` added to BLOG_ARTICLES_LIST (14 total) + BLOG_ARTICLES_MAP with full styled HTML (Quick Answer box, TOC, 3 sections, 5-Q FAQ, CTA). Title/meta/H1 set; internal links to text-to-speech-for-youtube, best-ai-voices, best-free-text-to-speech-tools included.
+- Render-verified locally (title, meta, schemas, TOC anchors, hub card) before push.
+- Commit: 050f86c. Pending: live URL verification + sitemap check.
