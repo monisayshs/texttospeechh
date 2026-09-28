@@ -12,7 +12,7 @@ const BRAND_NAME = "TextToSpeechH AI";
 const TEXT_TO_SPEECH_PILLAR_PAGE = {
   title: "Text to Speech: AI Voice Synthesis Guide | TextToSpeechH AI",
   h1: "Text to Speech: The Definitive Guide to AI Voice Generation",
-  metaDesc: "The ultimate guide to Text to Speech (TTS). Learn how neural AI voice synthesis works, compare top TTS engines, generate realistic audio, and download MP3s free.",
+  metaDesc: "The ultimate guide to Text to Speech (TTS). Learn how neural AI voice synthesis works, compare top engines, and generate realistic audio free.",
   category: "Master Pillar Guide",
   readingTime: "25 min read",
   content: `

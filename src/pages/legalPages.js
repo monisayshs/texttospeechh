@@ -13,7 +13,7 @@ const LEGAL_PAGES = {
   about: {
     title: `About Us | ${BRAND_NAME} — Free Neural Text-to-Speech Engine`,
     h1: `About ${BRAND_NAME}`,
-    metaDesc: `Discover ${BRAND_NAME}, the world's leading free neural text-to-speech platform. Learn about our story, multi-provider AI architecture, mission, and single support hub at ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Discover ${BRAND_NAME}, the free neural text-to-speech platform. Our story, AI architecture, mission, and official support hub.`,
     content: `
       <div class="legal-hero-card glass-panel">
         <h2>Our Story & Mission</h2>
@@ -136,9 +136,9 @@ const LEGAL_PAGES = {
   },
 
   privacy: {
-    title: `Privacy Policy | ${BRAND_NAME} Data Protection & GDPR/CCPA Compliance`,
+    title: `Privacy Policy & Data Protection | ${BRAND_NAME}`,
     h1: `Privacy Policy`,
-    metaDesc: `Official Privacy Policy for ${BRAND_NAME}. Learn about our data collection practices, transient memory processing, Google AdSense cookie guidelines, GDPR user rights, and CCPA compliance. Official contact: ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Official Privacy Policy for ${BRAND_NAME}. Data practices, GDPR & CCPA rights, and cookie guidelines. Contact: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
       <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
 
@@ -206,7 +206,7 @@ const LEGAL_PAGES = {
   terms: {
     title: `Terms of Service | ${BRAND_NAME} Usage License & Commercial Rights`,
     h1: `Terms of Service`,
-    metaDesc: `Review the Terms of Service for ${BRAND_NAME}. Learn about commercial usage rights, acceptable audio generation policies, and legal guidelines. Support: ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Terms of Service for ${BRAND_NAME}: commercial usage rights, acceptable use, and legal guidelines. Support: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026</p>
 
@@ -259,7 +259,7 @@ const LEGAL_PAGES = {
   "cookie-policy": {
     title: `Cookie Policy | ${BRAND_NAME} Browser Storage & Preferences`,
     h1: `Cookie Policy`,
-    metaDesc: `Read the official Cookie Policy for ${BRAND_NAME} to learn how local browser storage and advertising cookies are used on our platform. Official contact: ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Cookie Policy for ${BRAND_NAME}: how browser storage and advertising cookies are used. Contact: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
 
@@ -293,7 +293,7 @@ const LEGAL_PAGES = {
   dmca: {
     title: `DMCA Policy | ${BRAND_NAME} Copyright & Takedown Notice`,
     h1: `DMCA Policy`,
-    metaDesc: `Read the official DMCA copyright and takedown policy for ${BRAND_NAME}. Submit copyright infringement notices to our designated agent at ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `DMCA copyright and takedown policy for ${BRAND_NAME}. Submit infringement notices to: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026 | Last Updated: July 26, 2026</p>
 
@@ -330,7 +330,7 @@ const LEGAL_PAGES = {
   accessibility: {
     title: `Accessibility Statement | ${BRAND_NAME} WCAG 2.1 AA Compliance`,
     h1: `Accessibility Statement`,
-    metaDesc: `Read the ${BRAND_NAME} accessibility statement. We are committed to WCAG 2.1 Level AA compliance, screen-reader compatibility, and keyboard navigation support.`,
+    metaDesc: `${BRAND_NAME} accessibility statement: WCAG 2.1 AA compliance, screen-reader support, and keyboard navigation.`,
     content: `
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Last Updated: July 26, 2026</p>
 
