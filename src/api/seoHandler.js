@@ -70,7 +70,7 @@ function renderSeoPage(pageData, pathSlug) {
   const orgSchema = JSON.stringify(schemaGenerator.getOrganizationSchema());
   const webSiteSchema = JSON.stringify(schemaGenerator.getWebSiteSchema());
   const softwareSchema = JSON.stringify(schemaGenerator.getSoftwareApplicationSchema());
-  const faqSchema = JSON.stringify(schemaGenerator.getFAQSchema());
+  const faqSchema = JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs));
   const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema([
     { name: "Home", url: `${DOMAIN}/` },
     { name: "Text to Speech", url: `${DOMAIN}/text-to-speech` },
