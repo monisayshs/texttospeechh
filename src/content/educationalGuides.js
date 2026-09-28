@@ -9,7 +9,7 @@ const BRAND_NAME = "TextToSpeechH AI";
 
 const EDUCATIONAL_GUIDES = {
   "guide/understanding-ai-voice-cloning": {
-    title: `Understanding AI Voice Cloning Technology: Complete Guide | ${BRAND_NAME}`,
+    title: `AI Voice Cloning: Complete Guide | ${BRAND_NAME}`,
     h1: `Understanding AI Voice Cloning Technology`,
     metaDesc: `Learn how AI voice cloning works, neural audio embedding, speaker encoders, and ethical voice synthesis standards in 2026.`,
     content: `
@@ -31,7 +31,7 @@ const EDUCATIONAL_GUIDES = {
     `
   },
   "guide/how-voice-changers-work": {
-    title: `How AI Voice Changers & Pitch Shift Synthesizers Work | ${BRAND_NAME}`,
+    title: `How AI Voice Changers Work | ${BRAND_NAME}`,
     h1: `How AI Voice Changers & Pitch Shift Synthesizers Work`,
     metaDesc: `Explore the technical differences between real-time pitch shifting voice changers and neural text-to-speech generators.`,
     content: `

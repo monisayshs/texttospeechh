@@ -1,6 +1,7 @@
 const faqEngine = require('../content/faqEngine');
 const eeatGuidelines = require('../content/eeatGuidelines');
 const educationalGuides = require('../content/educationalGuides');
+const schemaGenerator = require('../seo/schemaGenerator');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
 const { getAllTrackingSnippetsHtml } = require('../seo/gaSnippet');
 
@@ -129,18 +130,73 @@ function renderGuidePage(guideData, slug) {
   const eeatHeader = eeatGuidelines.getEeatHeaderHtml(guideData.h1);
   const footerHtml = getSaaSFooterHtml();
   const trackingHtml = getAllTrackingSnippetsHtml();
+  const canonicalUrl = `${DOMAIN}/${slug}`;
+
+  // SEO audit 2026-09-28: guide pages previously shipped with zero JSON-LD
+  // and no social/robots meta. Add truthful structured data (no invented
+  // publication dates) plus Open Graph / Twitter Card tags.
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": guideData.title,
+    "description": guideData.metaDesc,
+    "url": canonicalUrl,
+    "author": {
+      "@type": "Organization",
+      "name": "TextToSpeechH AI Editorial Team",
+      "url": DOMAIN
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": BRAND_NAME,
+      "url": DOMAIN,
+      "logo": { "@type": "ImageObject", "url": `${DOMAIN}/logo.svg` }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
+    "image": `${DOMAIN}/og-image.png`
+  };
+  const guideSchemas = [
+    schemaGenerator.getOrganizationSchema(),
+    schemaGenerator.getWebSiteSchema(),
+    articleSchema,
+    schemaGenerator.getBreadcrumbSchema([
+      { name: "Home", url: `${DOMAIN}/` },
+      { name: guideData.h1 || guideData.title, url: canonicalUrl }
+    ])
+  ];
+  const guideSchemasJsonLd = guideSchemas
+    .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join("\n  ");
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
 
 ${trackingHtml}
 
   <title>${guideData.title}</title>
   <meta name="description" content="${guideData.metaDesc}">
-  <link rel="canonical" href="${DOMAIN}/${slug}">
+  <link rel="canonical" href="${canonicalUrl}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="${guideData.title}">
+  <meta property="og:description" content="${guideData.metaDesc}">
+  <meta property="og:url" content="${canonicalUrl}">
+  <meta property="og:site_name" content="${BRAND_NAME}">
+  <meta property="og:image" content="${DOMAIN}/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${guideData.title}">
+  <meta name="twitter:description" content="${guideData.metaDesc}">
+  <meta name="twitter:image" content="${DOMAIN}/og-image.png">
+
+  <!-- Structured Data -->
+  ${guideSchemasJsonLd}
 
   <!-- Favicon & PWA Assets -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
