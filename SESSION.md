@@ -26,8 +26,8 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
-- **Session Timestamp**: 2026-09-23 (night)
-- **Current Objective**: COMPLETED — H2 fold-ins for Read-Along highlighting deployed to 2 articles: `speechify-alternative-free` gained "6. Speechify Alternatives With Word-by-Word Highlighting" (verified keyword variants woven in: free alternative to speechify / speechify free / speechify free alternative) + "Word highlighting" comparison-table column; `free-text-to-speech-pdf-to-audio` gained "5. Read Along While You Listen: PDF Readers With Word Highlighting". TOC entries added, subsequent sections renumbered. Published on user's explicit "publish kardo". Feature claim honest: Read-Along toggle verified live by user click-test before including the texttospeechh bullet.
+- **Session Timestamp**: 2026-09-28 (full-site SEO audit + fixes)
+- **Current Objective**: IN PROGRESS — site-wide SEO audit of all 61 sitemap URLs (zero indexing blockers found) with safe fixes: FAQPage schema/content alignment across all page types, guide-page JSON-LD + OG/Twitter meta, title/meta-description trims. Awaiting commit + push + live verification.
 
 
 - **Active Branch**: `main`
