@@ -70,7 +70,14 @@ function renderSeoPage(pageData, pathSlug) {
   const orgSchema = JSON.stringify(schemaGenerator.getOrganizationSchema());
   const webSiteSchema = JSON.stringify(schemaGenerator.getWebSiteSchema());
   const softwareSchema = JSON.stringify(schemaGenerator.getSoftwareApplicationSchema());
-  const faqSchema = JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs));
+  // SEO audit 2026-09-28: emit FAQPage JSON-LD ONLY when the page defines
+  // page-specific faqs. The old fallback to generic default FAQs produced
+  // schema/content mismatches on pages whose visible FAQs differ (or that
+  // have no visible FAQs at all).
+  const hasPageFaqs = Array.isArray(pageData.faqs) && pageData.faqs.length > 0;
+  const faqSchemaJsonLd = hasPageFaqs
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs))}</script>\n  `
+    : "";
   const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema([
     { name: "Home", url: `${DOMAIN}/` },
     { name: "Text to Speech", url: `${DOMAIN}/text-to-speech` },
@@ -159,8 +166,7 @@ ${trackingHtml}
   <script type="application/ld+json">${orgSchema}</script>
   <script type="application/ld+json">${webSiteSchema}</script>
   <script type="application/ld+json">${softwareSchema}</script>
-  <script type="application/ld+json">${faqSchema}</script>
-  <script type="application/ld+json">${breadcrumbSchema}</script>
+  ${faqSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
   ${articleSchema}
 
   <link rel="stylesheet" href="/style.css?v=8.2.0">
