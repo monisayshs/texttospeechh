@@ -28,6 +28,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Added
+- **New article: ElevenLabs v4 free guide (2026-09-29)** (`src/pages/textToSpeechBlogHub.js`, `text-to-speech/blog/elevenlabs-v4-free-guide`): "ElevenLabs v4 Is Here: Try Expressive AI Voices Free" — timely launch coverage (Eleven v4 + v4 Turbo, Sep 28, 2026) with the honest cost breakdown ($22/M-char intro API pricing, free-tier caps, no commercial use on free) and the free playbook for expressive voiceovers (script emotion, voice-for-mood, speed/pitch levers, audiobook chapter workflow). 5 FAQs with matching FAQPage schema, contextual internal links to elevenlabs-alternatives and the AI audiobook guide. Published on explicit user approval ("publish kardo"); typo report investigated first — the reported `[whispers` missing-bracket typo did not exist in the source draft (PDF rendering issue), so the article shipped as-written.
+
 ### Changed
 - **SEO quick wins (2026-09-29)** — three internal-linking + title optimizations from the daily SEO report:
   - **Audiobook use-case page** (`src/seo/programmaticPages.js`, `/use-case/audiobook-generator`): title rewritten to front-load the exact ranking query — "AI Audiobook Generator: Free Book Narration | TextToSpeechH" (was "Free AI Audiobook & Long Script Generator | TextToSpeechH AI"). Added contextual in-content link to the `/text-to-speech/blog/ai-audiobook-generator-guide` walkthrough in the page's opening paragraph.

@@ -26,8 +26,8 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
-- **Session Timestamp**: 2026-09-29 (SEO quick wins — 3 internal-linking + title fixes from daily SEO report)
-- **Current Objective**: DONE — (1) audiobook use-case page title front-loads "AI Audiobook Generator" + in-content link to the audiobook guide; (2) "Want the full side-by-side?" box with all 4 compare-page links added after the head-to-head in elevenlabs-alternatives; (3) "Browse voices by language" strip (10 language links) added to the blog hub. Syntax-checked and render-verified locally. Awaiting commit + push + live verification.
+- **Session Timestamp**: 2026-09-29 (SEO quick wins + ElevenLabs v4 article published)
+- **Current Objective**: DONE — (1) audiobook use-case page title front-loads "AI Audiobook Generator" + in-content link to the audiobook guide; (2) "Want the full side-by-side?" box with all 4 compare-page links added after the head-to-head in elevenlabs-alternatives; (3) "Browse voices by language" strip (10 language links) added to the blog hub. (4) Published the ElevenLabs v4 draft as `text-to-speech/blog/elevenlabs-v4-free-guide` on user's explicit "publish kardo" — investigated the reported `[whispers` typo first, confirmed it did not exist in the source (PDF rendering issue), shipped as-written. Awaiting commit + push + live verification.
 
 
 - **Active Branch**: `main`

@@ -24,6 +24,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/ai-audiobook-generator-guide", title: "AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)", category: "Guides", readingTime: "8 min read", cta: "Read AI Audiobook Guide \u2192" },
   { slug: "text-to-speech/blog/ai-video-dubbing-guide", title: "AI Video Dubbing: How to Dub Your Videos Into Any Language", category: "Guides", readingTime: "9 min read", cta: "Read AI Video Dubbing Guide \u2192" },
   { slug: "text-to-speech/blog/ai-voice-cloning-guide", title: "AI Voice Cloning: Clone Your Voice for Free in 2026", category: "Guides", readingTime: "6 min read", cta: "Read AI Voice Cloning Guide \u2192" },
+  { slug: "text-to-speech/blog/elevenlabs-v4-free-guide", title: "ElevenLabs v4 Is Here: Try Expressive AI Voices Free", category: "Comparisons", readingTime: "7 min read", cta: "Read ElevenLabs v4 Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -5031,6 +5032,166 @@ const BLOG_ARTICLES_MAP = {
         <a href=\"${DOMAIN}/text-to-speech\" style=\"color:var(--color-primary); font-weight:600;\">◀ Return to Master Text to Speech Guide</a>
       </div>
 
+    `
+  },
+  "text-to-speech/blog/elevenlabs-v4-free-guide": {
+    title: `ElevenLabs v4 Is Here: Try Expressive AI Voices Free | ${BRAND_NAME}`,
+    h1: `ElevenLabs v4 Is Here: Try Expressive AI Voices Free`,
+    metaDesc: `ElevenLabs v4 is here (Sep 2026): audio tags, 90+ languages, 10-sec cloning. What is new, what it costs, and how to get expressive AI voices free.`,
+    category: "Comparisons",
+    readingTime: "7 min read",
+    faqs: [{"q": "Q1: Is ElevenLabs v4 free to try?", "a": "The models are available on ElevenLabs' free account tier, but with the standard free limits (around 10,000 characters/month, no commercial use). The $22-per-million-characters intro pricing applies to API use for two weeks after launch."}, {"q": "Q2: What are audio tags in ElevenLabs v4?", "a": "Inline directions you type directly in your script, like [laughs], [whispers], or [said angrily in a French accent]. v4 follows these — and sequences of them — more reliably than previous models. SSML <break> tags no longer work in v4."}, {"q": "Q3: How many languages does ElevenLabs v4 support?", "a": "Over 90, up from 70 in v3. The company reports the biggest quality improvements in Japanese, Brazilian Portuguese, Mandarin, and Cantonese."}, {"q": "Q4: Can I get expressive AI voices without ElevenLabs?", "a": "Yes. Free TTS tools give you speed and pitch control, which cover most everyday expression needs when combined with well-written scripts. Try the free AI voice generator — no signup, MP3 export, and a Read-Along mode that highlights each word as it's spoken."}, {"q": "Q5: Do I need v4 Turbo?", "a": "Only if you're building real-time voice agents. For videos, audiobooks, and narration, the standard v4 (or a good free tool) is the right choice."}],
+    datePublished: "September 29, 2026",
+    dateModified: "September 29, 2026",
+    content: `
+      <div class=\"definition-box\" style=\"background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;\">
+              <h2 style=\"font-size: 1.15rem; margin-top: 0; color: var(--color-primary);\">Quick Answer: What Is ElevenLabs v4?</h2>
+              <p style=\"margin: 0 0 10px; line-height: 1.7;\">
+                <strong>Eleven v4</strong>, launched September 28, 2026, is ElevenLabs' most expressive speech model yet — with inline audio tags like <code>[laughs]</code> and <code>[whispers]</code> you type straight into your script, 90+ languages, and voice cloning from about 10 seconds of audio. It took the #1 spot on the Artificial Analysis voice leaderboard on launch day.
+              </p>
+              <p style=\"margin: 0; line-height: 1.7;\">
+                The catch: the free tier still caps you at around 10,000 characters a month with no commercial use. This guide covers what's actually new, what v4 costs, and how to get expressive AI voiceovers free today.
+              </p>
+            </div>
+      
+            <nav class=\"toc-box\" style=\"background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;\">
+              <h3 style=\"margin-top:0; color:var(--color-primary);\">Table of Contents</h3>
+              <ol style=\"margin:0; padding-left:20px; line-height:1.8;\">
+                <li><a href=\"#v4-new\" style=\"color:inherit;\">1. What ElevenLabs v4 Actually Does</a></li>
+                <li><a href=\"#v4-cost\" style=\"color:inherit;\">2. The Catch: What v4 Actually Costs</a></li>
+                <li><a href=\"#v4-free\" style=\"color:inherit;\">3. How to Try Expressive AI Voices Free Today</a></li>
+                <li><a href=\"#v4-turbo\" style=\"color:inherit;\">4. What About v4 Turbo?</a></li>
+                <li><a href=\"#v4-bottom\" style=\"color:inherit;\">5. The Honest Bottom Line</a></li>
+                <li><a href=\"#faq-v4\" style=\"color:inherit;\">6. Frequently Asked Questions</a></li>
+              </ol>
+            </nav>
+      
+            <section id=\"v4-new\" style=\"margin-bottom: 40px;\">
+              <h2>1. What ElevenLabs v4 Actually Does</h2>
+              <p style=\"line-height: 1.8;\">
+                Forget the marketing. Three real changes:
+              </p>
+              <h3>Direct the voice like an actor</h3>
+              <p style=\"line-height: 1.8;\">
+                v4 understands inline audio tags you drop straight into your script — things like <code>[laughs]</code>, <code>[whispers]</code>, <code>[said angrily]</code>, or even <code>[light rain]</code>. Stack multiple tags in sequence and the model follows them in order. Previous models did a version of this; v4 reportedly follows directions much more reliably. Note the trade-off: old-school SSML <code>&lt;break&gt;</code> tags are now disabled — you control delivery through natural-language tags instead.
+              </p>
+              <h3>Voice identity holds together over long scripts</h3>
+              <p style=\"line-height: 1.8;\">
+                The new architecture keeps track of who's speaking and what's already been said, so a 10-minute narration doesn't drift in tone halfway through. Each generation supports up to 10,000 characters, and the company says voice consistency across long projects is dramatically better.
+              </p>
+              <h3>Cloning now takes 10 seconds</h3>
+              <p style=\"line-height: 1.8;\">
+                v4 can build a usable voice clone from about ten seconds of audio. That's a genuine technical jump — and, honestly, a genuine misuse risk the whole industry is watching.
+              </p>
+              <p style=\"line-height: 1.8;\">
+                Beyond the creator features: v4 covers <strong>90+ languages</strong> (up from 70; the biggest quality jumps were in Japanese, Brazilian Portuguese, Mandarin, and Cantonese), and <strong>v4 Turbo</strong> cuts median latency to about 100 milliseconds so AI voice agents stop sounding like they're reading from cue cards.
+              </p>
+            </section>
+      
+            <section id=\"v4-cost\" style=\"margin-bottom: 40px;\">
+              <h2>2. The Catch: What v4 Actually Costs</h2>
+              <p style=\"line-height: 1.8;\">
+                Here's the part the launch headlines skip. ElevenLabs announced two-week introductory API pricing at <strong>$22 per million characters</strong> — which is genuinely cheap for developers — but the creator reality hasn't changed:
+              </p>
+              <ul style=\"line-height: 1.8; margin-bottom: 24px; padding-left: 20px;\">
+                <li>The free tier still caps you at around 10,000 characters a month (roughly one short video script), and free-tier audio doesn't allow commercial use.</li>
+                <li>The best voices and cloning quality still sit behind paid plans starting at $5/month, scaling fast if you produce regularly.</li>
+                <li>Older Instant and Professional Voice Clones need to be retrained for v4.</li>
+              </ul>
+              <p style=\"line-height: 1.8;\">
+                None of that makes v4 bad — it's a real step forward. It just means most creators will experience v4 as something they <em>read about</em>, not something they use daily. Unless you know the free route — start with our roundup of the <a href=\"${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives\" style=\"color:var(--color-primary);\">best free ElevenLabs alternatives</a>.
+              </p>
+            </section>
+      
+            <section id=\"v4-free\" style=\"margin-bottom: 40px;\">
+              <h2>3. How to Try Expressive AI Voices Free Today</h2>
+              <p style=\"line-height: 1.8;\">
+                You don't need ElevenLabs v4 to make voiceovers that sound directed instead of robotic. Here's the honest playbook for getting 80% of the expressiveness at $0:
+              </p>
+              <p style=\"line-height: 1.8;\">
+                <strong>Write emotion into the script, not the settings.</strong> Professional narrators do this instinctively — commas, dashes, and sentence rhythm control pacing in <em>any</em> TTS engine. \"Stop. Listen.\" reads completely differently than \"stop, listen.\" Before touching any tool, rewrite your script with deliberate pauses and short sentences where the emotion should land.
+              </p>
+              <p style=\"line-height: 1.8;\">
+                <strong>Pick the voice for the mood, not the demo.</strong> A warm, slightly lower-pitched voice reads bedtime stories and documentaries better; a brighter, faster voice suits explainers and shorts. This matters more than any \"emotion slider.\"
+              </p>
+              <p style=\"line-height: 1.8;\">
+                <strong>Use a free generator with real controls.</strong> <a href=\"${DOMAIN}/\" style=\"color:var(--color-primary);\">TextToSpeechH</a> gives you free neural voices with no signup, adjustable speed and pitch, and MP3 export. Speed and pitch are the two levers free tools actually give you — drop speed 5% and pitch slightly down for narration, nudge both up for energetic shorts. It won't do <code>[laughs]</code> tags like v4, but for straightforward voiceover work, the difference is smaller than the marketing suggests.
+              </p>
+              <p style=\"line-height: 1.8;\">
+                <strong>For audiobooks and long scripts:</strong> break your manuscript into chapters of up to 10,000 words per generation, keep the same voice for the whole project (voice consistency is where v4 genuinely wins, so protect it manually), and export each chapter separately. There's a fuller workflow in the <a href=\"${DOMAIN}/text-to-speech/blog/ai-audiobook-generator-guide\" style=\"color:var(--color-primary);\">AI audiobook guide</a>.
+              </p>
+            </section>
+      
+            <section id=\"v4-turbo\" style=\"margin-bottom: 40px;\">
+              <h2>4. What About v4 Turbo? (Probably Not for You)</h2>
+              <p style=\"line-height: 1.8;\">
+                v4 Turbo is a voice-agent model — real-time customer support bots, phone agents, in-app assistants. The 100ms latency is a big deal for developers building conversational AI, but if you're a creator making videos or books, Turbo changes nothing about your workflow. Don't pay extra for latency you don't need.
+              </p>
+            </section>
+      
+            <section id=\"v4-bottom\" style=\"margin-bottom: 40px;\">
+              <h2>5. The Honest Bottom Line</h2>
+              <p style=\"line-height: 1.8;\">
+                ElevenLabs v4 is the new quality bar — stacked audio tags, 90+ languages, 10-second cloning, and #1 on the leaderboard. It's genuinely impressive, and the intro API pricing is fair.
+              </p>
+              <p style=\"line-height: 1.8;\">
+                But \"most expressive model ever\" only matters if you can afford to use it. For everyday voiceover work — YouTube scripts, course narration, audiobook chapters, podcast intros — a free tool with good script writing and basic speed/pitch control gets you remarkably close. Save the cutting edge for the one project a month where it actually matters.
+              </p>
+            </section>
+      
+            <section id=\"faq-v4\" style=\"margin-bottom: 40px;\">
+              <h2>6. Frequently Asked Questions</h2>
+              <div style=\"display:grid; gap:14px;\">
+      
+                <div style=\"background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;\">
+                  <h3 style=\"color:var(--color-primary); margin-top:0;\">Q1: Is ElevenLabs v4 free to try?</h3>
+                  <p style=\"line-height:1.7; margin:0 0 8px;\">
+                    The models are available on ElevenLabs' free account tier, but with the standard free limits (around 10,000 characters/month, no commercial use). The $22-per-million-characters intro pricing applies to API use for two weeks after launch.
+                  </p>
+                </div>
+      
+                <div style=\"background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;\">
+                  <h3 style=\"color:var(--color-primary); margin-top:0;\">Q2: What are audio tags in ElevenLabs v4?</h3>
+                  <p style=\"line-height:1.7; margin:0 0 8px;\">
+                    Inline directions you type directly in your script, like [laughs], [whispers], or [said angrily in a French accent]. v4 follows these — and sequences of them — more reliably than previous models. SSML &lt;break&gt; tags no longer work in v4.
+                  </p>
+                </div>
+      
+                <div style=\"background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;\">
+                  <h3 style=\"color:var(--color-primary); margin-top:0;\">Q3: How many languages does ElevenLabs v4 support?</h3>
+                  <p style=\"line-height:1.7; margin:0 0 8px;\">
+                    Over 90, up from 70 in v3. The company reports the biggest quality improvements in Japanese, Brazilian Portuguese, Mandarin, and Cantonese.
+                  </p>
+                </div>
+      
+                <div style=\"background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;\">
+                  <h3 style=\"color:var(--color-primary); margin-top:0;\">Q4: Can I get expressive AI voices without ElevenLabs?</h3>
+                  <p style=\"line-height:1.7; margin:0 0 8px;\">
+                    Yes. Free TTS tools give you speed and pitch control, which cover most everyday expression needs when combined with well-written scripts. Try the free AI voice generator — no signup, MP3 export, and a Read-Along mode that highlights each word as it's spoken.
+                  </p>
+                </div>
+      
+                <div style=\"background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;\">
+                  <h3 style=\"color:var(--color-primary); margin-top:0;\">Q5: Do I need v4 Turbo?</h3>
+                  <p style=\"line-height:1.7; margin:0 0 8px;\">
+                    Only if you're building real-time voice agents. For videos, audiobooks, and narration, the standard v4 (or a good free tool) is the right choice.
+                  </p>
+                </div>
+      
+              </div>
+            </section>
+      
+            <div style=\"background:var(--color-primary-soft); border:1px solid var(--color-primary-border); border-radius:12px; padding:24px; margin-bottom:28px; text-align:center;\">
+              <h3 style=\"margin-top:0; color:var(--color-primary);\">Skip the paywall — make the audio free</h3>
+              <p style=\"line-height:1.7; margin:0 0 16px;\">
+                Expressive voiceovers don't need a v4 subscription. Paste your script into <a href=\"${DOMAIN}/\" style=\"color:var(--color-primary);\">TextToSpeechH</a>, pick a voice, tune speed and pitch, and download the MP3 — free, no signup, and the Read-Along mode highlights each word as it plays.
+              </p>
+              <a href=\"${DOMAIN}/\" style=\"display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;\">Try TextToSpeechH Free</a>
+            </div>
+      
+            <div style=\"margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;\">
+              <a href=\"${DOMAIN}/text-to-speech\" style=\"color:var(--color-primary); font-weight:600;\">◀ Return to Master Text to Speech Guide</a>
+            </div>
     `
   },
 };
