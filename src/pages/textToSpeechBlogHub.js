@@ -53,6 +53,22 @@ function getBlogHubPage() {
         ${articlesHtml}
       </div>
 
+      <div style="margin: 10px 0 30px; padding: 20px 22px; background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: 12px;">
+        <h3 style="margin: 0 0 10px; font-size: 1.05em;">Browse voices by language</h3>
+        <p style="margin: 0; line-height: 2;">
+          <a href="${DOMAIN}/language/english" style="color:var(--color-primary);">English</a> &middot;
+          <a href="${DOMAIN}/language/hindi" style="color:var(--color-primary);">Hindi</a> &middot;
+          <a href="${DOMAIN}/language/urdu" style="color:var(--color-primary);">Urdu</a> &middot;
+          <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">Arabic</a> &middot;
+          <a href="${DOMAIN}/language/spanish" style="color:var(--color-primary);">Spanish</a> &middot;
+          <a href="${DOMAIN}/language/french" style="color:var(--color-primary);">French</a> &middot;
+          <a href="${DOMAIN}/language/german" style="color:var(--color-primary);">German</a> &middot;
+          <a href="${DOMAIN}/language/japanese" style="color:var(--color-primary);">Japanese</a> &middot;
+          <a href="${DOMAIN}/language/portuguese" style="color:var(--color-primary);">Portuguese</a> &middot;
+          <a href="${DOMAIN}/language/italian" style="color:var(--color-primary);">Italian</a>
+        </p>
+      </div>
+
       <div style="margin-top:40px; text-align:center; padding:24px; background:var(--color-primary-soft); border-radius:12px;">
         <h3 style="margin-top:0;">Looking for immediate voice generation?</h3>
         <p style="color:var(--color-text-secondary);">Try our free neural AI voice generator or explore our master pillar guide.</p>
@@ -2273,6 +2289,16 @@ const BLOG_ARTICLES_MAP = {
           </table>
         </div>
       </section>
+
+      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 18px 20px; border-radius: 10px; margin-bottom: 32px;">
+        <p style="margin: 0; line-height: 1.8;">
+          <strong>Want the full side-by-side?</strong> We put TextToSpeechH against each major rival in a detailed head-to-head:
+          <a href="${DOMAIN}/compare/texttospeechh-vs-elevenlabs" style="color:var(--color-primary);">vs ElevenLabs</a> &middot;
+          <a href="${DOMAIN}/compare/texttospeechh-vs-playht" style="color:var(--color-primary);">vs Play.ht</a> &middot;
+          <a href="${DOMAIN}/compare/texttospeechh-vs-lovo" style="color:var(--color-primary);">vs Lovo</a> &middot;
+          <a href="${DOMAIN}/compare/texttospeechh-vs-naturalreader" style="color:var(--color-primary);">vs NaturalReader</a>
+        </p>
+      </div>
 
       <section id="voice-quality-languages" style="margin-bottom: 40px;">
         <h2>6. Voice Quality & Languages</h2>

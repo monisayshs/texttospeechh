@@ -29,6 +29,10 @@ If this document conflicts with the implementation, **the source code is authori
 ## [Unreleased]
 
 ### Changed
+- **SEO quick wins (2026-09-29)** — three internal-linking + title optimizations from the daily SEO report:
+  - **Audiobook use-case page** (`src/seo/programmaticPages.js`, `/use-case/audiobook-generator`): title rewritten to front-load the exact ranking query — "AI Audiobook Generator: Free Book Narration | TextToSpeechH" (was "Free AI Audiobook & Long Script Generator | TextToSpeechH AI"). Added contextual in-content link to the `/text-to-speech/blog/ai-audiobook-generator-guide` walkthrough in the page's opening paragraph.
+  - **elevenlabs-alternatives article** (`src/pages/textToSpeechBlogHub.js`): added a "Want the full side-by-side?" contextual box directly after the head-to-head comparison table linking all four comparison pages (`/compare/texttospeechh-vs-elevenlabs`, `-vs-playht`, `-vs-lovo`, `-vs-naturalreader`) to distribute authority from the site's highest-traffic article (74 users/week).
+  - **Blog hub** (`src/pages/textToSpeechBlogHub.js`, `/text-to-speech/blog`): added a "Browse voices by language" section linking all 10 language pages (English, Hindi, Urdu, Arabic, Spanish, French, German, Japanese, Portuguese, Italian) between the article grid and the CTA box.
 - **Full-site SEO audit fixes (2026-09-28)**: comprehensive crawl of all 61 sitemap URLs found zero indexing blockers (all 200, single H1, self-canonical, no duplicate titles/descriptions, zero missing alt text). Fixes applied:
   - **FAQPage schema/content alignment** (`src/api/seoHandler.js`): `renderSeoPage()` now emits FAQPage JSON-LD only when a page defines page-specific `faqs`. Removed the generic default-FAQ fallback that caused schema/visible-content mismatches on ~20 pages (legal, comparison, language, use-case, pillar, blog hub, 15 articles, TTS subpages).
   - **Page-specific FAQs added**: 8 comparison pages, 2 use-case pages, 5 language pages (english/hindi/french/german/japanese), 7 TTS subpages, and all 15 blog articles now carry `faqs` arrays extracted verbatim from their visible FAQ sections — FAQPage schema matches on-page Q&A exactly.
