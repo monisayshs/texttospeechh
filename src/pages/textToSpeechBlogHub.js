@@ -25,6 +25,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/ai-video-dubbing-guide", title: "AI Video Dubbing: How to Dub Your Videos Into Any Language", category: "Guides", readingTime: "9 min read", cta: "Read AI Video Dubbing Guide \u2192" },
   { slug: "text-to-speech/blog/ai-voice-cloning-guide", title: "AI Voice Cloning: Clone Your Voice for Free in 2026", category: "Guides", readingTime: "6 min read", cta: "Read AI Voice Cloning Guide \u2192" },
   { slug: "text-to-speech/blog/elevenlabs-v4-free-guide", title: "ElevenLabs v4 Is Here: Try Expressive AI Voices Free", category: "Comparisons", readingTime: "7 min read", cta: "Read ElevenLabs v4 Guide \u2192" },
+  { slug: "text-to-speech/blog/ai-audiobook-narration-authors", title: "AI Audiobook Narration: Turn Your Book Into Audio", category: "Guides", readingTime: "8 min read", cta: "Read AI Audiobook Narration Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -5192,6 +5193,191 @@ const BLOG_ARTICLES_MAP = {
             <div style=\"margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;\">
               <a href=\"${DOMAIN}/text-to-speech\" style=\"color:var(--color-primary); font-weight:600;\">◀ Return to Master Text to Speech Guide</a>
             </div>
+    `
+  },
+  "text-to-speech/blog/ai-audiobook-narration-authors": {
+    title: `AI Audiobook Narration: Turn Your Book Into Audio | ${BRAND_NAME}`,
+    h1: `AI Audiobook Narration: Turn Your Book Into Audio`,
+    metaDesc: `AI audiobook narration for authors (2026): where to publish AI-narrated audiobooks, platform rules, the free workflow, and real costs. Turn your book into audio.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Q1: Does Audible accept AI-narrated audiobooks?", "a": "Amazon's Audible catalog includes tens of thousands of “Virtual Voice” AI-narrated titles. ACX's rules for author-submitted AI narration change frequently — check the current terms and disclose the narration before uploading."}, {"q": "Q2: How much does AI audiobook narration cost?", "a": "Near zero with free tools, or under $5 in API/character costs for a full novel on paid services. A human narrator costs $1,200–$3,000+ for the same book."}, {"q": "Q3: Can listeners tell the narration is AI?", "a": "Mostly not anymore. In the September 2026 Edison Research study, 61% of listeners exposed to AI narration thought it was human, and willingness to try AI-narrated audiobooks jumped from 31% to 65% after hearing samples."}, {"q": "Q4: Can I narrate my audiobook free with no signup?", "a": "Yes. Paste your chapter into the free AI voice generator, pick a narrator voice, generate, and export the MP3 — repeat per chapter. No account, no character cap standing in your way."}, {"q": "Q5: Do I have to disclose AI narration?", "a": "Yes, on every platform that matters — Spotify for Authors has a disclosure checkbox, Kobo wants “Synthesised voice” as the narrator, and Amazon labels them Virtual Voice. Disclose everywhere asked."}],
+    datePublished: "September 30, 2026",
+    dateModified: "September 30, 2026",
+    content: `
+
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;">
+        <h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Can Authors Narrate Audiobooks with AI in 2026?</h2>
+        <p style="margin:0 0 10px; line-height:1.7;">
+          Yes — and listeners can barely tell. In September 2026, Audible carried tens of thousands of AI-narrated titles, and Edison Research found 61% of listeners exposed to AI narration thought it was human. A full-length audiobook now costs under $5 to generate (or $0 with free tools), versus $1,200–$3,000 for a human narrator.
+        </p>
+        <p style="margin:0; line-height:1.7;">
+          This guide covers where you can publish, the platform rules you must follow, the exact manuscript-to-MP3 workflow, and the free route that needs no signup.
+        </p>
+      </div>
+
+      <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
+        <ol style="margin:0; padding-left:20px; line-height:1.8;">
+          <li><a href="#abn-moment" style="color:inherit;">1. Why 2026 Is the Moment for AI-Narrated Audiobooks</a></li>
+          <li><a href="#abn-publish" style="color:inherit;">2. Where You Can Actually Publish an AI-Narrated Audiobook</a></li>
+          <li><a href="#abn-workflow" style="color:inherit;">3. The Workflow: Manuscript to Finished Audiobook</a></li>
+          <li><a href="#abn-free" style="color:inherit;">4. The Free Route (Yes, It Exists)</a></li>
+          <li><a href="#abn-mistakes" style="color:inherit;">5. Mistakes Authors Actually Make</a></li>
+          <li><a href="#abn-bottom" style="color:inherit;">6. The Bottom Line</a></li>
+          <li><a href="#faq-abn" style="color:inherit;">7. Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <section id="abn-moment" style="margin-bottom:40px;">
+        <h2>1. Why 2026 Is the Moment for AI-Narrated Audiobooks</h2>
+        <p style="line-height:1.8;">
+          A few things shifted at once:
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Listeners are ready.</strong> The Edison Research study (funded by AI audiobook platform Spoken) found that after hearing actual samples, the share of listeners willing to try AI narration jumped from 31% to 65%. Fiction listeners even <em>preferred</em> AI multi-voice performances to traditional single-voice narration in some metrics. The stigma is fading fast.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>The platforms opened up.</strong> Audible built a whole “Virtual Voice” catalog of AI-narrated titles (tens of thousands and growing). Spotify for Authors accepts digital narration when you tick a disclosure box. Apple Books and Kobo have their own AI-narration programs. The distribution game changed — most authors just haven’t caught up.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>The tools got good enough.</strong> ElevenLabs v4 (launched September 28, 2026) keeps voice identity consistent across long chapters. Google’s Gemini 3.8 Flash TTS clones a voice from a 30-second sample. You don’t need a studio, a narrator, or a recording booth — you need your manuscript and an afternoon.
+        </p>
+      </section>
+
+      <section id="abn-publish" style="margin-bottom:40px;">
+        <h2>2. Where You Can Actually Publish an AI-Narrated Audiobook</h2>
+        <p style="line-height:1.8;">
+          This is the part most guides skip, and it’s the part that matters. Each store has its own rules, and they change:
+        </p>
+        <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+          <li><strong>Audible / ACX (Amazon’s “Virtual Voice”).</strong> Amazon is building the AI catalog itself. ACX’s rules around author-submitted AI narration are in flux — some sources report ACX still requires disclosure and review of synthetic narration. Always check the current ACX terms before you upload; this landscape shifts month to month.</li>
+          <li><strong>Spotify for Authors.</strong> Accepts digital narration — you declare it with a checkbox. Cleanest path of the big players right now.</li>
+          <li><strong>Apple Books.</strong> Has a digital narration program; indie authors go through approved partners.</li>
+          <li><strong>Google Play Books and Kobo.</strong> Both accept AI-narrated titles with proper labeling (Kobo asks you to list the narrator as “Synthesised voice”).</li>
+          <li><strong>Direct (BookFunnel, your own site).</strong> Keep 85–90% instead of Audible’s ~25%. Plenty of indie authors are skipping the platforms entirely.</li>
+        </ul>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:18px 20px; border-radius:10px; margin-bottom:24px;">
+          <p style="margin:0; line-height:1.8;">
+            <strong>One honest warning:</strong> Amazon cut KDP upload limits to 2 titles per week in late September 2026 because of AI-generated book spam. The stores are fighting low-effort AI slop. A <em>real</em> book, carefully narrated and quality-checked, is exactly what these programs were built for — disclose the AI narration everywhere the store asks, and you’ll be fine.
+          </p>
+        </div>
+      </section>
+
+      <section id="abn-workflow" style="margin-bottom:40px;">
+        <h2>3. The Workflow: Manuscript to Finished Audiobook</h2>
+        <p style="line-height:1.8;">
+          You can do the whole thing in a weekend. Here’s the process:
+        </p>
+        <p style="line-height:1.8;">
+          <strong>1. Prep your manuscript.</strong> Clean text converts cleanly. Shorten rambling sentences, spell out tricky numbers and abbreviations, and decide how chapter headings should be read (most authors skip reading them or add a pause instead). This prep is what separates a decent audiobook from one listeners refund.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>2. Generate chapter by chapter.</strong> Don’t feed the whole book at once. Work in chapters, using the same voice for every chapter — voice consistency across a 10-hour book is the hardest thing about AI narration, so protect it manually. Export each chapter as its own file.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>3. QC every chapter before moving on.</strong> Listen to the first minute of each chapter at 1.5x speed. Catch mispronounced names, weird pauses, and tone drift early. Build a pronunciation cheat-sheet for character names and invented words — fix the text, regenerate the sentence, and move on.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>4. Master to spec.</strong> Most platforms want MP3 at 192 kbps; Audible’s ACX preset targets −20 LUFS loudness. Keep intros and outros consistent, leave 1–2 seconds of room tone between chapters, and don’t normalize each chapter differently.
+        </p>
+      </section>
+
+      <section id="abn-free" style="margin-bottom:40px;">
+        <h2>4. The Free Route (Yes, It Exists)</h2>
+        <p style="line-height:1.8;">
+          You don’t need a subscription to test this. The workflow above works with free tools — our <a href="${DOMAIN}/use-case/audiobook-generator" style="color:var(--color-primary);">AI audiobook generator</a> is set up for exactly this kind of long-form narration, with direct PDF import and no signup:
+        </p>
+        <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+          <li>Open <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> — free, no signup.</li>
+          <li>Paste one chapter (up to 10,000 words per generation).</li>
+          <li>Pick a narrator voice that fits your genre — warm and steady for non-fiction, something with more range for fiction. Drop speed ~5% and pitch slightly for narration; it reads more naturally.</li>
+          <li>Generate, preview, and export the MP3. Repeat per chapter.</li>
+          <li>Stitch the chapters together in any free audio editor (Audacity works fine) and master to the spec above.</li>
+        </ol>
+        <p style="line-height:1.8;">
+          That’s a listenable, distributable audiobook for $0 in tooling. There’s a fuller chapter-by-chapter breakdown in the <a href="${DOMAIN}/text-to-speech/blog/ai-audiobook-generator-guide" style="color:var(--color-primary);">AI audiobook generator guide</a>.
+        </p>
+      </section>
+
+      <section id="abn-mistakes" style="margin-bottom:40px;">
+        <h2>5. Mistakes Authors Actually Make</h2>
+        <p style="line-height:1.8;">
+          <strong>Not disclosing the AI narration.</strong> Every major platform now requires it, and listeners can hear “Virtual Voice” tags anyway. Disclosure is the price of admission — pay it.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Using the wrong voice for the genre.</strong> A peppy explainer voice narrating a slow-burn romance will tank your reviews. Preview with your actual Chapter 1, not a test sentence.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Skipping the QC pass.</strong> AI narration is 90% automated and 10% human judgment. That 10% is the difference between “sounds like a real narrator” and “refund.”
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Expecting narrator-level royalties on a $2 book.</strong> The economics work because the production cost dropped to near zero, not because AI audiobooks command premium prices. Price it like a mass-market paperback, not a prestige release.
+        </p>
+      </section>
+
+      <section id="abn-bottom" style="margin-bottom:40px;">
+        <h2>6. The Bottom Line</h2>
+        <p style="line-height:1.8;">
+          AI narration isn’t a shortcut for skipping quality — it’s a way for books that could never afford a narrator to finally get an audiobook. Tens of thousands of titles are already there. The listeners are ready, the platforms are (mostly) ready, and the tools are free.
+        </p>
+        <p style="line-height:1.8;">
+          Write the book. Narrate it with AI. Disclose it honestly. Your readers have been asking.
+        </p>
+      </section>
+
+      <section id="faq-abn" style="margin-bottom:40px;">
+        <h2>7. Frequently Asked Questions</h2>
+        <div style="display:grid; gap:14px;">
+
+                <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+                  <h3 style="color:var(--color-primary); margin-top:0;">Q1: Does Audible accept AI-narrated audiobooks?</h3>
+                  <p style="line-height:1.7; margin:0 0 8px;">
+                    Amazon's Audible catalog includes tens of thousands of “Virtual Voice” AI-narrated titles. ACX's rules for author-submitted AI narration change frequently — check the current terms and disclose the narration before uploading.
+                  </p>
+                </div>
+
+                <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+                  <h3 style="color:var(--color-primary); margin-top:0;">Q2: How much does AI audiobook narration cost?</h3>
+                  <p style="line-height:1.7; margin:0 0 8px;">
+                    Near zero with free tools, or under $5 in API/character costs for a full novel on paid services. A human narrator costs $1,200–$3,000+ for the same book.
+                  </p>
+                </div>
+
+                <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+                  <h3 style="color:var(--color-primary); margin-top:0;">Q3: Can listeners tell the narration is AI?</h3>
+                  <p style="line-height:1.7; margin:0 0 8px;">
+                    Mostly not anymore. In the September 2026 Edison Research study, 61% of listeners exposed to AI narration thought it was human, and willingness to try AI-narrated audiobooks jumped from 31% to 65% after hearing samples.
+                  </p>
+                </div>
+
+                <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+                  <h3 style="color:var(--color-primary); margin-top:0;">Q4: Can I narrate my audiobook free with no signup?</h3>
+                  <p style="line-height:1.7; margin:0 0 8px;">
+                    Yes. Paste your chapter into the free AI voice generator, pick a narrator voice, generate, and export the MP3 — repeat per chapter. No account, no character cap standing in your way.
+                  </p>
+                </div>
+
+                <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+                  <h3 style="color:var(--color-primary); margin-top:0;">Q5: Do I have to disclose AI narration?</h3>
+                  <p style="line-height:1.7; margin:0 0 8px;">
+                    Yes, on every platform that matters — Spotify for Authors has a disclosure checkbox, Kobo wants “Synthesised voice” as the narrator, and Amazon labels them Virtual Voice. Disclose everywhere asked.
+                  </p>
+                </div>
+        </div>
+      </section>
+
+      <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); border-radius:12px; padding:24px; margin-bottom:28px; text-align:center;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Narrate your first chapter free</h3>
+        <p style="line-height:1.7; margin:0 0 16px;">
+          Turn your first chapter into audio today — paste it into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, pick a narrator voice, and download the MP3. Free, no signup.
+        </p>
+        <a href="${DOMAIN}/" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;">Try TextToSpeechH Free</a>
+      </div>
+
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">◀ Return to Master Text to Speech Guide</a>
+      </div>
     `
   },
 };
