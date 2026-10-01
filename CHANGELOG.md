@@ -28,6 +28,12 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Changed
+- **SEO CTR tweaks (2026-10-01)** — from the 1 Oct daily SEO report (user directive):
+  - **Audiobook use-case page** (`src/seo/programmaticPages.js`, `/use-case/audiobook-generator`): expanded FAQs from 2 to 4 — added "What is the best free AI audiobook generator?" and "How do I turn a PDF book into an audiobook for free?" targeting the page-1 ranking queries ("ai audiobook generator" #6.4, "audiobook generator" #10.1); new Q&As added to both the `faqs` array (FAQPage schema) and the visible FAQ accordion verbatim. Title tweaked to "AI Audiobook Generator: Free Book Narration | TextToSpeechH"; meta description rewritten as a click-focused pitch ("no signup, no fees") to convert 44 weekly impressions into clicks.
+  - **Arabic language page** (`src/seo/programmaticPages.js`, `/language/arabic`): title rewritten from Arabic-only to "Free Arabic Text to Speech | TextToSpeechH AI" and meta description made bilingual (English lead + Arabic tail) — the ranking query "arabic text to speech" (position 5, zero clicks) is English, so English-first SERP copy targets the CTR gap.
+  - **elevenlabs-alternatives internal links**: verified already live — the "Want the full side-by-side?" box after the head-to-head section already links `/compare/texttospeechh-vs-elevenlabs` and `/compare/texttospeechh-vs-naturalreader` (added 2026-09-29). No change needed; reported back to user instead of duplicating.
+
 ### Added
 - **New article: ElevenLabs v4 free guide (2026-09-29)** (`src/pages/textToSpeechBlogHub.js`, `text-to-speech/blog/elevenlabs-v4-free-guide`): "ElevenLabs v4 Is Here: Try Expressive AI Voices Free" — timely launch coverage (Eleven v4 + v4 Turbo, Sep 28, 2026) with the honest cost breakdown ($22/M-char intro API pricing, free-tier caps, no commercial use on free) and the free playbook for expressive voiceovers (script emotion, voice-for-mood, speed/pitch levers, audiobook chapter workflow). 5 FAQs with matching FAQPage schema, contextual internal links to elevenlabs-alternatives and the AI audiobook guide. Published on explicit user approval ("publish kardo"); typo report investigated first — the reported `[whispers` missing-bracket typo did not exist in the source draft (PDF rendering issue), so the article shipped as-written.
 
