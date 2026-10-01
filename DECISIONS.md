@@ -100,3 +100,13 @@ If this document conflicts with the implementation, **the source code is authori
 - **Root Cause**: URL structure refactoring without mapping legacy routes to new canonical targets.
 - **Permanent Rule**: Never remove or change a public URL path without adding a 301 permanent redirect mapping in `AUTO_REDIRECT_MAP` (`src/api/seoHandler.js`) and `public/_redirects`.
 - **Fix Implemented**: Added 301 automatic redirect mapping layer for all legacy `/blog/*` and `/keyword/*` paths.
+
+---
+
+### LESSON-004: Verify GitHub Push Actually Changed Files (gh.py put silent empty commit)
+- **Date**: 2026-10-01
+- **Category**: Deployment / Publishing workflow
+- **Incident Summary**: `gh.py put` reported `committed sha=cef50f4` for the new blog article, but the commit contained 0 file changes — the article never reached GitHub, so the live URL returned 404. The failure was discovered only after the user reported the 404.
+- **Root Cause**: Unknown (local file verified correct: 18 articles, syntax OK; local git commit 23bc1db had +228 lines). The Contents API accepted the PUT but produced an empty commit. A subsequent `git reset --hard origin/main` then wiped the good local commit (recovered via `git reflog`).
+- **Permanent Rule**: After every `gh.py put`, verify via the GitHub API that the returned commit actually lists the pushed file in its changed-files (`/repos/{owner}/{repo}/commits/{sha}` → `files` array non-empty), and confirm remote content with `gh.py cat <path> | grep <marker>` BEFORE telling the user it's live. Never run `git reset --hard origin/main` until the remote push is verified.
+- **Fix Implemented**: Re-pushed the article (commit d9f1c41, verified +228/-0 via API, remote `cat` confirms slug present); documented in SESSION.md.
