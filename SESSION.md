@@ -28,6 +28,7 @@ If this document conflicts with the implementation, **the source code is authori
 
 - **Session Timestamp**: 2026-10-01 (SEO CTR tweaks from 1 Oct daily report — user directive)
 - **Current Objective**: DONE — (1) /use-case/audiobook-generator: FAQs expanded 2→4 (new Q&As in both `faqs` array + visible accordion), title tweaked to "AI Audiobook Generator: Free Book Narration | TextToSpeechH", meta rewritten click-focused ("no signup, no fees"); (2) /language/arabic: title → "Free Arabic Text to Speech | TextToSpeechH AI", meta made bilingual (English lead + Arabic tail) for the English ranking query at position 5; (3) elevenlabs-alternatives compare links verified ALREADY LIVE (2026-09-29 box) — no duplicate added. Pushed as commit 6b08452 via gh.py; local synced to origin/main. Cloudflare Pages redeploy will pick it up from main.
+- **Publish (2026-10-01, later same day)**: user approved the daily-SEO draft verbatim ("draft bohot zabardast...") and said "publish kardo" → published `text-to-speech/blog/free-text-to-speech-no-signup` ("Free Text to Speech Without Login: 7 Tools for 2026", target: `text to speech free no sign up`, 260/mo LOW) to `src/pages/textToSpeechBlogHub.js` — 6 FAQs with FAQPage schema, comparison table, internal links to elevenlabs-alternatives + ai-audiobook-generator-guide. Pushed via gh.py put (cef50f4); synced to origin/main. CHANGELOG updated. Live URL sent to user for his own Request Indexing.
 
 
 - **Active Branch**: `main`
