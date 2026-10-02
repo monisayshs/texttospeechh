@@ -29,6 +29,11 @@ If this document conflicts with the implementation, **the source code is authori
 ## [Unreleased]
 
 ### Changed
+- **SEO actions (2026-10-02)** — from the 2 Oct daily SEO report (user directive), all in `src/seo/programmaticPages.js`:
+  - **Audiobook use-case page** (`/use-case/audiobook-generator`): FAQ accordion headings bumped from H4 to H3 (4 questions) for stronger on-page targeting — FAQPage schema (from the `faqs` array) unchanged and still valid.
+  - **Language pages** (all 12: english, hindi, urdu, spanish, arabic, french, german, japanese, portuguese, italian, russian, turkish): titles verified already unique; added a unique 2-paragraph intro to each page in its own language (use-case led, human tone) right after the definition box to thicken thin content.
+  - **Comparison pages** (all 8 `/compare/*`): added a visible "✓ Updated October 2026" freshness badge at the top of each page and set `dateModified: 2026-10-02`.
+  - Pushed via gh.py put (commit 4453798); remote content verified via gh.py cat; local synced to origin/main; all three changes confirmed live on production HTML.
 - **SEO CTR tweaks (2026-10-01)** — from the 1 Oct daily SEO report (user directive):
   - **Audiobook use-case page** (`src/seo/programmaticPages.js`, `/use-case/audiobook-generator`): expanded FAQs from 2 to 4 — added "What is the best free AI audiobook generator?" and "How do I turn a PDF book into an audiobook for free?" targeting the page-1 ranking queries ("ai audiobook generator" #6.4, "audiobook generator" #10.1); new Q&As added to both the `faqs` array (FAQPage schema) and the visible FAQ accordion verbatim. Title tweaked to "AI Audiobook Generator: Free Book Narration | TextToSpeechH"; meta description rewritten as a click-focused pitch ("no signup, no fees") to convert 44 weekly impressions into clicks.
   - **Arabic language page** (`src/seo/programmaticPages.js`, `/language/arabic`): title rewritten from Arabic-only to "Free Arabic Text to Speech | TextToSpeechH AI" and meta description made bilingual (English lead + Arabic tail) — the ranking query "arabic text to speech" (position 5, zero clicks) is English, so English-first SERP copy targets the CTR gap.
