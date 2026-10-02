@@ -28,6 +28,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Added
+- **New article: Audible AI audiobooks (2026-10-02)** (`src/pages/textToSpeechBlogHub.js`, `text-to-speech/blog/audible-ai-audiobook-features`): "Audible Adds AI to Audiobooks: What Authors Need to Know (2026)" — from the 2 Oct daily SEO draft; user approved the draft ("bohot behtareen, timely aur honest") and said "publish kardo". Timely coverage of Audible's Oct 1, 2026 announcement (Character Guide, Interactive Story, Visual Explorer debuting with Dracula and 1984), honest ACX vs Spotify/Kobo/Google Play AI-narration rules, the free 5-step AI audiobook workflow, and a studio-vs-AI cost table. 5 FAQs with matching FAQPage schema. Per user request, a "Related Guides" block at the end interlinks `ai-audiobook-generator-guide`, `ai-audiobook-narration-authors`, and `/use-case/audiobook-generator`. Pushed via gh.py put (d437fdf); remote verified via gh.py cat; production confirmed HTTP 200 with correct title, Related Guides block, and FAQPage schema. Request Indexing pending (user does it himself from the live URL).
+
 ### Changed
 - **SEO actions (2026-10-02)** — from the 2 Oct daily SEO report (user directive), all in `src/seo/programmaticPages.js`:
   - **Audiobook use-case page** (`/use-case/audiobook-generator`): FAQ accordion headings bumped from H4 to H3 (4 questions) for stronger on-page targeting — FAQPage schema (from the `faqs` array) unchanged and still valid.
