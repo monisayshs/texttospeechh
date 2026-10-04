@@ -30,6 +30,8 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/audible-ai-audiobook-features", title: "Audible Adds AI to Audiobooks: What Authors Need to Know (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Audible AI Audiobooks Guide \u2192" },
 
   { slug: "text-to-speech/blog/suno-speech-voiceover-music-guide", title: "Suno Speech Review: AI Voiceovers With Built-In Music", category: "Guides", readingTime: "8 min read", cta: "Read Suno Speech Review \u2192" },
+
+  { slug: "text-to-speech/blog/best-arabic-text-to-speech-tools", title: "Arabic Text to Speech: 7 Best Free Tools (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Arabic TTS Tools Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -6018,6 +6020,183 @@ const BLOG_ARTICLES_MAP = {
         <ul style="margin:0; padding-left:20px; line-height:2;">
           <li><a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">AI Voiceover Guide for YouTube Shorts</a></li>
           <li><a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-podcast-free" style="color:var(--color-primary);">Text to Speech for Podcast: Free Tools Guide</a></li>
+          <li><a href="${DOMAIN}/use-case/audiobook-generator" style="color:var(--color-primary);">AI Audiobook Generator: Free Book Narration</a></li>
+        </ul>
+      </div>
+
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;">
+        <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">&#9664; Return to Master Text to Speech Guide</a>
+      </div>
+    `
+  },
+  "text-to-speech/blog/best-arabic-text-to-speech-tools": {
+    title: `Arabic Text to Speech: 7 Best Free Tools (2026) | ${BRAND_NAME}`,
+    h1: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
+    metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most Arabic TTS problems.`,
+    category: "Comparisons",
+    readingTime: "9 min read",
+    faqs: [{"q": "Q1: Is there a completely free Arabic text-to-speech with no sign-up?", "a": "Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration, and Microsoft Edge's built-in Read Aloud is free with no account needed."}, {"q": "Q2: Why does my Arabic TTS mispronounce words?", "a": "Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses pronunciation from context. Add diacritics to ambiguous words and regenerate."}, {"q": "Q3: Which Arabic dialect do TTS tools speak?", "a": "Most free tools speak Modern Standard Arabic. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers — check each tool's voice list."}, {"q": "Q4: Can I use free Arabic TTS for YouTube videos commercially?", "a": "It depends on the tool's license. TextToSpeechH allows MP3 downloads you can use in content; always check the specific tool's terms before monetizing."}, {"q": "Q5: How long can the audio be?", "a": "Varies wildly: ElevenLabs free gives about 10 minutes per month, while TextToSpeechH handles up to 10,000 words per request. Match the tool to your project's length."}],
+    datePublished: "October 4, 2026",
+    dateModified: "October 4, 2026",
+    content: `
+      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;">
+        <h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Which Free Arabic TTS Is Best?</h2>
+        <p style="margin:0; line-height:1.7;">
+          Arabic TTS is hard because written Arabic skips vowel marks (tashkeel), so engines must guess pronunciation — and most free tools speak only Modern Standard Arabic. The 7 best free tools in 2026 handle MSA well; the single biggest quality boost comes from adding diacritics to your text before generating. For a no-sign-up start, <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's free Arabic generator</a> converts up to 10,000 words per request to MP3.
+        </p>
+      </div>
+
+      <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
+        <ol style="margin:0; padding-left:20px; line-height:1.8;">
+          <li><a href="#arabic-why" style="color:inherit;">1. Why Arabic Is Hard for Text-to-Speech</a></li>
+          <li><a href="#arabic-tools" style="color:inherit;">2. The 7 Best Free Arabic TTS Tools</a></li>
+          <li><a href="#arabic-trick" style="color:inherit;">3. The One Trick That Fixes Most Problems</a></li>
+          <li><a href="#arabic-dialect" style="color:inherit;">4. MSA or Dialect? A Quick Decision Guide</a></li>
+          <li><a href="#faq-arabic" style="color:inherit;">5. Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <section id="arabic-why" style="margin-bottom:40px;">
+        <h2>Why Arabic is hard for text-to-speech</h2>
+        <p style="line-height:1.8;">
+          Three things trip up most TTS engines:
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Missing vowels.</strong> Written Arabic normally omits short vowels. The word كتب could be <em>kataba</em> (he wrote), <em>kutiba</em> (it was written), or <em>kutub</em> (books). A good engine uses context to pick correctly; a bad one just guesses.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Dialects vs. Modern Standard Arabic.</strong> Most tools speak Modern Standard Arabic (MSA) — the formal register of news and books. That is fine for audiobooks and education, but if your audience speaks Egyptian, Levantine, or Gulf dialect, MSA can sound stiff. Decide which your listeners expect before you pick a tool.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Letter forms and numerals.</strong> Arabic script changes letter shapes by position, and mixed Arabic-English text (brand names, numbers, URLs) breaks weaker engines. The tools below handle mixed text gracefully.
+        </p>
+      </section>
+
+      <section id="arabic-tools" style="margin-bottom:40px;">
+        <h2>The 7 best free Arabic text-to-speech tools</h2>
+        <h3>1. TextToSpeechH — best truly free option, no sign-up</h3>
+        <p style="line-height:1.8;">
+          If you want Arabic voiceover without creating an account or hitting a paywall, start here. <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's Arabic generator</a> converts Arabic text to natural-sounding speech free, with MP3 download in one click. No registration, no credit card, no "free trial" that expires mid-project.
+        </p>
+        <p style="line-height:1.8;">
+          It handles long documents (up to 10,000 words per request), which matters for audiobooks and course narration — most free tools cap you at a few hundred characters. Speed and pitch controls help you tune the delivery.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> YouTubers, students, and educators who need Arabic audio now, free, with zero friction.
+        </p>
+        <h3>2. ElevenLabs — best voice quality (free tier limited)</h3>
+        <p style="line-height:1.8;">
+          ElevenLabs produces some of the most natural Arabic voices available, with good handling of MSA pronunciation. The catch: the free plan gives you roughly 10 minutes of audio per month. Fine for testing or short intros; not for a series.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Short clips where maximum naturalness matters more than volume.
+        </p>
+        <h3>3. Narakeet — best for video creators</h3>
+        <p style="line-height:1.8;">
+          Narakeet offers 20+ Arabic voices and is built around turning scripts into videos and audio files quickly. The free tier lets you create a limited number of voiceovers — enough to evaluate it for a real project.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Creators who want script-to-video with Arabic narration.
+        </p>
+        <h3>4. Murf — best voice customization</h3>
+        <p style="line-height:1.8;">
+          Murf's studio-style editor lets you adjust emphasis, pauses, and pronunciation per word — useful for Arabic, where one wrong vowel changes the meaning. The free plan is limited, but the control is unmatched at this price.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Perfectionists producing polished Arabic narration.
+        </p>
+        <h3>5. TTSMaker — most generous free tier</h3>
+        <p style="line-height:1.8;">
+          TTSMaker supports Arabic with one of the most generous free plans around — roughly 20,000 characters per week, no credit card required. The voices are solid for a free tool, and the weekly allowance covers real projects, not just quick tests.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Regular Arabic content where you need volume without paying a cent.
+        </p>
+        <h3>6. TTSFree — best no-frills free converter</h3>
+        <p style="line-height:1.8;">
+          TTSFree does exactly what the name says: paste Arabic text, get an MP3, no account. Voice quality is a step below the premium tools, but for quick listen-backs and accessibility use, it is perfectly serviceable.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Quick conversions where convenience beats polish.
+        </p>
+        <h3>7. Microsoft Edge Read Aloud — best built-in free option</h3>
+        <p style="line-height:1.8;">
+          Already on your computer: open any Arabic webpage or PDF in Microsoft Edge, right-click, and choose Read Aloud. The neural voices are surprisingly good, it is completely free, and there is nothing to install.
+        </p>
+        <p style="line-height:1.8;">
+          <strong>Best for:</strong> Listening to Arabic articles and documents hands-free.
+        </p>
+      </section>
+
+      <section id="arabic-trick" style="margin-bottom:40px;">
+        <h2>The one trick that fixes most Arabic TTS problems</h2>
+        <p style="line-height:1.8;">
+          Add the vowel marks. Seriously — this single step improves output quality more than switching tools.
+        </p>
+        <p style="line-height:1.8;">
+          If your text is important (a course, an audiobook chapter, a client video), run it through a free diacritizer first (search "Arabic tashkeel tool"), review the marks, then paste the diacritized text into your TTS tool. Fully vocalized text removes the guessing game entirely, and even mid-tier engines sound dramatically more natural.
+        </p>
+        <p style="line-height:1.8;">
+          For casual content, MSA without diacritics is fine — modern neural engines get it right most of the time. For anything your name goes on, diacritize.
+        </p>
+      </section>
+
+      <section id="arabic-dialect" style="margin-bottom:40px;">
+        <h2>MSA or dialect? A quick decision guide</h2>
+        <ul style="line-height:1.8;">
+          <li><strong>Audiobooks, courses, news-style content → Modern Standard Arabic.</strong> Every tool on this list handles MSA. Your audience expects formal register here.</li>
+          <li><strong>YouTube entertainment, social clips, ads → consider dialect.</strong> Egyptian Arabic is understood across the Arab world thanks to film and TV; Gulf dialect fits Khaleeji audiences. Fewer free tools offer dialects, so check voice samples before committing.</li>
+          <li><strong>Quranic or religious text → specialized tools.</strong> Standard TTS is not tuned for tajweed rules. Use a dedicated Quran recitation app instead.</li>
+        </ul>
+      </section>
+
+      <section id="faq-arabic" style="margin-bottom:40px;">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Q1: Is there a completely free Arabic text-to-speech with no sign-up?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration, and Microsoft Edge's built-in Read Aloud is free with no account needed.</p>
+          </div>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Q2: Why does my Arabic TTS mispronounce words?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses pronunciation from context. Add diacritics to ambiguous words and regenerate.</p>
+          </div>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Q3: Which Arabic dialect do TTS tools speak?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Most free tools speak Modern Standard Arabic. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers — check each tool's voice list.</p>
+          </div>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Q4: Can I use free Arabic TTS for YouTube videos commercially?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">It depends on the tool's license. TextToSpeechH allows MP3 downloads you can use in content; always check the specific tool's terms before monetizing.</p>
+          </div>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Q5: How long can the audio be?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Varies wildly: ElevenLabs free gives about 10 minutes per month, while TextToSpeechH handles up to 10,000 words per request. Match the tool to your project's length.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom:40px;">
+        <h2>Try it free right now</h2>
+        <p style="line-height:1.8;">
+          The fastest way to hear the difference: paste a paragraph of Arabic into <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's free Arabic text-to-speech</a>, generate, and download the MP3. No sign-up, no trial clock ticking — just your text, spoken naturally, ready for your video, course, or audiobook.
+        </p>
+      </section>
+
+      <div style="background:var(--color-primary-soft); border:1px solid var(--color-primary-border); border-radius:12px; padding:24px; margin-bottom:28px; text-align:center;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Hear Arabic spoken free</h3>
+        <p style="line-height:1.7; margin:0 0 16px;">
+          Paste a paragraph of Arabic into <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's free Arabic text-to-speech</a>, generate, and download the MP3. No sign-up, no trial clock — just your text, spoken naturally.
+        </p>
+        <a href="${DOMAIN}/language/arabic" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;">Try Arabic TTS Free</a>
+      </div>
+
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px; margin-bottom:28px;">
+        <h3 style="margin-top:0; color:var(--color-primary);">Related Guides</h3>
+        <ul style="margin:0; padding-left:20px; line-height:2;">
+          <li><a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">AI Voiceover Guide for YouTube Shorts</a></li>
+          <li><a href="${DOMAIN}/text-to-speech/blog/ai-audiobook-generator-guide" style="color:var(--color-primary);">AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)</a></li>
           <li><a href="${DOMAIN}/use-case/audiobook-generator" style="color:var(--color-primary);">AI Audiobook Generator: Free Book Narration</a></li>
         </ul>
       </div>
