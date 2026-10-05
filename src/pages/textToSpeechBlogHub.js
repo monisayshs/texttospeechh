@@ -3210,6 +3210,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/free-text-to-speech-pdf-to-audio": {
     title: `Free Text to Speech: Convert PDF to Audio | ${BRAND_NAME}`,
     h1: `Free Text to Speech: Convert PDF to Audio`,
+    ogImage: "/images/blog/free-text-to-speech-pdf-to-audio/pdf-to-audio-hero.webp",
     metaDesc: `Convert any PDF to audio free: upload your document, pick a voice, download MP3. Compare free PDF-to-speech limits of TTSMaker, NaturalReader and more.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -3226,6 +3227,11 @@ const BLOG_ARTICLES_MAP = {
           Free text to speech pdf to audio tools are useful for studying lecture notes hands-free, listening to ebooks and reports while commuting, or making long documents accessible if reading on screen is difficult. Below is a step-by-step guide, plus the free limits of the main tools that can do it — based on published plan details at time of writing.
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/free-text-to-speech-pdf-to-audio/pdf-to-audio-hero.webp" alt="PDF document transforming into audio sound waves streaming into headphones - free PDF to audio conversion" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">A PDF becomes listenable audio in minutes — upload, pick a voice, download the MP3.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
