@@ -28,6 +28,10 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Changed
+- **SEO audit Commit A — /faq template fix (2026-10-05)** (`src/api/contentHandler.js`, `renderFaqDirectoryPage`): the /faq page was the weakest indexed page — added the shared head pattern: og:title, og:description, og:image, og:url, og:site_name, twitter:card (summary_large_image) + title/desc/image, plus Organization and BreadcrumbList JSON-LD via `schemaGenerator` (FAQPage schema unchanged). User approved via total-SEO-audit action plan.
+- **SEO audit Commit B — title/description trims for CTR (2026-10-05)**: trimmed all 25 titles >60 chars (worst 80 rendered) to ≤60 and all 7 descriptions >160 chars (worst 204) to 150–160. Keyword kept at the start of each; brand suffix dropped where it pushed titles over 60. Files: `src/pages/textToSpeechBlogHub.js` (17 titles + 7 descriptions), `src/seo/programmaticPages.js` (8 titles). Full before→after list: `~/workspace/seo/total-audit-2026-10-05/title-trims-2026-10-05.md`. User approved via total-SEO-audit action plan.
+
 ### Added
 - **New article: Audible AI audiobooks (2026-10-02)** (`src/pages/textToSpeechBlogHub.js`, `text-to-speech/blog/audible-ai-audiobook-features`): "Audible Adds AI to Audiobooks: What Authors Need to Know (2026)" — from the 2 Oct daily SEO draft; user approved the draft ("bohot behtareen, timely aur honest") and said "publish kardo". Timely coverage of Audible's Oct 1, 2026 announcement (Character Guide, Interactive Story, Visual Explorer debuting with Dracula and 1984), honest ACX vs Spotify/Kobo/Google Play AI-narration rules, the free 5-step AI audiobook workflow, and a studio-vs-AI cost table. 5 FAQs with matching FAQPage schema. Per user request, a "Related Guides" block at the end interlinks `ai-audiobook-generator-guide`, `ai-audiobook-narration-authors`, and `/use-case/audiobook-generator`. Pushed via gh.py put (d437fdf); remote verified via gh.py cat; production confirmed HTTP 200 with correct title, Related Guides block, and FAQPage schema. Request Indexing pending (user does it himself from the live URL).
 
