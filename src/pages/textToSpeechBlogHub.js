@@ -2439,7 +2439,7 @@ const BLOG_ARTICLES_MAP = {
   },
 
   "text-to-speech/blog/best-free-text-to-speech-tools": {
-    title: `Best Free Text to Speech Tools Tested in 2026 | ${BRAND_NAME}`,
+    title: `Best Free Text to Speech Tools Tested in 2026`,
     h1: `Best Free Text to Speech Tools Tested in 2026`,
     metaDesc: `We tested 8 free text to speech tools and ranked them by free-tier generosity: character limits, watermarks and commercial rights. Find your best free TTS.`,
     category: "Comparisons",
@@ -2782,7 +2782,7 @@ const BLOG_ARTICLES_MAP = {
   },
 
   "text-to-speech/blog/best-ai-voice-generators-free": {
-    title: `Best AI Voice Generators With Free Plans (2026) | ${BRAND_NAME}`,
+    title: `Best AI Voice Generators With Free Plans (2026)`,
     h1: `Best AI Voice Generators With Free Plans (2026)`,
     metaDesc: `We tested 10 AI voice generators with free plans for creators. Compare realism scores, free limits, voice cloning, and YouTube monetization rules.`,
     category: "Comparisons",
@@ -3646,7 +3646,7 @@ const BLOG_ARTICLES_MAP = {
   },
 
   "text-to-speech/blog/murf-ai-free-alternative": {
-    title: `Murf AI Free Alternative: 7 Best Picks (2026) | ${BRAND_NAME}`,
+    title: `Murf AI Free Alternative: 7 Best Picks (2026)`,
     h1: `Murf AI Free Alternative: 7 Best Picks (2026)`,
     metaDesc: `Murf AI's free plan is 10 minutes total with no downloads. Compare 7 free Murf AI alternatives with honest catches: ElevenLabs, TTSMaker, Speechify and more.`,
     category: "Comparisons",
@@ -4261,7 +4261,7 @@ const BLOG_ARTICLES_MAP = {
   },
   // ARTICLE 12: Gemini Flash TTS Guide
   "text-to-speech/blog/gemini-flash-tts-guide": {
-    title: `Gemini Flash TTS: Pricing & Free Alternatives | ${BRAND_NAME}`,
+    title: `Gemini Flash TTS: Pricing & Free Alternatives`,
     h1: `Gemini Flash TTS: What It Is, Pricing & Free Alternatives`,
     metaDesc: `Google launched Gemini Flash TTS on Sept 23, 2026. Honest guide: what it is, real pricing, benchmark reality, and free alternatives.`,
     category: "AI Technology",
@@ -4726,7 +4726,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/ai-video-dubbing-guide": {
-    title: `AI Video Dubbing: Dub Videos Into Any Language | ${BRAND_NAME}`,
+    title: `AI Video Dubbing: Dub Videos Into Any Language`,
     h1: `AI Video Dubbing: How to Dub Your Videos Into Any Language`,
     metaDesc: `Dub your videos into any language with AI. Honest 2026 guide: how AI dubbing works, what's actually free, and the DIY workflow that costs nothing.`,
     category: "Guides",
@@ -4877,7 +4877,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/ai-voice-cloning-guide": {
-    title: `AI Voice Cloning: Clone Your Voice for Free in 2026 | ${BRAND_NAME}`,
+    title: `AI Voice Cloning: Clone Your Voice Free (2026)`,
     h1: `AI Voice Cloning: Clone Your Voice for Free in 2026`,
     metaDesc: `Clone your voice for free in 2026: how AI voice cloning actually works, what is genuinely free, the honest limits, and when plain TTS is the smarter move.`,
     category: "Guides",
@@ -5049,7 +5049,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/elevenlabs-v4-free-guide": {
-    title: `ElevenLabs v4 Is Here: Try Expressive AI Voices Free | ${BRAND_NAME}`,
+    title: `ElevenLabs v4: Try Expressive AI Voices Free`,
     h1: `ElevenLabs v4 Is Here: Try Expressive AI Voices Free`,
     metaDesc: `ElevenLabs v4 is here (Sep 2026): audio tags, 90+ languages, 10-sec cloning. What is new, what it costs, and how to get expressive AI voices free.`,
     category: "Comparisons",
@@ -5209,9 +5209,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/ai-audiobook-narration-authors": {
-    title: `AI Audiobook Narration: Turn Your Book Into Audio | ${BRAND_NAME}`,
+    title: `AI Audiobook Narration: Turn Your Book Into Audio`,
     h1: `AI Audiobook Narration: Turn Your Book Into Audio`,
-    metaDesc: `AI audiobook narration for authors (2026): where to publish AI-narrated audiobooks, platform rules, the free workflow, and real costs. Turn your book into audio.`,
+    metaDesc: `AI audiobook narration for authors (2026): where to publish AI-narrated audiobooks, platform rules, the free workflow, and real costs — explained step by step.`,
     category: "Guides",
     readingTime: "8 min read",
     faqs: [{"q": "Q1: Does Audible accept AI-narrated audiobooks?", "a": "Amazon's Audible catalog includes tens of thousands of “Virtual Voice” AI-narrated titles. ACX's rules for author-submitted AI narration change frequently — check the current terms and disclose the narration before uploading."}, {"q": "Q2: How much does AI audiobook narration cost?", "a": "Near zero with free tools, or under $5 in API/character costs for a full novel on paid services. A human narrator costs $1,200–$3,000+ for the same book."}, {"q": "Q3: Can listeners tell the narration is AI?", "a": "Mostly not anymore. In the September 2026 Edison Research study, 61% of listeners exposed to AI narration thought it was human, and willingness to try AI-narrated audiobooks jumped from 31% to 65% after hearing samples."}, {"q": "Q4: Can I narrate my audiobook free with no signup?", "a": "Yes. Paste your chapter into the free AI voice generator, pick a narrator voice, generate, and export the MP3 — repeat per chapter. No account, no character cap standing in your way."}, {"q": "Q5: Do I have to disclose AI narration?", "a": "Yes, on every platform that matters — Spotify for Authors has a disclosure checkbox, Kobo wants “Synthesised voice” as the narrator, and Amazon labels them Virtual Voice. Disclose everywhere asked."}],
@@ -5394,7 +5394,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/free-text-to-speech-no-signup": {
-    title: `Free Text to Speech Without Login: 7 Tools for 2026 | ${BRAND_NAME}`,
+    title: `Free Text to Speech Without Login: 7 Tools (2026)`,
     h1: `Free Text to Speech Without Login: 7 Tools for 2026`,
     metaDesc: `7 free text-to-speech tools that work without login or signup (2026). Compare free limits, MP3 downloads & commercial rights — no account needed.`,
     category: "Comparisons",
@@ -5621,9 +5621,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/audible-ai-audiobook-features": {
-    title: `Audible Adds AI to Audiobooks: What Authors Need to Know (2026) | ${BRAND_NAME}`,
+    title: `Audible's AI Audiobooks: What Authors Must Know (2026)`,
     h1: `Audible Adds AI to Audiobooks: What Authors Need to Know (2026)`,
-    metaDesc: `Audible launched AI audiobook features in October 2026 — Character Guide, Interactive Story, Visual Explorer. What indie authors must know: ACX rules, where AI narration is allowed, and the free workflow.`,
+    metaDesc: `Audible's Oct 2026 AI audiobook features: Character Guide, Interactive Story, Visual Explorer. What indie authors must know about ACX rules and AI narration.`,
     category: "Guides",
     readingTime: "8 min read",
     faqs: [{"q": "Q1: Can I publish an AI-narrated audiobook on Audible?", "a": "Not through ACX, which requires human narration unless Audible has authorized an exception. You can sell AI-narrated audiobooks on Spotify for Authors, Kobo, and Google Play Books with the proper disclosure."}, {"q": "Q2: Does Audible's Character Guide work with indie books?", "a": "Not yet. The features announced on October 1, 2026 (Character Guide, Interactive Story, Visual Explorer) are in limited beta with Audible's own productions like Dracula and 1984. There is no self-serve way to enable them on your book today."}, {"q": "Q3: How long does it take to make an AI audiobook?", "a": "Most authors can go from manuscript to mastered chapter files in a weekend. The bottleneck is proof-listening at normal speed, because AI will occasionally mispronounce names and abbreviations."}, {"q": "Q4: Is AI narration good enough for a real audiobook?", "a": "For non-fiction, memoirs, and straightforward fiction: yes, modern neural voices are convincing, especially at a slightly slowed rate. For character-heavy dramatic fiction, manage expectations."}, {"q": "Q5: What does an AI audiobook cost to produce?", "a": "$0 with free tools. Your costs are time (proof-listening) and distribution fees from the stores you choose — versus $2,500-$5,000 for a professionally narrated 10-hour book."}],
@@ -5824,9 +5824,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/suno-speech-voiceover-music-guide": {
-    title: `Suno Speech Review: AI Voiceovers With Built-In Music | ${BRAND_NAME}`,
+    title: `Suno Speech Review: AI Voiceovers With Music`,
     h1: `Suno Speech Review: AI Voiceovers With Built-In Music`,
-    metaDesc: `Suno Speech (Oct 2026) generates AI voiceovers with built-in background music as one track — 8-min cap, beta quirks. Full review plus the free "voice plus music" workflow.`,
+    metaDesc: `Suno Speech (Oct 2026) review: AI voiceovers with built-in background music in one track — 8-min cap, beta quirks, and the free voice-plus-music workflow.`,
     category: "Guides",
     readingTime: "8 min read",
     faqs: [{"q": "Q1: Is Suno Speech free?", "a": "Speech is available in public beta across Suno's web and mobile apps. Suno runs on a subscription/credit model (2M+ paying subscribers as of 2026), so expect the beta to consume credits — it is not a free-forever tool like browser-based TTS generators."}, {"q": "Q2: How long can a Suno Speech generation be?", "a": "Approximately eight minutes maximum per generation. Longer content needs to be split across multiple generations."}, {"q": "Q3: Can I use Suno Speech voiceovers for YouTube?", "a": "Suno positions Speech for creative entertainment, but check Suno's current terms for commercial and monetization rights before publishing — beta terms can be restrictive. Voiceovers you generate yourself with a free TTS tool and add your own royalty-free music to carry no such ambiguity."}, {"q": "Q4: What is the difference between Suno Speech and ElevenLabs?", "a": "ElevenLabs is a dedicated voice-generation platform: precise control, long-form narration, 90+ languages, voice cloning. Suno Speech is a creative tool that generates voice with music as one track. Different jobs, different strengths — many creators will end up using both."}, {"q": "Q5: Do I need built-in music, or should I add it myself?", "a": "If speed matters more than control, built-in (Suno) wins. If you publish regularly and want consistent quality, generate the voice free and add your own music bed — you get unlimited length, full control, and zero cost."}],
@@ -6037,9 +6037,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/best-arabic-text-to-speech-tools": {
-    title: `Arabic Text to Speech: 7 Best Free Tools (2026) | ${BRAND_NAME}`,
+    title: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
     h1: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
-    metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most Arabic TTS problems.`,
+    metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most issues.`,
     category: "Comparisons",
     readingTime: "9 min read",
     faqs: [{"q": "Q1: Is there a completely free Arabic text-to-speech with no sign-up?", "a": "Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration, and Microsoft Edge's built-in Read Aloud is free with no account needed."}, {"q": "Q2: Why does my Arabic TTS mispronounce words?", "a": "Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses pronunciation from context. Add diacritics to ambiguous words and regenerate."}, {"q": "Q3: Which Arabic dialect do TTS tools speak?", "a": "Most free tools speak Modern Standard Arabic. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers — check each tool's voice list."}, {"q": "Q4: Can I use free Arabic TTS for YouTube videos commercially?", "a": "It depends on the tool's license. TextToSpeechH allows MP3 downloads you can use in content; always check the specific tool's terms before monetizing."}, {"q": "Q5: How long can the audio be?", "a": "Varies wildly: ElevenLabs free gives about 10 minutes per month, while TextToSpeechH handles up to 10,000 words per request. Match the tool to your project's length."}],
@@ -6214,9 +6214,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/microsoft-mai-voice-tts-guide": {
-    title: `Microsoft MAI-Voice-2.1: Pricing & Free TTS Alternatives | ${BRAND_NAME}`,
+    title: `Microsoft MAI-Voice-2.1: Pricing & Free Alternatives`,
     h1: `Microsoft MAI-Voice-2.1: Pricing & Free TTS Alternatives`,
-    metaDesc: `Microsoft MAI-Voice-2.1 costs $22 per million characters — a paid developer API, not a free tool. Pricing breakdown, who it is really for, and 4 free alternatives you can use today.`,
+    metaDesc: `Microsoft MAI-Voice-2.1 costs $22 per million characters — a paid developer API, not a free tool. Pricing, who it's for, and 4 free alternatives to use today.`,
     category: "Guides",
     readingTime: "7 min read",
     faqs: [{"q": "Q1: What is Microsoft MAI-Voice-2.1?", "a": "A text-to-speech AI model launched by Microsoft AI on October 1, 2026. It generates expressive, natural-sounding speech in 23 languages, keeping a single voice's identity across languages. It is aimed at developers building voice agents and narration pipelines, not at end users."}, {"q": "Q2: How much does MAI-Voice-2.1 cost?", "a": "22 dollars per million characters for the full model, 15 dollars per million for the faster Flash version. A million characters is roughly 15-20 hours of audio."}, {"q": "Q3: Can I use MAI-Voice-2.1 for free?", "a": "Not as an end user — there is no free consumer tool. It is available through Microsoft Foundry, the MAI Playground, Vercel AI Gateway, and OpenRouter, all developer/API channels with usage-based billing. For free generation, use one of the alternatives in this guide."}, {"q": "Q4: Is MAI-Voice-2.1 better than ElevenLabs?", "a": "Microsoft claims Flash is about 60% cheaper and 55% faster at inference than comparable models, but those are the company's own numbers, and \"better\" depends on your use case. For developer pipelines it is worth testing; for everyday creators, ElevenLabs' studio or a free tool like TextToSpeechH is simpler."}, {"q": "Q5: Does MAI-Voice-2.1 support voice cloning?", "a": "Yes, from a 5-to-60-second reference clip — but cloning access is gated behind a review process with recorded speaker consent."}],
@@ -6391,9 +6391,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/tiktok-text-to-speech-guide": {
-    title: `TikTok Text to Speech: How to Add Free AI Voiceovers | ${BRAND_NAME}`,
+    title: `TikTok Text to Speech: Free AI Voiceovers Guide`,
     h1: `TikTok Text to Speech: How to Add Free AI Voiceovers`,
-    metaDesc: `TikTok's built-in text-to-speech works for short clips. Here's how to use it, where it falls short, and the free AI-voiceover workflow faceless creators use instead.`,
+    metaDesc: `TikTok's built-in text-to-speech works for short clips. How to use it, where it falls short, and the free AI-voiceover workflow faceless creators use instead.`,
     category: "Guides",
     readingTime: "8 min read",
     faqs: [{"q": "Q1: Can I clone my own voice for TikTok?", "a": "Yes — several tools offer voice cloning, including free ones with limits. But think about whether you need it: for a faceless channel, a consistent stock AI voice works just as well and skips the whole consent-and-approval process that gated cloning requires. If your face isn't in the video, your real voice doesn't need to be either."}, {"q": "Q2: Is it legal to use AI voices on TikTok?", "a": "Using AI-generated voiceovers in your own original videos is generally fine — the voice is reading *your* script. Where creators get in trouble is cloning a celebrity's or another creator's voice without permission, or using a paid tool's voice outside its license terms. Free tools like TextToSpeechH don't watermark or claim your content. That said, I'm not a lawyer — if you're doing brand deals, read the tool's terms."}, {"q": "Q3: Which voice style holds watch time best?", "a": "There's no universal winner, but the pattern is clear: the voice should match the content's energy. Mismatches (sleepy voice on hype content, shouty voice on a sad story) tank retention. Beyond that, consistency matters more than the specific voice — viewers stay for channels they recognize."}, {"q": "Q4: Does TikTok penalize AI voiceovers?", "a": "TikTok doesn't penalize AI-narrated videos as a category — faceless AI-narrated channels with millions of followers are proof. What gets penalized is low-effort, repetitive content, whether a human or an AI read it. Original scripts with real editing perform fine."}, {"q": "Q5: Can I use the same AI voiceover on YouTube Shorts and Reels?", "a": "Absolutely — that's the whole point of generating an MP3 outside the app. Make it once, post it everywhere. Just check each platform's rules about repetitive content if you're cross-posting identical videos at scale."}, {"q": "Q6: How long should a TikTok voiceover script be?", "a": "Roughly 130–150 words per minute of finished video. For a 30-second TikTok, that's about 65–75 words. Write it, read it aloud once at natural pace, and trim anything that drags."}],
@@ -6461,7 +6461,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/ai-voiceover-powerpoint-guide": {
-    title: `Add AI Voiceover to PowerPoint: Free Step-by-Step Guide | ${BRAND_NAME}`,
+    title: `Add AI Voiceover to PowerPoint: Free Guide`,
     h1: `Add AI Voiceover to PowerPoint: Free Step-by-Step Guide`,
     metaDesc: `Add AI voiceover to PowerPoint free: generate MP3 narration, insert one clip per slide with autoplay, and export to video. Complete step-by-step guide.`,
     category: "Guides",
@@ -6529,9 +6529,9 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/play-ht-alternatives": {
-    title: `Play.ht Alternatives After the Shutdown: 7 Free Options | ${BRAND_NAME}`,
+    title: `Play.ht Alternatives: 7 Free Options After Shutdown`,
     h1: `Play.ht Alternatives After the Shutdown: 7 Free Options`,
-    metaDesc: `Play.ht shut down in 2025 after Meta's acquisition. Compare 7 free Play.ht alternatives for voiceovers and API users, and move your workflow without losing your voices.`,
+    metaDesc: `Play.ht shut down in 2025 after Meta's acquisition. Compare 7 free Play.ht alternatives for voiceovers and API users — switch without losing your voices.`,
     category: "Comparisons",
     readingTime: "8 min read",
     faqs: [{"q": "Q1: Is Play.ht coming back?", "a": "No. The entire team joined Meta in July 2025 and the standalone platform shut down December 31, 2025. Meta bought the talent, not the product — there's no Play.ht to revive, and Meta has shown zero interest in running it as a consumer tool."}, {"q": "Q2: What happens to my Play.ht files and saved voices?", "a": "After the December 31, 2025 shutdown, the platform is gone — dashboard, voice library, saved projects, all of it. If you didn't export your MP3s and voice settings before the shutdown, they're almost certainly unrecoverable. There's no official data-retrieval process. Harsh, but that's the reality of a full platform sunset."}, {"q": "Q3: Can I still use the Play.ht API?", "a": "No. The API went dark on July 26, 2025, right after the Meta deal. Any integration still pointing at Play.ht endpoints has been broken for over a year. Time to migrate."}, {"q": "Q4: Did Meta buy Play.ht, or just hire the team?", "a": "Effectively an acquihire: Meta acquired PlayAI (Play.ht's rebranded name) and the whole team joined Meta's Superintelligence Labs. The standalone product was wound down rather than continued. You'll see both phrasings online; \"acquired the company, kept the team, killed the product\" is the accurate summary."}, {"q": "Q5: What's the closest free replacement for Play.ht's voice quality?", "a": "For pure voice quality, ElevenLabs' free tier — but you only get ~10 minutes a month and no commercial use. For an actually usable free workflow (no sign-up, real volume, MP3 downloads), TextToSpeechH is the practical answer."}, {"q": "Q6: I cloned my voice on Play.ht. Can I get my voice model back?", "a": "No official path exists. Your cloned voice model lived on Play.ht's servers, and those are gone. You'll need to re-clone with a new provider — ElevenLabs, or any TTS tool with cloning on its free or trial tier. Keep a clean 1–2 minute recording of yourself handy; most cloning tools want at least that much. ---"}],
@@ -6618,7 +6618,7 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/text-to-speech-elearning-narration": {
-    title: `Text to Speech for E-Learning: Free Course Narration Guide | ${BRAND_NAME}`,
+    title: `Text to Speech for E-Learning: Free Narration Guide`,
     h1: `Text to Speech for E-Learning: Free Course Narration Guide`,
     metaDesc: `Narrate your online course free with AI voices: the script-to-LMS workflow, best free TTS picks for course narration, and two mistakes to avoid.`,
     category: "Guides",
