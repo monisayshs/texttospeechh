@@ -88,9 +88,11 @@ function renderSeoPage(pageData, pathSlug) {
   const rawDesc = pageData.metaDesc || "";
   const safeTitle = escapeHtmlAttribute(rawTitle);
   const safeDesc = escapeHtmlAttribute(rawDesc);
+  // Per-article OG image (blog image rollout 2026-10-05); falls back to the site default.
+  const ogImageUrl = pageData.ogImage ? `${DOMAIN}${pageData.ogImage}` : `${DOMAIN}/og-image.png`;
 
   const articleSchema = (pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech")
-    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title || "Text to Speech", pageData.metaDesc || "", canonicalUrl, pageData.datePublished, pageData.dateModified))}</script>\n  `
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getArticleSchema(pageData.title || "Text to Speech", pageData.metaDesc || "", canonicalUrl, pageData.datePublished, pageData.dateModified, pageData.ogImage ? `${DOMAIN}${pageData.ogImage}` : undefined))}</script>\n  `
     : "";
 
   const category = pageData.category ? `<span class="blog-category" style="font-size:0.8em; color:var(--color-primary); text-transform:uppercase; letter-spacing:1px; font-weight:600;">${pageData.category}</span>` : '';
@@ -153,14 +155,14 @@ ${trackingHtml}
   <meta property="og:url" content="${canonicalUrl}">
   <meta property="og:title" content="${safeTitle}">
   <meta property="og:description" content="${safeDesc}">
-  <meta property="og:image" content="${DOMAIN}/og-image.png">
+  <meta property="og:image" content="${ogImageUrl}">
 
   <!-- Twitter Cards -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="${canonicalUrl}">
   <meta property="twitter:title" content="${safeTitle}">
   <meta property="twitter:description" content="${safeDesc}">
-  <meta property="twitter:image" content="${DOMAIN}/og-image.png">
+  <meta property="twitter:image" content="${ogImageUrl}">
 
   <!-- JSON-LD Schemas -->
   <script type="application/ld+json">${orgSchema}</script>

@@ -117,7 +117,7 @@ function getBreadcrumbSchema(items) {
   };
 }
 
-function getArticleSchema(title, description, url, datePublished, dateModified) {
+function getArticleSchema(title, description, url, datePublished, dateModified, image) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -144,7 +144,7 @@ function getArticleSchema(title, description, url, datePublished, dateModified) 
       "@type": "WebPage",
       "@id": url
     },
-    "image": `${DOMAIN}/og-image.png`
+    "image": image || `${DOMAIN}/og-image.png`
   };
 }
 

@@ -102,6 +102,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/best-ai-voices": {
     title: `Best AI Voices & Neural TTS Models 2026 | ${BRAND_NAME}`,
     h1: `Top 10 Best AI Voices & Neural TTS Models in 2026`,
+    ogImage: "/images/blog/best-ai-voices/best-ai-voices-hero.webp",
     metaDesc: `The definitive guide to the top 10 best AI voices and neural TTS models in 2026. Compare realism, emotional depth, languages, and free MP3 downloads.`,
     category: "AI Technology",
     readingTime: "28 min read",
@@ -118,6 +119,11 @@ const BLOG_ARTICLES_MAP = {
           The part most "top 10" lists skip: the voice matters less than how you use it. A good voice with badly formatted text still sounds robotic. This guide covers which voices to pick <em>and</em> the small tuning tricks that make them sound genuinely human — plus an honest look at where AI voices still fall short.
         </p>
       </div>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/best-ai-voices/best-ai-voices-hero.webp" alt="Best AI voices of 2026 - a lineup of diverse neural voice avatars with unique sound waves" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The best AI voices of 2026, reviewed one by one below.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -153,6 +159,11 @@ const BLOG_ARTICLES_MAP = {
         On <a href="${DOMAIN}">${BRAND_NAME}</a> you can try <strong>14 neural voices</strong> straight in your browser — no signup, no subscription, no trial that quietly converts. Try the <a href="${DOMAIN}/text-to-speech/voice-generator" style="color:var(--color-primary);">TextToSpeechH AI Voice Generator</a>, or read the background on our <a href="${DOMAIN}/text-to-speech/ai-text-to-speech" style="color:var(--color-primary);">AI Text to Speech</a> page. Hearing one in action teaches you more than any paragraph about "acoustic models" ever will.
       </p>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/best-ai-voices/neural-ai-voice-explained.webp" alt="How a neural AI voice is generated - written text flows through a neural network and comes out as natural speech" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">How a neural voice works: text in, neural network, human-sounding speech out.</figcaption>
+      </figure>
 
       <section id="evolution-speech-synthesis" style="margin-bottom: 40px;">
         <h2>2. A Short History: How Computer Voices Stopped Sounding Like Robots</h2>
@@ -451,6 +462,11 @@ const BLOG_ARTICLES_MAP = {
           The step everyone skips: <em>always proof-listen before you publish.</em> Generate first, then walk around the block with headphones on. You'll catch the one mispronounced name or rushed sentence that would have embarrassed you.
         </p>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/best-ai-voices/ai-voice-tuning-workflow.webp" alt="Four-step workflow for picking and tuning the perfect AI voice - listen, tune, generate, approve" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The 4-step workflow for picking and tuning the perfect voice.</figcaption>
+      </figure>
 
       <section id="industry-use-cases" style="margin-bottom: 40px;">
         <h2>7. Where These Voices Actually Get Used</h2>
@@ -839,6 +855,11 @@ const BLOG_ARTICLES_MAP = {
           The most famous modern approach uses <strong>HiFi-GAN</strong>, a type of generative adversarial network. "Adversarial" sounds dramatic, but the idea is simple: one part of the network generates audio while another part critiques it against real human speech. The result? Clean audio without the static hiss, metallic drone, or underwater quality that plagued older vocoders. This stage is genuinely why today's TTS sounds so good — it's the difference between a sketch and a finished painting.
         </p>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/how-text-to-speech-works/tts-three-stage-pipeline.webp" alt="The three stages of text-to-speech - linguistic front-end, acoustic model, and neural vocoder" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The three stages every neural TTS system runs: text cleanup, sound blueprint, audio synthesis.</figcaption>
+      </figure>
 
       <section id="open-source-models" style="margin-bottom: 40px;">
         <h2>6. The Open-Source Models That Changed Everything</h2>
@@ -1586,6 +1607,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/text-to-speech-for-youtube": {
     title: `AI Voiceover Guide for YouTube Shorts | ${BRAND_NAME}`,
     h1: `AI Voiceover Guide for YouTube Shorts & Faceless Channels`,
+    ogImage: "/images/blog/text-to-speech-for-youtube/youtube-ai-voiceover-hero.webp",
     metaDesc: `Learn how to generate high-retention AI voiceovers for YouTube Shorts, Reels, and faceless YouTube channels for free using neural AI speech synthesis.`,
     category: "YouTube & Video",
     readingTime: "28 min read",
@@ -1599,6 +1621,11 @@ const BLOG_ARTICLES_MAP = {
           Yes — you can build a faceless YouTube channel on AI voiceovers, and thousands of creators already do, from viral Shorts to long-form documentaries. The voice part is easy: generate free, royalty-free MP3 narration on <strong>TextToSpeechH AI</strong> (no sign-up, no credit card) and drop it into CapCut or Premiere. The catch most guides skip: <strong>the voice is about 10% of the work.</strong> YouTube doesn't reject channels for using AI voices — it rejects them for uploading low-effort, repetitive videos that add nothing. This guide covers the full workflow honestly: which voices fit which niches, where AI narration genuinely falls flat, and what monetization review actually looks at (with the caveat that policies evolve — always check the current rules before you bet a channel on them).
         </p>
       </div>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-youtube/youtube-ai-voiceover-hero.webp" alt="AI voiceover setup for faceless YouTube Shorts - smartphone, microphone and video editing timeline" width="1600" height="800" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The faceless YouTube setup: script, AI voice, edit, publish - no microphone needed.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -1705,6 +1732,11 @@ const BLOG_ARTICLES_MAP = {
           <li><strong>Mix the music under the voice.</strong> Keep background music around -20dB below the voiceover. If a viewer has to strain to hear the narration, you've already lost them — music is seasoning, not the meal.</li>
         </ol>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-youtube/youtube-voiceover-workflow.webp" alt="YouTube voiceover workflow - write the script, generate the AI voice, edit the video, publish the Short" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The editing workflow: from MP3 voiceover to finished video.</figcaption>
+      </figure>
 
       <section id="faceless-niche-playbook" style="margin-bottom: 40px;">
         <h2>6. Faceless Niches Worth Considering (and Their Catches)</h2>
@@ -1980,6 +2012,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/elevenlabs-alternatives": {
     title: `7 Best Free ElevenLabs Alternatives (2026) | ${BRAND_NAME}`,
     h1: `7 Best Free ElevenLabs Alternatives (2026)`,
+    ogImage: "/images/blog/elevenlabs-alternatives/elevenlabs-alternatives-hero.webp",
     metaDesc: `Compare the 7 best free ElevenLabs alternatives by free character limits, MP3 downloads & commercial rights. Updated September 2026 — no sign-up needed.`,
     category: "Comparisons",
     readingTime: "22 min read",
@@ -1993,6 +2026,11 @@ const BLOG_ARTICLES_MAP = {
           <em>Updated September 2026 — free tiers re-tested.</em> The best free <strong>ElevenLabs alternative</strong> for most creators is <strong>TextToSpeechH</strong> — no sign-up, free MP3 downloads, and commercial rights included, while ElevenLabs' own free tier stops at 10,000 characters a month (roughly 5 minutes of audio). If total privacy matters more than convenience, the open-source <strong>Piper</strong> engine running on your own computer is unbeatable. The full ranked comparison — by free character allowance, not marketing claims — is below.
         </p>
       </div>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/elevenlabs-alternatives/elevenlabs-alternatives-hero.webp" alt="Free ElevenLabs alternatives compared - premium locked voice AI versus free open voice tools" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Premium voice AI puts its best voices behind a paywall - these free alternatives do not.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -2107,6 +2145,11 @@ const BLOG_ARTICLES_MAP = {
           Allowances are at time of writing (September 2026) — free tiers change often, so confirm on each tool's pricing page before building a workflow around a quota.
         </p>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/elevenlabs-alternatives/elevenlabs-free-limits-compared.webp" alt="Free character limits compared across the best ElevenLabs alternatives, from smallest to most generous allowance" width="1600" height="1066" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Free allowances compared: the single biggest reason creators look for ElevenLabs alternatives.</figcaption>
+      </figure>
 
       <section id="top-7-alternatives" style="margin-bottom: 40px;">
         <h2>2. The 7 Best Free ElevenLabs Alternatives, Ranked</h2>
@@ -4532,6 +4575,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/ai-audiobook-generator-guide": {
     title: `AI Audiobook Generator (Free) | ${BRAND_NAME}`,
     h1: `AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)`,
+    ogImage: "/images/blog/ai-audiobook-generator-guide/ai-audiobook-generator-hero.webp",
     metaDesc: `Turn any book into a finished audiobook for free — no signup, no studio, no voice actor. A chapter-by-chapter workflow that survives a 10-hour book.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -4548,6 +4592,11 @@ const BLOG_ARTICLES_MAP = {
           The part most guides skip: audiobooks are a different craft from voiceovers. Ten hours of audio punishes every shortcut. This guide covers the workflow that actually survives a full book.
         </p>
       </div>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-audiobook-generator-guide/ai-audiobook-generator-hero.webp" alt="Turn any book into an audiobook for free - an open book transforming into audio sound waves" width="1600" height="800" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">From manuscript to finished audiobook: the free workflow that actually survives a full book.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -4728,6 +4777,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/ai-video-dubbing-guide": {
     title: `AI Video Dubbing: Dub Videos Into Any Language`,
     h1: `AI Video Dubbing: How to Dub Your Videos Into Any Language`,
+    ogImage: "/images/blog/ai-video-dubbing-guide/ai-video-dubbing-hero.webp",
     metaDesc: `Dub your videos into any language with AI. Honest 2026 guide: how AI dubbing works, what's actually free, and the DIY workflow that costs nothing.`,
     category: "Guides",
     readingTime: "9 min read",
@@ -4751,6 +4801,11 @@ const BLOG_ARTICLES_MAP = {
       <p style=\"line-height: 1.8;\">
         The pitch is real, but the price tags are steep — and most of the \"free\" options die at the paywall. So here is the honest walkthrough: how AI dubbing actually works, what you can genuinely do for free today, and the practical workflow that does not cost you anything.
       </p>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-video-dubbing-guide/ai-video-dubbing-hero.webp" alt="AI video dubbing into any language - a video player with multilingual audio track waveforms" width="1600" height="685" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Dub your videos into any language with AI - the practical free workflow.</figcaption>
+      </figure>
 
       <nav class=\"toc-box\" style=\"background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;\">
         <h3 style=\"margin-top:0; color:var(--color-primary);\">Table of Contents</h3>
@@ -4780,6 +4835,11 @@ const BLOG_ARTICLES_MAP = {
         Premium tools add a fifth step: lip-sync, which tweaks mouth movements to match the new words. That is where most of the magic (and most of the cost) lives. Skip it and you get a slightly \"foreign film on TV\" effect — voices that start and end at the right moments but do not perfectly match the lips. For YouTube tutorials, reviews, and explainers, that is usually fine. For drama or comedy, it isn't.
       </p>
       </section>
+
+            <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-video-dubbing-guide/ai-dubbing-process.webp" alt="AI video dubbing process - transcribe the video, translate the script, generate the voice, publish" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The AI dubbing process in four steps.</figcaption>
+      </figure>
 
       <section id=\"vdub-options\" style=\"margin-bottom: 40px;\">
         <h2>2. Your Options, Ranked by Price</h2>
