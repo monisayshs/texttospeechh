@@ -34,6 +34,23 @@ function renderFaqDirectoryPage() {
   };
   const faqSchemaJson = JSON.stringify(faqSchema).replace(/</g, '\\u003c');
 
+  // SEO audit 2026-10-05 (Commit A): FAQ page was the weakest indexed page —
+  // add Organization + BreadcrumbList JSON-LD and OG/Twitter tags to match
+  // the shared head pattern used by guide pages.
+  const faqPageSchemas = [
+    schemaGenerator.getOrganizationSchema(),
+    schemaGenerator.getBreadcrumbSchema([
+      { name: "Home", url: `${DOMAIN}/` },
+      { name: "Frequently Asked Questions", url: `${DOMAIN}/faq` }
+    ])
+  ];
+  const faqPageSchemasJsonLd = faqPageSchemas
+    .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join("\n  ");
+
+  const faqPageTitle = `Frequently Asked Questions (FAQ) | ${BRAND_NAME}`;
+  const faqPageDesc = `Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.`;
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,10 +59,27 @@ function renderFaqDirectoryPage() {
 
 ${trackingHtml}
 
-  <title>Frequently Asked Questions (FAQ) | ${BRAND_NAME}</title>
-  <meta name="description" content="Find answers to all frequently asked questions about ${BRAND_NAME} free AI text-to-speech, MP3 downloads, language support, and commercial usage.">
+  <title>${faqPageTitle}</title>
+  <meta name="description" content="${faqPageDesc}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${DOMAIN}/faq">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="${faqPageTitle}">
+  <meta property="og:description" content="${faqPageDesc}">
+  <meta property="og:url" content="${DOMAIN}/faq">
+  <meta property="og:site_name" content="${BRAND_NAME}">
+  <meta property="og:image" content="${DOMAIN}/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${faqPageTitle}">
+  <meta name="twitter:description" content="${faqPageDesc}">
+  <meta name="twitter:image" content="${DOMAIN}/og-image.png">
+
+  <!-- Structured Data -->
+  ${faqPageSchemasJsonLd}
   <script type="application/ld+json">${faqSchemaJson}</script>
 
   <!-- Favicon & PWA Assets -->
