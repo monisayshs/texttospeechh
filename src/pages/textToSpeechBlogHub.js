@@ -757,6 +757,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/how-text-to-speech-works": {
     title: `How Text-to-Speech Works: Neural Guide | ${BRAND_NAME}`,
     h1: `How Text-to-Speech Works: Neural Architecture Deep Dive`,
+    ogImage: "/images/blog/how-text-to-speech-works/how-text-to-speech-works-hero.webp",
     metaDesc: `Learn how modern neural Text-to-Speech engines work. Deep dive into G2P phonemizers, mel-spectrogram acoustic models, and neural vocoders like HiFi-GAN.`,
     category: "Engineering",
     readingTime: "30 min read",
@@ -770,6 +771,11 @@ const BLOG_ARTICLES_MAP = {
           When you hit "generate," your text goes through three jobs before it becomes sound. <strong>First</strong>, the front-end cleans your text up — expanding "$45.50" into "forty-five dollars and fifty cents" and figuring out how each word should sound (that's G2P). <strong>Second</strong>, a neural acoustic model (think Tacotron 2, FastSpeech 2, or VITS) draws a sound blueprint called a mel-spectrogram — basically a picture of how the speech should sound. <strong>Third</strong>, a neural vocoder like HiFi-GAN turns that blueprint into actual audio waveforms — the sound waves your speakers play. Text in, human-sounding voice out. That's the whole magic.
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/how-text-to-speech-works/how-text-to-speech-works-hero.webp" alt="How text-to-speech works - written text flows through a neural network and comes out as natural speech from a speaker" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Text in, human-sounding voice out: your words travel through a neural pipeline before they become sound.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -1209,6 +1215,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/text-to-speech-for-students": {
     title: `Text-to-Speech for Students & Teachers | ${BRAND_NAME}`,
     h1: `Text-to-Speech for Students & Teachers: Comprehensive Auditory Guide`,
+    ogImage: "/images/blog/text-to-speech-for-students/tts-students-hero.webp",
     metaDesc: `Learn how text-to-speech tools help students study faster, improve reading comprehension, and assist learners with dyslexia, ADHD, and language study.`,
     category: "Education",
     readingTime: "28 min read",
@@ -1226,6 +1233,11 @@ const BLOG_ARTICLES_MAP = {
           The catch, and we will say it plainly: TTS is a study tool, not a study replacement. Passive listening — zoning out while audio plays — does not stick. This guide covers how to use it right, where it genuinely shines (dyslexia-friendly reading, language practice, proofreading by ear), and where it flat-out fails (formulas, scanned PDFs, dense math).
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-students/tts-students-hero.webp" alt="Student wearing headphones listening to a textbook read aloud - text-to-speech for studying" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Bimodal reading: your eyes follow the text while the voice reads it aloud.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -1311,6 +1323,11 @@ const BLOG_ARTICLES_MAP = {
         One honest warning: scanned PDFs with weird layouts (multi-column journals, image-heavy textbook pages) can extract badly — see the troubleshooting section below before you blame the voice.
       </p>
       </section>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-students/tts-students-study-workflows.webp" alt="Five study workflows with text-to-speech - read notes, convert to audio, listen, revise, graduate" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The five study workflows: notes in, audio out, revision done anywhere.</figcaption>
+      </figure>
 
       <section id="top-5-student-workflows" style="margin-bottom: 40px;">
         <h2>5. The 5 Study Workflows Students Actually Use</h2>
@@ -2827,6 +2844,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/best-ai-voice-generators-free": {
     title: `Best AI Voice Generators With Free Plans (2026)`,
     h1: `Best AI Voice Generators With Free Plans (2026)`,
+    ogImage: "/images/blog/best-ai-voice-generators-free/ai-voice-generators-hero.webp",
     metaDesc: `We tested 10 AI voice generators with free plans for creators. Compare realism scores, free limits, voice cloning, and YouTube monetization rules.`,
     category: "Comparisons",
     readingTime: "15 min read",
@@ -2840,6 +2858,11 @@ const BLOG_ARTICLES_MAP = {
           If you make faceless YouTube videos, podcasts, or online courses, an <strong>AI voice generator</strong> can be your narrator, your co-host, and your voice actor — without a microphone or a recording booth. We tested 10 AI voice generators with free plans and ranked them <strong>free-tier-first</strong>, on what actually matters to creators: how human the voices sound, how generous the free tier is, and how well each tool fits real creator workflows. Every tool below was hands-on tested in September 2026. <strong>Quick note:</strong> this article is written for <em>creators</em>. If you need plain utility TTS — reading documents aloud, accessibility, study help — our guide to the <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text to speech tools</a> covers that side. Here, we only care about voices that <em>perform</em>. Want to go deeper on the voices themselves? Our <a href="${DOMAIN}/text-to-speech/blog/best-ai-voices" style="color:var(--color-primary);">best AI voices guide</a> breaks down which neural models sound the most human and where each one shines.
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/best-ai-voice-generators-free/ai-voice-generators-hero.webp" alt="Five different AI voice avatars with unique sound waves - best free AI voice generators compared" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Five voices, five personalities: the free AI voice generators worth your time in 2026.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -3075,6 +3098,11 @@ const BLOG_ARTICLES_MAP = {
         </p>
       </section>
 
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/best-ai-voice-generators-free/ai-voice-generators-youtube-workflow.webp" alt="Faceless YouTube video workflow with AI voices - script, generate voice, edit video, upload" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The faceless YouTube workflow: script it, voice it, edit it, upload it.</figcaption>
+      </figure>
+
       <section id="faceless-youtube-workflow" style="margin-bottom: 40px;">
         <h2>4. Best for YouTube Faceless Videos: A Practical Workflow</h2>
         <p style="line-height: 1.8;">
@@ -3244,6 +3272,11 @@ const BLOG_ARTICLES_MAP = {
           <li><a href="#faq-pdf-audio" style="color:inherit;">6. Frequently Asked Questions</a></li>
         </ol>
       </nav>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/free-text-to-speech-pdf-to-audio/pdf-to-audio-workflow-steps.webp" alt="PDF to audio workflow in four steps - upload the PDF, extract the text, generate the AI voice, download the MP3" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Upload the PDF, extract the text, generate the voice, download the MP3 - four steps, no signup.</figcaption>
+      </figure>
 
       <section id="pdf-audio-how-to-convert-a-pdf-to-audio-for-free-s" style="margin-bottom: 40px;">
         <h2>1. How to Convert a PDF to Audio for Free (Step by Step)</h2>
@@ -3452,6 +3485,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/text-to-speech-for-podcast-free": {
     title: `Text to Speech for Podcast: Free Tools Guide | ${BRAND_NAME}`,
     h1: `Text to Speech for Podcast: Free Tools Guide`,
+    ogImage: "/images/blog/text-to-speech-for-podcast-free/podcast-tts-hero.webp",
     metaDesc: `Make a podcast with free text to speech: which free TTS plans work for podcasting, how far each quota stretches, and the script-to-MP3 workflow.`,
     category: "Guides",
     readingTime: "9 min read",
@@ -3468,6 +3502,11 @@ const BLOG_ARTICLES_MAP = {
           But not every "free" TTS tool is podcast-ready. Some block downloads, some forbid commercial use (which includes monetized podcasts), and some give you so little audio per month that one episode is impossible. This guide shows which free tools actually work for podcasting, how far each quota stretches in episode minutes, and the exact workflow from script to published episode.
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-podcast-free/podcast-tts-hero.webp" alt="Podcast microphone with radiating sound waves - free text-to-speech for podcasting" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Your podcast script, voiced for free: no studio, no microphone, no recording sessions.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -3597,6 +3636,11 @@ const BLOG_ARTICLES_MAP = {
       </p>
       </section>
 
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-for-podcast-free/podcast-tts-workflow.webp" alt="Free podcast workflow with text-to-speech - write the script, generate the voice, edit, publish the episode" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Script to published episode in four steps - all without recording a word yourself.</figcaption>
+      </figure>
+
       <section id="podcast-your-workflow-script-to-published-episod" style="margin-bottom: 40px;">
         <h2>4. Your workflow: script to published episode</h2>
       <p style="line-height: 1.8;">
@@ -3697,6 +3741,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/murf-ai-free-alternative": {
     title: `Murf AI Free Alternative: 7 Best Picks (2026)`,
     h1: `Murf AI Free Alternative: 7 Best Picks (2026)`,
+    ogImage: "/images/blog/murf-ai-free-alternative/murf-ai-free-alternative-hero.webp",
     metaDesc: `Murf AI's free plan is 10 minutes total with no downloads. Compare 7 free Murf AI alternatives with honest catches: ElevenLabs, TTSMaker, Speechify and more.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -3713,6 +3758,11 @@ const BLOG_ARTICLES_MAP = {
           Murf AI is a popular AI voiceover studio (see the current plans on <a href="https://murf.ai" target="_blank" rel="noopener" style="color:var(--color-primary);">murf.ai</a>), but its free tier is more of a trial: based on published plan details, you get about 10 minutes of voice generation <strong>total</strong> (lifetime, not monthly), roughly 32 voices to try, no audio downloads, and no commercial rights. If you made it to the end of those 10 minutes, you know the frustration — you can't even download what you made. This guide walks through 7 free alternatives that fix the specific things Murf's free plan lacks: more generation quota, downloads you can keep, and commercial use where it's offered.
         </p>
       </div>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/murf-ai-free-alternative/murf-ai-free-alternative-hero.webp" alt="Murf AI free alternative comparison - locked premium voice studio versus free open voice tools" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Premium voice studios lock their best voices behind paywalls - these free alternatives do not.</figcaption>
+      </figure>
 
       <nav class="toc-box" style="background: var(--color-bg-secondary); border: 1px solid var(--color-primary-border); padding: 20px; border-radius: 10px; margin-bottom: 32px;">
         <h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3>
@@ -3909,6 +3959,11 @@ const BLOG_ARTICLES_MAP = {
         <strong>Best for:</strong> Video creators who want voiceovers without leaving their editor.
       </p>
       </section>
+
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/murf-ai-free-alternative/murf-ai-alternative-choose-guide.webp" alt="How to choose the right free Murf AI alternative - match the voice tool to your specific need" width="1600" height="1066" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">One voice need, three free paths: match the tool to what you are actually making.</figcaption>
+      </figure>
 
       <section id="murf-alt-which-free-murf-alternative-should-you-c" style="margin-bottom: 40px;">
         <h2>10. Which Free Murf Alternative Should You Choose?</h2>
@@ -4631,6 +4686,11 @@ const BLOG_ARTICLES_MAP = {
       </p>
       </section>
 
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-audiobook-generator-guide/audiobook-workflow-steps.webp" alt="Four-step free audiobook workflow - prepare the book text, generate the AI voice, tune pacing and pauses, download the MP3" width="2736" height="912" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The free audiobook workflow: prepare your text, generate the voice, tune the pacing, download the MP3.</figcaption>
+      </figure>
+
       <section id="abook-workflow" style="margin-bottom: 40px;">
         <h2>2. The Free Audiobook Workflow, Step by Step</h2>
       <h3>Step 1: Prepare your text before you touch any tool</h3>
@@ -4945,6 +5005,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/ai-voice-cloning-guide": {
     title: `AI Voice Cloning: Clone Your Voice Free (2026)`,
     h1: `AI Voice Cloning: Clone Your Voice for Free in 2026`,
+    ogImage: "/images/blog/ai-voice-cloning-guide/ai-voice-cloning-hero.webp",
     metaDesc: `Clone your voice for free in 2026: how AI voice cloning actually works, what is genuinely free, the honest limits, and when plain TTS is the smarter move.`,
     category: "Guides",
     readingTime: "6 min read",
@@ -4961,6 +5022,11 @@ const BLOG_ARTICLES_MAP = {
           The catches nobody puts on the landing page: monthly caps run dry fast, free clones sound like you only on good days, and free tiers are personal-use only. For everyday voiceover work, plain text-to-speech is usually the smarter free move — this guide explains exactly why.
         </p>
       </div>
+
+      <figure class=\"article-figure\" style=\"margin: 30px 0; text-align: center;\">
+        <img src=\"/images/blog/ai-voice-cloning-guide/ai-voice-cloning-hero.webp\" alt=\"AI voice cloning concept - a human voice waveform transformed through AI into an identical digital copy\" width=\"1600\" height=\"900\" loading=\"eager\" fetchpriority=\"high\" style=\"max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);\">
+        <figcaption style=\"font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;\">Fifteen seconds of your voice in, a digital twin out: this is what voice cloning actually does.</figcaption>
+      </figure>
 
 <p style=\"line-height: 1.8;\">
         You have probably seen the demo: someone records 15 seconds of their voice on a laptop, types a sentence, and the computer says it back in <em>their</em> voice. No cloud, no subscription, no training session. It feels like magic — and in 2026, it is mostly real.
@@ -4985,6 +5051,11 @@ const BLOG_ARTICLES_MAP = {
           <li><a href=\"#faq-vc\" style=\"color:inherit;\">6. Frequently Asked Questions</a></li>
         </ol>
       </nav>
+
+      <figure class=\"article-figure\" style=\"margin: 30px 0; text-align: center;\">
+        <img src=\"/images/blog/ai-voice-cloning-guide/voice-cloning-how-it-works.webp\" alt=\"How AI voice cloning works in three steps - record a voice sample, AI model learns it, generate new speech\" width=\"1600\" height=\"533\" loading=\"lazy\" style=\"max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);\">
+        <figcaption style=\"font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;\">Record a sample, let the model learn your voice, generate anything in it.</figcaption>
+      </figure>
 
       <section id=\"vc-how\" style=\"margin-bottom: 40px;\">
         <h2>1. How Voice Cloning Actually Works</h2>
