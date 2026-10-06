@@ -64,6 +64,29 @@ function getBlogHubPage() {
         <p style="font-size:1.05em; margin:0;">Welcome to the official <strong>Text to Speech Knowledge Hub</strong> on ${BRAND_NAME}. Discover in-depth technical breakdowns, educational guides, video voiceover tutorials, and comprehensive software comparisons.</p>
       </div>
 
+      <section class="hub-clusters" style="margin:0 0 34px; padding:26px 24px; background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px;">
+        <h2 style="margin-top:0; font-size:1.25em; color:var(--color-primary);">What you'll find in the hub</h2>
+        <p style="line-height:1.8; margin:0 0 18px;">Not sure where to start? Every guide below answers a question readers actually ask. Here's how the collection breaks down:</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+          <div>
+            <h3 style="margin:0 0 8px; font-size:1.02em; color:var(--color-primary);">AI voice tools, explained</h3>
+            <p style="margin:0; line-height:1.75; font-size:0.95em;">How text-to-speech actually works, how neural voices are made, and honest reviews of the tools making headlines — from new model launches to free voice generators.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 8px; font-size:1.02em; color:var(--color-primary);">Head-to-head comparisons</h3>
+            <p style="margin:0; line-height:1.75; font-size:0.95em;">We test the big names — ElevenLabs, Murf, Speechify, Play.ht, Lovo — against genuinely free alternatives, so you see what the free tier really gives you before signing up anywhere.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 8px; font-size:1.02em; color:var(--color-primary);">Voiceovers for creators</h3>
+            <p style="margin:0; line-height:1.75; font-size:0.95em;">Step-by-step guides for YouTube videos, TikToks, PowerPoint presentations, podcasts, and e-learning courses: pick the right voice, generate the audio, drop it into your project.</p>
+          </div>
+          <div>
+            <h3 style="margin:0 0 8px; font-size:1.02em; color:var(--color-primary);">Listen instead of read</h3>
+            <p style="margin:0; line-height:1.75; font-size:0.95em;">PDF-to-audio workflows, audiobook creation, and read-aloud tools for students, commuters, and anyone who absorbs more through their ears than their eyes.</p>
+          </div>
+        </div>
+      </section>
+
       <div class="blog-articles-grid" style="margin:30px 0;">
         ${articlesHtml}
       </div>
