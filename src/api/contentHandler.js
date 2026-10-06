@@ -199,6 +199,22 @@ function renderGuidePage(guideData, slug) {
   const guideSchemasJsonLd = guideSchemas
     .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
     .join("\n  ");
+  // SEO 2026-10-06: emit FAQPage JSON-LD ONLY when the guide defines page-specific
+  // faqs (same pattern as renderSeoPage in seoHandler.js). The visible FAQ accordion
+  // below renders from the same array so schema always matches visible content.
+  const hasGuideFaqs = Array.isArray(guideData.faqs) && guideData.faqs.length > 0;
+  const guideFaqSchemaJsonLd = hasGuideFaqs
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getFAQSchema(guideData.faqs))}</script>\n  `
+    : "";
+  const guideFaqHtml = hasGuideFaqs ? `
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        ${guideData.faqs.map(f => `
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px;">
+          <h4 style="margin-top: 0; color: var(--color-primary);">${f.q}</h4>
+          <p style="margin: 0; font-size: 0.92rem; line-height: 1.6;">${f.a}</p>
+        </div>`).join("")}
+      </div>` : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -229,6 +245,7 @@ ${trackingHtml}
 
   <!-- Structured Data -->
   ${guideSchemasJsonLd}
+  ${guideFaqSchemaJsonLd}
 
   <!-- Favicon & PWA Assets -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -289,6 +306,7 @@ ${trackingHtml}
       <div class="page-body-content" style="margin-top:20px;">
         ${guideData.content}
       </div>
+      ${guideFaqHtml}
 
       <div style="margin-top:32px;">
         <a href="/" class="primary-btn" style="display:inline-flex; text-decoration:none;">◀ Return to Voice Generator</a>
