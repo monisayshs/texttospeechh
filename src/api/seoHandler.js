@@ -172,9 +172,7 @@ ${trackingHtml}
   ${articleSchema}
 
   <link rel="stylesheet" href="/style.css?v=8.2.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
   </script>
@@ -249,7 +247,7 @@ ${trackingHtml}
       <div class="header-top-bar">
         <div class="logo-badge">
           <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
-            <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon">
+            <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon" width="26" height="26">
             <h1>${pageData.h1 || pageData.title}</h1>
           </a>
         </div>
