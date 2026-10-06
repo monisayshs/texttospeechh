@@ -527,6 +527,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
           <div>• <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-text); text-decoration: none;">Read Aloud</a></div>
           <div>• <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-text); text-decoration: none;">PDF to Speech</a></div>
           <div>• <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-text); text-decoration: none;">Word to Speech</a></div>
+          <div>• <a href="${DOMAIN}/text-to-speech/txt-to-speech" style="color: var(--color-text); text-decoration: none;">TXT to Speech</a></div>
           <div>• <a href="${DOMAIN}/faq" style="color: var(--color-text); text-decoration: none;">FAQ Directory</a></div>
           <div>• <a href="${DOMAIN}/guide/understanding-ai-voice-cloning" style="color: var(--color-text); text-decoration: none;">Voice Cloning Guide</a></div>
           <div>• <a href="${DOMAIN}/guide/how-voice-changers-work" style="color: var(--color-text); text-decoration: none;">Voice Changers Guide</a></div>
