@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Deferred Analytics (GA4 + Clarity) - loaded after idle/load to protect LCP -->
-  <!-- Deferred Analytics (GA4 + Clarity) - loaded on interaction to protect mobile LCP -->
+  <!-- Microsoft Clarity - loads immediately to capture full sessions (was lazy-loaded, losing early-bounce data) -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xt0hsu1r65");
+  </script>
+
+  <!-- Deferred Analytics (GA4) - loaded on interaction to protect mobile LCP -->
   <script>
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
@@ -18,10 +26,6 @@
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0';
       document.head.appendChild(s);
-      var c = document.createElement('script');
-      c.async = true;
-      c.src = 'https://www.clarity.ms/tag/xt0hsu1r65';
-      document.head.appendChild(c);
     }
     ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
       window.addEventListener(evt, loadTextToSpeechAnalytics, { once: true, passive: true });
