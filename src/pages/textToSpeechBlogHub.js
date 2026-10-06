@@ -6642,6 +6642,7 @@ const BLOG_ARTICLES_MAP = {
   },
   "text-to-speech/blog/tiktok-text-to-speech-guide": {
     title: `TikTok Text to Speech: Free AI Voiceovers Guide`,
+    ogImage: "/images/blog/tiktok-text-to-speech-guide/tiktok-text-to-speech-hero.webp",
     h1: `TikTok Text to Speech: How to Add Free AI Voiceovers`,
     metaDesc: `TikTok's built-in text-to-speech works for short clips. How to use it, where it falls short, and the free AI-voiceover workflow faceless creators use instead.`,
     category: "Guides",
@@ -6651,7 +6652,11 @@ const BLOG_ARTICLES_MAP = {
     dateModified: "October 5, 2026",
     content: `
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: How Do I Add AI Voiceover to TikTok?</h2><p style="margin:0; line-height:1.7;">TikTok has a built-in text-to-speech feature — add text to your video, tap it, choose "Text-to-speech," and pick a voice. It works fine for short clips. But if you want better voices, longer scripts, or a voiceover you can make <em>before</em> opening the app, generate it for free with an AI voice generator: paste your script, pick a voice, download the MP3, and add it to your video as a sound. No sign-up, no watermark.</p></div>
-<p style="line-height:1.8;">Faceless TikTok channels are having a moment. Story narrations, history explainers, motivation clips, Reddit readings — half of them are narrated by a voice that was never recorded in a booth. If you've been wondering how they do it, or why TikTok's own text-to-speech voice sometimes just isn't cutting it, this guide walks you through both options: the built-in voice and the free AI-voiceover workflow that faceless creators actually use.</p>
+<p style="line-height:1.8;">Faceless TikTok channels are having a moment. Story narrations, history explainers, motivation clips, Reddit readings — half of them are narrated by a voice that was never recorded in a booth. If you've been wondering how they do it, or why TikTok's own text-to-speech voice sometimes just isn't cutting it, this guide walks you through both options: the built-in voice and the free AI-voiceover workflow that       <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/tiktok-text-to-speech-guide/tiktok-text-to-speech-hero.webp" alt="TikTok text to speech - smartphone showing a TikTok-style video editor with an AI voiceover waveform and play button" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The free AI-voiceover workflow: make the narration first, then cut your TikTok to the voice.</figcaption>
+      </figure>
+faceless creators actually use.</p>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#built-in" style="color:inherit;">1. How to use TikTok's built-in text-to-speech</a></li><li><a href="#limits" style="color:inherit;">2. When TikTok's built-in voice isn't enough</a></li><li><a href="#free-voiceover" style="color:inherit;">3. How to make a free AI voiceover for TikTok</a></li><li><a href="#voice-tips" style="color:inherit;">4. Voice tips for faceless TikTok channels</a></li><li><a href="#free-vs-paid" style="color:inherit;">5. Free vs paid: what a TikTok creator actually needs in 2026</a></li><li><a href="#faqs" style="color:inherit;">6. FAQs</a></li></ol></nav>
 <section id="built-in" style="margin-bottom:40px;">
 <h2>1. How to use TikTok's built-in text-to-speech (quick steps)</h2>
@@ -6664,6 +6669,10 @@ const BLOG_ARTICLES_MAP = {
 <h2>2. When TikTok's built-in voice isn't enough</h2>
 <p style="line-height:1.8;">Let me be straight: TikTok's built-in voice is fine for casual posts. It's not fine for a <em>channel</em>. Here's where it falls apart:</p>
 <p style="line-height:1.8;"><strong>The voices are limited.</strong> You're choosing from a short list of TikTok voices everyone else is already using. That Jessie voice? Your viewers have heard it on a thousand videos. For a faceless channel trying to build a recognizable brand, sounding identical to everyone else is a real problem.</p>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/tiktok-text-to-speech-guide/tiktok-builtin-vs-ai-voiceover.webp" alt="TikTok built-in text-to-speech vs free AI voiceover - basic robotic voice compared with natural AI narration" width="1600" height="1067" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">TikTok's built-in voice works for casual clips; a free AI voiceover is built for channels.</figcaption>
+      </figure>
 <p style="line-height:1.8;"><strong>You can't hear it before you edit.</strong> With the built-in feature, you write your video around the app's voice. If you're scripting a 60-second story video, you want the narration <em>first</em> — you cut your visuals to the voice, not the other way around. TikTok forces you to build inside the app, text box by text box.</p>
 <p style="line-height:1.8;"><strong>No bulk scripts.</strong> Faceless creators often batch-produce — ten scripts on Sunday, ten videos through the week. TikTok's built-in TTS makes you retype everything inside the app, one clip at a time. There's no way to paste a full script and get it narrated in one go.</p>
 <p style="line-height:1.8;"><strong>It's app-only.</strong> The voiceover lives inside that TikTok project. Want to reuse it on YouTube Shorts or Reels? You can't export the audio. You'll be rebuilding the same narration on every platform.</p>
@@ -6672,6 +6681,11 @@ const BLOG_ARTICLES_MAP = {
 <section id="free-voiceover" style="margin-bottom:40px;">
 <h2>3. How to make a free AI voiceover for TikTok</h2>
 <p style="line-height:1.8;">Here's the workflow, step by step. It takes about five minutes once you've done it once:</p>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/tiktok-text-to-speech-guide/tiktok-ai-voiceover-workflow-steps.webp" alt="How to add AI voiceover to TikTok in 4 steps - write the script, generate the voice, add it to the video, post it" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The 4-step workflow faceless creators use: script, voice, video, post.</figcaption>
+      </figure>
+
 <p style="line-height:1.8;"><strong>Step 1: Write your script.</strong> Keep it tight — TikTok moves fast. A 60-second video is roughly 130–150 spoken words. Write like you talk, with short sentences. Commas and periods are your friends; they tell the voice where to pause.</p>
 <p style="line-height:1.8;"><strong>Step 2: Generate the voice.</strong> Open <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free voice generator</a>, paste your script (up to 10,000 words per request — way more than you'll ever need for a TikTok), pick a voice you like, tweak the speed if you want, and hit generate. Download the MP3. No sign-up, no watermark, no trial that expires tomorrow.</p>
 <p style="line-height:1.8;"><strong>Step 3: Add it to your video.</strong> In TikTok, start a new video and tap "Add sound" → "Your sounds" → import your MP3 file. Or do it in your editor of choice (CapCut is the usual one for TikTok creators) — drop the MP3 on the timeline, then cut your clips to match the narration.</p>
@@ -6712,6 +6726,7 @@ const BLOG_ARTICLES_MAP = {
   },
   "text-to-speech/blog/ai-voiceover-powerpoint-guide": {
     title: `Add AI Voiceover to PowerPoint: Free Guide`,
+    ogImage: "/images/blog/ai-voiceover-powerpoint-guide/powerpoint-ai-voiceover-hero.webp",
     h1: `Add AI Voiceover to PowerPoint: Free Step-by-Step Guide`,
     metaDesc: `Add AI voiceover to PowerPoint free: generate MP3 narration, insert one clip per slide with autoplay, and export to video. Complete step-by-step guide.`,
     category: "Guides",
@@ -6721,6 +6736,10 @@ const BLOG_ARTICLES_MAP = {
     dateModified: "October 5, 2026",
     content: `
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Can I Add Voiceover to PowerPoint for Free?</h2><p style="margin:0; line-height:1.7;">Yes, you can add AI voiceover to PowerPoint completely free. Generate the narration audio with a free text-to-speech tool, insert one MP3 per slide (Insert &gt; Audio &gt; Audio on My PC), set each clip to play automatically, and export the deck as a video if you want to share it. No microphone, no recording yourself, no paid add-on. The full walkthrough is below.</p></div>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-voiceover-powerpoint-guide/powerpoint-ai-voiceover-hero.webp" alt="Add AI voiceover to PowerPoint - laptop showing presentation slides with a speaker icon and voice waveform" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">One MP3 per slide, autoplay on, export to video: narrated decks without a microphone.</figcaption>
+      </figure>
 <section style="margin-bottom:40px;">
 <h2>&lt;a id="three-ways"&gt;&lt;/a&gt;1. Three ways to narrate PowerPoint: record yourself vs built-in TTS vs AI voice</h2>
 <p style="line-height:1.8;">Three ways to get a voice onto your slides:</p>
@@ -6743,6 +6762,11 @@ const BLOG_ARTICLES_MAP = {
 <section style="margin-bottom:40px;">
 <h2>&lt;a id="generate"&gt;&lt;/a&gt;3. Generate the narration free (text to voice to MP3, one file per slide)</h2>
 <p style="line-height:1.8;">Here's the part that replaces the microphone. You want one audio file per slide, named clearly so you don't mix them up when inserting.</p>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/ai-voiceover-powerpoint-guide/powerpoint-voiceover-workflow-steps.webp" alt="PowerPoint voiceover workflow in 4 steps - write speaker notes, generate MP3 per slide, insert audio, export video" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The workflow: script, MP3, insert, export.</figcaption>
+      </figure>
+
 <ul style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>Paste one slide's script</strong> into a free text-to-speech tool. TextToSpeechH's free generator works well for this: no sign-up, paste your text, pick a voice, download the MP3. It handles up to 10,000 words per request and the MP3 downloads directly.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>Pick the right voice for the room.</strong> For a classroom or office presentation, choose a clear, neutral voice at a moderate pace. Skip the dramatic movie-trailer voices; they sound strange narrating quarterly results. Preview a few voices with your actual first slide before committing to one for the whole deck.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>Generate and download, one file per slide.</strong> Name them in order: slide-01.mp3, slide-02.mp3, and so on. This sounds fussy, but when you're inserting audio into a 20-slide deck at midnight before a morning presentation, you'll be glad you did.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>Listen to each clip once.</strong> AI voices are good now, but they still misread the occasional abbreviation or number. "Q3" is fine; "FY2026/27" might come out weird. Fix the spelling in your script (write "fiscal year twenty twenty-six" if needed) and regenerate just that slide.</li></ul>
 <p style="line-height:1.8;">TextToSpeechH fits this workflow because it's genuinely free with no account and no watermark. The paid tools have their place (covered below), but for turning slide scripts into MP3s, the free tier is the whole job.</p>
 </section>
@@ -6780,6 +6804,7 @@ const BLOG_ARTICLES_MAP = {
   },
   "text-to-speech/blog/play-ht-alternatives": {
     title: `Play.ht Alternatives: 7 Free Options After Shutdown`,
+    ogImage: "/images/blog/play-ht-alternatives/play-ht-alternatives-hero.webp",
     h1: `Play.ht Alternatives After the Shutdown: 7 Free Options`,
     metaDesc: `Play.ht shut down in 2025 after Meta's acquisition. Compare 7 free Play.ht alternatives for voiceovers and API users — switch without losing your voices.`,
     category: "Comparisons",
@@ -6790,7 +6815,11 @@ const BLOG_ARTICLES_MAP = {
     content: `
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: What Are the Best Free Play.ht Alternatives?</h2><p style="margin:0; line-height:1.7;">Play.ht (rebranded PlayAI) shut down permanently on December 31, 2025 after Meta acquihired its team in July 2025. The closest free drop-in replacement is <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free voice generator</a> — no sign-up, up to 10,000 words per request, instant MP3 download, 12+ languages. If you need the most natural-sounding voices and can live with a small monthly allowance, ElevenLabs' free tier is worth a look.</p></div>
 <p style="line-height:1.8;">If you landed here because Play.ht vanished from your life, I get it. One day you had a voice tool that just worked — paste text, pick a voice, download the MP3 — and then it was gone. No warning that mattered, no obvious successor, just a dead login page and a workflow with a hole in it.</p>
-<p style="line-height:1.8;">Here's the straight story: Play.ht isn't coming back. Meta absorbed the whole team in July 2025, the API went dark that same month, and the platform shut down for good on December 31, 2025. The good news: you have real options, and several are genuinely free. Here are the 7 best free alternatives, with honest limits for each.</p>
+<p style="line-height:1.8;">Here's the straight story: Play.ht isn't coming back. Meta absorbed the whole team in July 2025, the API went dark that same month, and the platform shut down for good on December 31, 2025. The good news: you have real options, and several are genuinely free. Here are the 7 best free alternatives,       <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/play-ht-alternatives/play-ht-alternatives-hero.webp" alt="Play.ht alternatives after the shutdown - a faded voice platform dissolving into vibrant free AI voice tools" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">Play.ht is gone for good; these free alternatives cover both dashboard users and API users.</figcaption>
+      </figure>
+with honest limits for each.</p>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#what-happened" style="color:inherit;">1. What happened to Play.ht</a></li><li><a href="#alternatives" style="color:inherit;">2. The 7 best free alternatives</a></li><li><a href="#which-fits" style="color:inherit;">3. Which alternative fits you: API users vs voiceover users</a></li><li><a href="#moving" style="color:inherit;">4. Moving your workflow: voices, languages, MP3 export</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2>&lt;a id="what-happened"&gt;&lt;/a&gt;1. What happened to Play.ht</h2>
@@ -6839,6 +6868,11 @@ const BLOG_ARTICLES_MAP = {
 <section style="margin-bottom:40px;">
 <h2>&lt;a id="which-fits"&gt;&lt;/a&gt;3. Which alternative fits you: API users vs voiceover users</h2>
 <p style="line-height:1.8;">Play.ht served two very different crowds, and they need different replacements:</p>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/play-ht-alternatives/play-ht-migration-paths.webp" alt="Choosing a Play.ht alternative - two migration paths for API users and voiceover creators" width="1600" height="1067" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">API users and voiceover users need different replacements - pick your path.</figcaption>
+      </figure>
+
 <p style="line-height:1.8;"><strong>You used Play.ht's web dashboard</strong> (paste text → pick voice → download). You're the majority, and you're in luck: <strong>TextToSpeechH</strong> or <strong>TTSMaker</strong> will have you back in business today, free. If your voiceovers go straight into videos, add <strong>CapCut</strong> to the mix.</p>
 <p style="line-height:1.8;"><strong>You used Play.ht's API</strong> (voice agents, apps, automated pipelines). This is the harder migration, and I won't sugarcoat it: no free tool replicates Play.ht's real-time voice agents one-to-one. Your realistic options are <strong>Google Cloud TTS</strong> (free tier + cheap overage), <strong>ElevenLabs' API</strong> (free tier for testing, paid for production), or Microsoft's newer <strong>MAI-Voice models</strong> ($22/million characters, $15/million for Flash — developer API, not free). Budget for <em>some</em> spend here; the free lunch on API voice mostly ended with Play.ht.</p>
 <p style="line-height:1.8;"><strong>You used Play.ht's voice cloning.</strong> You'll need to re-clone elsewhere — there's no way to recover your Play.ht voice models (see FAQs). ElevenLabs has the best cloning on a free tier, but the allowance is tiny.</p>
@@ -6869,6 +6903,7 @@ const BLOG_ARTICLES_MAP = {
   },
   "text-to-speech/blog/text-to-speech-elearning-narration": {
     title: `Text to Speech for E-Learning: Free Narration Guide`,
+    ogImage: "/images/blog/text-to-speech-elearning-narration/elearning-narration-hero.webp",
     h1: `Text to Speech for E-Learning: Free Course Narration Guide`,
     metaDesc: `Narrate your online course free with AI voices: the script-to-LMS workflow, best free TTS picks for course narration, and two mistakes to avoid.`,
     category: "Guides",
@@ -6877,7 +6912,11 @@ const BLOG_ARTICLES_MAP = {
     datePublished: "October 5, 2026",
     dateModified: "October 5, 2026",
     content: `
-<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Can AI Narrate My E-Learning Course?</h2><p style="margin:0; line-height:1.7;">Can you narrate an e-learning course with AI text to speech? Yes — it's become a standard part of course production. A good elearning voice over needs clear diction, a steady conversational pace, and the same voice across every module. You can generate full course narration free with tools like TextToSpeechH (no sign-up, up to 10,000 words per request, MP3 download). Just check each tool's commercial-use terms before you put the audio in a course you sell.</p></div>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Can AI Narrate My E-Learning Course?</h2><p style="margin:0; line-height:1.7;">Can you narrate an e-learning course with AI text to speech? Yes — it's become a standard part of course production. A good elearning voice over needs clear diction, a steady conversational pace, and the same voice across every module. You can generate full course narration free with tools like TextToSpeechH (no sign-up, up to 10,000 words per request, MP3 download). Just check each tool's commercial-use terms       <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-elearning-narration/elearning-narration-hero.webp" alt="Text to speech for e-learning narration - online course player with narration waveform and graduation cap" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">AI narration for online courses: one consistent voice across every module.</figcaption>
+      </figure>
+before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#1-why-course-creators-narrate-with-ai-voices-in-2026" style="color:inherit;">1. Why course creators narrate with AI voices in 2026</a></li><li><a href="#2-what-makes-a-good-e-learning-voice" style="color:inherit;">2. What makes a good e-learning voice</a></li><li><a href="#3-the-free-workflow-script--voice--export-for-your-lms" style="color:inherit;">3. The free workflow: script → voice → export for your LMS</a></li><li><a href="#4-best-free-tts-picks-for-course-narration" style="color:inherit;">4. Best free TTS picks for course narration</a></li><li><a href="#5-two-mistakes-to-avoid" style="color:inherit;">5. Two mistakes to avoid</a></li><li><a href="#6-frequently-asked-questions" style="color:inherit;">6. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2>1. Why course creators narrate with AI voices in 2026</h2>
@@ -6899,6 +6938,11 @@ const BLOG_ARTICLES_MAP = {
 <section style="margin-bottom:40px;">
 <h2>3. The free workflow: script → voice → export for your LMS</h2>
 <p style="line-height:1.8;">Here's the process that actually works, end to end:</p>
+      <figure class="article-figure" style="margin: 30px 0; text-align: center;">
+        <img src="/images/blog/text-to-speech-elearning-narration/elearning-narration-workflow.webp" alt="E-learning narration workflow in 5 steps - write script, chunk lessons, generate voice, clean up audio, upload to LMS" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 10px;">The free workflow: script, chunk, generate, clean up, upload.</figcaption>
+      </figure>
+
 <p style="line-height:1.8;"><strong>Step 1: Write for the ear, not the eye.</strong> Your lesson script is not an essay. Use short sentences, contractions, and spoken transitions ("So here's the thing…"). Write out anything a voice would stumble on: "e.g." becomes "for example," "$2.4M" becomes "2.4 million dollars." This one habit improves narration quality more than any tool upgrade.</p>
 <p style="line-height:1.8;"><strong>Step 2: Chunk by lesson.</strong> One audio file per lesson, named sanely: <code>module-01-lesson-02.mp3</code>. Keep lessons in the 5–10 minute range — shorter lessons genuinely get better completion rates on Udemy and Teachable.</p>
 <p style="line-height:1.8;"><strong>Step 3: Generate.</strong> This is where TextToSpeechH earns its spot: paste your script (up to 10,000 words per request, so most lessons fit in one go), pick your voice, nudge the speed slightly down if the default feels rushed, and download the MP3. No account, no credit card, no "your trial has 12 characters left" anxiety.</p>
