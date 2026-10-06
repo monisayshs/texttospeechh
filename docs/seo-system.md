@@ -100,7 +100,7 @@ The project uses a structured **Sitemap Index** located at `/sitemap.xml`:
 </sitemapindex>
 ```
 
-1. **`sitemap-main.xml`**: Root homepage, pillar page, sub-tool spokes, blog hub, and individual blog articles (7 articles as of 2026-09-23 morning; 11 articles after the v1.6.0 Week 1 quick-win cluster — auto-includes new `BLOG_ARTICLES_MAP` slugs).
+1. **`sitemap-main.xml`**: Root homepage, pillar page, sub-tool spokes, blog hub, and individual blog articles (7 articles as of 2026-09-23 morning; 11 articles after the v1.6.0 Week 1 quick-win cluster — auto-includes new `BLOG_ARTICLES_MAP` slugs). Also carries `/about`, `/contact`, `/faq`, and the author profile `/author/mauhnish` (added 2026-10-06).
 2. **`sitemap-programmatic.xml`**: Programmatic language pages, keyword spokes, and comparison pages.
 3. **`sitemap-legal.xml`**: Legal pages (`/privacy-policy`, `/terms`, `/disclaimer`, `/about`, `/contact`).
 
@@ -117,7 +117,8 @@ Every server-rendered HTML page injects structured data in standard `<script typ
 - **SoftwareApplication Schema**: Describes the web app, operating system compatibility, free pricing tier (`Price: $0.00`), and aggregate rating.
 - **FAQPage Schema**: `renderSeoPage()` in `src/api/seoHandler.js` emits FAQPage JSON-LD **only** when the page defines a page-specific `faqs` array (updated 2026-09-28 — the old generic default-FAQ fallback was removed because it mismatched visible content). Pages with visible FAQ sections (8 comparisons, 2 use-cases, 5 language pages, 7 TTS subpages, all 15 blog articles, `/text-to-speech/online-text-to-speech`) carry `faqs` extracted verbatim from their on-page Q&A. Pages without visible FAQs (legal, remaining language pages, pillar, blog hub, `/text-to-speech/txt-to-speech`) correctly emit no FAQPage block. Note: Google retired FAQ rich results for all sites on 2026-05-07, so this schema is kept strictly for content-consistency, not rich-result eligibility.
 - **BreadcrumbList Schema**: Provides structured navigational breadcrumbs (`Home` > `Text to Speech` > `[Current Page]`).
-- **Article Schema**: Formats blog posts with `author`, `datePublished`, `dateModified`, and `publisher` attributes.
+- **Article Schema**: Formats blog posts with `author`, `datePublished`, `dateModified`, and `publisher` attributes. Since 2026-10-06 the `author` is a **Person** (`Mauhnish`, url `/author/mauhnish`); `publisher` remains the `TextToSpeechH AI` Organization. Applies to blog articles (`renderSeoPage()` in `src/api/seoHandler.js`) and guide pages (`renderGuidePage()` in `src/api/contentHandler.js`).
+- **Person Schema**: The author profile page `/author/mauhnish` (data in `src/pages/authorPages.js`, routed in `src/api/seoHandler.js`) emits `Person` JSON-LD (`name`, `jobTitle` "Founder & Editor, TextToSpeechH", `worksFor`, `sameAs`). All blog articles and guides show a visible "By [Mauhnish](/author/mauhnish)" byline; the `/about` page (600+ words) links the author profile and documents the hands-on testing methodology.
 
 ---
 

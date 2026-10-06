@@ -1,5 +1,6 @@
 const { PROGRAMMATIC_ROUTER, KEYWORD_REDIRECTS, OLD_BLOG_REDIRECTS } = require('../seo/programmaticPages');
 const { LEGAL_PAGES } = require('../pages/legalPages');
+const { AUTHOR_PAGES } = require('../pages/authorPages');
 const { TEXT_TO_SPEECH_PILLAR_PAGE } = require('../pages/textToSpeechPillar');
 const { TEXT_TO_SPEECH_SUBPAGES } = require('../pages/textToSpeechSubpages');
 const { BLOG_ARTICLES_MAP, getBlogHubPage } = require('../pages/textToSpeechBlogHub');
@@ -78,6 +79,11 @@ function renderSeoPage(pageData, pathSlug) {
   const faqSchemaJsonLd = hasPageFaqs
     ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs))}</script>\n  `
     : "";
+  // E-E-A-T 2026-10-06: author profile pages emit Person JSON-LD.
+  const personSchemaJsonLd = pageData.isAuthorPage
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getPersonSchema())}</script>
+  `
+    : "";
   const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema([
     { name: "Home", url: `${DOMAIN}/` },
     { name: "Text to Speech", url: `${DOMAIN}/text-to-speech` },
@@ -105,7 +111,7 @@ function renderSeoPage(pageData, pathSlug) {
   const isArticle = pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech";
   const authorBylineHtml = isArticle ? `
       <div class="article-byline" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:14px 0 4px; padding:12px 16px; background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:10px; font-size:0.85rem; color:var(--color-text-muted);">
-        <span style="display:inline-flex; align-items:center; gap:8px;"><strong style="color:var(--color-text);">By TextToSpeechH AI Editorial Team</strong></span>
+        <span style="display:inline-flex; align-items:center; gap:8px;"><strong style="color:var(--color-text);">By <a href="/author/mauhnish" style="color:var(--color-primary);">Mauhnish</a></strong></span>
         <span aria-hidden="true">|</span>
         <span>Published: <strong style="color:var(--color-text);">${pageData.datePublished || "July 29, 2026"}</strong></span>
         <span aria-hidden="true">|</span>
@@ -168,7 +174,7 @@ ${trackingHtml}
   <script type="application/ld+json">${orgSchema}</script>
   <script type="application/ld+json">${webSiteSchema}</script>
   <script type="application/ld+json">${softwareSchema}</script>
-  ${faqSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
+  ${faqSchemaJsonLd}${personSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
   ${articleSchema}
 
   <link rel="stylesheet" href="/style.css?v=8.2.0">
@@ -337,6 +343,15 @@ async function seoHandler(req, res) {
     // 4. Blog Articles under Hub (/text-to-speech/blog/*)
     if (BLOG_ARTICLES_MAP[pathSlug]) {
       const html = renderSeoPage(BLOG_ARTICLES_MAP[pathSlug], pathSlug);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    // 4b. Author Profile Pages (E-E-A-T 2026-10-06)
+    if (AUTHOR_PAGES[pathSlug]) {
+      const html = renderSeoPage(AUTHOR_PAGES[pathSlug], pathSlug);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.end(html);

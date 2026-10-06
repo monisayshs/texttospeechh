@@ -174,9 +174,9 @@ function renderGuidePage(guideData, slug) {
     "description": guideData.metaDesc,
     "url": canonicalUrl,
     "author": {
-      "@type": "Organization",
-      "name": "TextToSpeechH AI Editorial Team",
-      "url": DOMAIN
+      "@type": "Person",
+      "name": "Mauhnish",
+      "url": `${DOMAIN}/author/mauhnish`
     },
     "publisher": {
       "@type": "Organization",
@@ -299,6 +299,7 @@ ${trackingHtml}
         </div>
       </div>
       <p class="subtitle">${guideData.metaDesc}</p>
+      <p class="guide-byline" style="margin:10px 0 0; font-size:0.85rem; color:var(--color-text-muted);">By <a href="/author/mauhnish" style="color:var(--color-primary); font-weight:600;">Mauhnish</a><span aria-hidden="true"> · </span>Guide Article</p>
     </header>
 
     <main class="main-card glass-panel">

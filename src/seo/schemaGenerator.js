@@ -117,6 +117,25 @@ function getBreadcrumbSchema(items) {
   };
 }
 
+function getPersonSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mauhnish",
+    "url": `${DOMAIN}/author/mauhnish`,
+    "jobTitle": "Founder & Editor, TextToSpeechH",
+    "worksFor": {
+      "@type": "Organization",
+      "name": BRAND_NAME,
+      "url": DOMAIN
+    },
+    "sameAs": [
+      `${DOMAIN}/author/mauhnish`,
+      DOMAIN
+    ]
+  };
+}
+
 function getArticleSchema(title, description, url, datePublished, dateModified, image) {
   return {
     "@context": "https://schema.org",
@@ -127,9 +146,9 @@ function getArticleSchema(title, description, url, datePublished, dateModified, 
     "datePublished": datePublished || "2026-07-29",
     "dateModified": dateModified || "2026-07-29",
     "author": {
-      "@type": "Organization",
-      "name": "TextToSpeechH AI Editorial Team",
-      "url": DOMAIN
+      "@type": "Person",
+      "name": "Mauhnish",
+      "url": `${DOMAIN}/author/mauhnish`
     },
     "publisher": {
       "@type": "Organization",
@@ -159,5 +178,6 @@ module.exports = {
   getSoftwareApplicationSchema,
   getFAQSchema,
   getBreadcrumbSchema,
-  getArticleSchema
+  getArticleSchema,
+  getPersonSchema
 };

@@ -63,6 +63,41 @@ const LEGAL_PAGES = {
         </div>
       </div>
 
+      <h2>Why It's Free — and Why There's No Signup</h2>
+      <p>
+        Fair question, and it deserves a straight answer. Most text-to-speech tools give you a short
+        free trial, then the good voices disappear behind a paywall and your "free" audio comes with
+        a watermark or a monthly limit that runs out mid-project. We built ${BRAND_NAME} the other
+        way around: the converter runs right in your browser, you type or upload your text, the audio
+        is generated, and you download the MP3. There's no account because there's nothing to manage —
+        no credits to track, no subscription to cancel, no trial clock ticking. You convert, you
+        download, you're done. If that ever changes, we'll say so plainly on this page. For now:
+        free means free.
+      </p>
+
+      <h2>How We Test Every Comparison</h2>
+      <p>
+        Every comparison on this site follows the same routine. The same test script goes into every
+        tool we review. We listen to the full output — not just the first ten seconds — and we check
+        the free plan the way a real user would: signing up, hitting the limits, and noting exactly
+        where the paywall appears. When a comparison says one tool beats another on voice quality or
+        free limits, that's because the same script was run through both and the results were listened
+        to side by side — not because a marketing page said so. If a tool has an annoying limit or a
+        voice sounds robotic, we say so plainly. And where AI voices genuinely fall short — deep
+        emotional acting, real conversation chemistry — we say that too.
+      </p>
+
+      <h2>Who's Behind This</h2>
+      <p>
+        ${BRAND_NAME} is built and run by <a href="/author/mauhnish" style="color:var(--color-primary);"><strong>Mauhnish</strong></a>,
+        who writes every guide and comparison on the site. He started the project after running into
+        the same paywalls and expired trials as everyone else, and decided to build the tool he wished
+        existed. Every article carries his byline because he personally tested what's in it —
+        <a href="/author/mauhnish" style="color:var(--color-primary);">read more about him and how he works here</a>.
+        New guides go up every week, and older ones get re-tested and updated when tools change their
+        free plans or launch new voices.
+      </p>
+
       <h2>Single Unified Contact Point</h2>
       <p>
         For all technical queries, enterprise feedback, or partnership proposals, our team operates out of a single centralized inbox: 

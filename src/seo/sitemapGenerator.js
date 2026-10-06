@@ -28,7 +28,8 @@ const SECTION_LASTMOD = {
   '/': '2026-10-05',                    // public/index.html
   '/text-to-speech': '2026-09-28',      // src/pages/textToSpeechPillar.js
   '/text-to-speech/blog': '2026-10-05', // src/pages/textToSpeechBlogHub.js
-  '/about': '2026-09-28',               // src/pages/legalPages.js
+  '/about': '2026-10-06',               // src/pages/legalPages.js
+  '/author/mauhnish': '2026-10-06',    // src/pages/authorPages.js (E-E-A-T 2026-10-06)
   '/contact': '2026-09-28',             // src/pages/legalPages.js
   '/faq': '2026-10-05',                 // src/api/contentHandler.js
   '__legal': '2026-09-28',              // src/pages/legalPages.js
@@ -53,6 +54,7 @@ const PUBLIC_ROUTES = [
   { url: '/text-to-speech', priority: '1.0', changefreq: 'daily', lastmod: SECTION_LASTMOD['/text-to-speech'] },
   { url: '/text-to-speech/blog', priority: '0.9', changefreq: 'daily', lastmod: SECTION_LASTMOD['/text-to-speech/blog'] },
   { url: '/about', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD['/about'] },
+  { url: '/author/mauhnish', priority: '0.6', changefreq: 'monthly', lastmod: SECTION_LASTMOD['/author/mauhnish'] },
   { url: '/contact', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD['/contact'] },
   { url: '/faq', priority: '0.6', changefreq: 'monthly', lastmod: SECTION_LASTMOD['/faq'] }
 ];
