@@ -185,7 +185,11 @@ function renderGuidePage(guideData, slug) {
       "logo": { "@type": "ImageObject", "url": `${DOMAIN}/logo.svg` }
     },
     "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
-    "image": `${DOMAIN}/og-image.png`
+    "image": `${DOMAIN}/og-image.png`,
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".speakable-headline", ".speakable-summary"]
+    }
   };
   const guideSchemas = [
     schemaGenerator.getOrganizationSchema(),
@@ -290,7 +294,7 @@ ${trackingHtml}
         <div class="logo-badge">
           <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon" width="26" height="26">
-            <h1>${guideData.h1}</h1>
+            <h1 class="speakable-headline">${guideData.h1}</h1>
           </a>
         </div>
         <div class="status-pill-group">
@@ -298,7 +302,7 @@ ${trackingHtml}
           <span class="status-pill">Guide Article</span>
         </div>
       </div>
-      <p class="subtitle">${guideData.metaDesc}</p>
+      <p class="subtitle speakable-summary">${guideData.metaDesc}</p>
       <p class="guide-byline" style="margin:10px 0 0; font-size:0.85rem; color:var(--color-text-muted);">By <a href="/author/mauhnish" style="color:var(--color-primary); font-weight:600;">Mauhnish</a><span aria-hidden="true"> · </span>Guide Article</p>
     </header>
 

@@ -28,10 +28,18 @@ Sitemap: https://www.texttospeechh.com/sitemap.xml
 - [English Text to Speech](https://www.texttospeechh.com/language/english)
 - [Hindi Text to Speech](https://www.texttospeechh.com/language/hindi)
 - [Urdu Text to Speech](https://www.texttospeechh.com/language/urdu)
+- [Italian Text to Speech](https://www.texttospeechh.com/language/italian)
 - [Spanish Text to Speech](https://www.texttospeechh.com/language/spanish)
 - [French Text to Speech](https://www.texttospeechh.com/language/french)
 - [German Text to Speech](https://www.texttospeechh.com/language/german)
 - [Arabic Text to Speech](https://www.texttospeechh.com/language/arabic)
+
+## Use cases
+
+- [YouTube Voiceover](https://www.texttospeechh.com/use-case/youtube-voiceover) — AI voiceovers for YouTube videos and faceless channels.
+- [Podcast Generator](https://www.texttospeechh.com/use-case/podcast-generator) — Turn scripts into podcast-ready audio.
+- [E-learning Narration](https://www.texttospeechh.com/use-case/elearning-narration) — Narration for online courses and training.
+- [TikTok Voiceover](https://www.texttospeechh.com/use-case/tiktok-voiceover) — Trending AI voices for TikTok videos.
 
 ## Blog & guides
 
@@ -48,6 +56,7 @@ Sitemap: https://www.texttospeechh.com/sitemap.xml
 
 - [FAQ](https://www.texttospeechh.com/faq)
 - [About Us](https://www.texttospeechh.com/about)
+- [Mauhnish — Founder & Editor](https://www.texttospeechh.com/author/mauhnish)
 - [Contact](https://www.texttospeechh.com/contact)
 - [Privacy Policy](https://www.texttospeechh.com/privacy-policy)
 - [Terms of Service](https://www.texttospeechh.com/terms)

@@ -254,7 +254,7 @@ ${trackingHtml}
         <div class="logo-badge">
           <a href="/" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:10px;">
             <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo Icon" class="logo-badge-icon" width="26" height="26">
-            <h1>${pageData.h1 || pageData.title}</h1>
+            <h1 class="speakable-headline">${pageData.h1 || pageData.title}</h1>
           </a>
         </div>
         <div class="status-pill-group">
@@ -262,7 +262,7 @@ ${trackingHtml}
           <span class="status-pill">Trust Governance</span>
         </div>
       </div>
-      <p class="subtitle">${category}${readingTime} ${pageData.metaDesc || ""}</p>
+      <p class="subtitle speakable-summary">${category}${readingTime} ${pageData.metaDesc || ""}</p>
     </header>
 
     <!-- Main Card Panel -->

@@ -163,7 +163,11 @@ function getArticleSchema(title, description, url, datePublished, dateModified, 
       "@type": "WebPage",
       "@id": url
     },
-    "image": image || `${DOMAIN}/og-image.png`
+    "image": image || `${DOMAIN}/og-image.png`,
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".speakable-headline", ".speakable-summary"]
+    }
   };
 }
 
