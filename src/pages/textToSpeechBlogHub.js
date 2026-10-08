@@ -24,6 +24,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/ai-audiobook-generator-guide", title: "AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)", category: "Guides", readingTime: "8 min read", cta: "Read AI Audiobook Guide \u2192" },
   { slug: "text-to-speech/blog/best-ai-voice-changers", title: "Best AI Voice Changers in 2026: 7 Free Tools That Work", category: "Guides", readingTime: "8 min read", cta: "Find Your Voice Changer \u2192" },
   { slug: "text-to-speech/blog/is-ai-voice-cloning-legal", title: "Is AI Voice Cloning Legal in 2026? Safety Rules Explained", category: "Guides", readingTime: "9 min read", cta: "Know the Legal Lines \u2192" },
+  { slug: "text-to-speech/blog/read-pdf-aloud-guide", title: "How to Read a PDF Aloud: Free Guide for Phone & Desktop", category: "Guides", readingTime: "8 min read", cta: "Read Any PDF Aloud \u2192" },
   { slug: "text-to-speech/blog/ai-video-dubbing-guide", title: "AI Video Dubbing: How to Dub Your Videos Into Any Language", category: "Guides", readingTime: "9 min read", cta: "Read AI Video Dubbing Guide \u2192" },
   { slug: "text-to-speech/blog/ai-voice-cloning-guide", title: "AI Voice Cloning: Clone Your Voice for Free in 2026", category: "Guides", readingTime: "6 min read", cta: "Read AI Voice Cloning Guide \u2192" },
   { slug: "text-to-speech/blog/elevenlabs-v4-free-guide", title: "ElevenLabs v4 Is Here: Try Expressive AI Voices Free", category: "Comparisons", readingTime: "7 min read", cta: "Read ElevenLabs v4 Guide \u2192" },
@@ -56,7 +57,7 @@ function getBlogHubPage() {
   `).join('');
 
   return {
-    title: `Text to Speech Knowledge Hub | Guides & Research | ${BRAND_NAME}`,
+    title: `Text to Speech Guides & Research Hub`,
     h1: `Text to Speech Knowledge & Research Hub`,
     metaDesc: `Explore in-depth guides on Text to Speech, neural AI voice synthesis, YouTube voiceovers, auditory learning, and ElevenLabs alternatives.`,
     category: "Blog Hub",
@@ -7162,6 +7163,105 @@ before you put the audio in a course you sell.</p></div>
       <p style="line-height:1.8; margin:0 0 18px;">Paste up to 10,000 words into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free generator</a>, pick a voice with emotion and speed controls, and download your MP3. Free, no sign-up, no one else's identity involved.</p>
       </section>
       <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px; margin-bottom:28px;"><h3 style="margin-top:0; color:var(--color-primary);">Related Guides</h3><ul style="margin:0; padding-left:20px; line-height:2;"><li><a href="/guide/understanding-ai-voice-cloning" style="color:var(--color-primary);">AI Voice Cloning: How It Works, Uses &amp; Ethics (2026)</a></li><li><a href="/text-to-speech/blog/best-ai-voice-changers" style="color:var(--color-primary);">Best AI Voice Changers in 2026: 7 Free Tools That Work</a></li><li><a href="/text-to-speech/blog/best-ai-voices" style="color:var(--color-primary);">Top 10 Best AI Voices &amp; Neural TTS Models in 2026</a></li><li><a href="/text-to-speech/blog/tiktok-text-to-speech-guide" style="color:var(--color-primary);">TikTok Text to Speech: Free AI Voiceovers Guide</a></li></ul></div>
+      <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;"><a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">&#9664; Return to Master Text to Speech Guide</a></div>
+    `
+  },
+  "text-to-speech/blog/read-pdf-aloud-guide": {
+    title: `How to Read a PDF Aloud: Free Guide for Phone & Desktop`,
+    h1: `How to Read a PDF Aloud: Free Guide for Phone & Desktop`,
+    metaDesc: `Learn how to read a PDF aloud free on iPhone, Android, Windows & Mac — plus the Google Docs OCR trick for scanned PDFs and the best-sounding AI voice method.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Is reading a PDF aloud free?", "a": "Yes, on every platform. Built-in readers cost nothing, and free online AI voice tools let you paste PDF text and listen or download an MP3 with no sign-up."}, {"q": "Can I read a PDF aloud on iPhone without installing an app?", "a": "Yes. Enable Speak Screen in Settings → Accessibility → Spoken Content, then swipe down with two fingers in any PDF. No app needed."}, {"q": "Why does my PDF reader not let me select the text?", "a": "It's a scanned PDF — images of pages, not real text. Run it through Google Drive's OCR (upload → Open with Google Docs) to extract the text, then read it aloud."}, {"q": "Which AI voice sounds the most natural for long PDFs?", "a": "For English, a calm neutral neural voice at 1.0x–1.1x speed. Avoid the dramatic or character voices for document reading — they get tiring fast. Generate 30 seconds first and trust your ears."}, {"q": "Can I convert a PDF to MP3 audio?", "a": "Yes. Copy the text from the PDF, paste it into a free text-to-speech tool, and download the generated audio as an MP3. One step more than live listening, and you get an audio file you keep."}, {"q": "Does text-to-speech work offline?", "a": "The built-in phone and desktop readers (iPhone Speak Screen, Edge Read Aloud, Mac Speak Selection) work offline. Online AI voice tools need an internet connection — but you can download the MP3 once and listen anywhere."}],
+    datePublished: "October 8, 2026",
+    dateModified: "October 8, 2026",
+    content: `
+      <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
+        <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: How Do I Read a PDF Aloud?</h2>
+        <ul style="margin: 0; padding-left: 20px; line-height: 1.9;">
+          <li><strong>Fastest free method:</strong> open the PDF, copy the text, paste it into a free text-to-speech tool, pick an AI voice, and listen or download the MP3.</li>
+          <li><strong>On iPhone:</strong> turn on Speak Screen in Settings → Accessibility → Spoken Content; swipe down with two fingers in any PDF.</li>
+          <li><strong>On Android:</strong> use Select to Speak (Settings → Accessibility) or the free @Voice Aloud Reader app for long PDFs.</li>
+          <li><strong>On Windows:</strong> open the PDF in Microsoft Edge and hit Ctrl+Shift+U, or use Adobe Reader's Read Out Loud feature.</li>
+          <li><strong>On Mac:</strong> enable Speak Selection in Accessibility settings, select the PDF text, press Option+Esc.</li>
+          <li><strong>Scanned PDFs (images, not text):</strong> you need OCR first — a scan looks like text but isn't; see the section below.</li>
+        </ul>
+      </div>
+      <section style="margin-bottom:40px;">
+      <p style="line-height:1.8; margin:0 0 18px;">You've got a 60-page PDF to get through and no time to read it. Or your eyes are tired, or you're on the treadmill, or you'd rather <em>hear</em> the document while you do the dishes. Reading a PDF aloud is one of the simplest upgrades you can give your daily life — and it's free on every device you own.</p>
+      <p style="line-height:1.8; margin:0 0 18px;">Here's the thing nobody tells you: every phone and computer already ships with a read-aloud feature, but the built-in voices are still pretty robotic. The better move is a free AI voice that actually sounds like a person narrating. This guide walks you through both — the built-in options on iPhone, Android, Windows, and Mac, plus the free online method that sounds dramatically better.</p>
+      <p style="line-height:1.8; margin:0 0 18px;">If you just want the fastest path: paste your PDF's text into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free generator</a>, pick a natural voice, download the MP3. Takes two minutes, sounds human, no sign-up. The rest of this guide covers the built-in options device by device.</p>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Method 1: The Free Online Way (Best-Sounding, 2 Minutes)</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">This is the method I recommend to most people, because the voice quality gap is enormous.</p>
+      <ol style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li><strong>Open your PDF and copy the text.</strong> Most PDF readers let you select and copy; in a browser just drag-select the pages you want.</li>
+        <li><strong>Paste it into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free generator</a>.</strong> No account, no credit card.</li>
+        <li><strong>Pick a voice.</strong> For long documents, pick a calm neutral voice — en-US-JennyNeural is the safe default for English. You can adjust speed; 1.0x–1.1x works well for dense material.</li>
+        <li><strong>Listen or download the MP3.</strong> Listening right in the browser is fine; download it if you want to keep it for the gym, the commute, or studying offline.</li>
+      </ol>
+      <p style="line-height:1.8; margin:0 0 18px;">Why bother instead of using the built-in reader? Modern neural voices handle punctuation, abbreviations, and headings far better than the default system voices. The difference between a robotic monotone and a natural narrator over 60 pages is the difference between finishing the document and giving up on page three.</p>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Method 2: Read a PDF Aloud on iPhone</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">Apple's built-in Speak Screen works in Safari, Books, and most PDF apps.</p>
+      <ol style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li>Go to <strong>Settings → Accessibility → Spoken Content</strong> and turn on <strong>Speak Screen</strong>.</li>
+        <li>Open your PDF in Safari, Files, or Books.</li>
+        <li><strong>Swipe down from the top of the screen with two fingers.</strong> A playback controller appears with play, pause, skip, and speed controls.</li>
+      </ol>
+      <p style="line-height:1.8; margin:0 0 18px;">It works, and it's completely free — the voice just sounds like a robot reading a grocery list. For quick articles it's fine; for a full book, Method 1 will keep you saner.</p>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Method 3: Read a PDF Aloud on Android</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">You have two solid free options:</p>
+      <ul style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li><strong>Select to Speak (built in):</strong> Settings → Accessibility → Select to Speak, turn it on. Then open the PDF and tap the accessibility button to have it read what's on screen. Works in most PDF readers.</li>
+        <li><strong>@Voice Aloud Reader (free app):</strong> the best free app for long documents. Open your PDF directly in it, and it handles long files well, with better speed and pause controls than the built-in option. The free version is ad-supported.</li>
+      </ul>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Method 4: Read a PDF Aloud on Windows</h2>
+      <ul style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li><strong>Microsoft Edge (built in):</strong> open the PDF in Edge, then press <strong>Ctrl+Shift+U</strong> — or right-click and choose "Read aloud." You get a small toolbar with voice and speed options. It's the quickest option on a PC and most people don't know it exists.</li>
+        <li><strong>Adobe Acrobat Reader (free):</strong> go to <strong>View → Read Out Loud → Activate Read Out Loud</strong>, then choose "Read This Page Only" or "Read to End of Document." The voice is dated but it works on any PDF.</li>
+      </ul>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Method 5: Read a PDF Aloud on Mac</h2>
+      <ol style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li>Open <strong>System Settings → Accessibility → Spoken Content</strong> and turn on <strong>Speak selection</strong>.</li>
+        <li>Open your PDF in Preview, select the text you want read.</li>
+        <li>Press <strong>Option+Esc</strong> (the default shortcut) — your Mac reads the selection aloud.</li>
+      </ol>
+      <p style="line-height:1.8; margin:0 0 18px;">Mac's Alex voice is a classic, but for long reads the online AI voices in Method 1 sound more natural.</p>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>What If My PDF Is a Scan (Just Images)?</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">This is the honest caveat: if your PDF is a scan or photos of pages, there is no selectable text — and nothing can read what isn't there. You need OCR (optical character recognition) first.</p>
+      <ul style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
+        <li><strong>Google Drive:</strong> upload the scan, right-click → Open with Google Docs. Google runs OCR automatically and drops the extracted text into a Doc. Free.</li>
+        <li><strong>Adobe's free online OCR</strong> or your phone's scanner app (the built-in one on iPhone/Android usually extracts text too).</li>
+      </ul>
+      <p style="line-height:1.8; margin:0 0 18px;">Once you have the text, every method above works again.</p>
+      </section>
+      <section style="margin-bottom:40px;">
+      <h2>Who Actually Uses Read-Aloud for PDFs?</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">More people than you'd guess: students who retain better by listening, people with dyslexia or low vision, commuters turning papers into podcasts, writers proofreading their own drafts (hearing your own words read back catches errors your eyes skip — this one genuinely works), and anyone learning English who wants to hear pronunciation while they read.</p>
+      </section>
+      <section id="faqs" style="margin-bottom:40px;"><h2>Frequently Asked Questions</h2><div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;"><div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Is reading a PDF aloud free?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes, on every platform. Built-in readers cost nothing, and free online AI voice tools let you paste PDF text and listen or download an MP3 with no sign-up.</p></div>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Can I read a PDF aloud on iPhone without installing an app?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. Enable Speak Screen in Settings → Accessibility → Spoken Content, then swipe down with two fingers in any PDF. No app needed.</p></div>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Why does my PDF reader not let me select the text?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">It's a scanned PDF — images of pages, not real text. Run it through Google Drive's OCR (upload → Open with Google Docs) to extract the text, then read it aloud.</p></div>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Which AI voice sounds the most natural for long PDFs?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">For English, a calm neutral neural voice at 1.0x–1.1x speed. Avoid the dramatic or character voices for document reading — they get tiring fast. Generate 30 seconds first and trust your ears.</p></div>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Can I convert a PDF to MP3 audio?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. Copy the text from the PDF, paste it into a free text-to-speech tool, and download the generated audio as an MP3. One step more than live listening, and you get an audio file you keep.</p></div>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Does text-to-speech work offline?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">The built-in phone and desktop readers (iPhone Speak Screen, Edge Read Aloud, Mac Speak Selection) work offline. Online AI voice tools need an internet connection — but you can download the MP3 once and listen anywhere.</p></div></div></section>
+      <section style="margin-bottom:40px;">
+      <h2>Turn Any PDF Into Audio — Free, Right Now</h2>
+      <p style="line-height:1.8; margin:0 0 18px;">You don't need a subscription, an app, or a credit card to hear your documents instead of reading them. Copy the text, paste it into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free generator</a>, pick a voice that doesn't make you want to fall asleep, and either listen in your browser or download the MP3 for later.</p>
+      <p style="line-height:1.8; margin:0 0 18px;">Sixty pages reads a lot faster when someone else is doing the reading.</p>
+      </section>
+      <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px; margin-bottom:28px;"><h3 style="margin-top:0; color:var(--color-primary);">Related Guides</h3><ul style="margin:0; padding-left:20px; line-height:2;"><li><a href="/text-to-speech/blog/free-text-to-speech-pdf-to-audio" style="color:var(--color-primary);">Free Text to Speech: Convert PDF to Audio</a></li><li><a href="/text-to-speech/blog/ai-audiobook-generator-guide" style="color:var(--color-primary);">AI Audiobook Generator: Turn Any Book Into an Audiobook (Free)</a></li><li><a href="/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">Best Free Text to Speech Tools Tested in 2026</a></li><li><a href="/text-to-speech/blog/text-to-speech-for-students" style="color:var(--color-primary);">Text-to-Speech for Students &amp; Teachers</a></li></ul></div>
       <div style="margin-top:30px; border-top:1px solid var(--color-border); padding-top:20px;"><a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary); font-weight:600;">&#9664; Return to Master Text to Speech Guide</a></div>
     `
   },
