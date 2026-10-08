@@ -7074,6 +7074,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/is-ai-voice-cloning-legal": {
     title: `Is AI Voice Cloning Legal in 2026? Safety Rules Explained`,
     h1: `Is AI Voice Cloning Legal in 2026? Safety Rules Explained`,
+    ogImage: "/images/blog/is-ai-voice-cloning-legal/is-ai-voice-cloning-legal-hero.webp",
     metaDesc: `Is AI voice cloning legal? Tokyo's 2026 voice-rights ruling, the ELVIS Act, EU AI Act rules, and 7 safety rules explained in plain English — not legal advice.`,
     category: "Guides",
     readingTime: "9 min read",
