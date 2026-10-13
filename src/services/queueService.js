@@ -70,39 +70,49 @@ class QueueService {
 
   async saveJob(job, env = null) {
     // Cloudflare KV & R2 Storage Adapter
-    if (env && env.TTS_JOBS_KV) {
-      try {
-        const meta = {
-          id: job.id,
-          state: job.state,
-          progress: job.progress,
-          processedChunks: job.processedChunks,
-          totalChunks: job.totalChunks,
-          etaSeconds: job.etaSeconds,
-          wordCount: job.wordCount,
-          error: job.error,
-          createdAt: job.createdAt,
-          updatedAt: job.updatedAt,
-          hasAudio: !!job.audioBuffer,
-          audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
-          // Read-Along: persist merged word timings so /api/status can serve them
-          hasWordTimings: !!(job.wordTimings && job.wordTimings.length > 0),
-          wordTimings: job.wordTimings || null
-        };
-
-        // Save metadata to Cloudflare KV with 1-hour auto-expiration
-        await env.TTS_JOBS_KV.put(`job:${job.id}`, JSON.stringify(meta), { expirationTtl: 3600 });
-
-        // Save binary MP3 audio to Cloudflare R2
-        if (job.audioBuffer && env.TTS_AUDIO_R2) {
+    if (env && (env.TTS_JOBS_KV || env.TTS_AUDIO_R2)) {
+      // 1) Save binary MP3 audio to R2 FIRST, in its own try/catch.
+      // R2 has no daily put cap; this must survive KV quota blocks (2026-10-07:
+      // 3x "KV daily operation limit exceeded" — the old code skipped the R2 put
+      // whenever the KV put threw, silently losing the user's audio).
+      if (job.audioBuffer && env.TTS_AUDIO_R2) {
+        try {
           await env.TTS_AUDIO_R2.put(`audio/${job.id}.mp3`, job.audioBuffer, {
             httpMetadata: { contentType: 'audio/mpeg' }
           });
+        } catch (e) {
+          console.warn('[QueueService] R2 audio save warning:', e.message);
         }
-        return;
-      } catch (e) {
-        console.warn('[QueueService] Cloudflare KV/R2 save warning:', e.message);
       }
+
+      // 2) Save metadata to Cloudflare KV with 1-hour auto-expiration.
+      // Free tier = 1,000 puts/day; when exceeded, puts throw 429 until the
+      // 00:00 UTC reset. Caught here so one blocked write never kills the job.
+      if (env.TTS_JOBS_KV) {
+        try {
+          const meta = {
+            id: job.id,
+            state: job.state,
+            progress: job.progress,
+            processedChunks: job.processedChunks,
+            totalChunks: job.totalChunks,
+            etaSeconds: job.etaSeconds,
+            wordCount: job.wordCount,
+            error: job.error,
+            createdAt: job.createdAt,
+            updatedAt: job.updatedAt,
+            hasAudio: !!job.audioBuffer,
+            audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
+            // Read-Along: persist merged word timings so /api/status can serve them
+            hasWordTimings: !!(job.wordTimings && job.wordTimings.length > 0),
+            wordTimings: job.wordTimings || null
+          };
+          await env.TTS_JOBS_KV.put(`job:${job.id}`, JSON.stringify(meta), { expirationTtl: 3600 });
+        } catch (e) {
+          console.warn('[QueueService] Cloudflare KV save warning:', e.message);
+        }
+      }
+      return;
     }
 
     // Default Node / Vercel Filesystem Fallback (skip if fs unavailable)
@@ -377,7 +387,10 @@ class QueueService {
   async processJob(job, env = null) {
     job.state = 'PROCESSING';
     job.updatedAt = Date.now();
-    await this.saveJob(job, env);
+    // No saveJob here: the enqueue save already persisted the job (state QUEUED,
+    // progress 0), and the frontend progress UI reads the same fields either way.
+    // Saves ~1 KV put per job — free tier is capped at 1,000 puts/day
+    // (quota exceeded 3x on 2026-10-06/07).
 
     console.log(`[QueueService] Processing Job ${job.id} (${job.totalChunks} chunks)...`);
 
