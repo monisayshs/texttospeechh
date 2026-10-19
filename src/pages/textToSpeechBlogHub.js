@@ -56,6 +56,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/free-text-to-audio-converters", title: "Free Text to Audio Converters: 7 Tested, Ranked (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Text to Audio Guide \\u2192" },
   { slug: "text-to-speech/blog/free-ai-voice-over-generator", title: "Free AI Voice Over Generator: 7 Tools That Work (2026)", category: "Comparisons", readingTime: "11 min read", cta: "Read Voice Over Guide \\u2192" },
   { slug: "text-to-speech/blog/text-to-speech-online-guide", title: "Text to Speech Online: Turn Text Into Audio in Your Browser", category: "Guides", readingTime: "8 min read", cta: "Read Online TTS Guide \u2192" },
+  { slug: "text-to-speech/blog/pdf-reader-out-loud-apps", title: "PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud", category: "Guides", readingTime: "8 min read", cta: "Read PDF Aloud Apps Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -8167,6 +8168,73 @@ before you put the audio in a course you sell.</p></div>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Proofread your own writing.</strong> Listening to your text read aloud catches awkward sentences your eyes skip. Writers have used this trick for decades; TTS just automates the reading part.</li><li style="margin-bottom:6px;"><strong>Turn study notes into audio.</strong> Paste your revision notes, generate the MP3, and review on your commute. Some students learn faster by ear — worth one experiment.</li><li style="margin-bottom:6px;"><strong>Voice your videos without a microphone.</strong> Paste your script, pick a voice, download the voiceover, drop it into your edit. Full walkthrough in our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">YouTube voiceover guide</a>.</li></ul>
 </section>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> online text to speech means no downloads, no installs — paste, pick a voice, download the MP3. Judge tools on real limits (words per session, MP3 download, no sign-up wall), not marketing claims. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it free — first audio in under a minute</a>.</p>`
+  },
+  "text-to-speech/blog/pdf-reader-out-loud-apps": {
+    title: `PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud | ${BRAND_NAME}`,
+    h1: `PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud`,
+    metaDesc: `Need a PDF reader that reads out loud? 7 free apps tested (Oct 2026): browser tools, Android & iOS apps, no-install options — plus the scanned-PDF fix nobody mentions.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{'q': "Is there a free PDF reader that reads out loud?", 'a': "Yes, several. Microsoft Edge's Read Aloud is free and built into Windows, @Voice Aloud Reader is free on Android, and TextToSpeechH reads PDFs aloud free in your browser with no sign-up. Each has trade-offs in voice quality and features."}, {'q': "Can a PDF reader read a scanned PDF out loud?", 'a': "Not directly — scanned pages are images, not text. Run the scan through OCR first (Google Drive's 'Open with Google Docs' works free), then use any reader on this list."}, {'q': "What's the difference between a read-aloud app and a PDF-to-audio converter?", 'a': "Read-aloud apps play the document to you live — press play, listen now. Converters produce an MP3 file you keep. For live listening use this guide; for MP3 files see our PDF-to-audio converter roundup."}, {'q': "Can I read Kindle books out loud?", 'a': "Kindle books have DRM that blocks most third-party apps. Your options: Kindle's built-in Assistive Reader (free, basic voice), iOS Speak Screen (free, reads the screen), or Speechify (paid, imports your Kindle library). Our Kindle read-aloud guide walks through all three."}, {'q': "Do these apps work offline?", 'a': "It depends. Apps using your phone's built-in voices (@Voice, Acrobat mobile) work offline. Browser tools and neural-voice apps (TextToSpeechH, ElevenReader, NaturalReader's premium voices) need a connection."}],
+    datePublished: "October 19, 2026",
+    dateModified: "October 19, 2026",
+    content: `
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Which PDF Reader Reads Out Loud?</h2><p style="margin:0; line-height:1.7;">The fastest free option: <strong>Microsoft Edge Read Aloud</strong> (built into Windows, open any PDF and right-click). For no-install browser reading, <strong>TextToSpeechH</strong> reads PDFs aloud free with MP3 download. On Android, <strong>@Voice Aloud Reader</strong> is the best free app. Scanned PDFs need OCR first — none of these can read image-only pages.</p></div>
+<p style="line-height:1.8;">Some PDFs are meant to be read. Others — a 60-page research paper, a textbook chapter, a contract your eyes keep sliding off — are better listened to. A PDF reader that reads out loud turns any document into something you can absorb while walking, cooking, or resting your eyes.</p>
+<p style="line-height:1.8;">The catch: most PDF apps either don't read aloud at all, or bury the feature behind a menu you've never opened. Below are the seven that actually do it well, which ones are genuinely free, and the one scanned-PDF gotcha that trips everyone up.</p>
+<p style="line-height:1.8;"><strong>In a hurry?</strong> <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> reads your PDF aloud right in the browser — drop in the file, pick a voice, listen or download the MP3. Free, no sign-up, no app to install.</p>
+<p style="line-height:1.8;">Reading an Arabic PDF? Written Arabic skips vowel marks, so most free readers mispronounce it — our <a href="${DOMAIN}/text-to-speech/blog/best-arabic-text-to-speech-tools" style="color:var(--color-primary);">Arabic text to speech tools guide</a> rounds up the 7 free options that handle Arabic script properly.</p>
+<section style="margin-bottom:40px;">
+<h2>"Read aloud" vs. "convert to audio" — pick the right one</h2>
+<p style="line-height:1.8;">These are two different jobs, and picking the wrong one wastes an afternoon:</p>
+<ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Read-aloud apps</strong> (this guide) read the PDF to you <em>right now</em> — press play, listen, follow along. Best for study sessions, proofreading, and "I need to get through this document today."</li><li style="margin-bottom:6px;"><strong>PDF-to-audio converters</strong> extract the text and hand you an MP3 file you keep. Best for building a listen-later library, podcast-style playback, or using the audio in a video.</li></ul>
+<p style="line-height:1.8;">If you want the MP3 file, not the live reading, our <a href="${DOMAIN}/text-to-speech/blog/free-text-to-speech-pdf-to-audio" style="color:var(--color-primary);">PDF-to-audio converter roundup</a> covers the tools that export audio. Everything below is about pressing play.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The 7 best PDF readers that read out loud (2026)</h2>
+<h3>1. TextToSpeechH — best no-install option</h3>
+<p style="line-height:1.8;">If you don't want to install anything or create an account, start here. Drop your PDF into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, and it pulls the text out and reads it aloud with natural voices — or hands you an MP3 if you'd rather keep it.</p>
+<p style="line-height:1.8;">It handles up to 10,000 words per session, which is roughly a full textbook chapter, and the MP3 comes out with a clean filename you can actually find later. Works on phone, tablet, and desktop because it's a website, not an app.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> One-off documents and people who hate installing apps.</p>
+<p style="line-height:1.8;"><strong>The honest caveat:</strong> It's browser-based, so your PDF is processed on a server — don't upload anything confidential. For private documents, a local app (see #3 and #4) keeps everything on your device.</p>
+<h3>2. Microsoft Edge Read Aloud — best built-in, already on your PC</h3>
+<p style="line-height:1.8;">Open the PDF in Microsoft Edge, right-click anywhere, and choose "Read Aloud." That's it. The neural voices are genuinely good — better than you'd expect from a browser feature — and it's completely free with nothing to install.</p>
+<p style="line-height:1.8;">You get speed control and a choice of voices, and it works on any webpage or PDF you open in Edge. On Windows, this is the fastest path from "I have a PDF" to "it's reading to me."</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> Windows users who want zero friction.</p>
+<p style="line-height:1.8;"><strong>The honest caveat:</strong> It's tied to Edge. If your workflow lives in Chrome or Acrobat, you're switching contexts to use it.</p>
+<h3>3. @Voice Aloud Reader — best free Android app</h3>
+<p style="line-height:1.8;">@Voice has been around since 2013, has over 10 million installs, and it's still the best genuinely free read-aloud app on Android. It reads PDFs, ebooks, articles, and web pages, works with your phone's built-in voices plus any TTS engine you've installed, and keeps playing with the screen locked.</p>
+<p style="line-height:1.8;">The interface looks dated — it has the visual charm of an app designed in 2013, because it was. But it does the job: open a PDF, press play, adjust speed, done.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> Android users who want a free, no-account reader that just works.</p>
+<h3>4. Voice Dream Reader — best voices on iOS (paid, worth knowing about)</h3>
+<p style="line-height:1.8;">Voice Dream Reader is the app accessibility professionals actually recommend. It opens PDFs, ebooks, and documents, reads with premium-quality voices, and syncs across iOS and Android. It's a one-time purchase (around $15 on iOS), not a subscription.</p>
+<p style="line-height:1.8;">Why include a paid app in a free list? Because if you read PDFs aloud daily — students, researchers, anyone with a reading disability — the voice quality and navigation (jump by heading, bookmark by page) justify it, and it's cheaper than two months of any subscription reader.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> Daily heavy readers who want the best experience, not the cheapest.</p>
+<p style="line-height:1.8;"><strong>The honest caveat:</strong> It's paid. If you read aloud occasionally, the free options above are fine.</p>
+<h3>5. NaturalReader — best for students and study workflows</h3>
+<p style="line-height:1.8;">NaturalReader is built around studying: open a PDF, and it reads with clean highlighting so you can follow along visually. It handles textbooks well, has a dyslexia-friendly mode, and the free tier covers casual use.</p>
+<p style="line-height:1.8;">The free version has daily limits on the premium voices, but the standard voices are unlimited. Students pairing listening with reading — which genuinely helps retention — will get the most out of it. Our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color:var(--color-primary);">students' TTS guide</a> covers more study workflows.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> Students turning textbooks and papers into study audio.</p>
+<h3>6. Adobe Acrobat Reader mobile — best if you already have it</h3>
+<p style="line-height:1.8;">The Acrobat Reader app on iOS and Android has a "Read Out Loud" option buried in the View menu. It's not the best reader on this list — the voices are your phone's system voices, and navigation is basic — but if Acrobat is already your PDF app, you don't need anything new.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> People who live in Acrobat and want one less app.</p>
+<p style="line-height:1.8;"><strong>The honest caveat:</strong> The feature is easy to miss and the voices are only as good as your phone's built-in ones.</p>
+<h3>7. ElevenReader — best neural voices on a free tier</h3>
+<p style="line-height:1.8;">ElevenReader gives you 10 hours of text-to-audio per month free, using ElevenLabs voices — the same engine behind some of the most natural AI speech available. Upload a PDF, pick from 1,000+ voices, and listen on web, iOS, or Android.</p>
+<p style="line-height:1.8;">Ten hours covers roughly a 400-page book per month. If you exceed it, the paid tier is $8.25/month billed annually. For occasional long documents, the free tier is generous.</p>
+<p style="line-height:1.8;"><strong>Best for:</strong> The most natural-sounding free read-aloud for long PDFs.</p>
+<p style="line-height:1.8;"><strong>The honest caveat:</strong> Free-tier hours are shared across everything you read, so heavy daily use will hit the cap.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The scanned-PDF gotcha (read this before anything else)</h2>
+<p style="line-height:1.8;">If your PDF is a scan — photos of pages rather than actual text — none of these apps can read it, because there's no text to read. You'll press play and hear nothing, or gibberish.</p>
+<p style="line-height:1.8;">The fix: run the scan through OCR first. Adobe Acrobat's "Scan & OCR" (paid), Google Drive (free: upload the PDF, open with Google Docs), or any free OCR tool will convert the images to real text. Then feed the result to any reader above. Check first: if you can select the text with your mouse, it's a real PDF and you're fine.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Three settings worth changing on day one</h2>
+<ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Speed: start at 1.1x.</strong> Normal speed drags on dense documents; 1.1x sounds natural and saves real time on long papers. Push to 1.25x once you're used to it.</li><li style="margin-bottom:6px;"><strong>Turn on highlighting.</strong> Every reader above that supports it, enable it. Following the highlighted line keeps your eyes engaged and massively improves comprehension versus pure listening.</li><li style="margin-bottom:6px;"><strong>Set a sleep timer for bedtime reading.</strong> Most of these apps have one. Falling asleep mid-chapter without it means re-finding your place tomorrow.</li></ul>
+</section>
+<p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for live PDF reading, Edge Read Aloud is the fastest free start on Windows, @Voice owns Android, and TextToSpeechH needs no install at all. Run scans through OCR first, start at 1.1x speed, and turn on highlighting. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now — drop your PDF in and hear it read back in under a minute</a>.</p>`
   },
 };
 
