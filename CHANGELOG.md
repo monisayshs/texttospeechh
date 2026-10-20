@@ -29,6 +29,7 @@ If this document conflicts with the implementation, **the source code is authori
 ## [Unreleased]
 
 ### Added
+- **New article: how-to-make-an-audiobook-free (2026-10-20)** (`src/pages/textToSpeechBlogHub.js`), user approved ("Isko publish kardo"). "How to Make an Audiobook for Free: A Step-by-Step Guide (2026)" — targets "audiobook maker" (590/mo USA, LOW competition) + "free audiobook maker" (90/mo). Added to BLOG_ARTICLES_LIST (Guides, 7 min read) + full BLOG_ARTICLES_MAP entry (definition box, 5 step sections, copyright warning, 5-question FAQ + faqs array). Internal links to homepage tool, free-text-to-speech-pdf-to-audio, ai-audiobook-generator-guide. Sitemap auto-includes the new slug.
 - **New article: text-to-speech-online-guide (2026-10-18)** (`src/pages/textToSpeechBlogHub.js`), user approved ("Is draft ko publish kardo"). "Text to Speech Online: Turn Text Into Audio in Your Browser" — targets "text to speech online" (4,400/mo USA, LOW). Added to BLOG_ARTICLES_LIST (Guides, 8 min read) + full BLOG_ARTICLES_MAP entry (definition box, 5 sections, 5-question FAQ + faqs array). Live: https://www.texttospeechh.com/text-to-speech/blog/text-to-speech-online-guide
 
 ### Changed

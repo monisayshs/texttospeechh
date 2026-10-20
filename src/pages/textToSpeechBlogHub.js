@@ -57,6 +57,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/free-ai-voice-over-generator", title: "Free AI Voice Over Generator: 7 Tools That Work (2026)", category: "Comparisons", readingTime: "11 min read", cta: "Read Voice Over Guide \\u2192" },
   { slug: "text-to-speech/blog/text-to-speech-online-guide", title: "Text to Speech Online: Turn Text Into Audio in Your Browser", category: "Guides", readingTime: "8 min read", cta: "Read Online TTS Guide \u2192" },
   { slug: "text-to-speech/blog/pdf-reader-out-loud-apps", title: "PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud", category: "Guides", readingTime: "8 min read", cta: "Read PDF Aloud Apps Guide \u2192" },
+  { slug: "text-to-speech/blog/how-to-make-an-audiobook-free", title: "How to Make an Audiobook for Free: Step-by-Step Guide", category: "Guides", readingTime: "7 min read", cta: "Read Audiobook Maker Guide \u2192" },
   { slug: "text-to-speech/blog/canva-text-to-speech-guide", title: "Canva Text to Speech: Add Free AI Voiceovers (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Canva TTS Guide \u2192" },
   { slug: "text-to-speech/blog/google-docs-text-to-speech-guide", title: "Text to Speech in Google Docs: Free Read-Aloud Guide (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Google Docs TTS Guide \u2192" },
   { slug: "text-to-speech/blog/windows-text-to-speech-guide", title: "Text to Speech on Windows: Free Built-In Options (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Windows TTS Guide \u2192" },
@@ -8239,6 +8240,51 @@ before you put the audio in a course you sell.</p></div>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Speed: start at 1.1x.</strong> Normal speed drags on dense documents; 1.1x sounds natural and saves real time on long papers. Push to 1.25x once you're used to it.</li><li style="margin-bottom:6px;"><strong>Turn on highlighting.</strong> Every reader above that supports it, enable it. Following the highlighted line keeps your eyes engaged and massively improves comprehension versus pure listening.</li><li style="margin-bottom:6px;"><strong>Set a sleep timer for bedtime reading.</strong> Most of these apps have one. Falling asleep mid-chapter without it means re-finding your place tomorrow.</li></ul>
 </section>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for live PDF reading, Edge Read Aloud is the fastest free start on Windows, @Voice owns Android, and TextToSpeechH needs no install at all. Run scans through OCR first, start at 1.1x speed, and turn on highlighting. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now — drop your PDF in and hear it read back in under a minute</a>.</p>`
+  },
+  "text-to-speech/blog/how-to-make-an-audiobook-free": {
+    title: `How to Make an Audiobook for Free: A Step-by-Step Guide (2026) | ${BRAND_NAME}`,
+    h1: `How to Make an Audiobook for Free: A Step-by-Step Guide`,
+    metaDesc: `How to make an audiobook for free with AI text to speech: clean your manuscript, pick a voice, generate chapter by chapter, and assemble a polished MP3. No studio needed.`,
+    category: "Guides",
+    readingTime: "7 min read",
+    faqs: [{'q': "Can I really make an audiobook for free?", 'a': "Yes. Free text-to-speech tools like TextToSpeechH (10,000 words free, no sign-up) can narrate a full book chapter by chapter. The trade-off versus a studio production is polish, not basic quality — the result is clear and completely listenable."}, {'q': "How long does it take to make an audiobook with AI?", 'a': "Generation itself is fast — a few minutes per chapter. Budget about an afternoon for a short book including manuscript cleanup, voice sampling, and spot-checking each chapter. Your second book will take roughly half the time."}, {'q': "What format should an audiobook be in?", 'a': "MP3 is the safest choice — every player supports it. Export speech at 128 kbps mono: it sounds great for narration and keeps a ten-hour book under 500 MB. M4B adds chapter markers if your player supports them."}, {'q': "Can I sell an audiobook I made from someone else's book?", 'a': "No. Selling or sharing a recording of a copyrighted book infringes the author's rights, even if you made the recording yourself. Only publish audiobooks of your own writing or public-domain texts."}, {'q': "Which AI voice is best for audiobook narration?", 'a': "A warm, medium-paced voice works for most non-fiction and memoirs. Fiction does better slightly slower so dialogue is easy to follow. Always test a two-minute sample first — if you would not listen to that voice for three hours, pick another."}],
+    datePublished: "October 20, 2026",
+    dateModified: "October 20, 2026",
+    content: `
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: How Do I Make an Audiobook for Free?</h2><p style="margin:0; line-height:1.7;">Clean up your manuscript, split it into chapters, and run each chapter through a free text-to-speech tool like <strong>TextToSpeechH</strong> (10,000 words free, no sign-up). Pick a warm voice, generate chapter by chapter, then join the MP3s and export at 128 kbps mono. A short book takes about an afternoon — no studio, no narrator fees.</p></div>
+<p style="line-height:1.8;">A few years ago, turning a book into an audiobook meant hiring a narrator, renting studio time, and spending hundreds of dollars. Today you can do it on your laptop, for free, in an afternoon. Whether you want to listen to your own notes on a drive, give your ebook an audio version, or finally finish that manuscript collecting dust, this guide walks you through the whole process — no studio, no budget, no recording experience needed.</p>
+<p style="line-height:1.8;"><strong>In a hurry?</strong> <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> turns your text into natural audio right in the browser — paste a chapter, pick a voice, download the MP3. Free, no sign-up.</p>
+<section style="margin-bottom:40px;">
+<h2>What you need before you start</h2>
+<p style="line-height:1.8;">Three things: your text in a clean digital format (a Word doc, PDF, or plain text file works best), a text-to-speech tool, and about an hour for a short book. Scanned PDFs with messy formatting cause the most problems, so if your source is a scan, clean up the text first — remove page numbers, headers, and broken lines. Five minutes of cleanup here saves you an hour of weird pauses later.</p>
+<p style="line-height:1.8;">If your source is a PDF, our <a href="${DOMAIN}/text-to-speech/blog/free-text-to-speech-pdf-to-audio" style="color:var(--color-primary);">PDF-to-audio converter guide</a> covers how to extract clean text from it first.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Step 1: Pick the right tool</h2>
+<p style="line-height:1.8;">Free audiobook makers fall into two camps. Browser-based converters take your file and return an MP3 or M4B — simple, but long books can hit size limits. A free text-to-speech tool like TextToSpeechH gives you more control: you paste your text chapter by chapter, choose a natural voice, adjust the speed, and download clean audio.</p>
+<p style="line-height:1.8;">For most people making their first audiobook, the chapter-by-chapter approach wins because you can fix mistakes in one chapter without redoing the whole book. If you want a tool that generates an entire book in one pass instead, our <a href="${DOMAIN}/text-to-speech/blog/ai-audiobook-generator-guide" style="color:var(--color-primary);">AI audiobook generator guide</a> compares the dedicated options.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Step 2: Prepare your manuscript</h2>
+<p style="line-height:1.8;">Split your book into chapters before you generate anything. Add a short pause marker or a blank line at scene breaks so the narration breathes. Read one page aloud yourself — if you stumble over a sentence, the AI voice will too. Long, tangled sentences are the number one reason AI narration sounds robotic, and a quick edit fixes most of it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Step 3: Choose a voice that fits the book</h2>
+<p style="line-height:1.8;">Match the voice to the material. A warm, medium-paced voice suits memoirs and non-fiction. Fiction benefits from a slightly slower pace so listeners can follow dialogue. Always generate a two-minute sample first and listen with fresh ears — if you would not listen to that voice for three hours, your audience will not either.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Step 4: Generate and check chapter by chapter</h2>
+<p style="line-height:1.8;">Generate one chapter at a time and spot-check the beginning, middle, and end of each file. Listen for mispronounced names — every book has a few. The practical fix most guides skip: tweak the spelling phonetically in a working copy (writing "Hermione" as "Her-my-oh-nee") to fix pronunciation, without changing the text your readers see in the final book.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Step 5: Assemble your audiobook</h2>
+<p style="line-height:1.8;">Name your files in order (01-chapter-one.mp3, 02-chapter-two.mp3) so any player queues them correctly. If you want a single polished file, free editors like Audacity can join chapters and add a second of silence between them. Export at 128 kbps mono — it sounds great for speech and keeps a ten-hour book under 500 MB.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>One honest warning: copyright</h2>
+<p style="line-height:1.8;">Making an audiobook of your own writing is always fine. Recording a copyrighted book for your own private listening is generally acceptable, but selling or sharing that recording is not. If you plan to publish, the text must be yours or public domain. This is the one rule you cannot skip.</p>
+</section>
+<p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> Your first audiobook will not sound like a studio production, and that is okay. It will sound clear, natural, and completely listenable — which is all most projects need. Start with a short book, learn the workflow, and by your second one you will be twice as fast. The tools are free; the only real cost is an afternoon. <a href="${DOMAIN}/" style="color:var(--color-primary);">Start with chapter one now — paste your text and hear it read back</a>.</p>`
   },
   "text-to-speech/blog/canva-text-to-speech-guide": {
     title: `Canva Text to Speech: Add Free AI Voiceovers (2026) | ${BRAND_NAME}`,
