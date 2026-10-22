@@ -56,6 +56,7 @@ If this document conflicts with the implementation, **the source code is authori
 - **AI Crawler & Discovery Policy**:
   - Robots Policy: `public/robots.txt` (Allows GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended)
   - LLM Documentation: `public/llms.txt` (AI-readable API & project overview)
+- **Latest Blog Route (2026-10-22)**: `/text-to-speech/blog/tiktok-text-to-speech` published (TikTok TTS keyword cluster ~7,000/mo USA, all LOW competition); sitemap auto-includes it via `BLOG_ARTICLES_LIST`/`BLOG_ARTICLES_MAP` in `src/pages/textToSpeechBlogHub.js`. Blog now carries 53 listed / 51 mapped articles.
 
 ---
 
