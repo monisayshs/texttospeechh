@@ -64,6 +64,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/text-to-speech-mp3-download", title: "Text to Speech to MP3: Convert Any Text to MP3 Free", category: "Guides", readingTime: "8 min read", cta: "Read MP3 Download Guide \u2192" },
   { slug: "text-to-speech/blog/tiktok-text-to-speech", title: "TikTok Text to Speech: How to Add an AI Voice to Your Videos", category: "Guides", readingTime: "8 min read", cta: "Read TikTok Text to Speech Guide \u2192" },
   { slug: "text-to-speech/blog/british-accent-generator", title: "British Accent Generator: Turn Text into a British Voice Without Guessing (2026)", category: "Guides", readingTime: "9 min read", cta: "Read British Accent Guide \u2192" },
+  { slug: "text-to-speech/blog/audioshake-studio-guide", title: "AudioShake Studio Guide: Clean Dialogue and Music Stems for Creators (Tested 2026)", category: "Guides", readingTime: "8 min read", cta: "Read AudioShake Guide \u2192" },
 ];
 
 function getBlogHubPage() {
@@ -8524,6 +8525,64 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The short version:</strong> Pick the voice after you decide who is speaking. Test names, numbers, and difficult words before you commit to a full script, and check the download and licence early. That is how a novelty becomes a practical production tool. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now: make your first British voiceover free</a> — no sign-up, and the MP3 is yours to keep.</p>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/audioshake-studio-guide": {
+    title: `AudioShake Studio: Separate Dialogue, Music & Vocals for Creators | ${BRAND_NAME}`,
+    h1: `AudioShake Studio Guide: Clean Dialogue and Music Stems for Creators (Tested 2026)`,
+    metaDesc: `AudioShake Studio separates dialogue, vocals and instruments from mixed audio. I tested it with real clips: dialogue isolation is excellent, two-speaker separation failed twice, and credits need watching. An honest creator guide.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Is AudioShake Studio free?", "a": "There is a free starter allowance, and paid credits beyond that. The free plan exports MP3 only; WAV needs a paid tier."}, {"q": "Can it separate two people talking at once?", "a": "It offers a multi-speaker workflow, but my two-speaker test failed twice on my material. Test a short clip of your own audio before committing credits to a long file."}, {"q": "How clean is the dialogue isolation?", "a": "On my test, a voice-over with background music, the dialogue came out clean with zero music leakage. That was the strongest result in my testing."}, {"q": "What file do I get back?", "a": "Separate stems you can download and edit in any video editor or audio editor. Preview each stem before downloading."}, {"q": "Does it replace a recording session?", "a": "No. It rescues and rebalances audio you already have. If you can re-record cleanly, re-recording is still better. Separation is for the audio you cannot re-record."}],
+    datePublished: "October 24, 2026",
+    dateModified: "October 24, 2026",
+    content: `
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: What Does AudioShake Studio Do?</h2><p style="margin:0; line-height:1.7;">AudioShake Studio takes a mixed audio file and splits it into separate stems: dialogue, music, vocals, and instruments. I tested it myself with real clips. Dialogue isolation was excellent, with zero music leaking into the voice stem. Music stems came out clean too. Two-speaker separation failed twice, and credit costs need watching. The full honest results are below.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What AudioShake Studio actually does</h2>
+<p style="line-height:1.8;">Most creator audio problems are separation problems. You have a voice-over sitting on top of background music. You have a song and you want just the vocals. You have an interview with two people talking over each other and you want each voice on its own track.</p>
+<p style="line-height:1.8;"><a href="https://www.audioshake.ai/" style="color:var(--color-primary);">AudioShake Studio</a> is built for exactly that job. You upload a mixed audio file, and its AI splits it into stems: dialogue, music, vocals, instruments, and in the multi-speaker workflow, separate speaker tracks. You download the stems and edit them like any other audio in your video editor or DAW.</p>
+<p style="line-height:1.8;">That is the whole pitch. The question is how well it holds up on real clips, not demo files. I tested it myself, and this guide reports what actually happened, the good parts and the failures.</p>
+<p style="line-height:1.8;"><em>Honest note: AudioShake gave me test credits to try Studio. What follows is what I found with those credits, including the tests that did not work. Nobody told me what to write.</em></p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The workflow, step by step</h2>
+<p style="line-height:1.8;">For a creator, the process is short:</p>
+<ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;">Upload your mixed audio or video file to AudioShake Studio.</li><li style="margin-bottom:6px;">Pick the separation job: dialogue isolation, music stems, or the multi-speaker workflow.</li><li style="margin-bottom:6px;">Let it process. Short clips take a few minutes; long files take longer.</li><li style="margin-bottom:6px;">Preview each stem before you download anything. This is the step people skip, and it is the step that saves credits.</li><li style="margin-bottom:6px;">Download the stems you actually need and drop them into your editor: CapCut, Premiere, DaVinci, Audacity, whatever you already use.</li></ol>
+<p style="line-height:1.8;">One habit matters more than any other: <strong>test a short clip first.</strong> I ran my first test on a 25-second voice-over with background music before touching anything longer. That one short test told me more than any feature page could, and it cost a fraction of a full-length job.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What worked brilliantly: dialogue isolation</h2>
+<p style="line-height:1.8;">This was the standout. I ran a 25-second voice-over with background music through the multi-speaker workflow, and the dialogue came out isolated cleanly into its own speaker stem, with zero music leaking into it.</p>
+<p style="line-height:1.8;">That matters more than it sounds. A voice-over with music bleed is almost impossible to fix in an editor: turn the voice up and the music comes with it; turn the music down and the voice goes muddy. A clean dialogue stem means you can rebalance the whole mix afterwards, voice up, music down, or music replaced entirely, without re-recording anything.</p>
+<p style="line-height:1.8;">For YouTubers, podcasters, and anyone dubbing or revoicing video, this is the feature that earns its keep. If your audio problem is "my voice is stuck to my music," this is the tool for it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What also worked: music stems</h2>
+<p style="line-height:1.8;">The music stems test separated vocals from instruments cleanly. A full song went in, and the vocal track and the instrumental track came out usable on their own.</p>
+<p style="line-height:1.8;">Practical uses for creators: karaoke-style backing tracks, remixes, pulling a vocal out of a track to talk over it, or rescuing a song where one element is too loud. Same rule as above applies: preview before you download, and test short before you go long.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What did not work: two-speaker separation</h2>
+<p style="line-height:1.8;">Here is the honest part. I tested separating two speakers from a single recording, and it failed, twice. Two attempts, no usable result either time.</p>
+<p style="line-height:1.8;">That does not mean the feature never works. It means that on my test material, with two voices in one file, it did not deliver what a creator could actually edit with. If your project depends on splitting two speakers, do not buy credits for the whole job first. Run one short test on your exact audio, listen to both stems, and only continue if they hold up. A feature that works on clean demo audio and fails on your real recording is the most expensive kind of surprise.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Credits, billing, and the free plan limits</h2>
+<p style="line-height:1.8;">Three things to know before you spend:</p>
+<ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Test short, then commit.</strong> Every separation costs credits. A 25-second test tells you whether the job works at all, before a long file eats your balance.</li><li style="margin-bottom:6px;"><strong>Watch the billing.</strong> In my testing, the credit charges looked roughly twice what I expected on some jobs. I am not calling it a billing error: different jobs price differently, and long or complex files cost more. But check your balance before and after a job, and do not assume the price from one test applies to the next.</li><li style="margin-bottom:6px;"><strong>Free plan exports MP3 only.</strong> If your workflow needs WAV, that sits on a paid tier. For most video and podcast work MP3 stems are fine, but if you master audio professionally, check the format before you start.</li></ul>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Who this is for, and who should skip it</h2>
+<p style="line-height:1.8;"><strong>Good fit if:</strong> you make videos or podcasts, you have voice stuck to music, you need clean vocals or instrumentals, or you revoice and remix existing audio.</p>
+<p style="line-height:1.8;"><strong>Think twice if:</strong> your whole project depends on two-speaker separation (test it first, on your audio), or you need WAV stems on a free plan.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Pairing it with text to speech</h2>
+<p style="line-height:1.8;">One workflow creators ask about: generate a voice-over with text to speech, then clean and mix it with other audio. That is a natural pair. You can generate the narration on TextToSpeechH, lay it over music, and use a tool like AudioShake when you need to pull elements apart again, for example, separating an existing mixed track so your new narration sits cleanly on top. Our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-youtube" style="color:var(--color-primary);">text to speech for YouTube guide</a> covers the voice-over side of that setup, and the <a href="${DOMAIN}/text-to-speech/blog/how-to-make-an-audiobook-free" style="color:var(--color-primary);">how-to-make-an-audiobook-free guide</a> covers long-form narration.</p>
+</section>
+<p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The short version:</strong> AudioShake Studio is genuinely strong at the job most creators actually need: pulling clean dialogue out of mixed audio, and splitting music into usable vocals and instruments. Its two-speaker separation did not work in my tests, and credit costs need watching. Test a short clip first, preview every stem, and you will know within minutes whether it solves your problem.<br><br><strong>Last tested: October 2026. If AudioShake updates the two-speaker workflow, I will re-test and update this guide.</strong></p>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. AudioShake provided test credits; the findings, including the failures, are my own.</em></p>
+`
   },
 };
 
