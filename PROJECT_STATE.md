@@ -56,7 +56,7 @@ If this document conflicts with the implementation, **the source code is authori
 - **AI Crawler & Discovery Policy**:
   - Robots Policy: `public/robots.txt` (Allows GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended)
   - LLM Documentation: `public/llms.txt` (AI-readable API & project overview)
-- **Latest Blog Route (2026-10-22)**: `/text-to-speech/blog/tiktok-text-to-speech` published (TikTok TTS keyword cluster ~7,000/mo USA, all LOW competition); sitemap auto-includes it via `BLOG_ARTICLES_LIST`/`BLOG_ARTICLES_MAP` in `src/pages/textToSpeechBlogHub.js`. Blog now carries 52 listed / 50 mapped articles.
+- **Latest Blog Route (2026-10-24)**: `/text-to-speech/blog/british-accent-generator` published ("british accent generator" 1,300/mo USA, LOW + supporting British TTS cluster, all LOW); internal links to text-to-speech-for-youtube, is-ai-voice-cloning-legal, best-free-text-to-speech-tools; sitemap auto-includes it via `BLOG_ARTICLES_LIST`/`BLOG_ARTICLES_MAP` in `src/pages/textToSpeechBlogHub.js`. Blog now carries 53 listed / 51 mapped articles.
 - **Blog Consolidation (2026-10-22)**: the duplicate Oct 5 guide `/text-to-speech/blog/tiktok-text-to-speech-guide` was removed from the blog list/map and 301-redirected to `/text-to-speech/blog/tiktok-text-to-speech` (`public/_redirects` + `OLD_BLOG_REDIRECTS` in `src/seo/programmaticPages.js`); all internal links repointed to the new slug.
 
 ---
