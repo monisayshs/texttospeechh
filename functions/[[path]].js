@@ -24,6 +24,78 @@ const indexNowHandler = require('../api/index-now');
 const { get404Page, get500Page, get403Page, get429Page, get503Page } = require('../src/pages/errorPages');
 
 /**
+ * Security headers + HTML edge caching (SEO audit 2026-10-26, Phase 1).
+ *
+ * Why here: Cloudflare Pages applies public/_headers ONLY to static-asset
+ * responses, so the `/*` security block reached 1 of 109 pages (the static
+ * homepage) and none of the 108 function-rendered pages; no CSP existed
+ * anywhere. Emitting the headers from this function layer covers every page
+ * the router produces or passes through.
+ */
+const SECURITY_HEADERS = {
+  'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+};
+
+// CSP inventoried from what the pages actually load: self-hosted fonts/CSS/JS,
+// inline theme/analytics bootstrap scripts (hence 'unsafe-inline'), GA4 via
+// googletagmanager.com + google-analytics.com endpoints, Microsoft Clarity via
+// clarity.ms, and TTS audio via same-origin /api responses + blob: URLs.
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
+  "font-src 'self' data:",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms",
+  "media-src 'self' blob:",
+  "worker-src 'self' blob:",
+  "frame-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests"
+].join('; ');
+
+function withSecurityHeaders(response) {
+  const res = new Response(response.body, response);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    res.headers.set(name, value);
+  }
+  const contentType = res.headers.get('Content-Type') || '';
+  if (contentType.includes('text/html') && !res.headers.has('Content-Security-Policy')) {
+    res.headers.set('Content-Security-Policy', CONTENT_SECURITY_POLICY);
+  }
+  return res;
+}
+
+// Anonymous HTML is stored in the Cache API for 1h (stale-while-revalidate
+// covers the refresh) so repeat edge hits skip function execution entirely.
+const HTML_EDGE_CACHE_CONTROL = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400';
+
+async function finalizeResponse(response, edgeCache, cacheKey, waitUntil) {
+  let res = response;
+  if (edgeCache && cacheKey && res.status === 200) {
+    const contentType = res.headers.get('Content-Type') || '';
+    if (contentType.includes('text/html') && !res.headers.has('Set-Cookie')) {
+      try {
+        res = new Response(res.body, res);
+        res.headers.set('Cache-Control', HTML_EDGE_CACHE_CONTROL);
+        const cacheCopy = res.clone();
+        const putPromise = edgeCache.put(cacheKey, cacheCopy).catch(() => {});
+        if (typeof waitUntil === 'function') waitUntil(putPromise);
+        else await putPromise;
+      } catch (e) { /* a cache-store failure must never break the page */ }
+    }
+  }
+  return withSecurityHeaders(res);
+}
+
+/**
  * Static file extensions that should be served directly by Cloudflare Pages CDN.
  * These bypass the function entirely unless they match special routes (robots.txt, llms.txt, etc.)
  */
@@ -215,6 +287,26 @@ export async function onRequest(context) {
     }
   }
 
+  // === HTML edge cache lookup (SEO audit 2026-10-26, Phase 1) ===
+  // Eligible: anonymous GET page requests only — no query string, no /api/,
+  // no Cookie/Authorization headers. The tool is anonymous and public (theme
+  // is client-side localStorage; no auth or per-user HTML exists), so cached
+  // HTML is identical for every visitor.
+  const cacheEligible =
+    request.method === 'GET' &&
+    !url.search &&
+    !pathname.startsWith('/api/') &&
+    !request.headers.has('Cookie') &&
+    !request.headers.has('Authorization');
+  const edgeCache = cacheEligible ? caches.default : null;
+  const cacheKey = cacheEligible ? new Request(url.toString(), { method: 'GET' }) : null;
+  if (edgeCache) {
+    try {
+      const cached = await edgeCache.match(cacheKey);
+      if (cached) return withSecurityHeaders(cached);
+    } catch (e) { /* a cache-read failure must never break the page */ }
+  }
+
   // Bridge Cloudflare env bindings to process.env
   bridgeEnvToProcess(env);
 
@@ -274,7 +366,7 @@ export async function onRequest(context) {
           // Try static asset fallback from Cloudflare Pages CDN
           const staticRes = await next();
           if (staticRes && staticRes.status !== 404) {
-            return staticRes;
+            return finalizeResponse(staticRes, edgeCache, cacheKey, context.waitUntil.bind(context));
           }
           // Return custom 404 page
           mockRes.statusCode = 404;
@@ -284,11 +376,11 @@ export async function onRequest(context) {
       }
     }
 
-    return mockRes.toResponse();
+    return finalizeResponse(mockRes.toResponse(), edgeCache, cacheKey, context.waitUntil.bind(context));
 
   } catch (err) {
     console.error('[Cloudflare Pages Function Router Error]:', err);
     const errorHeaders = new Headers({ 'Content-Type': 'text/html; charset=utf-8' });
-    return new Response(get500Page(), { status: 500, headers: errorHeaders });
+    return withSecurityHeaders(new Response(get500Page(), { status: 500, headers: errorHeaders }));
   }
 }
