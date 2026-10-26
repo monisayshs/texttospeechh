@@ -75,24 +75,34 @@ function withSecurityHeaders(response) {
 
 // Anonymous HTML is stored in the Cache API for 1h (stale-while-revalidate
 // covers the refresh) so repeat edge hits skip function execution entirely.
-const HTML_EDGE_CACHE_CONTROL = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400';
+// The STORED copy carries no max-age (shared-cache lifetime only); the copy
+// returned to the browser adds max-age=0 so browsers always revalidate while
+// the edge entry stays fresh for s-maxage. X-Edge-Cache (HIT/MISS/PASS) makes
+// the layer observable in production.
+const HTML_EDGE_CACHE_CONTROL_STORED = 'public, s-maxage=3600, stale-while-revalidate=86400';
+const HTML_EDGE_CACHE_CONTROL_SERVED = 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400';
 
 async function finalizeResponse(response, edgeCache, cacheKey, waitUntil) {
   let res = response;
+  let cacheState = edgeCache ? 'PASS' : null;
   if (edgeCache && cacheKey && res.status === 200) {
     const contentType = res.headers.get('Content-Type') || '';
     if (contentType.includes('text/html') && !res.headers.has('Set-Cookie')) {
       try {
         res = new Response(res.body, res);
-        res.headers.set('Cache-Control', HTML_EDGE_CACHE_CONTROL);
+        res.headers.set('Cache-Control', HTML_EDGE_CACHE_CONTROL_STORED);
         const cacheCopy = res.clone();
         const putPromise = edgeCache.put(cacheKey, cacheCopy).catch(() => {});
         if (typeof waitUntil === 'function') waitUntil(putPromise);
         else await putPromise;
+        res.headers.set('Cache-Control', HTML_EDGE_CACHE_CONTROL_SERVED);
+        cacheState = 'MISS';
       } catch (e) { /* a cache-store failure must never break the page */ }
     }
   }
-  return withSecurityHeaders(res);
+  const out = withSecurityHeaders(res);
+  if (cacheState) out.headers.set('X-Edge-Cache', cacheState);
+  return out;
 }
 
 /**
@@ -303,7 +313,11 @@ export async function onRequest(context) {
   if (edgeCache) {
     try {
       const cached = await edgeCache.match(cacheKey);
-      if (cached) return withSecurityHeaders(cached);
+      if (cached) {
+        const hitRes = withSecurityHeaders(cached);
+        hitRes.headers.set('X-Edge-Cache', 'HIT');
+        return hitRes;
+      }
     } catch (e) { /* a cache-read failure must never break the page */ }
   }
 
