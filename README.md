@@ -6,7 +6,9 @@
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-green.svg)
 ![AI--Native](https://img.shields.io/badge/AI--Native-Project%20Intelligence%20v2.1-purple.svg)
 
-> **TextToSpeechH AI** (`https://www.texttospeechh.com`) is an AI Voice Generator and Text-to-Speech SaaS application. Powered by a multi-provider failover load balancer (Kokoro, CosyVoice, Edge TTS) and built on a zero-dependency serverless architecture, it converts text, TXT, PDF, and DOCX files into MP3 voiceovers with low registration friction.
+**🌐 Live site: [www.texttospeechh.com](https://www.texttospeechh.com)** — free to use, no sign-up.
+
+> **TextToSpeechH AI** ([www.texttospeechh.com](https://www.texttospeechh.com)) is an AI Voice Generator and Text-to-Speech SaaS application. Powered by a multi-provider failover load balancer (Kokoro, CosyVoice, Edge TTS) and built on a zero-dependency serverless architecture, it converts text, TXT, PDF, and DOCX files into MP3 voiceovers with low registration friction.
 
 ---
 
