@@ -79,6 +79,33 @@ function renderSeoPage(pageData, pathSlug) {
   const faqSchemaJsonLd = hasPageFaqs
     ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs))}</script>\n  `
     : "";
+  // SEO audit 2026-10-26 (Phase 1): the Oct 14-26 article batch defines faqs
+  // (so FAQPage JSON-LD is emitted) but its content has no visible FAQ section —
+  // schema must match visible content (Google policy) and AI extractors cannot
+  // use Q&A that exists only in JSON-LD. Render the same Q&A visibly, using the
+  // guide-page accordion markup (contentHandler.js), ONLY when the body does
+  // not already contain it — older articles and programmatic pages embed their
+  // own visible FAQ sections and are left untouched.
+  let visibleFaqHtml = "";
+  if (hasPageFaqs) {
+    const bodyHtml = pageData.content || "";
+    const firstQ = String(pageData.faqs[0].q || "").replace(/^Q\d+:\s*/, "");
+    const firstA = String(pageData.faqs[0].a || "");
+    const faqAlreadyVisible =
+      (firstQ && bodyHtml.includes(firstQ.slice(0, 30))) ||
+      (firstA && bodyHtml.includes(firstA.slice(0, 40)));
+    if (!faqAlreadyVisible) {
+      visibleFaqHtml = `
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        ${pageData.faqs.map(f => `
+        <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px;">
+          <h4 style="margin-top: 0; color: var(--color-primary);">${f.q}</h4>
+          <p style="margin: 0; font-size: 0.92rem; line-height: 1.6;">${f.a}</p>
+        </div>`).join("")}
+      </div>`;
+    }
+  }
   // E-E-A-T 2026-10-06: author profile pages emit Person JSON-LD.
   const personSchemaJsonLd = pageData.isAuthorPage
     ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getPersonSchema())}</script>
@@ -270,6 +297,7 @@ ${trackingHtml}
       ${authorBylineHtml}
       <div class="page-body-content">
         ${pageData.content || ""}
+        ${visibleFaqHtml}
       </div>
       ${referencesHtml}
       <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
