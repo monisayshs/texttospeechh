@@ -173,6 +173,11 @@ function renderGuidePage(guideData, slug) {
     "headline": guideData.title,
     "description": guideData.metaDesc,
     "url": canonicalUrl,
+    // SEO audit 2026-10-26 (Phase 1): guide Articles previously carried no
+    // dates. Dates come from the guide data (git-evidenced content date,
+    // commit ae828da guide expansions) — never invented per-render.
+    "datePublished": schemaGenerator.toISODate(guideData.datePublished) || undefined,
+    "dateModified": schemaGenerator.toISODate(guideData.dateModified) || undefined,
     "author": {
       "@type": "Person",
       "name": "Mauhnish",

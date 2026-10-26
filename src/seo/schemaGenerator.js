@@ -136,6 +136,30 @@ function getPersonSchema() {
   };
 }
 
+const MONTH_NAME_TO_NUMBER = {
+  january: "01", february: "02", march: "03", april: "04", may: "05", june: "06",
+  july: "07", august: "08", september: "09", october: "10", november: "11", december: "12"
+};
+
+/**
+ * Convert a stored human date ("August 2, 2026") to ISO-8601 (YYYY-MM-DD).
+ * SEO audit 2026-10-26 (Phase 1): Article schema shipped human-format dates
+ * on all 59 blog articles, which undermines date-based SERP features and AI
+ * extraction. Already-ISO values pass through; unparseable values pass
+ * through unchanged so callers keep their own fallbacks.
+ */
+function toISODate(value) {
+  if (!value) return value;
+  const s = String(value).trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  const m = s.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$/);
+  if (m) {
+    const mon = MONTH_NAME_TO_NUMBER[m[1].toLowerCase()];
+    if (mon) return `${m[3]}-${mon}-${String(m[2]).padStart(2, "0")}`;
+  }
+  return s;
+}
+
 function getArticleSchema(title, description, url, datePublished, dateModified, image) {
   return {
     "@context": "https://schema.org",
@@ -143,8 +167,8 @@ function getArticleSchema(title, description, url, datePublished, dateModified, 
     "headline": title,
     "description": description,
     "url": url,
-    "datePublished": datePublished || "2026-07-29",
-    "dateModified": dateModified || "2026-07-29",
+    "datePublished": toISODate(datePublished) || "2026-07-29",
+    "dateModified": toISODate(dateModified) || "2026-07-29",
     "author": {
       "@type": "Person",
       "name": "Mauhnish",
@@ -183,5 +207,6 @@ module.exports = {
   getFAQSchema,
   getBreadcrumbSchema,
   getArticleSchema,
-  getPersonSchema
+  getPersonSchema,
+  toISODate
 };

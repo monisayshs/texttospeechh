@@ -13,6 +13,8 @@ const EDUCATIONAL_GUIDES = {
     h1: `Understanding AI Voice Cloning Technology`,
     metaDesc: `How does AI voice cloning work? Sample collection, speaker embeddings, and neural synthesis explained \u2014 plus real uses, honest ethics, and key limits.`,
     readingTime: `5 min read`,
+    datePublished: `2026-10-06`,
+    dateModified: `2026-10-06`,
     content: `
       <h2>How AI Voice Cloning Works</h2>
       <p>Voice cloning technology relies on deep neural networks trained on audio speaker samples to extract unique vocal characteristics, timbre, pitch contour, and speaking rhythm.</p>
@@ -88,6 +90,8 @@ const EDUCATIONAL_GUIDES = {
     h1: `How AI Voice Changers & Pitch Shift Synthesizers Work`,
     metaDesc: `How do voice changers work? We explain real-time DSP pitch shifting vs AI voice conversion (RVC), key uses, and how they differ from neural text-to-speech.`,
     readingTime: `5 min read`,
+    datePublished: `2026-10-06`,
+    dateModified: `2026-10-06`,
     content: `
       <h2>Real-Time Voice Changers vs Neural Text-to-Speech</h2>
       <p>Voice changers alter existing microphone audio input using digital signal processing (DSP) or Retrieval-based Voice Conversion (RVC). Neural Text-to-Speech (<a href="${DOMAIN}">${BRAND_NAME}</a>), by contrast, generates brand new speech directly from written text scripts.</p>
