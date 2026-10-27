@@ -27,6 +27,102 @@ function getSecMsGecToken() {
   return crypto.createHash('sha256').update(str, 'ascii').digest('hex').toUpperCase();
 }
 
+// === Sec-MS-GEC v2 (Edge 155 protocol, Oct 2026) ===
+// Microsoft migrated Read Aloud auth: backend nodes now reject the v1 token
+// (SHA-256 only, Sec-MS-GEC-Version 1-*) with a 403 handshake. The v2 token is
+// "<16-hex CS64 patent hash>-<64-hex SHA-256>" over
+// COPYRIGHT || <5-min-bucketed FILETIME ticks> || <trusted client token>,
+// sent with Sec-MS-GEC-Version 2-155.0.4283.45. The CS64 "patent hash" below
+// is the msedge.dll algorithm (all arithmetic is unsigned 32-bit wrapping;
+// Math.imul gives exact low-32 products). Verified byte-for-byte against a
+// captured Edge 155 browser token (window 2026-10-13T10:40Z ->
+// 492D7694A183A45E-56E821F9...F15876).
+const GEC_COPYRIGHT = Buffer.from('Copyright (C) Microsoft Corporation. All rights reserved.', 'ascii');
+const TRUSTED_CLIENT_TOKEN = '6A5AA1D4EAFF4E9FB37E23D68491D6F4';
+const SEC_MS_GEC_VERSION_V2 = '2-155.0.4283.45';
+
+function gecRol16(x) {
+  x = x >>> 0;
+  return ((x << 16) | (x >>> 16)) >>> 0;
+}
+
+function gecWordsLe4Even(buf) {
+  const pad = (4 - (buf.length % 4)) % 4;
+  const padded = pad ? Buffer.concat([buf, Buffer.alloc(pad)]) : buf;
+  const words = [];
+  for (let i = 0; i + 4 <= padded.length; i += 4) words.push(padded.readUInt32LE(i));
+  if (words.length % 2) words.push(0);
+  return words;
+}
+
+function cs64WordSwap(words, keyWords) {
+  const a = (keyWords[0] | 1) >>> 0;
+  const b = (keyWords[1] | 1) >>> 0;
+  let acc = 0;
+  let last = 0;
+  for (let i = 0; i + 1 < words.length; i += 2) {
+    const x = words[i];
+    const y = words[i + 1];
+    let t = (Math.imul(gecRol16(x), 0xEF0569FB) + Math.imul(x, a)) >>> 0;
+    t = gecRol16(t);
+    let q = Math.imul(t, 0x76F50F34) >>> 0;
+    q = (Math.imul(gecRol16(q), 0xC3EFEA97) + q) >>> 0;
+    acc = (acc + q) >>> 0;
+    t = (Math.imul(gecRol16(y), 0xC31713DB) + Math.imul(y, b)) >>> 0;
+    t = gecRol16(t);
+    q = Math.imul(t, 0x1881CE3C) >>> 0;
+    last = (Math.imul(gecRol16(q), 0x35BD1EC9) + q) >>> 0;
+    acc = (acc + last) >>> 0;
+  }
+  return [last, acc];
+}
+
+function cs64Reversible(words, keyWords) {
+  const a = (keyWords[0] | 1) >>> 0;
+  const b = (keyWords[1] | 1) >>> 0;
+  let state = 0;
+  let acc = 0;
+  for (let i = 0; i + 1 < words.length; i += 2) {
+    const x = words[i];
+    const y = words[i + 1];
+    state = Math.imul((state + x) >>> 0, a) >>> 0;
+    for (const c of [0xCF98B111, 0x87085B9F, 0x12CEB96D, 0x257E1D83]) {
+      state = Math.imul(gecRol16(state), c) >>> 0;
+    }
+    let t = Math.imul((y + state) >>> 0, b) >>> 0;
+    t = Math.imul(gecRol16(t), 0xA27416F5) >>> 0;
+    t = Math.imul(gecRol16(t), 0xD38396FF) >>> 0;
+    t = gecRol16(t);
+    acc = (acc + state) >>> 0;
+    state = Math.imul(gecRol16(Math.imul(t, 0x7C932B89) >>> 0), 0xBFA49F69) >>> 0;
+    acc = (acc + state) >>> 0;
+  }
+  return [state, acc];
+}
+
+function gecPatentHash(data) {
+  const digest = crypto.createHash('sha256').update(data).digest();
+  const dataWords = gecWordsLe4Even(data);
+  const digestWords = gecWordsLe4Even(digest);
+  const a = cs64WordSwap(dataWords, digestWords);
+  const b = cs64Reversible(dataWords, digestWords);
+  const x = (a[0] ^ b[0]) >>> 0;
+  const y = (a[1] ^ b[1]) >>> 0;
+  const packed = Buffer.alloc(8);
+  packed.writeUInt32LE(x, 0);
+  packed.writeUInt32LE(y, 4);
+  return [packed.toString('hex').toUpperCase(), digest.toString('hex').toUpperCase()];
+}
+
+function getSecMsGecTokenV2() {
+  const unixEpochTicks = 116444736000000000n;
+  const ticks = (BigInt(Date.now()) * 10000n) + unixEpochTicks;
+  const roundedTicks = ticks - (ticks % 3000000000n);
+  const suffix = Buffer.from(roundedTicks.toString() + TRUSTED_CLIENT_TOKEN, 'ascii');
+  const [cs64, sha] = gecPatentHash(Buffer.concat([GEC_COPYRIGHT, suffix]));
+  return cs64 + '-' + sha;
+}
+
 const EMOJI_SPOKEN_MAP = {
   '😀': ' grinning face ',
   '😃': ' happy face ',
@@ -95,7 +191,7 @@ function cleanTextForSynthesis(text) {
     .trim();
 }
 
-async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName) {
+async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName, transport) {
   const cleanText = cleanTextForSynthesis(text) || text;
   const escapedText = xmlEscape(cleanText);
   const langCode = voiceName.substring(0, 5);
@@ -111,13 +207,21 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
 </speak>`;
 
   const connectionId = crypto.randomBytes(16).toString('hex').toUpperCase();
-  const token = getSecMsGecToken();
-  const path = `/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&Sec-MS-GEC=${token}&Sec-MS-GEC-Version=1-140.0.3485.14&ConnectionId=${connectionId}`;
-  const wssUrl = `wss://speech.platform.bing.com${path}`;
+  // v2 protocol (Oct 2026): Microsoft backends reject v1 tokens with 403.
+  // Primary transport mirrors Edge 155 itself: same bing host, v2 token.
+  // Fallback transport is the new api.msedgeservices.com cognitive-services
+  // endpoint, which takes the trusted token as an APIM subscription key.
+  const token = getSecMsGecTokenV2();
+  const useNewHost = transport === 'msedgeservices';
+  const host = useNewHost ? 'api.msedgeservices.com' : 'speech.platform.bing.com';
+  const path = useNewHost
+    ? `/tts/cognitiveservices/websocket/v1?Ocp-Apim-Subscription-Key=${TRUSTED_CLIENT_TOKEN}&Sec-MS-GEC=${token}&Sec-MS-GEC-Version=${SEC_MS_GEC_VERSION_V2}&ConnectionId=${connectionId}`
+    : `/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=${TRUSTED_CLIENT_TOKEN}&Sec-MS-GEC=${token}&Sec-MS-GEC-Version=${SEC_MS_GEC_VERSION_V2}&ConnectionId=${connectionId}`;
+  const wssUrl = `wss://${host}${path}`;
 
   const headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.3485.14',
-    'Origin': 'chrome-extension://jdiccjafjnimhhokcjgbgiahbaidmhai'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.4283.45',
+    'Origin': 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold'
   };
 
   const diagErrors = [];
@@ -139,7 +243,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       const secKey = crypto.randomBytes(16).toString('base64');
       const handshakeReq =
         `GET ${path} HTTP/1.1\r\n` +
-        `Host: speech.platform.bing.com\r\n` +
+        `Host: ${host}\r\n` +
         `Upgrade: websocket\r\n` +
         `Connection: Upgrade\r\n` +
         `Sec-WebSocket-Key: ${secKey}\r\n` +
@@ -178,7 +282,7 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       };
 
       const tConnStart = Date.now();
-      const socket = cfConnectFn({ hostname: 'speech.platform.bing.com', port: 443 }, { secureTransport: 'on' });
+      const socket = cfConnectFn({ hostname: host, port: 443 }, { secureTransport: 'on' });
       await socket.opened;
       const tConnDone = Date.now();
 
@@ -549,17 +653,17 @@ class EdgeProvider extends BaseProvider {
       console.warn('[DIAG edgeProvider] msedge-tts NOT available (MsEdgeTTS or OUTPUT_FORMAT undefined)');
     }
 
-    // Attempt 2: Direct WebSocket Bing API (6s Timeout)
-    console.log('[DIAG edgeProvider] Attempt 2: raw WebSocket with voice:', voiceName);
+    // Attempt 2: Direct WebSocket, Edge 155 v2 protocol on the classic host
+    console.log('[DIAG edgeProvider] Attempt 2: raw WebSocket (bing, v2 token) with voice:', voiceName);
     try {
-      return await synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName);
+      return await synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName, 'bing');
     } catch (err) {
-      console.warn('[DIAG edgeProvider] WebSocket attempt 1 failed:', err.message);
-      console.log('[DIAG edgeProvider] Attempt 3: WebSocket with neutral style, voice:', voiceName);
+      console.warn('[DIAG edgeProvider] WebSocket attempt 1 (bing) failed:', err.message);
+      console.log('[DIAG edgeProvider] Attempt 3: raw WebSocket (api.msedgeservices.com) with voice:', voiceName);
       try {
-        return await synthesizeWebSocket(text, voiceName, rateStr, pitchStr, 'neutral');
+        return await synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName, 'msedgeservices');
       } catch (err2) {
-        console.warn('[DIAG edgeProvider] WebSocket attempt 2 (neutral) failed:', err2.message);
+        console.warn('[DIAG edgeProvider] WebSocket attempt 2 (msedgeservices) failed:', err2.message);
       }
     }
 
