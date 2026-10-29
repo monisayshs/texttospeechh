@@ -43,7 +43,7 @@ TextToSpeechH AI deploys to **Cloudflare Pages + Workers** with authoritative Cl
 | `AI` | Workers AI | Cloudflare Workers AI binding |
 | `AZURE_SPEECH_KEY` | Environment Secret | Optional Azure Speech API key for commercial failover |
 | `AZURE_SPEECH_REGION` | Environment Secret | Optional Azure Speech region |
-| `INDEXNOW_KEY` | Optional Secret | `b92a2552d2aec9f72edbb0f9b5671603` for Bing Webmaster API |
+| `INDEXNOW_KEY` | Optional Secret | `4fdaad0837cc4536961cab1f18596235` for Bing Webmaster API |
 
 ---
 

@@ -1,4 +1,4 @@
-const INDEXNOW_KEY = 'b92a2552d2aec9f72edbb0f9b5671603';
+const INDEXNOW_KEY = '4fdaad0837cc4536961cab1f18596235';
 const HOST = 'www.texttospeechh.com';
 const BASE_URL = `https://${HOST}`;
 const KEY_FILE_URL = `${BASE_URL}/${INDEXNOW_KEY}.txt`;

@@ -41,8 +41,8 @@ If this document conflicts with the implementation, **the source code is authori
 - **Google Search Console**: Preserved verification TXT token `google-site-verification=lxQ4hGS4qhOVlzh3p153RFZBufGkzo3Fx0CzjMha-bk`
 - **Bing Webmaster Tools**: Configured (IndexNow Active)
 - **IndexNow Integration**:
-  - Key File: `public/b92a2552d2aec9f72edbb0f9b5671603.txt`
-  - Key String: `b92a2552d2aec9f72edbb0f9b5671603`
+  - Key File: `public/4fdaad0837cc4536961cab1f18596235.txt`
+  - Key String: `4fdaad0837cc4536961cab1f18596235`
   - Postbuild Automation: `scripts/notify-indexnow.js`
   - Endpoint Bridge: `/api/index-now` and `/indexnow`
 - **Analytics & Telemetry**:

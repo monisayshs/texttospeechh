@@ -126,7 +126,7 @@ Every server-rendered HTML page injects structured data in standard `<script typ
 
 IndexNow enables notification to Bing, Yandex, and Seznam whenever pages are published or updated:
 
-- **Key Verification File**: Served publicly at `/b92a2552d2aec9f72edbb0f9b5671603.txt`.
+- **Key Verification File**: Served publicly at `/4fdaad0837cc4536961cab1f18596235.txt`.
 - **API Endpoint Bridge**: `/api/index-now` and `/indexnow`.
 - **Automated Execution**: Triggered automatically via `npm run postbuild` during Vercel deployment.
 - **Fail-Safe Design**: Executes inside a non-blocking try/catch block. If Bing's IndexNow API endpoint times out or returns HTTP errors, the script logs a warning and exits with code `0`. It does not block a production Vercel deployment (refer to `DECISIONS.md` LESSON-001).
