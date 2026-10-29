@@ -29,22 +29,22 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
 
     <!-- Core Highlights Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px;">
-      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+      <a href="${DOMAIN}" aria-label="Open the free text to speech tool" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center; display: block; text-decoration: none; color: inherit; cursor: pointer;">
         <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Human-Grade AI</div>
         <div style="font-size: 0.88rem; color: var(--color-text-secondary);">Zero metallic robotic distortion</div>
-      </div>
-      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+      </a>
+      <a href="${DOMAIN}" aria-label="Open the free text to speech tool" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center; display: block; text-decoration: none; color: inherit; cursor: pointer;">
         <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Document Upload</div>
         <div style="font-size: 0.88rem; color: var(--color-text-secondary);">PDF, DOCX, and TXT parsing</div>
-      </div>
-      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+      </a>
+      <a href="${DOMAIN}" aria-label="Open the free text to speech tool" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center; display: block; text-decoration: none; color: inherit; cursor: pointer;">
         <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">Instant MP3</div>
         <div style="font-size: 0.88rem; color: var(--color-text-secondary);">High-quality audio downloads</div>
-      </div>
-      <div style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center;">
+      </a>
+      <a href="${DOMAIN}" aria-label="Open the free text to speech tool" style="background: var(--color-bg-secondary); border: 1px solid var(--color-border); padding: 18px; border-radius: 10px; text-align: center; display: block; text-decoration: none; color: inherit; cursor: pointer;">
         <div style="font-size: 1.5rem; color: var(--color-primary); margin-bottom: 4px; font-weight: 700;">100% Free</div>
         <div style="font-size: 0.88rem; color: var(--color-text-secondary);">No paywalls or forced signup</div>
-      </div>
+      </a>
     </div>
 
     <!-- Table of Contents -->

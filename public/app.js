@@ -385,6 +385,18 @@ document.addEventListener('DOMContentLoaded', () => {
         handleFileUpload(e.dataTransfer.files[0]);
       }
     });
+
+    // Whole dropzone is clickable (2026-10-29, Clarity finding): users kept
+    // tapping the dropzone's icon/text expecting the file picker to open —
+    // only the small "Browse File" label was clickable, so those taps
+    // registered as dead clicks. Clicking the label itself is left alone:
+    // the browser opens the picker natively for it, and this handler would
+    // otherwise fire a second time from the same tap.
+    fileDropzone.style.cursor = 'pointer';
+    fileDropzone.addEventListener('click', (e) => {
+      if (e.target.closest('.file-label')) return;
+      if (fileInput) fileInput.click();
+    });
   }
 
   // Generate Button Click Handler
