@@ -297,15 +297,37 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
       const wordTimings = []; // Read-Along: per-word {s,e,w} timings (ms), null when unavailable
       let tFirstByte = 0;
 
-      const readTimeout = setTimeout(() => {
+      // Stall watchdog (2026-10-29 fix): the old 15s timer only closed the
+      // WRITER, so when Microsoft's backend accepted the connection and then
+      // went silent, reader.read() could hang indefinitely and the whole
+      // /api/generate request stalled — users sat on "Synthesizing..." until
+      // they gave up (150 Clarity sessions hit the site's Retry button in 30
+      // days). Now the attempt aborts if NO data arrives for 12s (a healthy
+      // synthesis streams frames continuously, so this never cuts a live
+      // stream), with a 45s absolute cap per attempt; the caller then fails
+      // over to the second host instead of hanging.
+      let attemptAbortReason = null;
+      let stallTimer = null;
+      const abortAttempt = (reason) => {
+        if (attemptAbortReason) return;
+        attemptAbortReason = reason;
+        try { reader.cancel(); } catch (e) {}
         try { writer.close(); } catch (e) {}
-      }, 15000);
+        try { socket.close(); } catch (e) {}
+      };
+      const armStallTimer = () => {
+        clearTimeout(stallTimer);
+        stallTimer = setTimeout(() => abortAttempt('no data from speech backend for 12s'), 12000);
+      };
+      const hardTimer = setTimeout(() => abortAttempt('attempt exceeded 45s'), 45000);
+      armStallTimer();
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         if (value) {
           readBuf = Buffer.concat([readBuf, Buffer.from(value)]);
+          armStallTimer();
         }
 
         if (!isHandshakeDone) {
@@ -378,7 +400,8 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
             const strHead = payload.slice(0, Math.min(payload.length, 200)).toString('utf8');
             if (strHead.includes('Path:turn.end')) {
               const tFinalByte = Date.now();
-              clearTimeout(readTimeout);
+              clearTimeout(stallTimer);
+              clearTimeout(hardTimer);
               try { writer.close(); } catch (e) {}
               try { reader.cancel(); } catch (e) {}
               try { socket.close(); } catch (e) {}
@@ -423,7 +446,13 @@ async function synthesizeWebSocket(text, voiceName, rateStr, pitchStr, styleName
         }
       }
 
-      clearTimeout(readTimeout);
+      clearTimeout(stallTimer);
+      clearTimeout(hardTimer);
+      if (attemptAbortReason) {
+        // Aborted mid-stream: any partial audio is truncated speech — fail
+        // this attempt so the caller fails over instead of serving it.
+        throw new Error(`Edge socket aborted: ${attemptAbortReason}`);
+      }
       const finalAudio = Buffer.concat(audioChunks);
       if (finalAudio.length > 0) {
         if (wordTimings.length > 0) finalAudio.wordTimings = wordTimings;

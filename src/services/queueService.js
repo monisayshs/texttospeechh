@@ -75,13 +75,21 @@ class QueueService {
       // R2 has no daily put cap; this must survive KV quota blocks (2026-10-07:
       // 3x "KV daily operation limit exceeded" — the old code skipped the R2 put
       // whenever the KV put threw, silently losing the user's audio).
+      // 2026-10-29: track whether the audio ACTUALLY persisted (one retry).
+      // The old code set hasAudio=true in the KV meta even when this put had
+      // failed, so /api/status claimed COMPLETED and the download 404'd —
+      // the user got silence with no error.
+      let audioPersisted = !job.audioBuffer; // no audio = nothing to lose
       if (job.audioBuffer && env.TTS_AUDIO_R2) {
-        try {
-          await env.TTS_AUDIO_R2.put(`audio/${job.id}.mp3`, job.audioBuffer, {
-            httpMetadata: { contentType: 'audio/mpeg' }
-          });
-        } catch (e) {
-          console.warn('[QueueService] R2 audio save warning:', e.message);
+        for (let r2Attempt = 1; r2Attempt <= 2 && !audioPersisted; r2Attempt++) {
+          try {
+            await env.TTS_AUDIO_R2.put(`audio/${job.id}.mp3`, job.audioBuffer, {
+              httpMetadata: { contentType: 'audio/mpeg' }
+            });
+            audioPersisted = true;
+          } catch (e) {
+            console.warn(`[QueueService] R2 audio save warning (attempt ${r2Attempt}/2):`, e.message);
+          }
         }
       }
 
@@ -101,12 +109,19 @@ class QueueService {
             error: job.error,
             createdAt: job.createdAt,
             updatedAt: job.updatedAt,
-            hasAudio: !!job.audioBuffer,
+            hasAudio: !!job.audioBuffer && audioPersisted,
             audioSize: job.audioBuffer ? job.audioBuffer.length : 0,
             // Read-Along: persist merged word timings so /api/status can serve them
             hasWordTimings: !!(job.wordTimings && job.wordTimings.length > 0),
             wordTimings: job.wordTimings || null
           };
+          // Audio generated but storage failed twice: report the job as
+          // FAILED with a clear reason instead of COMPLETED-with-no-audio,
+          // so the user sees an honest Retry instead of a dead player.
+          if (job.state === 'COMPLETED' && job.audioBuffer && !audioPersisted) {
+            meta.state = 'FAILED';
+            meta.error = 'Audio was generated but could not be stored. Please retry.';
+          }
           await env.TTS_JOBS_KV.put(`job:${job.id}`, JSON.stringify(meta), { expirationTtl: 3600 });
         } catch (e) {
           console.warn('[QueueService] Cloudflare KV save warning:', e.message);
@@ -399,36 +414,60 @@ class QueueService {
     const startTime = Date.now();
 
     try {
-      for (let i = 0; i < job.chunks.length; i++) {
-        const chunkText = job.chunks[i];
-        console.log('[DIAG queueService.processJob] Calling loadBalancer with options.voice:', job.options.voice, '| rate:', job.options.rate, '| pitch:', job.options.pitch, '| style:', job.options.style);
-        const chunkAudio = await loadBalancer.synthesizeWithFailover(
-          chunkText,
-          job.options,
-          (msg) => console.log(`[QueueService][Job ${job.id}] ${msg}`)
-        );
+      // Bounded-concurrency chunk synthesis (2026-10-29 fix): chunks used to
+      // synthesize strictly one-by-one, so a 6-chunk script took ~14s and a
+      // 20-chunk script could pass 45s+ inside a single request — long
+      // enough for users to give up on "Synthesizing...". Three parallel
+      // workers keep result order (stored by chunk index) while cutting
+      // wall-clock time roughly 3x; 3 stays within edge connection limits.
+      const MAX_PARALLEL_CHUNKS = 3;
+      let nextChunkIdx = 0;
+      let firstChunkError = null;
+      const chunkWorker = async () => {
+        while (true) {
+          if (firstChunkError) return;
+          const i = nextChunkIdx++;
+          if (i >= job.chunks.length) return;
+          const chunkText = job.chunks[i];
+          try {
+            const chunkAudio = await loadBalancer.synthesizeWithFailover(
+              chunkText,
+              job.options,
+              (msg) => console.log(`[QueueService][Job ${job.id}] ${msg}`)
+            );
+            audioChunks[i] = chunkAudio;
+            // Read-Along: capture per-chunk word timings (null when provider has none, e.g. failover)
+            chunkTimingInputs[i] = { buffer: chunkAudio, timings: (chunkAudio && chunkAudio.wordTimings) || null };
+          } catch (e) {
+            if (!firstChunkError) firstChunkError = e;
+            return;
+          }
 
-        audioChunks.push(chunkAudio);
-        // Read-Along: capture per-chunk word timings (null when provider has none, e.g. failover)
-        chunkTimingInputs.push({ buffer: chunkAudio, timings: (chunkAudio && chunkAudio.wordTimings) || null });
-        job.processedChunks = i + 1;
-        job.progress = Math.round(((i + 1) / job.totalChunks) * 100);
+          job.processedChunks += 1;
+          job.progress = Math.round((job.processedChunks / job.totalChunks) * 100);
 
-        const elapsedSec = (Date.now() - startTime) / 1000;
-        const avgChunkSec = elapsedSec / (i + 1);
-        const remainingChunks = job.totalChunks - (i + 1);
-        job.etaSeconds = Math.max(0, Math.ceil(remainingChunks * avgChunkSec));
+          const elapsedSec = (Date.now() - startTime) / 1000;
+          const avgChunkSec = elapsedSec / job.processedChunks;
+          const remainingChunks = job.totalChunks - job.processedChunks;
+          job.etaSeconds = Math.max(0, Math.ceil(remainingChunks * avgChunkSec));
 
-        // Throttled intermediate progress save: every 5th chunk only.
-        // KV writes are capped at 1,000/day on the free tier and per-chunk saves
-        // were exhausting the quota (90% alert on 2026-09-26). The completion save
-        // below always persists the final state, so the last chunk is skipped here.
-        // Progress bar keeps working: saves still land ~every 12s (5 chunks x ~2.5s).
-        const isLastChunk = (i + 1) === job.totalChunks;
-        if (job.totalChunks > 1 && !isLastChunk && ((i + 1) % 5 === 0)) {
-          await this.saveJob(job, env);
+          // Throttled intermediate progress save: every 5th chunk only.
+          // KV writes are capped at 1,000/day on the free tier and per-chunk saves
+          // were exhausting the quota (90% alert on 2026-09-26). The completion save
+          // below always persists the final state, so the last chunk is skipped here.
+          // Progress bar keeps working: saves still land ~every 12s (5 chunks x ~2.5s).
+          const isLastChunk = job.processedChunks === job.totalChunks;
+          if (job.totalChunks > 1 && !isLastChunk && (job.processedChunks % 5 === 0)) {
+            await this.saveJob(job, env);
+          }
         }
+      };
+      const workers = [];
+      for (let w = 0; w < Math.min(MAX_PARALLEL_CHUNKS, job.chunks.length); w++) {
+        workers.push(chunkWorker());
       }
+      await Promise.all(workers);
+      if (firstChunkError) throw firstChunkError;
 
        job.audioBuffer = audioPipeline.processAndMergeChunks(audioChunks, job.options);
       // Read-Along: merge per-chunk word timings with cumulative audio-duration offsets.

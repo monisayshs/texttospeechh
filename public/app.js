@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // If serverless instant audio is returned
           if (data.audioDataUri) {
             const blob = dataURItoBlob(data.audioDataUri);
-            if (blob) {
+            if (blob && blob.size >= 1000) {
               updateProgressUI(1, 1, 100, 0, 'Synthesis Complete!');
               
               trackGA4Event('generate_tts', {
@@ -509,14 +509,70 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Poll Job Progress & Live ETA for Async Multi-Chunk Jobs
+  // Hardened 2026-10-29: the old version gave up after 15 polls (~15s) even
+  // while the job was still progressing, and never checked whether the final
+  // audio download actually succeeded — healthy jobs hit a false "timeout"
+  // and broken downloads failed silently. Now: poll for up to ~3 minutes,
+  // give up only after 60s with no progress change, tolerate up to 5 brief
+  // poll errors in a row, and verify + retry the audio download.
   function pollJobProgress(jobId) {
-    pollCounter = 0;
+    let lastProgress = -1;
+    let lastProgressChangeAt = Date.now();
+    let consecutivePollErrors = 0;
+    const pollStartedAt = Date.now();
+
+    const stopPolling = () => {
+      if (activeJobPollTimer) {
+        clearInterval(activeJobPollTimer);
+        activeJobPollTimer = null;
+      }
+    };
+
+    const failWith = (msg) => {
+      stopPolling();
+      setButtonLoadingState(false);
+      hideProgressBar();
+      showErrorToast(msg, true);
+    };
+
+    const fetchCompletedAudio = async (status) => {
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          const audioRes = await fetch(`/api/status?jobId=${jobId}&download=true`);
+          if (audioRes.ok) {
+            const audioBlob = await audioRes.blob();
+            if (audioBlob && audioBlob.size >= 1000) {
+              trackGA4Event('generate_tts', {
+                selected_voice: voiceSelect ? voiceSelect.value : 'unknown',
+                text_length_bucket: getTextLengthBucket(textInput ? textInput.value.length : 0),
+                tone_style: emotionSelect ? emotionSelect.value : 'neutral'
+              });
+              playAudioBlob(audioBlob);
+              setReadAlongData(status.wordTimings); // Read-Along: enable toggle only if timings came back
+              setButtonLoadingState(false);
+              setTimeout(hideProgressBar, 1800);
+              return true;
+            }
+          }
+        } catch (e) {
+          console.warn('Audio download attempt failed:', e);
+        }
+        if (attempt < 3) await new Promise(r => setTimeout(r, 1200));
+      }
+      return false;
+    };
+
     activeJobPollTimer = setInterval(async () => {
-      pollCounter++;
       try {
         const res = await fetch(`/api/status?jobId=${jobId}`);
         if (!res.ok) throw new Error('Status poll failed');
         const status = await res.json();
+        consecutivePollErrors = 0;
+
+        if (typeof status.progress === 'number' && status.progress !== lastProgress) {
+          lastProgress = status.progress;
+          lastProgressChangeAt = Date.now();
+        }
 
         updateProgressUI(
           status.processedChunks,
@@ -527,46 +583,26 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         if (status.state === 'COMPLETED') {
-          clearInterval(activeJobPollTimer);
-          activeJobPollTimer = null;
-
+          stopPolling();
           await animateProgressStep(100, 'Finalizing merged audio...', 0, 300);
-
-          const audioRes = await fetch(`/api/status?jobId=${jobId}&download=true`);
-          const audioBlob = await audioRes.blob();
-
-          trackGA4Event('generate_tts', {
-            selected_voice: voiceSelect ? voiceSelect.value : 'unknown',
-            text_length_bucket: getTextLengthBucket(textInput ? textInput.value.length : 0),
-            tone_style: emotionSelect ? emotionSelect.value : 'neutral'
-          });
-
-          playAudioBlob(audioBlob);
-          setReadAlongData(status.wordTimings); // Read-Along: enable toggle only if timings came back
-          setButtonLoadingState(false);
-          setTimeout(hideProgressBar, 1800);
+          const ok = await fetchCompletedAudio(status);
+          if (!ok) {
+            setButtonLoadingState(false);
+            hideProgressBar();
+            showErrorToast('Your audio is ready but the download failed. Please tap Retry.', true);
+          }
         } else if (status.state === 'FAILED') {
-          clearInterval(activeJobPollTimer);
-          activeJobPollTimer = null;
-          setButtonLoadingState(false);
-          hideProgressBar();
-          showErrorToast(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`, true);
-        } else if (pollCounter > 15) {
-          clearInterval(activeJobPollTimer);
-          activeJobPollTimer = null;
-          setButtonLoadingState(false);
-          hideProgressBar();
-          showErrorToast('Synthesis timeout. Please retry with a shorter text segment.', true);
+          failWith(`Synthesis Warning: ${status.error || 'Speech synthesis failed. Please retry.'}`);
+        } else if (Date.now() - pollStartedAt > 180000) {
+          failWith('Synthesis timeout. Please retry with a shorter text segment.');
+        } else if (Date.now() - lastProgressChangeAt > 60000) {
+          failWith('Synthesis seems stuck. Please retry.');
         }
-
       } catch (err) {
         console.warn('Status poll warning:', err);
-        if (pollCounter > 15) {
-          clearInterval(activeJobPollTimer);
-          activeJobPollTimer = null;
-          setButtonLoadingState(false);
-          hideProgressBar();
-          showErrorToast('Status polling failed. Please retry.', true);
+        consecutivePollErrors++;
+        if (consecutivePollErrors >= 6) {
+          failWith('Status polling failed. Please retry.');
         }
       }
     }, 1000);
