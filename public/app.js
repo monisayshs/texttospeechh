@@ -670,15 +670,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function findActiveWordIdx(tMs) {
-    // Binary search: largest i with timings[i].s <= tMs; gap between words → -1
+    // Largest i with timings[i].s <= tMs. The word STAYS highlighted through
+    // the pause before the next word (karaoke-style): returning -1 in gaps
+    // made the highlight vanish at sentence pauses and after the last word.
     const T = currentWordTimings;
+    if (!T || !T.length || tMs < T[0].s) return -1;
     let lo = 0, hi = T.length - 1, ans = -1;
     while (lo <= hi) {
       const mid = (lo + hi) >> 1;
       if (T[mid].s <= tMs) { ans = mid; lo = mid + 1; } else { hi = mid - 1; }
     }
-    if (ans === -1) return -1;
-    return tMs < T[ans].e ? ans : -1;
+    return ans;
   }
 
   function paintReadAlongWord(idx) {
@@ -698,16 +700,19 @@ document.addEventListener('DOMContentLoaded', () => {
     paintReadAlongWord(-1);
   }
 
+  function paintReadAlongFromAudio() {
+    if (!readAlongOn || !audioPlayer || !currentWordTimings || !currentWordTimings.length) return;
+    if (audioPlayer.paused && audioPlayer.currentTime === 0) {
+      clearReadAlongHighlight(); // stop pressed → clear highlight
+    } else if (!audioPlayer.paused && !audioPlayer.ended) {
+      paintReadAlongWord(findActiveWordIdx(audioPlayer.currentTime * 1000));
+    }
+    // paused mid-way or ended: freeze the last highlight — no change
+  }
+
   function readAlongTick() {
     if (!readAlongOn) return;
-    if (audioPlayer && currentWordTimings && currentWordTimings.length) {
-      if (audioPlayer.paused && audioPlayer.currentTime === 0) {
-        clearReadAlongHighlight(); // stop pressed → clear highlight
-      } else if (!audioPlayer.paused && !audioPlayer.ended) {
-        paintReadAlongWord(findActiveWordIdx(audioPlayer.currentTime * 1000));
-      }
-      // paused mid-way or ended: freeze the last highlight — no change
-    }
+    try { paintReadAlongFromAudio(); } catch (e) { /* one bad frame must not kill the loop */ }
     readAlongRafId = requestAnimationFrame(readAlongTick);
   }
 
@@ -751,7 +756,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (audioPlayer) {
     // Seek support: force re-evaluation on the next animation frame
-    audioPlayer.addEventListener('seeked', () => { readAlongActiveIdx = -1; });
+    audioPlayer.addEventListener('seeked', () => { readAlongActiveIdx = -1; paintReadAlongFromAudio(); });
+    // Robustness: paint from timeupdate too (~4x/sec while playing). The rAF
+    // loop alone froze in throttled/backgrounded rendering contexts, which
+    // users hit in the wild (spotted via Microsoft Clarity recordings,
+    // 2026-10-29): audio played but the highlight never moved.
+    audioPlayer.addEventListener('timeupdate', paintReadAlongFromAudio);
+    // Any (re)play while Read-Along is on revives the loop if it ever stopped.
+    audioPlayer.addEventListener('play', () => {
+      if (readAlongOn && !readAlongRafId) {
+        readAlongRafId = requestAnimationFrame(readAlongTick);
+      }
+      paintReadAlongFromAudio();
+    });
   }
 
   // Audio Controls & Visualizer State Machine (Idle = Off, Play = Animate, Pause = Freeze, Stop/End = Off)
