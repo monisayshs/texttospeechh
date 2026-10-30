@@ -66,6 +66,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/british-accent-generator", title: "British Accent Generator: Turn Text into a British Voice Without Guessing (2026)", category: "Guides", readingTime: "9 min read", cta: "Read British Accent Guide \u2192" },
   { slug: "text-to-speech/blog/twitch-text-to-speech-guide", title: "Twitch Text to Speech: Set Up TTS for Donations and Channel Points (Free, 2026)", category: "Guides", readingTime: "8 min read", cta: "Read Twitch TTS Guide \u2192" },
   { slug: "text-to-speech/blog/robot-voice-generator", title: "Robot Voice Generator: Turn Any Text into a Robot Voice (Free Ways, 2026)", category: "Guides", readingTime: "7 min read", cta: "Read Robot Voice Guide \u2192" },
+  { slug: "text-to-speech/blog/best-japanese-text-to-speech-tools", title: "Best Japanese Text to Speech Tools: Natural & Anime Voices (2026)", category: "Comparisons", readingTime: "8 min read", cta: "Read Japanese TTS Tools Guide \u2192" },
   { slug: "text-to-speech/blog/text-to-speech-for-dyslexia", title: "Text to Speech Software for Dyslexia: 8 Free Tools That Actually Help", category: "Guides", readingTime: "8 min read", cta: "Read the Dyslexia TTS Guide \u2192" },
   { slug: "text-to-speech/blog/read-pdf-aloud", title: "How to Read a PDF Aloud: 6 Free Ways on Any Device", category: "Guides", readingTime: "7 min read", cta: "Read the PDF Aloud Guide \u2192" },
   { slug: "text-to-speech/blog/ai-voiceover-for-commercials", title: "AI Voiceover for Commercials: Ad Voices That Sell (Free Options)", category: "Guides", readingTime: "7 min read", cta: "Read the Commercials Voiceover Guide \u2192" },
@@ -9094,6 +9095,104 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The short version:</strong> Do not start with a subscription. Immersive Reader, your phone's built-in reader and a free web tool cover most reading for dyslexia at no cost, and Bookshare covers real textbooks for students who qualify. Pay for an app only when you know exactly which limit you are paying to remove — a better voice, camera scanning, or a bigger library.</p>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   },
+  "text-to-speech/blog/best-japanese-text-to-speech-tools": {
+    title: `Best Japanese Text to Speech Tools: Natural & Anime Voices (2026) | ${BRAND_NAME}`,
+    h1: `Best Japanese Text to Speech Tools: Natural Voices & Anime-Style Picks (2026)`,
+    metaDesc: `Japanese text to speech compared honestly: free tools like VOICEVOX and TextToSpeechH, the most natural paid voices, anime character voices, and the kanji misreading problem nobody warns you about.`,
+    category: "Comparisons",
+    readingTime: "8 min read",
+    faqs: [{"q": "Why does the voice pronounce some Japanese words wrong?", "a": "Almost always a kanji reading problem, not a broken tool. Kanji carry multiple readings, and the software picks the statistically likely one, which is wrong whenever your word is the less common case — personal names above all. Rewrite the problem word in hiragana, or use a tool with a reading editor like VOICEVOX, and the mistake disappears."}, {"q": "Is VOICEVOX really free, and can I use it in monetised videos?", "a": "The software is free. The voices are the catch: each character voice has its own terms, most require a credit such as 'VOICEVOX:ずんだもん' in your description, and commercial conditions vary by voice. Plenty of monetised Japanese channels use it legally — just read the terms for the specific voices in your video rather than assuming."}, {"q": "What is the best Japanese TTS for learning the language?", "a": "You want three things: natural pitch accent, slow playback, and highlighting that follows the text. A free web reader with word highlighting covers daily study well. Avoid practising with the robotic free voices on translator sites; your ear learns whatever it hears, including flat pitch accent."}, {"q": "Can these tools read a whole Japanese novel or light novel?", "a": "In pieces, yes. Every tool here has practical length limits per generation, so the workflow is chapter by chapter, then stitch the MP3s together in any free audio editor. Check the copyright side too: converting a book you own for your own listening is one thing, uploading or sharing the audio is another."}, {"q": "Do I need an anime voice, or a normal one?", "a": "If a Japanese viewer will hear it, match the voice to the format. Character voices belong in character content: game videos, mascot channels, skits. A news-style or lesson video voiced by an anime character sounds like a joke you did not intend. When in doubt, narrate plainly — tools 2, 3 and 7 exist for exactly that."}],
+    datePublished: "October 30, 2026",
+    dateModified: "October 30, 2026",
+    content: `
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: What Makes a Japanese TTS Tool Good?</h2><p style="margin:0; line-height:1.7;">Japanese is the language where text to speech tools differ the most, and where the free option is not automatically the weak one. For anime-style and character voices, VOICEVOX — the free software Japanese creators themselves use — beats almost everything paid. For plain narration you want to turn into an MP3 quickly, a free web tool like TextToSpeechH does the job in seconds with no account. For the most natural human-sounding Japanese, ElevenLabs leads, but it is a paid product with a small free trial. The real test with Japanese is never the feature list. It is whether the tool reads kanji correctly and gets the pitch accent right, and most comparison pages never mention either. This one does — start with our <a href="${DOMAIN}/language/japanese" style="color:var(--color-primary);">Japanese text to speech page</a>.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What actually matters in Japanese TTS: four things</h2>
+<ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Kanji reading accuracy.</strong> This is the number one problem, and it is specific to Japanese. A single kanji often has several readings, and the right one depends on the word around it. 明日 can be read <em>ashita</em> or <em>asu</em>. 人気 can be <em>ninki</em> (popularity) or <em>hitoke</em> (sign of people). Good tools infer the right reading from context most of the time. Cheap ones guess, and a native listener hears the mistake instantly. If your tool keeps mangling a word, the practical fix works almost everywhere: write that one word in hiragana instead of kanji, and the voice will say exactly what you wrote.</li><li style="margin-bottom:6px;"><strong>Pitch accent.</strong> Japanese is a pitch-accent language. 橋 (<em>hashi</em>, bridge) and 箸 (<em>hashi</em>, chopsticks) are spelled the same in romaji but rise and fall differently, and a voice that flattens the pitch sounds foreign even when every word is correct. Modern neural voices from the big providers handle this well. Older and bargain voices often do not, and no amount of speed or volume settings fixes it.</li><li style="margin-bottom:6px;"><strong>Narration voice or character voice — know which job you have.</strong> These are almost separate markets. Narration voices read essays, lessons and audiobooks. Character voices act: they laugh, shout, whisper and play a part in a video or game. A tool that is brilliant at one is usually ordinary at the other, so decide what you are making before you compare prices.</li><li style="margin-bottom:6px;"><strong>Speed control that slows down properly.</strong> If you are learning Japanese, the most-used feature will be playing text at 0.75x to 0.9x and shadowing it: listening, pausing, repeating. For that, a tool also needs to handle long texts without cutting you off every paragraph, which is where several free sites quietly fail.</li></ul>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The 8 tools</h2>
+<h3>1. VOICEVOX — best free tool for anime and character voices</h3>
+<p style="line-height:1.8;">VOICEVOX is the open secret of Japanese TTS. It is free software for Windows, Mac and Linux, built in Japan, and it is what a huge share of Japanese YouTubers and game creators actually use. It offers dozens of character voices with real personalities — Zundamon is the famous one — and its editor is unusually powerful: you can correct a word's reading and adjust the intonation phrase by phrase, which means the two big Japanese problems above are fixable by hand when the automatic guess is wrong.</p>
+<p style="line-height:1.8;">Honest limits: the interface is in Japanese, which is a genuine barrier if you are a beginner (many learners treat learning the menus as part of the hobby). It is a program you install, not a website. And each character voice has its own usage terms: most ask for a credit line in your video description, and commercial rules differ from voice to voice, so check the terms for the specific voice you use.</p>
+<h3>2. TextToSpeechH — best free online tool for narration and MP3s</h3>
+<p style="line-height:1.8;">Our own tool (this site) is the straightforward route: paste Japanese text, pick a Japanese voice, press play, and download the MP3 if you want it. No account, no charge. <strong>Read-Along</strong> highlights the text as it plays, which learners find genuinely useful for following along with material slightly above their level, and the same text-to-audio route works for turning study notes or articles into listening practice for the train.</p>
+<p style="line-height:1.8;">Honest limits: there is no furigana display, no way to hand-tune pitch accent, and nothing in the way of character acting. If VOICEVOX is a voice studio, this is a reader. For narration, study material and quick MP3s, that is exactly what most people need. Start on the <a href="${DOMAIN}/language/japanese" style="color:var(--color-primary);">Japanese text to speech page</a>.</p>
+<h3>3. ElevenLabs — most natural Japanese, at a price</h3>
+<p style="line-height:1.8;">ElevenLabs produces the most convincingly human Japanese narration of the big international platforms right now: natural pacing, believable pitch accent, and voices that hold up across a long script. For a professional voiceover, an audiobook-style project or a client video, it is the safe paid choice.</p>
+<p style="line-height:1.8;">The honest part: it is a paid product with a small free tier (around 10,000 characters a month). In Japanese, a character allowance disappears faster than people expect once you start generating full scripts, and the Japanese voice library is still smaller than the English one. Budget for a plan if you like how it sounds; do not plan a project around the free tier.</p>
+<h3>4. TTSMaker — best free online option with generous limits</h3>
+<p style="line-height:1.8;">TTSMaker is a free website that reads text in many languages, Japanese included, and lets you download the MP3 without creating an account. Of the free online converters, it is one of the more generous with how much you can generate, and it is a reasonable default for YouTube narration on a zero budget.</p>
+<p style="line-height:1.8;">Honest limits: expect a captcha before generations, and the Japanese voices, while clear, are a step below the best neural voices for pitch accent and natural rhythm. The site is ad-supported and queues can form at busy times. Generate in short-to-medium chunks rather than pasting a whole script at once.</p>
+<h3>5. CoeFont — best for expressive Japanese voices from a Japanese service</h3>
+<p style="line-height:1.8;">CoeFont is a Japanese company, and it shows: thousands of Japanese AI voices, including expressive and anime-style ones that international platforms simply do not offer, plus properly licensed voices. Japanese creators use it heavily for video characters and mascots.</p>
+<p style="line-height:1.8;">Honest limits: it is aimed at the Japanese market, so pricing is in yen and much of the experience assumes you read some Japanese. The free plan is limited, and the voice you fall in love with may sit on a paid plan. If VOICEVOX's install puts you off but you want character voices in a browser, start here.</p>
+<h3>6. Google Translate and Google Cloud TTS — best quick check, and the developer route</h3>
+<p style="line-height:1.8;">Everyone already has the first one. Paste Japanese into Google Translate, press the speaker icon, and it reads the text back. For checking how one sentence sounds, nothing is faster or freer.</p>
+<p style="line-height:1.8;">Honest limits: the voice is robotic, there is no download button, and it only handles short passages at a time. The serious version is Google Cloud Text-to-Speech, whose Neural2 and WaveNet Japanese voices are genuinely good and handle pitch accent well, but that is an API for developers, billed per character — not a tool you open in a tab and use.</p>
+<h3>7. Narakeet — best for video narration in the browser</h3>
+<p style="line-height:1.8;">Narakeet turns text into narrated video and audio, and its Japanese voice list is long, with clear, professional narration voices that suit explainers, lessons and product videos. The editor is friendly, and it handles the whole job — script in, voiced video out — in one place.</p>
+<p style="line-height:1.8;">Honest limits: the free trial is a taster with tight limits, so treat it as a test drive rather than a workflow. The voices are narrators, not characters: if you want an anime performance, VOICEVOX and CoeFont are the right shelf. For ongoing video production, compare its plans against ElevenLabs on the voices alone and pick the one your ear prefers.</p>
+<h3>8. Typecast — best for acted dialogue with emotion control</h3>
+<p style="line-height:1.8;">Typecast, from a Korean AI company, specialises in character voices you can direct: pick a Japanese persona, then adjust emotion and pacing line by line. For dialogue scenes, game-style content and videos where the voice has to act rather than read, it offers control the narration tools do not.</p>
+<p style="line-height:1.8;">Honest limits: it is a subscription built around monthly credits, and it is more machine than a casual user needs. If you just want a lesson or an article read aloud, tools 1, 2 and 4 above will make you happier in less time.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Which tool should you pick?</h2>
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+<th style="padding:10px; color:var(--color-primary-on);">Your situation</th>
+<th style="padding:10px; color:var(--color-primary-on);">Start with</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Anime or character voices for video, free</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">VOICEVOX (1)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Japanese text to MP3, quick and free</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">TextToSpeechH (2)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Most natural narration, budget available</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">ElevenLabs (3)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Free online narration with room to generate</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">TTSMaker (4)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Expressive Japanese voices in a browser</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">CoeFont (5)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Hearing one sentence right now</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Google Translate (6)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Narrated videos, lessons, explainers</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Narakeet (7)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px;">Dialogue that needs acting and emotion</td>
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Typecast (8)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Three habits that make any Japanese TTS output better</h2>
+<p style="line-height:1.8;"><strong>Fix misread words in kana.</strong> When a tool reads a kanji word wrong — names are the usual victims — rewrite just that word in hiragana in your script. The voice cannot guess wrong about kana; it reads exactly what is written. This one habit fixes most "the AI can't read Japanese" complaints.</p>
+<p style="line-height:1.8;"><strong>Generate in scenes, not novels.</strong> Every tool on this list sounds more consistent over a paragraph or a scene than over twenty pages pasted at once. Split long scripts at natural breaks, generate piece by piece, and you also get a chance to catch reading mistakes early, when they are cheap to fix.</p>
+<p style="line-height:1.8;"><strong>Shadow at 0.8x if you are learning.</strong> Play a passage slightly slower than natural speed, listen once, then read along out loud with the voice. It is the classic shadowing drill, and a free tool with highlighting — ours, or the reader built into your study app — is all the equipment it needs. The same approach powers the listening side of our guides to other languages, like our <a href="${DOMAIN}/text-to-speech/blog/best-spanish-text-to-speech-tools" style="color:var(--color-primary);">Spanish text to speech tools guide</a>, <a href="${DOMAIN}/text-to-speech/blog/best-french-text-to-speech-tools" style="color:var(--color-primary);">French text to speech tools guide</a> and <a href="${DOMAIN}/text-to-speech/blog/best-italian-text-to-speech-tools" style="color:var(--color-primary);">Italian text to speech tools guide</a> roundups.</p>
+</section>
+<p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The short version:</strong> For anime and character voices, VOICEVOX is free and genuinely hard to beat. For quick narration and MP3s, a free web reader does the job in seconds — start on our <a href="${DOMAIN}/language/japanese" style="color:var(--color-primary);">Japanese text to speech page</a>. Pay for ElevenLabs when you need the most natural human narration, and whatever tool you pick, fix misread kanji words by rewriting them in hiragana.</p>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  }
 };
 
 module.exports = {
