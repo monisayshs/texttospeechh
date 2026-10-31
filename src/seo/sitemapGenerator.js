@@ -79,7 +79,11 @@ const STATIC_SPOKE_ROUTES = [
   { url: '/text-to-speech/pdf-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
   { url: '/text-to-speech/word-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
   { url: '/text-to-speech/txt-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
-  { url: '/text-to-speech/voice-pitch-changer', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-31' }
+];
+
+const TOOL_ROUTES = [
+  { url: '/tools', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-31' },
+  { url: '/voice-pitch-changer', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-31' }
 ];
 
 function getDynamicBlogRoutes() {
@@ -133,6 +137,7 @@ function generateXmlSitemap() {
     ...PUBLIC_ROUTES,
     ...LEGAL_ROUTES,
     ...STATIC_SPOKE_ROUTES,
+    ...TOOL_ROUTES,
     ...getDynamicBlogRoutes(),
     ...getProgrammaticRoutes(),
     ...getGuideRoutes()
@@ -165,6 +170,7 @@ function getSitemapMainXml() {
   const routes = [
     ...PUBLIC_ROUTES,
     ...STATIC_SPOKE_ROUTES,
+    ...TOOL_ROUTES,
     ...getDynamicBlogRoutes(),
     ...getGuideRoutes()
   ];
@@ -218,6 +224,7 @@ module.exports = {
   PUBLIC_ROUTES,
   LEGAL_ROUTES,
   STATIC_SPOKE_ROUTES,
+  TOOL_ROUTES,
   getDynamicBlogRoutes,
   getProgrammaticRoutes,
   getGuideRoutes

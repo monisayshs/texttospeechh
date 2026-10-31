@@ -3,12 +3,12 @@
  * Official Brand: TextToSpeechH AI
  * Domain: https://www.texttospeechh.com
  *
- * Interactive, 100% client-side tools rendered through the shared
- * renderSeoPage() pipeline (same head, schema, header and footer as the
- * text-to-speech spokes). First tool: Voice Pitch Changer
- * (/text-to-speech/voice-pitch-changer) — the /text-to-speech/* namespace
- * is used because every existing tool spoke lives there (see
- * textToSpeechSubpages.js and STATIC_SPOKE_ROUTES in sitemapGenerator.js).
+ * Interactive, 100% client-side tools rendered through the dedicated
+ * standalone renderToolPage() pipeline in seoHandler.js (iLovePDF-style:
+ * slim header, tool first, explanations below). First tool: Voice Pitch
+ * Changer, live at the top-level route /voice-pitch-changer since
+ * 2026-10-31 (the original /text-to-speech/voice-pitch-changer route
+ * 301-redirects to it), with the tools hub at /tools.
  *
  * The pitch-shifting engine below is an original vanilla-JS implementation
  * of the classic SoundTouch approach (WSOLA time-stretch + resample), so
@@ -18,11 +18,13 @@
  */
 
 const TOOL_PAGES = {
-  "text-to-speech/voice-pitch-changer": {
+  "voice-pitch-changer": {
     "title": "Voice Pitch Changer — Change Voice Pitch Online Free | TextToSpeechH AI",
     "h1": "Voice Pitch Changer",
     "metaDesc": "Change the pitch of any voice recording online for free. Raise or lower pitch by up to 12 semitones without changing speed. No sign-up, no watermark — your file never leaves your browser.",
     "category": "Audio Tools",
+    "standaloneTool": true,
+    "tagline": "Make any voice deeper or higher in seconds. Free, no sign-up, no watermark - and your file never leaves your browser.",
     "readingTime": "5 min read",
     "faqs": [
       { "q": "Is this voice pitch changer free to use?", "a": "Yes. The Voice Pitch Changer on TextToSpeechH AI is completely free — no sign-up, no watermark, and no limit on how many clips you process. Your downloads are clean WAV files." },
@@ -32,17 +34,12 @@ const TOOL_PAGES = {
       { "q": "Is my audio file uploaded to a server?", "a": "No. Everything runs 100% in your browser using the Web Audio API. Your file is never uploaded, stored, or sent anywhere — you can even disconnect from the internet after the page loads and the tool will still work." }
     ],
     "content": `
-      <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;">
-        <h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">What is a Voice Pitch Changer?</h2>
-        <p style="margin:0; line-height:1.7;">
-          A <strong>voice pitch changer</strong> raises or lowers the pitch of a voice recording — making it deeper or higher — <strong>without changing its speed</strong>. Drop an MP3, WAV, OGG or M4A clip below, move one slider, preview the result, and download it as a WAV file. It is completely free, needs no sign-up, adds no watermark, and your audio is processed <strong>100% in your browser</strong>: the file is never uploaded to any server. Need a brand-new AI voice instead of editing a recording? Try our <a href="https://www.texttospeechh.com">free text to speech generator</a>.
-        </p>
-      </div>
-
-      <div id="vpc-tool" style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:22px; border-radius:12px; margin-bottom:28px;">
-        <div id="vpc-dropzone" role="button" tabindex="0" aria-label="Upload an audio file" style="border:2px dashed var(--color-border-strong); border-radius:10px; padding:30px 18px; text-align:center; cursor:pointer; background:var(--color-bg);">
-          <p style="margin:0 0 6px; font-size:1.05rem; font-weight:600;">Drag &amp; drop your audio file here, or click to browse</p>
-          <p style="margin:0; font-size:0.85rem; color:var(--color-text-muted);">MP3, WAV, OGG, M4A &middot; Max 50 MB &middot; Clips up to 3 minutes &middot; Processed 100% in your browser — never uploaded</p>
+      <div id="vpc-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
+        <div id="vpc-dropzone" role="button" tabindex="0" aria-label="Upload an audio file" style="border:2px dashed var(--color-border-strong); border-radius:12px; padding:52px 20px; text-align:center; cursor:pointer; background:var(--color-bg);">
+          <p style="margin:0 0 12px; font-size:2.2rem; line-height:1;">&#127908;</p>
+          <p style="margin:0 0 16px; font-size:1.18rem; font-weight:700;">Drag &amp; drop your audio file here</p>
+          <p style="margin:0 0 18px;"><span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:14px 38px; border-radius:10px; font-weight:700; font-size:1.05rem;">Select Audio File</span></p>
+          <p style="margin:0; font-size:0.85rem; color:var(--color-text-muted);">MP3, WAV, OGG, M4A &middot; Max 50 MB &middot; Clips up to 3 minutes &middot; 100% in your browser - never uploaded</p>
         </div>
         <input type="file" id="vpc-file-input" accept=".mp3,.wav,.ogg,.oga,.m4a,.aac,.webm,audio/*" style="display:none;">
         <p id="vpc-file-info" style="margin:12px 0 0; font-size:0.9rem; font-weight:600;"></p>
@@ -98,6 +95,34 @@ const TOOL_PAGES = {
         #vpc-dropzone.vpc-drag { border-color:var(--color-primary); background:var(--color-primary-soft); }
       </style>
 
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px;">
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128176;</p>
+          <p style="margin:0 0 4px; font-weight:700;">100% Free</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">No limits, no hidden charges. Process as many clips as you like.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128272;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Private by Design</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Your audio is processed in your browser and is never uploaded anywhere.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#9889;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Pitch Without Speed Change</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">The voice goes deeper or higher while the tempo and length stay the same.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#10003;</p>
+          <p style="margin:0 0 4px; font-weight:700;">No Sign-Up, No Watermark</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Open the page, drop a file, download a clean WAV. Nothing else asked.</p>
+        </div>
+      </div>
+
+      <h2>What is a Voice Pitch Changer?</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        A <strong>voice pitch changer</strong> raises or lowers the pitch of a voice recording - making it deeper or higher - <strong>without changing its speed</strong>. Drop an MP3, WAV, OGG or M4A clip into the tool above, move one slider, preview the result, and download it as a WAV file. Need a brand-new AI voice instead of editing a recording? Try our <a href="https://www.texttospeechh.com">free text to speech generator</a>.
+      </p>
+
       <h2>How to Use the Voice Pitch Changer</h2>
       <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
         <li><strong>Add your audio.</strong> Drag an MP3, WAV, OGG or M4A file into the box above, or click it to browse. Nothing is uploaded — the file stays on your device.</li>
@@ -124,6 +149,22 @@ const TOOL_PAGES = {
       <p>
         Creating a voiceover from scratch instead? Our <a href="/text-to-speech/voice-generator">AI voice generator</a> turns typed text into natural narration, and our <a href="/text-to-speech/blog/text-to-speech-for-youtube">text to speech for YouTube guide</a> shows the full faceless-channel workflow. More guides live on the <a href="/text-to-speech/blog">TextToSpeechH AI blog</a>.
       </p>
+
+      <h2>More Free Tools</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:30px;">
+        <a href="/tools" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">All Free Tools</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Browse every free tool on TextToSpeechH AI in one place.</p>
+        </a>
+        <a href="/" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Text to Speech Generator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Turn typed text into natural AI voiceovers, free.</p>
+        </a>
+        <a href="/text-to-speech/voice-generator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">AI Voice Generator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Create studio-style narration voices for videos and podcasts.</p>
+        </a>
+      </div>
 
       <h2>Frequently Asked Questions</h2>
       <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
@@ -568,4 +609,44 @@ const TOOL_PAGES = {
   }
 };
 
-module.exports = { TOOL_PAGES };
+const TOOLS_HUB_PAGE = {
+  "title": "Free Online Tools - Voice, Audio & More | TextToSpeechH AI",
+  "h1": "Free Online Tools",
+  "metaDesc": "Every free tool from TextToSpeechH AI in one place: voice pitch changer, text to speech generator and more. No sign-up, no watermark, right in your browser.",
+  "category": "Tools",
+  "standaloneTool": true,
+  "isHub": true,
+  "tagline": "Simple tools that work right in your browser. No sign-up, no watermark, no fuss.",
+  "faqs": [],
+  "content": `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-bottom:10px;">
+        <a href="/voice-pitch-changer" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#127908;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Voice Pitch Changer</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Make any voice recording deeper or higher without changing its speed.</p>
+        </a>
+        <a href="/" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#128266;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Text to Speech Generator</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Turn typed text into natural AI voiceovers and download the MP3, free.</p>
+        </a>
+        <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#128196;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">YouTube Transcript Generator</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Get the full text of any YouTube video in one click. <strong>Coming soon.</strong></p>
+        </div>
+        <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#128247;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">Image Compressor</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB for online forms. <strong>Coming soon.</strong></p>
+        </div>
+        <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">Age Calculator</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Find your exact age in years, months and days. <strong>Coming soon.</strong></p>
+        </div>
+      </div>
+    `
+};
+
+module.exports = { TOOL_PAGES, TOOLS_HUB_PAGE };

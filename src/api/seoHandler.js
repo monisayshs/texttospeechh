@@ -3,7 +3,7 @@ const { LEGAL_PAGES } = require('../pages/legalPages');
 const { AUTHOR_PAGES } = require('../pages/authorPages');
 const { TEXT_TO_SPEECH_PILLAR_PAGE } = require('../pages/textToSpeechPillar');
 const { TEXT_TO_SPEECH_SUBPAGES } = require('../pages/textToSpeechSubpages');
-const { TOOL_PAGES } = require('../pages/toolPages');
+const { TOOL_PAGES, TOOLS_HUB_PAGE } = require('../pages/toolPages');
 const { BLOG_ARTICLES_MAP, getBlogHubPage } = require('../pages/textToSpeechBlogHub');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
 const schemaGenerator = require('../seo/schemaGenerator');
@@ -43,7 +43,10 @@ const AUTO_REDIRECT_MAP = {
   "keyword/online-text-to-speech": "text-to-speech/online-text-to-speech",
   "keyword/text-to-voice": "text-to-speech/text-to-voice",
   "keyword/voice-generator": "text-to-speech/voice-generator",
-  "text-to-speech/tts-to-speech": "text-to-speech"
+  "text-to-speech/tts-to-speech": "text-to-speech",
+
+  // Standalone tools moved to top-level iLovePDF-style routes (2026-10-31)
+  "text-to-speech/voice-pitch-changer": "voice-pitch-changer"
 };
 
 function getRequestPathname(req) {
@@ -315,6 +318,113 @@ ${trackingHtml}
 </html>`;
 }
 
+function renderToolPage(pageData, pathSlug) {
+  if (!pageData) return "";
+  const canonicalUrl = `${DOMAIN}/${pathSlug}`;
+  const orgSchema = JSON.stringify(schemaGenerator.getOrganizationSchema());
+  const webSiteSchema = JSON.stringify(schemaGenerator.getWebSiteSchema());
+  const softwareSchema = JSON.stringify(schemaGenerator.getSoftwareApplicationSchema());
+  const hasPageFaqs = Array.isArray(pageData.faqs) && pageData.faqs.length > 0;
+  const faqSchemaJsonLd = hasPageFaqs
+    ? `<script type="application/ld+json">${JSON.stringify(schemaGenerator.getFAQSchema(pageData.faqs))}</script>\n  `
+    : "";
+  const breadcrumbItems = pageData.isHub
+    ? [{ name: "Home", url: `${DOMAIN}/` }, { name: "Tools", url: canonicalUrl }]
+    : [{ name: "Home", url: `${DOMAIN}/` }, { name: "Tools", url: `${DOMAIN}/tools` }, { name: pageData.h1 || pageData.title || pathSlug, url: canonicalUrl }];
+  const breadcrumbSchema = JSON.stringify(schemaGenerator.getBreadcrumbSchema(breadcrumbItems));
+  const safeTitle = escapeHtmlAttribute(pageData.title || "Free Online Tools | TextToSpeechH AI");
+  const safeDesc = escapeHtmlAttribute(pageData.metaDesc || "");
+  const ogImageUrl = pageData.ogImage ? `${DOMAIN}${pageData.ogImage}` : `${DOMAIN}/og-image.png`;
+  const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
+  const trackingHtml = getAllTrackingSnippetsHtml();
+  const tagline = pageData.tagline || pageData.metaDesc || "";
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${trackingHtml}
+  <title>${safeTitle}</title>
+  <meta name="title" content="${safeTitle}">
+  <meta name="description" content="${safeDesc}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="${canonicalUrl}">
+  ${hreflangTags}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${canonicalUrl}">
+  <meta property="og:title" content="${safeTitle}">
+  <meta property="og:description" content="${safeDesc}">
+  <meta property="og:image" content="${ogImageUrl}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="${canonicalUrl}">
+  <meta name="twitter:title" content="${safeTitle}">
+  <meta name="twitter:description" content="${safeDesc}">
+  <meta name="twitter:image" content="${ogImageUrl}">
+  <script type="application/ld+json">${orgSchema}</script>
+  <script type="application/ld+json">${webSiteSchema}</script>
+  <script type="application/ld+json">${softwareSchema}</script>
+  ${faqSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
+  <link rel="stylesheet" href="/style.css?v=8.2.0">
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
+  <script>
+    (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+  <style>
+    .tool-topbar { background:var(--color-surface); border-bottom:1px solid var(--color-border); }
+    .tool-topbar-inner { max-width:1080px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .tool-nav a { color:var(--color-text-secondary); text-decoration:none; font-weight:600; font-size:0.95rem; margin-left:22px; }
+    .tool-nav a:hover { color:var(--color-primary); }
+    .tool-hero { max-width:820px; margin:0 auto; padding:52px 20px 8px; text-align:center; }
+    .tool-hero h1 { font-size:2.5rem; line-height:1.15; margin:0 0 14px; color:var(--color-text); }
+    .tool-hero p { font-size:1.08rem; line-height:1.65; color:var(--color-text-muted); margin:0; }
+    .tool-main { max-width:920px; margin:0 auto; padding:30px 20px 10px; }
+    .tool-main h2 { color:var(--color-text); margin-top:34px; }
+    .tool-main p, .tool-main li { color:var(--color-text-secondary); }
+    .tool-footer { max-width:1080px; margin:36px auto 0; padding:22px 20px 34px; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:0.9rem; color:var(--color-text-muted); }
+    .tool-footer a { color:var(--color-text-muted); text-decoration:none; margin-left:18px; }
+    .tool-footer a:hover { color:var(--color-primary); }
+    @media (max-width:640px){ .tool-hero{padding-top:38px} .tool-hero h1{font-size:2rem} .tool-nav a{margin-left:14px} }
+  </style>
+</head>
+<body style="background:var(--color-bg);">
+  <div class="tool-topbar">
+    <div class="tool-topbar-inner">
+      <a href="/" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--color-text); font-weight:800; font-size:1.05rem;">
+        <img src="/logo-icon.svg" alt="TextToSpeechH AI Logo" width="26" height="26"> TextToSpeechH AI
+      </a>
+      <nav class="tool-nav" aria-label="Tool Navigation">
+        <a href="/">Text to Speech</a>
+        <a href="/tools">All Tools</a>
+        <a href="/text-to-speech/blog">Blog</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="tool-hero">
+    <h1>${pageData.h1 || pageData.title}</h1>
+    <p>${tagline}</p>
+  </div>
+
+  <main class="tool-main">
+    ${pageData.content || ""}
+  </main>
+
+  <footer class="tool-footer">
+    <span>&copy; 2026 TextToSpeechH AI - Free online tools, no sign-up.</span>
+    <span><a href="/tools">All Tools</a><a href="/">Text to Speech</a><a href="/privacy-policy">Privacy Policy</a><a href="/terms">Terms</a></span>
+  </footer>
+</body>
+</html>`;
+}
+
 async function seoHandler(req, res) {
   try {
     const pathname = getRequestPathname(req);
@@ -359,9 +469,20 @@ async function seoHandler(req, res) {
       return true;
     }
 
-    // 2b. Standalone Tool Pages (interactive client-side tools, e.g. /text-to-speech/voice-pitch-changer)
+    // 2b. Standalone Tool Pages (interactive client-side tools at top-level
+    // routes, e.g. /voice-pitch-changer) — dedicated iLovePDF-style template
     if (TOOL_PAGES[pathSlug]) {
-      const html = renderSeoPage(TOOL_PAGES[pathSlug], pathSlug);
+      const toolData = TOOL_PAGES[pathSlug];
+      const html = toolData.standaloneTool ? renderToolPage(toolData, pathSlug) : renderSeoPage(toolData, pathSlug);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    // 2c. Tools Hub (/tools) — grid of all free tools, iLovePDF-style
+    if (pathSlug === 'tools' && TOOLS_HUB_PAGE) {
+      const html = renderToolPage(TOOLS_HUB_PAGE, pathSlug);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.end(html);
@@ -428,3 +549,4 @@ async function seoHandler(req, res) {
 module.exports = seoHandler;
 module.exports.seoHandler = seoHandler;
 module.exports.renderSeoPage = renderSeoPage;
+module.exports.renderToolPage = renderToolPage;
