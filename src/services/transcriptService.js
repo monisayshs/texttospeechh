@@ -70,17 +70,17 @@ async function fetchJson(url, options = {}) {
 
 const INNERTUBE_CLIENTS = [
   {
-    name: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER',
-    key: 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
-    client: { clientName: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER', clientVersion: '2.0', hl: 'en', gl: 'US' },
-    extra: { thirdParty: { embedUrl: 'https://www.texttospeechh.com/youtube-transcript-generator' } }
-  },
-  {
     name: 'ANDROID',
     key: 'AIzaSyA8eiZmM1FaDVjRy-df2KTyQ_vz_yYM39w',
     client: { clientName: 'ANDROID', clientVersion: '20.10.38', deviceMake: 'Google', deviceModel: 'Pixel 8', androidSdkVersion: 34, osName: 'Android', osVersion: '14', hl: 'en', gl: 'US', platform: 'MOBILE' },
     extra: {},
     headers: { 'User-Agent': 'com.google.android.youtube/20.10.38 (Linux; U; Android 14; en_US; Pixel 8) gzip', 'X-YouTube-Client-Name': '3', 'X-YouTube-Client-Version': '20.10.38' }
+  },
+  {
+    name: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER',
+    key: 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
+    client: { clientName: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER', clientVersion: '2.0', hl: 'en', gl: 'US' },
+    extra: { thirdParty: { embedUrl: 'https://www.texttospeechh.com/youtube-transcript-generator' } }
   },
   {
     name: 'WEB_EMBEDDED_PLAYER',
@@ -212,7 +212,8 @@ async function fetchTrackSegments(baseUrl, attempts, cookieHeader, uaFirst) {
     { url: gvUrl, headers: Object.assign({}, cookie), parse: parseXmlTranscript, tag: 'xml-googlevideo' }
   ];
   if (uaFirst === 'android') {
-    tries.sort((a, b) => (b.tag.includes('android') ? 1 : 0) - (a.tag.includes('android') ? 1 : 0));
+    const order = ['xml-android', 'xml-desktop', 'json3-android', 'json3-desktop', 'xml-googlevideo', 'json3-googlevideo'];
+    tries.sort((a, b) => order.indexOf(a.tag) - order.indexOf(b.tag));
   }
   for (const t of tries) {
     try {
@@ -326,13 +327,6 @@ async function getTranscript(input, preferredLang) {
     };
   };
 
-  try {
-    const watch = await playerViaWatchPage(videoId);
-    if (watch && watch.cookieHeader) cookieForTracks = watch.cookieHeader;
-    const result = await tryPlayer(watch ? watch.player : null, 'WATCH_PAGE');
-    if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
-  } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
-
   for (const spec of INNERTUBE_CLIENTS) {
     const maxTries = spec.name === 'ANDROID' ? 3 : 1;
     for (let attemptNo = 1; attemptNo <= maxTries; attemptNo++) {
@@ -343,6 +337,13 @@ async function getTranscript(input, preferredLang) {
       if (attemptNo < maxTries) await new Promise(r => setTimeout(r, 900));
     }
   }
+
+  try {
+    const watch = await playerViaWatchPage(videoId);
+    if (watch && watch.cookieHeader) cookieForTracks = watch.cookieHeader;
+    const result = await tryPlayer(watch ? watch.player : null, 'WATCH_PAGE');
+    if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
+  } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
 
   try {
     const tracks = await tracksViaTimedTextList(videoId);
