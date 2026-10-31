@@ -174,8 +174,17 @@ function parseJson3(text) {
 
 function parseXmlTranscript(text) {
   const segments = [];
-  const re = /<text\s+start="([\d.]+)"(?:\s+dur="([\d.]+)")?[^>]*>([\s\S]*?)<\/text>/g;
+  // Modern srv3 format: <p t="ms" d="ms"><s>word</s>...</p>
+  const reSrv3 = /<p\s+t="(\d+)"(?:\s+d="\d+")?[^>]*>([\s\S]*?)<\/p>/g;
   let m;
+  while ((m = reSrv3.exec(text)) !== null) {
+    const line = decodeEntities(m[2].replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+    if (!line) continue;
+    segments.push({ start: Math.round(parseInt(m[1], 10) / 10) / 100, text: line });
+  }
+  if (segments.length) return segments;
+  // Legacy srv1 format: <text start="sec" dur="sec">line</text>
+  const re = /<text\s+start="([\d.]+)"(?:\s+dur="([\d.]+)")?[^>]*>([\s\S]*?)<\/text>/g;
   while ((m = re.exec(text)) !== null) {
     const line = decodeEntities(m[3].replace(/<[^>]+>/g, ''));
     if (!line) continue;
