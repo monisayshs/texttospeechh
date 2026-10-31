@@ -52,7 +52,11 @@ async function fetchText(url, options = {}) {
       redirect: 'follow'
     });
     const text = await res.text();
-    return { status: res.status, text };
+    let setCookies = [];
+    try {
+      if (typeof res.headers.getSetCookie === 'function') setCookies = res.headers.getSetCookie();
+    } catch (e) { /* header not exposed on this runtime */ }
+    return { status: res.status, text, setCookies };
   } finally {
     clearTimeout(timer);
   }
@@ -182,17 +186,21 @@ function parseXmlTranscript(text) {
 
 const UA_ANDROID_YT = 'com.google.android.youtube/20.10.38 (Linux; U; Android 14; en_US; Pixel 8) gzip';
 
-async function fetchTrackSegments(baseUrl, attempts) {
+async function fetchTrackSegments(baseUrl, attempts, cookieHeader) {
   // Prefer the structured json3 format; fall back to the default XML.
   // Some clients' caption URLs only answer when the follow-up request
   // carries the same client identity, so both desktop and Android
   // user agents are tried for each format.
   const sep = baseUrl.includes('?') ? '&' : '?';
+  const cookie = cookieHeader ? { 'Cookie': cookieHeader } : {};
+  const gvUrl = baseUrl.replace('https://www.youtube.com/api/timedtext', 'https://video.google.com/timedtext');
   const tries = [
-    { url: `${baseUrl}${sep}fmt=json3`, headers: {}, parse: parseJson3, tag: 'json3-desktop' },
-    { url: `${baseUrl}${sep}fmt=json3`, headers: { 'User-Agent': UA_ANDROID_YT }, parse: parseJson3, tag: 'json3-android' },
-    { url: baseUrl, headers: {}, parse: parseXmlTranscript, tag: 'xml-desktop' },
-    { url: baseUrl, headers: { 'User-Agent': UA_ANDROID_YT }, parse: parseXmlTranscript, tag: 'xml-android' }
+    { url: `${baseUrl}${sep}fmt=json3`, headers: Object.assign({}, cookie), parse: parseJson3, tag: 'json3-desktop' },
+    { url: `${baseUrl}${sep}fmt=json3`, headers: Object.assign({ 'User-Agent': UA_ANDROID_YT }, cookie), parse: parseJson3, tag: 'json3-android' },
+    { url: baseUrl, headers: Object.assign({}, cookie), parse: parseXmlTranscript, tag: 'xml-desktop' },
+    { url: baseUrl, headers: Object.assign({ 'User-Agent': UA_ANDROID_YT }, cookie), parse: parseXmlTranscript, tag: 'xml-android' },
+    { url: `${gvUrl}${sep}fmt=json3`, headers: Object.assign({}, cookie), parse: parseJson3, tag: 'json3-googlevideo' },
+    { url: gvUrl, headers: Object.assign({}, cookie), parse: parseXmlTranscript, tag: 'xml-googlevideo' }
   ];
   for (const t of tries) {
     try {
@@ -207,13 +215,20 @@ async function fetchTrackSegments(baseUrl, attempts) {
   return [];
 }
 
+function cookieHeaderFrom(setCookies) {
+  const pairs = (setCookies || []).map(c => String(c).split(';')[0].trim()).filter(Boolean);
+  return pairs.length ? pairs.join('; ') : '';
+}
+
 async function playerViaWatchPage(videoId) {
-  const { text } = await fetchText(`https://www.youtube.com/watch?v=${videoId}&hl=en&bpctr=9999999999`, {
+  const { text, setCookies } = await fetchText(`https://www.youtube.com/watch?v=${videoId}&hl=en&bpctr=9999999999`, {
     headers: { 'Cookie': 'CONSENT=YES+cb.20230531-04-p0.en+FX+410' }
   });
+  const cookieHeader = cookieHeaderFrom(setCookies);
   const marker = 'ytInitialPlayerResponse = ';
   const idx = text.indexOf(marker);
   if (idx === -1) return null;
+  void cookieHeader;
   let i = idx + marker.length;
   let depth = 0, inStr = false, esc = false, end = -1;
   for (let j = i; j < text.length; j++) {
@@ -226,7 +241,7 @@ async function playerViaWatchPage(videoId) {
     else if (c === '}') { depth--; if (depth === 0) { end = j; break; } }
   }
   if (end === -1) return null;
-  try { return JSON.parse(text.slice(i, end + 1)); } catch (e) { return null; }
+  try { return { player: JSON.parse(text.slice(i, end + 1)), cookieHeader }; } catch (e) { return null; }
 }
 
 async function tracksViaTimedTextList(videoId) {
@@ -273,6 +288,7 @@ async function getTranscript(input, preferredLang) {
   let sawBlocked = false;
   const attempts = [];
   const attemptsRef = attempts;
+  let cookieForTracks = '';
   const tryPlayer = async (playerResponse, strategy) => {
     if (!playerResponse) { attempts.push({ strategy, result: 'no-response' }); return null; }
     const status = ((playerResponse.playabilityStatus || {}).status) || '';
@@ -286,7 +302,7 @@ async function getTranscript(input, preferredLang) {
     if (!tracks) { attempts.push({ strategy, result: 'ok-no-tracks' }); return null; }
     attempts.push({ strategy, result: 'ok-tracks:' + tracks.length });
     const track = pickTrack(tracks, preferredLang);
-    const segments = await fetchTrackSegments(track.baseUrl, attemptsRef);
+    const segments = await fetchTrackSegments(track.baseUrl, attemptsRef, cookieForTracks);
     if (!segments.length) return null;
     const details = playerResponse.videoDetails || {};
     return {
@@ -298,17 +314,19 @@ async function getTranscript(input, preferredLang) {
     };
   };
 
+  try {
+    const watch = await playerViaWatchPage(videoId);
+    if (watch && watch.cookieHeader) cookieForTracks = watch.cookieHeader;
+    const result = await tryPlayer(watch ? watch.player : null, 'WATCH_PAGE');
+    if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
+  } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
+
   for (const spec of INNERTUBE_CLIENTS) {
     try {
       const result = await tryPlayer(await playerViaInnertube(videoId, spec), spec.name);
       if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
     } catch (e) { attempts.push({ strategy: spec.name, result: 'error:' + (e.name || 'fetch') }); }
   }
-
-  try {
-    const result = await tryPlayer(await playerViaWatchPage(videoId), 'WATCH_PAGE');
-    if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
-  } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
 
   try {
     const tracks = await tracksViaTimedTextList(videoId);
