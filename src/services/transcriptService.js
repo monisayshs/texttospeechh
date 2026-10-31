@@ -180,20 +180,29 @@ function parseXmlTranscript(text) {
   return segments;
 }
 
-async function fetchTrackSegments(baseUrl) {
+const UA_ANDROID_YT = 'com.google.android.youtube/20.10.38 (Linux; U; Android 14; en_US; Pixel 8) gzip';
+
+async function fetchTrackSegments(baseUrl, attempts) {
   // Prefer the structured json3 format; fall back to the default XML.
+  // Some clients' caption URLs only answer when the follow-up request
+  // carries the same client identity, so both desktop and Android
+  // user agents are tried for each format.
   const sep = baseUrl.includes('?') ? '&' : '?';
-  try {
-    const { status, text } = await fetchText(`${baseUrl}${sep}fmt=json3`);
-    if (status === 200 && text && text.trim().startsWith('{')) {
-      const segs = parseJson3(text);
+  const tries = [
+    { url: `${baseUrl}${sep}fmt=json3`, headers: {}, parse: parseJson3, tag: 'json3-desktop' },
+    { url: `${baseUrl}${sep}fmt=json3`, headers: { 'User-Agent': UA_ANDROID_YT }, parse: parseJson3, tag: 'json3-android' },
+    { url: baseUrl, headers: {}, parse: parseXmlTranscript, tag: 'xml-desktop' },
+    { url: baseUrl, headers: { 'User-Agent': UA_ANDROID_YT }, parse: parseXmlTranscript, tag: 'xml-android' }
+  ];
+  for (const t of tries) {
+    try {
+      const { status, text } = await fetchText(t.url, { headers: t.headers });
+      const segs = status === 200 && text ? t.parse(text) : [];
+      if (attempts) attempts.push({ strategy: 'TRACK', result: t.tag + ':' + status + ':' + (text ? text.length : 0) + ':' + segs.length });
       if (segs.length) return segs;
+    } catch (e) {
+      if (attempts) attempts.push({ strategy: 'TRACK', result: t.tag + ':error' });
     }
-  } catch (e) { /* fall through to XML */ }
-  const { status, text } = await fetchText(baseUrl);
-  if (status === 200 && text) {
-    const segs = parseXmlTranscript(text);
-    if (segs.length) return segs;
   }
   return [];
 }
@@ -263,7 +272,7 @@ async function getTranscript(input, preferredLang) {
   let sawErrorStatus = false;
   let sawBlocked = false;
   const attempts = [];
-
+  const attemptsRef = attempts;
   const tryPlayer = async (playerResponse, strategy) => {
     if (!playerResponse) { attempts.push({ strategy, result: 'no-response' }); return null; }
     const status = ((playerResponse.playabilityStatus || {}).status) || '';
@@ -277,7 +286,7 @@ async function getTranscript(input, preferredLang) {
     if (!tracks) { attempts.push({ strategy, result: 'ok-no-tracks' }); return null; }
     attempts.push({ strategy, result: 'ok-tracks:' + tracks.length });
     const track = pickTrack(tracks, preferredLang);
-    const segments = await fetchTrackSegments(track.baseUrl);
+    const segments = await fetchTrackSegments(track.baseUrl, attemptsRef);
     if (!segments.length) return null;
     const details = playerResponse.videoDetails || {};
     return {
