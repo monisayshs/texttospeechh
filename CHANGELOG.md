@@ -28,6 +28,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Changed
+- **Image Compressor dropzone redesigned (2026-10-31, user's screenshot feedback — "iss camera ko hatao")**: the stock camera emoji in the upload area is replaced with the pattern the big tool sites use (checked iLoveIMG live: no emoji at all, button-first) - a soft primary-tinted dropzone, a white circular badge holding a thin blue line-drawn image icon (inline SVG), a larger Select Image button, and shorter copy ("or drop an image here"). Upload behaviour and the compression engine are unchanged; the functional test result stands.
+
 ### Added
 - **Image Compressor tool (2026-10-31)** (`src/pages/toolPages.js`, `src/seo/sitemapGenerator.js`, `public/index.html`): third standalone tool at `/image-compressor`, built on the user's "shuro kare teesra tool" - the differentiator from the 2026-10-16 research: compress to an EXACT size in KB (presets 20/50/100/200/500 KB + custom), aimed at Indian exam/job/bank form photos that demand a fixed KB range, plus a plain quality-slider mode and JPEG/WebP/PNG output. 100% client-side Canvas (no upload, no server cost, matching the privacy claim): binary-searches quality for the largest file at or under the target, steps dimensions down ×0.82 only when quality alone cannot reach it, PNG handled with a scale search, JPEG flattened onto white. Honest result line always shows before/after sizes and states when dimensions were reduced or the original was already smallest. /tools hub card and homepage tools card are live links; route added to TOOL_ROUTES. Functionally verified in a real Chromium (Playwright) against the dev server with a 2.0 MB noisy test photo: target 50 KB -> 50,633 bytes; target 20 KB -> 18,212 bytes; zero page errors.
 

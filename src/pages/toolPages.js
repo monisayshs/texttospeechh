@@ -877,11 +877,13 @@ const TOOL_PAGES = {
     ],
     "content": `
       <div id="ic-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
-        <div id="ic-drop" style="border:2px dashed var(--color-border-strong); border-radius:14px; padding:44px 24px; text-align:center; cursor:pointer; background:var(--color-bg);">
-          <p style="margin:0 0 10px; font-size:2.6rem;">&#128247;</p>
-          <span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:13px 30px; border-radius:10px; font-weight:700; font-size:1rem;">Select Image</span>
-          <p style="margin:14px 0 0; color:var(--color-text-muted); font-size:0.92rem;">or drag and drop a photo here - JPG, PNG or WebP</p>
-          <p style="margin:6px 0 0; font-size:0.82rem; color:var(--color-text-muted);">Your image never leaves this device. Nothing is uploaded.</p>
+        <div id="ic-drop" style="border:2px dashed var(--color-border-strong); border-radius:14px; padding:48px 24px; text-align:center; cursor:pointer; background:var(--color-primary-soft);">
+          <div style="width:84px; height:84px; margin:0 auto 20px; border-radius:50%; background:var(--color-surface); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg);">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4.5 18.5l4.5-4.5 3 3 3.5-3.5 4 4"/></svg>
+          </div>
+          <span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:14px 38px; border-radius:10px; font-weight:700; font-size:1.05rem;">Select Image</span>
+          <p style="margin:16px 0 0; color:var(--color-text-muted); font-size:0.95rem;">or drop an image here</p>
+          <p style="margin:6px 0 0; font-size:0.82rem; color:var(--color-text-muted);">JPG, PNG or WebP - your image never leaves this device. Nothing is uploaded.</p>
         </div>
         <input type="file" id="ic-file" accept="image/jpeg,image/png,image/webp" style="display:none;">
 
