@@ -83,7 +83,8 @@ const STATIC_SPOKE_ROUTES = [
 
 const TOOL_ROUTES = [
   { url: '/tools', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-31' },
-  { url: '/voice-pitch-changer', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-31' }
+  { url: '/voice-pitch-changer', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-31' },
+  { url: '/youtube-transcript-generator', priority: '0.9', changefreq: 'monthly', lastmod: '2026-10-31' }
 ];
 
 function getDynamicBlogRoutes() {
