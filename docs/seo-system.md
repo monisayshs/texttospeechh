@@ -61,6 +61,7 @@ TextToSpeechH AI employs a **Hub-and-Spoke** SEO content structure designed to b
   - `/text-to-speech/read-aloud`: Targeted at reading assistant & accessibility intent.
   - `/text-to-speech/pdf-to-speech`: Targeted at PDF document audio conversion.
   - `/text-to-speech/word-to-speech`: Targeted at Word/DOCX document conversion.
+  - `/text-to-speech/voice-pitch-changer`: Interactive tool page (data in `src/pages/toolPages.js`, routed via the TOOL_PAGES step in `src/api/seoHandler.js`, listed in `STATIC_SPOKE_ROUTES`). 100% client-side Web Audio pitch shifting (vanilla-JS WSOLA time-stretch + resample) — no uploads, no server endpoint. Added 2026-10-31.
 
 ### 2.3 Programmatic Spoke Pages (`src/seo/programmaticPages.js`)
 - **Language Spokes**: `/language/hindi`, `/language/spanish`, `/language/french`, `/language/german`, `/language/japanese`, etc.

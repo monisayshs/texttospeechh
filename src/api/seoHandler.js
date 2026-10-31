@@ -3,6 +3,7 @@ const { LEGAL_PAGES } = require('../pages/legalPages');
 const { AUTHOR_PAGES } = require('../pages/authorPages');
 const { TEXT_TO_SPEECH_PILLAR_PAGE } = require('../pages/textToSpeechPillar');
 const { TEXT_TO_SPEECH_SUBPAGES } = require('../pages/textToSpeechSubpages');
+const { TOOL_PAGES } = require('../pages/toolPages');
 const { BLOG_ARTICLES_MAP, getBlogHubPage } = require('../pages/textToSpeechBlogHub');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
 const schemaGenerator = require('../seo/schemaGenerator');
@@ -352,6 +353,15 @@ async function seoHandler(req, res) {
     // 2. Supporting Spokes (/text-to-speech/*)
     if (TEXT_TO_SPEECH_SUBPAGES[pathSlug]) {
       const html = renderSeoPage(TEXT_TO_SPEECH_SUBPAGES[pathSlug], pathSlug);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.end(html);
+      return true;
+    }
+
+    // 2b. Standalone Tool Pages (interactive client-side tools, e.g. /text-to-speech/voice-pitch-changer)
+    if (TOOL_PAGES[pathSlug]) {
+      const html = renderSeoPage(TOOL_PAGES[pathSlug], pathSlug);
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.end(html);

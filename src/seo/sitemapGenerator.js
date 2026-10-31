@@ -78,7 +78,8 @@ const STATIC_SPOKE_ROUTES = [
   { url: '/text-to-speech/read-aloud', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
   { url: '/text-to-speech/pdf-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
   { url: '/text-to-speech/word-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
-  { url: '/text-to-speech/txt-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes }
+  { url: '/text-to-speech/txt-to-speech', priority: '0.8', changefreq: 'monthly', lastmod: SECTION_LASTMOD.__spokes },
+  { url: '/text-to-speech/voice-pitch-changer', priority: '0.8', changefreq: 'monthly', lastmod: '2026-10-31' }
 ];
 
 function getDynamicBlogRoutes() {
