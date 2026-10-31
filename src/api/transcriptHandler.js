@@ -35,10 +35,13 @@ module.exports = async (req, res) => {
   } catch (err) {
     const code = err.code || 'UPSTREAM';
     const status = code === 'INVALID_URL' ? 400 : code === 'NOT_PLAYABLE' ? 404 : code === 'NO_CAPTIONS' ? 422 : 502;
-    res.status(status).json({
+    const parsed = new URL(req.url, 'https://www.texttospeechh.com');
+    const body = {
       success: false,
       code,
       error: err.message || 'Something went wrong while fetching the transcript.'
-    });
+    };
+    if (parsed.searchParams.get('debug') === '1' && Array.isArray(err.attempts)) body.attempts = err.attempts;
+    res.status(status).json(body);
   }
 };

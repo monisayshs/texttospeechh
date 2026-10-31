@@ -66,6 +66,19 @@ async function fetchJson(url, options = {}) {
 
 const INNERTUBE_CLIENTS = [
   {
+    name: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER',
+    key: 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
+    client: { clientName: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER', clientVersion: '2.0', hl: 'en', gl: 'US' },
+    extra: { thirdParty: { embedUrl: 'https://www.texttospeechh.com/youtube-transcript-generator' } }
+  },
+  {
+    name: 'ANDROID',
+    key: 'AIzaSyA8eiZmM1FaDVjRy-df2KTyQ_vz_yYM39w',
+    client: { clientName: 'ANDROID', clientVersion: '20.10.38', deviceMake: 'Google', deviceModel: 'Pixel 8', androidSdkVersion: 34, osName: 'Android', osVersion: '14', hl: 'en', gl: 'US', platform: 'MOBILE' },
+    extra: {},
+    headers: { 'User-Agent': 'com.google.android.youtube/20.10.38 (Linux; U; Android 14; en_US; Pixel 8) gzip', 'X-YouTube-Client-Name': '3', 'X-YouTube-Client-Version': '20.10.38' }
+  },
+  {
     name: 'WEB_EMBEDDED_PLAYER',
     key: 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
     client: { clientName: 'WEB_EMBEDDED_PLAYER', clientVersion: '1.20240111.09.00', hl: 'en', gl: 'US' },
@@ -101,7 +114,7 @@ async function playerViaInnertube(videoId, spec) {
   };
   const { json } = await fetchJson(`https://www.youtube.com/youtubei/v1/player?key=${spec.key}&prettyPrint=false`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: Object.assign({ 'Content-Type': 'application/json' }, spec.headers || {}),
     body: JSON.stringify(body)
   });
   return json;
@@ -246,19 +259,23 @@ async function getTranscript(input, preferredLang) {
     throw err;
   }
 
-  let lastPlayability = null;
-  let sawPlayerResponse = false;
+  let sawOk = false;
+  let sawErrorStatus = false;
+  let sawBlocked = false;
+  const attempts = [];
 
-  const tryPlayer = async (playerResponse) => {
-    if (!playerResponse) return null;
-    sawPlayerResponse = true;
+  const tryPlayer = async (playerResponse, strategy) => {
+    if (!playerResponse) { attempts.push({ strategy, result: 'no-response' }); return null; }
     const status = ((playerResponse.playabilityStatus || {}).status) || '';
     if (status && status !== 'OK') {
-      lastPlayability = status;
+      if (status === 'ERROR') sawErrorStatus = true; else sawBlocked = true;
+      attempts.push({ strategy, result: 'playability:' + status });
       return null;
     }
+    sawOk = true;
     const tracks = extractCaptionTracks(playerResponse);
-    if (!tracks) return null;
+    if (!tracks) { attempts.push({ strategy, result: 'ok-no-tracks' }); return null; }
+    attempts.push({ strategy, result: 'ok-tracks:' + tracks.length });
     const track = pickTrack(tracks, preferredLang);
     const segments = await fetchTrackSegments(track.baseUrl);
     if (!segments.length) return null;
@@ -274,20 +291,20 @@ async function getTranscript(input, preferredLang) {
 
   for (const spec of INNERTUBE_CLIENTS) {
     try {
-      const result = await tryPlayer(await playerViaInnertube(videoId, spec));
+      const result = await tryPlayer(await playerViaInnertube(videoId, spec), spec.name);
       if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
-    } catch (e) { /* try the next strategy */ }
+    } catch (e) { attempts.push({ strategy: spec.name, result: 'error:' + (e.name || 'fetch') }); }
   }
 
   try {
-    const result = await tryPlayer(await playerViaWatchPage(videoId));
+    const result = await tryPlayer(await playerViaWatchPage(videoId), 'WATCH_PAGE');
     if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
-  } catch (e) { /* fall through */ }
+  } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
 
   try {
     const tracks = await tracksViaTimedTextList(videoId);
     if (tracks) {
-      sawPlayerResponse = true;
+      sawOk = true;
       const track = pickTrack(tracks, preferredLang);
       const segments = await fetchTrackSegments(track.baseUrl);
       if (segments.length) {
@@ -303,18 +320,21 @@ async function getTranscript(input, preferredLang) {
     }
   } catch (e) { /* fall through to error below */ }
 
-  if (sawPlayerResponse && lastPlayability && lastPlayability !== 'OK') {
-    const err = new Error('This video cannot be played publicly (it may be private, age-restricted or removed), so its transcript is not available.');
-    err.code = 'NOT_PLAYABLE';
-    throw err;
-  }
-  if (sawPlayerResponse) {
+  if (sawOk) {
     const err = new Error('This video has no subtitles or captions, so there is no transcript to fetch. Try a video that shows a CC button on YouTube.');
     err.code = 'NO_CAPTIONS';
+    err.attempts = attempts;
     throw err;
   }
-  const err = new Error('YouTube did not answer properly just now. This is usually temporary — wait a minute and try again.');
+  if (sawErrorStatus && !sawBlocked) {
+    const err = new Error('This video cannot be played publicly (it may be private, age-restricted or removed), so its transcript is not available.');
+    err.code = 'NOT_PLAYABLE';
+    err.attempts = attempts;
+    throw err;
+  }
+  const err = new Error('YouTube did not answer properly just now. This is usually temporary - wait a minute and try again.');
   err.code = 'UPSTREAM';
+  err.attempts = attempts;
   throw err;
 }
 
