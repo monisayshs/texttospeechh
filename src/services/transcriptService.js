@@ -186,7 +186,7 @@ function parseXmlTranscript(text) {
 
 const UA_ANDROID_YT = 'com.google.android.youtube/20.10.38 (Linux; U; Android 14; en_US; Pixel 8) gzip';
 
-async function fetchTrackSegments(baseUrl, attempts, cookieHeader) {
+async function fetchTrackSegments(baseUrl, attempts, cookieHeader, uaFirst) {
   // Prefer the structured json3 format; fall back to the default XML.
   // Some clients' caption URLs only answer when the follow-up request
   // carries the same client identity, so both desktop and Android
@@ -202,6 +202,9 @@ async function fetchTrackSegments(baseUrl, attempts, cookieHeader) {
     { url: `${gvUrl}${sep}fmt=json3`, headers: Object.assign({}, cookie), parse: parseJson3, tag: 'json3-googlevideo' },
     { url: gvUrl, headers: Object.assign({}, cookie), parse: parseXmlTranscript, tag: 'xml-googlevideo' }
   ];
+  if (uaFirst === 'android') {
+    tries.sort((a, b) => (b.tag.includes('android') ? 1 : 0) - (a.tag.includes('android') ? 1 : 0));
+  }
   for (const t of tries) {
     try {
       const { status, text } = await fetchText(t.url, { headers: t.headers });
@@ -289,7 +292,7 @@ async function getTranscript(input, preferredLang) {
   const attempts = [];
   const attemptsRef = attempts;
   let cookieForTracks = '';
-  const tryPlayer = async (playerResponse, strategy) => {
+  const tryPlayer = async (playerResponse, strategy, uaFirst) => {
     if (!playerResponse) { attempts.push({ strategy, result: 'no-response' }); return null; }
     const status = ((playerResponse.playabilityStatus || {}).status) || '';
     if (status && status !== 'OK') {
@@ -302,7 +305,7 @@ async function getTranscript(input, preferredLang) {
     if (!tracks) { attempts.push({ strategy, result: 'ok-no-tracks' }); return null; }
     attempts.push({ strategy, result: 'ok-tracks:' + tracks.length });
     const track = pickTrack(tracks, preferredLang);
-    const segments = await fetchTrackSegments(track.baseUrl, attemptsRef, cookieForTracks);
+    const segments = await fetchTrackSegments(track.baseUrl, attemptsRef, cookieForTracks, uaFirst);
     if (!segments.length) return null;
     const details = playerResponse.videoDetails || {};
     return {
@@ -322,10 +325,14 @@ async function getTranscript(input, preferredLang) {
   } catch (e) { attempts.push({ strategy: 'WATCH_PAGE', result: 'error:' + (e.name || 'fetch') }); }
 
   for (const spec of INNERTUBE_CLIENTS) {
-    try {
-      const result = await tryPlayer(await playerViaInnertube(videoId, spec), spec.name);
-      if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
-    } catch (e) { attempts.push({ strategy: spec.name, result: 'error:' + (e.name || 'fetch') }); }
+    const maxTries = spec.name === 'ANDROID' ? 3 : 1;
+    for (let attemptNo = 1; attemptNo <= maxTries; attemptNo++) {
+      try {
+        const result = await tryPlayer(await playerViaInnertube(videoId, spec), attemptNo > 1 ? spec.name + '#' + attemptNo : spec.name, spec.name === 'ANDROID' ? 'android' : undefined);
+        if (result) { result.text = result.segments.map(s => s.text).join(' '); return result; }
+      } catch (e) { attempts.push({ strategy: spec.name, result: 'error:' + (e.name || 'fetch') }); }
+      if (attemptNo < maxTries) await new Promise(r => setTimeout(r, 900));
+    }
   }
 
   try {
