@@ -90,7 +90,7 @@ ${trackingHtml}
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="stylesheet" href="/style.css?v=8.0.0">
+  <link rel="stylesheet" href="/style.css?v=8.3.0">
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
@@ -153,7 +153,7 @@ ${trackingHtml}
 
   
 
-  <script src="/app.js?v=8.0.0"></script>
+  <script src="/app.js?v=8.3.0"></script>
 </body>
 </html>`;
 }
@@ -264,7 +264,7 @@ ${trackingHtml}
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="stylesheet" href="/style.css?v=8.0.0">
+  <link rel="stylesheet" href="/style.css?v=8.3.0">
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
@@ -328,7 +328,7 @@ ${trackingHtml}
 
   
 
-  <script src="/app.js?v=8.0.0"></script>
+  <script src="/app.js?v=8.3.0"></script>
 </body>
 </html>`;
 }

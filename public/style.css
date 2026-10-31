@@ -9,3 +9,7 @@
 .readalong-words .rw.active { background: var(--color-primary); color: #fff; }
 [data-theme="dark"] .readalong-box { background: var(--color-surface); }
 @media (max-width: 640px) { .readalong-box { max-height: 180px; padding: 12px 14px; } .readalong-words { font-size: .98rem; } }
+
+/* Perf 2026-10-31: ambient particle layer off on mobile + reduced motion (scroll smoothness on low-end phones) */
+@media (max-width: 820px) { .particle-background { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .particle-background { display: none !important; } .particle { animation: none !important; } }

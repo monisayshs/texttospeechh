@@ -26,6 +26,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
+- **Session Timestamp**: 2026-10-31 (Mobile smoothness pass — user: "hamari sites insab tool ki wajah se bhari lag rhi h... smooth nhi chal rhi h, mobile friendly isko sahi karna"; he also confirmed ALL remaining Request Indexing done tonight, incl. transcript + image-compressor pages)
+- **Current Objective**: DONE (pending live verification) — measured the site (assets lean: CSS 9.9 KB br cached 1y, tool HTML ~9 KB wire, GA4 already deferred), found the jank source (15 infinitely-animating fixed gradient particles), gated them off mobile/weak/reduced-motion devices in app.js + CSS media rules, bumped asset versions to v8.3.0 everywhere, verified 0 particles under mobile emulation. Clarity's immediate load deliberately left as-is (his 2026-10-06 decision) and flagged to him as the remaining lever.
+
 - **Session Timestamp**: 2026-10-31 (Image Compressor build — user: "Ok to shuro kare teesra tool?")
 - **Current Objective**: DONE (pending live verification) — tool #3 of his chosen set: `/image-compressor` (TOOL_PAGES standalone template, exact-KB target mode + quality mode, Canvas-only), hub + homepage cards live, sitemap updated. Functional browser test passed on a 2.0 MB photo (50 KB -> 50,633 B; 20 KB -> 18,212 B, no page errors). Same evening he asked for Instagram-transcript research: demand is real (2,400 + 1,000/mo LOW) and page 1 is small tools, BUT Instagram exposes no caption file - every ranking tool runs paid speech-to-text on the audio (hence their credits/limits); advised NOT to build it free/unlimited now, noted in ~/workspace/research_notes/instagram-transcript-research-2026-10-31.md, revisit when a cheap reliable route exists.
 

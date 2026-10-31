@@ -208,7 +208,7 @@ ${trackingHtml}
   ${faqSchemaJsonLd}${personSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
   ${articleSchema}
 
-  <link rel="stylesheet" href="/style.css?v=8.2.0">
+  <link rel="stylesheet" href="/style.css?v=8.3.0">
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();
@@ -313,7 +313,7 @@ ${trackingHtml}
     ${footerHtml}
   </div>
 
-  <script src="/app.js?v=8.2.0"></script>
+  <script src="/app.js?v=8.3.0"></script>
 </body>
 </html>`;
 }
@@ -371,7 +371,7 @@ ${trackingHtml}
   <script type="application/ld+json">${webSiteSchema}</script>
   <script type="application/ld+json">${softwareSchema}</script>
   ${faqSchemaJsonLd}<script type="application/ld+json">${breadcrumbSchema}</script>
-  <link rel="stylesheet" href="/style.css?v=8.2.0">
+  <link rel="stylesheet" href="/style.css?v=8.3.0">
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
   <script>
     (function(){var t=localStorage.getItem('tts_theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();

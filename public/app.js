@@ -1043,8 +1043,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Ambient Particle Background Generator ---
+  // Performance (2026-10-31): 15 large gradient blobs animating forever on a
+  // fixed full-screen layer is a classic scroll-jank + battery drain on
+  // low-end phones. Create them only where the hardware can afford it:
+  // skip on small screens, few-core devices, Data Saver and reduced motion.
   const particleBg = document.getElementById('particle-bg');
-  if (particleBg) {
+  const canAffordParticles = !(window.matchMedia('(max-width: 820px)').matches
+    || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
+    || (navigator.connection && navigator.connection.saveData));
+  if (particleBg && canAffordParticles) {
     for (let i = 0; i < 15; i++) {
       const particle = document.createElement('div');
       particle.className = 'particle';
