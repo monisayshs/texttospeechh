@@ -858,6 +858,357 @@ const TOOL_PAGES = {
     `
   }
 
+  ,
+  "image-compressor": {
+    "title": "Image Compressor - Compress Image to 20 KB, 50 KB, 100 KB Online Free | TextToSpeechH AI",
+    "h1": "Image Compressor",
+    "metaDesc": "Compress an image to an exact size in KB - 20 KB, 50 KB, 100 KB or any size you choose. Built for online application forms, 100% private: your photo never leaves your device.",
+    "category": "Image Tools",
+    "standaloneTool": true,
+    "tagline": "Shrink any photo to the exact KB size your form demands. Free, private, no sign-up - the image never leaves your device.",
+    "readingTime": "5 min read",
+    "faqs": [
+      { "q": "How do I compress an image to exactly 50 KB or 20 KB?", "a": "Choose the Target size mode, type 50 (or tap a preset like 20 KB, 50 KB, 100 KB), add your photo and press Compress. The tool automatically finds the highest quality that keeps the file at or below your target size, shrinking the dimensions only if quality alone is not enough." },
+      { "q": "Why do online forms reject my photo?", "a": "Most application forms - exams, government jobs, bank and university admissions - accept photos only inside a fixed size range, often between 20 KB and 50 KB for a photo and a similar range for a signature. A phone photo is usually 2-5 MB, far above the limit. Compressing it to the exact KB size the form asks for fixes the rejection." },
+      { "q": "Is my photo uploaded to a server?", "a": "No. Compression happens entirely inside your browser with built-in technology. Your image is never uploaded, never stored and never seen by us or anyone else - you can even disconnect from the internet after the page loads and it still works." },
+      { "q": "Will my photo lose quality?", "a": "A smaller file always trades a little quality - that is honest physics, not a trick. The tool protects quality as much as possible: it lowers quality only as far as your target size requires, and reduces dimensions only when there is no other way to reach a very small target. For form photos viewed at small sizes, the result looks the same." },
+      { "q": "Which format should I choose for application forms?", "a": "JPEG. Almost every form accepts it, it compresses photos the best, and transparent areas are placed on a clean white background automatically. WebP gives slightly smaller files but some older form portals do not accept it. PNG is best kept for logos and graphics, not photos." },
+      { "q": "Can I compress many images at once?", "a": "This version compresses one image at a time, carefully, so the exact-size result is reliable. That covers the normal case - one photo and one signature per form. A batch mode is planned." }
+    ],
+    "content": `
+      <div id="ic-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
+        <div id="ic-drop" style="border:2px dashed var(--color-border-strong); border-radius:14px; padding:44px 24px; text-align:center; cursor:pointer; background:var(--color-bg);">
+          <p style="margin:0 0 10px; font-size:2.6rem;">&#128247;</p>
+          <span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:13px 30px; border-radius:10px; font-weight:700; font-size:1rem;">Select Image</span>
+          <p style="margin:14px 0 0; color:var(--color-text-muted); font-size:0.92rem;">or drag and drop a photo here - JPG, PNG or WebP</p>
+          <p style="margin:6px 0 0; font-size:0.82rem; color:var(--color-text-muted);">Your image never leaves this device. Nothing is uploaded.</p>
+        </div>
+        <input type="file" id="ic-file" accept="image/jpeg,image/png,image/webp" style="display:none;">
+
+        <div id="ic-work" style="display:none; margin-top:22px;">
+          <p id="ic-fileinfo" style="margin:0 0 16px; font-size:0.95rem;"></p>
+
+          <p style="margin:0 0 8px; font-weight:700;">How should it shrink?</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+            <label style="display:inline-flex; gap:7px; align-items:center; border:1px solid var(--color-border-strong); border-radius:10px; padding:9px 16px; cursor:pointer;">
+              <input type="radio" name="ic-mode" id="ic-mode-target" checked> Target size (KB)
+            </label>
+            <label style="display:inline-flex; gap:7px; align-items:center; border:1px solid var(--color-border-strong); border-radius:10px; padding:9px 16px; cursor:pointer;">
+              <input type="radio" name="ic-mode" id="ic-mode-quality"> Quality slider
+            </label>
+          </div>
+
+          <div id="ic-target-group">
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:8px;">
+              <button type="button" class="ic-chip" data-kb="20" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">20 KB</button>
+              <button type="button" class="ic-chip" data-kb="50" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">50 KB</button>
+              <button type="button" class="ic-chip" data-kb="100" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">100 KB</button>
+              <button type="button" class="ic-chip" data-kb="200" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">200 KB</button>
+              <button type="button" class="ic-chip" data-kb="500" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">500 KB</button>
+              <span style="display:inline-flex; align-items:center; gap:6px;">
+                <input type="number" id="ic-kb" value="100" min="5" max="5000" style="width:90px; padding:9px 10px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit; font-size:1rem;"> KB
+              </span>
+            </div>
+            <p style="margin:0 0 16px; font-size:0.85rem; color:var(--color-text-muted);">The result will be at or below this size, at the best quality that fits.</p>
+          </div>
+
+          <div id="ic-quality-group" style="display:none;">
+            <label for="ic-quality" style="display:block; margin-bottom:6px;">Quality: <strong><span id="ic-quality-val">80</span>%</strong> <span style="color:var(--color-text-muted); font-size:0.85rem;">(lower = smaller file)</span></label>
+            <input type="range" id="ic-quality" min="10" max="95" value="80" style="width:100%; margin-bottom:16px;">
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
+            <label>Format:
+              <select id="ic-format" style="padding:9px 12px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit;">
+                <option value="image/jpeg" selected>JPEG (best for forms)</option>
+                <option value="image/webp">WebP (smallest)</option>
+                <option value="image/png">PNG (graphics)</option>
+              </select>
+            </label>
+            <button type="button" id="ic-go" style="background:var(--color-primary); color:var(--color-primary-on); border:0; padding:12px 30px; border-radius:10px; font-weight:700; font-size:1rem; cursor:pointer;">Compress Image</button>
+          </div>
+          <p id="ic-status" style="margin:12px 0 0; font-size:0.95rem; color:var(--color-text-muted);">Photo ready. Choose a size and press Compress.</p>
+
+          <div id="ic-result" style="display:none; margin-top:18px; border-top:1px solid var(--color-border); padding-top:18px;">
+            <p id="ic-result-line" style="margin:0 0 6px; font-size:1.05rem; font-weight:700;"></p>
+            <p id="ic-result-note" style="margin:0 0 14px; font-size:0.88rem; color:var(--color-text-muted);"></p>
+            <img id="ic-preview" alt="Compressed image preview" style="max-width:100%; max-height:340px; border-radius:10px; border:1px solid var(--color-border); display:block; margin-bottom:16px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a id="ic-download" href="#" download="compressed-image.jpg" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:10px; font-weight:700; text-decoration:none;">Download Compressed Image</a>
+              <button type="button" id="ic-again" style="padding:12px 22px; border-radius:10px; border:1px solid var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary); font-weight:600; cursor:pointer;">Compress Another</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px;">
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#127919;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Exact KB Size</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Type 20, 50 or 100 KB - the file lands at or below it, guaranteed logic, no guessing.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128274;</p>
+          <p style="margin:0 0 4px; font-weight:700;">100% Private</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Runs entirely in your browser. Your photo is never uploaded anywhere.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128221;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Built for Forms</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Made for exam, job, bank and admission forms that demand an exact photo size.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128176;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Free, No Sign-Up</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">No account, no watermark, no daily limit. Just compress and download.</p>
+        </div>
+      </div>
+
+      <h2>Why Forms Demand an Exact Image Size</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        If you have ever filled an online application in India - an SSC, UPSC, banking, railway or university form - you know the moment: the portal rejects your photo because it must be <strong>between 20 KB and 50 KB</strong>, and your phone's photo is 3 MB. This <strong>image compressor</strong> exists for exactly that moment. Instead of guessing with a quality slider and checking the file size again and again, you type the size the form demands and the tool does the trial-and-error for you - finding the best quality that still fits under your limit.
+      </p>
+
+      <h2>How to Compress an Image to an Exact KB Size</h2>
+      <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Add your photo.</strong> Tap Select Image or drag the file in. JPG, PNG and WebP all work.</li>
+        <li><strong>Pick the size your form asks for.</strong> Tap a preset - 20 KB, 50 KB, 100 KB - or type any size. For most form photos, JPEG is the right format.</li>
+        <li><strong>Press Compress and download.</strong> The result shows the new size before you save it, so you know the form will accept it.</li>
+      </ol>
+
+      <h2>Honest Limits</h2>
+      <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Very small targets cost quality.</strong> Squeezing a big photo under 20 KB means lower quality and sometimes smaller dimensions. The tool always chooses the gentlest path, and it tells you the final dimensions honestly in the result.</li>
+        <li><strong>PNG photos barely shrink.</strong> PNG is a lossless format made for graphics. For a photo, JPEG or WebP will always reach a small KB size better - the tool will warn you if PNG cannot reach your target.</li>
+        <li><strong>One image at a time.</strong> This version does one photo carefully instead of many carelessly - which is what a form submission needs.</li>
+      </ul>
+
+      <h2>More Free Tools</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:30px;">
+        <a href="/tools" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">All Free Tools</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Browse every free tool on TextToSpeechH AI in one place.</p>
+        </a>
+        <a href="/youtube-transcript-generator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">YouTube Transcript Generator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Get the full text of any YouTube video, with timestamps.</p>
+        </a>
+        <a href="/voice-pitch-changer" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Voice Pitch Changer</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Make any voice recording deeper or higher, without changing its speed.</p>
+        </a>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">How do I compress an image to exactly 50 KB or 20 KB?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Choose the Target size mode, type 50 (or tap a preset like 20 KB, 50 KB, 100 KB), add your photo and press Compress. The tool automatically finds the highest quality that keeps the file at or below your target size, shrinking the dimensions only if quality alone is not enough.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Why do online forms reject my photo?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Most application forms - exams, government jobs, bank and university admissions - accept photos only inside a fixed size range, often between 20 KB and 50 KB for a photo and a similar range for a signature. A phone photo is usually 2-5 MB, far above the limit. Compressing it to the exact KB size the form asks for fixes the rejection.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Is my photo uploaded to a server?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">No. Compression happens entirely inside your browser with built-in technology. Your image is never uploaded, never stored and never seen by us or anyone else - you can even disconnect from the internet after the page loads and it still works.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Will my photo lose quality?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">A smaller file always trades a little quality - that is honest physics, not a trick. The tool protects quality as much as possible: it lowers quality only as far as your target size requires, and reduces dimensions only when there is no other way to reach a very small target. For form photos viewed at small sizes, the result looks the same.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Which format should I choose for application forms?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">JPEG. Almost every form accepts it, it compresses photos the best, and transparent areas are placed on a clean white background automatically. WebP gives slightly smaller files but some older form portals do not accept it. PNG is best kept for logos and graphics, not photos.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Can I compress many images at once?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">This version compresses one image at a time, carefully, so the exact-size result is reliable. That covers the normal case - one photo and one signature per form. A batch mode is planned.</p>
+        </div>
+      </div>
+
+      <script>
+      (function () {
+        var drop = document.getElementById('ic-drop');
+        var fileInput = document.getElementById('ic-file');
+        var work = document.getElementById('ic-work');
+        var fileInfo = document.getElementById('ic-fileinfo');
+        var modeTarget = document.getElementById('ic-mode-target');
+        var modeQuality = document.getElementById('ic-mode-quality');
+        var targetGroup = document.getElementById('ic-target-group');
+        var qualityGroup = document.getElementById('ic-quality-group');
+        var kbInput = document.getElementById('ic-kb');
+        var qualityInput = document.getElementById('ic-quality');
+        var qualityVal = document.getElementById('ic-quality-val');
+        var formatSel = document.getElementById('ic-format');
+        var goBtn = document.getElementById('ic-go');
+        var statusEl = document.getElementById('ic-status');
+        var result = document.getElementById('ic-result');
+        var resultLine = document.getElementById('ic-result-line');
+        var resultNote = document.getElementById('ic-result-note');
+        var preview = document.getElementById('ic-preview');
+        var dl = document.getElementById('ic-download');
+        var againBtn = document.getElementById('ic-again');
+        var chips = document.querySelectorAll('.ic-chip');
+
+        var bitmap = null, natW = 0, natH = 0, curFile = null, outUrl = null;
+
+        function fmtKB(bytes) {
+          if (bytes < 1024) return bytes + ' B';
+          var kb = bytes / 1024;
+          if (kb < 100) return (Math.round(kb * 10) / 10) + ' KB';
+          return Math.round(kb) + ' KB';
+        }
+        function setStatus(msg, isError) {
+          statusEl.textContent = msg;
+          statusEl.style.color = isError ? 'var(--color-error-text)' : 'var(--color-text-muted)';
+        }
+        function syncMode() {
+          targetGroup.style.display = modeTarget.checked ? 'block' : 'none';
+          qualityGroup.style.display = modeTarget.checked ? 'none' : 'block';
+        }
+        modeTarget.addEventListener('change', syncMode);
+        modeQuality.addEventListener('change', syncMode);
+        qualityInput.addEventListener('input', function () { qualityVal.textContent = qualityInput.value; });
+        for (var c = 0; c < chips.length; c++) {
+          chips[c].addEventListener('click', function () { kbInput.value = this.getAttribute('data-kb'); });
+        }
+
+        function loadFile(file) {
+          if (!file) return;
+          if (file.type.indexOf('image/') !== 0) { setStatus('That file is not an image. Choose a JPG, PNG or WebP photo.', true); return; }
+          curFile = file;
+          var url = URL.createObjectURL(file);
+          var img = new Image();
+          img.onload = function () {
+            bitmap = img; natW = img.naturalWidth; natH = img.naturalHeight;
+            fileInfo.innerHTML = '';
+            var strong = document.createElement('strong');
+            strong.textContent = file.name;
+            fileInfo.appendChild(strong);
+            fileInfo.appendChild(document.createTextNode(' - ' + fmtKB(file.size) + ' - ' + natW + ' x ' + natH + ' px'));
+            work.style.display = 'block';
+            result.style.display = 'none';
+            setStatus('Photo ready. Choose a size and press Compress.');
+          };
+          img.onerror = function () { setStatus('This image could not be read. Try a different file.', true); };
+          img.src = url;
+        }
+        drop.addEventListener('click', function () { fileInput.click(); });
+        fileInput.addEventListener('change', function () { if (fileInput.files && fileInput.files[0]) loadFile(fileInput.files[0]); });
+        drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.style.borderColor = 'var(--color-primary)'; });
+        drop.addEventListener('dragleave', function () { drop.style.borderColor = 'var(--color-border-strong)'; });
+        drop.addEventListener('drop', function (e) {
+          e.preventDefault(); drop.style.borderColor = 'var(--color-border-strong)';
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+        });
+
+        function encode(w, h, type, q) {
+          return new Promise(function (resolve) {
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(w));
+            canvas.height = Math.max(1, Math.round(h));
+            var ctx = canvas.getContext('2d');
+            if (type === 'image/jpeg') { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+            ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+            if (canvas.toBlob) {
+              canvas.toBlob(function (blob) { resolve(blob); }, type, q);
+            } else {
+              var dataUrl = canvas.toDataURL(type, q);
+              var parts = dataUrl.split(',');
+              var bin = atob(parts[1]);
+              var arr = new Uint8Array(bin.length);
+              for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+              resolve(new Blob([arr], { type: type }));
+            }
+          });
+        }
+
+        async function compressToTarget(type, targetBytes) {
+          if (type === 'image/png') {
+            var scales = [1, 0.85, 0.72, 0.6, 0.5, 0.42, 0.35, 0.28];
+            var smallest = null;
+            for (var i = 0; i < scales.length; i++) {
+              var b = await encode(natW * scales[i], natH * scales[i], type, 1);
+              if (!b) continue;
+              if (!smallest || b.size < smallest.size) smallest = b;
+              if (b.size <= targetBytes) return { blob: b, reached: true, scaled: scales[i] < 1 };
+            }
+            return { blob: smallest, reached: false, scaled: true };
+          }
+          var scale = 1, smallestBlob = null;
+          for (var round = 0; round < 7; round++) {
+            var w = natW * scale, h = natH * scale;
+            var lo = 0.05, hi = 1.0, best = null;
+            for (var step = 0; step < 7; step++) {
+              var mid = (lo + hi) / 2;
+              var blob = await encode(w, h, type, mid);
+              if (!blob) break;
+              if (!smallestBlob || blob.size < smallestBlob.size) smallestBlob = blob;
+              if (blob.size <= targetBytes) { best = blob; lo = mid; } else { hi = mid; }
+            }
+            if (best) return { blob: best, reached: true, scaled: scale < 1 };
+            scale = scale * 0.82;
+          }
+          return { blob: smallestBlob, reached: false, scaled: true };
+        }
+
+        goBtn.addEventListener('click', async function () {
+          if (!bitmap || !curFile) { setStatus('Choose an image first.', true); return; }
+          goBtn.disabled = true;
+          goBtn.textContent = 'Compressing...';
+          result.style.display = 'none';
+          setStatus('Working - this happens on your device, give it a moment...');
+          try {
+            var type = formatSel.value;
+            var out;
+            if (modeTarget.checked) {
+              var kb = parseFloat(kbInput.value);
+              if (!kb || kb < 5) { setStatus('Type a target size of at least 5 KB.', true); goBtn.disabled = false; goBtn.textContent = 'Compress Image'; return; }
+              out = await compressToTarget(type, Math.round(kb * 1024));
+            } else {
+              var q = parseInt(qualityInput.value, 10) / 100;
+              var single = await encode(natW, natH, type, q);
+              out = { blob: single, reached: true, scaled: false };
+            }
+            if (!out || !out.blob) { setStatus('Compression failed for this image. Try a different photo or format.', true); goBtn.disabled = false; goBtn.textContent = 'Compress Image'; return; }
+            var finalBlob = out.blob, usedOriginal = false;
+            if (finalBlob.size >= curFile.size && type === curFile.type) { finalBlob = curFile; usedOriginal = true; }
+            if (outUrl) URL.revokeObjectURL(outUrl);
+            outUrl = URL.createObjectURL(finalBlob);
+            var ext = type === 'image/png' ? 'png' : (type === 'image/webp' ? 'webp' : 'jpg');
+            var saved = Math.max(0, Math.round((1 - finalBlob.size / curFile.size) * 100));
+            resultLine.textContent = fmtKB(curFile.size) + ' -> ' + fmtKB(finalBlob.size) + (usedOriginal ? '' : ' (' + saved + '% smaller)');
+            var notes = [];
+            if (usedOriginal) notes.push('Your original was already the smallest version - it is ready to download as-is.');
+            if (!out.reached && !usedOriginal) notes.push('This was the smallest reachable size - an extremely small target also needs smaller dimensions, which were reduced as gently as possible.');
+            if (out.scaled && out.reached) notes.push('Dimensions were slightly reduced to reach your target size at the best quality.');
+            if (type === 'image/jpeg') notes.push('Saved as JPEG on a clean white background, ready for application forms.');
+            resultNote.textContent = notes.join(' ');
+            preview.src = outUrl;
+            dl.href = outUrl;
+            dl.setAttribute('download', 'compressed-image.' + ext);
+            result.style.display = 'block';
+            setStatus('Done. Check the new size, then download.');
+          } catch (err) {
+            setStatus('Something went wrong while compressing. Try a smaller photo or a different format.', true);
+          }
+          goBtn.disabled = false;
+          goBtn.textContent = 'Compress Image';
+        });
+
+        againBtn.addEventListener('click', function () {
+          result.style.display = 'none';
+          work.style.display = 'none';
+          fileInput.value = '';
+          bitmap = null; curFile = null;
+          drop.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+      </script>
+    `
+  }
+
 };
 
 const TOOLS_HUB_PAGE = {
@@ -886,11 +1237,11 @@ const TOOLS_HUB_PAGE = {
           <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">YouTube Transcript Generator</p>
           <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Get the full text of any YouTube video in one click, with timestamps.</p>
         </a>
-        <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
+        <a href="/image-compressor" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
           <p style="margin:0 0 10px; font-size:1.9rem;">&#128247;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">Image Compressor</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB for online forms. <strong>Coming soon.</strong></p>
-        </div>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Image Compressor</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
+        </a>
         <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
           <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
           <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">Age Calculator</p>

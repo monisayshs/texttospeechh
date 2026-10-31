@@ -26,6 +26,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
+- **Session Timestamp**: 2026-10-31 (Image Compressor build — user: "Ok to shuro kare teesra tool?")
+- **Current Objective**: DONE (pending live verification) — tool #3 of his chosen set: `/image-compressor` (TOOL_PAGES standalone template, exact-KB target mode + quality mode, Canvas-only), hub + homepage cards live, sitemap updated. Functional browser test passed on a 2.0 MB photo (50 KB -> 50,633 B; 20 KB -> 18,212 B, no page errors). Same evening he asked for Instagram-transcript research: demand is real (2,400 + 1,000/mo LOW) and page 1 is small tools, BUT Instagram exposes no caption file - every ranking tool runs paid speech-to-text on the audio (hence their credits/limits); advised NOT to build it free/unlimited now, noted in ~/workspace/research_notes/instagram-transcript-research-2026-10-31.md, revisit when a cheap reliable route exists.
+
 - **Session Timestamp**: 2026-10-31 (YouTube Transcript Generator build — user: "To shuro karo phir", after confirming the whole tool set can be built free and that the backend can ship through the GitHub->Cloudflare route without dashboard access)
 - **Current Objective**: DONE (pending live verification) — tool #2 of his chosen set is built: `/youtube-transcript-generator` page (TOOL_PAGES, standalone template) + `GET /api/transcript` backend (`src/services/transcriptService.js` multi-strategy free caption fetch + `src/api/transcriptHandler.js`, wired into `functions/[[path]].js` and `dev-server.js`), hub + homepage cards switched to live, sitemap updated. Local checks passed except the real-video fetch, which this sandbox's YouTube-blocked egress cannot perform (429/UNPLAYABLE) — live verification on Cloudflare is the deciding test.
 
