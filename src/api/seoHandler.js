@@ -390,12 +390,6 @@ ${trackingHtml}
     .hub-pill { border:1.5px solid var(--color-border); background:var(--color-surface); color:var(--color-text-secondary); font:inherit; font-weight:600; font-size:0.92rem; padding:9px 18px; border-radius:999px; cursor:pointer; transition:all .18s ease; }
     .hub-pill:hover { border-color:var(--color-primary); color:var(--color-primary); }
     .hub-pill.active { background:var(--color-primary); border-color:var(--color-primary); color:#fff; }
-    .hub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(225px,1fr)); gap:18px; }
-    .hub-card { display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:16px; padding:26px 22px; text-decoration:none; color:inherit; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-    .hub-card:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,0.10); border-color:var(--color-primary); }
-    .hub-chip { width:54px; height:54px; border-radius:15px; display:flex; align-items:center; justify-content:center; font-size:1.65rem; margin:0 0 16px; }
-    .hub-card h3 { margin:0 0 7px; font-size:1.07rem; color:var(--color-text); }
-    .hub-card p { margin:0; font-size:0.9rem; line-height:1.6; color:var(--color-text-muted); }
     .tool-main h2 { color:var(--color-text); margin-top:34px; }
     .tool-main p, .tool-main li { color:var(--color-text-secondary); }
     .tool-footer { max-width:1080px; margin:36px auto 0; padding:22px 20px 34px; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:0.9rem; color:var(--color-text-muted); }

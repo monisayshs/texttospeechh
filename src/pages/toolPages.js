@@ -2384,41 +2384,41 @@ const TOOLS_HUB_PAGE = {
         <button type="button" class="hub-pill" data-filter="video">Video &amp; Text</button>
         <button type="button" class="hub-pill" data-filter="calc">Calculators</button>
       </div>
-      <div class="hub-grid">
-        <a class="hub-card" data-cat="voice" href="/voice-pitch-changer">
-          <p class="hub-chip" style="background:#ede9fe;">&#127908;</p>
+      <div class="features-grid">
+        <a class="feature-card glass-panel hub-card" data-cat="voice" href="/voice-pitch-changer" style="text-decoration:none; color:inherit; display:block;" aria-label="Voice Pitch Changer">
+          <div class="feature-icon">🎤</div>
           <h3>Voice Pitch Changer</h3>
-          <p>Make any voice recording deeper or higher without changing its speed.</p>
+          <p>Make any voice recording deeper or higher without changing its speed. Free, no watermark, nothing uploaded.</p>
         </a>
-        <a class="hub-card" data-cat="voice" href="/">
-          <p class="hub-chip" style="background:#dbeafe;">&#128266;</p>
+        <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="Text to Speech Generator">
+          <div class="feature-icon">🔊</div>
           <h3>Text to Speech Generator</h3>
-          <p>Turn typed text into natural AI voiceovers and download the MP3, free.</p>
+          <p>Turn typed text into natural AI voiceovers in 12+ languages and download the MP3 instantly.</p>
         </a>
-        <a class="hub-card" data-cat="video" href="/youtube-transcript-generator">
-          <p class="hub-chip" style="background:#fee2e2;">&#128196;</p>
+        <a class="feature-card glass-panel hub-card" data-cat="video" href="/youtube-transcript-generator" style="text-decoration:none; color:inherit; display:block;" aria-label="YouTube Transcript Generator">
+          <div class="feature-icon">📄</div>
           <h3>YouTube Transcript Generator</h3>
-          <p>Get the full text of any YouTube video in one click, with timestamps.</p>
+          <p>Get the full text of any YouTube video in one click, with timestamps. Free, no sign-up.</p>
         </a>
-        <a class="hub-card" data-cat="photo" href="/image-compressor">
-          <p class="hub-chip" style="background:#fef3c7;">&#128247;</p>
+        <a class="feature-card glass-panel hub-card" data-cat="photo" href="/image-compressor" style="text-decoration:none; color:inherit; display:block;" aria-label="Image Compressor">
+          <div class="feature-icon">📷</div>
           <h3>Image Compressor</h3>
-          <p>Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
+          <p>Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online application forms. Free and private.</p>
         </a>
-        <a class="hub-card" data-cat="photo" href="/passport-photo-maker">
-          <p class="hub-chip" style="background:#dcfce7;">&#128100;</p>
-          <h3>Passport Photo Maker</h3>
-          <p>Make an official passport size photo - US, India, UK and more - with print sheets.</p>
-        </a>
-        <a class="hub-card" data-cat="photo" href="/background-remover">
-          <p class="hub-chip" style="background:#fce7f3;">&#9986;</p>
-          <h3>Background Remover</h3>
-          <p>Remove a photo background with AI - transparent, white or any colour. Runs in your browser.</p>
-        </a>
-        <a class="hub-card" data-cat="calc" href="/age-calculator">
-          <p class="hub-chip" style="background:#e0e7ff;">&#127874;</p>
+        <a class="feature-card glass-panel hub-card" data-cat="calc" href="/age-calculator" style="text-decoration:none; color:inherit; display:block;" aria-label="Age Calculator">
+          <div class="feature-icon">🎂</div>
           <h3>Age Calculator</h3>
-          <p>Find your exact age in years, months and days, plus a next-birthday countdown.</p>
+          <p>Find your exact age in years, months and days, plus total days lived and your next birthday countdown. Free and private.</p>
+        </a>
+        <a class="feature-card glass-panel hub-card" data-cat="photo" href="/passport-photo-maker" style="text-decoration:none; color:inherit; display:block;" aria-label="Passport Photo Maker">
+          <div class="feature-icon">🪪</div>
+          <h3>Passport Photo Maker</h3>
+          <p>Make an official passport size photo - US 2x2 inch, India/UK 35x45 mm and more - with exact KB and print sheets. Free and private.</p>
+        </a>
+        <a class="feature-card glass-panel hub-card" data-cat="photo" href="/background-remover" style="text-decoration:none; color:inherit; display:block;" aria-label="Background Remover">
+          <div class="feature-icon">✂️</div>
+          <h3>Background Remover</h3>
+          <p>Remove any photo background with AI - transparent, white or any colour. Free, private, runs in your browser.</p>
         </a>
       </div>
       <script>
