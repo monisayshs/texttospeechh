@@ -6374,7 +6374,8 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="arabic-why" style="margin-bottom:40px;">
-        <h2>Why Arabic is hard for text-to-speech</h2>
+        <img src="/images/blog/best-arabic-text-to-speech-tools/arabic-hero.webp" alt="Best Arabic text to speech tools - a golden microphone with sound waves over a desert skyline at dusk" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<h2>Why Arabic is hard for text-to-speech</h2>
         <p style="line-height:1.8;">
           Three things trip up most TTS engines:
         </p>
@@ -6459,7 +6460,8 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="arabic-dialect" style="margin-bottom:40px;">
-        <h2>MSA or dialect? A quick decision guide</h2>
+        <img src="/images/blog/best-arabic-text-to-speech-tools/arabic-mid.webp" alt="Learning Arabic with text to speech - a student listening as sound waves rise from an open book" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<h2>MSA or dialect? A quick decision guide</h2>
         <ul style="line-height:1.8;">
           <li><strong>Audiobooks, courses, news-style content → Modern Standard Arabic.</strong> Every tool on this list handles MSA. Your audience expects formal register here.</li>
           <li><strong>YouTube entertainment, social clips, ads → consider dialect.</strong> Egyptian Arabic is understood across the Arab world thanks to film and TV; Gulf dialect fits Khaleeji audiences. Fewer free tools offer dialects, so check voice samples before committing.</li>
@@ -8711,6 +8713,7 @@ before you put the audio in a course you sell.</p></div>
     content: `
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: What Makes a Spanish TTS Tool Good?</h2><p style="margin:0; line-height:1.7;">Three things: voices that sound like people, not phrasebooks; a real choice of accents (Mexican, Castilian, US Spanish are not interchangeable); and honest free limits. Most tools technically "support Spanish" with one flat generic voice. The six below were picked on those three tests, starting with a free one you can try in your browser right now: our <a href="${DOMAIN}/language/spanish" style="color:var(--color-primary);">Spanish text to speech page</a>.</p></div>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/best-spanish-text-to-speech-tools/spanish-hero.webp" alt="Best Spanish text to speech tools - two listeners with golden sound waves flowing between them" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>The problem with Spanish TTS (that nobody mentions)</h2>
 <p style="line-height:1.8;">Most text to speech tools technically "support Spanish." What that usually means is one generic voice that flattens every accent into the same neutral robot, pronounces "coche" the same way whether your audience is in Madrid or Mexico City, and mangles the rolled rr in "perro" half the time.</p>
 <p style="line-height:1.8;">Spanish speakers notice this instantly. If you're making content for a Spanish-speaking audience, the accent isn't a detail, it is the content. A Castilian voice selling to Mexico sounds as off as a New York voice selling to Texas. So this guide focuses on the three things that actually matter: how natural the voices sound, which accents you really get, and what it costs once you pass the free limits.</p>
@@ -8736,6 +8739,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">If you use Microsoft Edge, you already own a decent Spanish TTS. Open any page or PDF, right-click, choose "Read aloud," and switch the voice to a Spanish one (the natural voices like Dalia for Mexican Spanish or Elvira for Castilian are the ones to pick). No MP3 export and no controls to speak of, so it won't replace a real tool for publishing. But for proofreading your own Spanish writing by ear, it's free and surprisingly good.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/best-spanish-text-to-speech-tools/spanish-mid.webp" alt="Choosing a Spanish accent for text to speech - a learner picking between two different voice orbs" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Mexican, Castilian or US Spanish: which accent do you actually need?</h2>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Castilian (es-ES)</strong> — Spain. The distinctive "th" sound for z and soft c (cinco sounds like "theen-ko"). Pick this for audiences in Spain, and only for them.</li><li style="margin-bottom:6px;"><strong>Mexican (es-MX)</strong> — the closest thing to a neutral Latin American standard, understood everywhere. The safe default for mixed audiences across Latin America.</li><li style="margin-bottom:6px;"><strong>US Spanish (es-US)</strong> — tuned for the US Hispanic audience, often a blend that sounds natural in American media and ads.</li></ul>
 <p style="line-height:1.8;">Rule of thumb: match the accent to where your audience lives, not to where you live. Getting this one choice right does more for how "natural" your audio feels than any tool upgrade. Languages differ in other ways too — Arabic, for example, breaks most engines because written Arabic skips vowel marks; our <a href="${DOMAIN}/text-to-speech/blog/best-arabic-text-to-speech-tools" style="color:var(--color-primary);">Arabic text to speech tools guide</a> covers that side with the same honest approach.</p>
