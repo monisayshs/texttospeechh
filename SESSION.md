@@ -26,6 +26,9 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
+- **Session Timestamp**: 2026-11-01 (Age Calculator build — user: "Age calculator create karo or live bhi karo")
+- **Current Objective**: DONE (pending live verification) — tool #4 of his chosen set, the last one: `/age-calculator` (TOOL_PAGES standalone template, 100% client-side calendar maths — exact age in years/months/days via the official borrowing method, total months/weeks/days/hours, born-on weekday, zodiac, next-birthday countdown, plus an "age as on any date" mode for school/job form cutoffs). The /tools hub "Coming soon" card and the homepage tools card are now live links; route added to TOOL_ROUTES. Functionally verified in headless Chromium against the dev server: DOB 2000-06-15 at 2026-11-01 -> "26 years, 4 months, 17 days", 9,635 total days, born Thursday, next birthday Tuesday 15 June 2027 in 226 days; error path (birth date after target date) shows a clear message; zero page errors. Next: push, live-verify, and tell the user the new page needs his Request Indexing.
+
 - **Session Timestamp**: 2026-10-31 (Mobile smoothness pass — user: "hamari sites insab tool ki wajah se bhari lag rhi h... smooth nhi chal rhi h, mobile friendly isko sahi karna"; he also confirmed ALL remaining Request Indexing done tonight, incl. transcript + image-compressor pages)
 - **Current Objective**: DONE (pending live verification) — measured the site (assets lean: CSS 9.9 KB br cached 1y, tool HTML ~9 KB wire, GA4 already deferred), found the jank source (15 infinitely-animating fixed gradient particles), gated them off mobile/weak/reduced-motion devices in app.js + CSS media rules, bumped asset versions to v8.3.0 everywhere, verified 0 particles under mobile emulation. Clarity's immediate load deliberately left as-is (his 2026-10-06 decision) and flagged to him as the remaining lever.
 

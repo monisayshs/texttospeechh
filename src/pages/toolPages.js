@@ -1209,6 +1209,214 @@ const TOOL_PAGES = {
       })();
       </script>
     `
+  },
+
+  "age-calculator": {
+    "title": "Age Calculator - Find Your Exact Age in Years, Months and Days | TextToSpeechH AI",
+    "h1": "Age Calculator",
+    "metaDesc": "Find your exact age from your date of birth - in years, months and days, plus total days lived and a next-birthday countdown. Free, no sign-up, calculated privately in your browser.",
+    "category": "Date & Time Tools",
+    "standaloneTool": true,
+    "tagline": "Enter your date of birth and see your exact age - years, months and days - plus how many days you have lived and when your next birthday lands.",
+    "readingTime": "4 min read",
+    "faqs": [
+      { "q": "Is this age calculator free to use?", "a": "Yes. The Age Calculator on TextToSpeechH AI is completely free, with no sign-up and no limit on how many dates you check. The whole calculation runs inside your browser, so you can work out your own age or check ages for your whole family without paying anything or creating an account." },
+      { "q": "How does the age calculator work out my exact age?", "a": "It counts the full years between your birth date and the target date first, then the full months, then the remaining days. When the day count goes negative, it borrows the exact number of days from the previous month, which is how official age is calculated on forms. Leap years are handled automatically because it counts real calendar days." },
+      { "q": "Can I check my age on a specific date, like 31 March?", "a": "Yes. The second date box is set to today by default, but you can change it to any past or future date. This is exactly what school admission forms, government job applications and exam notices mean by age as on a given date - enter that date and the calculator shows the age that counts." },
+      { "q": "Why does my total days count include leap days?", "a": "Because you actually lived through them. Roughly every four years, February has 29 days instead of 28, and that extra day is a real day of your life. A person who is 40 years old has lived through about ten leap days, so their total days lived is higher than 40 times 365." },
+      { "q": "Is my date of birth kept private?", "a": "Yes. Your date of birth never leaves your device. The Age Calculator runs 100% in your browser - nothing is uploaded, stored or sent to a server. You could disconnect from the internet after the page loads and the calculation would still work exactly the same way." }
+    ],
+    "content": `
+      <div id="ac-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;">
+          <div>
+            <label for="ac-dob" style="font-weight:600; display:block; margin-bottom:8px;">Date of Birth</label>
+            <input type="date" id="ac-dob" style="width:100%; padding:12px; border:1px solid var(--color-border); border-radius:10px; background:var(--color-bg); color:inherit; font-size:1rem; box-sizing:border-box;">
+          </div>
+          <div>
+            <label for="ac-at" style="font-weight:600; display:block; margin-bottom:8px;">Age at the Date of</label>
+            <input type="date" id="ac-at" style="width:100%; padding:12px; border:1px solid var(--color-border); border-radius:10px; background:var(--color-bg); color:inherit; font-size:1rem; box-sizing:border-box;">
+          </div>
+        </div>
+        <p style="margin:12px 0 0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">The second date is set to today. Change it to find an age on any past or future date - for example, the age as on 31 March that a school or job form asks for.</p>
+        <button type="button" id="ac-calc" class="primary-btn" style="border:0; cursor:pointer; margin-top:18px;">Calculate My Age</button>
+        <p id="ac-error" style="display:none; margin:14px 0 0; color:#dc2626; font-weight:600;"></p>
+        <div id="ac-result" style="display:none; margin-top:24px;"></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px;">
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#127874;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Exact to the Day</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Not just years - your full age in years, months and days, the way official forms count it.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128197;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Leap-Year Aware</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Real calendar maths, so every 29 February you have lived through is counted correctly.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128272;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Private by Design</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Your date of birth is calculated in your browser and is never uploaded or stored anywhere.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#9203;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Any Date You Need</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Today, a form deadline, or a future plan - check the age on any date, past or future.</p>
+        </div>
+      </div>
+
+      <h2>What is an Age Calculator?</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        An <strong>age calculator</strong> works out your exact age from your date of birth - not just the year count, but the precise <strong>years, months and days</strong>, plus fun totals like how many days and hours you have lived and how many days are left until your next birthday. Pick your birth date above, leave the second date as today (or change it), and press the button. Everything runs in your browser; when you are done, you might enjoy turning a birthday message into speech with our <a href="https://www.texttospeechh.com">free text to speech generator</a>.
+      </p>
+
+      <h2>How to Use the Age Calculator</h2>
+      <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Enter the date of birth.</strong> Use the first date box. If you are checking for someone else - a child, a parent - enter their birth date instead.</li>
+        <li><strong>Check the second date.</strong> It is already set to today. For a form that asks for age as on a specific date, change it to that date.</li>
+        <li><strong>Press Calculate My Age.</strong> You will see the exact age in years, months and days, the total months, weeks, days and hours lived, the weekday of the birth, the zodiac sign, and a countdown to the next birthday.</li>
+      </ol>
+
+      <h2>How the Calculation Works</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        The calculator uses the same method a careful person uses on paper. It counts full years first, then full months, then the leftover days. If the leftover days come out negative, it borrows the real number of days from the previous month - 31 from January, 28 or 29 from February - which is why two people born in the same year can show slightly different month and day counts. Total days are counted on the real calendar, so every leap day (29 February) you have lived through is included. That is why the totals here can differ by a few days from a rough years-times-365 estimate.
+      </p>
+
+      <h2>Where an Exact Age Matters</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        Most of the time, knowing you are 24 is enough. But some moments count age to the day. <strong>School admissions</strong> often require a child to be a certain age on a cutoff date like 31 March or 30 September. <strong>Government job and exam forms</strong> set minimum and maximum ages as on the application date - being a few days over the limit can close the door, so it is worth checking before you apply. <strong>Retirement and pension planning</strong>, insurance policies and sports age-group categories work the same way. Set the second date above to the date that matters, and you will know exactly where you stand.
+      </p>
+
+      <h2>More Free Tools</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:10px;">
+        <a href="/voice-pitch-changer" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700;">Voice Pitch Changer</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Make any voice recording deeper or higher without changing its speed.</p>
+        </a>
+        <a href="/youtube-transcript-generator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700;">YouTube Transcript Generator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Get the full text of any YouTube video in one click, with timestamps.</p>
+        </a>
+        <a href="/image-compressor" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700;">Image Compressor</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
+        </a>
+      </div>
+
+      <script>
+      (function () {
+        var dobInput = document.getElementById('ac-dob');
+        var atInput = document.getElementById('ac-at');
+        var btn = document.getElementById('ac-calc');
+        var err = document.getElementById('ac-error');
+        var out = document.getElementById('ac-result');
+        var WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+        function isoOf(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+        function parseIso(v) {
+          if (!v) return null;
+          var p = v.split('-');
+          if (p.length !== 3) return null;
+          var y = parseInt(p[0], 10), m = parseInt(p[1], 10), d = parseInt(p[2], 10);
+          if (!y || !m || !d) return null;
+          return { y: y, m: m, d: d };
+        }
+        function utcDay(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000; }
+        function daysInMonth(y, m) { return new Date(y, m, 0).getDate(); }
+        function fmt(n) {
+          var s = String(n), r = '', c = 0;
+          for (var i = s.length - 1; i >= 0; i--) {
+            r = s.charAt(i) + r; c++;
+            if (c === 3 && i > 0) { r = ',' + r; c = 0; }
+          }
+          return r;
+        }
+        function zodiac(m, d) {
+          var signs = [
+            [19, 'Capricorn', 'Aquarius'], [18, 'Aquarius', 'Pisces'], [20, 'Pisces', 'Aries'],
+            [19, 'Aries', 'Taurus'], [20, 'Taurus', 'Gemini'], [21, 'Gemini', 'Cancer'],
+            [22, 'Cancer', 'Leo'], [22, 'Leo', 'Virgo'], [22, 'Virgo', 'Libra'],
+            [23, 'Libra', 'Scorpio'], [22, 'Scorpio', 'Sagittarius'], [21, 'Sagittarius', 'Capricorn']
+          ];
+          var row = signs[m - 1];
+          return d <= row[0] ? row[1] : row[2];
+        }
+        function card(label, value) {
+          return '<div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:16px; text-align:center;">'
+            + '<p style="margin:0 0 4px; font-size:0.82rem; color:var(--color-text-muted);">' + label + '</p>'
+            + '<p style="margin:0; font-weight:700; font-size:1.02rem; color:var(--color-text); line-height:1.45;">' + value + '</p></div>';
+        }
+        function showError(msg) {
+          err.textContent = msg;
+          err.style.display = 'block';
+          out.style.display = 'none';
+        }
+
+        var today = new Date();
+        atInput.value = isoOf(today);
+        dobInput.max = isoOf(today);
+
+        btn.addEventListener('click', function () {
+          var b = parseIso(dobInput.value);
+          var t = parseIso(atInput.value);
+          if (!b) { showError('Please choose a date of birth first.'); return; }
+          if (!t) { showError('Please choose the date to calculate the age at.'); return; }
+          var bDay = utcDay(b.y, b.m, b.d), tDay = utcDay(t.y, t.m, t.d);
+          if (bDay > tDay) { showError('The date of birth is after the second date. Please check the two dates.'); return; }
+          err.style.display = 'none';
+
+          var years = t.y - b.y, months = t.m - b.m, days = t.d - b.d;
+          if (days < 0) {
+            months--;
+            var pm = t.m - 1, py = t.y;
+            if (pm === 0) { pm = 12; py--; }
+            days += daysInMonth(py, pm);
+          }
+          if (months < 0) { years--; months += 12; }
+
+          var totalDays = tDay - bDay;
+          var totalMonths = years * 12 + months;
+          var totalWeeks = Math.floor(totalDays / 7);
+          var remDays = totalDays - totalWeeks * 7;
+          var totalHours = totalDays * 24;
+
+          var birthDate = new Date(b.y, b.m - 1, b.d);
+          var bornText = WEEKDAYS[birthDate.getDay()] + ', ' + b.d + ' ' + MONTHS[b.m - 1] + ' ' + b.y;
+
+          var nbYear = t.y;
+          var nbNum = utcDay(nbYear, b.m, b.d);
+          if (nbNum <= tDay) { nbYear++; nbNum = utcDay(nbYear, b.m, b.d); }
+          var nbDate = new Date(nbYear, b.m - 1, b.d);
+          var until = nbNum - tDay;
+          var nbText = WEEKDAYS[nbDate.getDay()] + ', ' + nbDate.getDate() + ' ' + MONTHS[nbDate.getMonth()] + ' ' + nbYear
+            + ' - in ' + fmt(until) + (until === 1 ? ' day' : ' days') + ' (turning ' + (nbYear - b.y) + ')';
+
+          var html = '';
+          html += '<div style="background:var(--color-primary-soft); border:1px solid var(--color-primary); border-radius:12px; padding:20px; text-align:center; margin-bottom:14px;">';
+          html += '<p style="margin:0 0 4px; font-size:0.9rem; color:var(--color-text-muted);">Exact age</p>';
+          html += '<p style="margin:0; font-size:1.65rem; font-weight:800; color:var(--color-text); line-height:1.3;">' + years + ' years, ' + months + ' months, ' + days + ' days</p>';
+          html += '</div>';
+          html += '<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px;">';
+          html += card('Total Months', fmt(totalMonths) + ' months, ' + days + ' days');
+          html += card('Total Weeks', fmt(totalWeeks) + ' weeks, ' + remDays + ' days');
+          html += card('Total Days Lived', fmt(totalDays) + ' days');
+          html += card('Total Hours Lived', fmt(totalHours) + ' hours');
+          html += card('Born On', bornText);
+          html += card('Zodiac Sign', zodiac(b.m, b.d));
+          html += card('Next Birthday', nbText);
+          html += '</div>';
+          html += '<p style="margin:14px 0 0; font-size:0.85rem; color:var(--color-text-muted); text-align:center;">Calculated 100% in your browser - the date of birth is never uploaded or stored.</p>';
+          out.innerHTML = html;
+          out.style.display = 'block';
+          out.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+      </script>
+    `
   }
 
 };
@@ -1244,11 +1452,11 @@ const TOOLS_HUB_PAGE = {
           <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Image Compressor</p>
           <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
         </a>
-        <div style="background:var(--color-surface); border:1px dashed var(--color-border-strong); border-radius:14px; padding:24px; opacity:0.75;">
+        <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
           <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem;">Age Calculator</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Find your exact age in years, months and days. <strong>Coming soon.</strong></p>
-        </div>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Age Calculator</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Find your exact age in years, months and days, plus a next-birthday countdown.</p>
+        </a>
       </div>
     `
 };
