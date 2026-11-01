@@ -390,6 +390,7 @@ ${trackingHtml}
     .hub-pill { border:1.5px solid var(--color-border); background:var(--color-surface); color:var(--color-text-secondary); font:inherit; font-weight:600; font-size:0.92rem; padding:9px 18px; border-radius:999px; cursor:pointer; transition:all .18s ease; }
     .hub-pill:hover { border-color:var(--color-primary); color:var(--color-primary); }
     .hub-pill.active { background:var(--color-primary); border-color:var(--color-primary); color:#fff; }
+    .hub-fill { grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
     .tool-main h2 { color:var(--color-text); margin-top:34px; }
     .tool-main p, .tool-main li { color:var(--color-text-secondary); }
     .tool-footer { max-width:1080px; margin:36px auto 0; padding:22px 20px 34px; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:0.9rem; color:var(--color-text-muted); }

@@ -2384,7 +2384,7 @@ const TOOLS_HUB_PAGE = {
         <button type="button" class="hub-pill" data-filter="video">Video &amp; Text</button>
         <button type="button" class="hub-pill" data-filter="calc">Calculators</button>
       </div>
-      <div class="features-grid">
+      <div class="features-grid hub-fill">
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/voice-pitch-changer" style="text-decoration:none; color:inherit; display:block;" aria-label="Voice Pitch Changer">
           <div class="feature-icon">🎤</div>
           <h3>Voice Pitch Changer</h3>
