@@ -206,7 +206,8 @@ const KEYWORD_REDIRECTS = {
 const OLD_BLOG_REDIRECTS = {
   "blog/text-to-speech-tools": "text-to-speech/blog/best-ai-voices",
   "blog/how-tts-works": "text-to-speech/blog/how-text-to-speech-works",
-  "text-to-speech/blog/tiktok-text-to-speech-guide": "text-to-speech/blog/tiktok-text-to-speech"
+  "text-to-speech/blog/tiktok-text-to-speech-guide": "text-to-speech/blog/tiktok-text-to-speech",
+  "text-topeech/blog/elevenlabs-alternatives": "text-to-speech/blog/elevenlabs-alternatives"
 };
 
 module.exports = {
