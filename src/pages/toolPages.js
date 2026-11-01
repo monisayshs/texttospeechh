@@ -1431,7 +1431,7 @@ const TOOL_PAGES = {
       { "q": "Which passport photo sizes does this maker support?", "a": "The main official sizes are built in: US passport and visa at 2 x 2 inches, India, UK, Schengen and Australia at 35 x 45 mm, Canada at 50 x 70 mm, and China visa at 33 x 48 mm. If a form asks for something different, choose Custom and type the width and height in millimetres - the photo is made to exactly that size." },
       { "q": "How do I keep the photo under my form's KB limit?", "a": "Many application forms accept a photo only below a fixed file size, such as 50 KB or 100 KB. Pick that limit in the KB section before you press Make My Photo. The tool then finds the best quality that stays at or below your limit, and shows you the final KB before you download - no repeated trial and error." },
       { "q": "Is my photo uploaded to a server?", "a": "No. Everything happens inside your browser - cropping, resizing, compressing and building the print sheets. Your photo is never uploaded, stored or seen by anyone. You can even disconnect from the internet after the page loads and finish your photo offline." },
-      { "q": "Does this tool change my background to white?", "a": "Not in this version, and we would rather tell you that plainly than fake it. For an accepted photo, stand in front of a plain, light-coloured wall with even light on your face. Automatic background changing is planned as a later upgrade; today the tool guarantees the size, the crop guidance and the file size." },
+      { "q": "Does this tool change my background to white?", "a": "This maker does not change backgrounds itself - but our free Background Remover does exactly that, in your browser. Remove the background there, choose white, download the photo, then bring it here to set the exact size and KB. A plain, light background in the original photo still gives every tool the cleanest start." },
       { "q": "How do I print the passport photos cheaply?", "a": "Download the 4 x 6 inch print sheet and print it as a normal photo print - at most photo shops and pharmacy kiosks that costs a few cents, and the sheet holds multiple copies you can cut out. Ready-made passport photos at a counter can cost many times more for just two copies, so the sheet is where the real saving is." },
       { "q": "Will my photo definitely be accepted?", "a": "No honest tool can promise that - the final decision always belongs to the passport office, embassy or form authority. What this tool does guarantee is the technical side they check first: the exact dimensions, a correctly positioned head using the guide lines, and a file size inside the stated limit. Follow the tips on this page for the rest." }
     ],
@@ -1573,7 +1573,7 @@ const TOOL_PAGES = {
 
       <h2>Honest Limits</h2>
       <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
-        <li><strong>The background is not changed for you.</strong> This version guarantees dimensions, head position and file size. Background replacement with AI is planned as a later upgrade - until then, a plain wall is your friend.</li>
+        <li><strong>The background is not changed inside this maker.</strong> It guarantees dimensions, head position and file size. For a clean white background, run the photo through our <a href="/background-remover">Background Remover</a> first, then bring it here.</li>
         <li><strong>Acceptance is the authority's decision.</strong> We get the technical checks right; the final yes always comes from the office or portal that receives your photo.</li>
         <li><strong>Very small KB targets trade quality.</strong> If a form demands under 20 KB, the tool gently reduces pixel dimensions after quality - it tells you the final size in the result, honestly.</li>
       </ul>
@@ -1610,7 +1610,7 @@ const TOOL_PAGES = {
         </div>
         <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
           <h4 style="margin-top:0; color:var(--color-primary);">Does this tool change my background to white?</h4>
-          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Not in this version, and we would rather tell you that plainly than fake it. Stand in front of a plain, light-coloured wall with even light on your face. Automatic background changing is planned as a later upgrade.</p>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">This maker does not change backgrounds itself - but our free <a href="/background-remover">Background Remover</a> does exactly that in your browser. Remove the background there, choose white, download, then bring the photo here for the exact size and KB.</p>
         </div>
         <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
           <h4 style="margin-top:0; color:var(--color-primary);">How do I print the passport photos cheaply?</h4>
@@ -1939,6 +1939,402 @@ const TOOL_PAGES = {
       })();
       </script>
     `
+  },
+
+  "background-remover": {
+    "title": "Background Remover - Remove Image Background Online Free | TextToSpeechH AI",
+    "h1": "Background Remover",
+    "metaDesc": "Remove the background from any photo online for free - transparent PNG, white or colour background in one click. AI runs in your browser, so your photo is never uploaded. Perfect for passport photos and product shots.",
+    "category": "Photo Tools",
+    "standaloneTool": true,
+    "tagline": "Cut any person or product out of its background with AI - transparent, white or any colour. Free, no sign-up, and the photo never leaves your device.",
+    "readingTime": "5 min read",
+    "faqs": [
+      { "q": "How does this background remover work?", "a": "An AI model (BRIA RMBG-1.4) downloads once into your browser - about 44 MB - and then runs entirely on your device. It studies your photo, works out what is the subject and what is the background, and cuts the subject out. Because everything happens locally, your photo is never uploaded to any server." },
+      { "q": "Is it really free, with no watermark?", "a": "Yes. The removal, the transparent PNG and the white or colour backgrounds are all free, with no watermark and no daily limit. The AI model is open for non-commercial use and the processing costs us nothing because it happens on your device - that is what makes free possible." },
+      { "q": "Why does the first photo take longer?", "a": "The first time, your browser downloads the AI model (about 44 MB) and prepares it. That is a one-time wait of some seconds on a normal connection; your browser usually keeps the model cached afterwards, so the next photos are much faster - typically a few seconds each depending on your device." },
+      { "q": "Can I make a white background photo for a passport or ID form?", "a": "Yes - that is one of its best uses. Remove the background, choose the white background option, download, and then set the official size and KB with our Passport Photo Maker. Stand in even light when you take the original photo and the edge around your hair will come out cleanest." },
+      { "q": "How good is it with hair and tricky edges?", "a": "On portraits and product photos it is genuinely strong - hair strands and phone-in-hand details come through well, as our own tests showed. Very wispy hair, glass, smoke or a subject the same colour as the background can leave soft or missed edges; the honest fix is a plainer background in the original photo." }
+    ],
+    "content": `
+      <div id="bg-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
+        <div id="bg-drop" style="border:2px dashed var(--color-border-strong); border-radius:14px; padding:48px 24px; text-align:center; cursor:pointer; background:var(--color-primary-soft);">
+          <div style="width:84px; height:84px; margin:0 auto 20px; border-radius:50%; background:var(--color-surface); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg);">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4.5 18.5l4.5-4.5 3 3 3.5-3.5 4 4"/></svg>
+          </div>
+          <span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:14px 38px; border-radius:10px; font-weight:700; font-size:1.05rem;">Select Photo</span>
+          <p style="margin:16px 0 0; color:var(--color-text-muted); font-size:0.95rem;">or drop a photo here</p>
+          <p style="margin:6px 0 0; font-size:0.82rem; color:var(--color-text-muted);">JPG, PNG or WebP - AI runs in your browser. Your photo is never uploaded.</p>
+        </div>
+        <input type="file" id="bg-file" accept="image/jpeg,image/png,image/webp" style="display:none;">
+
+        <div id="bg-work" style="display:none; margin-top:22px;">
+          <p id="bg-fileinfo" style="margin:0 0 14px; font-size:0.95rem;"></p>
+          <img id="bg-orig" alt="Your original photo" style="max-width:100%; max-height:300px; border-radius:10px; border:1px solid var(--color-border); display:block; margin-bottom:16px;">
+          <button type="button" id="bg-go" style="background:var(--color-primary); color:var(--color-primary-on); border:0; padding:13px 32px; border-radius:10px; font-weight:700; font-size:1rem; cursor:pointer;">Remove Background</button>
+          <div id="bg-progress-wrap" style="display:none; margin-top:16px;">
+            <div style="height:10px; border-radius:6px; background:var(--color-bg-secondary); overflow:hidden; border:1px solid var(--color-border);">
+              <div id="bg-progress" style="height:100%; width:0%; background:var(--color-primary); transition:width 0.25s ease;"></div>
+            </div>
+          </div>
+          <p id="bg-status" style="margin:12px 0 0; font-size:0.95rem; color:var(--color-text-muted);">Photo ready. Press Remove Background - the first time downloads the AI model (about 44 MB), after that it is quick.</p>
+
+          <div id="bg-result" style="display:none; margin-top:18px; border-top:1px solid var(--color-border); padding-top:18px;">
+            <p style="margin:0 0 8px; font-weight:700;">Choose a background</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px;">
+              <button type="button" class="bg-opt" data-bg="transparent" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary); cursor:pointer; font-weight:600;">Transparent</button>
+              <button type="button" class="bg-opt" data-bg="#ffffff" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:#ffffff; color:#222; cursor:pointer; font-weight:600;">White</button>
+              <button type="button" class="bg-opt" data-bg="#000000" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:#111; color:#fff; cursor:pointer; font-weight:600;">Black</button>
+              <button type="button" class="bg-opt" data-bg="#2563eb" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:#2563eb; color:#fff; cursor:pointer; font-weight:600;">Blue</button>
+              <span style="display:inline-flex; align-items:center; gap:6px; font-size:0.9rem;">Custom <input type="color" id="bg-color" value="#f59e0b" style="width:42px; height:34px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); padding:2px; cursor:pointer;"></span>
+            </div>
+            <div style="border-radius:10px; border:1px solid var(--color-border); margin-bottom:16px; background:repeating-conic-gradient(#e8e8e8 0% 25%, #ffffff 0% 50%) 0 0/24px 24px; max-width:520px;">
+              <img id="bg-preview" alt="Your photo with the background removed" style="max-width:100%; display:block; border-radius:10px;">
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a id="bg-dl" href="#" download="background-removed.png" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:10px; font-weight:700; text-decoration:none;">Download Result</a>
+              <button type="button" id="bg-again" style="padding:12px 22px; border-radius:10px; border:1px solid var(--color-border-strong); background:var(--color-bg); color:inherit; font-weight:600; cursor:pointer;">Another Photo</button>
+            </div>
+            <p style="margin:14px 0 0; font-size:0.88rem; color:var(--color-text-muted);">Need this as an official ID photo? Set the exact size and KB next with the <a href="/passport-photo-maker">Passport Photo Maker</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px;">
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#9986;</p>
+          <p style="margin:0 0 4px; font-weight:700;">AI Cut-Out</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">A real AI model finds the subject - people, products, pets - and lifts it out cleanly.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#127912;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Any Background</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Transparent for design work, white for ID photos, or any colour you pick.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128274;</p>
+          <p style="margin:0 0 4px; font-weight:700;">100% Private</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">The AI runs on your device. No upload, no server, nobody sees your photo.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128176;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Free, No Sign-Up</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">No watermark, no credits, no daily cap. Remove as many backgrounds as you like.</p>
+        </div>
+      </div>
+
+      <h2>What is a Background Remover?</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        A <strong>background remover</strong> separates the subject of a photo - a person, a product, a pet - from everything behind it, so you can place the subject on a transparent, white or coloured background. Sellers use it for clean product photos, creators for thumbnails and stickers, and everyone else for the white-background photo that ID forms demand. This one runs a real AI model inside your browser instead of on a company server, which is why it can be free and why your photo stays private. Making an official ID photo? Pair it with our <a href="/passport-photo-maker">Passport Photo Maker</a> for the exact size and file limit.
+      </p>
+
+      <h2>How to Remove a Background</h2>
+      <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Add your photo.</strong> Portraits and product shots work best; a plain background in the original gives the cleanest edge.</li>
+        <li><strong>Press Remove Background.</strong> The first time, the AI model downloads once (about 44 MB) - after that, each photo takes a few seconds on most devices.</li>
+        <li><strong>Choose the new background.</strong> Transparent for flexible use, white for ID and marketplace photos, or any colour.</li>
+        <li><strong>Download.</strong> Transparent results download as PNG so the see-through areas survive; coloured backgrounds download as JPG.</li>
+      </ol>
+
+      <h2>Honest Limits</h2>
+      <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>The first visit downloads the AI (about 44 MB).</strong> That is the honest price of keeping your photo off a server. On a slow connection the first photo waits; later photos are quick, and the browser usually caches the model.</li>
+        <li><strong>Very fine edges can soften.</strong> Wispy hair, glass, smoke and see-through fabrics are the hardest cases for any AI remover, free or paid. A plain, contrasting background in the original photo fixes most of it.</li>
+        <li><strong>Huge photos are gently capped.</strong> To protect your device memory, results are capped at 4000 pixels on the long side - far above what forms, marketplaces and social posts need.</li>
+      </ul>
+
+      <h2>More Free Tools</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:30px;">
+        <a href="/passport-photo-maker" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Passport Photo Maker</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Put your white-background photo into the exact official size and KB.</p>
+        </a>
+        <a href="/image-compressor" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Image Compressor</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Shrink any photo to the exact KB size your form demands.</p>
+        </a>
+        <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Age Calculator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Check the exact age as on the date your form asks about.</p>
+        </a>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">How does this background remover work?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">An AI model downloads once into your browser (about 44 MB) and runs entirely on your device. It works out what is subject and what is background, and cuts the subject out. Your photo is never uploaded to any server.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Is it really free, with no watermark?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. Removal, transparent PNG and white or colour backgrounds are all free, with no watermark and no daily limit - the processing happens on your device, so it costs us nothing per photo.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Why does the first photo take longer?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">The first time, your browser downloads the AI model (about 44 MB) and prepares it. Your browser usually keeps it cached afterwards, so later photos take just a few seconds each, depending on your device.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Can I make a white background photo for a passport or ID form?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes - remove the background, choose the white option, download, and then set the official size and KB with our Passport Photo Maker. Even light on your face in the original photo gives the cleanest hair edges.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">How good is it with hair and tricky edges?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">On portraits and product photos it is genuinely strong - hair strands and details like a phone in hand come through well. Very wispy hair, glass or a subject the same colour as the background can leave soft edges; a plainer original background is the honest fix.</p>
+        </div>
+      </div>
+
+      <script>
+      (function () {
+        var ORT_URL = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js';
+        var ORT_WASM = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
+        var MODEL_URL = 'https://huggingface.co/briaai/RMBG-1.4/resolve/main/onnx/model_quantized.onnx';
+        var MODEL_BYTES = 44403226;
+        var MAX_SIDE = 4000;
+
+        var drop = document.getElementById('bg-drop');
+        var fileInput = document.getElementById('bg-file');
+        var work = document.getElementById('bg-work');
+        var fileInfo = document.getElementById('bg-fileinfo');
+        var origImg = document.getElementById('bg-orig');
+        var goBtn = document.getElementById('bg-go');
+        var statusEl = document.getElementById('bg-status');
+        var progressWrap = document.getElementById('bg-progress-wrap');
+        var progressBar = document.getElementById('bg-progress');
+        var result = document.getElementById('bg-result');
+        var preview = document.getElementById('bg-preview');
+        var dlBtn = document.getElementById('bg-dl');
+        var againBtn = document.getElementById('bg-again');
+        var colorInput = document.getElementById('bg-color');
+        var optBtns = document.querySelectorAll('.bg-opt');
+
+        var img = null, nw = 0, nh = 0, curFile = null;
+        var ortSession = null, ortLoading = null;
+        var rgbaCanvas = null, chosenBg = 'transparent';
+        var viewUrl = null;
+
+        function fmtKB(bytes) {
+          if (bytes < 1024) return bytes + ' B';
+          var kb = bytes / 1024;
+          if (kb < 1024) return (Math.round(kb * 10) / 10) + ' KB';
+          return (Math.round(kb / 102.4) / 10) + ' MB';
+        }
+        function setStatus(msg, isError) {
+          statusEl.textContent = msg;
+          statusEl.style.color = isError ? 'var(--color-error-text)' : 'var(--color-text-muted)';
+        }
+        function setProgress(pct) {
+          progressWrap.style.display = 'block';
+          progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+        }
+        function loadScript(url) {
+          return new Promise(function (resolve, reject) {
+            var s = document.createElement('script');
+            s.src = url;
+            s.onload = function () { resolve(); };
+            s.onerror = function () { reject(new Error('script load failed')); };
+            document.head.appendChild(s);
+          });
+        }
+        async function fetchModel() {
+          var resp = await fetch(MODEL_URL);
+          if (!resp.ok) throw new Error('model download failed');
+          var total = parseInt(resp.headers.get('content-length') || '0', 10) || MODEL_BYTES;
+          var reader = resp.body.getReader();
+          var chunks = [], received = 0;
+          while (true) {
+            var step = await reader.read();
+            if (step.done) break;
+            chunks.push(step.value);
+            received += step.value.length;
+            setProgress(Math.round(received / total * 90));
+            setStatus('Downloading the AI model - ' + fmtKB(received) + ' of ' + fmtKB(total) + '. One time only.');
+          }
+          var buf = new Uint8Array(received);
+          var off = 0;
+          for (var i = 0; i < chunks.length; i++) { buf.set(chunks[i], off); off += chunks[i].length; }
+          return buf.buffer;
+        }
+        async function ensureSession() {
+          if (ortSession) return ortSession;
+          if (ortLoading) return ortLoading;
+          ortLoading = (async function () {
+            setProgress(2);
+            setStatus('Loading the AI engine...');
+            await loadScript(ORT_URL);
+            if (!window.ort) throw new Error('AI engine failed to load');
+            window.ort.env.wasm.wasmPaths = ORT_WASM;
+            window.ort.env.wasm.numThreads = 1;
+            var modelBuffer = await fetchModel();
+            setProgress(94);
+            setStatus('Preparing the AI model...');
+            ortSession = await window.ort.InferenceSession.create(modelBuffer, { executionProviders: ['wasm'] });
+            setProgress(100);
+            return ortSession;
+          })();
+          return ortLoading;
+        }
+        function buildTensor() {
+          var S = 1024;
+          var canvas = document.createElement('canvas');
+          canvas.width = S; canvas.height = S;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, S, S);
+          var data = ctx.getImageData(0, 0, S, S).data;
+          var N = S * S;
+          var arr = new Float32Array(3 * N);
+          for (var i = 0; i < N; i++) {
+            arr[i] = data[i * 4] / 255 - 0.5;
+            arr[N + i] = data[i * 4 + 1] / 255 - 0.5;
+            arr[2 * N + i] = data[i * 4 + 2] / 255 - 0.5;
+          }
+          return new window.ort.Tensor('float32', arr, [1, 3, S, S]);
+        }
+        function maskCanvasFromOutput(outData) {
+          var S = 1024;
+          var canvas = document.createElement('canvas');
+          canvas.width = S; canvas.height = S;
+          var ctx = canvas.getContext('2d');
+          var imageData = ctx.createImageData(S, S);
+          var d = imageData.data;
+          for (var i = 0; i < S * S; i++) {
+            var v = outData[i];
+            if (v < 0) v = 0;
+            if (v > 1) v = 1;
+            d[i * 4] = 255; d[i * 4 + 1] = 255; d[i * 4 + 2] = 255;
+            d[i * 4 + 3] = Math.round(v * 255);
+          }
+          ctx.putImageData(imageData, 0, 0);
+          return canvas;
+        }
+        function composeRGBA(maskCanvas) {
+          var scale = Math.min(1, MAX_SIDE / Math.max(nw, nh));
+          var W = Math.round(nw * scale), H = Math.round(nh * scale);
+          var canvas = document.createElement('canvas');
+          canvas.width = W; canvas.height = H;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, W, H);
+          ctx.globalCompositeOperation = 'destination-in';
+          ctx.imageSmoothingEnabled = true;
+          ctx.drawImage(maskCanvas, 0, 0, W, H);
+          ctx.globalCompositeOperation = 'source-over';
+          return canvas;
+        }
+        function renderView() {
+          if (!rgbaCanvas) return;
+          var out = rgbaCanvas;
+          var isJpg = false;
+          if (chosenBg !== 'transparent') {
+            out = document.createElement('canvas');
+            out.width = rgbaCanvas.width; out.height = rgbaCanvas.height;
+            var ctx = out.getContext('2d');
+            ctx.fillStyle = chosenBg;
+            ctx.fillRect(0, 0, out.width, out.height);
+            ctx.drawImage(rgbaCanvas, 0, 0);
+            isJpg = true;
+          }
+          var type = isJpg ? 'image/jpeg' : 'image/png';
+          out.toBlob(function (blob) {
+            if (!blob) return;
+            if (viewUrl) URL.revokeObjectURL(viewUrl);
+            viewUrl = URL.createObjectURL(blob);
+            preview.src = viewUrl;
+            dlBtn.href = viewUrl;
+            dlBtn.setAttribute('download', isJpg ? 'background-changed.jpg' : 'background-removed.png');
+          }, type, 0.92);
+        }
+        function selectBgButton(activeBtn) {
+          for (var i = 0; i < optBtns.length; i++) {
+            optBtns[i].style.borderColor = 'var(--color-border-strong)';
+            optBtns[i].style.background = optBtns[i].getAttribute('data-bg') === '#ffffff' ? '#ffffff' : (optBtns[i].getAttribute('data-bg') === '#000000' ? '#111' : (optBtns[i].getAttribute('data-bg') === '#2563eb' ? '#2563eb' : 'var(--color-bg)'));
+            optBtns[i].style.color = optBtns[i].getAttribute('data-bg') === 'transparent' ? 'inherit' : optBtns[i].style.color;
+          }
+          if (activeBtn) {
+            activeBtn.style.borderColor = 'var(--color-primary)';
+          }
+        }
+        for (var b = 0; b < optBtns.length; b++) {
+          optBtns[b].addEventListener('click', function () {
+            chosenBg = this.getAttribute('data-bg');
+            selectBgButton(this);
+            renderView();
+          });
+        }
+        colorInput.addEventListener('input', function () {
+          chosenBg = colorInput.value;
+          selectBgButton(null);
+          renderView();
+        });
+
+        function loadFile(file) {
+          if (!file) return;
+          if (file.type.indexOf('image/') !== 0) { setStatus('That file is not an image. Choose a JPG, PNG or WebP photo.', true); work.style.display = 'block'; return; }
+          curFile = file;
+          var url = URL.createObjectURL(file);
+          var im = new Image();
+          im.onload = function () {
+            img = im; nw = im.naturalWidth; nh = im.naturalHeight;
+            fileInfo.innerHTML = '';
+            var strong = document.createElement('strong');
+            strong.textContent = file.name;
+            fileInfo.appendChild(strong);
+            fileInfo.appendChild(document.createTextNode(' - ' + fmtKB(file.size) + ' - ' + nw + ' x ' + nh + ' px'));
+            origImg.src = url;
+            work.style.display = 'block';
+            result.style.display = 'none';
+            progressWrap.style.display = 'none';
+            setStatus('Photo ready. Press Remove Background - the first time downloads the AI model (about 44 MB), after that it is quick.');
+          };
+          im.onerror = function () { setStatus('This image could not be read. Try a different file.', true); };
+          im.src = url;
+        }
+        drop.addEventListener('click', function () { fileInput.click(); });
+        fileInput.addEventListener('change', function () { if (fileInput.files && fileInput.files[0]) loadFile(fileInput.files[0]); });
+        drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.style.borderColor = 'var(--color-primary)'; });
+        drop.addEventListener('dragleave', function () { drop.style.borderColor = 'var(--color-border-strong)'; });
+        drop.addEventListener('drop', function (e) {
+          e.preventDefault(); drop.style.borderColor = 'var(--color-border-strong)';
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+        });
+
+        goBtn.addEventListener('click', async function () {
+          if (!img || !curFile) { setStatus('Choose a photo first.', true); return; }
+          goBtn.disabled = true;
+          goBtn.textContent = 'Working...';
+          result.style.display = 'none';
+          try {
+            var session = await ensureSession();
+            setProgress(100);
+            setStatus('Removing the background - keep this page open...');
+            await new Promise(function (r) { setTimeout(r, 60); });
+            var tensor = buildTensor();
+            var outputs = await session.run({ input: tensor });
+            var outData = outputs.output.data;
+            var maskCanvas = maskCanvasFromOutput(outData);
+            rgbaCanvas = composeRGBA(maskCanvas);
+            chosenBg = 'transparent';
+            result.style.display = 'block';
+            renderView();
+            setStatus('Done. Choose a background, then download.');
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (err) {
+            setStatus('Something went wrong. A slow connection can interrupt the one-time model download - check your internet and press the button again. Very large photos or low-memory phones can also struggle; a smaller photo usually works.', true);
+            ortLoading = null;
+            ortSession = null;
+          }
+          goBtn.disabled = false;
+          goBtn.textContent = 'Remove Background';
+        });
+
+        againBtn.addEventListener('click', function () {
+          result.style.display = 'none';
+          work.style.display = 'none';
+          fileInput.value = '';
+          img = null; curFile = null; rgbaCanvas = null;
+          drop.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+      </script>
+    `
   }
 
 };
@@ -1978,6 +2374,11 @@ const TOOLS_HUB_PAGE = {
           <p style="margin:0 0 10px; font-size:1.9rem;">&#128100;</p>
           <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Passport Photo Maker</p>
           <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Make an official passport size photo - US, India, UK and more - with print sheets.</p>
+        </a>
+        <a href="/background-remover" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#9986;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Background Remover</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Remove a photo background with AI - transparent, white or any colour. Runs in your browser.</p>
         </a>
         <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
           <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
