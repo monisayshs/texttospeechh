@@ -2370,50 +2370,73 @@ const TOOL_PAGES = {
 const TOOLS_HUB_PAGE = {
   "title": "Free Online Tools - Voice, Audio & More | TextToSpeechH AI",
   "h1": "Free Online Tools",
-  "metaDesc": "Every free tool from TextToSpeechH AI in one place: voice pitch changer, text to speech generator and more. No sign-up, no watermark, right in your browser.",
+  "metaDesc": "Free online tools from TextToSpeechH AI: text to speech, voice pitch changer, YouTube transcript generator, image compressor, passport photo maker, background remover and age calculator. No sign-up, no watermark.",
   "category": "Tools",
   "standaloneTool": true,
   "isHub": true,
   "tagline": "Simple tools that work right in your browser. No sign-up, no watermark, no fuss.",
   "faqs": [],
   "content": `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-bottom:10px;">
-        <a href="/voice-pitch-changer" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#127908;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Voice Pitch Changer</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Make any voice recording deeper or higher without changing its speed.</p>
+      <div class="hub-pills" role="group" aria-label="Filter tools by category">
+        <button type="button" class="hub-pill active" data-filter="all">All Tools</button>
+        <button type="button" class="hub-pill" data-filter="voice">Voice &amp; Audio</button>
+        <button type="button" class="hub-pill" data-filter="photo">Photo &amp; Image</button>
+        <button type="button" class="hub-pill" data-filter="video">Video &amp; Text</button>
+        <button type="button" class="hub-pill" data-filter="calc">Calculators</button>
+      </div>
+      <div class="hub-grid">
+        <a class="hub-card" data-cat="voice" href="/voice-pitch-changer">
+          <p class="hub-chip" style="background:#ede9fe;">&#127908;</p>
+          <h3>Voice Pitch Changer</h3>
+          <p>Make any voice recording deeper or higher without changing its speed.</p>
         </a>
-        <a href="/" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#128266;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Text to Speech Generator</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Turn typed text into natural AI voiceovers and download the MP3, free.</p>
+        <a class="hub-card" data-cat="voice" href="/">
+          <p class="hub-chip" style="background:#dbeafe;">&#128266;</p>
+          <h3>Text to Speech Generator</h3>
+          <p>Turn typed text into natural AI voiceovers and download the MP3, free.</p>
         </a>
-        <a href="/youtube-transcript-generator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#128196;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">YouTube Transcript Generator</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Get the full text of any YouTube video in one click, with timestamps.</p>
+        <a class="hub-card" data-cat="video" href="/youtube-transcript-generator">
+          <p class="hub-chip" style="background:#fee2e2;">&#128196;</p>
+          <h3>YouTube Transcript Generator</h3>
+          <p>Get the full text of any YouTube video in one click, with timestamps.</p>
         </a>
-        <a href="/image-compressor" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#128247;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Image Compressor</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
+        <a class="hub-card" data-cat="photo" href="/image-compressor">
+          <p class="hub-chip" style="background:#fef3c7;">&#128247;</p>
+          <h3>Image Compressor</h3>
+          <p>Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
         </a>
-        <a href="/passport-photo-maker" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#128100;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Passport Photo Maker</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Make an official passport size photo - US, India, UK and more - with print sheets.</p>
+        <a class="hub-card" data-cat="photo" href="/passport-photo-maker">
+          <p class="hub-chip" style="background:#dcfce7;">&#128100;</p>
+          <h3>Passport Photo Maker</h3>
+          <p>Make an official passport size photo - US, India, UK and more - with print sheets.</p>
         </a>
-        <a href="/background-remover" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#9986;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Background Remover</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Remove a photo background with AI - transparent, white or any colour. Runs in your browser.</p>
+        <a class="hub-card" data-cat="photo" href="/background-remover">
+          <p class="hub-chip" style="background:#fce7f3;">&#9986;</p>
+          <h3>Background Remover</h3>
+          <p>Remove a photo background with AI - transparent, white or any colour. Runs in your browser.</p>
         </a>
-        <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
-          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Age Calculator</p>
-          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Find your exact age in years, months and days, plus a next-birthday countdown.</p>
+        <a class="hub-card" data-cat="calc" href="/age-calculator">
+          <p class="hub-chip" style="background:#e0e7ff;">&#127874;</p>
+          <h3>Age Calculator</h3>
+          <p>Find your exact age in years, months and days, plus a next-birthday countdown.</p>
         </a>
       </div>
+      <script>
+      (function () {
+        var pills = document.querySelectorAll('.hub-pill');
+        var cards = document.querySelectorAll('.hub-card');
+        pills.forEach(function (pill) {
+          pill.addEventListener('click', function () {
+            pills.forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            var f = pill.getAttribute('data-filter');
+            cards.forEach(function (card) {
+              card.style.display = (f === 'all' || card.getAttribute('data-cat') === f) ? '' : 'none';
+            });
+          });
+        });
+      })();
+      </script>
     `
 };
 
