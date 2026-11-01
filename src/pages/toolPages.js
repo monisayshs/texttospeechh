@@ -2085,9 +2085,9 @@ const TOOL_PAGES = {
 
       <script>
       (function () {
-        var ORT_URL = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js';
-        var ORT_WASM = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
-        var MODEL_URL = 'https://huggingface.co/briaai/RMBG-1.4/resolve/main/onnx/model_quantized.onnx';
+        var ORT_URL = '/models/ort/ort.min.js';
+        var ORT_WASM = '/models/ort/';
+        var MODEL_PARTS = ['/models/rmbg/rmbg-q.0.part', '/models/rmbg/rmbg-q.1.part', '/models/rmbg/rmbg-q.2.part', '/models/rmbg/rmbg-q.3.part'];
         var MODEL_BYTES = 44403226;
         var MAX_SIDE = 4000;
 
@@ -2135,24 +2135,52 @@ const TOOL_PAGES = {
             document.head.appendChild(s);
           });
         }
-        async function fetchModel() {
-          var resp = await fetch(MODEL_URL);
-          if (!resp.ok) throw new Error('model download failed');
-          var total = parseInt(resp.headers.get('content-length') || '0', 10) || MODEL_BYTES;
-          var reader = resp.body.getReader();
-          var chunks = [], received = 0;
-          while (true) {
-            var step = await reader.read();
-            if (step.done) break;
-            chunks.push(step.value);
-            received += step.value.length;
-            setProgress(Math.round(received / total * 90));
-            setStatus('Downloading the AI model - ' + fmtKB(received) + ' of ' + fmtKB(total) + '. One time only.');
+        async function fetchPart(url, baseReceived) {
+          var collected = [], collectedLen = 0, lastErr = null;
+          for (var attempt = 0; attempt < 6; attempt++) {
+            try {
+              var headers = {};
+              if (collectedLen > 0) headers['Range'] = 'bytes=' + collectedLen + '-';
+              var resp = await fetch(url, { headers: headers });
+              if (!resp.ok && resp.status !== 206) throw new Error('part download failed');
+              if (collectedLen > 0 && resp.status === 200) { collected = []; collectedLen = 0; }
+              if (!resp.body || !resp.body.getReader) {
+                if (collectedLen > 0) throw new Error('resume not supported here');
+                var bufAll = await resp.arrayBuffer();
+                return new Uint8Array(bufAll);
+              }
+              var reader = resp.body.getReader();
+              while (true) {
+                var step = await reader.read();
+                if (step.done) break;
+                collected.push(step.value);
+                collectedLen += step.value.length;
+                setProgress(Math.round((baseReceived + collectedLen) / MODEL_BYTES * 90));
+                setStatus('Downloading the AI model - ' + fmtKB(baseReceived + collectedLen) + ' of ' + fmtKB(MODEL_BYTES) + '. One time only.');
+              }
+              var part = new Uint8Array(collectedLen);
+              var off = 0;
+              for (var i = 0; i < collected.length; i++) { part.set(collected[i], off); off += collected[i].length; }
+              return part;
+            } catch (err) {
+              lastErr = err;
+              if (attempt < 5) {
+                setStatus('Connection cut - resuming the download automatically, keep this page open...');
+                await new Promise(function (r) { setTimeout(r, 1500); });
+              }
+            }
           }
-          var buf = new Uint8Array(received);
-          var off = 0;
-          for (var i = 0; i < chunks.length; i++) { buf.set(chunks[i], off); off += chunks[i].length; }
-          return buf.buffer;
+          throw lastErr || new Error('part download failed');
+        }
+        async function fetchModel() {
+          var whole = new Uint8Array(MODEL_BYTES);
+          var offset = 0;
+          for (var p = 0; p < MODEL_PARTS.length; p++) {
+            var part = await fetchPart(MODEL_PARTS[p], offset);
+            whole.set(part, offset);
+            offset += part.length;
+          }
+          return whole.buffer;
         }
         async function ensureSession() {
           if (ortSession) return ortSession;
@@ -2317,7 +2345,7 @@ const TOOL_PAGES = {
             setStatus('Done. Choose a background, then download.');
             result.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } catch (err) {
-            setStatus('Something went wrong. A slow connection can interrupt the one-time model download - check your internet and press the button again. Very large photos or low-memory phones can also struggle; a smaller photo usually works.', true);
+            setStatus('Something went wrong. If the model download kept getting cut, check your internet and press the button again - finished pieces are kept by your browser. Very large photos or low-memory phones can also struggle; a smaller photo usually works.', true);
             ortLoading = null;
             ortSession = null;
           }

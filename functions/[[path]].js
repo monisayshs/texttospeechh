@@ -47,7 +47,7 @@ const SECURITY_HEADERS = {
 // clarity.ms, and TTS audio via same-origin /api responses + blob: URLs.
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self' data:",
@@ -111,7 +111,7 @@ async function finalizeResponse(response, edgeCache, cacheKey, waitUntil) {
  * These bypass the function entirely unless they match special routes (robots.txt, llms.txt, etc.)
  */
 const STATIC_EXTENSIONS = new Set([
-  'css', 'js', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'webp',
+  'css', 'js', 'mjs', 'wasm', 'part', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico', 'webp',
   'woff', 'woff2', 'ttf', 'eot', 'webmanifest', 'map', 'mp3', 'mp4'
 ]);
 

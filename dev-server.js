@@ -194,7 +194,11 @@ const server = http.createServer(async (req, res) => {
     '.jpg': 'image/jpeg',
     '.svg': 'image/svg+xml',
     '.ico': 'image/x-icon',
-    '.mp3': 'audio/mpeg'
+    '.mp3': 'audio/mpeg',
+    '.mjs': 'text/javascript; charset=utf-8',
+    '.wasm': 'application/wasm',
+    '.part': 'application/octet-stream',
+    '.webp': 'image/webp'
   };
 
   const contentType = mimeTypes[extname] || 'application/octet-stream';

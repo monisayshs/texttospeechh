@@ -53,3 +53,15 @@
 
 /sitemap*.xml
   Cache-Control: public, max-age=3600, s-maxage=86400
+
+/models/rmbg/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/models/ort/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/models/ort/ort-wasm-simd-threaded.mjs
+  Content-Type: text/javascript; charset=utf-8
+
+/models/ort/ort-wasm-simd-threaded.wasm
+  Content-Type: application/wasm
