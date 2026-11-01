@@ -987,9 +987,9 @@ const TOOL_PAGES = {
 
       <h2>More Free Tools</h2>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:30px;">
-        <a href="/tools" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
-          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">All Free Tools</p>
-          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Browse every free tool on TextToSpeechH AI in one place.</p>
+        <a href="/passport-photo-maker" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Passport Photo Maker</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Need the photo itself in the official size first? Make a passport size photo, then compress it here.</p>
         </a>
         <a href="/youtube-transcript-generator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
           <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">YouTube Transcript Generator</p>
@@ -1417,6 +1417,528 @@ const TOOL_PAGES = {
       })();
       </script>
     `
+  },
+
+  "passport-photo-maker": {
+    "title": "Passport Photo Maker - Make Passport Size Photos Online Free | TextToSpeechH AI",
+    "h1": "Passport Photo Maker",
+    "metaDesc": "Make a passport size photo online for free - US 2x2 inch, India and UK 35x45 mm, Canada, China and more. Set the exact KB size your form demands and download print sheets. 100% private, in your browser.",
+    "category": "Photo Tools",
+    "standaloneTool": true,
+    "tagline": "Turn any photo into an official passport size photo - exact dimensions, exact KB for your form, and print-ready sheets. Free, and your photo never leaves your device.",
+    "readingTime": "5 min read",
+    "faqs": [
+      { "q": "Which passport photo sizes does this maker support?", "a": "The main official sizes are built in: US passport and visa at 2 x 2 inches, India, UK, Schengen and Australia at 35 x 45 mm, Canada at 50 x 70 mm, and China visa at 33 x 48 mm. If a form asks for something different, choose Custom and type the width and height in millimetres - the photo is made to exactly that size." },
+      { "q": "How do I keep the photo under my form's KB limit?", "a": "Many application forms accept a photo only below a fixed file size, such as 50 KB or 100 KB. Pick that limit in the KB section before you press Make My Photo. The tool then finds the best quality that stays at or below your limit, and shows you the final KB before you download - no repeated trial and error." },
+      { "q": "Is my photo uploaded to a server?", "a": "No. Everything happens inside your browser - cropping, resizing, compressing and building the print sheets. Your photo is never uploaded, stored or seen by anyone. You can even disconnect from the internet after the page loads and finish your photo offline." },
+      { "q": "Does this tool change my background to white?", "a": "Not in this version, and we would rather tell you that plainly than fake it. For an accepted photo, stand in front of a plain, light-coloured wall with even light on your face. Automatic background changing is planned as a later upgrade; today the tool guarantees the size, the crop guidance and the file size." },
+      { "q": "How do I print the passport photos cheaply?", "a": "Download the 4 x 6 inch print sheet and print it as a normal photo print - at most photo shops and pharmacy kiosks that costs a few cents, and the sheet holds multiple copies you can cut out. Ready-made passport photos at a counter can cost many times more for just two copies, so the sheet is where the real saving is." },
+      { "q": "Will my photo definitely be accepted?", "a": "No honest tool can promise that - the final decision always belongs to the passport office, embassy or form authority. What this tool does guarantee is the technical side they check first: the exact dimensions, a correctly positioned head using the guide lines, and a file size inside the stated limit. Follow the tips on this page for the rest." }
+    ],
+    "content": `
+      <div id="pp-tool" style="background:var(--color-surface); border:1px solid var(--color-border); padding:28px; border-radius:16px; margin-bottom:34px; box-shadow:var(--shadow-lg);">
+        <div id="pp-drop" style="border:2px dashed var(--color-border-strong); border-radius:14px; padding:48px 24px; text-align:center; cursor:pointer; background:var(--color-primary-soft);">
+          <div style="width:84px; height:84px; margin:0 auto 20px; border-radius:50%; background:var(--color-surface); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-lg);">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.4"/><path d="M5 19.5c1.2-3.2 3.8-4.8 7-4.8s5.8 1.6 7 4.8"/></svg>
+          </div>
+          <span style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:14px 38px; border-radius:10px; font-weight:700; font-size:1.05rem;">Select Photo</span>
+          <p style="margin:16px 0 0; color:var(--color-text-muted); font-size:0.95rem;">or drop a photo here</p>
+          <p style="margin:6px 0 0; font-size:0.82rem; color:var(--color-text-muted);">JPG, PNG or WebP - your photo never leaves this device. Nothing is uploaded.</p>
+        </div>
+        <input type="file" id="pp-file" accept="image/jpeg,image/png,image/webp" style="display:none;">
+
+        <div id="pp-work" style="display:none; margin-top:22px;">
+          <p id="pp-fileinfo" style="margin:0 0 16px; font-size:0.95rem;"></p>
+
+          <label for="pp-preset" style="display:block; margin:0 0 8px; font-weight:700;">Photo size (country / document)</label>
+          <select id="pp-preset" style="width:100%; max-width:430px; padding:11px 12px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit; font-size:1rem; margin-bottom:10px;">
+            <option value="us" selected>US Passport / Visa - 2 x 2 inch</option>
+            <option value="india">India Passport / Exams - 35 x 45 mm</option>
+            <option value="uk">UK / Schengen Visa - 35 x 45 mm</option>
+            <option value="canada">Canada Passport - 50 x 70 mm</option>
+            <option value="china">China Visa - 33 x 48 mm</option>
+            <option value="australia">Australia Passport - 35 x 45 mm</option>
+            <option value="custom">Custom size (mm)</option>
+          </select>
+          <div id="pp-custom-row" style="display:none; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px;">
+            <span>Width <input type="number" id="pp-cw" value="35" min="10" max="100" style="width:74px; padding:8px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit;"> mm</span>
+            <span>Height <input type="number" id="pp-ch" value="45" min="10" max="120" style="width:74px; padding:8px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit;"> mm</span>
+          </div>
+
+          <p style="margin:14px 0 8px; font-weight:700;">Position the face</p>
+          <p style="margin:0 0 10px; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Drag the photo to move it. Put the top of the head on the upper line and the chin on the lower line, face inside the oval.</p>
+          <div id="pp-stage" style="position:relative; width:100%; max-width:400px; margin:0 auto; background:#191919; border-radius:12px; overflow:hidden; touch-action:none; cursor:grab; border:1px solid var(--color-border-strong);">
+            <img id="pp-img" alt="Your photo in the passport crop frame" style="position:absolute; display:none; max-width:none; user-select:none; -webkit-user-drag:none;" draggable="false">
+            <div id="pp-guides" style="position:absolute; inset:0; display:none; pointer-events:none;">
+              <div style="position:absolute; left:19%; top:9%; width:62%; height:64%; border:2px dashed rgba(255,255,255,0.9); border-radius:50%; box-shadow:0 0 0 9999px rgba(0,0,0,0.14);"></div>
+              <div style="position:absolute; left:0; right:0; top:12%; border-top:2px dashed var(--color-primary);"><span style="position:absolute; right:6px; top:-9px; font-size:10px; font-weight:700; padding:1px 7px; border-radius:4px; background:rgba(0,0,0,0.6); color:#fff;">HEAD TOP</span></div>
+              <div style="position:absolute; left:0; right:0; top:74%; border-top:2px dashed var(--color-primary);"><span style="position:absolute; right:6px; top:-9px; font-size:10px; font-weight:700; padding:1px 7px; border-radius:4px; background:rgba(0,0,0,0.6); color:#fff;">CHIN</span></div>
+              <div style="position:absolute; top:0; bottom:0; left:50%; border-left:1px dashed rgba(255,255,255,0.55);"></div>
+            </div>
+            <p id="pp-stage-hint" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#bbb; font-size:0.9rem; margin:0; text-align:center; padding:20px;">Your photo will appear here</p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; max-width:400px; margin:12px auto 4px;">
+            <span style="font-size:0.88rem; font-weight:600;">Zoom</span>
+            <input type="range" id="pp-zoom" min="100" max="320" value="100" style="flex:1; accent-color:var(--color-primary);">
+          </div>
+
+          <p style="margin:18px 0 8px; font-weight:700;">File size limit (for online forms)</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:8px;">
+            <button type="button" class="pp-chip" data-kb="0" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary); cursor:pointer; font-weight:600;">No limit</button>
+            <button type="button" class="pp-chip" data-kb="20" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">20 KB</button>
+            <button type="button" class="pp-chip" data-kb="50" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">50 KB</button>
+            <button type="button" class="pp-chip" data-kb="100" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">100 KB</button>
+            <button type="button" class="pp-chip" data-kb="200" style="padding:8px 16px; border-radius:8px; border:1px solid var(--color-border-strong); background:var(--color-bg); cursor:pointer; font-weight:600;">200 KB</button>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              <input type="number" id="pp-kb" value="0" min="0" max="5000" style="width:90px; padding:9px 10px; border:1px solid var(--color-border-strong); border-radius:8px; background:var(--color-bg); color:inherit; font-size:1rem;"> KB
+            </span>
+          </div>
+          <p style="margin:0 0 16px; font-size:0.85rem; color:var(--color-text-muted);">Leave it on No limit for printing. Choose a KB size only when a form portal demands one.</p>
+
+          <button type="button" id="pp-go" style="background:var(--color-primary); color:var(--color-primary-on); border:0; padding:13px 32px; border-radius:10px; font-weight:700; font-size:1rem; cursor:pointer;">Make My Photo</button>
+          <p id="pp-status" style="margin:12px 0 0; font-size:0.95rem; color:var(--color-text-muted);">Photo ready. Set the size, position the face, then press Make My Photo.</p>
+
+          <div id="pp-result" style="display:none; margin-top:18px; border-top:1px solid var(--color-border); padding-top:18px;">
+            <p id="pp-result-line" style="margin:0 0 6px; font-size:1.05rem; font-weight:700;"></p>
+            <p id="pp-result-note" style="margin:0 0 14px; font-size:0.88rem; color:var(--color-text-muted);"></p>
+            <img id="pp-preview" alt="Your finished passport size photo" style="max-height:300px; border-radius:8px; border:1px solid var(--color-border); display:block; margin-bottom:16px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a id="pp-dl-photo" href="#" download="passport-photo.jpg" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:10px; font-weight:700; text-decoration:none;">Download Photo</a>
+              <a id="pp-dl-46" href="#" download="passport-photos-4x6-sheet.jpg" style="display:inline-block; padding:12px 22px; border-radius:10px; border:1px solid var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary); font-weight:600; text-decoration:none;">Print Sheet 4x6</a>
+              <a id="pp-dl-a4" href="#" download="passport-photos-a4-sheet.jpg" style="display:inline-block; padding:12px 22px; border-radius:10px; border:1px solid var(--color-primary); background:var(--color-primary-soft); color:var(--color-primary); font-weight:600; text-decoration:none;">Print Sheet A4</a>
+              <button type="button" id="pp-again" style="padding:12px 22px; border-radius:10px; border:1px solid var(--color-border-strong); background:var(--color-bg); color:inherit; font-weight:600; cursor:pointer;">Start Over</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:30px;">
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128207;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Official Sizes Built In</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">US, India, UK, Schengen, Canada, China and more - plus any custom size in mm.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#127919;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Exact KB for Forms</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">The same exact-size engine as our Image Compressor - the file lands at or below your limit.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128424;</p>
+          <p style="margin:0 0 4px; font-weight:700;">Print Sheets Included</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">4x6 and A4 sheets with multiple copies - print anywhere for a few cents.</p>
+        </div>
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-align:center;">
+          <p style="margin:0 0 6px; font-size:1.5rem;">&#128274;</p>
+          <p style="margin:0 0 4px; font-weight:700;">100% Private</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Your face never leaves your device. Nothing is uploaded or stored, ever.</p>
+        </div>
+      </div>
+
+      <h2>What is a Passport Photo Maker?</h2>
+      <p style="line-height:1.75; margin-bottom:24px;">
+        A <strong>passport photo maker</strong> turns an ordinary photo into an official ID photo with the exact dimensions, head position and file size a passport office, embassy or application form demands. Studios charge anywhere from a few dollars to $20 or more for a set of copies. This tool does the technical part free, in your browser: choose your country size above, position your face between the guide lines, set a KB limit if your form has one, and download the photo - plus print sheets when you need paper copies. Only need to shrink a photo you already have? That is our <a href="/image-compressor">Image Compressor</a>.
+      </p>
+
+      <h2>How to Make a Passport Size Photo</h2>
+      <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Add your photo.</strong> A recent phone photo works - face the camera, plain light background, no sunglasses or cap.</li>
+        <li><strong>Choose the size.</strong> Pick your country and document from the list, or enter a custom size in millimetres.</li>
+        <li><strong>Position the face.</strong> Drag and zoom until the top of the head touches the upper line and the chin rests on the lower line.</li>
+        <li><strong>Set a KB limit only if your form asks.</strong> Most online forms state one (20-200 KB is typical). Printing? Leave No limit.</li>
+        <li><strong>Press Make My Photo and download.</strong> Save the single photo for online forms, or a print sheet for paper copies.</li>
+      </ol>
+
+      <h2>Passport Photo Sizes by Country</h2>
+      <div style="overflow-x:auto; margin-bottom:24px;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.94rem;">
+          <tr style="border-bottom:2px solid var(--color-border-strong); text-align:left;"><th style="padding:9px 8px;">Country / Document</th><th style="padding:9px 8px;">Size</th><th style="padding:9px 8px;">Print pixels (300 DPI)</th></tr>
+          <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:9px 8px;">USA - Passport &amp; Visa</td><td style="padding:9px 8px;">2 x 2 inch</td><td style="padding:9px 8px;">600 x 600 px</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:9px 8px;">India - Passport, exams &amp; job forms</td><td style="padding:9px 8px;">35 x 45 mm</td><td style="padding:9px 8px;">413 x 531 px</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:9px 8px;">UK / Schengen - Passport &amp; Visa</td><td style="padding:9px 8px;">35 x 45 mm</td><td style="padding:9px 8px;">413 x 531 px</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:9px 8px;">Canada - Passport</td><td style="padding:9px 8px;">50 x 70 mm</td><td style="padding:9px 8px;">591 x 827 px</td></tr>
+          <tr style="border-bottom:1px solid var(--color-border);"><td style="padding:9px 8px;">China - Visa</td><td style="padding:9px 8px;">33 x 48 mm</td><td style="padding:9px 8px;">390 x 567 px</td></tr>
+          <tr><td style="padding:9px 8px;">Australia - Passport</td><td style="padding:9px 8px;">35 x 45 mm</td><td style="padding:9px 8px;">413 x 531 px</td></tr>
+        </table>
+      </div>
+
+      <h2>Tips for a Photo That Gets Accepted</h2>
+      <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>Plain, light background.</strong> Stand in front of a plain white or off-white wall. Busy backgrounds are the most common rejection reason.</li>
+        <li><strong>Even light, no shadows.</strong> Face a window in daylight. Shadows on the face or behind the head cause rejections.</li>
+        <li><strong>Face the camera, neutral expression.</strong> Both eyes open, mouth closed, head straight - no tilt.</li>
+        <li><strong>No glasses for US passports.</strong> The US State Department has not allowed eyeglasses in passport photos since 2016. Spectacles worn daily are fine for most Indian forms, but glare on the lenses is not.</li>
+        <li><strong>Use a recent photo.</strong> Most authorities ask for a photo taken in the last 6 months that looks like you today.</li>
+      </ul>
+
+      <h2>Honest Limits</h2>
+      <ul style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
+        <li><strong>The background is not changed for you.</strong> This version guarantees dimensions, head position and file size. Background replacement with AI is planned as a later upgrade - until then, a plain wall is your friend.</li>
+        <li><strong>Acceptance is the authority's decision.</strong> We get the technical checks right; the final yes always comes from the office or portal that receives your photo.</li>
+        <li><strong>Very small KB targets trade quality.</strong> If a form demands under 20 KB, the tool gently reduces pixel dimensions after quality - it tells you the final size in the result, honestly.</li>
+      </ul>
+
+      <h2>More Free Tools</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:30px;">
+        <a href="/image-compressor" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Image Compressor</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Already have a photo? Shrink it to the exact KB size your form demands.</p>
+        </a>
+        <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Age Calculator</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Check the exact age as on the date your form asks about.</p>
+        </a>
+        <a href="/voice-pitch-changer" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:18px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 4px; font-weight:700; color:var(--color-primary);">Voice Pitch Changer</p>
+          <p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.55;">Make any voice recording deeper or higher, without changing its speed.</p>
+        </a>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Which passport photo sizes does this maker support?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">The main official sizes are built in: US passport and visa at 2 x 2 inches, India, UK, Schengen and Australia at 35 x 45 mm, Canada at 50 x 70 mm, and China visa at 33 x 48 mm. If a form asks for something different, choose Custom and type the width and height in millimetres.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">How do I keep the photo under my form's KB limit?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Pick the limit in the KB section before you press Make My Photo - 20, 50, 100 or 200 KB, or type your own. The tool finds the best quality that stays at or below it and shows the final KB before you download.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Is my photo uploaded to a server?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">No. Everything happens inside your browser - cropping, resizing, compressing and building the print sheets. Your photo is never uploaded, stored or seen by anyone.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Does this tool change my background to white?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Not in this version, and we would rather tell you that plainly than fake it. Stand in front of a plain, light-coloured wall with even light on your face. Automatic background changing is planned as a later upgrade.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">How do I print the passport photos cheaply?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">Download the 4 x 6 inch print sheet and print it as a normal photo print - at most photo shops and pharmacy kiosks that costs a few cents, and the sheet holds multiple copies you can cut out. Counter passport photos can cost many times more for just two copies.</p>
+        </div>
+        <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+          <h4 style="margin-top:0; color:var(--color-primary);">Will my photo definitely be accepted?</h4>
+          <p style="margin:0; font-size:0.92rem; line-height:1.6;">No honest tool can promise that - the final decision always belongs to the passport office, embassy or form authority. What this tool guarantees is the technical side they check first: exact dimensions, a correctly positioned head using the guide lines, and a file size inside the stated limit.</p>
+        </div>
+      </div>
+
+      <script>
+      (function () {
+        // Phase-2 monetization switch: when print sheets become a paid
+        // unlock, set printSheetPaid to true and add the payment URL.
+        // The single photo + exact-KB output stays free forever.
+        var PP_CONFIG = { printSheetPaid: false, printSheetPriceText: 'Photo Pack', printSheetPayUrl: '' };
+
+        var PRESETS = {
+          us: { w: 600, h: 600, label: '2 x 2 inch' },
+          india: { w: 413, h: 531, label: '35 x 45 mm' },
+          uk: { w: 413, h: 531, label: '35 x 45 mm' },
+          canada: { w: 591, h: 827, label: '50 x 70 mm' },
+          china: { w: 390, h: 567, label: '33 x 48 mm' },
+          australia: { w: 413, h: 531, label: '35 x 45 mm' }
+        };
+
+        var drop = document.getElementById('pp-drop');
+        var fileInput = document.getElementById('pp-file');
+        var work = document.getElementById('pp-work');
+        var fileInfo = document.getElementById('pp-fileinfo');
+        var presetSel = document.getElementById('pp-preset');
+        var customRow = document.getElementById('pp-custom-row');
+        var cwInput = document.getElementById('pp-cw');
+        var chInput = document.getElementById('pp-ch');
+        var stage = document.getElementById('pp-stage');
+        var imgEl = document.getElementById('pp-img');
+        var guides = document.getElementById('pp-guides');
+        var stageHint = document.getElementById('pp-stage-hint');
+        var zoomInput = document.getElementById('pp-zoom');
+        var kbInput = document.getElementById('pp-kb');
+        var chips = document.querySelectorAll('.pp-chip');
+        var goBtn = document.getElementById('pp-go');
+        var statusEl = document.getElementById('pp-status');
+        var result = document.getElementById('pp-result');
+        var resultLine = document.getElementById('pp-result-line');
+        var resultNote = document.getElementById('pp-result-note');
+        var preview = document.getElementById('pp-preview');
+        var dlPhoto = document.getElementById('pp-dl-photo');
+        var dl46 = document.getElementById('pp-dl-46');
+        var dlA4 = document.getElementById('pp-dl-a4');
+        var againBtn = document.getElementById('pp-again');
+
+        var img = null, nw = 0, nh = 0, curFile = null;
+        var zoom = 1, ox = 0, oy = 0, dispW = 0, dispH = 0, stageW = 0, stageH = 0;
+        var photoUrl = null, sheet46Url = null, sheetA4Url = null;
+
+        function fmtKB(bytes) {
+          if (bytes < 1024) return bytes + ' B';
+          var kb = bytes / 1024;
+          if (kb < 100) return (Math.round(kb * 10) / 10) + ' KB';
+          return Math.round(kb) + ' KB';
+        }
+        function setStatus(msg, isError) {
+          statusEl.textContent = msg;
+          statusEl.style.color = isError ? 'var(--color-error-text)' : 'var(--color-text-muted)';
+        }
+        function currentPreset() {
+          var key = presetSel.value;
+          if (key === 'custom') {
+            var mw = parseFloat(cwInput.value) || 35;
+            var mh = parseFloat(chInput.value) || 45;
+            mw = Math.min(100, Math.max(10, mw));
+            mh = Math.min(120, Math.max(10, mh));
+            return { w: Math.round(mw / 25.4 * 300), h: Math.round(mh / 25.4 * 300), label: mw + ' x ' + mh + ' mm' };
+          }
+          return PRESETS[key];
+        }
+        function clampOffsets() {
+          if (dispW <= stageW) { ox = (stageW - dispW) / 2; } else { ox = Math.min(0, Math.max(stageW - dispW, ox)); }
+          if (dispH <= stageH) { oy = (stageH - dispH) / 2; } else { oy = Math.min(0, Math.max(stageH - dispH, oy)); }
+        }
+        function render() {
+          imgEl.style.width = dispW + 'px';
+          imgEl.style.height = dispH + 'px';
+          imgEl.style.left = ox + 'px';
+          imgEl.style.top = oy + 'px';
+        }
+        function layout(keepCenter) {
+          if (!img) return;
+          var p = currentPreset();
+          stageW = stage.clientWidth || 400;
+          stageH = Math.round(stageW * p.h / p.w);
+          stage.style.height = stageH + 'px';
+          var base = Math.max(stageW / nw, stageH / nh);
+          var oldW = dispW, oldH = dispH;
+          dispW = nw * base * zoom;
+          dispH = nh * base * zoom;
+          if (keepCenter && oldW > 0) {
+            var cfx = (stageW / 2 - ox) / oldW;
+            var cfy = (stageH / 2 - oy) / oldH;
+            ox = stageW / 2 - cfx * dispW;
+            oy = stageH / 2 - cfy * dispH;
+          } else {
+            ox = (stageW - dispW) / 2;
+            oy = (stageH - dispH) / 2;
+          }
+          clampOffsets();
+          render();
+        }
+        function syncCustomRow() {
+          customRow.style.display = presetSel.value === 'custom' ? 'flex' : 'none';
+        }
+        presetSel.addEventListener('change', function () { syncCustomRow(); zoom = 1; zoomInput.value = 100; layout(false); });
+        cwInput.addEventListener('change', function () { layout(false); });
+        chInput.addEventListener('change', function () { layout(false); });
+        zoomInput.addEventListener('input', function () { zoom = parseInt(zoomInput.value, 10) / 100; layout(true); });
+        window.addEventListener('resize', function () { if (img) layout(true); });
+
+        var dragging = false, startX = 0, startY = 0, startOx = 0, startOy = 0;
+        stage.addEventListener('pointerdown', function (e) {
+          if (!img) return;
+          dragging = true; startX = e.clientX; startY = e.clientY; startOx = ox; startOy = oy;
+          try { stage.setPointerCapture(e.pointerId); } catch (err) {}
+          stage.style.cursor = 'grabbing';
+        });
+        stage.addEventListener('pointermove', function (e) {
+          if (!dragging || !img) return;
+          ox = startOx + (e.clientX - startX);
+          oy = startOy + (e.clientY - startY);
+          clampOffsets();
+          render();
+        });
+        function endDrag() { dragging = false; stage.style.cursor = 'grab'; }
+        stage.addEventListener('pointerup', endDrag);
+        stage.addEventListener('pointercancel', endDrag);
+
+        for (var c = 0; c < chips.length; c++) {
+          chips[c].addEventListener('click', function () {
+            kbInput.value = this.getAttribute('data-kb');
+            for (var j = 0; j < chips.length; j++) {
+              chips[j].style.borderColor = 'var(--color-border-strong)';
+              chips[j].style.background = 'var(--color-bg)';
+              chips[j].style.color = 'inherit';
+            }
+            this.style.borderColor = 'var(--color-primary)';
+            this.style.background = 'var(--color-primary-soft)';
+            this.style.color = 'var(--color-primary)';
+          });
+        }
+
+        function loadFile(file) {
+          if (!file) return;
+          if (file.type.indexOf('image/') !== 0) { alert('That file is not an image. Choose a JPG, PNG or WebP photo.'); return; }
+          curFile = file;
+          var url = URL.createObjectURL(file);
+          var im = new Image();
+          im.onload = function () {
+            img = im; nw = im.naturalWidth; nh = im.naturalHeight;
+            fileInfo.innerHTML = '';
+            var strong = document.createElement('strong');
+            strong.textContent = file.name;
+            fileInfo.appendChild(strong);
+            fileInfo.appendChild(document.createTextNode(' - ' + fmtKB(file.size) + ' - ' + nw + ' x ' + nh + ' px'));
+            imgEl.src = url;
+            imgEl.style.display = 'block';
+            guides.style.display = 'block';
+            stageHint.style.display = 'none';
+            work.style.display = 'block';
+            result.style.display = 'none';
+            zoom = 1; zoomInput.value = 100;
+            setStatus('Photo ready. Set the size, position the face, then press Make My Photo.');
+            requestAnimationFrame(function () { layout(false); });
+          };
+          im.onerror = function () { alert('This image could not be read. Try a different file.'); };
+          im.src = url;
+        }
+        drop.addEventListener('click', function () { fileInput.click(); });
+        fileInput.addEventListener('change', function () { if (fileInput.files && fileInput.files[0]) loadFile(fileInput.files[0]); });
+        drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.style.borderColor = 'var(--color-primary)'; });
+        drop.addEventListener('dragleave', function () { drop.style.borderColor = 'var(--color-border-strong)'; });
+        drop.addEventListener('drop', function (e) {
+          e.preventDefault(); drop.style.borderColor = 'var(--color-border-strong)';
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+        });
+
+        function cropCanvas(outW, outH) {
+          var canvas = document.createElement('canvas');
+          canvas.width = outW; canvas.height = outH;
+          var ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, outW, outH);
+          var k = nw / dispW;
+          var sx = -ox * k, sy = -oy * k, sw = stageW * k, sh = stageH * k;
+          ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+          return canvas;
+        }
+        function encodeCanvas(canvas, q) {
+          return new Promise(function (resolve) {
+            if (canvas.toBlob) {
+              canvas.toBlob(function (blob) { resolve(blob); }, 'image/jpeg', q);
+            } else {
+              var dataUrl = canvas.toDataURL('image/jpeg', q);
+              var parts = dataUrl.split(',');
+              var bin = atob(parts[1]);
+              var arr = new Uint8Array(bin.length);
+              for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+              resolve(new Blob([arr], { type: 'image/jpeg' }));
+            }
+          });
+        }
+        async function fitToKB(baseCanvas, targetBytes) {
+          if (!targetBytes) {
+            var single = await encodeCanvas(baseCanvas, 0.92);
+            return { blob: single, scaled: false, outW: baseCanvas.width, outH: baseCanvas.height };
+          }
+          var scale = 1, smallest = null;
+          for (var round = 0; round < 5; round++) {
+            var w = Math.round(baseCanvas.width * scale), h = Math.round(baseCanvas.height * scale);
+            var workCanvas = baseCanvas;
+            if (scale < 1) {
+              workCanvas = document.createElement('canvas');
+              workCanvas.width = w; workCanvas.height = h;
+              var wctx = workCanvas.getContext('2d');
+              wctx.fillStyle = '#ffffff'; wctx.fillRect(0, 0, w, h);
+              wctx.drawImage(baseCanvas, 0, 0, w, h);
+            }
+            var lo = 0.05, hi = 1.0, best = null;
+            for (var step = 0; step < 7; step++) {
+              var mid = (lo + hi) / 2;
+              var blob = await encodeCanvas(workCanvas, mid);
+              if (!blob) break;
+              if (!smallest || blob.size < smallest.size) smallest = blob;
+              if (blob.size <= targetBytes) { best = blob; lo = mid; } else { hi = mid; }
+            }
+            if (best) return { blob: best, scaled: scale < 1, outW: w, outH: h };
+            scale = scale * 0.85;
+          }
+          return { blob: smallest, scaled: true, outW: Math.round(baseCanvas.width * scale), outH: Math.round(baseCanvas.height * scale) };
+        }
+        async function makeSheet(baseCanvas, sheetW, sheetH) {
+          var canvas = document.createElement('canvas');
+          canvas.width = sheetW; canvas.height = sheetH;
+          var ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, sheetW, sheetH);
+          var pw = baseCanvas.width, ph = baseCanvas.height, gap = 14;
+          var cols = Math.max(1, Math.floor((sheetW + gap) / (pw + gap)));
+          var rows = Math.max(1, Math.floor((sheetH + gap) / (ph + gap)));
+          var gridW = cols * pw + (cols - 1) * gap;
+          var gridH = rows * ph + (rows - 1) * gap;
+          var startX = Math.round((sheetW - gridW) / 2), startY = Math.round((sheetH - gridH) / 2);
+          ctx.strokeStyle = '#c9c9c9';
+          ctx.lineWidth = 2;
+          for (var r = 0; r < rows; r++) {
+            for (var col = 0; col < cols; col++) {
+              var x = startX + col * (pw + gap), y = startY + r * (ph + gap);
+              ctx.drawImage(baseCanvas, x, y);
+              ctx.strokeRect(x + 1, y + 1, pw - 2, ph - 2);
+            }
+          }
+          var blob = await encodeCanvas(canvas, 0.9);
+          return { blob: blob, copies: cols * rows };
+        }
+
+        goBtn.addEventListener('click', async function () {
+          if (!img || !curFile) { setStatus('Choose a photo first.', true); return; }
+          goBtn.disabled = true;
+          goBtn.textContent = 'Making your photo...';
+          result.style.display = 'none';
+          setStatus('Working - this happens on your device, give it a moment...');
+          try {
+            var p = currentPreset();
+            var baseCanvas = cropCanvas(p.w, p.h);
+            var kb = parseFloat(kbInput.value);
+            var target = (kb && kb > 0) ? Math.round(kb * 1024) : 0;
+            var out = await fitToKB(baseCanvas, target);
+            if (!out || !out.blob) { setStatus('Something went wrong with this photo. Try a different one.', true); goBtn.disabled = false; goBtn.textContent = 'Make My Photo'; return; }
+            if (photoUrl) URL.revokeObjectURL(photoUrl);
+            photoUrl = URL.createObjectURL(out.blob);
+            preview.src = photoUrl;
+            dlPhoto.href = photoUrl;
+            resultLine.textContent = 'Your photo is ready - ' + out.outW + ' x ' + out.outH + ' px (' + p.label + ') - ' + fmtKB(out.blob.size);
+            var notes = [];
+            if (target && out.blob.size <= target) notes.push('Inside your ' + kb + ' KB limit.');
+            if (out.scaled) notes.push('Pixel dimensions were gently reduced to reach the KB limit - the printed size and ratio are unchanged.');
+            if (PP_CONFIG.printSheetPaid) {
+              dl46.style.display = 'none';
+              dlA4.style.display = 'none';
+              notes.push('Print sheets are part of the ' + PP_CONFIG.printSheetPriceText + ' - coming soon.');
+            } else {
+              var s46 = await makeSheet(baseCanvas, 1200, 1800);
+              var sA4 = await makeSheet(baseCanvas, 2480, 3508);
+              if (sheet46Url) URL.revokeObjectURL(sheet46Url);
+              if (sheetA4Url) URL.revokeObjectURL(sheetA4Url);
+              sheet46Url = URL.createObjectURL(s46.blob);
+              sheetA4Url = URL.createObjectURL(sA4.blob);
+              dl46.href = sheet46Url;
+              dlA4.href = sheetA4Url;
+              dl46.textContent = 'Print Sheet 4x6 (' + s46.copies + ' copies)';
+              dlA4.textContent = 'Print Sheet A4 (' + sA4.copies + ' copies)';
+              notes.push('Print sheets are free during launch - the 4x6 sheet is the cheapest way to print copies.');
+            }
+            notes.push('Made 100% in your browser - nothing was uploaded.');
+            resultNote.textContent = notes.join(' ');
+            result.style.display = 'block';
+            setStatus('Done. Check the photo, then download.');
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (err) {
+            setStatus('Something went wrong while making the photo. Try a smaller photo or a different format.', true);
+          }
+          goBtn.disabled = false;
+          goBtn.textContent = 'Make My Photo';
+        });
+
+        againBtn.addEventListener('click', function () {
+          result.style.display = 'none';
+          work.style.display = 'none';
+          fileInput.value = '';
+          img = null; curFile = null;
+          imgEl.style.display = 'none';
+          guides.style.display = 'none';
+          stageHint.style.display = 'flex';
+          drop.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      })();
+      </script>
+    `
   }
 
 };
@@ -1451,6 +1973,11 @@ const TOOLS_HUB_PAGE = {
           <p style="margin:0 0 10px; font-size:1.9rem;">&#128247;</p>
           <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Image Compressor</p>
           <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online forms.</p>
+        </a>
+        <a href="/passport-photo-maker" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
+          <p style="margin:0 0 10px; font-size:1.9rem;">&#128100;</p>
+          <p style="margin:0 0 6px; font-weight:700; font-size:1.05rem; color:var(--color-text);">Passport Photo Maker</p>
+          <p style="margin:0; font-size:0.9rem; color:var(--color-text-muted); line-height:1.6;">Make an official passport size photo - US, India, UK and more - with print sheets.</p>
         </a>
         <a href="/age-calculator" style="display:block; background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:24px; text-decoration:none; color:inherit;">
           <p style="margin:0 0 10px; font-size:1.9rem;">&#127874;</p>
