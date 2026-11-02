@@ -238,7 +238,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             Authors and readers convert document files into spoken audio tracks. Direct file uploading simplifies converting long-form text.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Check out <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-primary);">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-primary);">Word to Speech</a> converters.</em>
+            👉 <em>Check out <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color: var(--color-primary);">PDF to Speech</a> and <a href="${DOMAIN}/text-to-speech/word-to-speech" style="color: var(--color-primary);">Word to Speech</a> converters, or compare the <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color: var(--color-primary);">best PDF reader apps that read PDFs aloud</a> if you would rather listen on your phone.</em>
           </p>
         </div>
 
