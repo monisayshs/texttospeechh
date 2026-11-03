@@ -26,6 +26,8 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## 1. Active Session Summary
 
+- **CTR title/meta (2026-11-03)**: pdf-reader-out-loud-apps title + meta updated live on the user's approval (Option 1 of the title-tweaks preview: "7 Free PDF Readers That Read Out Loud (Tested 2026)"). List entry + article object changed; H1/body untouched. elevenlabs-alternatives title held — test runs to mid-Nov checkpoint; its preview Option 1 is the user's favourite, banked in ~/workspace/seo/title-tweaks-preview-2026-11-03.md.
+
 - **Publish (2026-11-03)**: elevenlabs-realtime-voice-agent-guide published from the daily draft on the user's "publish kardo" — added to BLOG_ARTICLES_LIST + BLOG_ARTICLES_MAP in `src/pages/textToSpeechBlogHub.js` with the AI-citation formula intact (direct answer first, Quick Answer box, attributed quote, 6 FAQs at 40–60 words). Cross-links both directions per the user's instruction: new guide -> elevenlabs-alternatives + open-source-voice-cloning-audio8; one new in-content link back from each of those two articles (links only, no title/meta edits — the alternatives title test stays untouched). node --check clean; rendered locally on the dev server and live-verified after push.
 
 - **Follow-up (2026-11-02)**: article-images Day 2 (batch 6) — inserted the ready hero+mid images into 4 more articles (best-french-text-to-speech-tools, best-italian-text-to-speech-tools, hindi-text-to-speech-tools, text-to-speech-chromebook-guide) following the Day-1 house pattern (hero eager as first element of the first section, mid lazy at a mid-article break). Verified: node --check clean, local dev-server render 200 with both images on all 4 pages, live-verified after push. 36 imageless articles remain in the program.
