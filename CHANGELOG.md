@@ -29,6 +29,7 @@ If this document conflicts with the implementation, **the source code is authori
 ## [Unreleased]
 
 ### Fixed
+- **Voice-cloning hero image optimized (2026-11-05, owner-approved D2)**: `is-ai-voice-cloning-legal-hero.webp` recompressed 417,762 B → 100,866 B (2048×1152 → 1600×900, WebP q80, visually verified against the original); original backed up outside the repo in the project folder.
 - **FAQ page missing WebSite schema (2026-11-05, Team 1 technical SEO sweep, branch opt/team1-technical)** (`src/api/contentHandler.js`): a full sitemap sweep (130 URLs rendered locally, every JSON-LD block parsed) found /faq was the only page on the site without a WebSite schema node — its schema array in `renderFaqDirectoryPage()` carried Organization + BreadcrumbList only, while the sibling guide renderer in the same file includes `getWebSiteSchema()`. Added it, so all 130 sitemap pages now emit the identical brand entity (name "TextToSpeechH AI", alternateName "TextToSpeechH"). Verified on the local dev server after restart: /faq now serves the WebSite node; node --check clean. The same sweep found zero JSON-LD parse errors, zero canonical issues (every page: exactly one canonical equal to its own www URL), and zero brand-name mismatches across 207 Organization / 129 WebSite / 127 SoftwareApplication nodes.
 
 ### Added
