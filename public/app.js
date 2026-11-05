@@ -931,6 +931,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchModalClose = document.getElementById('search-modal-close');
   const searchInput = document.getElementById('search-input');
 
+  // --- Site Search matcher (pure function, unit-testable) ---
+  // __TTS_SEARCH_MATCH_BEGIN__
+  function ttsSearchMatch(links, query) {
+    const tokens = String(query || '').toLowerCase().split(/\s+/).filter(Boolean);
+    if (!tokens.length) return [];
+    const scored = [];
+    for (const link of links) {
+      const text = (link.text || '').toLowerCase();
+      const href = (link.href || '').toLowerCase();
+      const hay = text + ' ' + href;
+      if (!tokens.every(t => hay.includes(t))) continue;
+      let score = 0;
+      if (tokens.every(t => text.includes(t))) score += 2;
+      if (text.startsWith(tokens[0])) score += 1;
+      scored.push({ href: link.href, text: link.text, score });
+    }
+    scored.sort((a, b) => b.score - a.score);
+    return scored.slice(0, 8);
+  }
+  // __TTS_SEARCH_MATCH_END__
+  window.__ttsSearchMatch = ttsSearchMatch;
+
+  let searchResultsWrap = null;
+  let searchResultsList = null;
+
   function openSearchModal() {
     if (searchModal) {
       searchModal.classList.add('active');
@@ -946,6 +971,7 @@ document.addEventListener('DOMContentLoaded', () => {
       searchModal.classList.remove('active');
       document.body.style.overflow = '';
       if (searchInput) searchInput.value = '';
+      if (searchResultsWrap) searchResultsWrap.hidden = true;
     }
   }
 
@@ -971,17 +997,125 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // FIX (2026-11-05, Team 5 SXO): Enter previously navigated to
+  // /search?q=... — a route that does not exist (verified 404 on the dev
+  // server), stranding every search user on an error page. Search now
+  // filters the site's own links, harvested live from the current page
+  // (nav, tool cards, guide cards, footer), and renders matches inside
+  // the modal. No server route needed.
+  function harvestSearchLinks() {
+    const seen = new Map();
+    document.querySelectorAll('a[href^="/"]').forEach(a => {
+      const href = a.getAttribute('href');
+      const text = (a.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!href) return;
+      if (text.length < 3 || text.length > 80) return;
+      if (!seen.has(href)) seen.set(href, { href, text });
+    });
+    return [...seen.values()];
+  }
+
+  function ensureSearchResultsUI() {
+    if (searchResultsWrap || !searchModal) return;
+    const content = searchModal.querySelector('.search-modal-content');
+    const inputWrapper = searchModal.querySelector('.search-input-wrapper');
+    if (!content || !inputWrapper) return;
+    searchResultsWrap = document.createElement('div');
+    searchResultsWrap.className = 'search-suggestions';
+    searchResultsWrap.id = 'search-results';
+    searchResultsWrap.hidden = true;
+    searchResultsWrap.innerHTML = '<h3 class="search-suggestions-title">Results</h3><ul class="search-suggestions-list"></ul>';
+    content.insertBefore(searchResultsWrap, inputWrapper.nextSibling);
+    searchResultsList = searchResultsWrap.querySelector('ul');
+  }
+
+  function renderSearchResults(query) {
+    ensureSearchResultsUI();
+    if (!searchResultsWrap || !searchResultsList) return;
+    const q = (query || '').trim();
+    if (!q) {
+      searchResultsWrap.hidden = true;
+      searchResultsList.innerHTML = '';
+      return;
+    }
+    const matches = ttsSearchMatch(harvestSearchLinks(), q);
+    searchResultsList.innerHTML = '';
+    if (!matches.length) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '/text-to-speech/blog';
+      a.textContent = 'No exact match — browse the Blog & Guides hub';
+      li.appendChild(a);
+      searchResultsList.appendChild(li);
+    } else {
+      for (const m of matches) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = m.href;
+        a.textContent = m.text;
+        li.appendChild(a);
+        searchResultsList.appendChild(li);
+      }
+    }
+    searchResultsWrap.hidden = false;
+  }
+
   if (searchInput) {
+    searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        const query = searchInput.value.trim();
-        if (query) {
-          window.location.href = `/search?q=${encodeURIComponent(query)}`;
-        }
+        const q = searchInput.value.trim();
+        if (!q) return;
+        renderSearchResults(q);
+        const first = searchResultsList ? searchResultsList.querySelector('a') : null;
+        if (first) window.location.href = first.getAttribute('href');
       }
     });
   }
+
+  // --- Keyboard Shortcuts Modal ---
+  // FIX (2026-11-05, Team 5 SXO): the "Shortcuts" pill carries
+  // cursor:pointer and a hover lift but no click handler existed anywhere,
+  // and the modal's own close button was equally dead — a textbook
+  // Clarity dead click. Wire trigger, close button, overlay and Esc.
+  const shortcutTrigger = document.getElementById('shortcut-trigger');
+  const shortcutModal = document.getElementById('shortcut-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+
+  function openShortcutModal() {
+    if (shortcutModal) shortcutModal.classList.remove('hidden');
+  }
+
+  function closeShortcutModal() {
+    if (shortcutModal) shortcutModal.classList.add('hidden');
+  }
+
+  if (shortcutTrigger && shortcutModal) {
+    shortcutTrigger.addEventListener('click', openShortcutModal);
+    shortcutTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openShortcutModal();
+      }
+    });
+  }
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeShortcutModal);
+  }
+
+  if (shortcutModal) {
+    shortcutModal.addEventListener('click', (e) => {
+      if (e.target === shortcutModal) closeShortcutModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && shortcutModal && !shortcutModal.classList.contains('hidden')) {
+      closeShortcutModal();
+    }
+  });
 
   // --- Mobile Hamburger Menu Functionality ---
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
