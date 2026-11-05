@@ -1,9 +1,3 @@
-# ==============================================================================
-# TextToSpeechH AI — Production Google AdSense Authorized Digital Sellers (ads.txt)
-# Website: https://www.texttospeechh.com
-# ==============================================================================
-# INSTRUCTIONS FOR PUBLISHER:
-# Once your Google AdSense application is approved, add your official Publisher ID below.
-# Example format:
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-# ==============================================================================
+# TextToSpeechH AI — ads.txt — Authorized Digital Sellers
+# Google AdSense (application submitted 2026-11-05)
+google.com, pub-3696622100066669, DIRECT, f08c47fec0942fa0

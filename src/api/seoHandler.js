@@ -8,7 +8,7 @@ const { BLOG_ARTICLES_MAP, getBlogHubPage } = require('../pages/textToSpeechBlog
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
 const schemaGenerator = require('../seo/schemaGenerator');
 const hreflangMap = require('../seo/hreflangMap');
-const { getAllTrackingSnippetsHtml } = require('../seo/gaSnippet');
+const { getAllTrackingSnippetsHtml, getAdSenseHtml } = require('../seo/gaSnippet');
 
 const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
@@ -137,7 +137,7 @@ function renderSeoPage(pageData, pathSlug) {
 
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
   const footerHtml = getSaaSFooterHtml();
-  const trackingHtml = getAllTrackingSnippetsHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
 
   const isArticle = pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech";
   const authorBylineHtml = isArticle ? `
@@ -337,7 +337,7 @@ function renderToolPage(pageData, pathSlug) {
   const safeDesc = escapeHtmlAttribute(pageData.metaDesc || "");
   const ogImageUrl = pageData.ogImage ? `${DOMAIN}${pageData.ogImage}` : `${DOMAIN}/og-image.png`;
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
-  const trackingHtml = getAllTrackingSnippetsHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
   const tagline = pageData.tagline || pageData.metaDesc || "";
 
   return `<!DOCTYPE html>

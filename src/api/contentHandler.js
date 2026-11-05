@@ -3,7 +3,7 @@ const eeatGuidelines = require('../content/eeatGuidelines');
 const educationalGuides = require('../content/educationalGuides');
 const schemaGenerator = require('../seo/schemaGenerator');
 const { getSaaSFooterHtml } = require('../pages/footerComponent');
-const { getAllTrackingSnippetsHtml } = require('../seo/gaSnippet');
+const { getAllTrackingSnippetsHtml, getAdSenseHtml } = require('../seo/gaSnippet');
 
 const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
@@ -11,7 +11,7 @@ const BRAND_NAME = "TextToSpeechH AI";
 function renderFaqDirectoryPage() {
   const eeatHeader = eeatGuidelines.getEeatHeaderHtml("FAQ Directory");
   const footerHtml = getSaaSFooterHtml();
-  const trackingHtml = getAllTrackingSnippetsHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
 
   const faqList = faqEngine.FAQ_REPOSITORY.slice(0, 30);
 
@@ -162,7 +162,7 @@ ${trackingHtml}
 function renderGuidePage(guideData, slug) {
   const eeatHeader = eeatGuidelines.getEeatHeaderHtml(guideData.h1);
   const footerHtml = getSaaSFooterHtml();
-  const trackingHtml = getAllTrackingSnippetsHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
   const canonicalUrl = `${DOMAIN}/${slug}`;
 
   // SEO audit 2026-09-28: guide pages previously shipped with zero JSON-LD
