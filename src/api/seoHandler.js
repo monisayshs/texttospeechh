@@ -189,6 +189,7 @@ ${trackingHtml}
 
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="${BRAND_NAME}">
   <meta property="og:url" content="${canonicalUrl}">
   <meta property="og:title" content="${safeTitle}">
   <meta property="og:description" content="${safeDesc}">
@@ -358,6 +359,7 @@ ${trackingHtml}
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="${BRAND_NAME}">
   <meta property="og:url" content="${canonicalUrl}">
   <meta property="og:title" content="${safeTitle}">
   <meta property="og:description" content="${safeDesc}">
