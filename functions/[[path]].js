@@ -44,17 +44,20 @@ const SECURITY_HEADERS = {
 // CSP inventoried from what the pages actually load: self-hosted fonts/CSS/JS,
 // inline theme/analytics bootstrap scripts (hence 'unsafe-inline'), GA4 via
 // googletagmanager.com + google-analytics.com endpoints, Microsoft Clarity via
-// clarity.ms, and TTS audio via same-origin /api responses + blob: URLs.
+// clarity.ms, TTS audio via same-origin /api responses + blob: URLs, and (since
+// 2026-11-05) the Google AdSense loader + ad serving endpoints
+// (googlesyndication.com, doubleclick.net, googleadservices) — without these
+// the browser blocks adsbygoogle.js and every ad iframe.
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms https://pagead2.googlesyndication.com https://*.googlesyndication.com https://googleads.g.doubleclick.net https://partner.googleadservices.com https://adservice.google.com https://www.google.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.googlesyndication.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://*.googlesyndication.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com",
   "media-src 'self' blob:",
   "worker-src 'self' blob:",
-  "frame-src 'self'",
+  "frame-src 'self' https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
