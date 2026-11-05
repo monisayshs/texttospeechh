@@ -23,6 +23,16 @@ Sitemap: https://www.texttospeechh.com/sitemap.xml
 - [Word to Speech](https://www.texttospeechh.com/text-to-speech/word-to-speech)
 - [TXT to Speech](https://www.texttospeechh.com/text-to-speech/txt-to-speech)
 
+## Free online tools
+
+- [All Free Tools](https://www.texttospeechh.com/tools) — Hub for every free browser-based tool below. No sign-up.
+- [Voice Pitch Changer](https://www.texttospeechh.com/voice-pitch-changer) — Change the pitch of a voice recording online, free, in the browser.
+- [YouTube Transcript Generator](https://www.texttospeechh.com/youtube-transcript-generator) — Get the transcript and subtitles of any YouTube video, free.
+- [Image Compressor](https://www.texttospeechh.com/image-compressor) — Compress an image to an exact size in KB for online forms.
+- [Age Calculator](https://www.texttospeechh.com/age-calculator) — Exact age in years, months and days from a date of birth, including age-as-on-date.
+- [Passport Photo Maker](https://www.texttospeechh.com/passport-photo-maker) — Make passport-size photos to official specifications (US 2x2 in, India/UK/Schengen 35x45 mm, and more), free.
+- [Background Remover](https://www.texttospeechh.com/background-remover) — Remove the background from an image with AI, free, in the browser.
+
 ## Languages
 
 - [English Text to Speech](https://www.texttospeechh.com/language/english)
@@ -44,6 +54,11 @@ Sitemap: https://www.texttospeechh.com/sitemap.xml
 ## Blog & guides
 
 - [Text to Speech Blog Hub](https://www.texttospeechh.com/text-to-speech/blog)
+- [Google Text to Speech: Free Voices, Limits & MP3 Options](https://www.texttospeechh.com/text-to-speech/blog/google-text-to-speech-guide)
+- [Convoso Voice AI Agent: No-Code Calls That Qualify Leads](https://www.texttospeechh.com/text-to-speech/blog/convoso-voice-ai-agent-guide)
+- [ElevenLabs Realtime Explained: Voice Agents in One Model](https://www.texttospeechh.com/text-to-speech/blog/elevenlabs-realtime-voice-agent-guide)
+- [Speech to Speech AI Explained](https://www.texttospeechh.com/text-to-speech/blog/speech-to-speech-ai-explained)
+- [Free Voice Cloning Without the Cloud: Audio8 Explained](https://www.texttospeechh.com/text-to-speech/blog/open-source-voice-cloning-audio8)
 - [Top 10 Best AI Voices in 2026](https://www.texttospeechh.com/text-to-speech/blog/best-ai-voices)
 - [How Text-to-Speech Works](https://www.texttospeechh.com/text-to-speech/blog/how-text-to-speech-works)
 - [Text-to-Speech for Students & Teachers](https://www.texttospeechh.com/text-to-speech/blog/text-to-speech-for-students)
