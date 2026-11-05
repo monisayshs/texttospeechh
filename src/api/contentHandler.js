@@ -39,6 +39,7 @@ function renderFaqDirectoryPage() {
   // the shared head pattern used by guide pages.
   const faqPageSchemas = [
     schemaGenerator.getOrganizationSchema(),
+    schemaGenerator.getWebSiteSchema(),
     schemaGenerator.getBreadcrumbSchema([
       { name: "Home", url: `${DOMAIN}/` },
       { name: "Frequently Asked Questions", url: `${DOMAIN}/faq` }
