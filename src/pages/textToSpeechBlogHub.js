@@ -2135,7 +2135,7 @@ const BLOG_ARTICLES_MAP = {
     metaDesc: `Hit ElevenLabs\u2019 10,000-character free limit? Compare 7 free ElevenLabs alternatives with bigger limits, MP3 downloads and no sign-up — tested and ranked.`,
     category: "Comparisons",
     readingTime: "22 min read",
-    faqs: [{"q": "Q1: What is the best free alternative to ElevenLabs?", "a": "For most creators, TextToSpeechH — unlimited free web use, no sign-up, free MP3 downloads, and commercial rights. For maximum privacy, the open-source Piper engine running locally is the best pick."}, {"q": "Q2: Is there an open-source alternative to ElevenLabs?", "a": "Yes. Piper (MIT licensed) is the easiest fully-local option; Coqui XTTS, StyleTTS 2, and Qwen3-TTS are strong self-hosted alternatives. Check each model's weights license before commercial use — some are non-commercial (CC-BY-NC)."}, {"q": "Q3: Why are people looking for ElevenLabs alternatives?", "a": "Mainly pricing: the free tier caps at 10,000 characters/month (about 5 minutes of audio), and MP3 downloads, commercial use, and voice cloning require paid plans. Creators also leave over credit burn on long projects."}, {"q": "Q4: Which ElevenLabs alternative has the best voice cloning?", "a": "Honestly, none of the free options match ElevenLabs' own voice cloning — that's its moat, and it requires a paid plan plus identity verification. Among free tools, Coqui XTTS offers experimental zero-shot cloning if you self-host."}, {"q": "Q5: Can I use ElevenLabs alternatives for commercial projects for free?", "a": "It depends on the tool. TextToSpeechH includes commercial rights on its free tier; most others (ElevenLabs free, Murf trial, Play.ht trial) forbid it. Always confirm in the tool's terms."}, {"q": "Q6: What is the free monthly character limit on ElevenLabs?", "a": "10,000 characters per month on the free tier — about 1,500 words or 5 minutes of audio."}, {"q": "Q7: Can I download MP3 files for free?", "a": "On TextToSpeechH, yes — instant MP3 downloads with no account. On ElevenLabs' free tier, MP3 downloads are restricted; TTSMaker's free plan includes downloads within its quota."}, {"q": "Q8: Are free ElevenLabs alternatives cleared for YouTube monetization?", "a": "Only if the tool explicitly grants commercial rights. TextToSpeechH does. Most free tiers and trials don't — using them on a monetized channel risks a claim or takedown."}, {"q": "Q9: Do I need a credit card to use these alternatives?", "a": "No for TextToSpeechH, Piper, and CapCut's in-app TTS. TTSMaker, Speechify, Murf, and Play.ht require accounts; check whether card details are asked at trial signup."}, {"q": "Q10: Can I convert PDF files to speech with these alternatives?", "a": "TextToSpeechH supports native PDF, DOCX, and TXT upload for audiobook-style conversion — try the PDF to Speech Tool . Most other free alternatives are copy/paste only."}],
+    faqs: [{"q": "What is the best free alternative to ElevenLabs?", "a": "For most creators, TextToSpeechH — unlimited free web use, no sign-up, free MP3 downloads, and commercial rights included on the free tier. For maximum privacy, the open-source Piper engine running locally on your own computer is the best pick, because your text and audio never leave your machine."}, {"q": "Is there an open-source alternative to ElevenLabs?", "a": "Yes. Piper (MIT licensed) is the easiest fully-local option — you install it once and generate offline, with no account and no usage cap. Coqui XTTS, StyleTTS 2, and Qwen3-TTS are strong self-hosted alternatives. Check each model's weights license before commercial use — some are non-commercial (CC-BY-NC)."}, {"q": "Why are people looking for ElevenLabs alternatives?", "a": "Mainly pricing: the free tier caps at 10,000 characters a month (about 5 minutes of audio), and MP3 downloads, commercial use, and voice cloning all require paid plans. Creators also leave over credit burn on long projects — one long script can eat most of the monthly allowance in a single session."}, {"q": "Which ElevenLabs alternative has the best voice cloning?", "a": "Honestly, none of the free options match ElevenLabs' own voice cloning — that quality is its moat, and using it requires a paid plan plus identity verification. Among free tools, Coqui XTTS offers experimental zero-shot cloning if you self-host it, but expect a quality gap and a technical setup."}, {"q": "Can I use ElevenLabs alternatives for commercial projects for free?", "a": "It depends on the tool. TextToSpeechH includes commercial rights on its free tier, so monetized videos and client work are covered. Most others — ElevenLabs' free plan and the Murf and Play.ht trials — forbid commercial use. Always confirm in the tool's own terms before you publish anything."}, {"q": "What is the free monthly character limit on ElevenLabs?", "a": "10,000 characters per month on the free tier — about 1,500 words, or roughly 5 minutes of finished audio. That's enough to test voices on a short clip, but one long narration, audiobook chapter, or video script will use up the whole month's allowance well before it ends."}, {"q": "Can I download MP3 files for free?", "a": "On TextToSpeechH, yes — instant MP3 downloads with no account. On ElevenLabs' free tier, MP3 downloads are restricted, which pushes you toward a paid plan. TTSMaker's free plan includes downloads, but only within its weekly quota of 20,000 characters, so longer projects have to be planned around that cap."}, {"q": "Are free ElevenLabs alternatives cleared for YouTube monetization?", "a": "Only if the tool explicitly grants commercial rights. TextToSpeechH does, so its free MP3s can go into monetized videos. Most free tiers and trials don't grant those rights — using their audio on a monetized channel risks a claim or a takedown, so check the license before you publish."}, {"q": "Do I need a credit card to use these alternatives?", "a": "No for TextToSpeechH, Piper, and CapCut's in-app TTS — you can start generating right away. TTSMaker, Speechify, Murf, and Play.ht require accounts first, and some ask for card details when a free trial starts, so check whether a card is needed before the trial period begins."}, {"q": "Can I convert PDF files to speech with these alternatives?", "a": "TextToSpeechH supports native PDF, DOCX, and TXT upload for audiobook-style conversion — try the PDF to Speech Tool. Most other free alternatives are copy/paste only, which means long documents go in chunks and you lose the document's structure, headings, and page order along the way."}],
     datePublished: "September 23, 2026",
     dateModified: "October 22, 2026",
     content: `
@@ -2525,72 +2525,72 @@ const BLOG_ARTICLES_MAP = {
         <div style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q1: What is the best free alternative to ElevenLabs?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">What is the best free alternative to ElevenLabs?</h3>
             <p style="line-height:1.7; margin:0;">
-              For most creators, TextToSpeechH — unlimited free web use, no sign-up, free MP3 downloads, and commercial rights. For maximum privacy, the open-source Piper engine running locally is the best pick.
+              For most creators, TextToSpeechH — unlimited free web use, no sign-up, free MP3 downloads, and commercial rights included on the free tier. For maximum privacy, the open-source Piper engine running locally on your own computer is the best pick, because your text and audio never leave your machine.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q2: Is there an open-source alternative to ElevenLabs?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Is there an open-source alternative to ElevenLabs?</h3>
             <p style="line-height:1.7; margin:0;">
-              Yes. Piper (MIT licensed) is the easiest fully-local option; Coqui XTTS, StyleTTS 2, and Qwen3-TTS are strong self-hosted alternatives. Check each model's weights license before commercial use — some are non-commercial (CC-BY-NC).
+              Yes. Piper (MIT licensed) is the easiest fully-local option — you install it once and generate offline, with no account and no usage cap. Coqui XTTS, StyleTTS 2, and Qwen3-TTS are strong self-hosted alternatives. Check each model's weights license before commercial use — some are non-commercial (CC-BY-NC).
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q3: Why are people looking for ElevenLabs alternatives?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Why are people looking for ElevenLabs alternatives?</h3>
             <p style="line-height:1.7; margin:0;">
-              Mainly pricing: the free tier caps at 10,000 characters/month (about 5 minutes of audio), and MP3 downloads, commercial use, and voice cloning require paid plans. Creators also leave over credit burn on long projects.
+              Mainly pricing: the free tier caps at 10,000 characters a month (about 5 minutes of audio), and MP3 downloads, commercial use, and voice cloning all require paid plans. Creators also leave over credit burn on long projects — one long script can eat most of the monthly allowance in a single session.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q4: Which ElevenLabs alternative has the best voice cloning?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Which ElevenLabs alternative has the best voice cloning?</h3>
             <p style="line-height:1.7; margin:0;">
-              Honestly, none of the free options match ElevenLabs' own voice cloning — that's its moat, and it requires a paid plan plus identity verification. Among free tools, Coqui XTTS offers experimental zero-shot cloning if you self-host.
+              Honestly, none of the free options match ElevenLabs' own voice cloning — that quality is its moat, and using it requires a paid plan plus identity verification. Among free tools, Coqui XTTS offers experimental zero-shot cloning if you self-host it, but expect a quality gap and a technical setup.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q5: Can I use ElevenLabs alternatives for commercial projects for free?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Can I use ElevenLabs alternatives for commercial projects for free?</h3>
             <p style="line-height:1.7; margin:0;">
-              It depends on the tool. TextToSpeechH includes commercial rights on its free tier; most others (ElevenLabs free, Murf trial, Play.ht trial) forbid it. Always confirm in the tool's terms.
+              It depends on the tool. TextToSpeechH includes commercial rights on its free tier, so monetized videos and client work are covered. Most others — ElevenLabs' free plan and the Murf and Play.ht trials — forbid commercial use. Always confirm in the tool's own terms before you publish anything.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q6: What is the free monthly character limit on ElevenLabs?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">What is the free monthly character limit on ElevenLabs?</h3>
             <p style="line-height:1.7; margin:0;">
-              10,000 characters per month on the free tier — about 1,500 words or 5 minutes of audio.
+              10,000 characters per month on the free tier — about 1,500 words, or roughly 5 minutes of finished audio. That's enough to test voices on a short clip, but one long narration, audiobook chapter, or video script will use up the whole month's allowance well before it ends.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q7: Can I download MP3 files for free?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Can I download MP3 files for free?</h3>
             <p style="line-height:1.7; margin:0;">
-              On TextToSpeechH, yes — instant MP3 downloads with no account. On ElevenLabs' free tier, MP3 downloads are restricted; TTSMaker's free plan includes downloads within its quota.
+              On TextToSpeechH, yes — instant MP3 downloads with no account. On ElevenLabs' free tier, MP3 downloads are restricted, which pushes you toward a paid plan. TTSMaker's free plan includes downloads, but only within its weekly quota of 20,000 characters, so longer projects have to be planned around that cap.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q8: Are free ElevenLabs alternatives cleared for YouTube monetization?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Are free ElevenLabs alternatives cleared for YouTube monetization?</h3>
             <p style="line-height:1.7; margin:0;">
-              Only if the tool explicitly grants commercial rights. TextToSpeechH does. Most free tiers and trials don't — using them on a monetized channel risks a claim or takedown.
+              Only if the tool explicitly grants commercial rights. TextToSpeechH does, so its free MP3s can go into monetized videos. Most free tiers and trials don't grant those rights — using their audio on a monetized channel risks a claim or a takedown, so check the license before you publish.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q9: Do I need a credit card to use these alternatives?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Do I need a credit card to use these alternatives?</h3>
             <p style="line-height:1.7; margin:0;">
-              No for TextToSpeechH, Piper, and CapCut's in-app TTS. TTSMaker, Speechify, Murf, and Play.ht require accounts; check whether card details are asked at trial signup.
+              No for TextToSpeechH, Piper, and CapCut's in-app TTS — you can start generating right away. TTSMaker, Speechify, Murf, and Play.ht require accounts first, and some ask for card details when a free trial starts, so check whether a card is needed before the trial period begins.
             </p>
           </div>
 
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="color:var(--color-primary); margin-top:0;">Q10: Can I convert PDF files to speech with these alternatives?</h3>
+            <h3 style="color:var(--color-primary); margin-top:0;">Can I convert PDF files to speech with these alternatives?</h3>
             <p style="line-height:1.7; margin:0;">
-              TextToSpeechH supports native PDF, DOCX, and TXT upload for audiobook-style conversion — try the <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a>. Most other free alternatives are copy/paste only.
+              TextToSpeechH supports native PDF, DOCX, and TXT upload for audiobook-style conversion — try the <a href="${DOMAIN}/text-to-speech/pdf-to-speech" style="color:var(--color-primary);">PDF to Speech Tool</a>. Most other free alternatives are copy/paste only, which means long documents go in chunks and you lose the document's structure, headings, and page order along the way.
             </p>
           </div>
 
@@ -6362,14 +6362,14 @@ const BLOG_ARTICLES_MAP = {
     metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most issues.`,
     category: "Comparisons",
     readingTime: "9 min read",
-    faqs: [{"q": "Q1: Is there a completely free Arabic text-to-speech with no sign-up?", "a": "Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration, and Microsoft Edge's built-in Read Aloud is free with no account needed."}, {"q": "Q2: Why does my Arabic TTS mispronounce words?", "a": "Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses pronunciation from context. Add diacritics to ambiguous words and regenerate."}, {"q": "Q3: Which Arabic dialect do TTS tools speak?", "a": "Most free tools speak Modern Standard Arabic. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers — check each tool's voice list."}, {"q": "Q4: Can I use free Arabic TTS for YouTube videos commercially?", "a": "It depends on the tool's license. TextToSpeechH allows MP3 downloads you can use in content; always check the specific tool's terms before monetizing."}, {"q": "Q5: How long can the audio be?", "a": "Varies wildly: ElevenLabs free gives about 10 minutes per month, while TextToSpeechH handles up to 10,000 words per request. Match the tool to your project's length."}],
+    faqs: [{"q": "Is there a completely free Arabic text-to-speech with no sign-up?", "a": "Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration — no account, no trial clock, and up to 10,000 words per request. Microsoft Edge's built-in Read Aloud is also free with no account needed, though it reads the page aloud live rather than giving you an MP3 file."}, {"q": "Why does my Arabic TTS mispronounce words?", "a": "Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses each word's pronunciation from context, and ambiguous words come out wrong. The fix is to add diacritics to the ambiguous words in your script and regenerate — the tools in this guide handle fully-vocalised text far more accurately."}, {"q": "Which Arabic dialect do TTS tools speak?", "a": "Most free tools speak Modern Standard Arabic — the formal register of news, books, and education. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers, so check each tool's voice list before you commit. For YouTube and courses aimed across the Arab world, MSA is the safe default."}, {"q": "Can I use free Arabic TTS for YouTube videos commercially?", "a": "It depends on the tool's license. TextToSpeechH allows commercial use of the MP3s you generate, so monetised videos are fine. Other free tiers may restrict commercial use or require attribution, so always check the specific tool's terms before monetizing — a free download is not automatically a commercial licence."}, {"q": "How long can the audio be?", "a": "It varies wildly by tool. ElevenLabs' free plan gives about 10 minutes of audio per month, and many free web tools cap you at a few hundred characters per generation. TextToSpeechH handles up to 10,000 words per request, so match the tool to your project's length before you start."}, {"q": "Can Arabic TTS read mixed Arabic and English text?", "a": "Yes, but quality varies a lot. Mixed Arabic-English text — brand names, numbers, URLs — breaks weaker engines, because Arabic letter shapes change by position and the voice has to switch languages mid-sentence. The tools in this guide handle mixed text gracefully; if a name really matters, test that sentence first."}],
     datePublished: "October 4, 2026",
     dateModified: "October 16, 2026",
     content: `
       <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;">
         <h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Which Free Arabic TTS Is Best?</h2>
         <p style="margin:0; line-height:1.7;">
-          Arabic TTS is hard because written Arabic skips vowel marks (tashkeel), so engines must guess pronunciation — and most free tools speak only Modern Standard Arabic. The 7 best free tools in 2026 handle MSA well; the single biggest quality boost comes from adding diacritics to your text before generating. For a no-sign-up start, <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's free Arabic generator</a> converts up to 10,000 words per request to MP3.
+          For most people, <a href="${DOMAIN}/language/arabic" style="color:var(--color-primary);">TextToSpeechH's free Arabic generator</a> is the best place to start — no sign-up, an MP3 download, and up to 10,000 words per request. One warning before you generate: written Arabic skips vowel marks (tashkeel), so engines must guess pronunciation, and most free tools speak only Modern Standard Arabic. Adding diacritics to your text is the single biggest quality boost.
         </p>
       </div>
 
@@ -6490,24 +6490,28 @@ const BLOG_ARTICLES_MAP = {
         <h2>Frequently Asked Questions</h2>
         <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="margin-top:0; color:var(--color-primary);">Q1: Is there a completely free Arabic text-to-speech with no sign-up?</h3>
-            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration, and Microsoft Edge's built-in Read Aloud is free with no account needed.</p>
+            <h3 style="margin-top:0; color:var(--color-primary);">Is there a completely free Arabic text-to-speech with no sign-up?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration — no account, no trial clock, and up to 10,000 words per request. Microsoft Edge's built-in Read Aloud is also free with no account needed, though it reads the page aloud live rather than giving you an MP3 file.</p>
           </div>
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="margin-top:0; color:var(--color-primary);">Q2: Why does my Arabic TTS mispronounce words?</h3>
-            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses pronunciation from context. Add diacritics to ambiguous words and regenerate.</p>
+            <h3 style="margin-top:0; color:var(--color-primary);">Why does my Arabic TTS mispronounce words?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses each word's pronunciation from context, and ambiguous words come out wrong. The fix is to add diacritics to the ambiguous words in your script and regenerate — the tools in this guide handle fully-vocalised text far more accurately.</p>
           </div>
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="margin-top:0; color:var(--color-primary);">Q3: Which Arabic dialect do TTS tools speak?</h3>
-            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Most free tools speak Modern Standard Arabic. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers — check each tool's voice list.</p>
+            <h3 style="margin-top:0; color:var(--color-primary);">Which Arabic dialect do TTS tools speak?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Most free tools speak Modern Standard Arabic — the formal register of news, books, and education. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers, so check each tool's voice list before you commit. For YouTube and courses aimed across the Arab world, MSA is the safe default.</p>
           </div>
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="margin-top:0; color:var(--color-primary);">Q4: Can I use free Arabic TTS for YouTube videos commercially?</h3>
-            <p style="margin:0; font-size:0.92rem; line-height:1.6;">It depends on the tool's license. TextToSpeechH allows MP3 downloads you can use in content; always check the specific tool's terms before monetizing.</p>
+            <h3 style="margin-top:0; color:var(--color-primary);">Can I use free Arabic TTS for YouTube videos commercially?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">It depends on the tool's license. TextToSpeechH allows commercial use of the MP3s you generate, so monetised videos are fine. Other free tiers may restrict commercial use or require attribution, so always check the specific tool's terms before monetizing — a free download is not automatically a commercial licence.</p>
           </div>
           <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
-            <h3 style="margin-top:0; color:var(--color-primary);">Q5: How long can the audio be?</h3>
-            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Varies wildly: ElevenLabs free gives about 10 minutes per month, while TextToSpeechH handles up to 10,000 words per request. Match the tool to your project's length.</p>
+            <h3 style="margin-top:0; color:var(--color-primary);">How long can the audio be?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">It varies wildly by tool. ElevenLabs' free plan gives about 10 minutes of audio per month, and many free web tools cap you at a few hundred characters per generation. TextToSpeechH handles up to 10,000 words per request, so match the tool to your project's length before you start.</p>
+          </div>
+          <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;">
+            <h3 style="margin-top:0; color:var(--color-primary);">Can Arabic TTS read mixed Arabic and English text?</h3>
+            <p style="margin:0; font-size:0.92rem; line-height:1.6;">Yes, but quality varies a lot. Mixed Arabic-English text — brand names, numbers, URLs — breaks weaker engines, because Arabic letter shapes change by position and the voice has to switch languages mid-sentence. The tools in this guide handle mixed text gracefully; if a name really matters, test that sentence first.</p>
           </div>
         </div>
       </section>
@@ -8129,7 +8133,7 @@ before you put the audio in a course you sell.</p></div>
     metaDesc: `Want a PDF reader that reads out loud free? We tested 7 apps for phone, PC and browser — including the fix for scanned PDFs that most guides skip.`,
     category: "Guides",
     readingTime: "8 min read",
-    faqs: [{'q': "Is there a free PDF reader that reads out loud?", 'a': "Yes, several. Microsoft Edge's Read Aloud is free and built into Windows, @Voice Aloud Reader is free on Android, and TextToSpeechH reads PDFs aloud free in your browser with no sign-up. Each has trade-offs in voice quality and features."}, {'q': "Can a PDF reader read a scanned PDF out loud?", 'a': "Not directly — scanned pages are images, not text. Run the scan through OCR first (Google Drive's 'Open with Google Docs' works free), then use any reader on this list."}, {'q': "What's the difference between a read-aloud app and a PDF-to-audio converter?", 'a': "Read-aloud apps play the document to you live — press play, listen now. Converters produce an MP3 file you keep. For live listening use this guide; for MP3 files see our PDF-to-audio converter roundup."}, {'q': "Can I read Kindle books out loud?", 'a': "Kindle books have DRM that blocks most third-party apps. Your options: Kindle's built-in Assistive Reader (free, basic voice), iOS Speak Screen (free, reads the screen), or Speechify (paid, imports your Kindle library). Our Kindle read-aloud guide walks through all three."}, {'q': "Do these apps work offline?", 'a': "It depends. Apps using your phone's built-in voices (@Voice, Acrobat mobile) work offline. Browser tools and neural-voice apps (TextToSpeechH, ElevenReader, NaturalReader's premium voices) need a connection."}],
+    faqs: [{'q': "Is there a free PDF reader that reads out loud?", 'a': "Yes, several — and the best choice depends on your device. Microsoft Edge's Read Aloud is free and built into Windows, @Voice Aloud Reader is free on Android, and TextToSpeechH reads PDFs aloud free in your browser with no sign-up. Each has trade-offs in voice quality, highlighting, and offline use."}, {'q': "Can a PDF reader read a scanned PDF out loud?", 'a': "Not directly — scanned pages are images, not text, so there is nothing for the reader to read. Run the scan through OCR first (Google Drive's 'Open with Google Docs' works free, and Acrobat has a paid Scan & OCR tool), then any reader on this list can read it aloud."}, {'q': "What's the difference between a read-aloud app and a PDF-to-audio converter?", 'a': "Read-aloud apps play the document to you live — press play and listen now, usually with highlighting that follows along. Converters produce an MP3 file you keep and can use anywhere. For live listening, use this guide; when you need a file for a course, podcast, or video, see our PDF-to-audio converter roundup."}, {'q': "Can I read Kindle books out loud?", 'a': "Kindle books have DRM that blocks most third-party apps. Your options: Kindle's built-in Assistive Reader (free, basic voice), iOS Speak Screen (free, reads the screen), or Speechify (paid, imports your Kindle library). Our Kindle read-aloud guide walks through all three."}, {'q': "Do these apps work offline?", 'a': "It depends on where the voice lives. Apps that use your phone's built-in voices (@Voice, Acrobat mobile) work fully offline once installed. Browser tools and neural-voice apps (TextToSpeechH, ElevenReader, NaturalReader's premium voices) generate the audio online, so they need an internet connection for every new document."}, {'q': "How can I listen to a PDF on my phone for free?", 'a': "On Android, @Voice Aloud Reader is the best free option, and the Acrobat Reader app you may already have hides a Read Out Loud option in its View menu. On iPhone, ElevenReader's free tier covers 10 hours a month. Or skip installs entirely — TextToSpeechH reads PDFs in your phone's browser."}],
     datePublished: "October 19, 2026",
     dateModified: "October 19, 2026",
     content: `
