@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/offline-text-to-speech-free-tools", title: "Offline Text to Speech: 7 Free Tools That Work Offline", category: "Guides", readingTime: "10 min read", cta: "Read the Offline Text to Speech Guide →" },
   { slug: "text-to-speech/blog/google-text-to-speech-guide", title: "Google Text to Speech: Free Voices, Limits & MP3 Options", category: "Guides", readingTime: "9 min read", cta: "Read the Google Text to Speech Guide \u2192" },
   { slug: "text-to-speech/blog/convoso-voice-ai-agent-guide", title: "Convoso Voice AI Agent: No-Code Calls That Qualify Leads", category: "Guides", readingTime: "7 min read", cta: "Read the Convoso Voice Agent Guide →" },
   { slug: "text-to-speech/blog/elevenlabs-realtime-voice-agent-guide", title: "ElevenLabs Realtime Explained: Voice Agents in One Model", category: "Guides", readingTime: "8 min read", cta: "Read the ElevenLabs Realtime Guide →" },
@@ -59,7 +60,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/free-text-to-audio-converters", title: "Free Text to Audio Converters: 7 Tested, Ranked (2026)", category: "Comparisons", readingTime: "9 min read", cta: "Read Text to Audio Guide \\u2192" },
   { slug: "text-to-speech/blog/free-ai-voice-over-generator", title: "Free AI Voice Over Generator: 7 Tools That Work (2026)", category: "Comparisons", readingTime: "11 min read", cta: "Read Voice Over Guide \\u2192" },
   { slug: "text-to-speech/blog/text-to-speech-online-guide", title: "Text to Speech Online: Turn Text Into Audio in Your Browser", category: "Guides", readingTime: "8 min read", cta: "Read Online TTS Guide \u2192" },
-  { slug: "text-to-speech/blog/pdf-reader-out-loud-apps", title: "7 Free PDF Readers That Read Out Loud (Tested 2026)", category: "Guides", readingTime: "8 min read", cta: "Read PDF Aloud Apps Guide \u2192" },
+  { slug: "text-to-speech/blog/pdf-reader-out-loud-apps", title: "7 Apps That Read PDF Aloud for Free (Tested 2026)", category: "Guides", readingTime: "8 min read", cta: "Read PDF Aloud Apps Guide \u2192" },
   { slug: "text-to-speech/blog/how-to-make-an-audiobook-free", title: "How to Make an Audiobook for Free: Step-by-Step Guide", category: "Guides", readingTime: "7 min read", cta: "Read Audiobook Maker Guide \u2192" },
   { slug: "text-to-speech/blog/canva-text-to-speech-guide", title: "Canva Text to Speech: Add Free AI Voiceovers (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Canva TTS Guide \u2192" },
   { slug: "text-to-speech/blog/google-docs-text-to-speech-guide", title: "Text to Speech in Google Docs: Free Read-Aloud Guide (2026)", category: "Guides", readingTime: "8 min read", cta: "Read Google Docs TTS Guide \u2192" },
@@ -8128,9 +8129,9 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> online text to speech means no downloads, no installs — paste, pick a voice, download the MP3. Judge tools on real limits (words per session, MP3 download, no sign-up wall), not marketing claims. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it free — first audio in under a minute</a>.</p>`
   },
   "text-to-speech/blog/pdf-reader-out-loud-apps": {
-    title: `7 Free PDF Readers That Read Out Loud (Tested 2026) | ${BRAND_NAME}`,
+    title: `7 Apps That Read PDF Aloud for Free (Tested 2026) | ${BRAND_NAME}`,
     h1: `PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud`,
-    metaDesc: `Want a PDF reader that reads out loud free? We tested 7 apps for phone, PC and browser — including the fix for scanned PDFs that most guides skip.`,
+    metaDesc: `Looking for apps that read PDF aloud for free? We tested 7 for phone, PC and browser — including the fix for scanned PDFs that most guides skip.`,
     category: "Guides",
     readingTime: "8 min read",
     faqs: [{'q': "Is there a free PDF reader that reads out loud?", 'a': "Yes, several — and the best choice depends on your device. Microsoft Edge's Read Aloud is free and built into Windows, @Voice Aloud Reader is free on Android, and TextToSpeechH reads PDFs aloud free in your browser with no sign-up. Each has trade-offs in voice quality, highlighting, and offline use."}, {'q': "Can a PDF reader read a scanned PDF out loud?", 'a': "Not directly — scanned pages are images, not text, so there is nothing for the reader to read. Run the scan through OCR first (Google Drive's 'Open with Google Docs' works free, and Acrobat has a paid Scan & OCR tool), then any reader on this list can read it aloud."}, {'q': "What's the difference between a read-aloud app and a PDF-to-audio converter?", 'a': "Read-aloud apps play the document to you live — press play and listen now, usually with highlighting that follows along. Converters produce an MP3 file you keep and can use anywhere. For live listening, use this guide; when you need a file for a course, podcast, or video, see our PDF-to-audio converter roundup."}, {'q': "Can I read Kindle books out loud?", 'a': "Kindle books have DRM that blocks most third-party apps. Your options: Kindle's built-in Assistive Reader (free, basic voice), iOS Speak Screen (free, reads the screen), or Speechify (paid, imports your Kindle library). Our Kindle read-aloud guide walks through all three."}, {'q': "Do these apps work offline?", 'a': "It depends on where the voice lives. Apps that use your phone's built-in voices (@Voice, Acrobat mobile) work fully offline once installed. Browser tools and neural-voice apps (TextToSpeechH, ElevenReader, NaturalReader's premium voices) generate the audio online, so they need an internet connection for every new document."}, {'q': "How can I listen to a PDF on my phone for free?", 'a': "On Android, @Voice Aloud Reader is the best free option, and the Acrobat Reader app you may already have hides a Read Out Loud option in its View menu. On iPhone, ElevenReader's free tier covers 10 hours a month. Or skip installs entirely — TextToSpeechH reads PDFs in your phone's browser."}],
@@ -8194,6 +8195,7 @@ before you put the audio in a course you sell.</p></div>
 <h2>Three settings worth changing on day one</h2>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Speed: start at 1.1x.</strong> Normal speed drags on dense documents; 1.1x sounds natural and saves real time on long papers. Push to 1.25x once you're used to it.</li><li style="margin-bottom:6px;"><strong>Turn on highlighting.</strong> Every reader above that supports it, enable it. Following the highlighted line keeps your eyes engaged and massively improves comprehension versus pure listening.</li><li style="margin-bottom:6px;"><strong>Set a sleep timer for bedtime reading.</strong> Most of these apps have one. Falling asleep mid-chapter without it means re-finding your place tomorrow.</li></ul>
 </section>
+<p style="line-height:1.8;">Reading somewhere with no signal — a flight, a train, a long bus ride? A few of the readers above keep working offline once their voices are downloaded. Our guide to <a href="${DOMAIN}/text-to-speech/blog/offline-text-to-speech-free-tools" style="color:var(--color-primary);">offline text to speech tools</a> rounds up the ones that genuinely work with the Wi-Fi off — including the simple offline readers for PDFs and ebooks.</p>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for live PDF reading, Edge Read Aloud is the fastest free start on Windows, @Voice owns Android, and TextToSpeechH needs no install at all. Run scans through OCR first, start at 1.1x speed, and turn on highlighting. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now — drop your PDF in and hear it read back in under a minute</a>.</p>`
   },
   "text-to-speech/blog/how-to-make-an-audiobook-free": {
@@ -9843,6 +9845,86 @@ before you put the audio in a course you sell.</p></div>
 </div>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish \u2014 I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed \u2014 tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/offline-text-to-speech-free-tools": {
+    title: `Offline Text to Speech: 7 Free Tools That Work Offline | ${BRAND_NAME}`,
+    h1: `Offline Text to Speech: 7 Free Tools That Work Offline`,
+    metaDesc: `7 free offline text to speech tools that work with no internet — Phonon, Piper, OfflineTTS and your phone's built-in voices, with the honest catch on each.`,
+    category: "Guides",
+    readingTime: "10 min read",
+    faqs: [{"q": "Can text to speech work without internet?", "a": "Yes, if the voice runs on your device. Android's built-in engine, iPhone's Spoken Content, and open tools like Piper and Phonon generate speech locally after a one-time voice download, so they keep working on a plane or with no signal. Browser tools that call a cloud API stop working offline, so check whether a tool downloads its voices first."}, {"q": "Which offline text to speech tool sounds the most natural?", "a": "For a free download, Gradium's Phonon is the standout: it ranked first for intelligibility in German and Spanish on Hugging Face's Open TTS Leaderboard and in the top three in every language tested, against models up to 100 times its size. Piper is the older option — slightly flatter, but proven, tiny, and easy to run on any computer."}, {"q": "Can I get an MP3 from an offline text to speech tool?", "a": "Yes. Piper saves WAV files from the command line, and several apps export audio once the voice is on your device. The catch is setup: install an engine, download a voice, and quality depends on the model you picked. If you need an MP3 right now with no install, a browser tool is faster."}, {"q": "Is offline text to speech really private?", "a": "With a true on-device tool, yes: the text is processed on your hardware and never sent to a server. That is the point of models like Phonon and Piper. But check the fine print — some apps labelled \"offline\" still send text to the cloud for voice downloads, analytics, or one processing step, so confirm the synthesis itself happens locally."}, {"q": "What is the best free offline text to speech app for Android?", "a": "Start with what is already on the phone: Android's built-in engine with Select to Speak, plus a downloaded voice, reads anything on screen for free. For a better voice across every app, add ToBe SAID as the system engine; for reading PDFs and ebooks offline, Loudify is the simplest free reader. Developers who want files should look at Piper instead."}],
+    datePublished: "November 6, 2026",
+    dateModified: "November 6, 2026",
+    content: `
+<p style="line-height:1.8;">Yes — text to speech can work with no internet at all, if the voice runs on your own device. The newest proof arrived on November 5, 2026, when Gradium's Phonon passed 200,000 downloads in its first two weeks. Below are seven free options that genuinely work offline, what each one is best at, and the honest catch with each.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Offline Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">Offline text to speech works when the voice model lives on your device instead of a server. The best free options in November 2026 are Gradium Phonon (the new quality leader), Piper (the proven open-source workhorse), your phone's built-in voices, and browser tools like OfflineTTS that cache their models. Download the voice once, then it reads with no signal, no account, and no per-character bill.</p></div>
+<p style="line-height:1.8;">One warning before the list: "offline" is a word sellers stretch. Plenty of apps call themselves offline but still phone home for voices, or only work offline after a paid upgrade. Every tool below was checked for what actually runs with the Wi-Fi off.</p>
+<section style="margin-bottom:40px;">
+<h2>Why offline TTS suddenly got good</h2>
+<p style="line-height:1.8;">For years, offline voices sounded like a robot reading a phone book, and the good voices all lived in the cloud. Two things changed. First, small neural models got good enough to run on an ordinary phone CPU — Phonon is about 65 MB and starts speaking in 28 milliseconds, according to Gradium's own benchmark chart on the Hugging Face Open TTS Leaderboard. Second, those models are now open: Phonon's small English model is Apache 2.0, which means free even for commercial use.</p>
+<p style="line-height:1.8;">As Gradium put it in its launch post on Hugging Face: "It needs no server and no network, and what you type stays with you." That last part is the real reason many people want offline TTS — not the plane, but the privacy. A script, a medical note, or a client document never leaves your machine.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>1. Gradium Phonon — the new quality leader</h2>
+<p style="line-height:1.8;">Phonon is a small open-weight model (about 65 MB for the English version, 75 MB for the multilingual one) that runs on phones, laptops, single-board computers, and even in a browser tab. It speaks English, French, German, Spanish, and Portuguese, ships with more than 100 built-in voices, and can clone a voice from a short recording or design one from a text description.</p>
+<p style="line-height:1.8;">The numbers behind the hype are real and checkable: Phonon was downloaded more than 200,000 times in its first two weeks, according to Gradium's follow-up post on Hugging Face on November 5, 2026. On the same leaderboard, it ranked first for intelligibility in German and Spanish and in the top three in every language it was tested in, next to models up to 100 times its size. Its 95th-percentile time to first audio on CPU was 28 milliseconds — Pocket TTS, the next open model, took 165 milliseconds.</p>
+<p style="line-height:1.8;">The catch: Phonon is a model, not a finished reading app. Developers get a Rust runtime and a Transformers integration; everyday users will meet it inside apps built on it, not as a big friendly "paste text here" button. If you just want to listen to a document today, options 3 to 7 below are faster.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>2. Piper TTS — the proven open-source workhorse</h2>
+<p style="line-height:1.8;">Piper has been the default answer to "free offline TTS" for a couple of years, and it still earns the spot. It is a small neural engine that runs entirely on CPU — even on a Raspberry Pi — with voices covering 44 language and region combinations. Install it with one command, download a voice, and it turns text into a WAV file in a fraction of a second; one recent test generated a 6.7-second sentence in 0.16 seconds.</p>
+<p style="line-height:1.8;">The catch: it is a developer tool. You run it from the command line or a small local web server, and the voices, while clear, sound flatter than Phonon's. But it is free software under GPL-3.0, there is no account and no usage meter, and your text never leaves the machine. For bulk work — turning a whole book into audio, or narrating files on a server — it is still the most practical free choice.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>3. OfflineTTS — offline voices in a browser tab</h2>
+<p style="line-height:1.8;">OfflineTTS runs AI models directly in your browser using WebGPU or WebAssembly, with five TTS engines — Kokoro, Kitten, Piper, Supertonic, and Pocket TTS — plus Whisper for speech to text. Once the model file is cached (the English Kokoro model is about 305 MB), synthesis happens on your device, with 117 voice options across 32 languages.</p>
+<p style="line-height:1.8;">The catch: "offline" starts after a large first download, and non-English Kokoro voices still use an online service for one step before the audio is made locally. So it is offline in practice for English, and mostly offline for everything else. Still, for someone who wants to try local voices without installing anything, it is the easiest front door.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>4. Readalix — the Chrome extension that reads pages offline</h2>
+<p style="line-height:1.8;">Readalix is a Chrome extension that reads web pages, PDFs, Docs, and Word files aloud while highlighting each word. Its browser voices are free with no limit, and more than 100 natural voices in over 30 languages run on your device after a small one-time download — so a read keeps going with no internet connection.</p>
+<p style="line-height:1.8;">The catch: the free allowance for its online neural voices is 20,000 characters a day (roughly 14 pages), and removing that limit costs $15 a year or $40 once. The offline browser voices have no such limit, so the free path is real — it just sounds less polished than the paid voices.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>5. Your phone's built-in voices — free, already installed</h2>
+<p style="line-height:1.8;">This is the option most people overlook because it is already on their phone. On Android, Select to Speak reads any text on screen once you turn it on under Settings &gt; Accessibility, and downloaded voices keep working offline. On iPhone, Spoken Content under Accessibility &gt; Spoken Content does the same, and the vTTS app adds offline EPUB and PDF reading in 17 languages with audio export.</p>
+<p style="line-height:1.8;">The catch: system voices are built for accessibility, not performance. They read well, but you cannot export an MP3 from them, and the voice choice is whatever your phone shipped with. For listening to articles on the go, though, nothing beats free and already installed.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>6. ToBe SAID — an offline voice engine for Android</h2>
+<p style="line-height:1.8;">ToBe SAID is different from the apps above: it is a voice provider, not a reader. Install it, set it as your preferred text-to-speech engine in Android settings, and every app that uses the system voice — TalkBack, ebook readers, accessibility apps — speaks with its natural AI voices, entirely on your device. It ships four natural English voices and two voices in each of 14 other languages, with no ads and no in-app purchases.</p>
+<p style="line-height:1.8;">The catch: it replaces your system voice rather than giving you a place to paste text. If you want to turn a specific document into audio, you still need a reader app on top of it. But for anyone who reads everything through their phone, it upgrades every app at once.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>7. Loudify — a simple offline reader for Android</h2>
+<p style="line-height:1.8;">Loudify is a free reader app that opens PDFs, ebooks, and documents and reads them aloud with no account, no ads, and no data collection. Unlike most reader apps, it is fully offline and private — text never leaves the device, with no subscriptions, no word limits, and no sign-up wall.</p>
+<p style="line-height:1.8;">The catch: it leans on your phone's system TTS engines for its voices, so the sound quality depends on what voices your phone has installed. Pair it with an engine like ToBe SAID and it gets noticeably better.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The seven tools at a glance</h2>
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Tool</th><th style="padding:10px; color:var(--color-primary-on);">Cost</th><th style="padding:10px; color:var(--color-primary-on);">Truly offline?</th><th style="padding:10px; color:var(--color-primary-on);">Best for</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Gradium Phonon</td><td style="padding:10px;">Free (Apache 2.0 for the English model)</td><td style="padding:10px;">Yes, after download</td><td style="padding:10px;">Best-sounding free offline voice; developers and app builders</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Piper TTS</td><td style="padding:10px;">Free (GPL-3.0)</td><td style="padding:10px;">Yes</td><td style="padding:10px;">Bulk audio, servers, turning books into WAV files</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">OfflineTTS</td><td style="padding:10px;">Free</td><td style="padding:10px;">Yes for English after model download</td><td style="padding:10px;">Trying local voices in a browser, no install</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Readalix</td><td style="padding:10px;">Free; $15/year removes the online-voice limit</td><td style="padding:10px;">Yes, with downloaded voices</td><td style="padding:10px;">Reading web pages and PDFs aloud in Chrome</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Phone system voices</td><td style="padding:10px;">Free, built in</td><td style="padding:10px;">Yes, with downloaded voices</td><td style="padding:10px;">Hands-free listening on the go</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">ToBe SAID</td><td style="padding:10px;">Free</td><td style="padding:10px;">Yes</td><td style="padding:10px;">Upgrading every Android app's voice at once</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Loudify</td><td style="padding:10px;">Free</td><td style="padding:10px;">Yes</td><td style="padding:10px;">Simple offline reading of PDFs and ebooks</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The honest line: when offline is the wrong tool</h2>
+<p style="line-height:1.8;">Offline tools win on privacy, cost, and no-signal reliability. They lose on convenience. You install something, download a voice, and accept a slightly flatter voice than the best cloud models. And none of the free offline options hand you a polished MP3 in one click without setup.</p>
+<p style="line-height:1.8;">So pick by the job. If the text is private, the internet is absent, or the volume is huge, go offline — start with Phonon if you build things, Piper if you process files, or your phone's own voices if you just want to listen. If you need a downloadable MP3 right now with no install — a voiceover for a video, narration for a presentation, audio for a course — a browser tool is faster. Our <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">free text to speech tool</a> does exactly that: paste your script, pick a voice, and download the MP3 in your browser, no sign-up and no credit card. And if your starting point is a document rather than typed text, our guide to <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color:var(--color-primary);">apps that read PDFs aloud</a> covers the PDF-to-audio route step by step.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   }
 
 };

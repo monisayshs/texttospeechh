@@ -218,7 +218,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             Text to speech offers essential assistance to individuals with dyslexia, ADHD, visual impairments, or reading fatigue. Auditory reinforcement enhances comprehension for multi-modal learners.
           </p>
           <p style="font-size: 0.88rem; margin-bottom: 0;">
-            👉 <em>Explore our dedicated guides on <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-primary);">Read Aloud Tools</a> and <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color: var(--color-primary);">TTS for Students</a>.</em>
+            👉 <em>Explore our dedicated guides on <a href="${DOMAIN}/text-to-speech/read-aloud" style="color: var(--color-primary);">Read Aloud Tools</a> and <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color: var(--color-primary);">TTS for Students</a> — or skip the internet entirely with the <a href="${DOMAIN}/text-to-speech/blog/offline-text-to-speech-free-tools" style="color: var(--color-primary);">offline text to speech tools</a> that run on your own device.</em>
           </p>
         </div>
 
