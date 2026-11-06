@@ -13,7 +13,9 @@ try {
 // relies on this engine. It resolves each page's font resources, parses the
 // fonts' ToUnicode CMaps (bfchar/bfrange) and decodes Tj/TJ text-showing
 // operators accordingly — including Identity-H subset fonts produced by
-// Chrome's "Print -> Save as PDF" (Skia/PDF).
+// Chrome's "Print -> Save as PDF" (Skia/PDF). Stream bytes are decoded
+// through each object's /Filter chain (ASCII85Decode + FlateDecode is
+// ReportLab's default — without the ASCII85 step those files yield no text).
 // ---------------------------------------------------------------------------
 
 /** Parse a ToUnicode CMap stream into { map: Map<code, string>, codeBytes }. */
@@ -76,16 +78,80 @@ function resolvePdfRef(objs, ref) {
   return m ? (objs.get(m[1] + ' ' + m[2]) || null) : null;
 }
 
-/** Extract (and FlateDecode-decompress) a stream object's content. */
+/**
+ * Dependency-free ASCII85Decode (PDF variant): base-85 digits '!'..'u',
+ * 'z' shorthand for four zero bytes, '~>' end-of-data marker.
+ */
+function ascii85Decode(data) {
+  const bytes = [];
+  let group = [];
+  const emit = (value, count) => {
+    const v = value % 4294967296;
+    const all = [(v >>> 24) & 0xff, (v >>> 16) & 0xff, (v >>> 8) & 0xff, v & 0xff];
+    for (let k = 0; k < count; k++) bytes.push(all[k]);
+  };
+  for (let i = 0; i < data.length; i++) {
+    const c = data[i];
+    if (c === 0x7e) break; // '~' — start of the '~>' EOD marker
+    if (c <= 0x20) continue; // whitespace is ignored
+    if (c === 0x7a && group.length === 0) { bytes.push(0, 0, 0, 0); continue; } // 'z'
+    if (c < 0x21 || c > 0x75) continue; // outside '!'..'u' — skip
+    group.push(c - 0x21);
+    if (group.length === 5) {
+      let value = 0;
+      for (const d of group) value = value * 85 + d;
+      emit(value, 4);
+      group = [];
+    }
+  }
+  if (group.length > 1) {
+    const count = group.length - 1;
+    while (group.length < 5) group.push(84); // pad with 'u' per spec
+    let value = 0;
+    for (const d of group) value = value * 85 + d;
+    emit(value, count);
+  }
+  return Buffer.from(bytes);
+}
+
+/** Ordered /Filter names declared on an object's dictionary (e.g. ['ASCII85Decode', 'FlateDecode']). */
+function getStreamFilters(dictStr) {
+  const fm = /\/Filter\s*(\[[^\]]*\]|\/[A-Za-z0-9]+)/.exec(dictStr || '');
+  if (!fm) return [];
+  return [...fm[1].matchAll(/\/([A-Za-z0-9]+)/g)].map((x) => x[1]);
+}
+
+/**
+ * Apply a stream's /Filter chain to its raw bytes, in declared order.
+ * Streams with no filter pass through unchanged; an unsupported filter (or a
+ * missing zlib for FlateDecode) yields an empty buffer rather than undecodable
+ * bytes, so callers fail cleanly instead of decoding garbage.
+ */
+function decodeStreamBytes(rawBuf, dictStr) {
+  let data = rawBuf;
+  for (const name of getStreamFilters(dictStr)) {
+    if (name === 'ASCII85Decode' || name === 'AHx') {
+      data = ascii85Decode(data);
+    } else if (name === 'FlateDecode' || name === 'Fl') {
+      if (!zlib) return Buffer.alloc(0);
+      let out = null;
+      try { out = zlib.inflateSync(data); } catch (e) {}
+      if (!out) { try { out = zlib.unzipSync(data); } catch (e) {} }
+      if (!out) return Buffer.alloc(0);
+      data = out;
+    } else {
+      return Buffer.alloc(0);
+    }
+  }
+  return data;
+}
+
+/** Extract (and filter-decode) a stream object's content. */
 function inflateStreamBody(objBody) {
   const sm = /stream\r?\n([\s\S]*?)endstream/.exec(objBody);
   if (!sm) return '';
-  let raw = sm[1].replace(/\r?\n$/, '');
-  if (zlib && /\/FlateDecode/.test(objBody)) {
-    try { return zlib.inflateSync(Buffer.from(raw, 'latin1')).toString('latin1'); } catch (e) {}
-    try { return zlib.unzipSync(Buffer.from(raw, 'latin1')).toString('latin1'); } catch (e) {}
-  }
-  return raw;
+  const raw = sm[1].replace(/\r?\n$/, '');
+  return decodeStreamBytes(Buffer.from(raw, 'latin1'), objBody).toString('latin1');
 }
 
 /** Decode info for one font object: its ToUnicode map, or null. */
@@ -203,6 +269,18 @@ function parsePdfHex(data, pos) {
   return { bytes, next: p + 1 };
 }
 
+// WinAnsiEncoding slots 0x80-0x9F differ from Latin-1 (dashes, quotes, bullet,
+// ellipsis, ...). Standard Type1 fonts (ReportLab's Helvetica/Courier) declare
+// /Encoding /WinAnsiEncoding, so the no-ToUnicode fallback must map these.
+const WINANSI_HIGH = {
+  0x80: '\u20AC', 0x82: '\u201A', 0x83: '\u0192', 0x84: '\u201E', 0x85: '\u2026',
+  0x86: '\u2020', 0x87: '\u2021', 0x88: '\u02C6', 0x89: '\u2030', 0x8A: '\u0160',
+  0x8B: '\u2039', 0x8C: '\u0152', 0x8E: '\u017D', 0x91: '\u2018', 0x92: '\u2019',
+  0x93: '\u201C', 0x94: '\u201D', 0x95: '\u2022', 0x96: '\u2013', 0x97: '\u2014',
+  0x98: '\u02DC', 0x99: '\u2122', 0x9A: '\u0161', 0x9B: '\u203A', 0x9C: '\u0153',
+  0x9E: '\u017E', 0x9F: '\u0178',
+};
+
 /** Decode raw text bytes with a font's ToUnicode map (or WinAnsi fallback). */
 function decodePdfBytes(bytes, info) {
   if (info && info.map && info.map.size > 0) {
@@ -217,7 +295,11 @@ function decodePdfBytes(bytes, info) {
     }
     return out;
   }
-  return bytes.map((b) => (b >= 32 || b === 9 || b === 10 || b === 13) ? String.fromCharCode(b) : ' ').join('');
+  return bytes.map((b) => {
+    if (b >= 0x80 && b <= 0x9f && WINANSI_HIGH[b]) return WINANSI_HIGH[b];
+    if (b === 0x7f) return '\u2022'; // ReportLab standard fonts put the bullet here
+    return (b >= 32 || b === 9 || b === 10 || b === 13) ? String.fromCharCode(b) : ' ';
+  }).join('');
 }
 
 /**
@@ -366,20 +448,14 @@ function extractPdfTextLegacy(buffer) {
   const extractedTextBlocks = [];
   try {
     const rawBinary = Buffer.isBuffer(buffer) ? buffer.toString('binary') : String(buffer);
-    const streamRegex = /\bstream[\r\n]+([\s\S]*?)[\r\n]+endstream/g;
+    // Capture the dictionary preceding each stream so its /Filter chain
+    // (e.g. ReportLab's [ /ASCII85Decode /FlateDecode ]) can be applied.
+    const streamRegex = /(<<[\s\S]*?>>)?\s*\bstream[\r\n]+([\s\S]*?)[\r\n]+endstream/g;
     let streamMatch;
     while ((streamMatch = streamRegex.exec(rawBinary)) !== null) {
-      const streamData = Buffer.from(streamMatch[1], 'binary');
-      let decompressedStr = '';
-      try {
-        decompressedStr = zlib.inflateSync(streamData).toString('utf-8');
-      } catch (e) {
-        try {
-          decompressedStr = zlib.unzipSync(streamData).toString('utf-8');
-        } catch (e2) {
-          decompressedStr = streamData.toString('utf-8');
-        }
-      }
+      const streamData = Buffer.from(streamMatch[2], 'binary');
+      const decoded = decodeStreamBytes(streamData, streamMatch[1] || '');
+      const decompressedStr = decoded.length > 0 ? decoded.toString('utf-8') : streamData.toString('utf-8');
       if (decompressedStr.includes('BT') && decompressedStr.includes('ET')) {
         const btEtRegex = /BT\s*([\s\S]*?)\s*ET/g;
         let btMatch;
