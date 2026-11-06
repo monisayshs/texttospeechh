@@ -136,6 +136,7 @@ function renderSeoPage(pageData, pathSlug) {
   const readingTime = pageData.readingTime ? `<span class="blog-reading-time" style="font-size:0.85em; color:var(--color-text-muted); margin-left:12px;">${pageData.readingTime}</span>` : '';
 
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
+  const pageLang = hreflangMap.LANGUAGE_HREFLANG[pathSlug] || "en";
   const footerHtml = getSaaSFooterHtml();
   const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
 
@@ -164,7 +165,7 @@ function renderSeoPage(pageData, pathSlug) {
       </div>` : '';
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${pageLang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -337,11 +338,12 @@ function renderToolPage(pageData, pathSlug) {
   const safeDesc = escapeHtmlAttribute(pageData.metaDesc || "");
   const ogImageUrl = pageData.ogImage ? `${DOMAIN}${pageData.ogImage}` : `${DOMAIN}/og-image.png`;
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
+  const pageLang = hreflangMap.LANGUAGE_HREFLANG[pathSlug] || "en";
   const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
   const tagline = pageData.tagline || pageData.metaDesc || "";
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${pageLang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
