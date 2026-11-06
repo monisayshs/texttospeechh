@@ -2370,7 +2370,7 @@ const TOOL_PAGES = {
 const TOOLS_HUB_PAGE = {
   "title": "Free Online Tools - Voice, Audio & More | TextToSpeechH AI",
   "h1": "Free Online Tools",
-  "metaDesc": "Free online tools from TextToSpeechH AI: text to speech, voice pitch changer, YouTube transcript generator, image compressor, passport photo maker, background remover and age calculator. No sign-up, no watermark.",
+  "metaDesc": "Free online tools from TextToSpeechH AI: text to speech, PDF to speech, voice pitch changer, YouTube transcript generator, image compressor, passport photo maker, background remover and age calculator. No sign-up, no watermark.",
   "category": "Tools",
   "standaloneTool": true,
   "isHub": true,
@@ -2394,6 +2394,11 @@ const TOOLS_HUB_PAGE = {
           <div class="feature-icon">🔊</div>
           <h3>Text to Speech Generator</h3>
           <p>Turn typed text into natural AI voiceovers in 12+ languages and download the MP3 instantly.</p>
+        </a>
+        <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech/pdf-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="PDF to Speech">
+          <div class="feature-icon">📖</div>
+          <h3>PDF to Speech</h3>
+          <p>Upload a PDF document and hear it read aloud in a natural AI voice - download the MP3 free, no sign-up.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="video" href="/youtube-transcript-generator" style="text-decoration:none; color:inherit; display:block;" aria-label="YouTube Transcript Generator">
           <div class="feature-icon">📄</div>
