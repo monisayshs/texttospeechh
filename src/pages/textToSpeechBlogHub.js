@@ -9799,6 +9799,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/google-text-to-speech-guide": {
     title: `Google Text to Speech: Free Voices, Limits & MP3 Options | ${BRAND_NAME}`,
     h1: `Google Text to Speech: Free Voices, Limits & MP3 Options`,
+    ogImage: "/images/blog/google-text-to-speech-guide/google-tts-hero.webp",
     metaDesc: `What 'Google Text to Speech' really means in 2026: the free Android engine, Chrome and Docs listening (paid plans), Cloud API prices, and how to get an MP3.`,
     category: "Guides",
     readingTime: "9 min read",
@@ -9810,12 +9811,14 @@ before you put the audio in a course you sell.</p></div>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Google Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">Google Text to Speech is free on Android (Settings &gt; Accessibility &gt; Text-to-speech output), in Chrome (Listen to this page on Android, Reading mode on desktop), and in Google Translate. Listening inside Google Docs is the exception \u2014 it needs an eligible Google Workspace or Google AI plan. No consumer feature exports audio files; for a downloadable MP3, use a voiceover tool or Google's developer API.</p></div>
 <p style="line-height:1.8;">One naming trap before we start: if you are looking for the tool that turns <em>speech into text</em>, that's Google Speech-to-Text \u2014 the opposite product. Everything below is the other direction, text read aloud.</p>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/google-text-to-speech-guide/google-tts-hero.webp" alt="Google text to speech - a phone with a colorful voice wave in red, yellow, green and blue ribbons flowing from its speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>The four places Google's free voices live</h2>
 <p style="line-height:1.8;">Most people say "Google Text to Speech" and mean four different things. Knowing which one you are using saves a lot of confusion.</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>The Android engine.</strong> This is the voice software behind Maps directions, Assistant replies, and accessibility readers \u2014 and it also powers Google Play Books' Read Aloud feature. On current phones the engine is listed as <strong>Speech Recognition &amp; Synthesis</strong> (its Play Store name); older phones still call it Google Text-to-speech Engine. It is free, and once you download a voice, it works offline.</li><li style="margin-bottom:6px;"><strong>Select to Speak.</strong> This is the feature most people actually want. Turn it on under Settings &gt; Accessibility &gt; Select to Speak, tap the Accessibility button (or swipe up with two fingers), then tap any text on screen \u2014 a web article, a message, a document \u2014 and your phone reads it aloud. A small controller lets you pause, skip, or change speed.</li><li style="margin-bottom:6px;"><strong>Chrome and Google Docs read-aloud.</strong> In Chrome on Android, open the menu and tap <strong>Listen to this page</strong> \u2014 it reads the page while you keep browsing, though Chrome itself warns it isn't available on every website yet. On a computer, right-click a page, open <strong>Reading mode</strong>, and press Play. Google Docs is separate: <strong>Tools &gt; Audio &gt; Listen to this tab</strong> reads your document with a choice of voices, and eligible plans also get an audio summary option. Two honest limits: Docs listening is desktop-only and English-only, and it does not appear at all on free personal accounts.</li><li style="margin-bottom:6px;"><strong>Google Translate.</strong> Paste text, pick a language, tap Listen, and hear the translation spoken. In the app you can set the speed properly \u2014 profile icon &gt; Settings &gt; Speed gives you Normal, Slow, or Slower \u2014 which makes it genuinely useful for language learners checking pronunciation. On the web there is no speed menu; tapping Listen a second time simply plays it slower.</li></ol>
 <p style="line-height:1.8;"><strong>On iPhone:</strong> there is no Google engine to switch on \u2014 iOS uses its own voices. The Translate app still reads translations aloud, but anything system-wide runs through Apple's Spoken Content settings instead.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/google-text-to-speech-guide/google-tts-mid.webp" alt="How Google text to speech works in three steps - type a document, pick a voice waveform, then listen on headphones" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>How to change the voice and make it sound better</h2>
 <p style="line-height:1.8;">The default voice sounds flat because it is the compact, low-storage version. The fix takes about thirty seconds:</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;">Go to <strong>Settings &gt; Accessibility &gt; Text-to-speech output</strong>.</li><li style="margin-bottom:6px;">Confirm Google's engine is the preferred engine \u2014 look for <strong>Speech Recognition &amp; Synthesis</strong> or <strong>Google Text-to-speech Engine</strong>, depending on your phone.</li><li style="margin-bottom:6px;">Tap the <strong>gear icon</strong> next to it, then <strong>Install voice data</strong>.</li><li style="margin-bottom:6px;">Pick your language and download a voice. Voices appear as variants \u2014 Voice I, Voice II, and so on \u2014 and the larger downloads are the higher-quality ones.</li><li style="margin-bottom:6px;">Drag the <strong>speech rate</strong> slider to whatever sounds natural to you \u2014 a touch faster than the default makes long articles easier to sit through \u2014 adjust <strong>pitch</strong> if the default sounds too high or low, and tap <strong>Play</strong> to hear the sample.</li></ol>
@@ -9856,6 +9859,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/offline-text-to-speech-free-tools": {
     title: `Offline Text to Speech: 7 Free Tools That Work Offline | ${BRAND_NAME}`,
     h1: `Offline Text to Speech: 7 Free Tools That Work Offline`,
+    ogImage: "/images/blog/offline-text-to-speech-free-tools/offline-hero.webp",
     metaDesc: `7 free offline text to speech tools that work with no internet — Phonon, Piper, OfflineTTS and your phone's built-in voices, with the honest catch on each.`,
     category: "Guides",
     readingTime: "10 min read",
@@ -9867,6 +9871,7 @@ before you put the audio in a course you sell.</p></div>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Offline Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">Offline text to speech works when the voice model lives on your device instead of a server. The best free options in November 2026 are Gradium Phonon (the new quality leader), Piper (the proven open-source workhorse), your phone's built-in voices, and browser tools like OfflineTTS that cache their models. Download the voice once, then it reads with no signal, no account, and no per-character bill.</p></div>
 <p style="line-height:1.8;">One warning before the list: "offline" is a word sellers stretch. Plenty of apps call themselves offline but still phone home for voices, or only work offline after a paid upgrade. Every tool below was checked for what actually runs with the Wi-Fi off.</p>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/offline-text-to-speech-free-tools/offline-hero.webp" alt="Offline text to speech - a phone and laptop still speaking with the wifi symbol crossed out and a plane overhead" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Why offline TTS suddenly got good</h2>
 <p style="line-height:1.8;">For years, offline voices sounded like a robot reading a phone book, and the good voices all lived in the cloud. Two things changed. First, small neural models got good enough to run on an ordinary phone CPU — Phonon is about 65 MB and starts speaking in 28 milliseconds, according to Gradium's own benchmark chart on the Hugging Face Open TTS Leaderboard. Second, those models are now open: Phonon's small English model is Apache 2.0, which means free even for commercial use.</p>
 <p style="line-height:1.8;">As Gradium put it in its launch post on Hugging Face: "It needs no server and no network, and what you type stays with you." That last part is the real reason many people want offline TTS — not the plane, but the privacy. A script, a medical note, or a client document never leaves your machine.</p>
@@ -9908,6 +9913,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">The catch: it leans on your phone's system TTS engines for its voices, so the sound quality depends on what voices your phone has installed. Pair it with an engine like ToBe SAID and it gets noticeably better.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/offline-text-to-speech-free-tools/offline-mid.webp" alt="Listening offline on a journey - a traveller with headphones hearing a downloaded audio file on a train past mountains" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>The seven tools at a glance</h2>
 <div style="overflow-x:auto; margin-top:16px;">
 <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
@@ -9936,6 +9942,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/narakeet-review": {
     title: `Narakeet Review: We Tested the Script-to-Video Voiceover Tool | ${BRAND_NAME}`,
     h1: `Narakeet Review: An Honest Test of the Script-to-Video Voiceover Tool`,
+    ogImage: "/images/blog/narakeet-review/narakeet-hero.webp",
     metaDesc: `We tested Narakeet free, with no sign-up: clean English narration, Hindi that works in Devanagari script, and a free tier you cannot use commercially. Full results inside.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -9946,6 +9953,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Narakeet turns a written script, a set of subtitles, or a PowerPoint deck into a narrated video, using AI voices instead of a recorded voiceover. We tested it on November 8, 2026, with no account and no payment, and the short version is this: the free test is genuinely free and watermark-free, the English narration is clean, Hindi works properly when you type it in Devanagari script, and the free tier is for trying things out only, because commercial use needs a paid account.</p>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Narakeet in One Box</h2><p style="margin:0; line-height:1.7;">Narakeet is a UK tool that converts scripts, subtitle files, and slide decks into narrated MP4 videos and MP3 or WAV audio. You get 20 free conversions with no registration and no watermark on the audio. The catch is the licence: free output is personal and evaluation use only, and paid credits start at $6 for 30 minutes.</p></div>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/narakeet-review/narakeet-hero.webp" alt="Narakeet review - a written script and subtitle file turning into a narrated video with a play button and captions" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>What Narakeet actually is</h2>
 <p style="line-height:1.8;">Narakeet is built by Video Puppet Limited, a company based in Woking in the UK. It is not a plain text-to-speech box, and that distinction matters before you compare it with anything else. The core job it sells is turning material you already have (a script, an SRT or VTT subtitle file, a Word or ePub document, or a PowerPoint, Google Slides, or Keynote deck with the narration typed into the presenter notes) into a finished narrated video. Plain audio is there too, as MP3 or WAV downloads, but video is the headline act. It also generates subtitle files from your script and can burn captions into the video, and it can switch narrators mid-document, which helps with lessons and dialogues.</p>
 <p style="line-height:1.8;">The voice library is the other headline. Narakeet's marketing pages say "900 voices in 100 languages," but its own official voices index currently lists 946 voices across 112 languages and regional accents. The real library is bigger than the headline claim, which is unusual. Marketing usually rounds up, not down.</p>
@@ -9959,6 +9967,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">For the first test we used a short bakery narration and an American English voice called Raymond. The result was a short MP3 that matched the script exactly, word for word. There was no watermark, no spoken announcement, and no branding added anywhere in the file. That matters because a lot of "free" voice tools stamp their name on the output or cut you off mid-test. Narakeet did neither. If your only question is whether the free test is real, it is.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/narakeet-review/narakeet-mid.webp" alt="Testing Narakeet with Hindi - tangled Roman-letter Hindi beside neat Devanagari script, both feeding the same headphones" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Tests 2 and 3: Hindi depends on the script you type</h2>
 <p style="line-height:1.8;">The second test used a Hindi voice called Amitabh with a mixed line: an English opening, a Hindi middle typed in Roman letters, and an English close. The English parts came through fine, and the Hindi in the middle did not. It came out garbled enough that the key phrase was hard to make out. If you are someone who types Hindi in Roman letters all day (and plenty of people do), that is a real weakness, and you should know about it before you plan a project around it.</p>
 <p style="line-height:1.8;">So we ran the same voice again with the Hindi written in full Devanagari script. This time the Hindi came through properly: the greeting was clear, and the key phrase (ताज़ा अनाज से आटा कैसे बनता है) was recognizably rendered as Hindi. The lesson is practical, not technical. Narakeet's Hindi voices want real Hindi script. Feed them Roman-letter Hindi and the result falls apart; feed them Devanagari and they do their job.</p>
@@ -9992,6 +10001,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/ttsreader-alternatives": {
     title: `TTSReader Alternatives: 7 Free Tools That Sound Better | ${BRAND_NAME}`,
     h1: `TTSReader Alternatives: 7 Free Tools That Sound Better`,
+    ogImage: "/images/blog/ttsreader-alternatives/ttsreader-hero.webp",
     metaDesc: `TTSReader's free voices sound robotic, and the natural ones cost $10.99 a month. Seven free alternatives that sound better — with MP3 options and honest catches.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -10003,6 +10013,7 @@ before you put the audio in a course you sell.</p></div>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: TTSReader Alternatives in One Box</h2><p style="margin:0; line-height:1.7;">The best free TTSReader alternatives are TextToSpeechH for instant browser reading with MP3 download and no sign-up, ReadAloud for unlimited free listening, Luvvoice for 20,000 free characters a month, and TTSMaker for free MP3 export. NaturalReader and Speechify sound better still, but their genuinely useful features sit behind a paywall.</p></div>
 <p style="line-height:1.8;">TTSReader earned its fans honestly. It opens instantly, needs no account, and reads web pages, PDFs, and ebooks in the browser. The problem is the sound. Its free voices are the standard voices built into your operating system, and on premium voices you get just 5,000 free characters before it asks you to pay $10.99 a month or $99 a year, according to Langstag's comparison of TTS readers published in late October 2026. That is the whole trade: TTSReader is free forever, but free means robotic.</p>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/ttsreader-alternatives/ttsreader-hero.webp" alt="TTSReader alternatives - a laptop and tablet reading text aloud on a desk, with an open book and coffee beside them" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Why people look for a TTSReader alternative</h2>
 <p style="line-height:1.8;">Three reasons come up again and again. First, voice quality: the free voices sound like a sat-nav from 2010, not a person. Second, the premium voices are a paid extra, and 5,000 free characters runs out fast on a long article. Third, there is no MP3 download on the free tier, so you can listen but you cannot keep the audio for later.</p>
 <p style="line-height:1.8;">If any of those three bothers you, the tools below fix it — each one free, each one better at one specific job.</p>
@@ -10043,6 +10054,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;"><strong>Best for:</strong> private documents, and anyone who would rather their text never left their device.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/ttsreader-alternatives/ttsreader-mid.webp" alt="Comparing read-aloud tools - a lineup of app tiles with different features under a magnifying glass" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>TTSReader alternatives at a glance</h2>
 <div style="overflow-x:auto; margin-top:16px;">
 <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
@@ -10078,6 +10090,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/hume-ai-alternatives": {
     title: `Hume AI Alternatives: 7 Free Tools After the Shutdown | ${BRAND_NAME}`,
     h1: `Hume AI Alternatives: 7 Free Tools After the Shutdown`,
+    ogImage: "/images/blog/hume-ai-alternatives/hume-hero.webp",
     metaDesc: `Hume AI's Octave TTS and EVI APIs shut down on November 13, 2026. Seven free replacements compared, with the honest catch on each — and what to save first.`,
     category: "Guides",
     readingTime: "9 min read",
@@ -10089,6 +10102,7 @@ before you put the audio in a course you sell.</p></div>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Hume AI Alternatives in One Box</h2><p style="margin:0; line-height:1.7;">Hume's Octave TTS and EVI APIs shut down on November 13, 2026 at 12:01 a.m. EST, but the company itself continues with voice-evaluation products. The best free replacements are TextToSpeechH for instant browser-based voiceovers, ElevenLabs' free plan for the most natural voices, Cartesia Sonic for developers, and Fish Audio, Kokoro, and Chatterbox for open-weights options. Start by saving everything in your Hume account — cloned voices do not transfer.</p></div>
 <p style="line-height:1.8;">Save first, shop second. That order matters because of one detail people miss: voices you designed or cloned on Octave live on Hume's servers and do not export. Keep the original recordings — you will need them to recreate each voice anywhere else. The checklist is short: download generated audio, EVI chat transcripts and logs, and every source recording you used for cloning. Do it before November 13, because after that date Hume deletes account data permanently, according to its October 2, 2026 notice.</p>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/hume-ai-alternatives/hume-hero.webp" alt="Hume AI alternatives - an expressive emotional voice flowing from a microphone as golden waves shaped like a face, with hearts and music notes" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>What actually shut down (and what did not)</h2>
 <p style="line-height:1.8;">Hume announced on October 2, 2026 that access to its text-to-speech (Octave) and Empathic Voice Interface (EVI) APIs ends on November 13, 2026 at 12:01 a.m. EST, with both staying fully supported until then. The company itself is not closing: it now sells VoiceEQ, a platform for evaluating voice AI, along with expression measurement APIs.</p>
 <p style="line-height:1.8;">The backstory explains the timing. In January 2026, Google DeepMind hired Hume's founder Alan Cowen and the core research team to work on Gemini voice under a technology licensing deal; Hume continued as an independent company under CEO Andrew Ettinger. Its standalone Expression Measurement API had already been shut down in June 2026. Octave and EVI are the last pieces to go.</p>
@@ -10137,6 +10151,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">There is a real reason to take the voice-agent path seriously. In a study ElevenLabs published on November 2, 2026, voice agents succeeded 32% more often than chat once a conversation passed two minutes — the analysis covered 469 agents running both voice and chat in production from May to July 2026. As ElevenLabs put it on X: "When the conversation gets complex, voice is the fastest path to resolution." Short chats still favor text; long, messy conversations favor voice.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/hume-ai-alternatives/hume-mid.webp" alt="Seven Hume replacement voices lined up - six bright voice cards with different waveforms and one grey card switching off" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>The seven tools at a glance</h2>
 <div style="overflow-x:auto; margin-top:16px;">
 <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
