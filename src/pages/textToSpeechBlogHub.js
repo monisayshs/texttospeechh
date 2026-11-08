@@ -9972,7 +9972,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2>What it costs when you pay</h2>
-<p style="line-height:1.8;">Narakeet does not run on subscriptions. You buy one-time prepaid credits, and the credits never expire. The entry package is $6 for 30 minutes of output, which works out to $0.20 per minute, and billing runs in one-second increments of finished audio or video. We did not verify the full ladder of larger packs, so we are not listing prices we have not seen on their official pages [larger-pack prices: NOT VERIFIED]. Unused credits can be refunded within 14 days, according to the same pricing page.</p>
+<p style="line-height:1.8;">Narakeet does not run on subscriptions. You buy one-time prepaid credits, and the credits never expire. The entry package is $6 for 30 minutes of output, which works out to $0.20 per minute, and billing runs in one-second increments of finished audio or video. We did not verify the full ladder of larger packs, so we are not listing prices we have not seen on their official pages. Unused credits can be refunded within 14 days, according to the same pricing page.</p>
 <p style="line-height:1.8;">Any paid purchase turns the account into a commercial account, and that is where the rights change: Narakeet's usage-rights page says commercial use is allowed for anything you create on a commercial account, with no ongoing royalties and no usage restrictions. That is a clean deal, and it is the real product. The free tier exists so you can check the voices before you pay the six dollars.</p>
 </section>
 <section style="margin-bottom:40px;">
