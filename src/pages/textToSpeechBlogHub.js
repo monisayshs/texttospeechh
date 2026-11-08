@@ -8158,6 +8158,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for free voiceovers without paying, TextToSpeechH gives you the most — 10,000 words a session, MP3 download, no account, commercial use included. AuraClipy wins if you want script-to-video; TTSMaker is the cleanest quick job. <a href="${DOMAIN}/" style="color:var(--color-primary);">Start with ours — first voiceover in under a minute</a>.</p>`
   },
   "text-to-speech/blog/text-to-speech-online-guide": {
+    ogImage: "/images/blog/text-to-speech-online-guide/online-tts-hero.webp",
     title: `Text to Speech Online: Turn Text Into Audio in Your Browser | ${BRAND_NAME}`,
     h1: `Text to Speech Online: Turn Text Into Audio in Your Browser`,
     metaDesc: `How online text to speech works: paste text, pick a voice, download the MP3 — right in your browser. Step-by-step guide, what separates good tools from thin ones, and the browser-vs-server trade-off nobody mentions.`,
@@ -8173,6 +8174,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;"><strong>In a hurry?</strong> <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> converts up to 10,000 words per session into natural-sounding audio in your browser — no download, no sign-up, MP3 download, free for commercial use.</p>
 <section style="margin-bottom:40px;">
 <h2>How online text to speech works (the 30-second version)</h2>
+        <img src="/images/blog/text-to-speech-online-guide/online-tts-hero.webp" alt="Text to speech online - a document page of plain lines inside a browser window, with golden sound waves flowing out to headphones and a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Paste your text</strong> — or upload a TXT, DOCX, or PDF file and let the tool pull the text out.</li><li style="margin-bottom:6px;"><strong>Pick a voice and language</strong> — good tools let you preview each voice before committing.</li><li style="margin-bottom:6px;"><strong>Adjust speed and pitch</strong> — 0.9x sounds more natural for narration; 1.2x works for study notes you want to skim through your ears.</li><li style="margin-bottom:6px;"><strong>Generate and download</strong> — hit play to listen, or download the MP3 and drop it into your video, podcast, or presentation.</li></ol>
 <p style="line-height:1.8;">That's the whole workflow. If a tool asks you to install something or create an account before you've heard a single word, that's a red flag, not a feature.</p>
 </section>
@@ -8190,6 +8192,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2>Step by step: your first conversion</h2>
+        <img src="/images/blog/text-to-speech-online-guide/online-tts-mid.webp" alt="Your first online conversion step by step - a document page, a play button with two voice waveforms to choose from, then headphones with a download arrow into an audio file" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Let's walk through it with <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, since it skips the usual limits (it's free, no account, and handles up to 10,000 words per session):</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Open the tool.</strong> It loads in your browser — nothing to install on Windows, Mac, or your phone.</li><li style="margin-bottom:6px;"><strong>Paste your script</strong> into the text box (up to 10,000 words), or drag in a PDF, DOCX, or TXT file to auto-extract the text.</li><li style="margin-bottom:6px;"><strong>Choose a voice.</strong> Preview a few — pick across 12+ languages including English, Hindi, Urdu, Spanish, French, Italian, and German.</li><li style="margin-bottom:6px;"><strong>Set speed and tone.</strong> Start at 1.0x speed and the default tone; tweak after your first listen.</li><li style="margin-bottom:6px;"><strong>Generate and listen.</strong> Long scripts are chunked automatically so nothing gets cut off.</li><li style="margin-bottom:6px;"><strong>Download the MP3.</strong> The file comes out with a clean timestamped name, ready for your editor.</li></ol>
 <p style="line-height:1.8;">That MP3 is yours — free for commercial use, no watermark, no attribution required. Use it in YouTube videos, podcasts, audiobooks, ads, or client work.</p>
@@ -8271,6 +8274,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for live PDF reading, Edge Read Aloud is the fastest free start on Windows, @Voice owns Android, and TextToSpeechH needs no install at all. Run scans through OCR first, start at 1.1x speed, and turn on highlighting. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now — drop your PDF in and hear it read back in under a minute</a>.</p>`
   },
   "text-to-speech/blog/how-to-make-an-audiobook-free": {
+    ogImage: "/images/blog/how-to-make-an-audiobook-free/audiobook-free-hero.webp",
     title: `How to Make an Audiobook for Free: A Step-by-Step Guide (2026) | ${BRAND_NAME}`,
     h1: `How to Make an Audiobook for Free: A Step-by-Step Guide`,
     metaDesc: `How to make an audiobook for free with AI text to speech: clean your manuscript, pick a voice, generate chapter by chapter, and assemble a polished MP3. No studio needed.`,
@@ -8285,6 +8289,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;"><strong>In a hurry?</strong> <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> turns your text into natural audio right in the browser — paste a chapter, pick a voice, download the MP3. Free, no sign-up.</p>
 <section style="margin-bottom:40px;">
 <h2>What you need before you start</h2>
+        <img src="/images/blog/how-to-make-an-audiobook-free/audiobook-free-hero.webp" alt="Making an audiobook for free - an open book whose page lines rise into layered golden sound waves flowing to headphones above an audio player bar" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Three things: your text in a clean digital format (a Word doc, PDF, or plain text file works best), a text-to-speech tool, and about an hour for a short book. Scanned PDFs with messy formatting cause the most problems, so if your source is a scan, clean up the text first — remove page numbers, headers, and broken lines. Five minutes of cleanup here saves you an hour of weird pauses later.</p>
 <p style="line-height:1.8;">If your source is a PDF, our <a href="${DOMAIN}/text-to-speech/blog/free-text-to-speech-pdf-to-audio" style="color:var(--color-primary);">PDF-to-audio converter guide</a> covers how to extract clean text from it first.</p>
 </section>
@@ -8307,6 +8312,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2>Step 5: Assemble your audiobook</h2>
+        <img src="/images/blog/how-to-make-an-audiobook-free/audiobook-free-mid.webp" alt="The free audiobook workflow - a manuscript stack, a folder of chapters, a glowing microphone, a stack of checked audio files, and a finished book with a play badge" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Name your files in order (01-chapter-one.mp3, 02-chapter-two.mp3) so any player queues them correctly. If you want a single polished file, free editors like Audacity can join chapters and add a second of silence between them. Export at 128 kbps mono — it sounds great for speech and keeps a ten-hour book under 500 MB.</p>
 </section>
 <section style="margin-bottom:40px;">
@@ -8316,6 +8322,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> Your first audiobook will not sound like a studio production, and that is okay. It will sound clear, natural, and completely listenable — which is all most projects need. Start with a short book, learn the workflow, and by your second one you will be twice as fast. The tools are free; the only real cost is an afternoon. <a href="${DOMAIN}/" style="color:var(--color-primary);">Start with chapter one now — paste your text and hear it read back</a>.</p>`
   },
   "text-to-speech/blog/canva-text-to-speech-guide": {
+    ogImage: "/images/blog/canva-text-to-speech-guide/canva-tts-hero.webp",
     title: `Canva Text to Speech: Add Free AI Voiceovers (2026) | ${BRAND_NAME}`,
     h1: `Canva Text to Speech: Add Free AI Voiceovers (2026)`,
     metaDesc: `Canva text to speech: how to add AI voiceovers to your designs free. Built-in limits explained + the free MP3 upgrade path for better voices (2026 guide).`,
@@ -8330,11 +8337,13 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">This guide covers both routes honestly: the built-in app path (fast, mediocre voices) and the external MP3 path (two extra minutes, dramatically better voices). For anything you'll publish, the second route wins.</p>
 <section style="margin-bottom:40px;">
 <h2>Route 1: Canva apps (fast, basic voices)</h2>
+        <img src="/images/blog/canva-text-to-speech-guide/canva-tts-hero.webp" alt="Text to speech in Canva - a presentation slide with shapes and an image placeholder, a microphone sending golden sound waves into a video play button" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">In the Canva editor, open <strong>Apps</strong> in the left sidebar and search "text to speech." You'll find third-party TTS apps you can connect. They work inside Canva — type text, generate, the audio lands on your design.</p>
 <p style="line-height:1.8;"><strong>The honest caveat:</strong> these apps use lightweight system voices to stay fast inside Canva. They sound like a GPS from 2015. Fine for an internal draft; not fine for a client video or a YouTube upload.</p>
 </section>
 <section style="margin-bottom:40px;">
 <h2>Route 2: External MP3 upload (free, professional voices)</h2>
+        <img src="/images/blog/canva-text-to-speech-guide/canva-tts-mid.webp" alt="The two Canva voiceover routes - an app grid with a microphone and a basic wave on one side, an uploaded audio file dropping into a video timeline with a rich waveform on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">This is what working creators actually do:</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Write your script</strong> — keep sentences short; TTS handles punchy copy far better than long paragraphs.</li><li style="margin-bottom:6px;"><strong>Generate the MP3</strong> with a free neural TTS tool. <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> handles up to 10,000 words per session free, no signup, with MP3 download.</li><li style="margin-bottom:6px;"><strong>Upload to Canva:</strong> Uploads tab > Upload files > select your MP3.</li><li style="margin-bottom:6px;"><strong>Drag onto the timeline</strong> and position it under the right scene or slide.</li><li style="margin-bottom:6px;"><strong>Trim and sync:</strong> split the audio per scene if your video has multiple sections — one MP3 per scene is easier to time than one long file.</li></ol>
 <p style="line-height:1.8;">Total extra time versus the app route: about two minutes. Quality difference: night and day.</p>
@@ -8346,6 +8355,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> Canva's app-route voices are fine for drafts; published work deserves the MP3 route. Generate free with <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, upload, sync per scene. Two extra minutes, professional result.</p>`
   },
   "text-to-speech/blog/google-docs-text-to-speech-guide": {
+    ogImage: "/images/blog/google-docs-text-to-speech-guide/google-docs-tts-hero.webp",
     title: `Text to Speech in Google Docs: Free Read-Aloud Guide (2026) | ${BRAND_NAME}`,
     h1: `Text to Speech in Google Docs: Free Read-Aloud Guide (2026)`,
     metaDesc: `How to use text to speech in Google Docs free: read-aloud vs voice typing explained, Select-to-Speak, screen reader shortcuts, and the free AI voice upgrade.`,
@@ -8359,6 +8369,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Here's the confusion that wastes everyone's afternoon: Google Docs has <strong>voice typing</strong> (speech-to-text), and half the guides ranking for "text to speech Google Docs" explain that feature — which is the exact opposite of what most searchers want. You want Docs to <em>read to you</em>. Let's fix that.</p>
 <section style="margin-bottom:40px;">
 <h2>Option 1: Select-to-Speak (Chromebook & Chrome, free)</h2>
+        <img src="/images/blog/google-docs-text-to-speech-guide/google-docs-tts-hero.webp" alt="Text to speech in Google Docs - a document page with one line highlighted in gold, sound waves flowing from that line to a speaker and headphones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">On ChromeOS: <strong>Settings > Accessibility > Select to Speak</strong> — turn it on, then select any text in Google Docs and hit the speaker icon (or Search+S). It reads with your system's voices.</p>
 <p style="line-height:1.8;">On Windows/Mac Chrome, the equivalent is your OS screen reader or a read-aloud extension — see our <a href="${DOMAIN}/text-to-speech/blog/read-aloud-chrome-extensions" style="color:var(--color-primary);">Chrome extensions guide</a> for the best free picks.</p>
 <p style="line-height:1.8;"><strong>The honest caveat:</strong> system voices sound flat. Fine for proofreading your own draft; tiring for a 20-page document.</p>
@@ -8370,6 +8381,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2>Option 3: Free AI voices (best quality, two extra steps)</h2>
+        <img src="/images/blog/google-docs-text-to-speech-guide/google-docs-tts-mid.webp" alt="The three ways to hear a Google Doc read aloud - a browser window highlighting a document line, an eye with sound waves for a screen reader, and a glowing orb of AI voice waves above a download arrow and headphones" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Copy the text (or export the Doc as .txt), paste it into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, pick a neural voice, listen or download the MP3. Up to 10,000 words free per session, no signup.</p>
 <p style="line-height:1.8;">This is the route for: proofreading long documents by ear (catches errors your eyes skip), turning research into commute audio, or generating narration you'll actually publish.</p>
 </section>
@@ -8380,6 +8392,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> voice typing writes what you say; read-aloud reads what you wrote — different features. For quick proofreading, Select-to-Speak is enough. For long listens, paste into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> and get voices worth listening to.</p>`
   },
   "text-to-speech/blog/windows-text-to-speech-guide": {
+    ogImage: "/images/blog/windows-text-to-speech-guide/windows-tts-hero.webp",
     title: `Text to Speech on Windows: Free Built-In Options (2026) | ${BRAND_NAME}`,
     h1: `Text to Speech on Windows: Free Built-In Options (2026)`,
     metaDesc: `Free text to speech on Windows: Narrator vs Edge Read Aloud vs Word Read Aloud compared — which built-in option to use, plus the free AI voice upgrade.`,
@@ -8393,6 +8406,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Windows ships with three different text-to-speech tools, and Microsoft has never clearly explained which one you should use. So here's the honest breakdown: what each one is actually for, which has the best voices, and when to skip all three for a free web tool.</p>
 <section style="margin-bottom:40px;">
 <h2>1. Edge Read Aloud — the one you actually want</h2>
+        <img src="/images/blog/windows-text-to-speech-guide/windows-tts-hero.webp" alt="Text to speech on Windows - a laptop reading a document with one line highlighted in gold, a browser window with a play button sending sound waves to a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Open any PDF or webpage in Microsoft Edge, right-click, choose <strong>Read Aloud</strong>. That's it. The neural voices are genuinely good — natural intonation, speed control, voice choice — and it's completely free with nothing to install.</p>
 <p style="line-height:1.8;">This is the fastest path on Windows from "I have a document" to "it's reading to me." Our <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color:var(--color-primary);">PDF read-aloud guide</a> covers it alongside six other options.</p>
 <p style="line-height:1.8;"><strong>Best for:</strong> PDFs, articles, any document you want read right now.</p>
@@ -8410,6 +8424,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2>When to skip all three: the free AI upgrade</h2>
+        <img src="/images/blog/windows-text-to-speech-guide/windows-tts-mid.webp" alt="The three built-in Windows reading options - a book with a speaker, a glowing browser window with a play button, and a monitor with an eye and a scanning line for the screen reader" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Built-in voices are fine for quick listens. But if you want audio you'll publish — a video voiceover, podcast narration, course audio — paste the text into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>. Neural voices, 10,000 words free per session, MP3 download, no signup, no install. It runs in Edge itself.</p>
 <p style="line-height:1.8;">On Mac instead? Our <a href="${DOMAIN}/text-to-speech/blog/mac-text-to-speech-guide" style="color:var(--color-primary);">Mac TTS guide</a> covers the Apple-side equivalents.</p>
 </section>
