@@ -5534,6 +5534,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/ai-audiobook-narration-authors": {
     title: `AI Audiobook Narration: Turn Your Book Into Audio`,
     h1: `AI Audiobook Narration: Turn Your Book Into Audio`,
+    ogImage: "/images/blog/ai-audiobook-narration-authors/audiobook-narration-hero.webp",
     metaDesc: `AI audiobook narration for authors (2026): where to publish AI-narrated audiobooks, platform rules, the free workflow, and real costs — explained step by step.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -5566,6 +5567,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="abn-moment" style="margin-bottom:40px;">
+        <img src="/images/blog/ai-audiobook-narration-authors/audiobook-narration-hero.webp" alt="AI audiobook narration - an open book whose page lines rise up and turn into sound waves flowing into headphones above an audio player" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>1. Why 2026 Is the Moment for AI-Narrated Audiobooks</h2>
         <p style="line-height:1.8;">
           A few things shifted at once:
@@ -5601,6 +5603,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="abn-workflow" style="margin-bottom:40px;">
+        <img src="/images/blog/ai-audiobook-narration-authors/audiobook-narration-mid.webp" alt="Audiobook workflow - manuscript page, then narration microphone, then finished chapter files with checkmarks, then a storefront selling the audiobook, joined by a dotted path" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>3. The Workflow: Manuscript to Finished Audiobook</h2>
         <p style="line-height:1.8;">
           You can do the whole thing in a weekend. Here’s the process:
@@ -5724,6 +5727,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/free-text-to-speech-no-signup": {
     title: `Free Text to Speech Without Login: 7 Tools (2026)`,
     h1: `Free Text to Speech Without Login: 7 Tools for 2026`,
+    ogImage: "/images/blog/free-text-to-speech-no-signup/no-signup-hero.webp",
     metaDesc: `7 free text-to-speech tools that work without login or signup (2026). Compare free limits, MP3 downloads & commercial rights — no account needed.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -5751,6 +5755,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="nsu-why" style="margin-bottom:40px;">
+        <img src="/images/blog/free-text-to-speech-no-signup/no-signup-hero.webp" alt="Free text to speech with no sign up - a sign-up form with a padlock crossed out beside a browser window playing a document aloud through a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>1. Why "No Sign Up" Actually Matters</h2>
         <p style="line-height:1.8;">
           It's not just laziness. There are three real reasons people search for TTS without login:
@@ -5812,6 +5817,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="nsu-compare" style="margin-bottom:40px;">
+        <img src="/images/blog/free-text-to-speech-no-signup/no-signup-mid.webp" alt="Comparing free no-signup TTS tools - seven app tiles under a magnifying glass with the best one glowing and wearing a checkmark badge" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>3. Quick Comparison Table</h2>
         <div style="overflow-x:auto; margin-top:16px;">
           <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
@@ -5956,6 +5962,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/audible-ai-audiobook-features": {
     title: `Audible's AI Audiobooks: What Authors Must Know (2026)`,
     h1: `Audible Adds AI to Audiobooks: What Authors Need to Know (2026)`,
+    ogImage: "/images/blog/audible-ai-audiobook-features/audible-ai-hero.webp",
     metaDesc: `Audible's Oct 2026 AI audiobook features: Character Guide, Interactive Story, Visual Explorer. What indie authors must know about ACX rules and AI narration.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -5983,6 +5990,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="aud-feat" style="margin-bottom:40px;">
+        <img src="/images/blog/audible-ai-audiobook-features/audible-ai-hero.webp" alt="Audible AI audiobook features - a listener with headphones and a player, with three glowing panels above for the character guide, interactive story choices and visual explorer" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>The 3 New Audible AI Features, Explained</h2>
         <p style="line-height:1.8;">
           Audible rolled out three features, all currently in limited beta and developed in collaboration with creators:
@@ -6083,6 +6091,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="aud-cost" style="margin-bottom:40px;">
+        <img src="/images/blog/audible-ai-audiobook-features/audible-ai-mid.webp" alt="Studio vs AI narration cost - a balance scale weighing a studio microphone, clock and tall stack of coins against a laptop with sound waves and a single coin" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>Studio vs. AI Narration: The Real Cost Comparison</h2>
         <div style="overflow-x:auto; margin:20px 0;">
           <table class="seo-table" style="width:100%; border-collapse:collapse; text-align:left; font-size:0.92rem;">
@@ -6991,6 +7000,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-ai-voice-changers": {
     title: `Best AI Voice Changers in 2026: 7 Free Tools That Work`,
     h1: `Best AI Voice Changers in 2026: 7 Free Tools That Work`,
+    ogImage: "/images/blog/best-ai-voice-changers/voice-changers-hero.webp",
     metaDesc: `Need a free AI voice changer for Discord, gaming or streaming? We ranked 7 tools — Voicemod, Clownfish, Voice.ai & more — with honest free-tier verdicts.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -7010,6 +7020,7 @@ before you put the audio in a course you sell.</p></div>
         </ul>
       </div>
       <section style="margin-bottom:40px;">
+      <img src="/images/blog/best-ai-voice-changers/voice-changers-hero.webp" alt="AI voice changers - a gamer speaking into a headset while their voice passes through robot, mask and sparkle effects and comes out transformed" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <p style="line-height:1.8; margin:0 0 18px;">Want to sound like someone else on Discord, in a game, or on stream? AI voice changers do exactly that — they take your live microphone input and transform it in real time, so you can talk as a robot, a movie villain, a different gender, or a fully cloned voice while you play or chat.</p>
       <p style="line-height:1.8; margin:0 0 18px;">There's a big difference between a voice <em>changer</em> (live mic input, real-time output) and a voice <em>generator</em> (type text, get audio). This guide is about the changers. I've ranked the best free options below, and I'll be straight with you about which free tiers are actually usable and which ones exist mostly to sell you a subscription.</p>
       <p style="line-height:1.8; margin:0 0 18px;">And if what you really need is a <em>recorded</em> voiceover for a video — not a live voice for a call — our free text-to-speech tool is the faster path: paste text, pick a voice, download the MP3. No microphone tricks required.</p>
@@ -7046,6 +7057,7 @@ before you put the audio in a course you sell.</p></div>
       <p style="line-height:1.8; margin:0 0 18px;"><strong>Free tier:</strong> Completely free and open source. <strong>Best for:</strong> Technical users with a GPU who want maximum quality and control.</p>
       </section>
       <section style="margin-bottom:40px;">
+      <img src="/images/blog/best-ai-voice-changers/voice-changers-mid.webp" alt="Voice changer vs voice generator - a live microphone reshaped by effect sliders on one side, typed text becoming a finished recording through a speaker on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <h2>Voice Changer vs. Voice Generator: Which Do You Need?</h2>
       <p style="line-height:1.8; margin:0 0 18px;">This trips people up, so here's the simple version:</p>
       <ul style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
@@ -7178,6 +7190,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/read-pdf-aloud-guide": {
     title: `How to Read a PDF Aloud: Free Guide for Phone & Desktop`,
     h1: `How to Read a PDF Aloud: Free Guide for Phone & Desktop`,
+    ogImage: "/images/blog/read-pdf-aloud-guide/read-pdf-aloud-hero.webp",
     metaDesc: `Learn how to read a PDF aloud free on iPhone, Android, Windows & Mac — plus the Google Docs OCR trick for scanned PDFs and the best-sounding AI voice method.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -7202,6 +7215,7 @@ before you put the audio in a course you sell.</p></div>
       <p style="line-height:1.8; margin:0 0 18px;">If you just want the fastest path: paste your PDF's text into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH's free generator</a>, pick a natural voice, download the MP3. Takes two minutes, sounds human, no sign-up. The rest of this guide covers the built-in options device by device.</p>
       </section>
       <section style="margin-bottom:40px;">
+      <img src="/images/blog/read-pdf-aloud-guide/read-pdf-aloud-hero.webp" alt="Reading a PDF aloud - a document sending sound waves into headphones, a phone and a laptop so the same PDF is heard on every device" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <h2>Method 1: The Free Online Way (Best-Sounding, 2 Minutes)</h2>
       <p style="line-height:1.8; margin:0 0 18px;">This is the method I recommend to most people, because the voice quality gap is enormous.</p>
       <ol style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
@@ -7247,6 +7261,7 @@ before you put the audio in a course you sell.</p></div>
       <p style="line-height:1.8; margin:0 0 18px;">Mac's Alex voice is a classic, but for long reads the online AI voices in Method 1 sound more natural.</p>
       </section>
       <section style="margin-bottom:40px;">
+      <img src="/images/blog/read-pdf-aloud-guide/read-pdf-aloud-mid.webp" alt="Scanned PDF recognition - a blurry scanned page inside a scanner frame being turned into crisp readable lines by a glowing scan beam, with a checkmark badge" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <h2>What If My PDF Is a Scan (Just Images)?</h2>
       <p style="line-height:1.8; margin:0 0 18px;">This is the honest caveat: if your PDF is a scan or photos of pages, there is no selectable text — and nothing can read what isn't there. You need OCR (optical character recognition) first.</p>
       <ul style="margin:0 0 18px; padding-left:20px; line-height:1.9;">
