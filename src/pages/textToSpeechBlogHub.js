@@ -2629,7 +2629,6 @@ const BLOG_ARTICLES_MAP = {
     content: `
       <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
         <img src="/images/blog/best-free-text-to-speech-tools/best-free-tools-hero.webp" alt="Best free text to speech tools compared - app cards with play buttons and one clear winner" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-<img src="/images/blog/best-free-text-to-speech-tools/best-free-tools-mid.webp" alt="Testing free text to speech tools - comparing two voice waveforms side by side on a laptop" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: What Is the Best Free Text to Speech Tool in 2026?</h2>
         <p style="margin: 0; line-height: 1.7;">
           Looking for a <strong>free text to speech</strong> tool that actually works without forcing you into a paid plan? We tested 8 popular free TTS tools with the same 200-word script and ranked them by what matters most: how generous the free tier really is. The short answer: <strong>Microsoft Edge's built-in Read Aloud</strong> is the most generous completely free option for reading documents aloud, while <strong>TextToSpeechH</strong> is the best no-signup web tool for quick conversions. If you want the most natural-sounding voice on a free plan, <strong>ElevenLabs' free tier</strong> leads — but with strict monthly limits. This guide separates truly free tools from freemium traps so you don't waste time signing up for tools that aren't really free.
@@ -2831,6 +2830,7 @@ const BLOG_ARTICLES_MAP = {
 
       <section id="how-we-tested" style="margin-bottom: 40px;">
         <h2>3. How We Tested: The Same Script on All 8</h2>
+        <img src="/images/blog/best-free-text-to-speech-tools/best-free-tools-mid.webp" alt="Testing free text to speech tools - comparing two voice waveforms side by side on a laptop" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 16px;">
         <p style="line-height: 1.8;">
           To keep this ranking honest, we ran an identical <strong>200-word test script</strong> through every tool — a mix of plain narration, numbers, abbreviations ("Dr.", "e.g."), and a question. Each tool was scored on:
         </p>
@@ -5378,7 +5378,6 @@ const BLOG_ARTICLES_MAP = {
     content: `
       <div class=\"definition-box\" style=\"background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;\">
               <img src="/images/blog/elevenlabs-v4-free-guide/elevenlabs-v4-hero.webp" alt="ElevenLabs v4 expressive AI voices - a colourful voice waveform flowing from a studio microphone" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-<img src="/images/blog/elevenlabs-v4-free-guide/elevenlabs-v4-creator.webp" alt="A creator generating an expressive AI voiceover from a written script - text turning into an audio waveform" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2 style=\"font-size: 1.15rem; margin-top: 0; color: var(--color-primary);\">Quick Answer: What Is ElevenLabs v4?</h2>
               <p style=\"margin: 0 0 10px; line-height: 1.7;\">
                 <strong>Eleven v4</strong>, launched September 28, 2026, is ElevenLabs' most expressive speech model yet — with inline audio tags like <code>[laughs]</code> and <code>[whispers]</code> you type straight into your script, 90+ languages, and voice cloning from about 10 seconds of audio. It took the #1 spot on the Artificial Analysis voice leaderboard on launch day.
@@ -5439,6 +5438,7 @@ const BLOG_ARTICLES_MAP = {
       
             <section id=\"v4-free\" style=\"margin-bottom: 40px;\">
               <h2>3. How to Try Expressive AI Voices Free Today</h2>
+              <img src="/images/blog/elevenlabs-v4-free-guide/elevenlabs-v4-creator.webp" alt="A creator generating an expressive AI voiceover from a written script - text turning into an audio waveform" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 16px;">
               <p style=\"line-height: 1.8;\">
                 You don't need ElevenLabs v4 to make voiceovers that sound directed instead of robotic. Here's the honest playbook for getting 80% of the expressiveness at $0:
               </p>
