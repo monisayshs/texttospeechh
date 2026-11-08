@@ -7835,6 +7835,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/heygen-voice-clone-free-alternatives": {
     title: `HeyGen Voice Clone (2026): Price, Limits & 5 Free Tools`,
     h1: `HeyGen Voice Clone (2026): Price, Limits & 5 Free Tools`,
+    ogImage: "/images/blog/heygen-voice-clone-free-alternatives/heygen-hero.webp",
     metaDesc: `HeyGen launched its own voice model on October 9, 2026. The base voice is free — the real voice clone costs $99/month. Here is the honest pricing breakdown and 5 free tools that cover the same ground.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -7848,12 +7849,14 @@ before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#hv-what" style="color:inherit;">1. What HeyGen Voice is (the October 2026 launch)</a></li><li><a href="#hv-pricing" style="color:inherit;">2. The pricing reality check</a></li><li><a href="#hv-free" style="color:inherit;">3. 5 free tools that cover the same ground</a></li><li><a href="#hv-worth" style="color:inherit;">4. When HeyGen's paid clone is actually worth it</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2><a id="hv-what"></a>1. What HeyGen Voice is (the October 2026 launch)</h2>
+        <img src="/images/blog/heygen-voice-clone-free-alternatives/heygen-hero.webp" alt="HeyGen voice cloning - a microphone capturing a voice wave, the wave passing through a glowing cloning core and coming out of a video screen where an avatar speaks the same voice" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">On October 9, 2026, HeyGen launched HeyGen Voice — its own in-house voice model, replacing whatever third-party voices were running under the hood before. The idea is straightforward: one voice engine for the whole platform, so the voice in your avatar videos and the voice in their API sound consistent.</p>
 <p style="line-height:1.8;">Two things matter for you:</p>
 <ul style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>HeyGen Voice itself is free</strong> inside the HeyGen platform and API. If you were already generating voiceovers there, the engine got better without your bill changing.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>HeyGen Professional Voice Clone is a separate $99/month add-on.</strong> This is the actual voice-cloning product — the one that clones <em>your</em> voice. It is trained on 30 minutes to 3 hours of your speech, and it requires the voice owner's explicit consent (a good guardrail — cloning other people's voices without permission is where voice cloning turns into fraud).</li></ul>
 </section>
 <section style="margin-bottom:40px;">
 <h2><a id="hv-pricing"></a>2. The pricing reality check</h2>
+        <img src="/images/blog/heygen-voice-clone-free-alternatives/heygen-mid.webp" alt="The HeyGen pricing reality check - an avatar video screen with a microphone resting on a tall stack of coins beside a price tag, next to a bright browser window playing voice audio through a speaker" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">HeyGen is priced for businesses and creators who also need AI avatar videos. The free plan exists but is limited, and the $99/month Voice Clone add-on is for people who know exactly what they will do with a cloned voice — sales videos, course narration, regular content in their own voice.</p>
 <p style="line-height:1.8;"><strong>The honest math:</strong> if all you need is a voice that reads your script — not a video of your face saying it, not a clone of your specific voice — $99 a month is a lot to pay for audio you could generate free.</p>
 </section>
@@ -7899,6 +7902,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/celebrity-ai-voice-generator": {
     title: `Celebrity AI Voice Generator: Free Tools That Work (2026)`,
     h1: `Celebrity AI Voice Generator: Free Tools That Work (2026)`,
+    ogImage: "/images/blog/celebrity-ai-voice-generator/celebrity-voice-hero.webp",
     metaDesc: `No free tool legally gives you Morgan Freeman's real voice — but deep narrator-style AI voices nail the feel. Here are 5 free tools that work, plus the legal line.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -7913,6 +7917,7 @@ before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#cv-what" style="color:inherit;">1. What a "celebrity AI voice generator" actually is</a></li><li><a href="#cv-tools" style="color:inherit;">2. 5 celebrity-style voice tools worth trying</a></li><li><a href="#cv-legal" style="color:inherit;">3. The legal line (don't skip this)</a></li><li><a href="#cv-feel" style="color:inherit;">4. How to get the "Morgan Freeman" feel without cloning anyone</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2><a id="cv-what"></a>1. What a "celebrity AI voice generator" actually is</h2>
+        <img src="/images/blog/celebrity-ai-voice-generator/celebrity-voice-hero.webp" alt="Celebrity AI voice generators - a vintage studio microphone under a warm spotlight sending deep, slow golden narrator waves across to a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">There are two different products hiding behind this search term, and knowing which one you need saves you a lot of frustration:</p>
 <ul style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>Named celebrity voice clones</strong> — tools that claim to replicate Morgan Freeman, Trump, Biden, or SpongeBob. These sit on shaky legal ground (a real person's voice is protected by right-of-publicity laws in the US), and the free ones tend to be low quality, heavily watermarked, or bait for a paid plan.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>Celebrity-<em>style</em> narrator voices</strong> — deep, warm, authoritative AI voices that <em>sound like</em> a movie trailer narrator without cloning anyone. These are legal, widely available, and honestly better for documentaries, YouTube narration, and storytelling — because you're not depending on a voice the celebrity's lawyers can shut down.</li></ul>
 <p style="line-height:1.8;">For commercial work — monetized YouTube, ads, client projects — the style-based route is the only sane choice. For parody and memes, the clone route exists, but treat it as fan content, not a business asset.</p>
@@ -7937,6 +7942,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2><a id="cv-legal"></a>3. The legal line (don't skip this)</h2>
+        <img src="/images/blog/celebrity-ai-voice-generator/celebrity-voice-mid.webp" alt="The legal line for celebrity voices - a golden balance scale weighing a padlocked silhouette of a head against a glowing narrator microphone, with a shield and checkmark above" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Cloning a real person's voice without their consent can violate right-of-publicity and fraud laws in the US — and YouTube's policies are tightening around undisclosed AI celebrity voices. Parody is generally safer territory than commercial impersonation, and "inspired by" style voices sidestep the whole issue. <a href="${DOMAIN}/text-to-speech/blog/is-ai-voice-cloning-legal" style="color:var(--color-primary);">We broke down the full legal picture here</a>.</p>
 </section>
 <section style="margin-bottom:40px;">
@@ -7950,6 +7956,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/grok-voice-3-explained": {
     title: `Grok Voice 3.0 Explained: What It Is + Free Alternatives | ${BRAND_NAME}`,
     h1: `Grok Voice 3.0 Explained: What It Is + Free Alternatives`,
+    ogImage: "/images/blog/grok-voice-3-explained/grok-voice-hero.webp",
     metaDesc: `xAI launched Grok Voice 3.0 on Oct 14, 2026 — but it's a developer API, not a free voiceover tool. Here's what it actually is, what it costs, and 5 free alternatives.`,
     category: "AI Technology",
     readingTime: "10 min read",
@@ -7963,6 +7970,7 @@ before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#gv-three" style="color:inherit;">1. "Grok voice" actually means three different things</a></li><li><a href="#gv-what" style="color:inherit;">2. What Grok Voice 3.0 actually is</a></li><li><a href="#gv-cost" style="color:inherit;">3. What it costs (and why there's no free version)</a></li><li><a href="#gv-free" style="color:inherit;">4. 5 free alternatives if you just want AI voice audio</a></li><li><a href="#gv-who" style="color:inherit;">5. Who should actually care about Grok Voice 3.0</a></li><li><a href="#faqs" style="color:inherit;">6. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2><a id="gv-three"></a>1. "Grok voice" actually means three different things</h2>
+        <img src="/images/blog/grok-voice-3-explained/grok-voice-hero.webp" alt="The three things called Grok voice - a phone with chat bubbles for Voice Mode, a glowing circuit core for the Voice 3.0 developer model, and a car linked to a satellite dish for voice agents in products" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">This is the source of 90% of the confusion, so let's sort it out first:</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Grok Voice Mode</strong> — the voice chat feature inside the Grok app (iOS, Android, web). You talk, it talks back. This one has a free tier.</li><li style="margin-bottom:6px;"><strong>Grok Voice 3.0</strong> — the new model announced October 14, 2026. It's the <em>engine</em> behind voice agents, sold through xAI's Voice Agent API to developers. You can't "try it" on a website — you build with it.</li><li style="margin-bottom:6px;"><strong>Grok voice agents</strong> — the products built on it: Tesla's in-car assistant, Starlink's customer support lines, that kind of thing.</li></ol>
 <p style="line-height:1.8;">If you're a creator looking to make voiceovers, you want option 1 or a dedicated text-to-speech tool — not the API.</p>
@@ -7976,6 +7984,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2><a id="gv-cost"></a>3. What it costs (and why there's no free version)</h2>
+        <img src="/images/blog/grok-voice-3-explained/grok-voice-mid.webp" alt="What Grok Voice 3.0 costs - two speech bubbles exchanging sound waves that flow through a counting meter dial and turn into stacks of gold coins beside a price tag" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">Grok Voice 3.0 is priced like infrastructure: $0.08/minute of conversation, billed to the developer. There's no free tier of the API, no demo page, no "try Grok Voice 3.0 online" — and if you find a site claiming to offer it free, that's a red flag.</p>
 <p style="line-height:1.8;">The <em>consumer</em> side is different: the Grok chatbot's Voice Mode is free on iOS (reportedly capped around 100 voice queries a day, resetting at midnight UTC), with higher limits on paid plans. But that's the older conversational voice — not the new 3.0 model talking to you directly.</p>
 </section>
@@ -8007,6 +8016,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/free-text-to-audio-converters": {
     title: `Free Text to Audio Converters: 7 Tested, Ranked (2026) | ${BRAND_NAME}`,
     h1: `Free Text to Audio Converters: 7 Tested, Ranked (2026)`,
+    ogImage: "/images/blog/free-text-to-audio-converters/text-to-audio-hero.webp",
     metaDesc: `7 free text-to-audio converters tested side by side (Oct 2026): real free limits, MP3 downloads, no-sign-up options, and the honest catches. Turn text into audio files free.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -8021,6 +8031,7 @@ before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#tta-what" style="color:inherit;">1. What "text to audio" means (and what to watch for)</a></li><li><a href="#tta-list" style="color:inherit;">2. The 7 converters, tested and ranked</a></li><li><a href="#tta-compare" style="color:inherit;">3. Quick comparison table</a></li><li><a href="#tta-pick" style="color:inherit;">4. How to pick in 30 seconds</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2><a id="tta-what"></a>1. What "text to audio" means (and what to watch for)</h2>
+        <img src="/images/blog/free-text-to-audio-converters/text-to-audio-hero.webp" alt="Free text to audio converters - a document page whose plain lines turn into flowing sound waves and land as a downloadable audio file with a play button" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">A text-to-audio converter turns written text into an audio file (usually MP3 or WAV) you keep. That's the whole job. When you're comparing free ones, four things decide whether it's actually free:</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Character limit per conversion</strong> — how much text per click. A few hundred characters is barely a paragraph; 10,000+ characters covers a full article.</li><li style="margin-bottom:6px;"><strong>MP3 download</strong> — some tools only play audio in the browser (great for listening, useless for editing or uploading).</li><li style="margin-bottom:6px;"><strong>Sign-up</strong> — "free" with mandatory account creation costs you your email. Some tools skip it entirely.</li><li style="margin-bottom:6px;"><strong>Voice quality</strong> — old robotic voices vs. modern neural voices. The difference is enormous.</li></ol>
 </section>
@@ -8058,6 +8069,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2><a id="tta-compare"></a>3. Quick comparison</h2>
+        <img src="/images/blog/free-text-to-audio-converters/text-to-audio-mid.webp" alt="The seven free text to audio converters compared - the top-ranked glowing tile on a podium with a checkmark badge, beside tiles for speaker, download, book, headphones, play, microphone and music tools" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <div style="overflow-x:auto; margin-bottom:24px;"><table style="width:100%; border-collapse:collapse; font-size:0.95rem;"><thead><tr style="background:var(--color-bg-secondary);"><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Tool</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Free limit</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Sign-up</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">MP3 download</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Best for</th></tr></thead><tbody>
 <tr><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);"><strong>TextToSpeechH</strong></td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">10,000 words/session</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">No</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Yes</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Everything, honestly</td></tr>
 <tr><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);"><strong>FreeTTS</strong></td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Unlimited (free tier)</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">No</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Yes</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Quick MP3 jobs</td></tr>
@@ -8078,6 +8090,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/free-ai-voice-over-generator": {
     title: `Free AI Voice Over Generator: 7 Tools That Work (2026) | ${BRAND_NAME}`,
     h1: `Free AI Voice Over Generator: 7 Tools That Work (2026)`,
+    ogImage: "/images/blog/free-ai-voice-over-generator/voice-over-hero.webp",
     metaDesc: `7 free AI voice over generators tested (Oct 2026): real free limits, MP3 downloads, no-sign-up picks, and the honest catches. Type a script, get a voiceover, pay $0.`,
     category: "Comparisons",
     readingTime: "11 min read",
@@ -8092,6 +8105,7 @@ before you put the audio in a course you sell.</p></div>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#vog-what" style="color:inherit;">1. What makes a good voice over generator</a></li><li><a href="#vog-list" style="color:inherit;">2. The 7 tools, tested</a></li><li><a href="#vog-compare" style="color:inherit;">3. Quick comparison</a></li><li><a href="#vog-pick" style="color:inherit;">4. How to pick in 30 seconds</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
 <h2><a id="vog-what"></a>1. What makes a good voice over generator</h2>
+        <img src="/images/blog/free-ai-voice-over-generator/voice-over-hero.webp" alt="Free AI voice over generators - a written script flowing into a studio microphone and out as rich sound waves across a video player with a play button" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <p style="line-height:1.8;">A plain text-to-speech reader just plays audio back. A voice over generator gives you a <em>usable file</em> for production. Judge every free tool on five things:</p>
 <ol style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Characters per generation</strong> — 400 characters is a paragraph; 10,000 words is a full video script.</li><li style="margin-bottom:6px;"><strong>MP3/WAV download</strong> — without it, you can't edit or upload the audio anywhere.</li><li style="margin-bottom:6px;"><strong>Sign-up wall</strong> — some tools are genuinely no-account; others want your email first.</li><li style="margin-bottom:6px;"><strong>Voice quality</strong> — neural voices vs. the old robot sound. The gap is huge.</li><li style="margin-bottom:6px;"><strong>Commercial rights</strong> — personal use is one thing; YouTube monetization and client work is another.</li></ol>
 </section>
@@ -8124,6 +8138,7 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <section style="margin-bottom:40px;">
 <h2><a id="vog-compare"></a>3. Quick comparison</h2>
+        <img src="/images/blog/free-ai-voice-over-generator/voice-over-mid.webp" alt="The seven free voice over tools compared - the best pick glowing gold with a microphone and a checkmark badge, beside video, music, download, emotion, speaker and play tiles sending waves into a video timeline" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <div style="overflow-x:auto; margin-bottom:24px;"><table style="width:100%; border-collapse:collapse; font-size:0.95rem;"><thead><tr style="background:var(--color-bg-secondary);"><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Tool</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Free allowance</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Sign-up</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">MP3 download</th><th style="padding:12px; text-align:left; border-bottom:2px solid var(--color-border);">Best for</th></tr></thead><tbody>
 <tr><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);"><strong>TextToSpeechH</strong></td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">10,000 words/session</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">No</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Yes</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Most audio for $0</td></tr>
 <tr><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);"><strong>AuraClipy</strong></td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">20k chars / 2 hrs</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">No</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Yes</td><td style="padding:10px 12px; border-bottom:1px solid var(--color-border);">Script-to-video</td></tr>
