@@ -2619,6 +2619,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/best-free-text-to-speech-tools": {
     title: `Best Free Text to Speech Tools Tested in 2026`,
     h1: `Best Free Text to Speech Tools Tested in 2026`,
+    ogImage: "/images/blog/best-free-text-to-speech-tools/best-free-tools-hero.webp",
     metaDesc: `We tested 8 free text to speech tools and ranked them by free-tier generosity: character limits, watermarks and commercial rights. Find your best free TTS.`,
     category: "Comparisons",
     readingTime: "14 min read",
@@ -5367,6 +5368,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/elevenlabs-v4-free-guide": {
     title: `ElevenLabs v4: Try Expressive AI Voices Free`,
     h1: `ElevenLabs v4 Is Here: Try Expressive AI Voices Free`,
+    ogImage: "/images/blog/elevenlabs-v4-free-guide/elevenlabs-v4-hero.webp",
     metaDesc: `ElevenLabs v4 is here (Sep 2026): audio tags, 90+ languages, 10-sec cloning. What is new, what it costs, and how to get expressive AI voices free.`,
     category: "Comparisons",
     readingTime: "7 min read",
@@ -6384,6 +6386,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/best-arabic-text-to-speech-tools": {
     title: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
     h1: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
+    ogImage: "/images/blog/best-arabic-text-to-speech-tools/arabic-hero.webp",
     metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most issues.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -8206,6 +8209,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/pdf-reader-out-loud-apps": {
     title: `7 Apps That Read PDF Aloud for Free (Tested 2026) | ${BRAND_NAME}`,
     h1: `PDF Reader Out Loud: 7 Free Apps That Read PDFs Aloud`,
+    ogImage: "/images/blog/pdf-reader-out-loud-apps/pdf-apps-hero.webp",
     metaDesc: `Looking for apps that read PDF aloud for free? We tested 7 for phone, PC and browser — including the fix for scanned PDFs that most guides skip.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -8433,6 +8437,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/hindi-text-to-speech-tools": {
     title: `Hindi Text to Speech: 7 Best Free Tools (2026) | ${BRAND_NAME}`,
     h1: `Hindi Text to Speech: 7 Best Free Tools (2026)`,
+    ogImage: "/images/blog/hindi-text-to-speech-tools/hindi-hero.webp",
     metaDesc: `The 7 best free Hindi text-to-speech tools in 2026 — tested for Devanagari pronunciation, Hinglish mixing, and natural intonation. Plus the punctuation trick for human-sounding audio.`,
     category: "Comparisons",
     readingTime: "9 min read",
@@ -8828,6 +8833,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-spanish-text-to-speech-tools": {
     title: `Best Spanish Text to Speech Tools: Natural Voices & Accents (Free Options) | ${BRAND_NAME}`,
     h1: `Best Spanish Text to Speech Tools (Tested): Natural Voices, Real Accents, Free Options`,
+    ogImage: "/images/blog/best-spanish-text-to-speech-tools/spanish-hero.webp",
     metaDesc: `Looking for a Spanish text to speech tool that doesn't sound like a robot reading a phrasebook? We compare the best options for Mexican, Castilian and US Spanish voices, including free ones with no sign-up.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -8879,6 +8885,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-french-text-to-speech-tools": {
     title: `Best French Text to Speech Tools: Natural Voices & Accents (Free Options) | ${BRAND_NAME}`,
     h1: `Best French Text to Speech Tools (Tested): Natural Voices, Real Accents, Free Options`,
+    ogImage: "/images/blog/best-french-text-to-speech-tools/french-hero.webp",
     metaDesc: `French text to speech that drops letters and flattens accents sounds wrong instantly. We compare the best tools for European and Canadian French voices, including free options with no sign-up.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -8936,6 +8943,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/text-to-speech-chromebook-guide": {
     title: `Text to Speech on a Chromebook: Built-In Read Aloud + Better Free Voices (2026) | ${BRAND_NAME}`,
     h1: `Text to Speech on a Chromebook: Every Working Way, From Built-In to Better Voices`,
+    ogImage: "/images/blog/text-to-speech-chromebook-guide/chromebook-hero.webp",
     metaDesc: `Your Chromebook already reads text aloud — here's how to turn it on (Select to Speak in under a minute), what it can't do, and how to get natural AI voices free in the same browser.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -8983,6 +8991,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-italian-text-to-speech-tools": {
     title: `Best Italian Text to Speech Tools: Natural Voices, Free Options (2026) | ${BRAND_NAME}`,
     h1: `Best Italian Text to Speech Tools (Tested): Natural Voices, Free Options`,
+    ogImage: "/images/blog/best-italian-text-to-speech-tools/italian-hero.webp",
     metaDesc: `Italian text to speech lives or dies on double consonants and word stress. We compare the best tools for natural Italian voices, including free ones with no sign-up.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -9129,6 +9138,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/read-pdf-aloud": {
     title: `How to Read a PDF Aloud: 6 Free Ways on Any Device | ${BRAND_NAME}`,
     h1: `How to Read a PDF Aloud: 6 Free Ways on Any Device`,
+    ogImage: "/images/blog/read-pdf-aloud/read-pdf-aloud-hero.webp",
     metaDesc: `Want your PDF read out loud? Here are 6 free ways that actually work — Edge, Acrobat, your phone, and the MP3 method for listening anywhere — plus what to do when a PDF stays silent.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -9192,6 +9202,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/text-to-speech-for-dyslexia": {
     title: `Text to Speech Software for Dyslexia: 8 Free Tools That Help | ${BRAND_NAME}`,
     h1: `Text to Speech Software for Dyslexia: 8 Free Tools That Actually Help`,
+    ogImage: "/images/blog/text-to-speech-for-dyslexia/dyslexia-hero.webp",
     metaDesc: `Looking for text to speech software for dyslexia that does not cost a fortune? 8 free tools compared honestly — built-in phone readers, Immersive Reader, Bookshare, and what the paid apps' free plans really limit.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -9250,6 +9261,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-japanese-text-to-speech-tools": {
     title: `Best Japanese Text to Speech Tools: Natural & Anime Voices (2026) | ${BRAND_NAME}`,
     h1: `Best Japanese Text to Speech Tools: Natural Voices & Anime-Style Picks (2026)`,
+    ogImage: "/images/blog/best-japanese-text-to-speech-tools/japanese-hero.webp",
     metaDesc: `Japanese text to speech compared honestly: free tools like VOICEVOX and TextToSpeechH, the most natural paid voices, anime character voices, and the kanji misreading problem nobody warns you about.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -9350,6 +9362,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/best-chinese-text-to-speech-tools": {
     title: `Best Chinese Text to Speech Tools: Mandarin Voices & Tones (2026) | ${BRAND_NAME}`,
     h1: `Best Chinese Text to Speech Tools: Mandarin Voices That Get the Tones Right (2026)`,
+    ogImage: "/images/blog/best-chinese-text-to-speech-tools/chinese-hero.webp",
     metaDesc: `Chinese text to speech compared honestly: free tools like iFlytek and TextToSpeechH, the most natural paid Mandarin voices, and the tone and character-reading problems nobody warns you about.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -9450,6 +9463,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/speech-to-speech-ai-explained": {
     title: `Speech to Speech AI Explained: ElevenLabs Realtime Guide | ${BRAND_NAME}`,
     h1: `Speech to Speech AI Explained: ElevenLabs Realtime Guide`,
+    ogImage: "/images/blog/speech-to-speech-ai-explained/speech-to-speech-hero.webp",
     metaDesc: `Speech-to-speech AI explained in plain English: what ElevenLabs Realtime does, how it differs from text-to-speech, and what it means for creators.`,
     category: "Guides",
     readingTime: "7 min read",
