@@ -4198,6 +4198,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/speechify-alternative-free": {
     title: `Speechify Alternative: Free Read-Aloud Tools | ${BRAND_NAME}`,
     h1: `Speechify Alternative: Free Read-Aloud Tools`,
+    ogImage: "/images/blog/speechify-alternative-free/speechify-hero.webp",
     metaDesc: `Speechify's free plan has no MP3 downloads and a 1.5x speed cap. Compare 7 free Speechify alternatives for read-aloud, studying, and free MP3 export.`,
     category: "Comparisons",
     readingTime: "8 min read",
@@ -4231,6 +4232,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="speechify-alt-what-does-speechify-s-free-plan-actually" style="margin-bottom: 40px;">
+        <img src="/images/blog/speechify-alternative-free/speechify-hero.webp" alt="Free Speechify alternatives - relaxing with headphones while an open book is read aloud, with the audio kept as a downloadable file" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>1. What Does Speechify's Free Plan Actually Include?</h2>
       <p style="line-height: 1.8;">
         Speechify's free tier is a real free plan, not a short trial — no credit card required at time of writing. According to the official speechify.com blog, the free plan includes about 10 basic, somewhat robotic voices and playback speed capped at 1.5x. It's fine for casual read-aloud of articles and documents.
@@ -4319,6 +4321,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="speechify-alt-comparison-table" style="margin-bottom: 40px;">
+        <img src="/images/blog/speechify-alternative-free/speechify-mid.webp" alt="Speechify free plan limits compared with free alternatives - capped speed and locked downloads on one side, faster listening and MP3 export on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>5. Comparison Table</h2>
       <div style="overflow-x:auto; margin-top:16px;">
         <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
@@ -4517,6 +4520,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/gemini-flash-tts-guide": {
     title: `Gemini Flash TTS: Pricing & Free Alternatives`,
     h1: `Gemini Flash TTS: What It Is, Pricing & Free Alternatives`,
+    ogImage: "/images/blog/gemini-flash-tts-guide/gemini-hero.webp",
     metaDesc: `Google launched Gemini Flash TTS on Sept 23, 2026. Honest guide: what it is, real pricing, benchmark reality, and free alternatives.`,
     category: "AI Technology",
     readingTime: "10 min read",
@@ -4549,6 +4553,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="gflash-what-is" style="margin-bottom: 40px;">
+        <img src="/images/blog/gemini-flash-tts-guide/gemini-hero.webp" alt="Gemini Flash TTS - a written description of a voice turning into a unique colorful voice waveform played through a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>1. What Is Gemini Flash TTS, Exactly?</h2>
       <p style="line-height: 1.8;">
         It is Google DeepMind's newest text-to-speech model, part of the Gemini Audio family. Right now you access it through the Gemini API and Google AI Studio. Everyday users will bump into it inside Gemini Notebook and Google Vids; enterprise API access via Gemini Enterprise is still rolling out.
@@ -4586,6 +4591,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="gflash-pricing" style="margin-bottom: 40px;">
+        <img src="/images/blog/gemini-flash-tts-guide/gemini-mid.webp" alt="Gemini Flash TTS pricing - a calendar beside a price tag with a rising arrow, and the free browser alternative next to it" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>3. Pricing — Including the Part Google Hopes You Skim</h2>
       <p style="line-height: 1.8;">
         Current pricing, valid through December 31, 2026:
@@ -9396,6 +9402,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/open-source-voice-cloning-audio8": {
     title: `Free Voice Cloning Without the Cloud: Audio8 Explained | ${BRAND_NAME}`,
     h1: `Free Voice Cloning Without the Cloud: Audio8 Explained`,
+    ogImage: "/images/blog/open-source-voice-cloning-audio8/audio8-hero.webp",
     metaDesc: `Audio8-TTS-Realistic explained in plain English: Edge0's free open-source voice cloning model, what you need to run it, and when a browser tool is still faster.`,
     category: "Guides",
     readingTime: "9 min read",
@@ -9407,6 +9414,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">That is the headline. The honest version is a little longer: this is a developer tool, not a website you open and click. If you want a voiceover today, with zero setup, you are still better off generating it in your browser. But if you have ever wondered what "free voice cloning" actually costs once you remove the subscription, Audio8 is the clearest answer yet.</p>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Free Voice Cloning, No Cloud</h2><p style="margin:0; line-height:1.7;">Audio8-TTS-Realistic clones a voice from one short recording plus the exact words spoken in it. The model and code are free under Apache 2.0, it covers 23 languages, and it runs on a decent GPU. For instant voiceovers with no setup at all, paste your script into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, pick a voice, and download the MP3 free, no sign-up.</p></div>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/open-source-voice-cloning-audio8/audio8-hero.webp" alt="Audio8 voice cloning - a voice recorded into a microphone, cloned on your own laptop under a padlock, with the cloud crossed out" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>What Edge0 actually released</h2>
 <p style="line-height:1.8;">Audio8-TTS-Realistic is the second release in Edge0's Audio8 family, following the Preview model. The numbers that matter, as reported by MarkTechPost on October 30, 2026:</p>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>601 million parameters</strong> in the main model (the audio codec is separate) — small by 2026 standards, which is the whole point.</li><li style="margin-bottom:6px;"><strong>23 languages</strong>, 12 more than the Preview model's 11. New additions include Arabic, Hindi, Indonesian, Norwegian, Portuguese, Russian, Swedish, Thai, Turkish and Vietnamese.</li><li style="margin-bottom:6px;"><strong>Apache 2.0 license</strong> for the weights and code, which permits commercial use and modification.</li><li style="margin-bottom:6px;"><strong>44.1 kHz neural audio codec</strong>, bundled with the tokenizer, processor and custom Transformers code.</li><li style="margin-bottom:6px;"><strong>Zero-shot cloning</strong>: no fine-tuning run for each new voice. You hand it a clean reference clip and the exact transcript, and it speaks new text in that voice.</li></ul>
@@ -9425,6 +9433,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">If that list made your eyes glaze over, that is useful information, not a failure. It tells you this tool is built for developers and tinkerers right now — and that the browser-based option is the right one for everyone else.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/open-source-voice-cloning-audio8/audio8-mid.webp" alt="How Audio8 clones a voice - one short reference recording plus its transcript going into the model, and new speech in the same voice coming out" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Audio8 vs the voice cloning you already know</h2>
 <div style="overflow-x:auto; margin-bottom:16px;"><table style="width:100%; border-collapse:collapse; line-height:1.6;">
 <tr><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);"></th><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);">Audio8-TTS-Realistic</th><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);">Typical cloud voice cloning</th></tr>
@@ -9702,6 +9711,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/elevenlabs-realtime-voice-agent-guide": {
     title: `ElevenLabs Realtime Explained: Voice Agents in One Model | ${BRAND_NAME}`,
     h1: `ElevenLabs Realtime Explained: Voice Agents in One Model`,
+    ogImage: "/images/blog/elevenlabs-realtime-voice-agent-guide/realtime-hero.webp",
     metaDesc: `ElevenLabs Realtime explained in plain English: Mini vs Max, the real launch numbers, honest trade-offs, and whether a voice agent is what you actually need.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -9713,12 +9723,14 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">That is the short version. The longer version matters because this release changes who can build a voice agent, and what you give up when you let one company run the whole conversation for you.</p>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: ElevenLabs Realtime in One Model</h2><p style="margin:0; line-height:1.7;">ElevenLabs Realtime turns spoken input into a spoken answer in one model, with no separate transcriber, language model, or voice engine to assemble. Mini is built for natural, low-cost conversation; Max adds reasoning and tool use for support and lead-qualification calls. Both work in ElevenLabs' ElevenAgents platform or through a Realtime API that speaks OpenAI's protocol.</p></div>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/elevenlabs-realtime-voice-agent-guide/realtime-hero.webp" alt="ElevenLabs Realtime - speech flowing from a microphone into one single voice agent model and a spoken answer flowing out to a speaker" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>What used to take five parts now takes one choice</h2>
 <p style="line-height:1.8;">Before Realtime, building a voice agent meant picking and tuning five pieces yourself: speech recognition, voice-activity detection, turn-taking, a language model, and text-to-speech, then fixing the awkward pauses where they handed off to each other. ElevenLabs calls that setup Custom mode, and it still exists.</p>
 <p style="line-height:1.8;">Realtime mode replaces it with a single model selection. ElevenLabs manages the language model, the speech recognizer, the voice model, and reasoning settings for you. What stays yours is what makes the agent yours: the system prompt and first message, the voice, the languages, the tools, the knowledge base, and settings like how eagerly the agent takes its turn and how it handles interruptions.</p>
 <p style="line-height:1.8;">The practical payoff is speed. According to ElevenLabs, v1 Max starts speaking 0.57 seconds after a question on average, and v1 Mini follows at 0.62 seconds — fast enough that a conversation feels like a conversation, not a series of voice messages.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/elevenlabs-realtime-voice-agent-guide/realtime-mid.webp" alt="Voice agents before and after Realtime - five separate tools wired together with tangled pauses, replaced by one single model with one smooth wave" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>Mini vs Max: which one fits what</h2>
 <div style="overflow-x:auto; margin-bottom:16px;"><table style="width:100%; border-collapse:collapse; line-height:1.6;">
 <tr><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);"></th><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);">v1 Mini</th><th style="text-align:left; padding:10px; border:1px solid var(--color-border); background:var(--color-bg-secondary);">v1 Max</th></tr>
@@ -9756,6 +9768,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/convoso-voice-ai-agent-guide": {
     title: `Convoso Voice AI Agent: No-Code Calls That Qualify Leads | ${BRAND_NAME}`,
     h1: `Convoso Voice AI Agent: No-Code Calls That Qualify Leads`,
+    ogImage: "/images/blog/convoso-voice-ai-agent-guide/convoso-hero.webp",
     metaDesc: `Convoso Voice AI Agent explained in plain English: the no-code agent that answers sales calls, qualifies leads in about 600ms, and hands ready buyers to a human.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -9767,6 +9780,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">That last part is the whole pitch, and it is worth slowing down for. Most voice AI products give you a voice and leave you to wire it into your dialer, your CRM, and your compliance rules yourself. Convoso did the opposite: it put the agent inside the platform its customers already call from, so the agent inherits the campaign workflows, the reporting, and the do-not-call checks that a contact centre already runs on.</p>
 <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Convoso Voice AI Agent in One Box</h2><p style="margin:0; line-height:1.7;">Convoso Voice AI Agent is a no-code AI phone agent for sales teams: it greets prospects, asks qualifying questions, books appointments, answers routine questions, and warm-transfers qualified leads to a human agent. It responds in about 600 milliseconds, offers 700+ voices, and runs inside Convoso's outbound platform rather than as a standalone tool.</p></div>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/convoso-voice-ai-agent-guide/convoso-hero.webp" alt="Convoso Voice AI Agent - an AI phone agent with a headset taking a sales call, then handing the ready buyer to a human agent" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>What it actually does on a call</h2>
 <p style="line-height:1.8;">The agent covers the first few minutes of a sales call — the part that is repetitive, high-volume, and expensive to staff. In Convoso's words, it handles "repetitive initial engagement and qualification so experienced salespeople can spend more time with qualified prospects who are ready for the next step."</p>
 <p style="line-height:1.8;">Concretely, that means four jobs:</p>
@@ -9774,6 +9788,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Two details matter more than the feature list. First, the agent is trained on 20 million real sales conversations, according to Convoso's announcement — that is why it is pitched at objection handling and interruptions, not just reading a script. Second, it switches languages mid-call, which matters for any team calling a mixed-language market.</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/convoso-voice-ai-agent-guide/convoso-mid.webp" alt="How a voice AI agent qualifies leads - many sales calls filtered through qualification checks down to one warm handoff into a human hand" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2>The one early result worth reading</h2>
 <p style="line-height:1.8;">Convoso published a single early-customer test, and it is small enough to be believable. During an initial 36-hour test, Tort Intake Professionals made more than 150 contacts with the agent, and approximately 10–12% of those contacts were validated and warm-transferred to human specialists. The team then expanded testing into more advanced lead-screening workflows.</p>
 <p style="line-height:1.8;">Read that honestly: 10–12% is not a miracle number, it is a first-test number. But it is a real number from a named customer, and it tells you what this product is for — filtering a large pile of contacts down to the tenth that deserve a human's time. If your team already answers every call personally, this is not your problem. If your team misses calls because everyone is busy with customers in front of them — the exact situation Convoso describes at Ace Building Materials, a family-owned supplier — then the missed-call pile is the problem this solves.</p>
