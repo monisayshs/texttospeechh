@@ -6168,6 +6168,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/suno-speech-voiceover-music-guide": {
     title: `Suno Speech Review: AI Voiceovers With Music`,
     h1: `Suno Speech Review: AI Voiceovers With Built-In Music`,
+    ogImage: "/images/blog/suno-speech-voiceover-music-guide/suno-hero.webp",
     metaDesc: `Suno Speech (Oct 2026) review: AI voiceovers with built-in background music in one track — 8-min cap, beta quirks, and the free voice-plus-music workflow.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -6196,6 +6197,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="suno-what" style="margin-bottom:40px;">
+        <img src="/images/blog/suno-speech-voiceover-music-guide/suno-hero.webp" alt="Suno Speech - a narration script and microphone whose voice waves merge with music notes into one finished track playing on a phone" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>What Suno Speech actually is</h2>
         <p style="line-height:1.8;">
           Speech lives inside the Suno app (web and mobile). You give it a script — or just describe what you want — and it returns spoken audio. The twist is the music toggle: with one setting, Suno composes an original background score to match the voice, so the narration and the soundtrack are generated as a single piece of audio.
@@ -6228,6 +6230,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="suno-vs" style="margin-bottom:40px;">
+        <img src="/images/blog/suno-speech-voiceover-music-guide/suno-mid.webp" alt="Suno Speech vs a regular voiceover tool - a lone microphone making one thin voice wave on one side, the same microphone with music notes making a rich layered wave on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>Suno Speech vs. regular AI voiceover tools: an honest comparison</h2>
         <p style="line-height:1.8;">
           Here is where a straight answer helps more than hype. Suno Speech and dedicated text-to-speech tools are built for different jobs.
@@ -6570,6 +6573,7 @@ const BLOG_ARTICLES_MAP = {
   "text-to-speech/blog/microsoft-mai-voice-tts-guide": {
     title: `Microsoft MAI-Voice-2.1: Pricing & Free Alternatives`,
     h1: `Microsoft MAI-Voice-2.1: Pricing & Free TTS Alternatives`,
+    ogImage: "/images/blog/microsoft-mai-voice-tts-guide/mai-voice-hero.webp",
     metaDesc: `Microsoft MAI-Voice-2.1 costs $22 per million characters — a paid developer API, not a free tool. Pricing, who it's for, and 4 free alternatives to use today.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -6596,6 +6600,7 @@ const BLOG_ARTICLES_MAP = {
       </nav>
 
       <section id="mai-what" style="margin-bottom:40px;">
+        <img src="/images/blog/microsoft-mai-voice-tts-guide/mai-voice-hero.webp" alt="Microsoft MAI-Voice - a glowing AI chip sending out a rich, expressive voice waveform of many different heights into a speaker and headphones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>What MAI-Voice-2.1 actually is</h2>
         <p style="line-height:1.8;">
           MAI-Voice-2.1 is Microsoft's most expressive text-to-speech model yet, according to the company. It turns text into speech in 23 languages and 26 regional locales, and it has one genuinely impressive trick: a single voice keeps its identity across languages while picking up a native accent in each one. Ask it to speak English, then Mandarin, then German — it sounds like the same person, not three different voices reading a translation.
@@ -6609,6 +6614,7 @@ const BLOG_ARTICLES_MAP = {
       </section>
 
       <section id="mai-pricing" style="margin-bottom:40px;">
+        <img src="/images/blog/microsoft-mai-voice-tts-guide/mai-voice-mid.webp" alt="MAI-Voice pricing - lines of text flowing through a counting meter and turning into a stack of coins beside a price tag" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
         <h2>Pricing: what it really costs</h2>
         <p style="line-height:1.8;">
           Here is the straight pricing Microsoft announced (October 2026):
@@ -7292,6 +7298,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/openai-tts-shutdown": {
     title: `OpenAI TTS Shutdown (Jan 2027): 7 Free Alternatives That Work Now | ${BRAND_NAME}`,
     h1: `OpenAI Is Killing Its TTS Models in 2027: 7 Free Alternatives`,
+    ogImage: "/images/blog/openai-tts-shutdown/openai-tts-hero.webp",
     metaDesc: `OpenAI is shutting down tts-1 and its other TTS models on January 6, 2027. Here is what changes for your app, and 7 free alternatives you can switch to today.`,
     category: "AI Technology",
     readingTime: "9 min read",
@@ -7304,6 +7311,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">If you just use ChatGPT to read things aloud, relax: this does not touch you. This shutdown is about the <strong>API models</strong> — the ones developers build apps on, and the ones behind article-to-audio apps like Listen Later. And the messy part? OpenAI's named replacement does not even work the way the old models did. Here is what actually happened, who it affects, and the 7 free alternatives worth switching to.</p>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#what-shutting-down" style="color:inherit;">1. What exactly is shutting down (and when)</a></li><li><a href="#replacement-problem" style="color:inherit;">2. Why the "replacement" is frustrating everyone</a></li><li><a href="#what-to-do" style="color:inherit;">3. What to do if you rely on these models</a></li><li><a href="#alternatives" style="color:inherit;">4. The 7 free alternatives that work right now</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/openai-tts-shutdown/openai-tts-hero.webp" alt="OpenAI TTS shutdown - three voice model servers dimming and powering down beside a glowing power-off symbol as their sound waves dissolve" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="what-shutting-down"></a>1. What exactly is shutting down (and when)</h2>
 <p style="line-height:1.8;">OpenAI's deprecations page lists four model IDs with the same cutoff date:</p>
 <ul style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>tts-1</strong> — removed January 6, 2027</li><li style="line-height:1.8; margin-bottom:6px;"><strong>tts-1-hd</strong> — removed January 6, 2027</li><li style="line-height:1.8; margin-bottom:6px;"><strong>gpt-4o-mini-tts-2025-03-20</strong> — removed January 6, 2027</li><li style="line-height:1.8; margin-bottom:6px;"><strong>gpt-4o-mini-tts-2025-12-15</strong> — removed January 6, 2027</li></ul>
@@ -7327,6 +7335,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">---</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/openai-tts-shutdown/openai-tts-mid.webp" alt="Free OpenAI TTS alternatives - seven fresh speaker tiles glowing and switching on in a row" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="alternatives"></a>4. Seven free alternatives that work right now</h2>
 <h3>1. TextToSpeechH — best overall free replacement</h3>
 <p style="line-height:1.8;">The zero-friction option. Paste up to 10,000 words, pick a voice and emotion, adjust speed and pitch, and download a clean MP3 — no account, no credit card, no API key. It also imports PDF, DOCX, and TXT files directly, which covers the "turn this document into audio" use case the OpenAI models were popular for. If the shutdown news sent you hunting for a replacement, <a href="${DOMAIN}/" style="color:var(--color-primary);">try it free here</a>.</p>
@@ -7361,6 +7370,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/read-aloud-chrome-extensions": {
     title: `Best Read Aloud Chrome Extensions: 7 Free Picks (2026) | ${BRAND_NAME}`,
     h1: `Best Read Aloud Chrome Extensions: 7 Free Picks (2026)`,
+    ogImage: "/images/blog/read-aloud-chrome-extensions/read-aloud-extensions-hero.webp",
     metaDesc: `7 best free read aloud Chrome extensions tested in 2026. Compare Read Aloud, Speechify, NaturalReader & more — plus when to skip the extension and get an MP3 instead.`,
     category: "Guides",
     readingTime: "8 min read",
@@ -7373,12 +7383,14 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Here is the honest version: most of these extensions use the same built-in browser voices, so the real differences are the controls (speed, highlighting, keyboard shortcuts) and how generous the free plan actually is. I went through the popular ones so you do not have to install them all. These are the seven worth your time in 2026.</p>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#what-to-look-for" style="color:inherit;">1. What to look for in a read aloud extension</a></li><li><a href="#best-7" style="color:inherit;">2. The 7 best read aloud Chrome extensions in 2026</a></li><li><a href="#not-right-tool" style="color:inherit;">3. When an extension is not the right tool</a></li><li><a href="#setup" style="color:inherit;">4. How to use a read aloud extension (30-second setup)</a></li><li><a href="#faqs" style="color:inherit;">5. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/read-aloud-chrome-extensions/read-aloud-extensions-hero.webp" alt="Read aloud Chrome extension - a browser page of plain text lines with a glowing puzzle-piece extension icon in the toolbar, sound waves flowing out into headphones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="what-to-look-for"></a>1. What to look for in a read aloud extension</h2>
 <p style="line-height:1.8;">Before the list, here is how to judge one in about two minutes:</p>
 <ul style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>Voice quality.</strong> Most extensions start with your browser's built-in voices. The good ones let you add higher-quality cloud or AI voices — usually on a paid tier.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>What it can read.</strong> Every extension reads web pages. The useful ones also handle PDFs, Google Docs, and EPUBs opened in the browser.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>Controls that matter.</strong> Adjustable speed, text highlighting as it reads, and keyboard shortcuts for play/pause. You will use these every day; everything else is decoration.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>The free plan's actual limits.</strong> "Free" can mean unlimited basic voices or ten minutes a month. Check before you fall in love with a voice.</li></ul>
 <p style="line-height:1.8;">---</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/read-aloud-chrome-extensions/read-aloud-extensions-mid.webp" alt="The seven read aloud extensions - puzzle-piece tiles in a browser toolbar with the best piece glowing gold and wearing a checkmark badge" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="best-7"></a>2. The 7 best read aloud Chrome extensions in 2026</h2>
 <h3>1. Read Aloud (by LSD Software) — best completely free option</h3>
 <p style="line-height:1.8;">The one most people end up with, and for good reason. Read Aloud is <strong>open-source and completely free</strong> — no account, no tier, no upsell screen. It reads web pages, PDFs, and EPUBs (with the EPUBReader extension) in over 40 languages, using either your browser's built-in voices or premium cloud voices from providers like Google WaveNet, Amazon Polly, and Microsoft.</p>
@@ -7438,6 +7450,7 @@ before you put the audio in a course you sell.</p></div>
   "text-to-speech/blog/read-aloud-online-guide": {
     title: `Read Aloud Online: Free Text Reader That Reads Any Text | ${BRAND_NAME}`,
     h1: `Read Aloud Online: Free Text Reader That Reads Any Text`,
+    ogImage: "/images/blog/read-aloud-online-guide/read-aloud-online-hero.webp",
     metaDesc: `Read any text aloud free online — iPhone, Android & web tools compared honestly. Natural AI voices, 12+ languages, MP3 download, no sign-up.`,
     category: "Guides",
     readingTime: "7 min read",
@@ -7450,6 +7463,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Here's the good news: you already have at least three ways to do this, and one of them is already on your phone. Here's the honest version of all of them, plus what each one is actually good at, so you pick the right one in about two minutes.</p>
 <nav class="toc-box" style="background:var(--color-bg-secondary); border:1px solid var(--color-primary-border); padding:20px; border-radius:10px; margin-bottom:32px;"><h3 style="margin-top:0; color:var(--color-primary);">Table of Contents</h3><ol style="margin:0; padding-left:20px; line-height:1.8;"><li><a href="#what-it-means" style="color:inherit;">1. What "read aloud" actually means</a></li><li><a href="#iphone" style="color:inherit;">2. How to read text aloud on iPhone</a></li><li><a href="#android" style="color:inherit;">3. How to read text aloud on Android</a></li><li><a href="#fastest-way" style="color:inherit;">4. The fastest way: read text aloud online, no app</a></li><li><a href="#free-tools" style="color:inherit;">5. Free read aloud tools worth knowing (2026)</a></li><li><a href="#vs-tts" style="color:inherit;">6. Read aloud vs. text-to-speech: any difference?</a></li><li><a href="#faqs" style="color:inherit;">7. Frequently asked questions</a></li></ol></nav>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/read-aloud-online-guide/read-aloud-online-hero.webp" alt="Reading text aloud online - text lines inside a browser window bending into sound waves pouring from a speaker, with the audio saved as a file below it" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="what-it-means"></a>1. What "read aloud" actually means (and why it matters for picking a tool)</h2>
 <p style="line-height:1.8;">"Read aloud" sounds like one thing, but people mean four different things when they search for it:</p>
 <ol style="padding-left:20px; margin:0 0 16px;"><li style="line-height:1.8; margin-bottom:6px;"><strong>Your phone reads the screen.</strong> iPhone and Android both have built-in screen readers. Free, already installed, robotic-sounding.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>A browser tool reads pasted text.</strong> You paste text into a website and it plays back with better voices. This is the fastest free option for one-off reading.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>An extension reads web pages.</strong> One click reads the article you're looking at. Best for heavy web readers — <a href="/text-to-speech/blog/read-aloud-chrome-extensions" style="color:var(--color-primary);">we reviewed the best free ones here</a>.</li><li style="line-height:1.8; margin-bottom:6px;"><strong>An app reads documents.</strong> Speechify, Natural Reader and friends — nicer voices, but the good stuff usually costs money. <a href="/text-to-speech/blog/speechify-alternative-free" style="color:var(--color-primary);">Our Speechify-alternative roundup</a> covers the genuinely free options.</li></ol>
@@ -7487,6 +7501,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">---</p>
 </section>
 <section style="margin-bottom:40px;">
+<img src="/images/blog/read-aloud-online-guide/read-aloud-online-mid.webp" alt="Read aloud vs text to speech - an open book with one glowing highlighted line and a speaker for following along, beside a document becoming an audio file with a play button" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
 <h2><a id="vs-tts"></a>6. Read aloud vs. text-to-speech: is there a difference?</h2>
 <p style="line-height:1.8;">Honestly? Not really. "Read aloud" is what people type when they want to <em>listen</em> to something; "text-to-speech" is what they type when they want a <em>tool</em>. Same technology, different moment. If you're shopping for the underlying tech, <a href="/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">our free text-to-speech guide</a> covers the landscape. If you just want something read to you, you're in the right place.</p>
 </section>
