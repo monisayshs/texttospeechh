@@ -7122,6 +7122,7 @@ before you put the audio in a course you sell.</p></div>
         <p style="margin: 10px 0 0; line-height: 1.7; font-size: 0.92em;"><em>One more thing: I'm not a lawyer, and this isn't legal advice. It's a clear map of where the lines are, based on laws and court rulings as of October 2026. If real money or a commercial product is involved, talk to an actual attorney.</em></p>
       </div>
       <section style="margin-bottom:40px;">
+      <img src="/images/blog/is-ai-voice-cloning-legal/is-ai-voice-cloning-legal-hero.webp" alt="Is AI voice cloning legal - a voice sound wave passing the scales of justice and a judge's gavel" width="1600" height="900" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <p style="line-height:1.8; margin:0 0 18px;">You can clone a voice from 10 seconds of audio now. So the real question isn't "can you" — it's "are you allowed to." And the answer changed again this month: a Tokyo court ruled a human voice is a protected right, and Italy's prime minister filed her own voice as a trademark with the EU to fight AI cloning.</p>
       <p style="line-height:1.8; margin:0 0 18px;">Here's the honest, plain-English version: cloning your own voice is fine. Cloning someone else's voice without permission can get you sued — or worse — depending on where you live and what you do with the audio. This guide walks through what the law actually says in 2026, seven safety rules that keep you out of trouble, and how to spot the scams this tech enables.</p>
       <p style="line-height:1.8; margin:0 0 18px;">If you just want legal voices for a project — narrate your script in a natural AI voice without touching anyone's identity — our free text-to-speech tool does exactly that: paste your text, pick a stock voice, download the MP3. No cloning, no consent forms, no legal gray zone.</p>
@@ -7136,6 +7137,7 @@ before you put the audio in a course you sell.</p></div>
       </section>
       <section style="margin-bottom:40px;">
       <h2>7 Safety Rules That Keep You Out of Trouble</h2>
+      <img src="/images/blog/is-ai-voice-cloning-legal/is-ai-voice-cloning-legal-mid.webp" alt="Voice cloning safety rules - a microphone's sound waves passing a consent form with a checkmark and reaching a protective shield" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
       <h3 style="margin:24px 0 10px; font-size:1.15em;">1. Only clone voices you own or have written permission to use</h3>
       <p style="line-height:1.8; margin:0 0 18px;">This is rule one because it solves 90% of problems. Your own voice? Clone away. A client's voice, a friend's voice, a voice actor's voice? Get explicit written permission that names the exact use — "YouTube videos" is not the same as "advertising," and courts notice the difference.</p>
       <h3 style="margin:24px 0 10px; font-size:1.15em;">2. Consent for the recording is not consent for the clone</h3>
