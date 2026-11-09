@@ -10196,7 +10196,7 @@ before you put the audio in a course you sell.</p></div>
       </section>
       <section style="margin-bottom:40px;">
       <h2>Best Free: No Sign-Up Korean TTS</h2>
-      <p style="line-height:1.8;">Plenty of people want one thing: paste, play, download, no account. Two tools here respect that for Korean. Google Translate needs nothing but handles only short text. TTSMaker gives you an MP3 with no sign-up, in exchange for ads and a verification step. Our own TextToSpeechH belongs on that short list now: paste Korean text, pick SunHi or InJoon, download the MP3 — no account, no ads, no verification step.</p>
+      <p style="line-height:1.8;">Plenty of people want one thing: paste, play, download, no account. Three tools here respect that for Korean. Google Translate needs nothing but handles only short text. TTSMaker gives you an MP3 with no sign-up, in exchange for ads and a verification step. Our own TextToSpeechH belongs on that short list too: paste Korean text, pick SunHi or InJoon, download the MP3 — no account, no ads, no verification step.</p>
       <p style="line-height:1.8;">If Korean is one language among several for you, see our roundup of the <a href="https://www.texttospeechh.com/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text to speech tools</a> for no-cost options across languages.</p>
       </section>
       <section style="margin-bottom:40px;">
