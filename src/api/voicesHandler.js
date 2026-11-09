@@ -22,7 +22,11 @@ module.exports = async (req, res) => {
     { id: 'fr-FR-DeniseNeural', name: 'Denise (French Female)', locale: 'fr-FR', gender: 'Female', quality: 'Neural High Bitrate' },
     { id: 'de-DE-KatjaNeural', name: 'Katja (German Female)', locale: 'de-DE', gender: 'Female', quality: 'Neural High Bitrate' },
     { id: 'ar-SA-ZariyahNeural', name: 'Zariyah (Arabic Female)', locale: 'ar-SA', gender: 'Female', quality: 'Neural High Bitrate' },
-    { id: 'ja-JP-NanamiNeural', name: 'Nanami (Japanese Female)', locale: 'ja-JP', gender: 'Female', quality: 'Neural High Bitrate' }
+    { id: 'ja-JP-NanamiNeural', name: 'Nanami (Japanese Female)', locale: 'ja-JP', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'fa-IR-DilaraNeural', name: 'Dilara (Persian Female)', locale: 'fa-IR', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'fa-IR-FaridNeural', name: 'Farid (Persian Male)', locale: 'fa-IR', gender: 'Male', quality: 'Neural High Bitrate' },
+    { id: 'ko-KR-SunHiNeural', name: 'SunHi (Korean Female)', locale: 'ko-KR', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'ko-KR-InJoonNeural', name: 'InJoon (Korean Male)', locale: 'ko-KR', gender: 'Male', quality: 'Neural High Bitrate' }
   ];
 
   res.status(200).json({

@@ -23,7 +23,9 @@ const LANGUAGE_HREFLANG = {
   "language/portuguese": "pt",
   "language/italian": "it",
   "language/russian": "ru",
-  "language/turkish": "tr"
+  "language/turkish": "tr",
+  "language/persian": "fa",
+  "language/korean": "ko"
 };
 
 function getHreflangHtmlTags(pathSlug) {
