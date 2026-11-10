@@ -21,6 +21,7 @@ const languagesHandler = require('../src/api/languagesHandler');
 const jobsHandler = require('../src/api/jobsHandler');
 const contactHandler = require('../api/contact');
 const transcriptHandler = require('../src/api/transcriptHandler');
+const statsHandler = require('../src/api/statsHandler');
 const indexNowHandler = require('../api/index-now');
 const { get404Page, get500Page, get403Page, get429Page, get503Page } = require('../src/pages/errorPages');
 
@@ -347,6 +348,8 @@ export async function onRequest(context) {
       await jobsHandler(mockReq, mockRes);
     } else if (pathname.startsWith('/api/transcript')) {
       await transcriptHandler(mockReq, mockRes);
+    } else if (pathname.startsWith('/api/stats')) {
+      await statsHandler(mockReq, mockRes);
     } else if (pathname.startsWith('/api/contact')) {
       await contactHandler(mockReq, mockRes);
     } else if (pathname.startsWith('/api/index-now') || pathname === '/indexnow') {

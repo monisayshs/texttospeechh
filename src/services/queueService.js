@@ -38,6 +38,12 @@ class QueueService {
     this.queue = [];
     this.activeWorkerCount = 0;
     this.maxConcurrentWorkers = 2;
+    // Daily job counter state — in-memory ONLY, never persisted per job.
+    // bumpDailyCounter() (called by the API handler via noteJobFinished)
+    // persists a cumulative total to KV at most once per 50 finished jobs
+    // per kind, so the counter costs ~2% extra KV writes instead of +100%.
+    this._dailyUtcDay = null;
+    this._dailyIsolateCounts = { completed: 0, failed: 0 };
 
     // Only set up filesystem and intervals in full Node environments
     if (!isCloudflareRuntime()) {
@@ -134,6 +140,86 @@ class QueueService {
     if (initFilesystem()) {
       this.saveJobToDisk(job);
     }
+  }
+
+  async noteJobFinished(env, state) {
+    // Called by the /api/generate handler AFTER the job's final save, so the
+    // counter can never delay or break generation. Counts this isolate's
+    // finished jobs for the current UTC day (KV stats keys are UTC-dated,
+    // matching Cloudflare's own 00:00 UTC quota reset) and flushes the
+    // cumulative total when it crosses each multiple of 50.
+    try {
+      const kind = state === 'COMPLETED' ? 'completed' : 'failed';
+      const today = new Date().toISOString().slice(0, 10);
+      if (this._dailyUtcDay !== today) {
+        this._dailyUtcDay = today;
+        this._dailyIsolateCounts = { completed: 0, failed: 0 };
+      }
+      this._dailyIsolateCounts[kind] += 1;
+      const { shouldFlush } = require('./statsCounter');
+      if (shouldFlush(this._dailyIsolateCounts[kind], 50)) {
+        await this.bumpDailyCounter(env, kind);
+      }
+    } catch (e) {
+      console.warn('[QueueService] noteJobFinished warning:', e.message);
+    }
+  }
+
+  async bumpDailyCounter(env, kind) {
+    // Daily usage counter — ONE KV put per day per kind, in its own try/catch.
+    // Why this exists: the owner asked (2026-11-10) for a real count of how
+    // many voice generations happen. The naive approach (increment a counter
+    // key on every job) would DOUBLE the per-job writes — and per-job writes
+    // are exactly what exhausts the free tier (1,000 puts/day; quota exceeded
+    // 3x on 2026-10-06/07, again on 2026-11-09). Instead the caller (the
+    // /api/generate handler) counts finished jobs per isolate + UTC day in
+    // memory and calls this only when the running total crosses each multiple
+    // of 50, persisting a CUMULATIVE count (the plain number, not a delta),
+    // so a later flush that lands after an isolate recycle never loses or
+    // double-counts — it just rewrites the running total. Accurate to within
+    // the final partial batch (<50) of whatever instance served the traffic.
+    if (!env || !env.TTS_JOBS_KV) return;
+    try {
+      const now = new Date();
+      const yyyy = now.getUTCFullYear();
+      const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(now.getUTCDate()).padStart(2, '0');
+      const key = `stats:jobs:${kind}:${yyyy}-${mm}-${dd}`;
+      const existing = parseInt((await env.TTS_JOBS_KV.get(key)) || '0', 10) || 0;
+      const { nextIsolateCount } = require('./statsCounter');
+      const toWrite = nextIsolateCount(existing, this._dailyIsolateCounts[kind]);
+      if (toWrite > existing) {
+        await env.TTS_JOBS_KV.put(key, String(toWrite), { expirationTtl: 60 * 60 * 24 * 400 });
+      }
+    } catch (e) {
+      console.warn('[QueueService] Daily counter save warning:', e.message);
+    }
+  }
+
+  async getDailyCounters(env, days = 31) {
+    // Read the persisted daily counters back, newest first. Reads are cheap
+    // on every tier (100k/day free) — only writes are scarce.
+    const out = [];
+    if (!env || !env.TTS_JOBS_KV) return out;
+    const dayMs = 24 * 60 * 60 * 1000;
+    const todayStart = Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate());
+    for (let i = 0; i < days; i++) {
+      const d = new Date(todayStart - i * dayMs);
+      const yyyy = d.getUTCFullYear();
+      const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(d.getUTCDate()).padStart(2, '0');
+      const date = `${yyyy}-${mm}-${dd}`;
+      try {
+        const [completed, failed] = await Promise.all([
+          env.TTS_JOBS_KV.get(`stats:jobs:completed:${date}`),
+          env.TTS_JOBS_KV.get(`stats:jobs:failed:${date}`)
+        ]);
+        out.push({ date, completed: parseInt(completed || '0', 10) || 0, failed: parseInt(failed || '0', 10) || 0 });
+      } catch (e) {
+        out.push({ date, completed: 0, failed: 0 });
+      }
+    }
+    return out;
   }
 
   async loadJob(jobId, env = null) {

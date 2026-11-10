@@ -144,6 +144,17 @@ Manual or API trigger to submit URLs to the IndexNow protocol.
 
 ---
 
+### 2.5 Daily Usage Counters (`/api/stats`) — owner-only (added 2026-11-10)
+How many voice generations finished per UTC day (completed + failed), so the owner can see real job volume instead of inferring it from KV quota alerts.
+
+- **HTTP Method**: `GET`
+- **Guard**: private token — `?key=<STATS_KEY>` or `x-stats-key` header. Deliberately NOT the IndexNow key (that key is public by protocol design). Wrong/missing token → flat `403 { "error": "Forbidden" }`.
+- **Params**: `days` (optional, 1–92, default 31)
+- **Response**: `{ note, days: [{ date, completed, failed }…] (newest first), totals }`
+- **How counting works**: `QueueService.noteJobFinished()` runs once per finished `/api/generate` job and increments an in-memory per-isolate counter; the cumulative total is persisted to KV (`stats:jobs:<kind>:<YYYY-MM-DD>`, 400-day TTL) only when it crosses each multiple of 50. This batching is deliberate — a per-job counter write would double KV puts and exhaust the free tier (1,000 puts/day). Consequence: a day's stored count can read up to ~49 low at any moment; dates are UTC (matching Cloudflare's quota reset).
+
+---
+
 ## 3. Global Error Diagnostics
 
 The API router (`api/index.js`) exposes explicit diagnostic paths for testing HTTP error handlers:

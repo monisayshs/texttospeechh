@@ -14,6 +14,7 @@ const contentHandler = require('./src/api/contentHandler');
 const sitemapHandler = require('./src/api/sitemapHandler');
 const contactHandler = require('./api/contact');
 const transcriptHandler = require('./src/api/transcriptHandler');
+const statsHandler = require('./src/api/statsHandler');
 const indexNowHandler = require('./api/index-now');
 
 const PORT = 3000;
@@ -161,6 +162,11 @@ const server = http.createServer(async (req, res) => {
 
   if (reqUrl.startsWith('/api/transcript')) {
     handleApi(transcriptHandler);
+    return;
+  }
+
+  if (reqUrl.startsWith('/api/stats')) {
+    handleApi(statsHandler);
     return;
   }
 
