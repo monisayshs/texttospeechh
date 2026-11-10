@@ -45,6 +45,8 @@ class QueueService {
     // at current volume instead of +100% (batch was 50 until 2026-11-10).
     this._dailyUtcDay = null;
     this._dailyIsolateCounts = { completed: 0, failed: 0 };
+    this._lastFlushedAt = { completed: 0, failed: 0 };
+    this._pendingDelta = { completed: 0, failed: 0 };
 
     // Only set up filesystem and intervals in full Node environments
     if (!isCloudflareRuntime()) {
@@ -145,21 +147,34 @@ class QueueService {
 
   async noteJobFinished(env, state) {
     // Called by the /api/generate handler AFTER the job's final save, so the
-    // counter can never delay or break generation. Counts this isolate's
+    // counter can never delay or break generation. Each isolate counts its own
     // finished jobs for the current UTC day (KV stats keys are UTC-dated,
-    // matching Cloudflare's own 00:00 UTC quota reset) and flushes the
-    // cumulative total when it crosses each multiple of 10.
+    // matching Cloudflare's own 00:00 UTC quota reset). The isolate measures a
+    // SPAN of 10 consecutive finishes and hands that span to bumpDailyCounter
+    // as a delta to ADD onto the stored total — spans are disjoint per isolate
+    // and each is reported exactly once, so totals from many isolates converge
+    // instead of overwriting each other (the earlier max-of-submissions design
+    // undercounted whenever traffic spread across isolates; proven live
+    // 2026-11-10 when 10 test jobs never produced a stored key).
     try {
       const kind = state === 'COMPLETED' ? 'completed' : 'failed';
       const today = new Date().toISOString().slice(0, 10);
       if (this._dailyUtcDay !== today) {
         this._dailyUtcDay = today;
         this._dailyIsolateCounts = { completed: 0, failed: 0 };
+        this._lastFlushedAt = { completed: 0, failed: 0 };
+        this._pendingDelta = { completed: 0, failed: 0 };
       }
       this._dailyIsolateCounts[kind] += 1;
-      const { shouldFlush } = require('./statsCounter');
+      const { shouldFlush, isolateDelta } = require('./statsCounter');
       if (shouldFlush(this._dailyIsolateCounts[kind], 10)) {
-        await this.bumpDailyCounter(env, kind);
+        const span = this._dailyIsolateCounts[kind] - this._lastFlushedAt[kind];
+        const d = isolateDelta(span);
+        if (d.kind === 'delta') {
+          this._lastFlushedAt[kind] = this._dailyIsolateCounts[kind];
+          this._pendingDelta[kind] = d.amount;
+          await this.bumpDailyCounter(env, kind);
+        }
       }
     } catch (e) {
       console.warn('[QueueService] noteJobFinished warning:', e.message);
@@ -172,13 +187,13 @@ class QueueService {
     // many voice generations happen. The naive approach (increment a counter
     // key on every job) would DOUBLE the per-job writes — and per-job writes
     // are exactly what exhausts the free tier (1,000 puts/day; quota exceeded
-    // 3x on 2026-10-06/07, again on 2026-11-09). Instead the caller (the
-    // /api/generate handler) counts finished jobs per isolate + UTC day in
-    // memory and calls this only when the running total crosses each multiple
-    // of 10, persisting a CUMULATIVE count (the plain number, not a delta),
-    // so a later flush that lands after an isolate recycle never loses or
-    // double-counts — it just rewrites the running total. Accurate to within
-    // the final partial batch (<10) of whatever instance served the traffic.
+    // 3x on 2026-10-06/07, again on 2026-11-09). Instead each isolate counts
+    // finished jobs in memory and flushes a SPAN of 10 consecutive finished
+    // jobs, read-add-write, once per span (spans disjoint, measured from the
+    // isolate's last flush — see queueService.noteJobFinished). Bounded loss:
+    // a recycled isolate's partial span (<10) never flushes, and a span whose
+    // flush lands in the same instant as another isolate's can be overwritten
+    // — together <10 per event, disclosed in the stats note and dashboard.
     if (!env || !env.TTS_JOBS_KV) return;
     try {
       const now = new Date();
@@ -186,12 +201,11 @@ class QueueService {
       const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
       const dd = String(now.getUTCDate()).padStart(2, '0');
       const key = `stats:jobs:${kind}:${yyyy}-${mm}-${dd}`;
+      const d = this._pendingDelta[kind] || 0;
+      if (d <= 0) return;
+      this._pendingDelta[kind] = 0;
       const existing = parseInt((await env.TTS_JOBS_KV.get(key)) || '0', 10) || 0;
-      const { nextIsolateCount } = require('./statsCounter');
-      const toWrite = nextIsolateCount(existing, this._dailyIsolateCounts[kind]);
-      if (toWrite > existing) {
-        await env.TTS_JOBS_KV.put(key, String(toWrite), { expirationTtl: 60 * 60 * 24 * 400 });
-      }
+      await env.TTS_JOBS_KV.put(key, String(existing + d), { expirationTtl: 60 * 60 * 24 * 400 });
     } catch (e) {
       console.warn('[QueueService] Daily counter save warning:', e.message);
     }

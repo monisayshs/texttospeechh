@@ -1,29 +1,20 @@
 'use strict';
 
-/**
- * Pure helpers for the daily job counter (see QueueService.bumpDailyCounter).
+/** Pure helpers for the daily job counter (see QueueService.bumpDailyCounter).
  *
- * Why "cumulative rewrite" instead of read-add-write per job:
- * - Only ONE writer exists per isolate at a time for a given day+kind (the
- *   isolate's own submissions are sequential — each /api/generate request
- *   runs createJobAsync to completion before the next flush decision), so
- *   within an isolate the read-modify-write cannot race itself.
- * - Across isolates, last-writer-wins on the CUMULATIVE total can undercount
- *   if a stale isolate overwrites a newer total. The guard below makes a
- *   flush write only when it would INCREASE the stored value, and every
- *   isolate's cumulative total only ever grows over the day — so a stale
- *   isolate's write is either bigger (real progress) or skipped. The worst
- *   remaining case is the well-known one: the final partial batch (<10 jobs)
- *   of a recycled isolate never flushes. That bounded loss is the explicit
- *   trade for not doubling KV writes.
+ * Totalling design (span-delta, since the 2026-11-10 fix): many edge isolates
+ * serve traffic in parallel, each with its own in-memory count. Writing each
+ * isolate's CUMULATIVE total with a max-guard (the first design) silently
+ * undercounted: the stored value became whichever isolate had run longest,
+ * and fresh isolates' counts never landed at all (proven live: 10 sequential
+ * generations produced no stored key). Instead, each isolate measures one
+ * SPAN of consecutive finished jobs and adds that span onto the stored value
+ * exactly once — spans are disjoint per isolate, so the totals converge.
+ * Bounded loss, disclosed in the stats notes: a recycled isolate's partial
+ * span (<10) never flushes, and a span whose flush races another isolate's
+ * can be overwritten (<10) — together a busy day can read ~10-20 low.
  */
 
-/**
- * The value to persist for today's counter.
- * @param {number} stored  Value currently in KV (0 when the key is absent).
- * @param {number} mine    This isolate's cumulative finished-job count today.
- * @returns {number} max(stored, mine) — the caller writes only on increase.
- */
 function nextIsolateCount(stored, mine) {
   const s = Number.isFinite(stored) ? stored : 0;
   const m = Number.isFinite(mine) ? mine : 0;
@@ -35,4 +26,25 @@ function shouldFlush(count, step) {
   return count > 0 && count % step === 0;
 }
 
-module.exports = { nextIsolateCount, shouldFlush };
+/**
+ * Totalling-race fix (2026-11-10): several edge isolates keep separate in-memory
+ * counts, and the stored value is the MAX of the submissions any isolate makes —
+ * so with two busy isolates the stored total could read just the larger isolate's
+ * count (proven live: 10 sequential jobs landed on 2+ isolates and the key never
+ * appeared). Each isolate therefore measures ONE span of `span` consecutive
+ * finished jobs and then adds that span onto the stored value (read-add-write),
+ * once. Spans are disjoint per isolate and each is added exactly once, so the
+ * stored value converges to the true total. The one honesty cost: if two
+ * isolates flush at the same instant, the second read can miss the first write
+ * and that span is lost — bounded by the spans in flight (< span each). Losing
+ * a whole isolate's count (the old behaviour) was the bigger evil.
+ * @param {number} span  Jobs finished in the span being reported.
+ * @returns {{kind:'delta', amount:number}|{kind:'noop'}}
+ */
+function isolateDelta(span) {
+  const n = Number.isFinite(span) ? Math.floor(span) : 0;
+  if (n <= 0) return { kind: 'noop' };
+  return { kind: 'delta', amount: n };
+}
+
+module.exports = { nextIsolateCount, shouldFlush, isolateDelta };

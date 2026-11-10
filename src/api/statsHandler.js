@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
       return;
     }
     res.status(200).json({
-      note: 'Counts are jobs FINISHED that UTC day, persisted in batches of 10 per instance — a day can read up to ~9 low at any moment. Dates are UTC (Cloudflare quota days).',
+      note: 'Counts are jobs FINISHED that UTC day, counted in spans of 10 per server instance — a busy day can read up to ~10-20 low. Dates are UTC (Cloudflare quota days).',
       days: counters,
       totals
     });
@@ -155,7 +155,7 @@ function renderDashboard(counters, totals) {
     <tbody>${rows}
     </tbody>
   </table>
-  <div class="foot">Note: ginti har 10 voice ke batch me save hoti hai, isliye kisi bhi pal asal ginti se 9 tak kam dikh sakti hai. Tareekh UTC (London) hisab se hai — Cloudflare ki roz ki limit bhi usi par reset hoti hai (IST me din subah 5:30 baje badalta hai).</div>
+  <div class="foot">Note: ginti har server par 10-10 voice ke hisso me judti hai, isliye kisi bhi pal asal ginti se 10-20 tak kam dikh sakti hai. Tareekh UTC (London) hisab se hai — Cloudflare ki roz ki limit bhi usi par reset hoti hai (IST me din subah 5:30 baje badalta hai).</div>
 </div></body></html>`;
 }
 

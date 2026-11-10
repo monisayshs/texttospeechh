@@ -51,9 +51,10 @@ module.exports = async (req, res) => {
     const tBase64Done = Date.now();
     const providerUsed = jobInfo.providerUsed || 'unknown';
     // Daily usage counter: note the finished job (state COMPLETED or FAILED).
-    // Batched in queueService — persists to KV only every 50 jobs, so this
-    // costs ~2% extra KV writes instead of doubling them (free tier is
-    // capped at 1,000 puts/day). Never throws; generation is unaffected.
+    // Batched in queueService — each isolate persists a span of 10 finished
+    // jobs, so this costs a handful of extra KV writes a day instead of
+    // doubling them (free tier is capped at 1,000 puts/day). Never throws;
+    // generation is unaffected.
     await queueService.noteJobFinished(req.env, jobInfo.state);
     const diagVoice = jobInfo.diagnosticVoice || options.voice;
     const diagRate = jobInfo.diagnosticRate || options.rate;
