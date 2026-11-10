@@ -18,6 +18,7 @@ const BLOG_ARTICLES_LIST = [
   { slug: "text-to-speech/blog/narakeet-review", title: "Narakeet Review: An Honest Test of the Script-to-Video Voiceover Tool", category: "Guides", readingTime: "7 min read", cta: "Read the Narakeet Review →" },
   { slug: "text-to-speech/blog/ttsreader-alternatives", title: "TTSReader Alternatives: 7 Free Tools That Sound Better", category: "Guides", readingTime: "7 min read", cta: "Read the TTSReader Alternatives Guide \u2192" },
   { slug: "text-to-speech/blog/hume-ai-alternatives", title: "Hume AI Alternatives: 7 Free Tools After the Shutdown", category: "Guides", readingTime: "9 min read", cta: "Read the Hume AI Alternatives Guide →" },
+  { slug: "text-to-speech/blog/text-reader-free-tools", title: "Text Reader: 7 Free Tools That Read Text Aloud (2026)", category: "Guides", readingTime: "9 min read", cta: "Read the Text Reader Guide \u2192" },
   { slug: "text-to-speech/blog/offline-text-to-speech-free-tools", title: "Offline Text to Speech: 7 Free Tools That Work Offline", category: "Guides", readingTime: "10 min read", cta: "Read the Offline Text to Speech Guide →" },
   { slug: "text-to-speech/blog/google-text-to-speech-guide", title: "Google Text to Speech: Free Voices, Limits & MP3 Options", category: "Guides", readingTime: "9 min read", cta: "Read the Google Text to Speech Guide \u2192" },
   { slug: "text-to-speech/blog/convoso-voice-ai-agent-guide", title: "Convoso Voice AI Agent: No-Code Calls That Qualify Leads", category: "Guides", readingTime: "7 min read", cta: "Read the Convoso Voice Agent Guide →" },
@@ -8283,6 +8284,7 @@ before you put the audio in a course you sell.</p></div>
 <ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Speed: start at 1.1x.</strong> Normal speed drags on dense documents; 1.1x sounds natural and saves real time on long papers. Push to 1.25x once you're used to it.</li><li style="margin-bottom:6px;"><strong>Turn on highlighting.</strong> Every reader above that supports it, enable it. Following the highlighted line keeps your eyes engaged and massively improves comprehension versus pure listening.</li><li style="margin-bottom:6px;"><strong>Set a sleep timer for bedtime reading.</strong> Most of these apps have one. Falling asleep mid-chapter without it means re-finding your place tomorrow.</li></ul>
 </section>
 <p style="line-height:1.8;">Reading somewhere with no signal — a flight, a train, a long bus ride? A few of the readers above keep working offline once their voices are downloaded. Our guide to <a href="${DOMAIN}/text-to-speech/blog/offline-text-to-speech-free-tools" style="color:var(--color-primary);">offline text to speech tools</a> rounds up the ones that genuinely work with the Wi-Fi off — including the simple offline readers for PDFs and ebooks.</p>
+<p style="line-height:1.8;">And if your text is not in a PDF at all — an article, an essay, or your own notes — our <a href="${DOMAIN}/text-to-speech/blog/text-reader-free-tools" style="color:var(--color-primary);">text reader roundup</a> compares seven free tools that read any pasted text aloud, with their real free limits.</p>
 <p style="line-height:1.8; margin-top:32px; padding:20px; background:var(--color-bg-secondary); border-radius:8px;"><strong>The bottom line:</strong> for live PDF reading, Edge Read Aloud is the fastest free start on Windows, @Voice owns Android, and TextToSpeechH needs no install at all. Run scans through OCR first, start at 1.1x speed, and turn on highlighting. <a href="${DOMAIN}/" style="color:var(--color-primary);">Try it now — drop your PDF in and hear it read back in under a minute</a>.</p>`
   },
   "text-to-speech/blog/how-to-make-an-audiobook-free": {
@@ -10003,6 +10005,88 @@ before you put the audio in a course you sell.</p></div>
 </div>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish \u2014 I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed \u2014 tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/text-reader-free-tools": {
+    title: `Text Reader: 7 Free Tools That Read Text Aloud (2026) | ${BRAND_NAME}`,
+    h1: `Text Reader: 7 Free Tools That Read Text Aloud (2026)`,
+    ogImage: "/images/blog/text-reader-free-tools/text-reader-hero.webp",
+    metaDesc: `A text reader turns text into spoken audio — here are 7 free ones that actually work, ranked by their real free limits, voices, sign-up rules and MP3 downloads.`,
+    category: "Guides",
+    readingTime: "9 min read",
+    faqs: [{"q": "Is there a completely free text reader with no sign-up?", "a": "Yes. TextToSpeechH, Sandbook Read Aloud, and ToolboxHere all read text aloud free with no account and no sign-up. TextToSpeechH also gives you a free MP3 download and handles up to 10,000 words per request. ReadLoudly is free to read with, too, but saving an MP3 needs a paid plan."}, {"q": "Can a text reader download the audio as an MP3?", "a": "Some can, some cannot. TextToSpeechH and ToolboxHere let you download an MP3 free with no account. ReadLoudly, Cartesia, and iReadAll reserve MP3 downloads for paid plans. Edge Read Aloud and Sandbook do not offer MP3 downloads at all \u2014 Sandbook saves WAV files instead, which most players can still open."}, {"q": "What is the best free text reader for long documents?", "a": "For a long document, use a tool built for files. ReadLoudly opens TXT, PDF, DOCX, and EPUB files up to 10 MB and reads them aloud, while iReadAll has dedicated PDF and EPUB readers with synchronized highlighting. If you paste long text instead, TextToSpeechH takes up to 10,000 words per request, far more than most free readers allow."}, {"q": "Do text readers work on my phone?", "a": "Yes. Every tool here runs in a mobile browser \u2014 nothing to install. On iPhone, you can also use the built-in Speak Screen (Settings > Accessibility > Spoken Content), and Android has Select to Speak in the same place. Phone readers are handy for articles, but a browser tool gives you better voices and the MP3 download."}, {"q": "Can a text reader help with dyslexia?", "a": "Yes. Listening while following highlighted text helps many people with dyslexia get through reading that would otherwise be exhausting. iReadAll and Edge both highlight words as they are read, which makes it easier to keep your place. A text reader is a support tool, not a treatment, but for daily reading it makes a real difference."}],
+    datePublished: "November 10, 2026",
+    dateModified: "November 10, 2026",
+    content: `
+<p style="line-height:1.8;">A text reader is a free tool that turns written text into spoken audio — paste an article, essay, or document, pick a voice, and listen instead of reading. The best free ones need no sign-up, read in a natural voice, and let you download the audio as an MP3. Below are seven that actually work, ranked by what their free tier really gives you.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Text Reader in One Box</h2><p style="margin:0; line-height:1.7;">A text reader reads any text aloud with an AI voice, free, right in your browser. TextToSpeechH reads up to 10,000 words per request in 24 voices and downloads the MP3 free with no sign-up. ReadLoudly and iReadAll are strong for documents and ebooks, Sandbook and ToolboxHere run entirely on your device, and Cartesia offers the most lifelike free voice — but its longer reads need a free account. Listening is mainstream now: the Audio Publishers Association's 2026 survey found 58% of American adults have listened to an audiobook, about 157 million people.</p></div>
+<section style="margin-bottom:40px;">
+<img src="/images/blog/text-reader-free-tools/text-reader-hero.webp" alt="Text reader - an open document turning into sound waves that reach a pair of headphones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<h2>What is a text reader, and who actually uses one?</h2>
+<p style="line-height:1.8;">A text reader (also called a voice reader or read-aloud tool) does one simple job: it speaks your text. You paste words in, it reads them out in a human-sounding voice. Students listen to study notes while walking. People with dyslexia or tired eyes listen instead of straining through pages. Writers catch awkward sentences by hearing them read back — a trick editors have used for decades. Drivers and commuters turn long articles into something they can finish on the road.</p>
+<p style="line-height:1.8;">Listening is no longer a niche habit. As Michele Cobb, executive director of the Audio Publishers Association, put it: "For the first time in 2023, our consumer survey showed that more than 50% of US adults have listened to an audiobook." The 2026 survey pushed that to 58%, with audiobook sales reaching $2.43 billion in 2025. A text reader is the free, do-it-yourself version of the same idea: any text, read aloud, on demand.</p>
+<p style="line-height:1.8;">One honest caveat before the list: AI voices are good now, but not everyone wants them reading books. The same APA survey series found willingness to try AI-performed audiobooks slipped from 77% in 2023 to 70% in 2025. For short texts, notes, and proofreading, a free reader is brilliant. For a novel you love, a human narrator still wins.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How I picked these 7</h2>
+<p style="line-height:1.8;">Every tool below was judged on the same four questions: is the free tier genuinely usable (not a 30-second teaser)? Does it force a sign-up before you hear a word? Can you save the audio as an MP3? And how many languages and voices do you actually get? Prices and limits are the ones each tool publishes on its own site, checked November 2026.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>1. TextToSpeechH — best free all-rounder</h2>
+<p style="line-height:1.8;">Paste up to 10,000 words — roughly an hour of audio — pick from 24 voices in 12 languages, and download the MP3 free. No account, no card, no watermark, and it works on commercial projects too. You can also upload a PDF, DOCX, or TXT file instead of pasting, and the text is pulled out automatically. The trade-off: it is a web tool, so you need internet, and it will not read a scanned PDF (photos of pages) without OCR first. For most people, this is the one to try first.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>2. ReadLoudly — best for documents and files</h2>
+<p style="line-height:1.8;">ReadLoudly reads pasted text and uploaded files — TXT, PDF, DOCX, EPUB, and more — with the free voices your own device provides, plus 1,200+ premium AI voices across 40+ languages on paid plans. Reading is free with no account and no watermark. The catch is the free tier's limits: about 5,000 characters per session, and MP3 downloads need a paid plan (Core $5/month, Plus $10, Pro $19). Best if you read files, not just pasted paragraphs.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>3. Sandbook Read Aloud — best fully private reader</h2>
+<p style="line-height:1.8;">Sandbook's reader runs the Kokoro open voice model entirely in your browser tab — your text never leaves your device. It offers 41 voices in six languages, reads up to 1,500 characters in one go (longer text paragraph by paragraph, up to 100,000 characters), and saves audio as a WAV file. Free, no sign-up, no limits on how often you use it. The price of privacy is a one-time download of the voice engine (about 326 MB in a WebGPU browser, 92 MB without it), and the AI voices read English best — other languages fall back to your device's built-in voice.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>4. Cartesia — best-sounding free voice</h2>
+<p style="line-height:1.8;">Cartesia's voice reader uses Sonic, its own speech model, which the company says ranks #1 in Artificial Analysis's Speech Arena. It speaks 44 languages from one model, and the reader on the page is free to try with no sign-up. Longer passages move you into the Playground, where a free account includes 20,000 credits a month. Best if voice quality matters most and you are reading short passages. The free credit cap is the limit to watch.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>5. iReadAll — best for ebooks and read-along</h2>
+<p style="line-height:1.8;">iReadAll opens text, article links, photos of pages, and PDF and DRM-free EPUB files in dedicated readers, with words highlighted as they are spoken. A one-time guest trial gives you 20,000 characters with no sign-up; a free account raises that to 200,000 Reader characters a month, with saved sources and reading progress. The catch: the guest allowance is shared across all its readers and does not reset, so use it on something you actually want to hear.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>6. ToolboxHere Text to Speech — best no-limits free tool</h2>
+<p style="line-height:1.8;">ToolboxHere runs the open-source Kokoro-82M model on your device, so nothing you type is uploaded and there is no daily limit and no sign-up. Paste up to 20,000 characters at a time, listen while the audio is made, tap a sentence to jump to it, and save a 64 kbps MP3 or a WAV. Six voices (four American, two British). The honest limit: the AI voices read English only. For Arabic, Urdu, and other languages it falls back to your device's built-in voice, with no downloadable file.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>7. Microsoft Edge Read Aloud — best built-in option</h2>
+<p style="line-height:1.8;">If you already use Edge, you already have a text reader: right-click any page and choose Read Aloud, or press Ctrl+Shift+U. It reads web pages in a natural voice, lets you change speed and voice, and costs nothing because it is part of the browser. No MP3 download, no file upload, and it only reads what is on the page — but for "read this article to me right now," it is the fastest option of all, and it needs no new tab, account, or install.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The 7 free text readers at a glance</h2>
+<div style="overflow-x:auto; margin-bottom:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Tool</th><th style="padding:10px; color:var(--color-primary-on);">Free limit</th><th style="padding:10px; color:var(--color-primary-on);">MP3 download</th><th style="padding:10px; color:var(--color-primary-on);">Sign-up needed</th><th style="padding:10px; color:var(--color-primary-on);">Best for</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">TextToSpeechH</td><td style="padding:10px;">10,000 words/request</td><td style="padding:10px;">Yes, free</td><td style="padding:10px;">No</td><td style="padding:10px;">All-round use + long texts</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">ReadLoudly</td><td style="padding:10px;">~5,000 chars/session</td><td style="padding:10px;">Paid plans only</td><td style="padding:10px;">No</td><td style="padding:10px;">Documents and files</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Sandbook</td><td style="padding:10px;">100,000 chars, paragraph by paragraph</td><td style="padding:10px;">WAV only</td><td style="padding:10px;">No</td><td style="padding:10px;">Privacy, on-device</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Cartesia</td><td style="padding:10px;">Free try; 20,000 credits/mo on free account</td><td style="padding:10px;">On paid plans</td><td style="padding:10px;">For longer reads</td><td style="padding:10px;">Best voice quality</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">iReadAll</td><td style="padding:10px;">20,000 chars guest trial; 200K/mo free account</td><td style="padding:10px;">On paid plans</td><td style="padding:10px;">For more than trial</td><td style="padding:10px;">Ebooks + read-along</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">ToolboxHere</td><td style="padding:10px;">20,000 chars, no daily limit</td><td style="padding:10px;">Yes, free</td><td style="padding:10px;">No</td><td style="padding:10px;">Unlimited English reads</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Edge Read Aloud</td><td style="padding:10px;">Unlimited on web pages</td><td style="padding:10px;">No</td><td style="padding:10px;">No</td><td style="padding:10px;">Instant page reading</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to pick the right one</h2>
+<p style="line-height:1.8;">Match the tool to the job, not the other way round. Reading a long article or script and want the audio file? TextToSpeechH or ToolboxHere — both give you a free MP3. Working through PDFs or an ebook? ReadLoudly or iReadAll handle files properly. Reading something private — medical notes, a contract, your own journal? Sandbook or ToolboxHere keep the text on your device. Chasing the most natural voice for a short passage? Cartesia. Just want this page read to you right now? Edge Read Aloud, two clicks, done.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to use a text reader in 3 steps</h2>
+<img src="/images/blog/text-reader-free-tools/text-reader-mid.webp" alt="How to use a text reader in three steps - paste your text, pick a voice, then press play or download" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">First, copy the text you want to hear — an article, an essay, a chapter, or your own draft. Second, paste it into the reader, pick a voice you like, and set the speed (start at 1x; most people settle around 1.1–1.25x once they are used to it). Third, press play and listen, or download the MP3 if the tool offers it, so you can listen later offline. If you are proofreading your own writing, listen once without looking at the screen — the sentences that sound wrong are usually the ones that need rewriting.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Text reader vs. text-to-speech: is there a difference?</h2>
+<p style="line-height:1.8;">Almost none in practice. "Text reader" is the name people search for when they want to listen to text; "text-to-speech" is the technology behind it. A text reader is a text-to-speech tool with a reader's workflow: paste, play, follow along. The one real difference is intent — readers are built for listening to documents, while some text-to-speech tools are built for creating voiceovers. For listening, either label works.</p>
+</section>
+<p style="line-height:1.8;">Want to hear it right now? Paste any text into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> and listen in a natural voice — free, no sign-up, MP3 included. If you mostly read files, our <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color:var(--color-primary);">PDF reader out loud guide</a> covers the best free apps for that, and the <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-mp3-download" style="color:var(--color-primary);">text-to-speech MP3 guide</a> walks through saving audio step by step.</p>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
   },
   "text-to-speech/blog/offline-text-to-speech-free-tools": {
     title: `Offline Text to Speech: 7 Free Tools That Work Offline | ${BRAND_NAME}`,
