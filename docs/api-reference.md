@@ -152,6 +152,7 @@ How many voice generations finished per UTC day (completed + failed), so the own
 - **Params**: `days` (optional, 1–92, default 31)
 - **Response**: `{ note, days: [{ date, completed, failed }…] (newest first), totals }`
 - **How counting works**: `QueueService.noteJobFinished()` runs once per finished `/api/generate` job and increments an in-memory per-isolate counter; the cumulative total is persisted to KV (`stats:jobs:<kind>:<YYYY-MM-DD>`, 400-day TTL) only when it crosses each multiple of 50. This batching is deliberate — a per-job counter write would double KV puts and exhaust the free tier (1,000 puts/day). Consequence: a day's stored count can read up to ~49 low at any moment; dates are UTC (matching Cloudflare's quota reset).
+- **Dashboard page**: `GET /stats?key=<STATS_KEY>` returns the same data as a simple mobile-friendly HTML dashboard (3 summary cards + per-day table, `noindex`). Without/with a wrong key it shows only a key-entry form — no numbers are rendered. Added the same day on the owner's request after he opened the raw JSON on his phone; Thor-verified PASS (`thor-2026-11-10-stats-dashboard.md`) — including that a keyed dashboard response can never be edge-cached (keyed requests carry a query string, which the HTML edge cache excludes), so the dashboard cannot leak to another visitor via cache.
 
 ---
 

@@ -22,6 +22,9 @@ const jobsHandler = require('../src/api/jobsHandler');
 const contactHandler = require('../api/contact');
 const transcriptHandler = require('../src/api/transcriptHandler');
 const statsHandler = require('../src/api/statsHandler');
+// Dashboard wrapper: /stats renders the JSON counters as a simple HTML page
+// (same private-key guard inside statsHandler; req.dashboard flips formats).
+const statsPageHandler = async (req, res) => { req.dashboard = true; return statsHandler(req, res); };
 const indexNowHandler = require('../api/index-now');
 const { get404Page, get500Page, get403Page, get429Page, get503Page } = require('../src/pages/errorPages');
 
@@ -354,6 +357,10 @@ export async function onRequest(context) {
       await contactHandler(mockReq, mockRes);
     } else if (pathname.startsWith('/api/index-now') || pathname === '/indexnow') {
       await indexNowHandler(mockReq, mockRes);
+
+    // === Voice Stats Dashboard (owner-only page; must precede content/SEO) ===
+    } else if (pathname === '/stats') {
+      await statsPageHandler(mockReq, mockRes);
 
     // === Diagnostic Error Pages ===
     } else if (pathname === '/500' || pathname === '/500.html') {

@@ -15,6 +15,8 @@ const sitemapHandler = require('./src/api/sitemapHandler');
 const contactHandler = require('./api/contact');
 const transcriptHandler = require('./src/api/transcriptHandler');
 const statsHandler = require('./src/api/statsHandler');
+// Dashboard wrapper: /stats renders the JSON counters as a simple HTML page.
+const statsPageHandler = (req, res) => { req.dashboard = true; return statsHandler(req, res); };
 const indexNowHandler = require('./api/index-now');
 
 const PORT = 3000;
@@ -167,6 +169,11 @@ const server = http.createServer(async (req, res) => {
 
   if (reqUrl.startsWith('/api/stats')) {
     handleApi(statsHandler);
+    return;
+  }
+
+  if (reqUrl === '/stats' || reqUrl.startsWith('/stats?')) {
+    handleApi(statsPageHandler);
     return;
   }
 
