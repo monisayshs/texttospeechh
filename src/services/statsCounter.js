@@ -13,7 +13,7 @@
  *   flush write only when it would INCREASE the stored value, and every
  *   isolate's cumulative total only ever grows over the day — so a stale
  *   isolate's write is either bigger (real progress) or skipped. The worst
- *   remaining case is the well-known one: the final partial batch (<50 jobs)
+ *   remaining case is the well-known one: the final partial batch (<10 jobs)
  *   of a recycled isolate never flushes. That bounded loss is the explicit
  *   trade for not doubling KV writes.
  */

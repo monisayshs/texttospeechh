@@ -40,8 +40,9 @@ class QueueService {
     this.maxConcurrentWorkers = 2;
     // Daily job counter state — in-memory ONLY, never persisted per job.
     // bumpDailyCounter() (called by the API handler via noteJobFinished)
-    // persists a cumulative total to KV at most once per 50 finished jobs
-    // per kind, so the counter costs ~2% extra KV writes instead of +100%.
+    // persists a cumulative total to KV at most once per 10 finished jobs
+    // per kind, so the counter costs only a handful of extra KV writes a day
+    // at current volume instead of +100% (batch was 50 until 2026-11-10).
     this._dailyUtcDay = null;
     this._dailyIsolateCounts = { completed: 0, failed: 0 };
 
@@ -147,7 +148,7 @@ class QueueService {
     // counter can never delay or break generation. Counts this isolate's
     // finished jobs for the current UTC day (KV stats keys are UTC-dated,
     // matching Cloudflare's own 00:00 UTC quota reset) and flushes the
-    // cumulative total when it crosses each multiple of 50.
+    // cumulative total when it crosses each multiple of 10.
     try {
       const kind = state === 'COMPLETED' ? 'completed' : 'failed';
       const today = new Date().toISOString().slice(0, 10);
@@ -157,7 +158,7 @@ class QueueService {
       }
       this._dailyIsolateCounts[kind] += 1;
       const { shouldFlush } = require('./statsCounter');
-      if (shouldFlush(this._dailyIsolateCounts[kind], 50)) {
+      if (shouldFlush(this._dailyIsolateCounts[kind], 10)) {
         await this.bumpDailyCounter(env, kind);
       }
     } catch (e) {
@@ -174,10 +175,10 @@ class QueueService {
     // 3x on 2026-10-06/07, again on 2026-11-09). Instead the caller (the
     // /api/generate handler) counts finished jobs per isolate + UTC day in
     // memory and calls this only when the running total crosses each multiple
-    // of 50, persisting a CUMULATIVE count (the plain number, not a delta),
+    // of 10, persisting a CUMULATIVE count (the plain number, not a delta),
     // so a later flush that lands after an isolate recycle never loses or
     // double-counts — it just rewrites the running total. Accurate to within
-    // the final partial batch (<50) of whatever instance served the traffic.
+    // the final partial batch (<10) of whatever instance served the traffic.
     if (!env || !env.TTS_JOBS_KV) return;
     try {
       const now = new Date();
