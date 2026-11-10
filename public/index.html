@@ -17,24 +17,14 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696622100066669"
        crossorigin="anonymous"></script>
 
-  <!-- Deferred Analytics (GA4) - loaded on interaction to protect mobile LCP -->
+  <!-- Google Analytics (GA4) - standard async install; loads immediately so referral/AI traffic is counted (interaction/7s deferral removed 2026-11-10: it silently missed most sessions) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
     window.gtag('js', new Date());
     window.gtag('config', 'G-VXH6Y61FQ0');
-    function loadTextToSpeechAnalytics() {
-      if (window._analyticsLoaded) return;
-      window._analyticsLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VXH6Y61FQ0';
-      document.head.appendChild(s);
-    }
-    ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
-      window.addEventListener(evt, loadTextToSpeechAnalytics, { once: true, passive: true });
-    });
-    setTimeout(loadTextToSpeechAnalytics, 7000);
   </script>
 
   <!-- SEO Primary Meta Tags -->

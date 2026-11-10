@@ -3,9 +3,16 @@
  * GA4 Measurement ID: G-VXH6Y61FQ0
  * Clarity Project ID: xt0hsu1r65
  *
- * GA4 is deferred behind interaction/timeout so it does not block first
- * paint (LCP). Microsoft Clarity loads IMMEDIATELY in <head> because it
- * must capture the full session from page load -- lazy-loading it was
+ * GA4 loads IMMEDIATELY (standard async gtag) since 2026-11-10. It used to
+ * be deferred behind first interaction / a 7s timeout to protect mobile
+ * LCP, but the live data proved the cost: after the 2026-10-26 HTML edge
+ * cache shipped, GA4 daily users fell from 55-84 to 2-13 while Clarity
+ * kept recording ~59 sessions/day. Referral visitors (the site's biggest
+ * channel was ChatGPT) typically never triggered the interaction loader
+ * and left inside 7s, so their visits were never counted at all. Page
+ * weight is unchanged in spirit: gtag.js is async and non-render-blocking.
+ * Microsoft Clarity also loads IMMEDIATELY in <head> because it must
+ * capture the full session from page load -- lazy-loading it was
  * silently dropping early-bounce sessions (fixed 2026-10-06).
  */
 const GA_MEASUREMENT_ID = 'G-VXH6Y61FQ0';
@@ -13,24 +20,18 @@ const CLARITY_PROJECT_ID = 'xt0hsu1r65';
 const ADSENSE_PUBLISHER_ID = 'ca-pub-3696622100066669';
 
 function getDeferredAnalyticsScript() {
-  return `  <!-- Deferred Analytics (GA4) - loaded on interaction to protect mobile LCP -->
+  // Name kept for call-site compatibility; the snippet is no longer
+  // deferred (see header note, 2026-11-10). Standard async gtag install:
+  // the library loads in parallel and never blocks rendering, while the
+  // config call below queues immediately so no session is missed.
+  return `  <!-- Google Analytics (GA4) - standard async install; loads immediately so referral/AI traffic is counted (deferral removed 2026-11-10) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = window.gtag || gtag;
     window.gtag('js', new Date());
     window.gtag('config', '${GA_MEASUREMENT_ID}');
-    function loadTtsAnalytics() {
-      if (window._analyticsLoaded) return;
-      window._analyticsLoaded = true;
-      var gh = document.createElement('script');
-      gh.async = true;
-      gh.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}';
-      document.head.appendChild(gh);
-    }
-    ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
-      window.addEventListener(evt, loadTtsAnalytics, { once: true, passive: true });
-    });
-    setTimeout(loadTtsAnalytics, 7000);
   </script>`;
 }
 
