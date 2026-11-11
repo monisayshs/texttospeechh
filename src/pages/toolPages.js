@@ -2384,48 +2384,57 @@ const TOOLS_HUB_PAGE = {
         <button type="button" class="hub-pill" data-filter="video">Video &amp; Text</button>
         <button type="button" class="hub-pill" data-filter="calc">Calculators</button>
       </div>
+      <section>
+        <h2>Small tools for everyday jobs</h2>
+        <p>This page collects the free tools we have built alongside our text to speech generator. Each one does a single job: fix a photo for an application form, pull the text out of a video, change the pitch of a recording, or turn a document into audio. They exist for the small jobs that usually mean heavy software or a paid site. There is nothing to install here and no account to create. Pick a tool, do the job, download the result.</p>
+        <p>The photo tools and the pitch changer run entirely in your browser, so those files never leave your device. The filters above sort the tools by job, and every card below says plainly what that tool does before you click it.</p>
+      </section>
       <div class="features-grid hub-fill">
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/voice-pitch-changer" style="text-decoration:none; color:inherit; display:block;" aria-label="Voice Pitch Changer">
           <div class="feature-icon">🎤</div>
           <h3>Voice Pitch Changer</h3>
-          <p>Make any voice recording deeper or higher without changing its speed. Free, no watermark, nothing uploaded.</p>
+          <p>Shift a voice recording up or down by up to 12 semitones without changing its speed or length. Made for character voices, anonymous narration and video edits. Everything runs in your browser, so your file is never uploaded. Downloads are WAV files, free, with no watermark.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="Text to Speech Generator">
           <div class="feature-icon">🔊</div>
           <h3>Text to Speech Generator</h3>
-          <p>Turn typed text into natural AI voiceovers in 12+ languages and download the MP3 instantly.</p>
+          <p>Type or paste text, choose from 24 voices in 12 languages, and download an MP3. One request can run to 10,000 words, about an hour of audio; longer scripts split into parts. The main tool on this site, free, no sign-up.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech/pdf-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="PDF to Speech">
           <div class="feature-icon">📖</div>
           <h3>PDF to Speech</h3>
-          <p>Upload a PDF document and hear it read aloud in a natural AI voice - download the MP3 free, no sign-up.</p>
+          <p>Upload a PDF and listen instead of reading: papers and ebooks become an MP3. Files can run to 10 MB and 10,000 words at a time, so long documents go chapter by chapter. The PDF needs a text layer; scanned page images will not convert.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="video" href="/youtube-transcript-generator" style="text-decoration:none; color:inherit; display:block;" aria-label="YouTube Transcript Generator">
           <div class="feature-icon">📄</div>
           <h3>YouTube Transcript Generator</h3>
-          <p>Get the full text of any YouTube video in one click, with timestamps. Free, no sign-up.</p>
+          <p>Paste a YouTube link and get the full text of any public video that has captions, with timestamps, to copy or download for your notes, quotes or research. If a video has no captions, no transcript exists for it anywhere.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="photo" href="/image-compressor" style="text-decoration:none; color:inherit; display:block;" aria-label="Image Compressor">
           <div class="feature-icon">📷</div>
           <h3>Image Compressor</h3>
-          <p>Shrink a photo to an exact size in KB - 20, 50, 100 KB - for online application forms. Free and private.</p>
+          <p>Shrink a photo to the KB a form demands: 20, 50, 100, or any target, keeping the best quality that fits. Built for the exam, job and admission forms that reject oversized photos. It runs in your browser, one image at a time, completely private.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="calc" href="/age-calculator" style="text-decoration:none; color:inherit; display:block;" aria-label="Age Calculator">
           <div class="feature-icon">🎂</div>
           <h3>Age Calculator</h3>
-          <p>Find your exact age in years, months and days, plus total days lived and your next birthday countdown. Free and private.</p>
+          <p>Enter a date of birth to get an exact age in years, months and days — plus total days lived and the countdown to your next birthday. You can also check age on a specific date, as school and job forms ask. All in your browser; the date goes nowhere.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="photo" href="/passport-photo-maker" style="text-decoration:none; color:inherit; display:block;" aria-label="Passport Photo Maker">
           <div class="feature-icon">🪪</div>
           <h3>Passport Photo Maker</h3>
-          <p>Make an official passport size photo - US 2x2 inch, India/UK 35x45 mm and more - with exact KB and print sheets. Free and private.</p>
+          <p>Turn a phone photo into a passport size picture: US 2x2 inch, India and UK 35x45 mm, Canada, China and custom sizes. Set the exact KB your form demands and download a 4x6 inch print sheet with multiple copies. All in your browser, fully private.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="photo" href="/background-remover" style="text-decoration:none; color:inherit; display:block;" aria-label="Background Remover">
           <div class="feature-icon">✂️</div>
           <h3>Background Remover</h3>
-          <p>Remove any photo background with AI - transparent, white or any colour. Free, private, runs in your browser.</p>
+          <p>Remove a photo background with AI and download a transparent PNG, or set white or any colour behind your subject. An AI model of about 44 MB downloads once, then runs in your browser, so photos are never uploaded. Results cap at 4000 pixels on the long side.</p>
         </a>
       </div>
+      <section>
+        <h2>Start with the tool you came for</h2>
+        <p>New tools join this page as we build them. If you arrived here for voice work, the text to speech generator above is the tool this site is known for; everything else grew around it. If a tool you need is missing, the contact page is the fastest way to tell us about it.</p>
+      </section>
       <script>
       (function () {
         var pills = document.querySelectorAll('.hub-pill');
