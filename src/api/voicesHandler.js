@@ -30,7 +30,13 @@ module.exports = async (req, res) => {
     { id: 'nl-NL-ColetteNeural', name: 'Colette (Dutch Female)', locale: 'nl-NL', gender: 'Female', quality: 'Neural High Bitrate' },
     { id: 'nl-NL-MaartenNeural', name: 'Maarten (Dutch Male)', locale: 'nl-NL', gender: 'Male', quality: 'Neural High Bitrate' },
     { id: 'zh-TW-HsiaoChenNeural', name: 'HsiaoChen (Chinese Female)', locale: 'zh-TW', gender: 'Female', quality: 'Neural High Bitrate' },
-    { id: 'zh-TW-YunJheNeural', name: 'YunJhe (Chinese Male)', locale: 'zh-TW', gender: 'Male', quality: 'Neural High Bitrate' }
+    { id: 'zh-TW-YunJheNeural', name: 'YunJhe (Chinese Male)', locale: 'zh-TW', gender: 'Male', quality: 'Neural High Bitrate' },
+    { id: 'ru-RU-SvetlanaNeural', name: 'Svetlana (Russian Female)', locale: 'ru-RU', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'ru-RU-DmitryNeural', name: 'Dmitry (Russian Male)', locale: 'ru-RU', gender: 'Male', quality: 'Neural High Bitrate' },
+    { id: 'tr-TR-EmelNeural', name: 'Emel (Turkish Female)', locale: 'tr-TR', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'tr-TR-AhmetNeural', name: 'Ahmet (Turkish Male)', locale: 'tr-TR', gender: 'Male', quality: 'Neural High Bitrate' },
+    { id: 'pt-BR-FranciscaNeural', name: 'Francisca (Portuguese Female)', locale: 'pt-BR', gender: 'Female', quality: 'Neural High Bitrate' },
+    { id: 'pt-BR-AntonioNeural', name: 'Antonio (Portuguese Male)', locale: 'pt-BR', gender: 'Male', quality: 'Neural High Bitrate' }
   ];
 
   res.status(200).json({

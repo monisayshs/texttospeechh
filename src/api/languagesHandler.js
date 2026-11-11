@@ -21,7 +21,10 @@ module.exports = async (req, res) => {
     { code: 'fa-IR', name: 'Persian (Iran)', defaultVoice: 'fa-IR-DilaraNeural', voiceCount: 2 },
     { code: 'ko-KR', name: 'Korean (South Korea)', defaultVoice: 'ko-KR-SunHiNeural', voiceCount: 2 },
     { code: 'nl-NL', name: 'Dutch (Netherlands)', defaultVoice: 'nl-NL-ColetteNeural', voiceCount: 2 },
-    { code: 'zh-TW', name: 'Chinese (Taiwan)', defaultVoice: 'zh-TW-HsiaoChenNeural', voiceCount: 2 }
+    { code: 'zh-TW', name: 'Chinese (Taiwan)', defaultVoice: 'zh-TW-HsiaoChenNeural', voiceCount: 2 },
+    { code: 'ru-RU', name: 'Russian (Russia)', defaultVoice: 'ru-RU-SvetlanaNeural', voiceCount: 2 },
+    { code: 'tr-TR', name: 'Turkish (Turkey)', defaultVoice: 'tr-TR-EmelNeural', voiceCount: 2 },
+    { code: 'pt-BR', name: 'Portuguese (Brazil)', defaultVoice: 'pt-BR-FranciscaNeural', voiceCount: 2 }
   ];
 
   res.status(200).json({
