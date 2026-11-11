@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/google-ai-edge-gallery-offline-text-to-speech", title: "Google AI Edge Gallery Brings Offline Text to Speech", category: "Guides", readingTime: "8 min read", cta: "Read the AI Edge Gallery Guide →" },
   { slug: "text-to-speech/blog/best-dutch-text-to-speech-tools", title: "Best Dutch Text to Speech Tools in 2026 (7 Free Picks)", category: "Guides", readingTime: "8 min read", cta: "Read the Dutch TTS Guide →" },
   { slug: "text-to-speech/blog/best-android-text-to-speech-apps", title: "Best Android Text to Speech Apps in 2026 (7 Free Picks)", category: "Guides", readingTime: "8 min read", cta: "Read the Android TTS Guide →" },
   { slug: "text-to-speech/blog/best-korean-text-to-speech-tools", title: "Best Korean Text to Speech Tools in 2026 (7 Free Picks)", category: "Guides", readingTime: "8 min read", cta: "Read the Korean TTS Guide →" },
@@ -10006,6 +10007,85 @@ before you put the audio in a course you sell.</p></div>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish \u2014 I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed \u2014 tell me and I'll fix the guide.</em></p>`
   },
+  "text-to-speech/blog/google-ai-edge-gallery-offline-text-to-speech": {
+    title: `Google AI Edge Gallery Brings Offline Text to Speech | ${BRAND_NAME}`,
+    h1: `Google AI Edge Gallery Brings Offline Text to Speech`,
+    ogImage: "/images/blog/google-ai-edge-gallery-offline-tts/google-ai-edge-gallery-offline-tts-hero.webp",
+    metaDesc: `Google's AI Edge Gallery now runs text to speech on your phone — no internet, no server. ML Kit voices, four open models, and how to try offline TTS today.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Is Google AI Edge Gallery's text-to-speech free to use?", "a": "Yes. AI Edge Gallery is a free, open-source app from Google, and its bundled speech models — including Phonon 31M under Apache 2.0 — are free to use, with no per-character charge because nothing runs on a server. The catch: it is a developer showcase, not a finished reader, so most people will meet these voices inside other apps first."}, {"q": "Does offline text-to-speech work without internet?", "a": "Yes, once the voice model is downloaded. Google's ML Kit voices live in Android's operating system, and the cross-platform models run as single files in a browser or app. After that one-time download, you can listen on a plane or anywhere with no signal. The download itself — and getting the app — still needs internet."}, {"q": "How good are on-device voices compared with cloud voices?", "a": "The gap has closed fast. Google's on-device TTS starts in about 100 milliseconds with 24 kHz audio, and Phonon ranks first for intelligibility in German and Spanish on Hugging Face's Open TTS Leaderboard. Cloud voices still sound more human and offer far more choices — for everyday reading, on-device is good enough; for a polished audiobook, the cloud still wins."}, {"q": "Which phones support Google's offline text-to-speech?", "a": "The ML Kit path is Android, with models managed through AICore at OS level — Google says they add nothing to an app's download size. The MediaPipe models run on iOS, macOS, Windows, Linux, and the web. Older or low-end phones may run the smallest models slowly, and exact requirements depend on which model an app bundles."}, {"q": "When will offline voices appear in the apps I already use?", "a": "That depends on developers adopting ML Kit's new APIs and the MediaPipe models, which launched on November 10, 2026. Expect read-aloud features in Android reading and accessibility apps first, since the OS-level voices cost them nothing to ship. Fully offline readers built on Kokoro-82M and Phonon already exist in browsers, so you need not wait."}],
+    datePublished: "November 11, 2026",
+    dateModified: "November 11, 2026",
+    content: `
+<p style="line-height:1.8;">Google just put text-to-speech on your phone — no internet, no server, no per-character bill. On November 10, 2026, Google added on-device speech recognition and text-to-speech to AI Edge Gallery, its free app for running AI models locally. The voice starts speaking in about 100 milliseconds, and once the model is downloaded, it works on a plane, in a dead zone, or anywhere your connection drops.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Google Offline Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">Google AI Edge Gallery now runs text-to-speech entirely on your device. On Android, ML Kit's new TTS starts speaking in about 100 ms, produces 24 kHz audio at up to 50x real-time speed, and offers 8 expressive voices across 21 locales — with nothing added to an app's download size, according to Google. For other platforms, Google packaged four open models — Parakeet-TDT, PocketTTS, Kokoro-82M, and Phonon 31M — that run in a browser or on desktop. It is a developer showcase for now, not a one-tap reader, but it shows where free voices are heading: onto your device.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What Google actually announced</h2>
+<img src="/images/blog/google-ai-edge-gallery-offline-tts/google-ai-edge-gallery-offline-tts-hero.webp" alt="Google AI Edge Gallery offline text to speech - a phone speaking with sound waves while the cloud and Wi-Fi symbols above it are crossed out" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">AI Edge Gallery is Google's experimental app for running AI models on your phone instead of in the cloud. Until now it was mostly about chat: download a small language model like Gemini Nano or Gemma 4 and talk to it offline. The November 10 update adds a voice to that picture, in both directions — speech recognition that transcribes what you say, and text-to-speech that reads replies back out loud.</p>
+<p style="line-height:1.8;">As Google puts it in its own announcement: "Voice is often the most natural way to interact with AI on phones and wearables." The point of the release is that the whole conversation — hear you, think, answer out loud — can now happen on the device, with nothing sent to a server.</p>
+<p style="line-height:1.8;">Two showcase features show what that looks like in practice. The XR Language Teacher points your camera at something, listens to your question, and answers as a spoken bilingual lesson, all offline. And the Gallery's main AI Chat now has dictation and read-aloud playback built in, so you can talk to an on-device model hands-free.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The Android path: ML Kit, and why it matters</h2>
+<p style="line-height:1.8;">For Android, Google built the speech features into ML Kit, its GenAI Speech Recognition and Text-to-Speech APIs. The models are managed through AICore at the operating-system level, which is why Google says they add 0 MB to an app's download — the voice lives in the OS, not in each app that uses it.</p>
+<p style="line-height:1.8;">The numbers Google quotes are striking, and worth repeating with the caveat that they are Google's own figures, not independent tests. Speech recognition covers more than 100 languages at 10x real-time speed, with an 8.0% to 9.0% word error rate on the FLEURS benchmark. The text-to-speech side begins speaking in about 100 milliseconds, synthesizes 24 kHz audio at up to 50x real-time speed, and turns a 27-second paragraph into audio in roughly 500 milliseconds. Google also says the new model cuts active device power by more than 50% compared with traditional autoregressive TTS — which matters, because a voice that drains your battery is a voice you stop using.</p>
+<p style="line-height:1.8;">The honest limit: eight voices across 21 locales is a small cast next to the hundreds of voices cloud services offer, and this is a developer API first. You will not find a "Google offline reader" button on your phone tomorrow. What you will find, over the coming months, is Android apps that read aloud without asking for internet permission — because the voice is already on the phone.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The cross-platform path: four open models in one bundle</h2>
+<p style="line-height:1.8;">For everything that is not Android, Google took a different route: it optimized four open-weight speech models into single-file .litertlm bundles that run through MediaPipe Tasks and LiteRT on iOS, macOS, Windows, Linux, and the web.</p>
+<div style="overflow-x:auto; margin-bottom:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Model</th><th style="padding:10px; color:var(--color-primary-on);">Job</th><th style="padding:10px; color:var(--color-primary-on);">Size</th><th style="padding:10px; color:var(--color-primary-on);">Note</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Parakeet-TDT 0.6B</td><td style="padding:10px;">Speech recognition</td><td style="padding:10px;">600M params</td><td style="padding:10px;">Multilingual transcription</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">PocketTTS 100M</td><td style="padding:10px;">Text to speech</td><td style="padding:10px;">100M params</td><td style="padding:10px;">Multilingual voices</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Kokoro-82M</td><td style="padding:10px;">Text to speech</td><td style="padding:10px;">82M params</td><td style="padding:10px;">Multilingual, already popular in browsers</td></tr><tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Phonon 31M</td><td style="padding:10px;">Text to speech</td><td style="padding:10px;">31M params</td><td style="padding:10px;">English-focused, Apache 2.0</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">The names will ring a bell if you follow this space: Kokoro-82M already powers several free in-browser readers, and Phonon 31M is the tiny model we covered last week that passed 200,000 downloads in its first two weeks. Google putting them in its official gallery is a stamp of approval — these are now the reference models for on-device speech, not just hobbyist experiments.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bigger wave: tiny voices are having a week</h2>
+<p style="line-height:1.8;">Google's announcement did not land in a vacuum. The same week, two more small speech models made news, and together they tell you where this is going.</p>
+<p style="line-height:1.8;">On November 9, Zyphra open-sourced ZONOS3-Mini, a text-to-speech model with 800 million total parameters of which only 100 million run per request, under the Apache 2.0 license — free even for commercial use. Zyphra says the first chunk of audio arrives in under 570 milliseconds in a phone browser, and under 150 milliseconds on a MacBook Air. It also ships with zero-shot voice cloning, which is powerful and worth handling carefully: cloning a real person's voice needs their consent.</p>
+<p style="line-height:1.8;">A few days earlier, startup Underdog released Woof, a 32 MB text-to-speech model that runs entirely in a web browser — two voices, no server, no internet after the page loads. It is English-only and non-commercial licensed, so it is a demo of what is possible rather than a tool you build a business on.</p>
+<p style="line-height:1.8;">The pattern is hard to miss: in one week, Google, Zyphra, and a small startup all shipped voices that live on your device. Cloud voices are not going away — they are still the most natural-sounding — but the free, private, offline tier just got dramatically better, and it is getting better in public, in the open, where anyone can try it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What this means for you, the listener</h2>
+<img src="/images/blog/google-ai-edge-gallery-offline-tts/google-ai-edge-gallery-offline-tts-mid.webp" alt="Cloud text to speech versus on-device text to speech - a phone reaching a priced cloud on one side, a phone with its own chip and a padlock on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">If you read articles, study notes, or ebooks by listening, here is the practical translation:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Planes, metros, and dead zones stop mattering.</strong> Once the voice model is on your device, your reading app does not care whether you have signal. Download the voice once, listen anywhere.</li>
+<li style="margin-bottom:8px;"><strong>Your text stays yours.</strong> Scripts, medical notes, client documents — with on-device voices, none of it travels to a server. For private material, that is the real feature, not the speed.</li>
+<li style="margin-bottom:8px;"><strong>Free stops meaning "a 30-second demo."</strong> Open models under Apache 2.0 can be shipped in free products with no per-character meter running. Expect more genuinely free readers, not more free trials.</li>
+<li style="margin-bottom:8px;"><strong>Your phone will get better at this on its own.</strong> Because ML Kit's voices live in the OS, Android apps you already use can add offline read-aloud without bloating their downloads. The upgrade arrives quietly, inside apps you know.</li>
+</ul>
+<p style="line-height:1.8;">One honest caveat: the voices are good, but eight voices is eight voices. If you want a specific narrator-style voice, a celebrity clone, or 40 languages with perfect accents, cloud services still win — and they charge for it. On-device is the free, private default; the cloud is the premium upgrade. That split is probably the future.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to try offline text to speech today</h2>
+<p style="line-height:1.8;">You do not need to wait for apps to catch up. Here is what works right now, from easiest to most hands-on:</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Use a free browser reader today.</strong> TextToSpeechH turns up to 10,000 words into natural speech in 24 voices and downloads the MP3 free, no sign-up. It runs in the cloud, so you need internet — but it is the fastest way to hear a document read aloud right now, and it costs nothing.</li>
+<li style="margin-bottom:8px;"><strong>Try your phone's built-in voices.</strong> Android's Select to Speak reads anything on screen, and it already uses the on-device Google voices. Turn it on under Settings, Accessibility, then tap any text. It is free, already installed, and works offline for the built-in voices.</li>
+<li style="margin-bottom:8px;"><strong>Try a fully on-device browser reader.</strong> Tools built on Kokoro-82M run the voice inside your browser tab — your text never leaves the device. The trade-off is a one-time model download and English-first voices.</li>
+<li style="margin-bottom:8px;"><strong>If you are technical, try AI Edge Gallery itself.</strong> It is free and open source on GitHub, and the November update includes the speech features. It is a showcase, not a polished product — expect rough edges, and a download before anything works offline.</li>
+<li style="margin-bottom:8px;"><strong>Watch for Phonon inside apps.</strong> Phonon 31M is now in Google's official bundle, so reader apps built on it should start appearing. Our full explainer on Phonon covers what it can and cannot do yet.</li>
+</ol>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Google just made offline text-to-speech official. The voices are small enough to live on your phone, fast enough to start in a tenth of a second, and — for the open models — free enough to ship anywhere. The announcement is aimed at developers, but the direction is unmistakable: the next free reader you use may not need the internet at all. Until the apps arrive, the free browser tools and your phone's built-in voices already cover most of the job — and they cost nothing to try.</p>
+<p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 24 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/phonon-tts-explained" style="color:var(--color-primary);">Phonon TTS explainer</a> to see how the tiny model inside Google's bundle actually sounds.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
+  },
   "text-to-speech/blog/text-reader-free-tools": {
     title: `Text Reader: 7 Free Tools That Read Text Aloud (2026) | ${BRAND_NAME}`,
     h1: `Text Reader: 7 Free Tools That Read Text Aloud (2026)`,
@@ -10169,6 +10249,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Offline tools win on privacy, cost, and no-signal reliability. They lose on convenience. You install something, download a voice, and accept a slightly flatter voice than the best cloud models. And none of the free offline options hand you a polished MP3 in one click without setup.</p>
 <p style="line-height:1.8;">So pick by the job. If the text is private, the internet is absent, or the volume is huge, go offline — start with Phonon if you build things, Piper if you process files, or your phone's own voices if you just want to listen. If you need a downloadable MP3 right now with no install — a voiceover for a video, narration for a presentation, audio for a course — a browser tool is faster. Our <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">free text to speech tool</a> does exactly that: paste your script, pick a voice, and download the MP3 in your browser, no sign-up and no credit card. And if your starting point is a document rather than typed text, our guide to <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color:var(--color-primary);">apps that read PDFs aloud</a> covers the PDF-to-audio route step by step.</p>
 </section>
+<p style="line-height:1.8;">The newest proof that offline voices are going mainstream arrived on November 10, 2026, when Google added on-device text to speech to AI Edge Gallery and ML Kit. Our <a href="${DOMAIN}/text-to-speech/blog/google-ai-edge-gallery-offline-text-to-speech" style="color:var(--color-primary);">Google AI Edge Gallery guide</a> explains what changed, which open models Google bundled, and what it means for free offline reading.</p>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   },
   "text-to-speech/blog/best-android-text-to-speech-apps": {
