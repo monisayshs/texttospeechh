@@ -138,7 +138,9 @@ function renderSeoPage(pageData, pathSlug) {
   const hreflangTags = hreflangMap.getHreflangHtmlTags(pathSlug);
   const pageLang = hreflangMap.LANGUAGE_HREFLANG[pathSlug] || "en";
   const footerHtml = getSaaSFooterHtml();
-  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + getAdSenseHtml();
+  // AdSense policy: Persian is not a supported language — its page carries no ad code.
+  const adsenseHtml = pathSlug === "language/persian" ? getAdSenseHtml({ exclude: true }) : getAdSenseHtml();
+  const trackingHtml = getAllTrackingSnippetsHtml() + "\n" + adsenseHtml;
 
   const isArticle = pathSlug.startsWith("text-to-speech/blog/") || pathSlug === "text-to-speech";
   const authorBylineHtml = isArticle ? `

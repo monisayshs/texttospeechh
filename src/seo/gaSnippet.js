@@ -59,8 +59,14 @@ function getAllTrackingSnippetsHtml() {
  * Added 2026-11-05 for the AdSense application (pub-3696622100066669).
  * Deliberately NOT part of getAllTrackingSnippetsHtml(): error pages
  * (404/500) must not carry it. No ad units are placed yet.
+ *
+ * Persian (Farsi) is NOT on Google's AdSense supported-languages list,
+ * and Publisher Policies bar ad code on pages whose content is primarily
+ * in an unsupported language. Pass { exclude: true } for a page that must
+ * not carry the loader (today: /language/persian, key "language/persian").
  */
-function getAdSenseHtml() {
+function getAdSenseHtml(options) {
+  if (options && options.exclude) return "";
   return `  <!-- Google AdSense - site ownership verification & ad library (application submitted 2026-11-05) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}"
        crossorigin="anonymous"></script>`;
