@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/zonos-3-mini-free-voice-cloning", title: "Zonos 3 Mini: Free Open-Source Voice Cloning, Explained", category: "Guides", readingTime: "7 min read", cta: "Read the Zonos 3 Mini Guide →" },
   { slug: "text-to-speech/blog/google-ai-edge-gallery-offline-text-to-speech", title: "Google AI Edge Gallery Brings Offline Text to Speech", category: "Guides", readingTime: "8 min read", cta: "Read the AI Edge Gallery Guide →" },
   { slug: "text-to-speech/blog/best-dutch-text-to-speech-tools", title: "Best Dutch Text to Speech Tools in 2026 (7 Free Picks)", category: "Guides", readingTime: "8 min read", cta: "Read the Dutch TTS Guide →" },
   { slug: "text-to-speech/blog/best-android-text-to-speech-apps", title: "Best Android Text to Speech Apps in 2026 (7 Free Picks)", category: "Guides", readingTime: "8 min read", cta: "Read the Android TTS Guide →" },
@@ -117,7 +118,7 @@ function getBlogHubPage() {
   `).join('');
 
   return {
-    title: `Text to Speech Guides & Research Hub`,
+    title: `Free Text to Speech Guides & Research Hub (2026)`,
     h1: `Text to Speech Knowledge & Research Hub`,
     metaDesc: `Explore in-depth guides on Text to Speech, neural AI voice synthesis, YouTube voiceovers, auditory learning, and ElevenLabs alternatives.`,
     category: "Blog Hub",
@@ -2141,7 +2142,7 @@ const BLOG_ARTICLES_MAP = {
 
   // ARTICLE 5: ElevenLabs Alternatives
   "text-to-speech/blog/elevenlabs-alternatives": {
-    title: `ElevenLabs Alternatives: 7 Free Tools, No Card Needed | ${BRAND_NAME}`,
+    title: `ElevenLabs Alternatives (2026): 7 Free Tools That Actually Work | ${BRAND_NAME}`,
     h1: `7 Free ElevenLabs Alternatives (2026)`,
     ogImage: "/images/blog/elevenlabs-alternatives/elevenlabs-alternatives-hero.webp",
     metaDesc: `Hit ElevenLabs\u2019 10,000-character free limit? Compare 7 free ElevenLabs alternatives with bigger limits, MP3 downloads and no sign-up — tested and ranked.`,
@@ -2149,7 +2150,7 @@ const BLOG_ARTICLES_MAP = {
     readingTime: "22 min read",
     faqs: [{"q": "What is the best free alternative to ElevenLabs?", "a": "For most creators, TextToSpeechH — unlimited free web use, no sign-up, free MP3 downloads, and commercial rights included on the free tier. For maximum privacy, the open-source Piper engine running locally on your own computer is the best pick, because your text and audio never leave your machine."}, {"q": "Is there an open-source alternative to ElevenLabs?", "a": "Yes. Piper (MIT licensed) is the easiest fully-local option — you install it once and generate offline, with no account and no usage cap. Coqui XTTS, StyleTTS 2, and Qwen3-TTS are strong self-hosted alternatives. Check each model's weights license before commercial use — some are non-commercial (CC-BY-NC)."}, {"q": "Why are people looking for ElevenLabs alternatives?", "a": "Mainly pricing: the free tier caps at 10,000 characters a month (about 5 minutes of audio), and MP3 downloads, commercial use, and voice cloning all require paid plans. Creators also leave over credit burn on long projects — one long script can eat most of the monthly allowance in a single session."}, {"q": "Which ElevenLabs alternative has the best voice cloning?", "a": "Honestly, none of the free options match ElevenLabs' own voice cloning — that quality is its moat, and using it requires a paid plan plus identity verification. Among free tools, Coqui XTTS offers experimental zero-shot cloning if you self-host it, but expect a quality gap and a technical setup."}, {"q": "Can I use ElevenLabs alternatives for commercial projects for free?", "a": "It depends on the tool. TextToSpeechH includes commercial rights on its free tier, so monetized videos and client work are covered. Most others — ElevenLabs' free plan and the Murf and Play.ht trials — forbid commercial use. Always confirm in the tool's own terms before you publish anything."}, {"q": "What is the free monthly character limit on ElevenLabs?", "a": "10,000 characters per month on the free tier — about 1,500 words, or roughly 5 minutes of finished audio. That's enough to test voices on a short clip, but one long narration, audiobook chapter, or video script will use up the whole month's allowance well before it ends."}, {"q": "Can I download MP3 files for free?", "a": "On TextToSpeechH, yes — instant MP3 downloads with no account. On ElevenLabs' free tier, MP3 downloads are restricted, which pushes you toward a paid plan. TTSMaker's free plan includes downloads, but only within its weekly quota of 20,000 characters, so longer projects have to be planned around that cap."}, {"q": "Are free ElevenLabs alternatives cleared for YouTube monetization?", "a": "Only if the tool explicitly grants commercial rights. TextToSpeechH does, so its free MP3s can go into monetized videos. Most free tiers and trials don't grant those rights — using their audio on a monetized channel risks a claim or a takedown, so check the license before you publish."}, {"q": "Do I need a credit card to use these alternatives?", "a": "No for TextToSpeechH, Piper, and CapCut's in-app TTS — you can start generating right away. TTSMaker, Speechify, Murf, and Play.ht require accounts first, and some ask for card details when a free trial starts, so check whether a card is needed before the trial period begins."}, {"q": "Can I convert PDF files to speech with these alternatives?", "a": "TextToSpeechH supports native PDF, DOCX, and TXT upload for audiobook-style conversion — try the PDF to Speech Tool. Most other free alternatives are copy/paste only, which means long documents go in chunks and you lose the document's structure, headings, and page order along the way."}],
     datePublished: "September 23, 2026",
-    dateModified: "October 22, 2026",
+    dateModified: "November 12, 2026",
     content: `
       <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
         <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: What Is the Best Free ElevenLabs Alternative in 2026?</h2>
@@ -6392,15 +6393,15 @@ const BLOG_ARTICLES_MAP = {
     `
   },
   "text-to-speech/blog/best-arabic-text-to-speech-tools": {
-    title: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
+    title: `Free Arabic Text to Speech: 7 Tools With Natural Voices (2026)`,
     h1: `Arabic Text to Speech: 7 Best Free Tools (2026)`,
     ogImage: "/images/blog/best-arabic-text-to-speech-tools/arabic-hero.webp",
-    metaDesc: `The 7 best free Arabic text-to-speech tools in 2026 — tested for MSA pronunciation, dialects, and mixed text. Plus the diacritics trick that fixes most issues.`,
+    metaDesc: `Free Arabic text to speech with natural voices — the 7 best tools of 2026, tested for MSA pronunciation, dialects, and mixed Arabic-English text. Plus the diacritics trick that fixes most mispronunciations.`,
     category: "Comparisons",
     readingTime: "9 min read",
     faqs: [{"q": "Is there a completely free Arabic text-to-speech with no sign-up?", "a": "Yes. TextToSpeechH's Arabic page generates and downloads MP3 audio without registration — no account, no trial clock, and up to 10,000 words per request. Microsoft Edge's built-in Read Aloud is also free with no account needed, though it reads the page aloud live rather than giving you an MP3 file."}, {"q": "Why does my Arabic TTS mispronounce words?", "a": "Almost always the missing-vowel problem: without tashkeel (diacritics), the engine guesses each word's pronunciation from context, and ambiguous words come out wrong. The fix is to add diacritics to the ambiguous words in your script and regenerate — the tools in this guide handle fully-vocalised text far more accurately."}, {"q": "Which Arabic dialect do TTS tools speak?", "a": "Most free tools speak Modern Standard Arabic — the formal register of news, books, and education. Dialect voices (Egyptian, Levantine, Gulf) exist but are rarer in free tiers, so check each tool's voice list before you commit. For YouTube and courses aimed across the Arab world, MSA is the safe default."}, {"q": "Can I use free Arabic TTS for YouTube videos commercially?", "a": "It depends on the tool's license. TextToSpeechH allows commercial use of the MP3s you generate, so monetised videos are fine. Other free tiers may restrict commercial use or require attribution, so always check the specific tool's terms before monetizing — a free download is not automatically a commercial licence."}, {"q": "How long can the audio be?", "a": "It varies wildly by tool. ElevenLabs' free plan gives about 10 minutes of audio per month, and many free web tools cap you at a few hundred characters per generation. TextToSpeechH handles up to 10,000 words per request, so match the tool to your project's length before you start."}, {"q": "Can Arabic TTS read mixed Arabic and English text?", "a": "Yes, but quality varies a lot. Mixed Arabic-English text — brand names, numbers, URLs — breaks weaker engines, because Arabic letter shapes change by position and the voice has to switch languages mid-sentence. The tools in this guide handle mixed text gracefully; if a name really matters, test that sentence first."}],
     datePublished: "October 4, 2026",
-    dateModified: "October 16, 2026",
+    dateModified: "November 12, 2026",
     content: `
       <div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;">
         <h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Which Free Arabic TTS Is Best?</h2>
@@ -10978,6 +10979,80 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Hume's shutdown is a deadline, not a disaster — but only if you move before November 13. Save your audio, transcripts, and voice recordings today, then test a replacement on a real script. If you just need spoken audio without an API, our <a href="${DOMAIN}/text-to-speech" style="color:var(--color-primary);">free text-to-speech tool</a> is ready now: paste your text, pick a voice, and download the MP3 — no sign-up, no card, and the limit is stated plainly: up to 10,000 words per request.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/zonos-3-mini-free-voice-cloning": {
+    title: `Zonos 3 Mini: Free Open-Source Voice Cloning, Explained | ${BRAND_NAME}`,
+    h1: `Zonos 3 Mini: Free Open-Source Voice Cloning, Explained`,
+    ogImage: "/images/blog/zonos-3-mini-free-voice-cloning/zonos-3-mini-free-voice-cloning-hero.webp",
+    metaDesc: `Zonos 3 Mini is Zyphra's free open-source text-to-speech model — it clones a voice from a one-minute clip, speaks 43 languages, and runs in your browser. What it is, how to try it free, and its honest limits.`,
+    category: "Guides",
+    readingTime: "7 min read",
+    faqs: [{"q": "Is Zonos 3 Mini really free?", "a": "Yes. Zyphra released ZONOS3-Mini under the Apache 2.0 license on November 9, 2026, so the weights are free to use, modify, and ship — even in commercial products, with no per-character charge. The only costs are your own hardware and electricity, since the model runs on your device or server rather than on Zyphra's."}, {"q": "How do I clone a voice with Zonos 3 Mini?", "a": "You give the model a reference recording of up to 60 seconds of the target voice, and it clones it without any training run — that is what \"zero-shot\" means. Zyphra also offers an embedding mode that scores better on its own benchmark. Always get the speaker's consent first; cloning someone's voice without permission can break the law."}, {"q": "What languages does Zonos 3 Mini support?", "a": "Zyphra says the model supports 43 languages, including English, Korean, Russian, French, German, Spanish, and Portuguese. Quality varies by language — the independent hands-on test that covered Korean found strong results, but less-tested languages may sound rougher. Try your language in the browser demo before building anything on it."}, {"q": "Can I run Zonos 3 Mini on my phone?", "a": "Yes, in a browser. The WebGPU runtime runs the model in a phone browser — Zyphra reports first audio in under 570 milliseconds on a Pixel 9. You need a modern browser with WebGPU and a one-time model download, and performance depends on your phone. Apple Silicon Macs run it natively via MLX, and Windows or Linux PCs via ggml."}, {"q": "Is Zonos 3 Mini better than ElevenLabs?", "a": "Not yet. ElevenLabs still sounds more polished and needs no setup, while Zonos wins on price (free), privacy (it runs on your device), and cloning without a paid plan. Zyphra's own benchmark ranks Zonos first among open models, but that test is self-run. For a finished product, ElevenLabs leads; for free, private cloning, Zonos is best today."}],
+    datePublished: "November 12, 2026",
+    dateModified: "November 12, 2026",
+    content: `
+<p style="line-height:1.8;">Zonos 3 Mini is a free, open-source text-to-speech model that clones a voice from a one-minute recording and speaks in 43 languages — and it can run right in your browser. Zyphra released it on November 9, 2026, under the Apache 2.0 license, which means it is free even for commercial use. No sign-up, no per-character bill, no server required.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Zonos 3 Mini in One Box</h2><p style="margin:0; line-height:1.7;">ZONOS3-Mini is Zyphra's compact voice-cloning text-to-speech model: 800 million total parameters with only about 100 million active per request, zero-shot cloning from a clip of up to 60 seconds, and word-level control over emotion, pace, and delivery. It runs in a browser via WebGPU, on Apple Silicon, or on a server — and the weights are free on Hugging Face. The catch: it is a developer tool, not a polished app, so the easiest way to hear it today is Zyphra's browser demo or a free reader like ours while the apps catch up.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What Zyphra actually released</h2>
+<img src="/images/blog/zonos-3-mini-free-voice-cloning/zonos-3-mini-free-voice-cloning-hero.webp" alt="Zonos 3 Mini free voice cloning - a laptop with one sound wave flowing out and turning into a second, cloned wave, with an open padlock" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Zyphra is a San Francisco speech-model company, and ZONOS3-Mini is its third-generation open model. The headline number is the size: 800 million total parameters, but a sparse mixture-of-experts design means only around 100 million of them run for any given word. That is why it is fast on ordinary hardware instead of needing a data-center GPU.</p>
+<p style="line-height:1.8;">The model also ships with its own audio codec, ZAC-1, which compresses speech to 44.1 kHz output at just 15 frames per second. Fewer frames per second means less work per second of audio, which is the other half of the speed story. Zyphra trained it on 112 NVIDIA H100 GPUs in 2.5 days, then tuned it with preference optimization to cut down on skipped words and wobbly delivery.</p>
+<p style="line-height:1.8;">As Zyphra put it in its release announcement: "we release runtimes for browsers via WebGPU, servers via SGLang and vLLM, as well as many others through GGML." In plain terms: the same model is packaged four ways, so it runs on a phone browser, a Mac, a Windows PC, or a server — pick the one that matches your machine.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How fast is it, really?</h2>
+<p style="line-height:1.8;">Zyphra's own figures are striking, and they are worth repeating with the caveat that they are Zyphra's figures, not independent tests. On a single H100 server GPU, the first chunk of audio arrives in a median of 80 milliseconds with eight requests running at once, and peak throughput hits 457 seconds of audio generated per second. Those are server numbers, but the consumer ones matter more: under 570 milliseconds to first audio in a phone browser on a Pixel 9, and under 150 milliseconds on a MacBook Air with an M3 chip.</p>
+<p style="line-height:1.8;">An independent hands-on test backs up the "runs on a laptop" claim. A tester ran 58 Korean clips on a MacBook Pro with an M4 Pro chip, scored them by transcribing the output back with Whisper, and found the model generating at roughly 10x real-time speed — free and offline, with the core model file weighing just 0.66 GB. The full repository is a hefty 30.7 GB download, but you can skip the cloning encoders (5.6 GB) if you only want the built-in voices.</p>
+<p style="line-height:1.8;">One honest note: the quality benchmark is Zyphra's own. On its self-built ZTTS2-Eval index, ZONOS3-Mini ranks first among open-source models — but in speaker-embedding mode it scores 66.2, while the simpler reference-clip cloning mode scores only 44.7, and its clean-set quality score of 3.07 trails some rivals. Translation: the best mode is genuinely good; the easiest mode is noticeably weaker. Treat the "number one" claim as a vendor result until independent tests confirm it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What you can actually do with it</h2>
+<p style="line-height:1.8;">This is where Zonos 3 Mini stands out from most free voices. It is not just a reader — it is a voice designer.</p>
+<div style="overflow-x:auto; margin-bottom:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Feature</th><th style="padding:10px; color:var(--color-primary-on);">What it means for you</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Zero-shot voice cloning</td><td style="padding:10px;">Clone a voice from a recording of up to 60 seconds — no training run, no fine-tuning</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Voice design</td><td style="padding:10px;">Build a new voice from scratch by setting age, accent, and timbre</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Word-level control</td><td style="padding:10px;">Adjust emotion, pace, and delivery on individual words, not just whole sentences</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">43 languages</td><td style="padding:10px;">Including Korean, Russian, and the major European languages</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Up to 10 minutes per generation</td><td style="padding:10px;">Long-form narration in a single pass, with a 32,768-position context</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">The cloning part deserves a straight warning: cloning a real person's voice needs that person's consent. Our full guide to <a href="${DOMAIN}/text-to-speech/blog/is-ai-voice-cloning-legal" style="color:var(--color-primary);">whether AI voice cloning is legal</a> covers the rules, and the short version is simple — clone your own voice, or a voice you have permission to use, and label AI audio clearly when you share it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Zonos 3 Mini vs the alternatives you already know</h2>
+<img src="/images/blog/zonos-3-mini-free-voice-cloning/zonos-3-mini-free-voice-cloning-mid.webp" alt="Paid cloud voice cloning versus Zonos on-device cloning - a phone with a credit card and meter on one side, a phone with its own chip and sound waves on the other" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">If you just want to hear text read aloud, you do not need Zonos 3 Mini — a free browser tool does that in seconds. The model earns its place when you want something the free tools cannot do: your own voice, offline, with no meter running.</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>vs ElevenLabs:</strong> ElevenLabs still sounds more polished and needs no setup, but its free tier is capped and cloning sits behind a paid plan. Zonos is free forever and runs locally — you trade polish and convenience for control and zero cost. Our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives</a> roundup covers the middle ground.</li>
+<li style="margin-bottom:8px;"><strong>vs Phonon:</strong> Phonon is smaller (31M parameters) and simpler, but it has no voice cloning at all. Zonos is the one to pick when cloning is the point. Our <a href="${DOMAIN}/text-to-speech/blog/phonon-tts-explained" style="color:var(--color-primary);">Phonon explainer</a> covers that model in full.</li>
+<li style="margin-bottom:8px;"><strong>vs Google's Edge Gallery models:</strong> Google's bundle (Kokoro-82M, PocketTTS) is aimed at app developers shipping offline readers. Zonos is aimed at anyone who wants a cloneable voice. Same offline idea, different job.</li>
+</ul>
+<p style="line-height:1.8;">The pattern across all three is the same one we saw last week: tiny, open, on-device voices are having a moment, and the free tier keeps getting better in public, where anyone can try it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to try it today (no coding needed)</h2>
+<p style="line-height:1.8;">The honest version: there is no big friendly "Zonos app" yet. But you can hear it in about two minutes.</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Try Zyphra's browser demo first.</strong> The weights are on Hugging Face and the demo runs via WebGPU in a modern browser — no install, no account. Type a sentence, pick a built-in voice, and listen. This is the fastest way to judge the quality with your own ears.</li>
+<li style="margin-bottom:8px;"><strong>If you want the easy path, use a free reader now.</strong> TextToSpeechH turns up to 10,000 words into natural speech in 30 voices and downloads the MP3 free, no sign-up. It runs in the cloud, so you need internet — but it is the fastest way to hear a document read aloud today while Zonos apps are still being built.</li>
+<li style="margin-bottom:8px;"><strong>If you are technical, run it locally.</strong> The GitHub repository has runtimes for Apple Silicon (MLX), standard CPUs (ggml), servers (SGLang), and the browser (WebGPU). Start with the built-in voices — the full 30.7 GB download is only needed if you want cloning.</li>
+<li style="margin-bottom:8px;"><strong>If you want offline reading without setup,</strong> our <a href="${DOMAIN}/text-to-speech/blog/offline-text-to-speech-free-tools" style="color:var(--color-primary);">offline text-to-speech guide</a> lists seven free tools that already work with no connection.</li>
+</ol>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Zonos 3 Mini is the most capable free voice-cloning model you can run yourself right now: real cloning, 43 languages, Apache 2.0, and fast enough to speak in half a second on a phone. It is not yet a finished product for non-technical users, and its headline benchmark is self-reported — but the model itself is free, open, and already running in browsers. If you have ever wanted your own voice to read your words aloud, this is the cheapest way to try it: free, private, and yours to keep.</p>
+<p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/ai-voice-cloning-guide" style="color:var(--color-primary);">AI voice cloning guide</a> to see how cloning works before you try it yourself.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
   }
 };
 
