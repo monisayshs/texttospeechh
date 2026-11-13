@@ -28,6 +28,14 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Fixed (branch `fix/voice-failover-2026-11-13`, NOT yet in production)
+
+- **Voice-generation failover restored** — the daily counters showed 100/200 jobs FAILED on 2026-11-11 and 30/50 on 2026-11-12. Root cause: the load balancer built its provider chain in constructor order and checked availability without the request env; `AzureProvider.isAvailable()` read only `process.env`, which never holds Cloudflare Pages secrets, so in production the chain silently collapsed to Edge alone and any Edge failure failed the whole job. Fixes, per the design in `docs/architecture.md` (Edge primary, Azure commercial fallback):
+  - `src/services/loadBalancer.js` — chain is now Edge first, then every other available provider; the request `env` is passed into availability checks and `synthesizeChunk`; attempts per provider raised 2 → 3 with backoff 400ms/1000ms.
+  - `src/providers/azure/azureProvider.js` — `isAvailable(env)` and `synthesizeChunk(text, options, env)` now read `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION` from the request env bindings (falling back to `process.env` for local development).
+  - `src/services/queueService.js` — `processJob` passes its `env` into `synthesizeWithFailover`.
+  - Verified locally: Azure availability flips correctly with an env key; a dummy key reaches Microsoft and returns HTTP 401 (wiring proven); the failover chain engages Azure after Edge exhausts its attempts; without an env key the chain is Edge-only, identical to current production behaviour. Production activation still needs a real `AZURE_SPEECH_KEY` secret on the Pages project plus the owner's deploy go.
+
 ### Added
 - **Russian + Turkish + Portuguese voices wired into the tool (2026-11-11)** (AdSense Fix 3, part 2 — owner approved production-API voice testing): the `/language/russian`, `/language/turkish` and `/language/portuguese` pages had long named Svetlana/Dmitry, Emel/Ahmet and Francisca/Antonio as the tool's voices, but the picker never carried them — the claims are now true.
   - Voices verified BEFORE wiring: all six IDs confirmed in Microsoft Edge's own voice catalogue (322 voices) and each synthesized a real MP3 through the LIVE production `/api/generate` endpoint (the owner-approved route — the sandbox cannot reach the Edge WebSocket because its egress proxy breaks the TLS handshake, proven with already-live control voices failing identically). Results, all state COMPLETED with actualVoice = requested voice: Svetlana 74,880 B / 6.24 s, Dmitry 75,456 B / 6.29 s, Emel 78,048 B / 6.50 s, Ahmet 96,414 B / 8.03 s, Francisca 70,494 B / 5.87 s, Antonio 76,032 B / 6.34 s (MP3s + results in `~/workspace/research_notes/fix3-voice-tests/`). Audio listening check is not possible in the sandbox — the owner verifies by ear on his phone, as with Raasta B/C.

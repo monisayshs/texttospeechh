@@ -14,26 +14,36 @@ class LoadBalancer {
       new CosyVoiceProvider(),
       new EdgeProvider()
     ];
-    this.backoffDelays = [200, 500]; // Ultra-fast backoff (< 1s total)
+    this.backoffDelays = [400, 1000]; // Backoff between attempts 1→2 and 2→3
   }
 
   async sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async synthesizeWithFailover(text, options = {}, onLog = null) {
+  async synthesizeWithFailover(text, options = {}, onLog = null, env = null) {
     let lastError = null;
 
+    // Chain order follows docs/architecture.md: Edge is the PRIMARY provider;
+    // every other configured provider is a fallback, tried in constructor
+    // order. Until 2026-11-13 the chain was built in constructor order
+    // (Azure first) and availability was checked without the request env —
+    // Azure's check read only process.env, which never holds Cloudflare
+    // Pages secrets, so in production the chain silently collapsed to Edge
+    // alone and any Edge failure failed the whole job (11 Nov 2026: 100 of
+    // 200 jobs failed; 12 Nov: 30 of 50). Passing `env` through restores the
+    // documented failover: Edge first, Azure (when its key is configured)
+    // as the real backup.
+    const edgeProvider = this.providers.find(p => p instanceof EdgeProvider);
     const activeProviders = [];
+    if (edgeProvider) {
+      activeProviders.push(edgeProvider);
+    }
     for (const provider of this.providers) {
-      if (provider.isCommercialAllowed && await provider.isAvailable()) {
+      if (provider === edgeProvider) continue;
+      if (provider.isCommercialAllowed && await provider.isAvailable(env)) {
         activeProviders.push(provider);
       }
-    }
-
-    const edgeFallback = this.providers.find(p => p instanceof EdgeProvider);
-    if (!activeProviders.includes(edgeFallback)) {
-      activeProviders.push(edgeFallback);
     }
 
     console.log('[DIAG loadBalancer] options.voice:', options.voice, '| rate:', options.rate, '| pitch:', options.pitch, '| style:', options.style);
@@ -48,9 +58,9 @@ class LoadBalancer {
       log(`Attempting synthesis with provider: ${provider.name}`);
       console.log('[DIAG loadBalancer] Passing to provider:', provider.name, '| voice:', options.voice, '| rate:', options.rate, '| pitch:', options.pitch, '| style:', options.style);
 
-      for (let attempt = 1; attempt <= 2; attempt++) {
+      for (let attempt = 1; attempt <= 3; attempt++) {
         try {
-          const audioBuffer = await provider.synthesizeChunk(text, options);
+          const audioBuffer = await provider.synthesizeChunk(text, options, env);
           if (audioBuffer && audioBuffer.length > 0) {
             log(`Success with provider ${provider.name} on attempt ${attempt}`);
             console.log('[DIAG loadBalancer] SUCCESS with provider:', provider.name, '| audioBuffer.length:', audioBuffer.length, '| voice was:', options.voice);
@@ -69,10 +79,10 @@ class LoadBalancer {
           }
         } catch (err) {
           lastError = err;
-          log(`Warning: Provider ${provider.name} attempt ${attempt}/2 failed: ${err.message}`);
+          log(`Warning: Provider ${provider.name} attempt ${attempt}/3 failed: ${err.message}`);
           console.log('[DIAG loadBalancer] Provider', provider.name, 'attempt', attempt, 'FAILED:', err.message);
 
-          if (attempt < 2) {
+          if (attempt < 3) {
             const delayMs = this.backoffDelays[attempt - 1] || 300;
             await this.sleep(delayMs);
           }

@@ -534,7 +534,8 @@ class QueueService {
             const chunkAudio = await loadBalancer.synthesizeWithFailover(
               chunkText,
               job.options,
-              (msg) => console.log(`[QueueService][Job ${job.id}] ${msg}`)
+              (msg) => console.log(`[QueueService][Job ${job.id}] ${msg}`),
+              env
             );
             audioChunks[i] = chunkAudio;
             // Read-Along: capture per-chunk word timings (null when provider has none, e.g. failover)

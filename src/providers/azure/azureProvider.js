@@ -30,8 +30,13 @@ class AzureProvider extends BaseProvider {
     return (options.env && options.env.AZURE_SPEECH_REGION) || process.env.AZURE_SPEECH_REGION || 'eastus';
   }
 
-  async isAvailable() {
-    return !!(process.env.AZURE_SPEECH_KEY);
+  async isAvailable(env = null) {
+    // The key can live in the request env (Cloudflare Pages secrets reach a
+    // function only through its `env` bindings, never through process.env)
+    // or, in local Node development, in process.env. Before 2026-11-13 this
+    // check read process.env only, so Azure was permanently "unavailable"
+    // in production even when a key was configured.
+    return !!this.getApiKey({ env });
   }
 
   formatRate(rate) {
@@ -63,9 +68,10 @@ class AzureProvider extends BaseProvider {
     return '+0%';
   }
 
-  async synthesizeChunk(text, options = {}) {
-    const apiKey = this.getApiKey(options);
-    const region = this.getRegion(options);
+  async synthesizeChunk(text, options = {}, env = null) {
+    const effectiveOptions = env ? { ...options, env } : options;
+    const apiKey = this.getApiKey(effectiveOptions);
+    const region = this.getRegion(effectiveOptions);
 
     if (!apiKey) {
       throw new Error('Azure Speech API key is missing (AZURE_SPEECH_KEY environment variable not configured).');
