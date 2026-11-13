@@ -28,6 +28,10 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Added (2026-11-13, production, on the owner's go)
+
+- **Cross-links to the sister site Toolzaio (toolzaio.com, launched the same day)** — the tools hub (`src/pages/toolPages.js`, TOOLS_HUB_PAGE) gains a "More free tools, on our sister site Toolzaio" section linking the six Toolzaio-only tools (QR Code Generator, PDF Merge, Image Converter, Word Counter, Password Generator, Percentage + BMI Calculators) plus the Toolzaio tools index, and the shared footer (`src/pages/footerComponent.js`) gains a "More Free Tools — Toolzaio" link in the AI Tools column. Purpose: pass the hub's existing search visitors to the new site and give it its first genuine inbound links. No routes, redirects or vercel.json touched. Live-verified after the Cloudflare Pages deploy from this push.
+
 ### Fixed (2026-11-13, production)
 
 - **Azure fallback sentence pauses trimmed** — Azure's default inter-sentence pause measures ~1.0s (owner flagged it by ear on a test sample; verified with ffmpeg `silencedetect` on hi-IN-SwaraNeural: gaps of 1.06s/1.07s plus a ~1.03s padded tail). `src/providers/azure/azureProvider.js` now adds `<mstts:silence type="Sentenceboundary" value="250ms"/>` and `<mstts:silence type="Tailing" value="100ms"/>` inside the `<voice>` element. The exact SSML was verified against the live Azure endpoint first (same text: measured gaps 0.62s, total 9.83s → 8.32s) and the provider's generated SSML was unit-checked locally with a stubbed fetch. Affects only the Azure backup path — Edge synthesis is unchanged.

@@ -2432,6 +2432,19 @@ const TOOLS_HUB_PAGE = {
         </a>
       </div>
       <section>
+        <h2>More free tools, on our sister site Toolzaio</h2>
+        <p>We also run <a href="https://toolzaio.com" rel="noopener">Toolzaio</a>, a sister site for the small everyday tools that do not belong on a voice site. Same rules as here: free, no sign-up, and the tools run in your browser. The ones visitors ask for most:</p>
+        <ul>
+          <li><a href="https://toolzaio.com/tools/qr-code-generator/" rel="noopener">QR Code Generator</a> — turn a link or text into a scannable QR code</li>
+          <li><a href="https://toolzaio.com/tools/pdf-merge/" rel="noopener">PDF Merge</a> — combine several PDFs into one file, in order</li>
+          <li><a href="https://toolzaio.com/tools/image-converter/" rel="noopener">Image Converter</a> — convert pictures between PNG, JPG and WebP</li>
+          <li><a href="https://toolzaio.com/tools/word-counter/" rel="noopener">Word Counter</a> — words, characters and reading time as you type</li>
+          <li><a href="https://toolzaio.com/tools/password-generator/" rel="noopener">Password Generator</a> — strong random passwords, made on your device</li>
+          <li><a href="https://toolzaio.com/tools/percentage-calculator/" rel="noopener">Percentage Calculator</a> and <a href="https://toolzaio.com/tools/bmi-calculator/" rel="noopener">BMI Calculator</a> — the quick everyday sums</li>
+        </ul>
+        <p>See <a href="https://toolzaio.com/tools/" rel="noopener">all the tools on Toolzaio</a>.</p>
+      </section>
+      <section>
         <h2>Start with the tool you came for</h2>
         <p>New tools join this page as we build them. If you arrived here for voice work, the text to speech generator above is the tool this site is known for; everything else grew around it. If a tool you need is missing, the contact page is the fastest way to tell us about it.</p>
       </section>
