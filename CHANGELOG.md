@@ -28,7 +28,11 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
-### Fixed (branch `fix/voice-failover-2026-11-13`, NOT yet in production)
+### Fixed (2026-11-13, production)
+
+- **Azure fallback sentence pauses trimmed** — Azure's default inter-sentence pause measures ~1.0s (owner flagged it by ear on a test sample; verified with ffmpeg `silencedetect` on hi-IN-SwaraNeural: gaps of 1.06s/1.07s plus a ~1.03s padded tail). `src/providers/azure/azureProvider.js` now adds `<mstts:silence type="Sentenceboundary" value="250ms"/>` and `<mstts:silence type="Tailing" value="100ms"/>` inside the `<voice>` element. The exact SSML was verified against the live Azure endpoint first (same text: measured gaps 0.62s, total 9.83s → 8.32s) and the provider's generated SSML was unit-checked locally with a stubbed fetch. Affects only the Azure backup path — Edge synthesis is unchanged.
+
+### Fixed (branch `fix/voice-failover-2026-11-13`, in production since 2026-11-13, deployment `7e1df59b`)
 
 - **Voice-generation failover restored** — the daily counters showed 100/200 jobs FAILED on 2026-11-11 and 30/50 on 2026-11-12. Root cause: the load balancer built its provider chain in constructor order and checked availability without the request env; `AzureProvider.isAvailable()` read only `process.env`, which never holds Cloudflare Pages secrets, so in production the chain silently collapsed to Edge alone and any Edge failure failed the whole job. Fixes, per the design in `docs/architecture.md` (Edge primary, Azure commercial fallback):
   - `src/services/loadBalancer.js` — chain is now Edge first, then every other available provider; the request `env` is passed into availability checks and `synthesizeChunk`; attempts per provider raised 2 → 3 with backoff 400ms/1000ms.

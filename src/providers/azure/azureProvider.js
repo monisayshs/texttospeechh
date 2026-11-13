@@ -93,8 +93,13 @@ class AzureProvider extends BaseProvider {
       console.warn(`[AzureProvider] Style '${styleName}' is UNSUPPORTED BY PROVIDER/VOICE for voice '${voiceName}'. Synthesizing with standard neural prosody.`);
     }
 
+    // Azure's default sentence pause is ~1s, which listeners hear as a long
+    // gap. Cap it at 250ms and trim the padded tail (verified 2026-11-13:
+    // measured gaps 1.06s -> 0.62s on hi-IN-SwaraNeural).
     const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="${langCode}">
   <voice name="${voiceName}">
+    <mstts:silence type="Sentenceboundary" value="250ms"/>
+    <mstts:silence type="Tailing" value="100ms"/>
     ${innerSsml}
   </voice>
 </speak>`;
