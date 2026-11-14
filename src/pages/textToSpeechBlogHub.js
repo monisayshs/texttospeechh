@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/gemini-voice-remixing-explained", title: "Gemini Voice Remixing: Edit Any AI Voice With Words", category: "Guides", readingTime: "8 min read", cta: "Read the Voice Remixing Guide →" },
   { slug: "text-to-speech/blog/elevenlabs-interaction-engine-explained", title: "ElevenLabs Interaction Engine: What It Is & Why It Matters", category: "Guides", readingTime: "8 min read", cta: "Read the Interaction Engine Guide →" },
   { slug: "text-to-speech/blog/zonos-3-mini-free-voice-cloning", title: "Zonos 3 Mini: Free Open-Source Voice Cloning, Explained", category: "Guides", readingTime: "7 min read", cta: "Read the Zonos 3 Mini Guide →" },
   { slug: "text-to-speech/blog/google-ai-edge-gallery-offline-text-to-speech", title: "Google AI Edge Gallery Brings Offline Text to Speech", category: "Guides", readingTime: "8 min read", cta: "Read the AI Edge Gallery Guide →" },
@@ -11133,6 +11134,88 @@ before you put the audio in a course you sell.</p></div>
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">The Interaction Engine is ElevenLabs' move from selling voice models to selling the whole conversation: the right model for each moment, memory of who is calling, and automation after the call ends. The models behind it — Scribe v3, Eleven v4, Eleven Realtime — are real and shipping. The savings and quality claims are not independently proven yet, and most of the package is still in preview. If you are a business building voice agents, this is the announcement to watch. If you just want free, natural voices today, the best move is the same as ever: try the free tier, and when the meter runs out, use a free reader that does not count characters.</p>
+<p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup to compare the free options side by side.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
+  },
+  "text-to-speech/blog/gemini-voice-remixing-explained": {
+    title: `Gemini Voice Remixing: Edit Any AI Voice With Words | ${BRAND_NAME}`,
+    h1: `Gemini Voice Remixing: Edit Any AI Voice With Words`,
+    ogImage: "/images/blog/gemini-voice-remixing-explained/gemini-voice-remixing-hero.webp",
+    metaDesc: `Google turned on Voice Remixing for Gemini 3.8 Flash TTS on November 4, 2026 — fine-tune a preset voice with a plain-English prompt instead of starting from scratch. How it works, what it costs, and how to hear a tuned voice free.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "What is Gemini Voice Remixing?", "a": "Gemini Voice Remixing is Google's feature for fine-tuning an existing AI voice with a plain-English prompt. Launched on November 4, 2026, for Gemini 3.8 Flash TTS, it lets you start from one of Google's 2,000+ preset voices or a custom-designed voice, describe changes like pitch, pace, accent, or energy, and save the result as a new stored voice with its own ID and an audio preview to audition."}, {"q": "Is Gemini Voice Remixing free?", "a": "No. Creating a remixed voice requires a paid Tier 1 or higher Gemini API project, and you pay the standard Gemini 3.8 Flash TTS synthesis rates when you speak with the voice — $0.50 per million text-input tokens and $9 per million audio-output tokens through December 31, 2026, rising to $1 and $18 from January 1, 2027. There is no free tier for remixing itself."}, {"q": "Can you remix a cloned voice?", "a": "No. Google's remixing guide lists prebuilt studio voices, Extended Voice Library voices, and custom-designed or already-remixed voices as supported bases, but replicated (cloned) voices are not listed. You cannot take a voice cloned from a real person's recording and run it through the remixing tool."}, {"q": "How is Voice Remixing different from Voice Design?", "a": "Voice Design creates a brand-new voice from a text description of a persona, starting from nothing. Voice Remixing starts from a voice you already like and makes small, lasting changes to it — a different pitch, accent, or energy. Use remixing when a preset is almost right; use design when no existing voice is close to what you need."}, {"q": "How many remixed voices can you save?", "a": "A single Gemini API project can hold up to 200 stored voices in total, shared across designed, remixed, and replicated voices. Each stored voice expires one year after its last use, and every synthesis or use as a base voice resets that one-year window."}],
+    datePublished: "November 14, 2026",
+    dateModified: "November 14, 2026",
+    content: `
+<p style="line-height:1.8;">Google switched on Voice Remixing for Gemini 3.8 Flash TTS on November 4, 2026. Instead of picking a preset voice and living with it, or writing a whole new voice description from scratch, you take a voice you already like and tell Gemini what to change in plain English — "make it a bit older," "add a slight Southern accent," "speak a bit faster" — and it saves the result as a brand-new voice you can reuse.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Gemini Voice Remixing in One Box</h2><p style="margin:0; line-height:1.7;">Gemini Voice Remixing lets you fine-tune an existing AI voice with a text prompt. Pick a base voice from Google's library of more than 2,000 presets (or a voice you designed yourself), describe the changes — pitch, pace, accent, timbre, energy — and Gemini creates a new stored voice with its own ID, plus a short audio preview so you can hear it before committing. It works in Google AI Studio and the Gemini API, but it needs a paid Tier 1 (or higher) Gemini API project, and it cannot remix a cloned voice. If you just want to hear text read aloud free, you do not need any of this — but if you build with voices, it is the fastest way to get a voice that sounds like yours.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What actually launched on November 4</h2>
+<img src="/images/blog/gemini-voice-remixing-explained/gemini-voice-remixing-hero.webp" alt="Gemini Voice Remixing explained - one teal voice wave flowing through a gold tuning dial and splitting into three tuned amber voice waves" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Voice Remixing was listed as "coming soon" when Gemini 3.8 Flash TTS launched in September 2026. On November 4, Google's own accounts flipped it to live: "Voice Remixing is now live in Gemini 3.8 Flash TTS. Fine-tune voices without starting from scratch. Pick from over 2K preset library voices or custom designed voices…" — Google (@Google), November 4, 2026.</p>
+<p style="line-height:1.8;">The feature lives in two places: Google AI Studio, where anyone with a paid project can click through it, and the Gemini API, where developers call <code>POST /v1beta/voices</code> with the voice type set to <code>prompted</code> and <code>store</code> set to true. The model behind it is Gemini 3.8 Flash TTS, Google's expressive speech model that covers 100+ languages, according to Google's own materials.</p>
+<p style="line-height:1.8;">The honest context first: this is a developer feature with a paywall, not a free consumer toy. Creating a remixed voice needs a paid Tier 1 or higher Gemini API project. There is no separate "remix" button on the free Gemini app. So the immediate audience is people building voice products — narration, agents, audiobooks, dubbing — not someone who wants one paragraph read aloud.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How a remix actually works</h2>
+<img src="/images/blog/gemini-voice-remixing-explained/gemini-voice-remixing-mid.webp" alt="How a Gemini voice remix works - pick a preset voice, describe the change in a speech-bubble prompt, then save the new voice card and play the preview" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">The workflow has three steps, and the clever part is what does not happen: the original voice is never touched.</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Pick a base voice.</strong> Start with one of Google's 30 prebuilt studio voices, a voice from the Extended Voice Library (more than 2,000 presets, per Google), or a custom voice you already designed with a prompt — or even an earlier remix from the same project.</li>
+<li style="margin-bottom:8px;"><strong>Describe the change.</strong> Write a short instruction in ordinary language: age, pitch, energy, tone, accent, or speaking rate. Google's guidance is to change only one or two traits per round, then listen before going further — small steps keep the voice recognisable.</li>
+<li style="margin-bottom:8px;"><strong>Audition and save.</strong> In AI Studio, Gemini generates three takes for each remix request so you can compare them side by side and keep the best one. Through the API, the response returns a new stored <code>voice_...</code> ID and a 24 kHz WAV preview sample. Play the preview first — the prompt text cannot replace listening to the result.</li>
+</ol>
+<p style="line-height:1.8;">That new voice is independent of its base. Deleting the base later does not delete voices derived from it, and you can remix the remix again, stacking small refinements until the voice lands where you want it. A project can hold up to 200 stored voices, shared across designed, remixed, and replicated voices, and each stored voice expires one year after its last use.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Remixing vs. voice design vs. voice cloning</h2>
+<p style="line-height:1.8;">Three ways to get a custom voice in Gemini now sound similar, but they do different jobs:</p>
+<div style="overflow-x:auto; margin-bottom:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Method</th><th style="padding:10px; color:var(--color-primary-on);">What you start with</th><th style="padding:10px; color:var(--color-primary-on);">Best for</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Voice Remixing</strong></td><td style="padding:10px;">An existing voice you already like</td><td style="padding:10px;">Small, lasting changes to a voice — pitch, accent, age, energy</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Voice Design</strong></td><td style="padding:10px;">A text description of a brand-new persona</td><td style="padding:10px;">Creating a voice from nothing, when no preset is close</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Voice Replication</strong></td><td style="padding:10px;">A short recording of a real person's voice</td><td style="padding:10px;">Cloning a specific real voice (with consent)</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">The rule of thumb from Google's own documentation: remixing is for lasting changes to the baseline — a different default pitch or a regional accent. Temporary, turn-by-turn acting directions ("sound excited here") still belong in the per-request style field, not in a remix. And one hard limit: replicated (cloned) voices cannot be remixed. Google's remixing guide does not list them as supported bases, so do not assume every saved voice in your project can go through the tool.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What it costs — and the price rise coming in January</h2>
+<p style="line-height:1.8;">Google has not published a separate per-remix creation charge; remixing itself is a voice-creation call, and you pay the standard synthesis rates when you speak with the voice. Those rates are listed per million tokens, and they are about to rise. Through December 31, 2026, Gemini 3.8 Flash TTS costs $0.50 for text input and $9 for audio output per million tokens; from January 1, 2027, those become $1 and $18. The lighter Flash-Lite TTS costs $0.50 and $6 through the end of the year, rising to $1 and $12 in January (figures from ByteForward's reading of Google's rate card, November 5, 2026).</p>
+<p style="line-height:1.8;">That matters for planning: a remixed voice created on the flagship model also works with Flash-Lite TTS, the cheaper high-volume tier, so you can design the voice once and run it on the cheaper model for bulk work. And since stored voices expire a year after their last use, a voice you design in November and use regularly will not quietly vanish — but a voice you design and forget will.</p>
+<p style="line-height:1.8;">One more date to know: Google is shutting down three older preview models on or after November 17, 2026, including Gemini 2.5 Flash Preview TTS. If you still build on a preview model, the official migration target is Gemini 3.8 Flash TTS or Flash-Lite TTS — the same models remixing runs on.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What it means for you if you just want free voices</h2>
+<p style="line-height:1.8;">Here is the straight answer: almost nothing changes today, and that is fine.</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>If you build voice products</strong>, remixing is genuinely useful — it turns voice tuning from a day of prompt engineering into a few sentences. But budget for the paid tier and test the result on your own real scripts before you commit to a voice.</li>
+<li style="margin-bottom:8px;"><strong>If you just want a voice that sounds right for one project</strong>, the free route is still faster. A free browser tool reads your text in 30 voices and downloads the MP3 with no sign-up — no API key, no per-token bill, no stored-voice housekeeping.</li>
+<li style="margin-bottom:8px;"><strong>If you liked a Gemini voice but wished it were warmer, older, or slower</strong>, that is exactly the gap remixing fills — just know the bill starts when you do.</li>
+</ul>
+<p style="line-height:1.8;">The bigger picture is the direction Google is pushing: voices are becoming editable objects, not fixed presets. First came 2,000+ presets, then voice design from a description, and now remixing from a voice you already like. The winner in this race will not be the company with the most voices, but the one that lets a team land on exactly the right voice fastest — and remixing is Google's clearest move in that direction so far.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to hear a tuned voice free today</h2>
+<p style="line-height:1.8;">You cannot try Voice Remixing without a paid Gemini project. But you can hear what a well-tuned voice sounds like right now:</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Try a free reader first.</strong> Paste your real text — the actual script, not a test sentence — and listen to a few voices. Pay attention to pacing and tone, not just accent: that is what remixing actually changes.</li>
+<li style="margin-bottom:8px;"><strong>If you need one voice for a whole project</strong>, TextToSpeechH turns up to 10,000 words into natural speech in 30 voices and downloads the MP3 free, no sign-up. It is the fastest way to hear a whole document read aloud while Gemini's new tools are still behind a paywall.</li>
+<li style="margin-bottom:8px;"><strong>If you want to build with Gemini voices</strong>, start with the free tier of the Gemini API to learn the voices, then move to a paid Tier 1 project when you are ready to remix — and read our <a href="${DOMAIN}/text-to-speech/blog/ai-voice-cloning-guide" style="color:var(--color-primary);">AI voice cloning guide</a> first, including the legal rules in our <a href="${DOMAIN}/text-to-speech/blog/is-ai-voice-cloning-legal" style="color:var(--color-primary);">is AI voice cloning legal</a> guide, before you clone or remix any real person's voice.</li>
+</ol>
+<p style="line-height:1.8;">One practical note: do not pay for a plan on the strength of a launch post. Try the voices on your own real text, measure what they actually save you, and judge the claims against your own results before you pay or switch.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Gemini Voice Remixing is a small feature with a clear job: take a voice you already like and nudge it — older, warmer, faster, a different accent — with a sentence instead of a new persona description. It is live now in AI Studio and the Gemini API, it creates a reusable stored voice with a preview to audition, and it is gated behind a paid Tier 1 project with a 200-voice limit per project. For builders, it is the most practical Gemini voice news of the month. For everyone else, the free tools still do the job — and the voices behind them keep getting better either way.</p>
 <p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup to compare the free options side by side.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
