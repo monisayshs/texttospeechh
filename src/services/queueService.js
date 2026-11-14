@@ -145,7 +145,7 @@ class QueueService {
     }
   }
 
-  async noteJobFinished(env, state) {
+  async noteJobFinished(env, state, errorMessage) {
     // Called by the /api/generate handler AFTER the job's final save, so the
     // counter can never delay or break generation. Each isolate counts its own
     // finished jobs for the current UTC day (KV stats keys are UTC-dated,
@@ -164,9 +164,20 @@ class QueueService {
         this._dailyIsolateCounts = { completed: 0, failed: 0 };
         this._lastFlushedAt = { completed: 0, failed: 0 };
         this._pendingDelta = { completed: 0, failed: 0 };
+        this._pendingFailReasons = {};
+        this._lastFailSample = '';
       }
       this._dailyIsolateCounts[kind] += 1;
-      const { shouldFlush, isolateDelta } = require('./statsCounter');
+      const { shouldFlush, isolateDelta, classifyFailure } = require('./statsCounter');
+      if (kind === 'failed' && errorMessage) {
+        // Tally WHY jobs fail (2026-11-14): bucketed in memory per isolate and
+        // persisted with the same span flush as the counts — one extra KV put
+        // per 10 failures, never one per job.
+        const bucket = classifyFailure(errorMessage);
+        this._pendingFailReasons = this._pendingFailReasons || {};
+        this._pendingFailReasons[bucket] = (this._pendingFailReasons[bucket] || 0) + 1;
+        this._lastFailSample = String(errorMessage).slice(0, 140);
+      }
       if (shouldFlush(this._dailyIsolateCounts[kind], 10)) {
         const span = this._dailyIsolateCounts[kind] - this._lastFlushedAt[kind];
         const d = isolateDelta(span);
@@ -174,6 +185,7 @@ class QueueService {
           this._lastFlushedAt[kind] = this._dailyIsolateCounts[kind];
           this._pendingDelta[kind] = d.amount;
           await this.bumpDailyCounter(env, kind);
+          if (kind === 'failed') await this.bumpFailReasons(env);
         }
       }
     } catch (e) {
@@ -211,6 +223,35 @@ class QueueService {
     }
   }
 
+  async bumpFailReasons(env) {
+    // Persist this isolate's pending failure-reason tally for today:
+    // read-modify-write on ONE key (stats:failreasons:<date>), called only
+    // from the failed-span flush, so it costs ~1 KV put per 10 failures.
+    // Same bounded-loss honesty as the counts: a flush racing another
+    // isolate's can lose that span's reasons (<10). Never throws.
+    if (!env || !env.TTS_JOBS_KV) return;
+    const pending = this._pendingFailReasons || {};
+    if (Object.keys(pending).length === 0) return;
+    const sample = this._lastFailSample || '';
+    this._pendingFailReasons = {};
+    this._lastFailSample = '';
+    try {
+      const now = new Date();
+      const yyyy = now.getUTCFullYear();
+      const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(now.getUTCDate()).padStart(2, '0');
+      const key = `stats:failreasons:${yyyy}-${mm}-${dd}`;
+      let stored = {};
+      try { stored = JSON.parse((await env.TTS_JOBS_KV.get(key)) || '{}') || {}; } catch (e) { stored = {}; }
+      const buckets = stored.buckets || {};
+      for (const b of Object.keys(pending)) buckets[b] = (buckets[b] || 0) + pending[b];
+      const out = { buckets, lastSample: sample || stored.lastSample || '', lastAt: new Date().toISOString() };
+      await env.TTS_JOBS_KV.put(key, JSON.stringify(out), { expirationTtl: 60 * 60 * 24 * 400 });
+    } catch (e) {
+      console.warn('[QueueService] Fail-reasons save warning:', e.message);
+    }
+  }
+
   async getDailyCounters(env, days = 31) {
     // Read the persisted daily counters back, newest first. Reads are cheap
     // on every tier (100k/day free) — only writes are scarce.
@@ -225,13 +266,16 @@ class QueueService {
       const dd = String(d.getUTCDate()).padStart(2, '0');
       const date = `${yyyy}-${mm}-${dd}`;
       try {
-        const [completed, failed] = await Promise.all([
+        const [completed, failed, failReasonsRaw] = await Promise.all([
           env.TTS_JOBS_KV.get(`stats:jobs:completed:${date}`),
-          env.TTS_JOBS_KV.get(`stats:jobs:failed:${date}`)
+          env.TTS_JOBS_KV.get(`stats:jobs:failed:${date}`),
+          env.TTS_JOBS_KV.get(`stats:failreasons:${date}`)
         ]);
-        out.push({ date, completed: parseInt(completed || '0', 10) || 0, failed: parseInt(failed || '0', 10) || 0 });
+        let failReasons = null;
+        if (failReasonsRaw) { try { failReasons = JSON.parse(failReasonsRaw); } catch (e) { failReasons = null; } }
+        out.push({ date, completed: parseInt(completed || '0', 10) || 0, failed: parseInt(failed || '0', 10) || 0, failReasons });
       } catch (e) {
-        out.push({ date, completed: 0, failed: 0 });
+        out.push({ date, completed: 0, failed: 0, failReasons: null });
       }
     }
     return out;

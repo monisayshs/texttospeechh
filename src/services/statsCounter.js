@@ -47,4 +47,25 @@ function isolateDelta(span) {
   return { kind: 'delta', amount: n };
 }
 
-module.exports = { nextIsolateCount, shouldFlush, isolateDelta };
+/**
+ * Bucket a finished job's final error message into one short reason label
+ * (added 2026-11-14, owner's go). The daily counter previously stored only
+ * HOW MANY jobs failed, never WHY — three bad days in a row (11–13 Nov 2026)
+ * could not be attributed. The load balancer's final error reads
+ * "All providers failed. Last error: …" where the last error comes from the
+ * last provider tried, so the message usually names the failing layer.
+ * Order matters: rate-limiting is checked before provider names because a
+ * throttled Azure reply mentions both.
+ */
+function classifyFailure(message) {
+  const m = String(message || '').toLowerCase();
+  if (!m) return 'unknown';
+  if (m.includes('429') || m.includes('rate limit') || m.includes('rate_limit') || m.includes('throttl') || m.includes('too many requests')) return 'rate-limit-429';
+  if (m.includes('could not be stored') || m.includes('storage')) return 'storage';
+  if (m.includes('timeout') || m.includes('timed out') || m.includes('abort')) return 'timeout';
+  if (m.includes('azure') || m.includes('cognitive') || m.includes('speech.microsoft')) return 'azure-error';
+  if (m.includes('edge') || m.includes('websocket') || m.includes('socket') || m.includes('wss')) return 'edge-error';
+  return 'other';
+}
+
+module.exports = { nextIsolateCount, shouldFlush, isolateDelta, classifyFailure };

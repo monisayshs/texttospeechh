@@ -28,6 +28,10 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Added (2026-11-14, production, on the owner's go)
+
+- **Failure reasons in the daily voice counter** — the counter stored only how many jobs failed per day, never why (11 Nov: 100 failed, 12 Nov: 30, 13 Nov: 40, with no attributable cause). Now, when a job finishes FAILED, its final error is bucketed by `classifyFailure` in `src/services/statsCounter.js` (rate-limit-429 / azure-error / edge-error / timeout / storage / other / unknown), tallied per isolate in memory, and persisted with the same span-of-10 flush as the counts (`stats:failreasons:<date>` — buckets + latest raw error sample; ~1 extra KV put per 10 failures, never per job). `generateHandler` passes `jobInfo.error` into `noteJobFinished`; `getDailyCounters` returns the new `failReasons` field, so `GET /api/stats` shows it. Same disclosed bounded loss as the counts (a recycled isolate's partial span <10 never flushes). Verified locally end-to-end with a stubbed KV (10 FAILED with an Azure 429 error → buckets {rate-limit-429: 10} + sample) and by classification unit tests; live-verified after deploy.
+
 ### Added (2026-11-13, production, on the owner's go)
 
 - **Cross-links to the sister site Toolzaio (toolzaio.com, launched the same day)** — the tools hub (`src/pages/toolPages.js`, TOOLS_HUB_PAGE) gains a "More free tools, on our sister site Toolzaio" section linking the six Toolzaio-only tools (QR Code Generator, PDF Merge, Image Converter, Word Counter, Password Generator, Percentage + BMI Calculators) plus the Toolzaio tools index, and the shared footer (`src/pages/footerComponent.js`) gains a "More Free Tools — Toolzaio" link in the AI Tools column. Purpose: pass the hub's existing search visitors to the new site and give it its first genuine inbound links. No routes, redirects or vercel.json touched. Live-verified after the Cloudflare Pages deploy from this push.
