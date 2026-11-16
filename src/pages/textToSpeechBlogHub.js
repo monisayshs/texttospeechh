@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/text-to-speech-for-websites", title: "Add Text to Speech to Your Website: 2026 Guide (Free)", category: "Guides", readingTime: "8 min read", cta: "Read the TTS for Websites Guide →" },
   { slug: "text-to-speech/blog/best-realistic-text-to-speech-tools", title: "Most Realistic Text to Speech Tools in 2026 (7 Free)", category: "Guides", readingTime: "9 min read", cta: "Read the Realistic TTS Tools Guide →" },
   { slug: "text-to-speech/blog/google-docs-voice-typing-guide", title: "Google Docs Voice Typing Guide 2026: Dictate & Edit Free", category: "Guides", readingTime: "9 min read", cta: "Read the Google Docs Voice Typing Guide →" },
   { slug: "text-to-speech/blog/chariot-1-tts-multilingual-explained", title: "Chariot-1 TTS: The AI Voice That Reads What It Means", category: "Guides", readingTime: "8 min read", cta: "Read the Chariot-1 TTS Guide →" },
@@ -11144,6 +11145,105 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup to compare the free options side by side.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
+  },
+  "text-to-speech/blog/text-to-speech-for-websites": {
+    title: `Add Text to Speech to Your Website: 2026 Guide (Free) | ${BRAND_NAME}`,
+    h1: `Add Text to Speech to Your Website: 2026 Guide (Free)`,
+    ogImage: "/images/blog/text-to-speech-for-websites/text-to-speech-for-websites-hero.webp",
+    metaDesc: `Add text to speech to your website three honest ways: a WordPress plugin, a copy-paste browser-voice script, or a pre-made MP3. Real costs and limits, no hype.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "How do I add text to speech to my WordPress site for free?", "a": "Install a free-tier TTS plugin (GSpeech, Website Voice and ResponsiveVoice all have one), paste the site key it gives you, and place the player on your posts. Or skip plugins entirely: generate an MP3 of each post with a free tool, upload it to your Media library and add the audio block. The second route stays free at any size."}, {"q": "Can I add text to speech to a website without a plugin?", "a": "Yes. Every modern browser can speak through the Web Speech API, and the short script in this guide adds a working listen button to any site, with no account and no cost. The trade-off: the voice comes from your visitor's device, so quality varies, and there is no MP3 to reuse elsewhere."}, {"q": "Does adding a listen button slow down my website?", "a": "Barely, if you set it up right. A hosted audio player with preload turned off adds almost nothing: the file downloads only when a visitor presses play, and a JavaScript snippet is a few hundred bytes. Live widgets load the vendor's script on every page, a small but real cost. Test your page speed before and after."}, {"q": "Is a text to speech widget the same as a screen reader?", "a": "No. A screen reader is software a blind visitor already owns; it reads your entire site, menus, buttons and forms included, and the visitor drives it. A listen button only reads the one article it sits on. It helps people who prefer listening, but it does not make your site accessible by itself."}],
+    datePublished: "November 16, 2026",
+    dateModified: "November 16, 2026",
+    content: `
+<p style="line-height:1.8;">You wrote the article. Some of your visitors will never read it. They will listen to it in the car, while cooking, or because reading a screen for ten minutes is genuinely hard for them. A small "listen" button is how they get that choice, and adding one is easier than most plugin companies make it sound. There are three honest ways: one costs nothing and takes ten minutes, one costs nothing and takes an afternoon, and one charges you rent forever. One disclosure: we run a text-to-speech tool ourselves, and this guide tells you exactly where it fits and where it does not.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Adding a Listen Button in One Box</h2><p style="margin:0; line-height:1.7;">The easiest way to add text to speech to your website is a WordPress plugin: install it, connect the account it asks for, and a listen button appears on your posts. If your site is not WordPress, a short script pasted before the closing body tag gives you the same button using the visitor's own browser voices, free. And if your pages rarely change, the most reliable free route is to generate an MP3 of each article once and host it with a simple audio player: full control, works on every device, nothing to pay per listen.</p></div>
+<img src="/images/blog/text-to-speech-for-websites/text-to-speech-for-websites-hero.webp" alt="Add text to speech to your website - a browser window holding an article with a round play button, a gold line flowing into a teal and amber sound wave that ends in a pair of headphones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom:28px;">
+<section style="margin-bottom:40px;">
+<h2>The 3 ways to add a listen button, honestly compared</h2>
+<p style="line-height:1.8;">Every such offer is one of these three things underneath:</p>
+<div style="overflow-x:auto; margin-bottom:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Way</th><th style="padding:10px; color:var(--color-primary-on);">What it costs</th><th style="padding:10px; color:var(--color-primary-on);">Voice quality</th><th style="padding:10px; color:var(--color-primary-on);">Your ongoing work</th><th style="padding:10px; color:var(--color-primary-on);">Best for</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Pre-made MP3 + audio player</strong></td><td style="padding:10px;">Free to a few cents per article, once</td><td style="padding:10px;">Best available, same for everyone</td><td style="padding:10px;">A few minutes per new article</td><td style="padding:10px;">Blogs, product and help pages</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Browser voices (Web Speech API)</strong></td><td style="padding:10px;">Free, forever</td><td style="padding:10px;">Varies by visitor's device</td><td style="padding:10px;">None after setup</td><td style="padding:10px;">Huge archives, news sites</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;"><strong>Hosted widget or API service</strong></td><td style="padding:10px;">Free tier, then per-character fees or a licence</td><td style="padding:10px;">Good to excellent</td><td style="padding:10px;">None; vendor-dependent</td><td style="padding:10px;">Daily publishers wanting zero manual work</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">The trade-off is always the same triangle: money, effort, control. The MP3 route asks for effort and gives you total control. The widget route asks for money and removes control: if the vendor raises prices, changes voices or shuts down, your button changes with it. The browser route asks for nothing and controls nothing: the voice is whatever your visitor's device ships with, lovely or a robot from 2012.</p>
+<img src="/images/blog/text-to-speech-for-websites/text-to-speech-for-websites-mid.webp" alt="The three ways to add a listen button - cards with a puzzle piece for the plugin route, code brackets for the script route, and an audio file with a play triangle for the MP3 route, joined by gold arrows" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+</section>
+<section style="margin-bottom:40px;">
+<h2>WordPress: add the button with a plugin, step by step</h2>
+<p style="line-height:1.8;">If your site runs WordPress, this is the ten-minute route. The well-known plugins (GSpeech, Website Voice, ResponsiveVoice's own) differ in price and voices, but the setup is the same shape for all of them:</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;">In your WordPress dashboard, go to Plugins, then Add New, and search for the plugin by name. Install it and activate it.</li>
+<li style="margin-bottom:8px;">Create the free account the plugin asks for (usually on the vendor's website) and copy the site key it gives you. A key is just a password that lets your website talk to their service.</li>
+<li style="margin-bottom:8px;">Paste that key into the plugin's settings page in WordPress and save.</li>
+<li style="margin-bottom:8px;">Choose where the player sits (above the post is the usual spot), pick a voice and language, and turn it on for posts.</li>
+<li style="margin-bottom:8px;">Open an article in a private window, press play, and listen for a full minute. If the reading area is set wrong, plugins happily read out your menus, cookie notices and "share this post" buttons. Fix that setting before you celebrate.</li>
+</ol>
+<p style="line-height:1.8;">That is genuinely all of it. What the plugin pages say less loudly: most free tiers are limited (a character allowance, fewer voices, or the vendor's branding on your player), and paid tiers are a monthly bill for as long as the button exists. Know that you are renting the voice, not buying it.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>No WordPress? The copy-paste snippet</h2>
+<p style="line-height:1.8;">Every modern browser can already speak, through a built-in feature called the Web Speech API. A few lines of JavaScript (code that runs in a visitor's browser) wire it to a button. Paste this where you want the button, and the script just before your closing <code>&lt;/body&gt;</code> tag:</p>
+<pre style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:8px; padding:16px; overflow-x:auto; font-size:0.85rem; line-height:1.6; margin-bottom:16px;"><code>&lt;button id="listen-btn" type="button"&gt;▶ Listen to this article&lt;/button&gt;
+
+&lt;script&gt;
+document.getElementById('listen-btn').addEventListener('click', function () {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    this.textContent = '▶ Listen to this article';
+    return;
+  }
+  var text = document.querySelector('article').innerText;
+  var speech = new SpeechSynthesisUtterance(text);
+  speech.rate = 1;
+  var btn = this;
+  speech.onend = function () { btn.textContent = '▶ Listen to this article'; };
+  window.speechSynthesis.speak(speech);
+  this.textContent = '⏹ Stop listening';
+});
+&lt;/script&gt;</code></pre>
+<p style="line-height:1.8;">One adjustment you may need: if your site wraps posts in something other than an <code>&lt;article&gt;</code> tag, change <code>'article'</code> to that container. The snippet uses each visitor's default voice; letting visitors pick one takes more code.</p>
+<p style="line-height:1.8;">Now the honest limits. The voice lives on the visitor's device, so the same page sounds polished on one phone and rough on another. Chrome has a long-standing habit of stopping partway through very long articles; splitting the text into paragraphs and feeding them one at a time cures most of it. And there is no MP3: nothing is recorded, so there is nothing to download or reuse in a video. In exchange, it costs nothing and never sends you a bill.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The free route with the best sound: pre-made MP3s</h2>
+<p style="line-height:1.8;">Here is the option widget companies do not advertise. If an article is finished and will not change next week, its narration does not need to be generated live, on every visit, forever. Generate it once and keep the file:</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;">Paste the article text into a free text-to-speech tool and pick the voice you actually like. This is the one place our own tool fits this guide: <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> reads your text in 30 natural voices in the browser and downloads the MP3, free, with no sign-up. It is a narration tool, not a website widget; we offer no embed and no API. For this job that is fine: you only need the file.</li>
+<li style="margin-bottom:8px;">Download the MP3 and upload it to your site like any other file (WordPress: Media, then Add New).</li>
+<li style="margin-bottom:8px;">Drop this line where the player should appear, pointing at your file:</li>
+</ol>
+<pre style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:8px; padding:16px; overflow-x:auto; font-size:0.85rem; line-height:1.6; margin-bottom:16px;"><code>&lt;audio controls preload="none" src="/audio/your-article.mp3"&gt;&lt;/audio&gt;</code></pre>
+<p style="line-height:1.8;"><code>preload="none"</code> tells browsers not to download the audio until someone presses play, so the player costs your page nothing in speed.</p>
+<p style="line-height:1.8;">The limits are workload and freshness. Every new article needs its few minutes of generating and uploading, and if you edit the article, the audio is out of date until you regenerate it. For a blog posting twice a week, that is a coffee's worth of effort. For a news site posting forty times a day, it is a job, and the widget route earns its money. For everything in between (product pages, help pages, course lessons, your twenty best articles), this is the route we would pick: the best voice of the three, and the file is yours.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What it actually costs</h2>
+<p style="line-height:1.8;">Run the numbers before you rent anything. A 1,000-word article is roughly 6,000 characters of text. Google Cloud Text-to-Speech charges $4 per million characters for Standard voices, with the first 4 million characters each month free; Neural2 voices are $16 per million with the first million free. Amazon Polly matches those rates: $4 per million for Standard, 5 million characters free every month, $16 per million for Neural. At those rates, one article costs about 2 cents to voice, and a hundred articles sit inside the free allowances.</p>
+<p style="line-height:1.8;">So why do website widgets cost real money? Because of how they bill the listening. A live widget generates speech when a visitor presses play, and vendors price that per listen, per character played, or as a flat licence: ResponsiveVoice, for example, is free for non-commercial sites if you keep their attribution, and a paid licence for commercial use. You are paying for zero effort. But notice the shape: the MP3 route pays once per article and listens are free forever, while a widget's meter runs for as long as your site does.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Accessibility: who actually benefits, and what a listen button is not</h2>
+<p style="line-height:1.8;">The serious reason to do any of this is not convenience. About 1.3 billion people, 16% of the world's population, live with a significant disability (WHO). Many more have dyslexia, tired eyes, a long commute, or a second language they follow better by ear than by eye. For them, a listen button is the difference between your article existing and not existing.</p>
+<p style="line-height:1.8;">Two things a listen button is not, said plainly because vendors blur both. It is not a screen reader: people who are blind already use their own screen-reading software to navigate your whole site, and a play button on one article fixes none of your site's accessibility problems. The WebAIM Million 2025 report found at least one detectable accessibility failure on 94.8% of the top million home pages, so yours probably has some too. And it is not an SEO trick: no search engine has ever said a listen button is a ranking factor. Add it because some visitors need it or love it, not for a ranking promise nobody can honestly make.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">If you want the button today and your site is WordPress, install a plugin. If you want it free forever and can live with your visitors' device voices, paste the snippet. And if your content is mostly finished pages that sit still, do what we would do: generate the MP3 once, host it yourself, and never pay rent on your own articles. Either way, press play and listen like a visitor before you call it done.</p>
+<p style="line-height:1.8;">Try it now: paste your article into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and download the MP3 for your first listen button, read <a href="${DOMAIN}/text-to-speech/blog/how-text-to-speech-works" style="color:var(--color-primary);">how text to speech works</a> for the plain-English version of the technology, or compare options in our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> guide and <a href="${DOMAIN}/text-to-speech/blog/free-text-to-audio-converters" style="color:var(--color-primary);">free text-to-audio converters</a> roundup.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+
 `
   },
   "text-to-speech/blog/best-realistic-text-to-speech-tools": {
