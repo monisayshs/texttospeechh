@@ -11,7 +11,7 @@ const SINGLE_OFFICIAL_EMAIL = "hello@texttospeechh.com";
 
 const LEGAL_PAGES = {
   about: {
-    title: `About Us | ${BRAND_NAME} — Free Neural Text-to-Speech Engine`,
+    title: `About TextToSpeechH AI: Free Neural Text to Speech`,
     h1: `About ${BRAND_NAME}`,
     metaDesc: `Discover ${BRAND_NAME}, the free neural text-to-speech platform. Our story, AI architecture, mission, and official support hub.`,
     content: `
@@ -115,7 +115,7 @@ const LEGAL_PAGES = {
   },
 
   contact: {
-    title: `Contact Us | ${BRAND_NAME} Official Support & Contact Hub`,
+    title: `Contact Us | TextToSpeechH AI Support & Contact Hub`,
     h1: `Contact ${BRAND_NAME}`,
     metaDesc: `Get in touch with ${BRAND_NAME}. Every contact submission is routed directly to our official single inbox at ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
@@ -239,7 +239,7 @@ const LEGAL_PAGES = {
   },
 
   terms: {
-    title: `Terms of Service | ${BRAND_NAME} Usage License & Commercial Rights`,
+    title: `Terms of Service: Usage License & Commercial Rights`,
     h1: `Terms of Service`,
     metaDesc: `Terms of Service for ${BRAND_NAME}: commercial usage rights, acceptable use, and legal guidelines. Support: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
@@ -268,9 +268,9 @@ const LEGAL_PAGES = {
   },
 
   disclaimer: {
-    title: `Disclaimer | ${BRAND_NAME} Independent Legal & Trademark Disclosure`,
+    title: `Disclaimer: Independent Legal & Trademark Disclosure`,
     h1: `Disclaimer`,
-    metaDesc: `Read the official legal disclaimer for ${BRAND_NAME}. Independent evaluation policies and trademark disclosures. Official email: ${SINGLE_OFFICIAL_EMAIL}.`,
+    metaDesc: `Read the official disclaimer for TextToSpeechH AI. Independent evaluation policies and trademark disclosures. Email: hello@texttospeechh.com.`,
     content: `
       <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Effective Date: July 26, 2026</p>
 
@@ -292,7 +292,7 @@ const LEGAL_PAGES = {
   },
 
   "cookie-policy": {
-    title: `Cookie Policy | ${BRAND_NAME} Browser Storage & Preferences`,
+    title: `Cookie Policy: Browser Storage & Preferences`,
     h1: `Cookie Policy`,
     metaDesc: `Cookie Policy for ${BRAND_NAME}: how browser storage and advertising cookies are used. Contact: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
@@ -326,7 +326,7 @@ const LEGAL_PAGES = {
   },
 
   dmca: {
-    title: `DMCA Policy | ${BRAND_NAME} Copyright & Takedown Notice`,
+    title: `DMCA Policy | TextToSpeechH AI Copyright Notice`,
     h1: `DMCA Policy`,
     metaDesc: `DMCA copyright and takedown policy for ${BRAND_NAME}. Submit infringement notices to: ${SINGLE_OFFICIAL_EMAIL}.`,
     content: `
@@ -363,7 +363,7 @@ const LEGAL_PAGES = {
   },
 
   accessibility: {
-    title: `Accessibility Statement | ${BRAND_NAME} WCAG 2.1 AA Compliance`,
+    title: `Accessibility Statement: WCAG 2.1 AA Compliance`,
     h1: `Accessibility Statement`,
     metaDesc: `${BRAND_NAME} accessibility statement: WCAG 2.1 AA compliance, screen-reader support, and keyboard navigation.`,
     content: `
@@ -390,7 +390,7 @@ const LEGAL_PAGES = {
   },
 
   "community-guidelines": {
-    title: `Community Guidelines | ${BRAND_NAME} Responsible Use Policy`,
+    title: `Community Guidelines: Responsible Use Policy`,
     h1: `Community Guidelines`,
     metaDesc: `Read the ${BRAND_NAME} community guidelines covering responsible voice synthesis, acceptable use, privacy, and respectful communication.`,
     content: `

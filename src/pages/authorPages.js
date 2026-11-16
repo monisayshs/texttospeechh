@@ -14,7 +14,7 @@ const AUTHOR_PAGES = {
   'author/mauhnish': {
     title: `Mauhnish — Founder & Editor | ${BRAND_NAME}`,
     h1: `Mauhnish`,
-    metaDesc: `Meet Mauhnish, founder of ${BRAND_NAME}. He writes hands-on guides about AI voice tools, text-to-speech, and audiobook creation — every comparison on this site is tested by him.`,
+    metaDesc: `Meet Mauhnish, founder of TextToSpeechH AI. He writes hands-on guides on AI voice tools and text to speech — every comparison here is tested by him.`,
     isAuthorPage: true,
     content: `
       <div class="legal-hero-card glass-panel">

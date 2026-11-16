@@ -19,9 +19,9 @@
 
 const TOOL_PAGES = {
   "voice-pitch-changer": {
-    "title": "Voice Pitch Changer — Change Voice Pitch Online Free | TextToSpeechH AI",
+    "title": "Voice Pitch Changer: Change Voice Pitch Online Free",
     "h1": "Voice Pitch Changer",
-    "metaDesc": "Change the pitch of any voice recording online for free. Raise or lower pitch by up to 12 semitones without changing speed. No sign-up, no watermark — your file never leaves your browser.",
+    "metaDesc": "Change the pitch of any voice recording online for free. Raise or lower pitch by up to 12 semitones without changing speed. No sign-up, no watermark.",
     "category": "Audio Tools",
     "standaloneTool": true,
     "tagline": "Make any voice deeper or higher in seconds. Free, no sign-up, no watermark - and your file never leaves your browser.",
@@ -609,9 +609,9 @@ const TOOL_PAGES = {
   }
   ,
   "youtube-transcript-generator": {
-    "title": "YouTube Transcript Generator - Get Any Video Transcript Free | TextToSpeechH AI",
+    "title": "YouTube Transcript Generator: Video Transcripts Free",
     "h1": "YouTube Transcript Generator",
-    "metaDesc": "Get the full transcript of any YouTube video for free. Paste a link, get the complete text with timestamps, copy it or download it as a file. No sign-up, no limits.",
+    "metaDesc": "Get the full transcript of any YouTube video for free. Paste a link, get the complete text with timestamps, copy it or download it. No sign-up.",
     "category": "Video Tools",
     "standaloneTool": true,
     "tagline": "Paste any YouTube link and get the video's full text in seconds. Free, no sign-up, with timestamps.",
@@ -860,9 +860,9 @@ const TOOL_PAGES = {
 
   ,
   "image-compressor": {
-    "title": "Image Compressor - Compress Image to 20 KB, 50 KB, 100 KB Online Free | TextToSpeechH AI",
+    "title": "Image Compressor: Compress Image to 20 KB, 50 KB Free",
     "h1": "Image Compressor",
-    "metaDesc": "Compress an image to an exact size in KB - 20 KB, 50 KB, 100 KB or any size you choose. Built for online application forms, 100% private: your photo never leaves your device.",
+    "metaDesc": "Compress an image to an exact size in KB - 20 KB, 50 KB, 100 KB or any size. Built for online forms. Private: your photo never leaves your device.",
     "category": "Image Tools",
     "standaloneTool": true,
     "tagline": "Shrink any photo to the exact KB size your form demands. Free, private, no sign-up - the image never leaves your device.",
@@ -1212,9 +1212,9 @@ const TOOL_PAGES = {
   },
 
   "age-calculator": {
-    "title": "Age Calculator - Find Your Exact Age in Years, Months and Days | TextToSpeechH AI",
+    "title": "Age Calculator: Exact Age in Years, Months & Days",
     "h1": "Age Calculator",
-    "metaDesc": "Find your exact age from your date of birth - in years, months and days, plus total days lived and a next-birthday countdown. Free, no sign-up, calculated privately in your browser.",
+    "metaDesc": "Find your exact age from your date of birth - in years, months and days, plus total days lived and a next-birthday countdown. Free, private, no sign-up.",
     "category": "Date & Time Tools",
     "standaloneTool": true,
     "tagline": "Enter your date of birth and see your exact age - years, months and days - plus how many days you have lived and when your next birthday lands.",
@@ -1420,9 +1420,9 @@ const TOOL_PAGES = {
   },
 
   "passport-photo-maker": {
-    "title": "Passport Photo Maker - Make Passport Size Photos Online Free | TextToSpeechH AI",
+    "title": "Passport Photo Maker: Passport Size Photos Online Free",
     "h1": "Passport Photo Maker",
-    "metaDesc": "Make a passport size photo online for free - US 2x2 inch, India and UK 35x45 mm, Canada, China and more. Set the exact KB size your form demands and download print sheets. 100% private, in your browser.",
+    "metaDesc": "Make a passport size photo online free - US 2x2 inch, India and UK 35x45 mm, Canada, China and more. Set the exact KB size and download print sheets.",
     "category": "Photo Tools",
     "standaloneTool": true,
     "tagline": "Turn any photo into an official passport size photo - exact dimensions, exact KB for your form, and print-ready sheets. Free, and your photo never leaves your device.",
@@ -1942,9 +1942,9 @@ const TOOL_PAGES = {
   },
 
   "background-remover": {
-    "title": "Background Remover - Remove Image Background Online Free | TextToSpeechH AI",
+    "title": "Background Remover: Remove Image Background Free",
     "h1": "Background Remover",
-    "metaDesc": "Remove the background from any photo online for free - transparent PNG, white or colour background in one click. AI runs in your browser, so your photo is never uploaded. Perfect for passport photos and product shots.",
+    "metaDesc": "Remove the background from any photo online free - transparent PNG or white background in one click. AI runs in your browser; your photo is never uploaded.",
     "category": "Photo Tools",
     "standaloneTool": true,
     "tagline": "Cut any person or product out of its background with AI - transparent, white or any colour. Free, no sign-up, and the photo never leaves your device.",
@@ -2368,9 +2368,9 @@ const TOOL_PAGES = {
 };
 
 const TOOLS_HUB_PAGE = {
-  "title": "Free Online Tools - Voice, Audio & More | TextToSpeechH AI",
+  "title": "Free Online Tools - Voice, Audio & More | TextToSpeechH",
   "h1": "Free Online Tools",
-  "metaDesc": "Free online tools from TextToSpeechH AI: text to speech, PDF to speech, voice pitch changer, YouTube transcript generator, image compressor, passport photo maker, background remover and age calculator. No sign-up, no watermark.",
+  "metaDesc": "Free online tools: text to speech, PDF to speech, voice pitch changer, YouTube transcripts, image compressor, passport photos and more. No sign-up.",
   "category": "Tools",
   "standaloneTool": true,
   "isHub": true,
