@@ -275,7 +275,7 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
           <div style="position: absolute; left: 0; top: 0; width: 42px; height: 42px; background: var(--color-primary); color: var(--color-primary-on); font-weight: 800; font-size: 1.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
           <h3 style="font-size: 1.2rem; margin-top: 4px; margin-bottom: 8px;">Select Language & Neural AI Voice</h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin: 0;">
-            Choose from supported neural voices (English US/UK, Hindi, Urdu, Spanish, French, German, Japanese, Arabic) from the voice dropdown selector.
+            Choose from 30 supported neural voices across 15 languages (English US/UK, Hindi, Urdu, Spanish, French, German, Arabic, Japanese, Persian, Korean, Dutch, Chinese, Russian, Turkish, Portuguese) from the voice dropdown selector.
           </p>
         </div>
         <div style="position: relative; padding-left: 60px; margin-bottom: 24px;">
@@ -453,18 +453,25 @@ const TEXT_TO_SPEECH_PILLAR_PAGE = {
             Q3: Which verified neural voices and languages are available on TextToSpeechH AI?
           </h3>
           <p style="font-size: 0.95rem; line-height: 1.7; opacity: 0.9; margin-bottom: 12px;">
-            Our API voice catalog (<code>/api/voices</code>) provides 14 verified neural voice models:
+            Our voice picker gives you 30 natural neural voices across 15 languages:
           </p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; font-size: 0.88rem; margin-bottom: 12px;">
             <div>• Jenny, Guy, Aria (US English)</div>
-            <div>• Sonia, Ryan (UK English)</div>
+            <div>• Sonia (UK English)</div>
             <div>• Swara, Madhur (Hindi)</div>
             <div>• Uzma, Asad (Urdu)</div>
-            <div>• Elvira (Spanish)</div>
+            <div>• Elvira, Alvaro (Spanish)</div>
             <div>• Denise (French)</div>
-            <div>• Katja (German)</div>
+            <div>• Katja, Conrad (German)</div>
             <div>• Zariyah (Arabic)</div>
-            <div>• Nanami (Japanese)</div>
+            <div>• Nanami, Keita (Japanese)</div>
+            <div>• Dilara, Farid (Persian)</div>
+            <div>• SunHi, InJoon (Korean)</div>
+            <div>• Colette, Maarten (Dutch)</div>
+            <div>• HsiaoChen, YunJhe (Chinese)</div>
+            <div>• Svetlana, Dmitry (Russian)</div>
+            <div>• Emel, Ahmet (Turkish)</div>
+            <div>• Francisca, Antonio (Portuguese)</div>
           </div>
           <p style="font-size: 0.88rem; opacity: 0.8; margin: 0;">
             👉 <em>Select voices on our <a href="${DOMAIN}/text-to-speech/voice-generator" style="color: var(--color-primary);">Voice Generator Tool</a>.</em>
