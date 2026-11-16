@@ -2398,7 +2398,7 @@ const TOOLS_HUB_PAGE = {
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="Text to Speech Generator">
           <div class="feature-icon">🔊</div>
           <h3>Text to Speech Generator</h3>
-          <p>Type or paste text, choose from 24 voices in 12 languages, and download an MP3. One request can run to 10,000 words, about an hour of audio; longer scripts split into parts. The main tool on this site, free, no sign-up.</p>
+          <p>Type or paste text, choose from 30 voices in 15 languages, and download an MP3. One request can run to 10,000 words, about an hour of audio; longer scripts split into parts. The main tool on this site, free, no sign-up.</p>
         </a>
         <a class="feature-card glass-panel hub-card" data-cat="voice" href="/text-to-speech/pdf-to-speech" style="text-decoration:none; color:inherit; display:block;" aria-label="PDF to Speech">
           <div class="feature-icon">📖</div>
