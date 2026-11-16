@@ -3396,7 +3396,7 @@ const BLOG_ARTICLES_MAP = {
       <div class="definition-box" style="background: var(--color-primary-soft); border-left: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-bottom: 28px;">
         <h2 style="font-size: 1.15rem; margin-top: 0; color: var(--color-primary);">Quick Answer: How Do I Convert a PDF to Audio for Free?</h2>
         <p style="margin: 0 0 10px; line-height: 1.7;">
-          Converting a PDF to audio for free is simple: upload your PDF to a free text to speech tool that supports PDF input, pick a voice, and download the spoken audio as an MP3. The whole process takes a few minutes and costs nothing.
+          Converting a PDF to audio for free is simple: upload your PDF to a <a href="https://www.texttospeechh.com/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">free text to speech</a> tool that supports PDF input, pick a voice, and download the spoken audio as an MP3. The whole process takes a few minutes and costs nothing.
         </p>
         <p style="margin: 0 0 10px; line-height: 1.7;">
           Free text to speech pdf to audio tools are useful for studying lecture notes hands-free, listening to ebooks and reports while commuting, or making long documents accessible if reading on screen is difficult. Below is a step-by-step guide, plus the free limits of the main tools that can do it — based on published plan details at time of writing.
@@ -5922,7 +5922,7 @@ const BLOG_ARTICLES_MAP = {
       <section id="nsu-start" style="margin-bottom:40px;">
         <h2>5. How to Get Your First Voiceover in 2 Minutes</h2>
         <ol style="line-height:1.8; margin-bottom:24px; padding-left:20px;">
-          <li>Open <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> — no account, no install.</li>
+          <li>Open the <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="color:var(--color-primary);">free text to speech tool (no sign-up)</a> — no account, no install.</li>
           <li>Paste your script (or drag in a PDF/DOCX/TXT file — it extracts the text for you).</li>
           <li>Pick a voice, nudge speed down 5% for narration or up for energetic shorts, and hit Generate. Download the MP3.</li>
         </ol>
@@ -5964,7 +5964,7 @@ const BLOG_ARTICLES_MAP = {
         <p style="line-height:1.7; margin:0 0 16px;">
           Generate your first AI voiceover at <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> — no account, no card, MP3 download in seconds.
         </p>
-        <a href="${DOMAIN}/" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;">Try TextToSpeechH Free</a>
+        <a href="${DOMAIN}/text-to-speech/free-text-to-speech" style="display:inline-block; background:var(--color-primary); color:var(--color-primary-on); padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none;">Try TextToSpeechH Free</a>
       </div>
 
       <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); border-radius:12px; padding:24px; margin-bottom:28px;">

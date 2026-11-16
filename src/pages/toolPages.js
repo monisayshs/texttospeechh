@@ -120,7 +120,7 @@ const TOOL_PAGES = {
 
       <h2>What is a Voice Pitch Changer?</h2>
       <p style="line-height:1.75; margin-bottom:24px;">
-        A <strong>voice pitch changer</strong> raises or lowers the pitch of a voice recording - making it deeper or higher - <strong>without changing its speed</strong>. Drop an MP3, WAV, OGG or M4A clip into the tool above, move one slider, preview the result, and download it as a WAV file. Need a brand-new AI voice instead of editing a recording? Try our <a href="https://www.texttospeechh.com">free text to speech generator</a>.
+        A <strong>voice pitch changer</strong> raises or lowers the pitch of a voice recording - making it deeper or higher - <strong>without changing its speed</strong>. Drop an MP3, WAV, OGG or M4A clip into the tool above, move one slider, preview the result, and download it as a WAV file. Need a brand-new AI voice instead of editing a recording? Try our <a href="https://www.texttospeechh.com/text-to-speech/free-text-to-speech">free text to speech generator</a>.
       </p>
 
       <h2>How to Use the Voice Pitch Changer</h2>
@@ -645,7 +645,7 @@ const TOOL_PAGES = {
             </label>
           </div>
           <div id="ytg-box" style="max-height:430px; overflow:auto; background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; padding:18px; line-height:1.75; font-size:0.95rem;"></div>
-          <p style="margin:14px 0 0; font-size:0.92rem;">Want this as a voiceover? Paste the text into our <a href="/">free text to speech generator</a> and download it as audio.</p>
+          <p style="margin:14px 0 0; font-size:0.92rem;">Want this as a voiceover? Paste the text into our <a href="/text-to-speech/free-text-to-speech">free text to speech generator</a> and download it as audio.</p>
         </div>
       </div>
 
@@ -686,7 +686,7 @@ const TOOL_PAGES = {
 
       <h2>Turn a Transcript Into a Voiceover</h2>
       <p style="line-height:1.75;">
-        This is the workflow our YouTube visitors use most: take one of <strong>your own</strong> videos, fetch its transcript here, clean up the wording, and paste it into the <a href="/">free text to speech generator</a> to record a fresh, clear voiceover without a microphone. Re-voicing an old video in a new language, fixing a badly recorded narration, or making a Shorts version of a long video all start with the transcript. Changing the pitch of an existing recording instead? That is what the <a href="/voice-pitch-changer">Voice Pitch Changer</a> is for.
+        This is the workflow our YouTube visitors use most: take one of <strong>your own</strong> videos, fetch its transcript here, clean up the wording, and paste it into the <a href="/text-to-speech/free-text-to-speech">free text to speech generator</a> to record a fresh, clear voiceover without a microphone. Re-voicing an old video in a new language, fixing a badly recorded narration, or making a Shorts version of a long video all start with the transcript. Changing the pitch of an existing recording instead? That is what the <a href="/voice-pitch-changer">Voice Pitch Changer</a> is for.
       </p>
 
       <h2>Honest Limits</h2>
@@ -1269,7 +1269,7 @@ const TOOL_PAGES = {
 
       <h2>What is an Age Calculator?</h2>
       <p style="line-height:1.75; margin-bottom:24px;">
-        An <strong>age calculator</strong> works out your exact age from your date of birth - not just the year count, but the precise <strong>years, months and days</strong>, plus fun totals like how many days and hours you have lived and how many days are left until your next birthday. Pick your birth date above, leave the second date as today (or change it), and press the button. Everything runs in your browser; when you are done, you might enjoy turning a birthday message into speech with our <a href="https://www.texttospeechh.com">free text to speech generator</a>.
+        An <strong>age calculator</strong> works out your exact age from your date of birth - not just the year count, but the precise <strong>years, months and days</strong>, plus fun totals like how many days and hours you have lived and how many days are left until your next birthday. Pick your birth date above, leave the second date as today (or change it), and press the button. Everything runs in your browser; when you are done, you might enjoy turning a birthday message into speech with our <a href="https://www.texttospeechh.com/text-to-speech/free-text-to-speech">free text to speech generator</a>.
       </p>
 
       <h2>How to Use the Age Calculator</h2>
