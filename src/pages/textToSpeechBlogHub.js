@@ -8904,10 +8904,10 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   },
   "text-to-speech/blog/best-french-text-to-speech-tools": {
-    title: `Best Free French Text to Speech Tools (2026)`,
+    title: `6 Best Free French Text to Speech Tools (2026)`,
     h1: `Best French Text to Speech Tools (Tested): Natural Voices, Real Accents, Free Options`,
     ogImage: "/images/blog/best-french-text-to-speech-tools/french-hero.webp",
-    metaDesc: `French text to speech compared: the best tools for European and Canadian French voices that keep accents intact — free options with no sign-up.`,
+    metaDesc: `6 best free French text to speech tools compared: European and Canadian voices that keep accents and liaisons right — free options, no sign-up.`,
     category: "Comparisons",
     readingTime: "8 min read",
     faqs: [{"q": "What is the most natural French text to speech voice?", "a": "Right now, ElevenLabs' top French voices are the most natural-sounding for long narration. For short content the gap is much smaller, free tools included, so test your actual script before paying."}, {"q": "Can I convert French text to speech for free?", "a": "Yes. TextToSpeechH works free in the browser with no sign-up, and Edge's Read Aloud is free for listening. Paid tools matter when you need lots of characters, a specific voice, or production controls."}, {"q": "Why does my French TTS pronounce letters that should be silent?", "a": "Because reading written French literally is the default failure. Most final consonants are silent and words link together through liaisons; weaker engines were trained mostly on English patterns and read what they see. Better voices, and correctly accented text, fix most of it."}, {"q": "Which French accent should I use for Canada?", "a": "Canadian French (fr-CA). Quebec listeners hear European French as foreign, the same way you'd notice a British voice in an American ad. Murf and Narakeet both label Canadian French voices clearly."}],
@@ -9789,9 +9789,9 @@ before you put the audio in a course you sell.</p></div>
   },
   "text-to-speech/blog/best-german-text-to-speech-tools": {
     ogImage: "/images/blog/best-german-text-to-speech-tools/german-tts-hero.webp",
-    title: `Best Free German Text to Speech Tools (2026)`,
+    title: `6 Best Free German Text to Speech Tools (2026)`,
     h1: `Best German Text to Speech Tools for Learners & Creators`,
-    metaDesc: `Best German text to speech tools for learners and creators — Standard, Austrian (Hannah) and Swiss (Leni, Jan) voices, free picks and honest limits.`,
+    metaDesc: `6 best free German text to speech tools compared: Standard, Austrian (Hannah) and Swiss (Leni, Jan) voices — free MP3 downloads, no sign-up needed.`,
     category: "Guides",
     readingTime: "10 min read",
     faqs: [{"q": "What is the best free German text to speech tool?", "a": "For short texts, TextToSpeechH: it is free in the browser, needs no sign-up, uses neural German voices, and downloads straight to MP3. Its honest limit is scope — it offers Standard German, not Austrian or Swiss variants. For longer free tests, Narakeet lets you create twenty files before asking you to register."}, {"q": "Which tool has Austrian or Swiss German voices?", "a": "Amazon Polly has a dedicated Austrian German voice, Hannah, alongside its standard German voices. For Swiss German, Microsoft Azure is the clear pick: its de-CH voices are Leni (female) and Jan (male). Most consumer apps, including Speechify and our own tool, offer Standard German only, whichever country you are in."}, {"q": "Is German TTS good for learning pronunciation?", "a": "Yes — with one condition: use a neural voice, not an old robotic one. A good German voice models the two different ch sounds in ich and Bach, keeps compound-word stress on the first part, and lets you shadow real sentences. Pair listening with the written text, slow the speed slightly, and repeat aloud."}, {"q": "Can I download German TTS as MP3 for free?", "a": "Yes. On TextToSpeechH you generate the German audio in your browser and download the MP3 free, with no account. Narakeet also exports MP3 (and WAV) and lets you make twenty files free before registration. On developer platforms like Polly and Azure, MP3 output is standard too, but you pay per character."}],
