@@ -47,6 +47,12 @@ class QueueService {
     this._dailyIsolateCounts = { completed: 0, failed: 0 };
     this._lastFlushedAt = { completed: 0, failed: 0 };
     this._pendingDelta = { completed: 0, failed: 0 };
+    // Character tally for COMPLETED jobs (2026-11-17, owner's request):
+    // total characters synthesized + the share Azure served, so the real
+    // monthly cost of a paid Azure tier can be measured instead of guessed.
+    // Accumulated in memory and persisted with the completed-span flush
+    // (see bumpDailyChars) — never a KV write per job.
+    this._pendingChars = { total: 0, azure: 0 };
 
     // Only set up filesystem and intervals in full Node environments
     if (!isCloudflareRuntime()) {
@@ -145,7 +151,7 @@ class QueueService {
     }
   }
 
-  async noteJobFinished(env, state, errorMessage) {
+  async noteJobFinished(env, state, errorMessage, meta) {
     // Called by the /api/generate handler AFTER the job's final save, so the
     // counter can never delay or break generation. Each isolate counts its own
     // finished jobs for the current UTC day (KV stats keys are UTC-dated,
@@ -166,8 +172,19 @@ class QueueService {
         this._pendingDelta = { completed: 0, failed: 0 };
         this._pendingFailReasons = {};
         this._lastFailSample = '';
+        this._pendingChars = { total: 0, azure: 0 };
       }
       this._dailyIsolateCounts[kind] += 1;
+      if (kind === 'completed' && meta && Number.isFinite(meta.chars) && meta.chars > 0) {
+        // Characters are tallied for completed jobs only: a failed job
+        // produced no billable audio on any provider. The Azure share is
+        // what a paid backup tier would actually have billed for.
+        this._pendingChars = this._pendingChars || { total: 0, azure: 0 };
+        this._pendingChars.total += Math.floor(meta.chars);
+        if (meta.providerUsed === 'AzureProvider') {
+          this._pendingChars.azure += Math.floor(meta.chars);
+        }
+      }
       const { shouldFlush, isolateDelta, classifyFailure } = require('./statsCounter');
       if (kind === 'failed' && errorMessage) {
         // Tally WHY jobs fail (2026-11-14): bucketed in memory per isolate and
@@ -186,6 +203,7 @@ class QueueService {
           this._pendingDelta[kind] = d.amount;
           await this.bumpDailyCounter(env, kind);
           if (kind === 'failed') await this.bumpFailReasons(env);
+          if (kind === 'completed') await this.bumpDailyChars(env);
         }
       }
     } catch (e) {
@@ -252,6 +270,34 @@ class QueueService {
     }
   }
 
+  async bumpDailyChars(env) {
+    // Persist this isolate's pending character tally for today:
+    // read-modify-write on ONE key (stats:chars:<date>), called only from
+    // the completed-span flush, so it costs ~1 KV put per 10 completed
+    // jobs — the same pattern (and the same bounded-loss honesty) as the
+    // fail-reasons tally. Never throws.
+    if (!env || !env.TTS_JOBS_KV) return;
+    const pending = this._pendingChars || { total: 0, azure: 0 };
+    if (!pending.total && !pending.azure) return;
+    this._pendingChars = { total: 0, azure: 0 };
+    try {
+      const now = new Date();
+      const yyyy = now.getUTCFullYear();
+      const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(now.getUTCDate()).padStart(2, '0');
+      const key = `stats:chars:${yyyy}-${mm}-${dd}`;
+      let stored = {};
+      try { stored = JSON.parse((await env.TTS_JOBS_KV.get(key)) || '{}') || {}; } catch (e) { stored = {}; }
+      const out = {
+        totalChars: (stored.totalChars || 0) + pending.total,
+        azureChars: (stored.azureChars || 0) + pending.azure
+      };
+      await env.TTS_JOBS_KV.put(key, JSON.stringify(out), { expirationTtl: 60 * 60 * 24 * 400 });
+    } catch (e) {
+      console.warn('[QueueService] Daily chars save warning:', e.message);
+    }
+  }
+
   async getDailyCounters(env, days = 31) {
     // Read the persisted daily counters back, newest first. Reads are cheap
     // on every tier (100k/day free) — only writes are scarce.
@@ -266,16 +312,26 @@ class QueueService {
       const dd = String(d.getUTCDate()).padStart(2, '0');
       const date = `${yyyy}-${mm}-${dd}`;
       try {
-        const [completed, failed, failReasonsRaw] = await Promise.all([
+        const [completed, failed, failReasonsRaw, charsRaw] = await Promise.all([
           env.TTS_JOBS_KV.get(`stats:jobs:completed:${date}`),
           env.TTS_JOBS_KV.get(`stats:jobs:failed:${date}`),
-          env.TTS_JOBS_KV.get(`stats:failreasons:${date}`)
+          env.TTS_JOBS_KV.get(`stats:failreasons:${date}`),
+          env.TTS_JOBS_KV.get(`stats:chars:${date}`)
         ]);
         let failReasons = null;
         if (failReasonsRaw) { try { failReasons = JSON.parse(failReasonsRaw); } catch (e) { failReasons = null; } }
-        out.push({ date, completed: parseInt(completed || '0', 10) || 0, failed: parseInt(failed || '0', 10) || 0, failReasons });
+        let totalChars = 0;
+        let azureChars = 0;
+        if (charsRaw) {
+          try {
+            const parsed = JSON.parse(charsRaw) || {};
+            totalChars = parsed.totalChars || 0;
+            azureChars = parsed.azureChars || 0;
+          } catch (e) { /* keep zeros */ }
+        }
+        out.push({ date, completed: parseInt(completed || '0', 10) || 0, failed: parseInt(failed || '0', 10) || 0, failReasons, totalChars, azureChars });
       } catch (e) {
-        out.push({ date, completed: 0, failed: 0, failReasons: null });
+        out.push({ date, completed: 0, failed: 0, failReasons: null, totalChars: 0, azureChars: 0 });
       }
     }
     return out;

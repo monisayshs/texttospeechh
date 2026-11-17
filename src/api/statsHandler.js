@@ -52,8 +52,13 @@ module.exports = async (req, res) => {
   try {
     const counters = await queueService.getDailyCounters(req.env, days);
     const totals = counters.reduce(
-      (acc, d) => ({ completed: acc.completed + d.completed, failed: acc.failed + d.failed }),
-      { completed: 0, failed: 0 }
+      (acc, d) => ({
+        completed: acc.completed + d.completed,
+        failed: acc.failed + d.failed,
+        totalChars: acc.totalChars + (d.totalChars || 0),
+        azureChars: acc.azureChars + (d.azureChars || 0)
+      }),
+      { completed: 0, failed: 0, totalChars: 0, azureChars: 0 }
     );
     if (req.dashboard) {
       res.status(200);
@@ -62,7 +67,7 @@ module.exports = async (req, res) => {
       return;
     }
     res.status(200).json({
-      note: 'Counts are jobs FINISHED that UTC day, counted in spans of 10 per server instance — a busy day can read up to ~10-20 low. Dates are UTC (Cloudflare quota days).',
+      note: 'Counts are jobs FINISHED that UTC day, counted in spans of 10 per server instance — a busy day can read up to ~10-20 low. Dates are UTC (Cloudflare quota days). totalChars/azureChars (added 2026-11-17) tally the characters of COMPLETED jobs and the share Azure served, flushed with the same spans, so they carry the same bounded loss.',
       days: counters,
       totals
     });
@@ -136,6 +141,8 @@ function renderDashboard(counters, totals) {
         <td class="n">${c.completed}</td>
         <td class="n">${c.failed}</td>
         <td class="n">${c.completed + c.failed}</td>
+        <td class="n">${(c.totalChars || 0).toLocaleString('en-IN')}</td>
+        <td class="n">${(c.azureChars || 0).toLocaleString('en-IN')}</td>
       </tr>`).join('');
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -151,11 +158,11 @@ function renderDashboard(counters, totals) {
     <div class="stat red"><b>${totals.failed}</b><span>31 din — fail</span></div>
   </div>
   <table>
-    <thead><tr><th>Tareekh</th><th class="n">Voice bani</th><th class="n">Fail</th><th class="n">Kul</th></tr></thead>
+    <thead><tr><th>Tareekh</th><th class="n">Voice bani</th><th class="n">Fail</th><th class="n">Kul</th><th class="n">Akshar (kul)</th><th class="n">Azure akshar</th></tr></thead>
     <tbody>${rows}
     </tbody>
   </table>
-  <div class="foot">Note: ginti har server par 10-10 voice ke hisso me judti hai, isliye kisi bhi pal asal ginti se 10-20 tak kam dikh sakti hai. Tareekh UTC (London) hisab se hai — Cloudflare ki roz ki limit bhi usi par reset hoti hai (IST me din subah 5:30 baje badalta hai).</div>
+  <div class="foot">Note: ginti har server par 10-10 voice ke hisso me judti hai, isliye kisi bhi pal asal ginti se 10-20 tak kam dikh sakti hai. Tareekh UTC (London) hisab se hai — Cloudflare ki roz ki limit bhi usi par reset hoti hai (IST me din subah 5:30 baje badalta hai). Akshar wali ginati 17 Nov 2026 se shuru hai — usse pehle ke dino me 0 dikhega. Azure akshar = woh hissa jo backup wale Azure raaste ne banaya; paid plan ka asal kharcha isi se naapa jayega.</div>
 </div></body></html>`;
 }
 

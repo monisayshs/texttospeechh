@@ -55,7 +55,10 @@ module.exports = async (req, res) => {
     // jobs, so this costs a handful of extra KV writes a day instead of
     // doubling them (free tier is capped at 1,000 puts/day). Never throws;
     // generation is unaffected.
-    await queueService.noteJobFinished(req.env, jobInfo.state, jobInfo.error || null);
+    await queueService.noteJobFinished(req.env, jobInfo.state, jobInfo.error || null, {
+      chars: sanitizedText.length,
+      providerUsed
+    });
     const diagVoice = jobInfo.diagnosticVoice || options.voice;
     const diagRate = jobInfo.diagnosticRate || options.rate;
     const diagPitch = jobInfo.diagnosticPitch || options.pitch;
