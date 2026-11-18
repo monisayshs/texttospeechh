@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/best-text-to-speech-discord-bots", title: "7 Free Text to Speech Discord Bots That Work (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Discord TTS Bots Guide →" },
   { slug: "text-to-speech/blog/gemini-regional-voices-guide", title: "Gemini's 66 Regional Voices: Hear Accents Free (2026)", category: "Guides", readingTime: "6 min read", cta: "Read the Gemini Regional Voices Guide →" },
   { slug: "text-to-speech/blog/text-to-speech-for-websites", title: "Add Text to Speech to Your Website: 2026 Guide (Free)", category: "Guides", readingTime: "8 min read", cta: "Read the TTS for Websites Guide →" },
   { slug: "text-to-speech/blog/best-realistic-text-to-speech-tools", title: "Most Realistic Text to Speech Tools in 2026 (7 Free)", category: "Guides", readingTime: "9 min read", cta: "Read the Realistic TTS Tools Guide →" },
@@ -7621,7 +7622,7 @@ before you put the audio in a course you sell.</p></div>
 <div style="background:var(--color-bg-secondary); border:1px solid var(--color-border); padding:18px; border-radius:10px;"><h3 style="margin-top:0; color:var(--color-primary);">Q5: Will I get in trouble for TTS spam on Discord?</h3><p style="margin:0; font-size:0.92rem; line-height:1.6;">If you spam /tts in someone else's server, expect a mute or ban — server owners control TTS permissions per role for exactly this reason. In your own server, set sensible limits: announcements only, not conversation.</p></div></div></section>
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
-<p style="line-height:1.8;">For quick jokes, /tts is fine — and when the joke needs more than one robot voice, these <a href="${DOMAIN}/text-to-speech/blog/funny-text-to-speech" style="color:var(--color-primary);">funny text to speech messages and voices</a> are the next step. For a server you actually run, the soundboard MP3 route is the pro move — one clean AI voiceover, uploaded once, playable forever, sounding good on every device. It takes five minutes to set up and makes your server feel ten times more polished.</p>
+<p style="line-height:1.8;">For quick jokes, /tts is fine — and when the joke needs more than one robot voice, these <a href="${DOMAIN}/text-to-speech/blog/funny-text-to-speech" style="color:var(--color-primary);">funny text to speech messages and voices</a> are the next step. And if you want a bot reading chat live instead, our roundup of the <a href="${DOMAIN}/text-to-speech/blog/best-text-to-speech-discord-bots" style="color:var(--color-primary);">best free text to speech Discord bots</a> compares the ones worth adding. For a server you actually run, the soundboard MP3 route is the pro move — one clean AI voiceover, uploaded once, playable forever, sounding good on every device. It takes five minutes to set up and makes your server feel ten times more polished.</p>
 <p style="line-height:1.8;">Generate your first announcement free with <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a> — pick a voice that fits your server's vibe, download the MP3, upload to soundboard. No sign-up.</p>
 <p style="line-height:1.8;"><em>By Mauhnish · TextToSpeechH</em></p>
 </section>
@@ -11512,9 +11513,73 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
 `
+  },
+  "text-to-speech/blog/best-text-to-speech-discord-bots": {
+    title: `7 Free Text to Speech Discord Bots That Work (2026)`,
+    h1: `7 Free Text to Speech Discord Bots That Work (2026)`,
+    ogImage: "/images/blog/best-text-to-speech-discord-bots/best-text-to-speech-discord-bots-hero.webp",
+    metaDesc: `Free text to speech Discord bots that read messages in voice channels — VOICEVOX, Yomuzo, VOISCORD and more. Setup steps, free limits, and the catch.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Is there a free text to speech bot for Discord?", "a": "Yes. Yomuzo is completely free with 140+ languages, VOICEVOX is free with Japanese voices, and Interaction Bot's TTS is free with a vote. Discord's own /tts command is free, but it only plays on each listener's own device. A bot is free too, but check the free tier first — some bots lock their best voices behind a paid plan."}, {"q": "How do I make Discord read messages aloud?", "a": "Use the built-in /tts command for your own device, or add a TTS bot for the whole voice channel. Find it on top.gg or Discord's App Directory, click Add App, choose your server, and grant it permission to see the text channel and speak in voice. Then join a voice channel and run /tts say with your message."}, {"q": "What is the best TTS bot for Discord in 2026?", "a": "It depends on your server. Yomuzo is the best free all-rounder with 140+ languages and 99.92% uptime. VOICEVOX leads on installs with 165,171 and suits Japanese-voice communities. Interaction Bot is best for multilingual servers, Streamcord for streamers reading Twitch chat, and Voicemod for fun character voices on game nights."}, {"q": "Can a Discord TTS bot speak English?", "a": "Yes, but English is the weak spot of the free tier. Most completely free bots are built around Japanese character voices, so their English is limited or robotic. Yomuzo and Interaction Bot both read English among their many languages, and a custom bot built with the ElevenLabs API gives the most natural English, but needs setup and an API bill."}, {"q": "Is using a TTS bot on Discord safe?", "a": "Mostly, if you pick a well-installed bot. Check its install count, reviews, and privacy page before adding it, and grant only the permissions it needs — seeing the text channel and speaking in voice. Never grant administrator rights. Remember the bot processes your channel's messages, so do not use one in a channel where people share anything sensitive."}],
+    datePublished: "November 18, 2026",
+    dateModified: "November 18, 2026",
+    content: `
+<p style="line-height:1.8;">The best free text to speech Discord bot for most people is Yomuzo: it is free, reads messages in 140+ languages, and reports 99.92% uptime. If you want Japanese voices, VOICEVOX leads with over 165,000 installs. Discord's own /tts command is free too, but it only plays audio on each listener's own device — it never speaks into the voice channel, so a bot is the only way the whole channel hears the message.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Free Discord TTS Bots in One Box</h2><p style="margin:0; line-height:1.7;">A text to speech Discord bot joins your voice channel and reads text messages aloud so everyone in the channel hears them. The best free picks in 2026 are Yomuzo (free, 140+ languages, 99.92% uptime), VOICEVOX TTS Bot (165,171 installs, Japanese voices), and Interaction Bot (TTS in 52 languages, free with a vote). Add one from top.gg or Discord's App Directory, grant it voice permissions, and use a command like /tts say. The catch: most completely free bots speak Japanese voices best, and a bot can read your channel's messages, so check its privacy policy first.</p></div>
+<section style="margin-bottom:40px;">
+<h2>Why Discord's own /tts is not enough</h2>
+<img src="/images/blog/best-text-to-speech-discord-bots/best-text-to-speech-discord-bots-hero.webp" alt="Free text to speech Discord bots - a chat panel with plain message lines, a small robot bot, and a gold sound wave flowing into a speaker icon, text becoming speech in a voice channel" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Discord has a built-in text-to-speech command, and it costs nothing. Type /tts followed by your message and Discord reads it aloud. It sounds like the whole problem is solved — until you realise who actually hears it.</p>
+<p style="line-height:1.8;">As VoxBooster's 2026 setup guide puts it: "Discord's native /tts command is client-side — it plays audio through the listener's speakers, not through a voice channel." Each person hears the message on their own device, with their own voice settings. Nobody else in the voice channel hears a thing, and you cannot pick the voice or the language. That is fine for accessibility, and it is useless for a game night, a stream, or a community announcement.</p>
+<p style="line-height:1.8;">A bot fixes exactly that. It joins the voice channel like a member, takes a text message, turns it into speech, and plays it so everyone connected hears the same voice at the same time. That is the whole job, and the bots below do it for free.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The 7 best free text to speech Discord bots</h2>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">1. Yomuzo TTS BOT — best free all-rounder</h3>
+<p style="line-height:1.8;">Yomuzo is the safest first pick. It is completely free, reports 99.92% uptime, and reads messages in 140+ languages, according to install and uptime figures reported by CopyProgramming in 2026. Setup is an invite link, no code and no dashboard to learn. If your server speaks more than one language, this is the bot that covers it without a paywall appearing halfway through the month.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">2. VOICEVOX TTS Bot — most installed, Japanese voices</h3>
+<p style="line-height:1.8;">VOICEVOX is the biggest TTS bot on Discord by installs: 165,171 installs, growing by 7,297 in the last 28 days, in figures published on top.gg and reported by CopyProgramming in its 2026 roundups. Its voices are Japanese character voices, which is exactly what its audience wants — and the honest limit if yours does not. If your server is anime or Japanese-culture focused, this is the obvious pick. If you need natural English, look at Yomuzo or Interaction Bot instead.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">3. Zundamon β — the other Japanese giant</h3>
+<p style="line-height:1.8;">Zundamon β holds 146,061 installs, making it the second-biggest TTS bot by the same top.gg figures. Like VOICEVOX it speaks in Japanese character voices, and it scores near-perfect marks for staying online. Pick it over VOICEVOX only if your community already knows and likes the Zundamon voice — for a new server, there is little practical difference between the two.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">4. VOISCORD — the freemium middle ground</h3>
+<p style="line-height:1.8;">VOISCORD has 61,100 installs and a freemium model: the core reading works free, and paid plans exist for extra features. It is a reasonable choice if you want a bot that feels more like a product than a hobby project, but check what the free tier covers before you promise your server a particular voice. The free tier is genuinely usable; the paid plans are for people who want the extras.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">5. Interaction Bot — best for multilingual servers</h3>
+<p style="line-height:1.8;">Interaction Bot is an all-in-one bot — translation, speech-to-text, and text-to-speech — and its TTS reads messages in 52 languages. The TTS is free with a vote, meaning the server votes for the bot on top.gg to unlock it, and you run it with /tts start or /tts say. If your server already uses it for translation, turning on TTS costs nothing extra and keeps you to one bot instead of three.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">6. Streamcord TTS — best for streamers</h3>
+<p style="line-height:1.8;">Streamcord is built for one job: reading Twitch chat aloud into a Discord voice channel. If you stream and your Discord is where your community hangs out, this is the bot your viewers actually hear. It is the most popular hosted option for streamers, and it exists because the generic bots are not tuned for chat spam, emotes, and the pace of a live stream.</p>
+<h3 style="font-size:1.15rem; margin-top:26px; margin-bottom:8px;">7. Voicemod TTS Bot — best for fun voices</h3>
+<p style="line-height:1.8;">Voicemod is best known as a desktop voice changer, and its Discord bot brings that same library of novelty and character voices into text-to-speech. A free tier exists; the premium voices need a Voicemod subscription. This is the pick for a fun server, not a serious one — nobody is using a robot voice for a study group, but for a game night it is the whole point.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to add a TTS bot to your server in 3 steps</h2>
+<img src="/images/blog/best-text-to-speech-discord-bots/best-text-to-speech-discord-bots-mid.webp" alt="How to add a TTS bot to a Discord server in 3 steps - an invite link card, a permissions shield card, and a voice channel speaker card joined by a gold line with sound waves" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Pick the bot and open its invite link.</strong> Find it on top.gg or in Discord's App Directory, and check the install count and reviews before you add anything.</li>
+<li style="margin-bottom:8px;"><strong>Add it to your server.</strong> Click "Add App" or "Invite", choose your server, and grant it the permissions it asks for — it needs to see the text channel and to join and speak in the voice channel. Do not grant it administrator rights; a TTS bot has no reason to need them.</li>
+<li style="margin-bottom:8px;"><strong>Test it in a voice channel.</strong> Join a voice channel, then run the bot's command — usually /tts say followed by your message, or /tts start to turn a text channel into a reading channel. If nobody hears anything, check that the bot is actually in the voice channel and that its volume is not muted.</li>
+</ol>
+<p style="line-height:1.8;">The whole thing takes under five minutes. If a bot asks you to paste a token, run code, or self-host anything, you picked the wrong bot — every bot on this list installs with a click.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The catch: what the free bots will not tell you</h2>
+<p style="line-height:1.8;">Three honest limits before you commit your server to any of them. First, most completely free bots are Japanese-voice bots. The August 2026 Zenn.dev review of 16 Discord TTS bots found the free tier heavy with Zundamon and Yukkuri voices; English voices in the free tier are thinner, and the best English voices usually sit behind a paid plan somewhere.</p>
+<p style="line-height:1.8;">Second, a TTS bot reads your messages. That is its job, but it means a third-party service processes your channel's text. Stick to well-installed bots with public privacy pages, and do not put one in a channel where people share anything sensitive.</p>
+<p style="line-height:1.8;">Third, free bots go down. Yomuzo's 99.92% uptime is unusually good for a free bot; smaller bots disappear, change owners, or stop being maintained. If your server depends on the bot for accessibility, keep Discord's built-in /tts as the fallback — it never goes offline, because it lives in the app itself.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>No-install alternative: make the audio yourself</h2>
+<p style="line-height:1.8;">If you only need a voiceover now and then — a welcome message, an announcement, a clip for a stream — you do not need a bot at all. Paste the text into a free text-to-speech tool, pick a natural voice, download the MP3, and play it in the voice channel through any music bot or a screen share. It is not the same as a live bot reading chat as it arrives, and it is honest to say so. But it is free, it works in 30 voices, and it is the fastest route when the job is one recording rather than a live channel.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">For most servers, Yomuzo is the free text to speech Discord bot to try first — free, multilingual, and stable. VOICEVOX is the pick for Japanese-voice communities, Interaction Bot is the pick if you also want translation, and Streamcord is the pick if you stream. Discord's own /tts stays the fallback for accessibility. Add one bot, test it with a single message, and keep the one your server actually enjoys hearing.</p>
+<p style="line-height:1.8;">Try it now: make a free voiceover in our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/discord-text-to-speech-guide" style="color:var(--color-primary);">Discord text-to-speech guide</a> for the full setup, our <a href="${DOMAIN}/text-to-speech/blog/best-voice-changers-for-discord" style="color:var(--color-primary);">best voice changers for Discord</a> for live voice changing, and our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
   }
 };
-
 module.exports = {
   BLOG_ARTICLES_LIST,
   getBlogHubPage,
