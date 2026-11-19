@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/elevenlabs-scribe-v3-explained", title: "ElevenLabs Scribe v3: 27% Fewer Errors, Same Price (2026)", category: "Guides", readingTime: "7 min read", cta: "Read the Scribe v3 Guide \u2192" },
   { slug: "text-to-speech/blog/best-text-to-speech-discord-bots", title: "7 Free Text to Speech Discord Bots That Work (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Discord TTS Bots Guide →" },
   { slug: "text-to-speech/blog/gemini-regional-voices-guide", title: "Gemini's 66 Regional Voices: Hear Accents Free (2026)", category: "Guides", readingTime: "6 min read", cta: "Read the Gemini Regional Voices Guide →" },
   { slug: "text-to-speech/blog/text-to-speech-for-websites", title: "Add Text to Speech to Your Website: 2026 Guide (Free)", category: "Guides", readingTime: "8 min read", cta: "Read the TTS for Websites Guide →" },
@@ -11575,6 +11576,94 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">For most servers, Yomuzo is the free text to speech Discord bot to try first — free, multilingual, and stable. VOICEVOX is the pick for Japanese-voice communities, Interaction Bot is the pick if you also want translation, and Streamcord is the pick if you stream. Discord's own /tts stays the fallback for accessibility. Add one bot, test it with a single message, and keep the one your server actually enjoys hearing.</p>
 <p style="line-height:1.8;">Try it now: make a free voiceover in our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/discord-text-to-speech-guide" style="color:var(--color-primary);">Discord text-to-speech guide</a> for the full setup, our <a href="${DOMAIN}/text-to-speech/blog/best-voice-changers-for-discord" style="color:var(--color-primary);">best voice changers for Discord</a> for live voice changing, and our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
+  },
+  "text-to-speech/blog/elevenlabs-scribe-v3-explained": {
+    title: `ElevenLabs Scribe v3: 27% Fewer Errors, Same Price (2026)`,
+    h1: `ElevenLabs Scribe v3: 27% Fewer Errors, Same Price (2026)`,
+    ogImage: "/images/blog/elevenlabs-scribe-v3-explained/elevenlabs-scribe-v3-explained-hero.webp",
+    metaDesc: `Scribe v3 cuts word errors 27% vs v2 across 102 languages — same $0.20/hr price. What changed, how to try ~30 min free, and the best free alternatives.`,
+    category: "Guides",
+    readingTime: "7 min read",
+    faqs: [{"q": "Is ElevenLabs Scribe v3 free?", "a": "Yes, within limits. The Free plan gives 10,000 credits a month, and at about 330 credits per minute of transcription that covers roughly 30 minutes a month. The API is pay-as-you-go at $0.20 per hour of audio with no free tier, so the app is the free route and the API is the cheap route for regular use."}, {"q": "How accurate is Scribe v3?", "a": "ElevenLabs says Scribe v3 makes 27% fewer word errors than Scribe v2 across 102 languages, based on its own benchmarks. Independently, Artificial Analysis lists Scribe v3 at a 1.9% word error rate — one of the best scores on its board, ahead of Microsoft's MAI-Transcribe-2 at 2.0% and Scribe v2 at 2.2%."}, {"q": "What is the difference between Scribe v3 and Scribe v3 Live?", "a": "Scribe v3 is for recorded audio like podcasts, videos and meetings, while Scribe v3 Live is the real-time version for voice agents and live calls. Live makes 43% fewer errors than Scribe v2 Realtime and adds live speaker labels for the first time, with about 150 ms median latency. Both are now the defaults in the ElevenLabs app."}, {"q": "How much does Scribe v3 cost per hour?", "a": "Through the API it costs $0.20 per hour of audio, the same as Scribe v2; Scribe v3 Live costs $0.22 per hour. In the ElevenLabs app you pay in credits instead — about 330 credits a minute — roughly 30 minutes free a month, 1.5 hours on the $6 Starter plan, and 6 hours on the $22 Creator plan."}, {"q": "What is the best free alternative to Scribe v3?", "a": "It depends on your volume. YouTube's automatic captions are free and unlimited but less accurate. Whisper running on Groq costs about $0.04 an hour and scores 4.6% on the independent leaderboard. Open-source Whisper or NVIDIA Parakeet cost nothing per minute if you run them yourself. For occasional use, Scribe v3's own 30 free minutes a month may be enough."}],
+    datePublished: "November 19, 2026",
+    dateModified: "November 19, 2026",
+    content: `
+<p style="line-height:1.8;">ElevenLabs Scribe v3 is the company's new speech-to-text model, launched on 10 November 2026, and it makes 27% fewer word errors than Scribe v2 across 102 languages — at the same $0.20 per hour API price. The real-time sibling, Scribe v3 Live, cuts errors 43% against Scribe v2 Realtime and adds live speaker labels for the first time. If you transcribe podcasts, meetings or YouTube audio, this is the cheapest accuracy jump of the year — and you can try about 30 minutes free on the Free plan.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Scribe v3 in One Box</h2><p style="margin:0; line-height:1.7;">Scribe v3 is ElevenLabs' November 2026 transcription model. ElevenLabs says it makes 27% fewer word errors than Scribe v2 across 102 languages, with better speaker labels on multi-person recordings, and the API price did not move — still $0.20 per hour of audio. In the ElevenLabs app it costs about 330 credits a minute, so the 10,000-credit Free plan covers roughly 30 minutes a month. The catch: every accuracy number so far is ElevenLabs testing its own model, so treat 27% as the vendor's claim, not an independent measurement.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What actually changed in Scribe v3</h2>
+<img src="/images/blog/elevenlabs-scribe-v3-explained/elevenlabs-scribe-v3-explained-hero.webp" alt="ElevenLabs Scribe v3 speech to text - a gold audio waveform flowing into a clean document page with plain text lines and a speaker icon, sound becoming a transcript" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Three things, and they are all about real-world audio rather than clean studio recordings. First, the error rate: ElevenLabs reports 27% fewer word errors than Scribe v2, averaged across 102 languages, measured on its own version of the public FLEURS multilingual benchmark plus a 16-language set of meetings, calls and voice notes it says it will open-source. Second, speaker labels: on recordings with three or more people, Scribe v3 makes 17% fewer speaker-labelling errors than v2, which matters for any meeting transcript where "who said that" is half the value. Third, it handles background noise and people talking over each other better — the two things that wreck most transcripts in practice.</p>
+<p style="line-height:1.8;">Scribe v3 Live is the real-time version for voice agents and live calls. It makes 43% fewer errors than Scribe v2 Realtime, according to ElevenLabs, and it labels speakers live — something the old real-time model never did. ElevenLabs quotes a median latency of about 150 ms for Live, which is fast enough for a voice agent to keep up with a caller.</p>
+<p style="line-height:1.8;">As ElevenLabs put it in the launch announcement: "Introducing Scribe v3 and Scribe v3 Live: our most accurate Speech to Text models yet, built for real-world audio, with strong handling of background noise, turn endings, and who said what in a busy meeting."</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The independent check: 1.9% word error rate</h2>
+<img src="/images/blog/elevenlabs-scribe-v3-explained/elevenlabs-scribe-v3-explained-mid.webp" alt="Scribe v3 accuracy check - a jagged waveform with small error sparks on the left flowing through a gold arrow into a smooth clean waveform on the right, fewer transcription errors" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Here is the number worth more than the vendor's 27%. On the independent Artificial Analysis speech-to-text leaderboard, Scribe v3 scores a 1.9% word error rate — one of the best scores on the board: second overall, behind only an Alibaba Cloud preview model at 1.7%, and ahead of Microsoft's MAI-Transcribe-2 at 2.0%. For comparison, Scribe v2 sat at 2.2% on the same board. That is an independent measurement, not ElevenLabs grading its own homework, and it lines up with the direction of the vendor's claim — even if the exact size of the gain will vary on your noisy audio.</p>
+<p style="line-height:1.8;">One honest note: a 1.9% error rate still means roughly two wrong words in every hundred. On clean audio that is nearly invisible; on a noisy call with accents the model has rarely heard, it is not. No transcription model is "solved" yet, and anyone promising a perfect transcript is selling you something.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What an hour of transcription really costs</h2>
+<p style="line-height:1.8;">The API price is the headline: $0.20 per hour of audio, exactly what Scribe v2 cost. That makes Scribe v3 the cheapest top-accuracy option on a per-hour basis — only OpenAI's mini transcription model lists a lower headline price, about $0.18 an hour on OpenAI's pricing page. But most people do not use the API. They use the ElevenLabs app, and there the price is paid in credits: about 330 credits per minute of transcription.</p>
+<p style="line-height:1.8;">That changes the math completely:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Free plan (10,000 credits/month):</strong> about 30 minutes of transcription a month, if you spend the credits on nothing else.</li>
+<li style="margin-bottom:8px;"><strong>Starter ($6/month, 30,000 credits):</strong> about 1.5 hours.</li>
+<li style="margin-bottom:8px;"><strong>Creator ($22/month, 121,000 credits):</strong> about 6 hours.</li>
+</ul>
+<p style="line-height:1.8;">If you transcribe a weekly one-hour podcast, the API at $0.20 an hour costs you about 80 cents a month. The same job in the app would eat a Creator plan. The lesson: if you transcribe regularly, learn the API — it is a simple upload-and-wait script, and it is roughly 25 times cheaper per hour than spending app credits.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How to try Scribe v3 free</h2>
+<p style="line-height:1.8;">You do not need a card. Scribe v3 is now the default speech-to-text model in the ElevenLabs app, so a free account gets you straight in:</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Make a free ElevenLabs account.</strong> No card required; you get 10,000 credits a month.</li>
+<li style="margin-bottom:8px;"><strong>Open Speech to Text in the app and upload an audio file.</strong> MP3, WAV and M4A all work. Pick a recording you already know well — a podcast episode or a meeting — so you can judge the errors yourself.</li>
+<li style="margin-bottom:8px;"><strong>Check the speaker labels and the timestamps.</strong> Scribe v3 adds both by default. Export the transcript as text or SRT if you need captions.</li>
+</ol>
+<p style="line-height:1.8;">Thirty minutes is enough to test one podcast episode or two meetings. If the transcript is clean enough to use with light editing, you have your answer. If it is not, the model is not the problem — your audio probably is, and no transcription service fixes a bad recording.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Free alternatives when 30 minutes is not enough</h2>
+<p style="line-height:1.8;">Scribe v3's free allowance is small, and the paid plans start at $6 a month. If you need more free transcription, these are the honest options:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>YouTube's automatic captions.</strong> Free, unlimited, and good enough for rough captions you fix by hand. The accuracy is well below Scribe v3, but the price is zero.</li>
+<li style="margin-bottom:8px;"><strong>Whisper through Groq.</strong> OpenAI's Whisper model running on Groq costs about $0.04 an hour — the cheapest hosted transcription anywhere — with a 4.6% word error rate on the same independent board. It needs a little setup, but it is the best free-or-nearly-free route for bulk audio.</li>
+<li style="margin-bottom:8px;"><strong>Open-source Whisper or NVIDIA Parakeet.</strong> Run them on your own machine and pay nothing per minute beyond your hardware. Parakeet covers 25 European languages; Whisper covers the broadest range. Both need a computer that can run them, which is the real cost.</li>
+<li style="margin-bottom:8px;"><strong>Descript's free tier.</strong> One media hour a month, and the transcript becomes the editor — you cut audio by deleting text. Worth it if you edit talking videos, not if you just need transcripts.</li>
+</ul>
+<p style="line-height:1.8;">Our roundup of the <a href="${DOMAIN}/text-to-speech/blog/best-free-speech-to-text-tools" style="color:var(--color-primary);">best free speech-to-text tools</a> compares the free tiers side by side if you want the full picture before you pay anyone.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Scribe v3 vs the old model: the short version</h2>
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+<th style="padding:10px; color:var(--color-primary-on);"></th>
+<th style="padding:10px; color:var(--color-primary-on);">Scribe v2</th>
+<th style="padding:10px; color:var(--color-primary-on);">Scribe v3</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Word errors (vendor claim)</td><td style="padding:10px;">Baseline</td><td style="padding:10px;">27% fewer, 102 languages</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Independent word error rate</td><td style="padding:10px;">2.2% (Artificial Analysis)</td><td style="padding:10px;">1.9% (Artificial Analysis)</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Speaker labels (3+ people)</td><td style="padding:10px;">Baseline</td><td style="padding:10px;">17% fewer label errors</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Real-time version</td><td style="padding:10px;">Scribe v2 Realtime</td><td style="padding:10px;">Scribe v3 Live, 43% fewer errors, live speaker labels</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">API price</td><td style="padding:10px;">$0.20/hour</td><td style="padding:10px;">$0.20/hour (unchanged)</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Free plan</td><td style="padding:10px;">~30 min/month in app</td><td style="padding:10px;">~30 min/month in app</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">Nothing about the price moved. What moved is accuracy, speaker labelling and real-time performance — and the independent leaderboard agrees with the direction, if not the exact percentage. That is a rare combination: a new model that is measurably better and costs the same.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Scribe v3 is a genuine step forward for transcription, and the price freeze makes it an easy upgrade for anyone already on ElevenLabs. Use the free plan's 30 minutes to test it on your own worst recording — the noisy meeting, the accented call — because that is where the 27% claim either holds up or falls apart. If you transcribe hours a week, use the API at $0.20 an hour instead of burning app credits. And if you need the audio to go the other way — text into speech — our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> turns up to 10,000 words into natural voiceover in 30 voices, no sign-up, or read our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives</a> and <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-v4-free-guide" style="color:var(--color-primary);">ElevenLabs v4 free guide</a> for the voice-generation side of the same company.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
 `
