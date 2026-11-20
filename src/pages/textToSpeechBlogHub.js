@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/gpt-live-vs-gemini-live-voice-benchmark", title: "GPT Live vs Gemini Live: Voice AI Benchmark (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Voice AI Benchmark \u2192" },
   { slug: "text-to-speech/blog/elevenlabs-scribe-v3-explained", title: "ElevenLabs Scribe v3: 27% Fewer Errors, Same Price (2026)", category: "Guides", readingTime: "7 min read", cta: "Read the Scribe v3 Guide \u2192" },
   { slug: "text-to-speech/blog/best-text-to-speech-discord-bots", title: "7 Free Text to Speech Discord Bots That Work (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Discord TTS Bots Guide →" },
   { slug: "text-to-speech/blog/gemini-regional-voices-guide", title: "Gemini's 66 Regional Voices: Hear Accents Free (2026)", category: "Guides", readingTime: "6 min read", cta: "Read the Gemini Regional Voices Guide →" },
@@ -9766,6 +9767,7 @@ before you put the audio in a course you sell.</p></div>
 <p style="line-height:1.8;">If you are a business owner, not a developer, the honest read is this: you do not need Realtime today, but you should know it exists, because the support line or booking assistant you buy next year will very likely run on something shaped exactly like it. If you are a creator who just wants a voiceover today, none of this changes your workflow — you still need text turned into speech, not a live agent.</p>
 <p style="line-height:1.8;">And that part is already free and instant. Paste your script into <a href="${DOMAIN}/" style="color:var(--color-primary);">TextToSpeechH</a>, pick a voice, and download the MP3 — no sign-up, no card, no API key. Voice agents are the future of phone calls; a free voiceover in your browser is the present of everything else.</p>
 <p style=\"line-height:1.8;\">One step further: if you want the finished-product version of this idea — a no-code agent that answers and qualifies sales calls inside the platform your team already calls from — our <a href=\"${DOMAIN}/text-to-speech/blog/convoso-voice-ai-agent-guide\" style=\"color:var(--color-primary);\">Convoso Voice AI Agent guide</a> covers that route, including the early results Convoso published at launch.</p>
+<p style="line-height:1.8;">And if you want to know how ElevenLabs' agent engine compares with the native speech-to-speech models before you build on any of them, our <a href="https://www.texttospeechh.com/text-to-speech/blog/gpt-live-vs-gemini-live-voice-benchmark" style="color:var(--color-primary);">GPT Live vs Gemini Live benchmark</a> explainer covers Leobit's independent test, where ElevenLabs Agents faced GPT Live, Gemini 3.8 Live and Azure GPT Realtime on identical assistant tasks — speed, noisy audio and cost per call.</p>
 <p style="line-height:1.8;">If you hit ElevenLabs' free limits while experimenting, our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives guide</a> compares seven free tools with bigger limits and no sign-up.</p>
 <p style="line-height:1.8;">And if you are arriving here because your voice-agent platform is disappearing, you are not alone: Hume's EVI voice API shuts down on November 13, 2026. Our <a href="${DOMAIN}/text-to-speech/blog/hume-ai-alternatives" style="color:var(--color-primary);">Hume AI alternatives guide</a> covers what replaces EVI — Realtime included — and what replaces its Octave text-to-speech, with the free options first.</p>
 </section>
@@ -11453,7 +11455,7 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 </section>
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
-<p style="line-height:1.8;">Gemini Voice Remixing is a small feature with a clear job: take a voice you already like and nudge it — older, warmer, faster, a different accent — with a sentence instead of a new persona description. It is live now in AI Studio and the Gemini API, it creates a reusable stored voice with a preview to audition, and it is gated behind a paid Tier 1 project with a 200-voice limit per project. For builders, it is the most practical Gemini voice news of the month. For everyone else, the free tools still do the job — and the voices behind them keep getting better either way.</p>
+<p style="line-height:1.8;">Gemini Voice Remixing is a small feature with a clear job: take a voice you already like and nudge it — older, warmer, faster, a different accent — with a sentence instead of a new persona description. It is live now in AI Studio and the Gemini API, it creates a reusable stored voice with a preview to audition, and it is gated behind a paid Tier 1 project with a 200-voice limit per project. For builders, it is the most practical Gemini voice news of the month. For everyone else, the free tools still do the job — and the voices behind them keep getting better either way. If the live, talk-back side of Gemini is what you are evaluating, our <a href="https://www.texttospeechh.com/text-to-speech/blog/gpt-live-vs-gemini-live-voice-benchmark" style="color:var(--color-primary);">GPT Live vs Gemini Live benchmark</a> walks through the first independent head-to-head of Gemini 3.8 Live against GPT Live, ElevenLabs and Azure on the same voice assistant.</p>
 <p style="line-height:1.8;">Try it now: paste any text into our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> and hear it in 30 voices, or read our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools</a> roundup to compare the free options side by side.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
@@ -11664,6 +11666,107 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">Scribe v3 is a genuine step forward for transcription, and the price freeze makes it an easy upgrade for anyone already on ElevenLabs. Use the free plan's 30 minutes to test it on your own worst recording — the noisy meeting, the accented call — because that is where the 27% claim either holds up or falls apart. If you transcribe hours a week, use the API at $0.20 an hour instead of burning app credits. And if you need the audio to go the other way — text into speech — our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> turns up to 10,000 words into natural voiceover in 30 voices, no sign-up, or read our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives</a> and <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-v4-free-guide" style="color:var(--color-primary);">ElevenLabs v4 free guide</a> for the voice-generation side of the same company.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
+`
+  },
+  "text-to-speech/blog/gpt-live-vs-gemini-live-voice-benchmark": {
+    title: `GPT Live vs Gemini Live: Voice AI Benchmark (2026)`,
+    h1: `GPT Live vs Gemini Live: Voice AI Benchmark (2026)`,
+    ogImage: "/images/blog/gpt-live-vs-gemini-live-voice-benchmark/gpt-live-vs-gemini-live-voice-benchmark-hero.webp",
+    metaDesc: `Leobit tested GPT Live, Gemini 3.8 Live, ElevenLabs and Azure on the same voice assistant. Speed, noisy-audio accuracy and cost per call in plain English.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Which is faster, GPT Live or Gemini 3.8 Live?", "a": "It depends which speed you mean. In Leobit's benchmark, GPT Live produced the first sound faster — a 0.79-second median against Gemini's 0.91 — but when a question needed a knowledge-base lookup, Gemini started the actual answer at 1.43 seconds while GPT Live's answer arrived at about 3.6 seconds, after an immediate filler phrase."}, {"q": "Which voice AI engine is cheapest per conversation?", "a": "Gemini 3.8 Live, by a wide margin in Leobit's cost model. A three-minute conversation with three lookups cost an estimated $0.04 to $0.09 at list prices, against roughly $0.15 for GPT Live and $0.24 for ElevenLabs Agents — about $37 versus $242 per thousand conversations between the cheapest and most expensive engines tested."}, {"q": "How did ElevenLabs Agents do in the benchmark?", "a": "Solidly, with two specific weaknesses. It passed every multilingual check (15 of 15 runs), handled caller pauses without dropping a turn, and gives you full control over the language model and voice. But it failed to respond in all 12 very-quiet-speaker runs, and at about $0.24 per three-minute conversation it was the most expensive engine tested."}, {"q": "Did Azure GPT Realtime really answer in German by mistake?", "a": "Yes — that is one of the stranger findings in Leobit's degraded-audio test. With an overdriven microphone, Azure GPT Realtime sometimes responded in German to an English question, or skipped the knowledge-base lookup and answered from its own knowledge. It scored 48 of 84 fully correct degraded runs, despite keeping near-perfect transcripts throughout the same tests."}, {"q": "Should I trust this benchmark enough to choose an engine?", "a": "Treat it as a starting shortlist, not a final verdict. Leobit used synthetic audio, its own scoring method and three repeats per scenario, and says the numbers are directional. Its value is showing which measurements matter — time to the actual answer, degraded-audio accuracy, pause handling — so you can run the same checks on your own call recordings."}],
+    datePublished: "November 20, 2026",
+    dateModified: "November 20, 2026",
+    content: `
+<p style="line-height:1.8;">There is no single winner. In Leobit's independent benchmark of four real-time voice AI engines, published in November 2026, OpenAI's GPT Live produced the first sound fastest (0.79 seconds) and stayed accurate on noisy audio (83 of 84 runs fully correct), while Google's Gemini 3.8 Live delivered the actual answer fastest when a lookup was needed (1.43 seconds) and cost the least — about $0.04 to $0.09 per three-minute conversation. ElevenLabs Agents and Azure GPT Realtime each won on narrower points and lost on others.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: the Benchmark in One Box</h2><p style="margin:0; line-height:1.7;">Leobit, a software company choosing an engine for its own voice assistant, ran GPT Live, Gemini 3.8 Live, ElevenLabs Agents and Azure GPT Realtime through identical scenarios in November 2026. GPT Live was fastest to first sound and best on degraded audio; Gemini 3.8 Live was fastest to the real answer and roughly six times cheaper per conversation than the priciest option, ElevenLabs Agents. Azure GPT Realtime trailed on noisy audio, answering only 48 of 84 degraded runs fully correctly. The right pick depends on whether your callers need speed, accuracy or low cost first.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What Leobit actually tested</h2>
+<img src="/images/blog/gpt-live-vs-gemini-live-voice-benchmark/gpt-live-vs-gemini-live-voice-benchmark-hero.webp" alt="GPT Live vs Gemini Live benchmark - four speech waveforms racing toward a finish flag, the two smooth amber waves ahead and two crackling teal waves trailing on noisy audio" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Three of the four engines are brand new. GPT Live reached the OpenAI API on 10 September 2026, Gemini 3.8 Live followed on 15 September, and ElevenLabs shipped its v4 speech models on 28 September. Azure GPT Realtime was the incumbent — the engine Leobit's own assistant, Leora, runs on today. Leobit gave every engine the same system prompt, the same single knowledge-base search function and the same pre-recorded audio, then streamed that audio at real speaking speed and timed everything from the end of the caller's phrase.</p>
+<p style="line-height:1.8;">The scenarios were ordinary assistant work: small talk, questions that need a database lookup, a question the database cannot answer, reading a phone number back with pauses, an off-topic request, and the same service question in German, Spanish and French. A separate test degraded four questions seven ways — room noise, other voices talking, a telephone-quality line, a very quiet speaker, echo, an overdriven microphone. Scoring combined keyword checks on the transcript, whether the lookup tool was called, and speech-recognition word error rate.</p>
+<p style="line-height:1.8;">One structural difference matters before you read any number. GPT Live, Gemini 3.8 Live and Azure GPT Realtime are native speech-to-speech models: audio in, audio out, one model. ElevenLabs Agents is a cascade — speech recognition, then a language model (Gemini 2.5 Flash in this test), then ElevenLabs' v4 Turbo voice. The cascade gives you control over each part; the native models cut steps. This benchmark compares the two approaches as much as the four products.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Speed: the fastest first sound is not the fastest answer</h2>
+<p style="line-height:1.8;">Without a lookup, GPT Live speaks first: a median of 0.79 seconds to the first sound, ahead of Gemini 3.8 Live at 0.91, ElevenLabs Agents at 1.19 and Azure GPT Realtime at 1.22. If the benchmark stopped there, GPT Live would win every headline.</p>
+<p style="line-height:1.8;">It does not stop there, and this is the most useful finding in the whole study. When a question needs a knowledge-base lookup, GPT Live starts talking almost immediately — "Let me check on that…" — while its backend model does the work. The caller hears something at 1.20 seconds, but the actual answer starts at about 3.6 seconds. Gemini 3.8 Live stays quiet slightly longer, then starts the real answer at 1.43 seconds. As Leobit puts it in its conclusions: “A filler phrase can make an assistant feel responsive while the actual answer is still several seconds away, so measure how long callers wait for the information they need.”</p>
+<img src="/images/blog/gpt-live-vs-gemini-live-voice-benchmark/gpt-live-vs-gemini-live-voice-benchmark-mid.webp" alt="First sound versus the real answer - two timeline bars, the top one starting with a short speech segment and a long wait before the document icon, the other reaching its answer sooner" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+<th style="padding:10px; color:var(--color-primary-on);">Median time</th>
+<th style="padding:10px; color:var(--color-primary-on);">GPT Live</th>
+<th style="padding:10px; color:var(--color-primary-on);">Gemini 3.8 Live</th>
+<th style="padding:10px; color:var(--color-primary-on);">ElevenLabs Agents</th>
+<th style="padding:10px; color:var(--color-primary-on);">Azure GPT Realtime</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">First sound, no lookup</td><td style="padding:10px;">0.79 s</td><td style="padding:10px;">0.91 s</td><td style="padding:10px;">1.19 s</td><td style="padding:10px;">1.22 s</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Start of actual answer, with lookup</td><td style="padding:10px;">~3.6 s</td><td style="padding:10px;">1.43 s</td><td style="padding:10px;">2.27 s</td><td style="padding:10px;">2.16 s</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">Neither number is fake. A filler line genuinely makes a call feel responsive, and for small talk GPT Live's speed is real. But if your callers mostly ask questions that need a lookup — prices, stock, account details — the second row is the one your customers will judge you on.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Noisy audio: where the engines really separate</h2>
+<p style="line-height:1.8;">Clean studio audio flatters everyone. Leobit's degraded-audio test is where the ranking turns harsh. Out of 84 runs per engine, a reply counted as fully correct only if the assistant answered, called the lookup when needed and gave the right facts:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>GPT Live: 83 of 84.</strong> The only miss was a very quiet speaker it could not detect, where it reasonably asked the caller to repeat the question.</li>
+<li style="margin-bottom:8px;"><strong>Gemini 3.8 Live: 80 of 84.</strong> Its weakness was overlapping voices — when two people talked at once, the second half of the question sometimes got lost.</li>
+<li style="margin-bottom:8px;"><strong>ElevenLabs Agents: 72 of 84.</strong> Perfect in six of the seven conditions, but it did not respond at all in any of the 12 very-quiet-speaker runs — its turn detection apparently never triggers at that input level.</li>
+<li style="margin-bottom:8px;"><strong>Azure GPT Realtime: 48 of 84.</strong> The strangest result in the study: its transcripts stayed near-perfect, yet the answers went wrong — with an overdriven microphone it sometimes answered an English question in German, or skipped the lookup and answered from its own knowledge.</li>
+</ul>
+<p style="line-height:1.8;">That last point deserves emphasis, because it changes how you should test any voice engine yourself. A clean transcript does not guarantee a correct answer, and a slightly wrong transcript can still produce the right one. Judge an engine on its answers, not its transcript accuracy.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Languages and pauses: two quiet failure modes</h2>
+<p style="line-height:1.8;">The multilingual test was close: GPT Live and Gemini 3.8 Live passed all 9 checks in German, Spanish and French, ElevenLabs Agents passed all 15 of its runs, and Azure GPT Realtime passed 8 of 9 — in one French run it skipped the lookup and invented the company's services instead. One invented answer in nine is exactly the kind of quiet failure that survives a demo and embarrasses you in production.</p>
+<p style="line-height:1.8;">Pauses split the field more sharply. When a caller read a phone number with a roughly one-second pause mid-sentence, Azure GPT Realtime failed to respond in 3 of 3 runs and Gemini 3.8 Live in 2 of 3 at a 500 ms end-of-speech threshold, while GPT Live and ElevenLabs Agents handled every run. Leobit notes this is partly an artifact of its test audio — but real callers pause to find a card or check a document every day, so end-of-speech settings deserve a line in your own test plan.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What a three-minute conversation costs</h2>
+<p style="line-height:1.8;">Leobit modeled a typical call — six turns, three lookups, about a minute of speech each way — at list prices checked on 10 October 2026:</p>
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+<th style="padding:10px; color:var(--color-primary-on);">Engine</th>
+<th style="padding:10px; color:var(--color-primary-on);">Per 3-minute conversation</th>
+<th style="padding:10px; color:var(--color-primary-on);">Per 1,000 conversations</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Gemini 3.8 Live</td><td style="padding:10px;">$0.04–$0.09</td><td style="padding:10px;">$37–$86</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">Azure GPT Realtime</td><td style="padding:10px;">$0.10–$0.25</td><td style="padding:10px;">$101–$245</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">GPT Live</td><td style="padding:10px;">~$0.15</td><td style="padding:10px;">~$154</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px; font-weight:600; color:var(--color-primary);">ElevenLabs Agents</td><td style="padding:10px;">~$0.24</td><td style="padding:10px;">~$242</td></tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">The cheapest option costs about six times less per conversation than the most expensive one. The gap is mostly pricing structure, not a single rate: GPT Live and ElevenLabs bill per minute, so cost grows with call length, while Gemini and Azure bill per token, so cost grows with how much is said and how conversation context is billed. An engine that is cheapest on a three-minute call may not be cheapest on your twelve-minute support calls — run the same estimate with your own average call length before price decides anything.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Which engine should you pick?</h2>
+<p style="line-height:1.8;">Leobit's own conclusion is a decision table, not a ranking, and it is the honest shape of the answer:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Fast answers that need a lookup:</strong> Gemini 3.8 Live — 1.43 seconds to the actual answer, and the lowest cost.</li>
+<li style="margin-bottom:8px;"><strong>Snappy conversation and accurate transcription:</strong> GPT Live — 0.79 seconds to first sound, the lowest speech-recognition error in the test.</li>
+<li style="margin-bottom:8px;"><strong>Callers who pause mid-sentence:</strong> GPT Live or ElevenLabs Agents — neither dropped a turn in the pause test.</li>
+<li style="margin-bottom:8px;"><strong>Noisy, real-world audio:</strong> GPT Live or Gemini 3.8 Live — 83 and 80 of 84 degraded runs fully correct.</li>
+<li style="margin-bottom:8px;"><strong>Full control over the brain and the voice:</strong> ElevenLabs Agents — you choose the language model and the voice separately, which no native model lets you do. Our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-realtime-voice-agent-guide" style="color:var(--color-primary);">ElevenLabs realtime voice agent guide</a> walks through that setup in detail.</li>
+</ul>
+<p style="line-height:1.8;">Two caveats before you treat any of this as settled. Leobit used synthetic audio and its own scoring, ran three repeats per scenario (five for ElevenLabs), and says plainly that the numbers are directional, not definitive. And in its GPT Live deployment, 12 of 33 sessions failed on the first attempt with service errors — at a minimal one-request-per-minute quota, which Leobit itself says is not evidence against the model, just a warning to test new models under a realistic workload before launch.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Three new voice engines shipped within three weeks of each other, and the first independent head-to-head says the choice is about trade-offs, not a champion. If your assistant answers questions from your data all day, Gemini 3.8 Live's speed-to-answer and price are hard to beat. If conversation feel and noisy-room accuracy matter most, GPT Live leads — as long as you measure the wait for the real answer, not the filler. And if you only need text read aloud, none of this machinery is required: our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> turns up to 10,000 words into natural speech in 30 voices with no sign-up, and our <a href="${DOMAIN}/text-to-speech/blog/elevenlabs-alternatives" style="color:var(--color-primary);">ElevenLabs alternatives</a> roundup covers the voice-generation side.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>
 `
