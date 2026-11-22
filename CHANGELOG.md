@@ -28,6 +28,13 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Changed (2026-11-22, Phases 3–5 prepared — deployment follows the owner's "nipta do" once Thor verifies)
+
+- **AdSense "low-value content" fix, Phase 3:** `text-to-speech/ai-text-to-speech` subpage expanded 585 → 1,474 audit-metric words (neural-vs-old-voices explainer, voice-choosing guide, honest limits section; FAQs 2 → 4 — three new answers of 40–60 words, and the older short "is it free" FAQ removed on the verifier's suggestion since the new detailed one covers it) in `src/pages/textToSpeechSubpages.js`. `use-case/audiobook-generator` expanded 704 → 1,409 words (full workflow, honest timing, rights/publishing; FAQs 4 → 6) in `src/seo/programmaticPages.js`.
+- **Phase 4:** author page `author/mauhnish` expanded 260 → 690 words in `src/pages/authorPages.js` — role, editorial process, indie publishing, contact; only verifiable facts, no invented credentials.
+- **Phase 5:** two legacy 404 URLs now 301 to live pages in `public/_redirects` (`/blog/ai-voiceover-for-youtube-shorts` → `/use-case/youtube-voiceover`; `/blog/text-to-speech-audiobook-creation` → `/use-case/audiobook-generator`). All 8 compare pages gained a unique "So, which one should you pick?" decision section built only from facts already stated on that page (no new pricing/feature claims), reducing template sameness; `dateModified` set to 2026-11-22 on the touched programmatic entries.
+- Local dev-server test: all touched routes 200, new sections rendering.
+
 ### Changed (2026-11-22, Phase 2 prepared — NOT yet deployed, awaiting the owner's go)
 
 - **AdSense "low-value content" fix, Phase 2: five thinnest blog articles expanded** in `src/pages/textToSpeechBlogHub.js` (MAP entries only; LIST untouched). Each gained genuine new sections (comparison table, troubleshooting, step-by-step sync/setup, decision guides, cleanup/distribution guidance) and FAQs, with no invented tool facts — the Hindi roundup's additions reuse only facts already stated in that article. Audit-metric totals (body + FAQ words): `windows-text-to-speech-guide` 590 → 1,568 · `google-docs-text-to-speech-guide` 594 → 1,572 · `canva-text-to-speech-guide` 633 → 1,604 · `hindi-text-to-speech-tools` 920 → 1,565 · `how-to-make-an-audiobook-free` 990 → 1,555. FAQs per article now 7; new FAQ answers kept to the house 40–60-word rule. `dateModified` set to November 22, 2026 on the five. Local dev-server test: all five article routes + hub 200, new sections rendering. (Phase 1 below already LIVE as commit 5b8f10b.)
