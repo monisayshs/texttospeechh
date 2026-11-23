@@ -28,6 +28,10 @@ If this document conflicts with the implementation, **the source code is authori
 
 ## [Unreleased]
 
+### Added (2026-11-23)
+
+- **New blog article: "GPT-Live-1.1 Explained: ChatGPT Voice Changes Dec 11"** (`text-to-speech/blog/gpt-live-1-1-explained`) in `src/pages/textToSpeechBlogHub.js` — new top `BLOG_ARTICLES_LIST` entry + `BLOG_ARTICLES_MAP` entry appended (LIST 99 / MAP 97). Explains GPT-Live-1.1's API release (19 Nov 2026), standby billing ($0.02/min idle vs $0.05 active, WebRTC-only) and the 11 Dec 2026 retirement of ChatGPT's Advanced + Standard voice modes; 6 FAQs (51–60 words), title 52 chars / meta 155 chars, house hero+mid WebP images in `public/images/blog/gpt-live-1-1-explained/`. Thor-verified before publish (one attribution fix applied, re-check PASS).
+
 ### Changed (2026-11-22, Phases 3–5 prepared — deployment follows the owner's "nipta do" once Thor verifies)
 
 - **AdSense "low-value content" fix, Phase 3:** `text-to-speech/ai-text-to-speech` subpage expanded 585 → 1,474 audit-metric words (neural-vs-old-voices explainer, voice-choosing guide, honest limits section; FAQs 2 → 4 — three new answers of 40–60 words, and the older short "is it free" FAQ removed on the verifier's suggestion since the new detailed one covers it) in `src/pages/textToSpeechSubpages.js`. `use-case/audiobook-generator` expanded 704 → 1,409 words (full workflow, honest timing, rights/publishing; FAQs 4 → 6) in `src/seo/programmaticPages.js`.
