@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/chatgpt-voice-guide", title: "ChatGPT Voice: How to Talk to ChatGPT Free in 2026", category: "Guides", readingTime: "8 min read", cta: "Read the ChatGPT Voice Guide →" },
   { slug: "text-to-speech/blog/gpt-live-1-1-explained", title: "GPT-Live-1.1 Explained: ChatGPT Voice Changes Dec 11", category: "Guides", readingTime: "9 min read", cta: "Read the GPT-Live-1.1 Guide →" },
   { slug: "text-to-speech/blog/deepl-aure-voice-translation-explained", title: "DeepL Aure: Real-Time Voice Translation in Your Voice", category: "Guides", readingTime: "9 min read", cta: "Read the DeepL Aure Guide →" },
   { slug: "text-to-speech/blog/gpt-live-vs-gemini-live-voice-benchmark", title: "GPT Live vs Gemini Live: Voice AI Benchmark (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Voice AI Benchmark \u2192" },
@@ -12050,7 +12051,97 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">GPT-Live-1.1 is a small version bump with one large practical consequence. The model itself is a refinement — steadier accents, better transcription, more reliable task completion, all claimed but not yet benchmarked. The standby billing is the concrete change: idle voice sessions now cost 60% less, which matters to anyone running a real voice agent that spends its minutes waiting. And for ChatGPT users, the date that matters is 11 December, when the old voice modes go away and Live becomes the only voice in the picker.</p>
-<p style="line-height:1.8;">If you build voice agents, test 1.1 on your own calls and measure the standby resume delay before you promise it to a client. If you just talk to ChatGPT, try Live voice this week while you can still switch back. And if all you want is your text read aloud, our free tool does that today, with no API key, no per-minute billing and no December deadline.</p>
+<p style="line-height:1.8;">If you build voice agents, test 1.1 on your own calls and measure the standby resume delay before you promise it to a client. If you just talk to ChatGPT, try Live voice this week while you can still switch back. And if all you want is your text read aloud, our free tool does that today, with no API key, no per-minute billing and no December deadline. If you would rather just talk to ChatGPT than build with the API, our <a href="${DOMAIN}/text-to-speech/blog/chatgpt-voice-guide" style="color:var(--color-primary);">ChatGPT Voice guide</a> covers the free limits, the voices and the 30-second setup.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/chatgpt-voice-guide": {
+    title: `ChatGPT Voice: How to Talk to ChatGPT Free in 2026`,
+    h1: `ChatGPT Voice: How to Talk to ChatGPT Free in 2026`,
+    ogImage: "/images/blog/chatgpt-voice-guide/chatgpt-voice-hero.webp",
+    metaDesc: `ChatGPT Voice is free with limits: tap the waveform and talk. Free vs Plus vs Pro hours, the voices, the GPT-Live-1.1 changes, and what it cannot do yet.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"a":"Yes. Every ChatGPT account, including free ones, can start voice conversations at no cost. The catch is the limit: free accounts get what OpenAI calls \"limited access\" to the lighter GPT-Live-1.1 Quip model, and OpenAI does not publish the exact allowance. Paid plans get the full model with stated daily hours.","q":"Is ChatGPT voice really free?"},{"a":"Open the ChatGPT app, tap the waveform icon beside the message box, and allow microphone access when your phone asks. Then just talk — there is no button to hold and no wake word. You can interrupt the reply at any point, and tapping the icon again ends the voice conversation.","q":"How do I turn on voice mode in the ChatGPT app?"},{"a":"Yes. Voice mode works at chatgpt.com in a browser and in the current desktop apps, with the same voices and limits as your plan on mobile. Your browser will ask for microphone permission the first time. One exception: the retired standalone Mac app lost its voice feature in January 2026, so use the browser there.","q":"Does ChatGPT voice work on a computer?"},{"a":"Only inside a voice conversation you started. ChatGPT Voice listens while a session is open so it can respond and let you interrupt, but it is not an always-on assistant listening around the clock. There is no wake word. When you end the session or close the app, the listening stops with it.","q":"Can ChatGPT voice hear me in the background?"}],
+    datePublished: "November 23, 2026",
+    dateModified: "November 23, 2026",
+    content: `<p style="line-height:1.8;">You can talk to ChatGPT out loud, for free, in the app you probably already have. OpenAI says ChatGPT passed 1.2 billion weekly users in its DevDay 2026 recap — that is OpenAI's own reported figure, not an audited count, but even roughly it means hundreds of millions of people have a voice assistant sitting in their pocket and never tap the one button that turns it on. This guide fixes that: how to start a voice conversation, what the free version actually allows, and which parts of the older guides are now wrong.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: ChatGPT Voice in One Box</h2><p style="margin:0; line-height:1.7;">ChatGPT Voice is free to use — open the ChatGPT app or chatgpt.com, tap the waveform icon, allow the microphone and start talking. Free accounts get limited access to the lighter GPT-Live-1.1 Quip model; paid plans get the full GPT-Live-1.1 model. It works in 40+ languages, on iPhone, Android and in the browser, with no wake word and nothing to hold down.</p></div>
+<section style="margin-bottom:40px;">
+<h2>Turn it on in 30 seconds (app, browser, desktop)</h2>
+<img src="/images/blog/chatgpt-voice-guide/chatgpt-voice-hero.webp" alt="ChatGPT Voice on a phone - a smartphone with a gold waveform on its screen and amber sound waves flowing out in both directions" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">There is no setup and nothing to install beyond the ChatGPT app itself.</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;">Open ChatGPT on your phone, or chatgpt.com in a browser.</li>
+<li style="margin-bottom:8px;">Tap or click the <strong>waveform icon</strong> next to the message box.</li>
+<li style="margin-bottom:8px;">Allow microphone access the first time you are asked.</li>
+<li style="margin-bottom:8px;">Start talking. ChatGPT answers out loud, and you can interrupt it mid-sentence — it keeps listening while it speaks.</li>
+</ol>
+<p style="line-height:1.8;">On a computer, the same waveform icon sits in the message box at chatgpt.com, and the desktop apps work the same way. One trap: the standalone Mac app's voice feature was retired in January 2026, so on a Mac use the browser rather than hunting for a voice button that is no longer there.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Is ChatGPT Voice free? Free vs Plus vs Pro limits</h2>
+<img src="/images/blog/chatgpt-voice-guide/chatgpt-voice-mid.webp" alt="How ChatGPT Voice works - a finger taps a waveform button, two speech bubbles with waveforms overlap in conversation, and a clock shows the daily allowance" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Yes — with limits, and OpenAI does not publish the free one. Here is the current table from OpenAI's own ChatGPT Voice help page, checked on 23 November 2026. Usage is measured over a rolling 24-hour period, and ChatGPT tells you when you hit your limit.</p>
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Plan</th><th style="padding:10px; color:var(--color-primary-on);">Voice model</th><th style="padding:10px; color:var(--color-primary-on);">Limit (rolling 24 hours)</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Free</td><td style="padding:10px;">GPT-Live-1.1 Quip</td><td style="padding:10px;">Limited access — OpenAI does not publish the number, and says limits may change</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Go</td><td style="padding:10px;">GPT-Live-1.1 Quip</td><td style="padding:10px;">3 hours</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Plus</td><td style="padding:10px;">GPT-Live-1.1</td><td style="padding:10px;">3 hours</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Pro ($100/month)</td><td style="padding:10px;">GPT-Live-1.1</td><td style="padding:10px;">15 hours</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Pro ($200/month)</td><td style="padding:10px;">GPT-Live-1.1</td><td style="padding:10px;">Unlimited, subject to abuse guardrails</td></tr>
+</tbody>
+</table>
+<p style="line-height:1.8;">Two honest notes. First, "limited access" on Free is genuinely vague — OpenAI gives no minutes figure, so any site quoting you one is guessing. In practice it is enough for short daily conversations, not for an afternoon of dictation. Second, Quip is the lighter model: fine for chat, questions and brainstorming, a step down from the full model on long, complex reasoning. If voice is your main way of using ChatGPT, Plus is the plan where the full model and a clear 3-hour allowance start.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What GPT-Live changed (and why old guides are wrong now)</h2>
+<p style="line-height:1.8;">Most voice guides on the internet still describe Advanced Voice Mode. That mode is gone as the default — and it disappears completely on 11 December 2026, when OpenAI retires Advanced and Standard voice and everyone moves to Live.</p>
+<p style="line-height:1.8;">Live runs on GPT-Live, a full-duplex model: it listens and speaks at the same time, so you can cut in, correct it, or change your mind mid-sentence, and it handles the turn-taking itself. The October 2026 update, GPT-Live-1.1, brought steadier accents across languages and new native voices for several languages (below). If you want the developer side of that story — API pricing, the standby billing change, and the December 11 details — our <a href="${DOMAIN}/text-to-speech/blog/gpt-live-1-1-explained" style="color:var(--color-primary);">GPT-Live-1.1 explainer</a> covers it.</p>
+<p style="line-height:1.8;">The practical difference you will feel: conversations stop feeling like a walkie-talkie. You no longer wait for a full reply before speaking, and it can keep talking naturally while it looks something up.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The voices and how to pick one</h2>
+<p style="line-height:1.8;">You pick your voice in <strong>Settings &gt; Voice</strong>. OpenAI's current list has nine main voices:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>Arbor</strong> — easygoing and versatile</li>
+<li style="margin-bottom:8px;"><strong>Breeze</strong> — animated and earnest</li>
+<li style="margin-bottom:8px;"><strong>Cove</strong> — composed and direct</li>
+<li style="margin-bottom:8px;"><strong>Ember</strong> — confident and optimistic</li>
+<li style="margin-bottom:8px;"><strong>Juniper</strong> — open and upbeat</li>
+<li style="margin-bottom:8px;"><strong>Maple</strong> — cheerful and candid</li>
+<li style="margin-bottom:8px;"><strong>Sol</strong> — savvy and relaxed</li>
+<li style="margin-bottom:8px;"><strong>Spruce</strong> — calm and affirming</li>
+<li style="margin-bottom:8px;"><strong>Vale</strong> — bright and inquisitive</li>
+</ul>
+<p style="line-height:1.8;">Live adds native voices for other languages — Viola and Rio (Brazil), Aube and Rivage (French), Sonna and Miko (German), Leher and Neer (Hindi), Himari and Rindō (Japanese), Haetsal and Hanul (Korean), Tinta and Arrullo (Mexican Spanish) and Bubbie in English. OpenAI warns the list you see may vary by region and account, so do not worry if your picker shows a slightly different set.</p>
+<p style="line-height:1.8;">How to pick: preview three, then run the same real request through each — a summary of something long, not "hello". The voice you still like after two minutes of dense content is your voice. For long listening, the calmer ones (Spruce, Cove, Sol) wear better than the cheerful ones.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Voice mode on iPhone vs Android vs computer</h2>
+<p style="line-height:1.8;">The experience is close to identical everywhere, because the model runs on OpenAI's servers, not your device. The differences are small:</p>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>iPhone and Android:</strong> the full experience in the ChatGPT app, including interrupting and the complete voice list. This is the route most people should use.</li>
+<li style="margin-bottom:8px;"><strong>Browser (chatgpt.com):</strong> the same voice mode; you need to grant the browser microphone permission once.</li>
+<li style="margin-bottom:8px;"><strong>Desktop apps:</strong> voice is rolling out to desktop apps for eligible workspaces; for most people the app and the browser are the reliable routes today, and the retired standalone Mac app voice feature (January 2026) is the exception to know about.</li>
+</ul>
+<p style="line-height:1.8;">There is no wake word on any platform — you start each conversation by tapping the icon. And voice conversations can use web search and memory where your plan and settings allow, which the old Standard mode never could.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What it cannot do</h2>
+<ul style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;"><strong>No wake word.</strong> You cannot say "Hey ChatGPT" from across the room; a tap starts every session.</li>
+<li style="margin-bottom:8px;"><strong>No live video or screen sharing on Live yet.</strong> Those still run on Advanced voice, and stay there until GPT-Live supports them — OpenAI has given no date.</li>
+<li style="margin-bottom:8px;"><strong>No custom or cloned voices.</strong> The list above is the list; you cannot add your own voice.</li>
+<li style="margin-bottom:8px;"><strong>It is a conversation tool, not a reader.</strong> If your job is hearing a document, article or book read aloud word for word, voice chat is the wrong tool — it will summarise and chat instead of reading. For that job, a <a href="${DOMAIN}/" style="color:var(--color-primary);">text-to-speech tool</a> or a dictation-first tool like the ones in our <a href="${DOMAIN}/text-to-speech/blog/best-free-speech-to-text-tools" style="color:var(--color-primary);">free speech-to-text roundup</a> fits better — and for writing by voice in documents, see our <a href="${DOMAIN}/text-to-speech/blog/google-docs-voice-typing-guide" style="color:var(--color-primary);">Google Docs voice typing guide</a>.</li>
+</ul>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">ChatGPT Voice is free, already on your phone, and — since GPT-Live — genuinely pleasant to talk to. The free tier's unpublished limit is the one annoyance: fine for daily questions, too vague to plan long sessions around. Paid plans are simple: the full model and 3 hours a day from Plus, 15 hours on the $100 Pro, unlimited on the $200 Pro. Ignore any guide that still teaches Advanced Voice Mode; it retires on 11 December 2026, and Live is the only voice you need to learn.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   }
