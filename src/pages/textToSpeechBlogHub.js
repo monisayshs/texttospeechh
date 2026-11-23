@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/best-vietnamese-text-to-speech-tools", title: "Best Vietnamese Text to Speech Tools in 2026 (7 Free)", category: "Guides", readingTime: "6 min read", cta: "Read the Vietnamese TTS Guide →" },
   { slug: "text-to-speech/blog/best-free-text-to-speech-apis", title: "Best Free Text to Speech APIs for Developers (2026)", category: "Guides", readingTime: "7 min read", cta: "Read the Free TTS APIs Guide →" },
   { slug: "text-to-speech/blog/best-free-text-to-speech-apps-for-iphone", title: "Best Free Text to Speech Apps for iPhone in 2026", category: "Guides", readingTime: "8 min read", cta: "Read the iPhone TTS Apps Guide →" },
   { slug: "text-to-speech/blog/chatgpt-voice-guide", title: "ChatGPT Voice: How to Talk to ChatGPT Free in 2026", category: "Guides", readingTime: "8 min read", cta: "Read the ChatGPT Voice Guide →" },
@@ -12272,6 +12273,73 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">Start on Google Cloud if you want the largest free tier that never expires, and set a billing alert the same day. Take Polly if you want 5 million free Standard characters a month with no stated expiry — and calendar the month-13 end of its free Neural voices if those are the ones you ship. Keep Azure F0 as the steady fallback, spend ElevenLabs' free minutes on prototyping the voices your users will judge you by, and keep your own hardware in mind for side projects. Just do not build anything new on OpenAI's tts-1: it has a shutdown date, and it is close.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/best-vietnamese-text-to-speech-tools": {
+    title: `Best Vietnamese Text to Speech Tools in 2026 (7 Free)`,
+    h1: `Best Vietnamese Text to Speech Tools in 2026 (7 Free)`,
+    ogImage: "/images/blog/best-vietnamese-text-to-speech-tools/vietnamese-tts-hero.webp",
+    metaDesc: `Vietnamese has six tones and most free tools flatten them. 7 free Vietnamese text to speech tools ranked on tone accuracy, voices and free limits.`,
+    category: "Guides",
+    readingTime: "6 min read",
+    faqs: [{"q": "Is there a free Vietnamese text to speech tool?", "a": "Yes. Google Translate reads Vietnamese aloud free with correct tones for short passages, and free web tools like TTSMaker read longer text with weekly caps. For real volume, developers get native Vietnamese voices free every month from Azure (500,000 characters) and Google Cloud (millions of characters) on their free tiers."}, {"q": "Can Google Translate read Vietnamese aloud for free?", "a": "Yes. Paste Vietnamese text into Google Translate, set the language to Vietnamese, and press the speaker icon — it reads the text aloud at no cost, with a slower playback option for learners. The voice is plain rather than expressive, and long documents must be pasted in chunks, but the tones are correct."}, {"q": "Which Vietnamese TTS voice sounds the most natural?", "a": "ElevenLabs' Vietnamese voices sound the most natural in this list, with human rhythm and emphasis on top of correct tones — but the free tier is only about ten minutes a month. For free naturalness at volume, the native neural voices from Azure and Google Cloud are the practical choice for most projects."}, {"q": "Why do some tools mispronounce Vietnamese tones?", "a": "Because they were not built for them. Tools that strip diacritics, reuse an English voice model, or simplify the tone marks before synthesis lose the pitch information that distinguishes one Vietnamese word from another. Native Vietnamese voice models keep the full tone contour, which is why the same sentence sounds right in one tool and wrong in another."}],
+    datePublished: "November 23, 2026",
+    dateModified: "November 23, 2026",
+    content: `<p style="line-height:1.8;">Vietnamese is the language where a mediocre text to speech tool does not just sound robotic — it says the wrong word. The language has about 86 million first-language speakers and 97 million speakers in total (Ethnologue), plus around 4.5 million speakers outside Vietnam, and its writing system packs six tones into marks above and below the vowels. Get a tone wrong and "ma" stops being a ghost and becomes a mother, a horse or a rice seedling. So this roundup ranks 7 free tools on the only thing that matters first: whether the tones survive.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Best Vietnamese Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">The best Vietnamese text to speech tool is the one that reads all six tones correctly — in Vietnamese, one syllable can mean six different things depending on the tone mark, so a tool that flattens tones is useless. We compared 7 free tools on tone accuracy, voice quality and free limits: dedicated Vietnamese neural voices (Google, Azure, ElevenLabs) lead, and free web tools vary wildly.</p></div>
+<section style="margin-bottom:40px;">
+<h2>The 7 best Vietnamese text to speech tools</h2>
+<img src="/images/blog/best-vietnamese-text-to-speech-tools/vietnamese-tts-hero.webp" alt="Vietnamese text to speech - one deep-teal sound wave splitting into six amber waves of shifting heights, one syllable becoming six tones" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">Tool</th><th style="padding:10px; color:var(--color-primary-on);">Vietnamese voices</th><th style="padding:10px; color:var(--color-primary-on);">Free allowance</th><th style="padding:10px; color:var(--color-primary-on);">Tone handling</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Google Translate</td><td style="padding:10px;">1 (built-in)</td><td style="padding:10px;">Free, short passages</td><td style="padding:10px;">Native model — tones correct, voice plain</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Microsoft Azure Speech</td><td style="padding:10px;">Native vi-VN neural voices</td><td style="padding:10px;">0.5M characters/month free (F0)</td><td style="padding:10px;">Neural, trained on Vietnamese — strong</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">ElevenLabs</td><td style="padding:10px;">Vietnamese voices</td><td style="padding:10px;">~10 minutes free a month</td><td style="padding:10px;">Most natural delivery here</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Google Cloud TTS</td><td style="padding:10px;">vi-VN Standard + Neural2</td><td style="padding:10px;">1M–4M characters/month free</td><td style="padding:10px;">Native voices — strong, developer route</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Narakeet</td><td style="padding:10px;">Vietnamese voices</td><td style="padding:10px;">Limited free demos</td><td style="padding:10px;">Native voices, video-friendly</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">SpeechGen</td><td style="padding:10px;">Vietnamese voices</td><td style="padding:10px;">First 1,000 characters free</td><td style="padding:10px;">Native voices, pay-as-you-go after</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">TTSMaker</td><td style="padding:10px;">Vietnamese voices</td><td style="padding:10px;">Free, 20,000 characters/week</td><td style="padding:10px;">Usable; check proper names carefully</td></tr>
+</tbody>
+</table>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best overall: native neural voices (Azure and Google Cloud)</h2>
+<p style="line-height:1.8;">The tools that get Vietnamese right share one design decision: a voice actually trained on Vietnamese, not an English engine guessing at diacritics. Microsoft Azure's vi-VN neural voices and Google Cloud's vi-VN voices are the dependable end of this list — full tone contours, correct handling of stacked diacritics like "ế" and "ộ", and consistent pronunciation across a long document. Both have real free tiers (Azure's F0 gives 500,000 characters a month; Google Cloud's free characters are in the millions — our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-apis" style="color:var(--color-primary);">free text to speech APIs guide</a> has the full table), but both are developer routes: an account, a key, a little setup. If you are building anything — an app, a course, a video pipeline — start here.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best free: no sign-up Vietnamese TTS</h2>
+<p style="line-height:1.8;">For one paragraph right now, <strong>Google Translate</strong> is the honest free answer: paste Vietnamese text, press the speaker icon, and a native model reads it with correct tones. The voice is plain and passages are short, but the pronunciation is trustworthy, and it costs nothing and asks for nothing. <strong>TTSMaker</strong> and similar free web tools read longer text with weekly caps (TTSMaker allows 20,000 characters a week); quality varies by voice, so run the tone test below on your own sentence before trusting one with a full script. One honest note about our own house: our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text to speech tool</a> covers 15 languages — Vietnamese is not one of them yet, and we would rather say that than pretend.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best voices: ElevenLabs, in small doses</h2>
+<p style="line-height:1.8;">ElevenLabs reads Vietnamese with the most natural delivery in this list — the rhythm and emphasis of a person, not a metronome — and its voices handle tone as part of the performance rather than a pronunciation rule. The free allowance is only about ten minutes a month, which makes it the tool for the clip that matters: a video intro, a product demo, the passage your audience will judge you by. For volume, it is a paid tool; for a first impression, nothing here beats it. The wider context is in our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text to speech tools</a> roundup.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best for learners: slow, clear pronunciation with tone marks</h2>
+<p style="line-height:1.8;">If you are learning Vietnamese, your needs invert: you want the tones exaggerated, not smoothed away, and a speed control that slows speech without flattening it. Google Translate's slower playback and Azure's speed settings both do this well. Pair any tool with the written tone marks in front of you — Vietnamese is one language where listening without reading teaches the wrong lesson, because your ear cannot yet hear the difference the marks make. Students generally will find more study patterns in our <a href="${DOMAIN}/text-to-speech/blog/text-to-speech-for-students" style="color:var(--color-primary);">text to speech for students</a> guide.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The 6-tone test: how to check any tool in one minute</h2>
+<img src="/images/blog/best-vietnamese-text-to-speech-tools/vietnamese-tts-mid.webp" alt="The six-tone test - a gold microphone, a pitch contour rising and falling across the middle, and a speaker with an amber wave" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Do not take any roundup's word for tone quality — including this one. Run this test yourself; it takes a minute and no tool can fake it.</p>
+<ol style="line-height:1.8; padding-left:22px;">
+<li style="margin-bottom:8px;">Copy this sentence into the tool: <strong>"Ma, má, mà, mả, mã, mạ — con ngựa ăn cỏ ngoài đồng."</strong> It holds all six tones on the same syllable, then a natural sentence.</li>
+<li style="margin-bottom:8px;">Listen for six clearly different pitches on the "ma" series: level, rising, falling, dipping, rising-broken, and heavy-falling. If two sound the same, the tool flattens tones — walk away.</li>
+<li style="margin-bottom:8px;">Then paste a paragraph of your own real text, with names. Proper names and borrowed words are where Vietnamese tools stumble next.</li>
+</ol>
+<p style="line-height:1.8;">Tools built on native Vietnamese voices pass step 2 by design. Tools that strip or simplify diacritics fail it before you finish the sentence — and now you know how to see that in a minute instead of after an hour of bad audio. The same test-first approach is how we built our <a href="${DOMAIN}/text-to-speech/blog/best-korean-text-to-speech-tools" style="color:var(--color-primary);">Korean</a> and <a href="${DOMAIN}/text-to-speech/blog/best-chinese-text-to-speech-tools" style="color:var(--color-primary);">Chinese</a> roundups.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>How we compared</h2>
+<p style="line-height:1.8;">Three axes, in order. <strong>Tone accuracy:</strong> does the tool use a native Vietnamese voice model, and does it preserve full diacritics from input to audio? <strong>Voice quality:</strong> naturalness over a paragraph, not a sentence — many tools sound fine for ten words and fall apart by the second minute. <strong>Free limits:</strong> what you can actually produce before paying, stated as characters, minutes or weekly caps, from each provider's own pages, checked in November 2026. We do not publish listening-test scores we did not run; where a judgement is ours, it is framed as one, and the 6-tone test above lets you verify the important claim yourself.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Vietnamese forgives a robotic voice and punishes a wrong tone, so choose by the test, not the demo page. Building something: Azure or Google Cloud's native vi-VN voices on their free tiers. One paragraph now: Google Translate, free and correct. A clip that must impress: ElevenLabs, inside its small free allowance. And whatever you pick, run the six "ma" syllables through it first — sixty seconds that will tell you more than any review, this one included.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   }
