@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/best-free-text-to-speech-apps-for-iphone", title: "Best Free Text to Speech Apps for iPhone in 2026", category: "Guides", readingTime: "8 min read", cta: "Read the iPhone TTS Apps Guide →" },
   { slug: "text-to-speech/blog/chatgpt-voice-guide", title: "ChatGPT Voice: How to Talk to ChatGPT Free in 2026", category: "Guides", readingTime: "8 min read", cta: "Read the ChatGPT Voice Guide →" },
   { slug: "text-to-speech/blog/gpt-live-1-1-explained", title: "GPT-Live-1.1 Explained: ChatGPT Voice Changes Dec 11", category: "Guides", readingTime: "9 min read", cta: "Read the GPT-Live-1.1 Guide →" },
   { slug: "text-to-speech/blog/deepl-aure-voice-translation-explained", title: "DeepL Aure: Real-Time Voice Translation in Your Voice", category: "Guides", readingTime: "9 min read", cta: "Read the DeepL Aure Guide →" },
@@ -12142,6 +12143,72 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <section style="margin-bottom:40px;">
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">ChatGPT Voice is free, already on your phone, and — since GPT-Live — genuinely pleasant to talk to. The free tier's unpublished limit is the one annoyance: fine for daily questions, too vague to plan long sessions around. Paid plans are simple: the full model and 3 hours a day from Plus, 15 hours on the $100 Pro, unlimited on the $200 Pro. Ignore any guide that still teaches Advanced Voice Mode; it retires on 11 December 2026, and Live is the only voice you need to learn.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/best-free-text-to-speech-apps-for-iphone": {
+    title: `Best Free Text to Speech Apps for iPhone in 2026`,
+    h1: `Best Free Text to Speech Apps for iPhone in 2026`,
+    ogImage: "/images/blog/best-free-text-to-speech-apps-for-iphone/iphone-tts-hero.webp",
+    metaDesc: `7 free iPhone text to speech apps compared by what free really means: ElevenReader's 10 free hours, built-in Speak Screen, offline voices and paywalls.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "Is there a completely free text to speech app for iPhone?", "a": "Yes, two routes cost nothing at all. The built-in Speak Screen reads any screen aloud with no limits and no install — just turn it on under Accessibility > Spoken Content. For natural voices, ElevenReader's free plan gives 10 hours every month with no payment details, and on-device apps like Readible listen offline without an account."}, {"q": "How do I make my iPhone read a PDF aloud for free?", "a": "Open the PDF and use Speak Screen: swipe down with two fingers and the iPhone reads what is displayed, page by page. For a long PDF, upload it to ElevenReader instead — the free plan's 10 hours handles roughly a 400-page book, with natural voices and proper progress tracking that Speak Screen lacks."}, {"q": "Does the iPhone have built-in text to speech?", "a": "Yes. iOS includes Spoken Content under Settings > Accessibility: Speak Screen reads whole screens aloud, Speak Selection reads highlighted text, and a voices menu lets you download better Enhanced and Premium voices per language. It is unlimited and free, though the Siri voices sound more robotic than dedicated reading apps on long texts."}, {"q": "Can I listen to Kindle books aloud on iPhone for free?", "a": "Mostly, yes. The Kindle app's pages are ordinary screens, so Speak Screen can read them aloud for free, and ElevenReader can open your Kindle library inside the app, counting against its 10 free monthly hours. Books with DRM or image-only pages can block reading in some apps, so test your own book before a long trip."}],
+    datePublished: "November 23, 2026",
+    dateModified: "November 23, 2026",
+    content: `<p style="line-height:1.8;">Your iPhone can already read to you — the question is which app does it best without quietly charging you. Apple says it now has more than 2.5 billion active devices in use worldwide (Tim Cook, on Apple's Q1 FY2026 earnings call, January 2026) — that is all Apple devices, not iPhones alone, but it means an enormous number of people are carrying a free read-aloud feature they have never switched on. Below are the 7 best free routes, ranked by what "free" actually gets you once you read the fine print.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Best Free iPhone Text to Speech in One Box</h2><p style="margin:0; line-height:1.7;">The best free text to speech app for iPhone depends on what you read: for natural voices, ElevenReader gives 10 hours a month free; for unlimited offline listening, the on-device voices in Readible cost nothing; and if you want to install nothing at all, the iPhone's built-in Speak Screen reads any screen aloud for free. We compared 7 apps and list exactly where each one's free tier stops.</p></div>
+<section style="margin-bottom:40px;">
+<h2>The 7 best free text to speech apps for iPhone</h2>
+<img src="/images/blog/best-free-text-to-speech-apps-for-iphone/iphone-tts-hero.webp" alt="Free text to speech on iPhone - a phone with an open book on its screen and sound waves flowing out to the right" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);"><th style="padding:10px; color:var(--color-primary-on);">App</th><th style="padding:10px; color:var(--color-primary-on);">What free gets you</th><th style="padding:10px; color:var(--color-primary-on);">Where free stops</th></tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">ElevenReader</td><td style="padding:10px;">10 hours of listening a month, 1,000+ voices, 90+ languages</td><td style="padding:10px;">Playback waits for next month after 10 hours; no MP3 export</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Speak Screen (built in)</td><td style="padding:10px;">Unlimited reading of any screen, no install</td><td style="padding:10px;">Robotic Siri voices; fiddly gesture to start</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Readible</td><td style="padding:10px;">On-device voices, offline, no account</td><td style="padding:10px;">Voice quality is the phone's own voices</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">NaturalReader</td><td style="padding:10px;">Free basic voices in the app and on the web</td><td style="padding:10px;">Daily limit on the better Plus voices</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Speechify</td><td style="padding:10px;">Polished app, fast setup, many voices</td><td style="padding:10px;">Free tier is a taster; the real product is the subscription</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">Voice Dream Reader</td><td style="padding:10px;">Superb controls for long documents and study</td><td style="padding:10px;">Free download, subscription required after a free trial — no free tier</td></tr>
+<tr style="border-bottom:1px solid var(--color-border);"><td style="padding:10px;">TextToSpeechH (web)</td><td style="padding:10px;">10,000 words per conversion, 30 voices, MP3 download, no sign-up</td><td style="padding:10px;">A web tool, not an app — no library or bookmarks</td></tr>
+</tbody>
+</table>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best overall: ElevenReader (most natural voices)</h2>
+<p style="line-height:1.8;">ElevenReader is ElevenLabs' reading app, and it sounds like it: the voices are the same technology behind the most realistic text to speech you can buy, with pauses and emphasis that survive a whole chapter. The free plan is the most generous honest offer in this list — <strong>10 hours of text-to-audio every month</strong>, which ElevenLabs itself equates to about a 400-page book, with no payment details required to sign up (elevenreader.io/pricing, checked 23 November 2026).</p>
+<p style="line-height:1.8;">It reads PDFs, eBooks, web pages and pasted text, syncs your library between iPhone, Android and web. Offline downloads are Ultra-only; on the free plan, listening stays online inside the app. The catches are two: when the 10 hours run out, playback simply waits for next month (a 9-hour novel nearly empties the tank), and ElevenReader does not export MP3s — listening stays inside the app. If you need a downloadable file, that is a different tool's job (see the web option in the table).</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best free with no sign-up and no subscription: our web tool</h2>
+<p style="line-height:1.8;">Most "free" reader apps want an account before they read a word. If your job is occasional — an article, a document, your own writing read back to you — a web tool skips all of that. Our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> converts up to 10,000 words per go into natural speech in 30 voices, downloads as MP3, and asks for no sign-up at all. It is not an app, so there is no library, no sync and no offline mode — it is the honest trade for zero commitment. On Android, the sister picks are in our <a href="${DOMAIN}/text-to-speech/blog/best-android-text-to-speech-apps" style="color:var(--color-primary);">Android text to speech guide</a>.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Best offline: voices that run on your phone</h2>
+<p style="line-height:1.8;">On-device voices never run out, never need a connection and never send your documents anywhere. <strong>Readible</strong> builds its free tier on the iPhone's own downloaded voices, so listening is unlimited and works in airplane mode — the trade is quality: you get Apple's voices, not studio-grade narration. Whichever app you use, download a better voice first: <strong>Settings &gt; Accessibility &gt; Spoken Content &gt; Voices</strong>, and grab an Enhanced or Premium voice for your language. It is a one-time download that improves every app on this page that uses system voices, including Speak Screen.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>No install: iPhone's built-in Speak Screen (and its limits)</h2>
+<p style="line-height:1.8;">Speak Screen is already on your phone. Turn it on in <strong>Settings &gt; Accessibility &gt; Spoken Content</strong>, switch on <strong>Speak Screen</strong>, then swipe down with two fingers from the top of any screen and your iPhone reads it aloud — articles, PDFs, Kindle pages, anything displayed. It costs nothing, has no limits and needs no account.</p>
+<p style="line-height:1.8;">The limits are real, though. The voices are Siri's — serviceable, not enjoyable over a long book. Starting and stopping playback is gesture-based and clumsy, there is no library or progress sync, and it reads what is on the screen, so a badly formatted PDF reads badly. For a quick article it is perfect; for a novel, use ElevenReader's free hours first.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The rest, honestly</h2>
+<p style="line-height:1.8;"><strong>NaturalReader</strong> is the classroom favourite: a clean app plus a web reader, with free basic voices that are genuinely usable. The better Plus voices carry a daily limit on the free plan, so treat it as a daily-allowance app rather than an unlimited one.</p>
+<p style="line-height:1.8;"><strong>Speechify</strong> is the most polished and the most advertised — and the free tier is a taster, not a product. Expect to meet the subscription screen early and often. If you end up paying anywhere, pay after you have spent ElevenReader's 10 free hours, not before.</p>
+<p style="line-height:1.8;"><strong>Voice Dream Reader</strong> is the connoisseur's pick for long documents, with the best navigation and study controls on iOS — but there is no free tier: the download is free and new users get a free trial, after which a subscription is required. It belongs in this list as the honest exception: the pick for serious long-document listeners who are willing to pay.</p>
+<p style="line-height:1.8;">For PDFs specifically, our <a href="${DOMAIN}/text-to-speech/blog/pdf-reader-out-loud-apps" style="color:var(--color-primary);">PDF read-aloud guide</a> goes deeper, and Kindle readers should see the <a href="${DOMAIN}/text-to-speech/blog/kindle-read-aloud-guide" style="color:var(--color-primary);">Kindle read-aloud guide</a>.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What "free" actually costs</h2>
+<img src="/images/blog/best-free-text-to-speech-apps-for-iphone/iphone-tts-mid.webp" alt="What free text to speech really costs - a clock over a wave for hourly allowances, a phone downloading voices for offline use, and a hand swiping down to start built-in reading" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Every app in this list makes money somewhere; the only question is where the meter sits. <strong>Hours:</strong> ElevenReader's 10 hours a month is the clearest deal — generous, published, and it resets. <strong>Daily allowances:</strong> NaturalReader's Plus voices reset daily, which suits short daily reading and punishes weekend binges. <strong>Feature walls:</strong> Speechify's free tier mainly demonstrates what the subscription unlocks. <strong>Your documents:</strong> free apps that require an account and cloud uploads are asking for your reading material as part of the price — on-device and no-sign-up tools are not. Read the in-app purchase list on the App Store page before installing anything: it is the one place every app has to tell the truth.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Start with the free thing that matches your reading. A book or two a month: ElevenReader's 10 hours, the best voices in this list, no card required. Endless offline listening: Readible on downloaded system voices. One article right now: Speak Screen, already on your phone, or our web tool with no sign-up. And keep the App Store's in-app purchase list as your lie detector — it tells you where free ends before the app does.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   }
