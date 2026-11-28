@@ -9,6 +9,7 @@ const DOMAIN = "https://www.texttospeechh.com";
 const BRAND_NAME = "TextToSpeechH AI";
 
 const BLOG_ARTICLES_LIST = [
+  { slug: "text-to-speech/blog/bland-tofu-1-explained", title: "Bland Tofu-1: Full-Duplex Speech-to-Speech Explained", category: "Guides", readingTime: "8 min read", cta: "Read the Tofu-1 Guide →" },
   { slug: "text-to-speech/blog/chariot-1-foundation-models-launched", title: "Chariot-1 Launched: India's Homegrown AI for 11 Languages", category: "Guides", readingTime: "8 min read", cta: "Read the Chariot-1 Guide →" },
   { slug: "text-to-speech/blog/mai-realtime-1-explained", title: "MAI Realtime 1 Explained: Microsoft's $0.01 Voice AI", category: "Guides", readingTime: "9 min read", cta: "Read the MAI Realtime 1 Guide →" },
   { slug: "text-to-speech/blog/qwen3-tts-explained", title: "Qwen3 TTS Explained: Open Voice AI, 97ms Fast (2026)", category: "Guides", readingTime: "8 min read", cta: "Read the Qwen3 TTS Guide →" },
@@ -12640,6 +12641,110 @@ document.getElementById('listen-btn').addEventListener('click', function () {
 <h2>The bottom line</h2>
 <p style="line-height:1.8;">Chariot-1 is India's first homegrown foundation-model suite, launched on 26 November 2026: an 11-billion-parameter language model and a speech model for English and 10 Indian languages, pre-trained from scratch in India, with three real research ideas behind it and speech accuracy above 97% on the Ministry's pronunciation test. The honest version is shorter: the benchmarks are the team's own, no public release exists yet, and the proof will come when developers can actually use it.</p>
 <p style="line-height:1.8;">For India, though, the launch matters even before that proof arrives. It shows a small team, backed by the IndiaAI Mission, can train a capable model family for the languages hundreds of millions of people actually speak — and that is a step worth watching, whether you build with it or simply want your own language read aloud well. If that is all you need today, our free tool does it in one click.</p>
+</section>
+<p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
+  },
+  "text-to-speech/blog/bland-tofu-1-explained": {
+    title: `Bland Tofu-1: Full-Duplex Speech-to-Speech Explained`,
+    h1: `Bland Tofu-1: Full-Duplex Speech-to-Speech Explained`,
+    ogImage: "/images/blog/bland-tofu-1-explained/bland-tofu-1-hero.webp",
+    metaDesc: `Bland's Tofu-1 is a full-duplex speech-to-speech model for messy phone calls — it listens while it speaks. What it is, how it works, who can try it.`,
+    category: "Guides",
+    readingTime: "8 min read",
+    faqs: [{"q": "What is Bland Tofu-1?", "a": "Bland Tofu-1 is a full-duplex speech-to-speech AI model unveiled by Bland on 15 November 2026. It takes audio in and produces audio out from one model, with no text transcript in between, and listens while it speaks. Built for high-stakes phone calls in banking, healthcare, insurance and government, it is currently in an enterprise research preview."}, {"q": "How is Tofu-1 different from normal text-to-speech?", "a": "Normal text-to-speech reads written text aloud. Tofu-1 is not a text reader at all: it is a conversational model that hears a caller's voice directly, understands speakers, background noise and tone, and replies in audio. Text-to-speech is one step inside a voice bot; Tofu-1 replaces the whole chain of speech recognition, language model and text-to-speech with one model."}, {"q": "What is full-duplex speech-to-speech?", "a": "Full duplex means the model listens and speaks at the same time, like a person on a call. Speech-to-speech means the model works on audio — sound in, sound out — instead of converting speech to text, thinking in text, and converting text back to speech. Together they let a caller interrupt, correct or talk over the model."}, {"q": "Can I try Tofu-1 today?", "a": "Not as a member of the public. Access runs through a research preview for enterprise teams, via Bland's Tofu-1 page. The sign-up form asks for call volume, from under 1,000 to over 50,000 calls, and Bland prioritises banking, healthcare, insurance and government teams. No firm general-availability date or pricing has been announced, though Bland hints at January 2027 availability."}, {"q": "How good is Tofu-1 really?", "a": "That is an open question. Bland reports that in its own screenings, over 92% of listeners could not tell Tofu-1 apart from a human voice, but the figure is self-reported and no independent benchmarks exist yet. The model has no published size, latency or price. Judge it on your calls when the preview opens, not on the launch announcement."}, {"q": "What is the TV Test?", "a": "The TV Test is Bland's scenario for telling a caller's words apart from background sound. A nearby television says \"yes\" while the agent asks a confirmation question; a good model attributes that \"yes\" to the TV and asks the caller to confirm, instead of treating it as the caller's answer. Bland marks its walkthrough as illustrative, not recorded output."}],
+    datePublished: "November 28, 2026",
+    dateModified: "November 28, 2026",
+    content: `<p style="line-height:1.8;">Bland Tofu-1 is a full-duplex speech-to-speech AI model unveiled on 15 November 2026 that listens and speaks at the same time, with no text transcript in between. It is built for high-stakes phone calls — from moving cars, hospital rooms and weak-signal lines — where background noise, interruptions and several people talking at once break ordinary voice bots.</p>
+<div class="definition-box" style="background:var(--color-primary-soft); border-left:4px solid var(--color-primary); padding:20px; border-radius:8px; margin-bottom:28px;"><h2 style="font-size:1.15rem; margin-top:0; color:var(--color-primary);">Quick Answer: Tofu-1 in One Box</h2><p style="margin:0; line-height:1.7;">Tofu-1 is Bland's first speech-to-speech model, announced on 15 November 2026 in an enterprise research preview. Unlike a normal voice bot, which turns speech into text, asks a language model for a reply, then turns that text back into speech, Tofu-1 takes audio in and produces audio out from a single model. It hears the whole scene — speakers, background noise, tone — listens while it speaks, and keeps working on a request while it talks. There is no public demo, pricing or general release yet; access is by request, for teams in banking, healthcare, insurance and government.</p></div>
+<section style="margin-bottom:40px;">
+<h2>What Tofu-1 actually is</h2>
+<img src="/images/blog/bland-tofu-1-explained/bland-tofu-1-hero.webp" alt="Bland Tofu-1 explained - a deep-teal phone handset with two gold sound waves crossing through it, listening and speaking at the same time, with small car, TV and hospital-cross icons for background noise" width="1600" height="533" loading="eager" fetchpriority="high" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">Most voice agents you have talked to are cascades: three separate steps chained together. Speech recognition turns your words into text, a language model writes a reply, and text-to-speech reads that reply aloud. Every step throws information away — the tone of your voice, the noise around you, the fact that you were interrupted halfway through a sentence. Bland built Tofu-1 the other way: one model that works directly on sound.</p>
+<p style="line-height:1.8;">That is what "speech-to-speech" means here. The model never turns your voice into a transcript to think about it. It listens to the audio itself, reasons over it, and produces audio back. Because it never flattens the call into text, everything the sound carries stays available: who is speaking, how they sound, and what else is happening on the line.</p>
+<p style="line-height:1.8;">Tofu-1 is the first release in a planned family of Bland speech-to-speech models, and it is aimed squarely at phone calls — not chatbots, not voiceovers, not studio narration. Bland's own description puts it plainly: it was built for "the calls where conditions are worst and mistakes cost the most."</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Hearing the whole scene</h2>
+<p style="line-height:1.8;">The first thing Tofu-1 does differently is listen to the whole call, not just the words. Bland lists three hearing skills, and each one fixes a failure you will recognise from real phone bots:</p>
+<ul style="padding-left:20px; margin:0 0 16px; line-height:1.8;"><li style="margin-bottom:6px;"><strong>Speaker tracking.</strong> It tells one speaker from another and works out who a phrase is meant for. On a call with several people in the room, it knows whether the "yes" it just heard came from the caller or from someone in the background.</li><li style="margin-bottom:6px;"><strong>Noise separation.</strong> It separates speech from the other sounds on a call: a crying child, a television, a car on the highway, a hospital intercom, keypad tones. The sound does not disappear — the model hears it and decides what matters.</li><li style="margin-bottom:6px;"><strong>Paralinguistics.</strong> It hears how something is said, not only what was said: hesitation, frustration, urgency. A caller who sounds unsure gets a different response from one who sounds certain, even if the words are the same.</li></ul>
+<p style="line-height:1.8;">Bland's test for this is a scenario every call centre knows. A television in the room says "yes" while the agent asks a confirmation question. A normal bot hears the word "yes" and books the appointment. Tofu-1 is built to attribute that "yes" to the television and ask the caller to confirm. Bland calls it the TV Test, and its walkthrough is marked illustrative rather than recorded model output — so take it as the design goal, not a proven result.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>It can make the whole scene too</h2>
+<p style="line-height:1.8;">Because Tofu-1 models the sound of a call rather than only its words, it can also produce that sound. Bland says the model can generate a second speaker, the space around them, and the noise of the line — a complete audio scene in a single pass, not just a clean voice over silence.</p>
+<p style="line-height:1.8;">That sounds odd until you think about what a phone call actually is. A real conversation has breathing, pauses, the small sounds of a room, the crackle of a weak line. A voice that is too clean sounds wrong on a phone. Whether generating background sound is a feature anyone needs is a fair question — but it shows how far this model is from the old idea of text-to-speech, where the job was simply to read words aloud.</p>
+<p style="line-height:1.8;">The honest caveat: this is the part of Tofu-1 with the least evidence behind it. Bland has published recordings and figures for the listening side; the scene-generation claim is described, not demonstrated in a way outsiders can verify yet.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Listening while speaking</h2>
+<p style="line-height:1.8;">On a phone call, people talk over each other constantly. They say "mm-hmm" to show they are following, cut in to fix a digit in a member ID, and start answering before a question is finished. A normal voice bot cannot cope with that, because it works in turns: listen, think, speak, stop, listen again. If you interrupt it, it either talks over you or loses the thread.</p>
+<p style="line-height:1.8;">Tofu-1 is <strong>full duplex</strong>: it listens and speaks at the same time, and what it hears can change what it is saying. Bland draws a useful line here between two kinds of interruption. A backchannel — "right", "mm-hmm" — means the caller is following along, and the model keeps going. A correction — "no, it's 4-1-5, not 4-1-6" — means it should stop mid-sentence, take the new number, and carry on. That distinction is the difference between a model that sounds natural and one that sounds like it is reading a script.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Thinking while talking</h2>
+<p style="line-height:1.8;">High-stakes calls involve real work: verifying a caller's identity, checking the status of a claim, looking up benefits, confirming a payment. A person on the phone keeps talking while that happens — "let me check that for you" — and reports the result when it comes back. Tofu-1 does the same. Conversation and reasoning run side by side, so the model stays responsive while the work continues behind it.</p>
+<p style="line-height:1.8;">There is one detail in this that matters more than it sounds. Bland says Tofu-1 never says a task is done before it is done: it will not confirm a completed transaction until the backend API confirms it. That is a small design choice with a large consequence — it is the difference between an agent that sounds confident and one that is actually reliable. In demonstrations reported by MarkTechPost, the model was shown navigating multi-step database queries while speaking with a customer, and refusing to confirm transactions until the backend confirmations came back.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>Tofu-1 vs the old cascade — and vs its rivals</h2>
+<img src="/images/blog/bland-tofu-1-explained/bland-tofu-1-mid.webp" alt="Tofu-1 vs the old cascade - a tangled three-block chain of ear, text page and speaker crossed out in grey on the left, and one deep-teal circle with a gold sound wave passing straight through it on the right" width="1600" height="533" loading="lazy" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+<p style="line-height:1.8;">The simplest way to see the difference is a side-by-side:</p>
+<div style="overflow-x:auto; margin-top:16px;">
+<table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+<thead>
+<tr style="background:var(--color-primary); border-bottom:2px solid var(--color-primary-border);">
+<th style="padding:10px; color:var(--color-primary-on);"></th>
+<th style="padding:10px; color:var(--color-primary-on);">Old cascade voice bot</th>
+<th style="padding:10px; color:var(--color-primary-on);">Tofu-1 (speech-to-speech)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Input</td>
+<td style="padding:10px;">Speech turned into text first</td>
+<td style="padding:10px;">Audio heard directly</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Interruptions</td>
+<td style="padding:10px;">Talks over you, or loses the thread</td>
+<td style="padding:10px;">Listens while speaking; corrects mid-sentence</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Background noise</td>
+<td style="padding:10px;">Confuses it</td>
+<td style="padding:10px;">Separates speakers and sounds</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">While it works</td>
+<td style="padding:10px;">Goes silent</td>
+<td style="padding:10px;">Keeps talking while it checks</td>
+</tr>
+<tr style="border-bottom:1px solid var(--color-border);">
+<td style="padding:10px; font-weight:600; color:var(--color-primary);">Tone and hesitation</td>
+<td style="padding:10px;">Lost in the transcript</td>
+<td style="padding:10px;">Heard and used</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="line-height:1.8;">Tofu-1 is not the only model chasing this idea. It arrived in the middle of a full-duplex wave: Fish Audio's Live 3, Retell's Tell-1 and OpenAI's GPT-Live-1.1, added to the API on 19 November 2026, all launched within days of each other. The difference is focus. GPT-Live-1.1 is a general voice model you can call from an API today. Tofu-1 is narrower and closed: built for phone calls, tested on the worst ones, and available only through an enterprise research preview.</p>
+<p style="line-height:1.8;">Bland's CEO, Isaiah Granet, put the bet plainly: "building custom speech models from the ground up is necessary because off-the-shelf foundation models cannot reliably handle the messy edge cases of live phone calls." That is the whole argument for Tofu-1 in one sentence — general models are good at clean conversations, and phone calls are rarely clean.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What we actually know — and what we don't</h2>
+<p style="line-height:1.8;">Here is the honest scorecard, because launch announcements always sound better than the product behind them:</p>
+<p style="line-height:1.8;"><strong>Known.</strong> The model exists, it was unveiled on 15 November 2026, and the preview is open for requests from teams in banking, healthcare, insurance and government. The sign-up form asks for monthly call volume, from under 1,000 to over 50,000 calls. Bland reports that in its own screenings, over 92% of listeners could not tell Tofu-1 apart from a human voice — but that figure is self-reported by Bland, and no independent test has been published yet.</p>
+<p style="line-height:1.8;"><strong>Not known.</strong> Bland has not published the model's size, its latency, any public benchmark, or a price. There is no public demo you can call. The comparison with rivals is therefore one-sided: GPT-Live-1.1 and others publish latency and tool-use scores, while Tofu-1's numbers are, for now, the company's own words.</p>
+<p style="line-height:1.8;">For context on what Bland's production voice technology costs today: Bland Speech, the company's text-to-speech service, charges $0.04 per 1,000 characters, with 50,000 characters free once for a new account, and publishes 199ms to first audio. That is a TTS price, not a Tofu-1 price — Tofu-1 has no price yet, and it would be wrong to assume one from the other.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>What it means for you</h2>
+<p style="line-height:1.8;">If you run a call centre, a clinic's phone line, or any service where a voice bot takes real calls, Tofu-1 is worth watching — not buying, because you cannot buy it yet. The test to apply is simple: do your calls have background noise, interruptions and people talking over each other? If they are mostly clean, scripted conversations, a cascade bot or a general model like GPT-Live-1.1 will do the job today, and you can call its API right now. If your worst calls are the ones that matter most — a hospital room, a moving car, a weak signal — then a model built for exactly those calls is the one to watch, and the preview is the way to test it on your own recordings.</p>
+<p style="line-height:1.8;">If your job is simpler — you just want a paragraph read aloud, a voiceover, or an audiobook chapter in a natural voice — none of this changes your day. You do not need a speech-to-speech model for that. Our <a href="${DOMAIN}/text-to-speech/blog/best-free-text-to-speech-tools" style="color:var(--color-primary);">best free text-to-speech tools guide</a> compares the free options that work right now, with no account and no setup, and our <a href="${DOMAIN}/" style="color:var(--color-primary);">free text-to-speech tool</a> turns up to 10,000 words into natural speech with an MP3 download, free, no sign-up.</p>
+</section>
+<section style="margin-bottom:40px;">
+<h2>The bottom line</h2>
+<p style="line-height:1.8;">Tofu-1 is Bland's bet that the next step for voice AI is not a better text-to-speech voice, but a model that never uses text at all: it hears the whole call, listens while it speaks, and works while it talks. The idea is strong and the target — the messy, high-stakes phone call — is real. The proof is not in yet: no public demo, no independent benchmarks, no price. If the preview results hold up on real calls, it will be the model other voice agents are measured against. Until then, it is the most interesting voice launch of November — and one to judge on your own calls, not on the announcement.</p>
 </section>
 <p style="line-height:1.8;"><em>By Mauhnish — I build TextToSpeechH and write these guides from what actually works when you test it, not from feature lists. If a step above didn't work the way I described, the tool changed — tell me and I'll fix the guide.</em></p>`
   }
